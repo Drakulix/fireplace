@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Fireplace
+Comment=Fireplace Wayland window manager
+Exec=fireplace
+Icon=/usr/share/default/scalable/fireplace.svg
+Type=Application
+DesktopNames=Fireplace
