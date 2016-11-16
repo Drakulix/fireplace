@@ -1,0 +1,48 @@
+sudo: required
+dist: trusty
+language: rust
+cache:
+  directories:
+  - ".vagga/nightly-home"
+
+addons:
+  apt:
+    packages:
+    - libcurl4-openssl-dev
+    - libelf-dev
+    - libdw-dev
+
+env:
+  global:
+    secure: mQFTDAsNR/WOItpAfxJfFj4QJWl2OUJaBOlVoFccP5Rm7bxle5mD0CnxN6PaPiwuzRurqw++ir64PcP9eoZnMerypS4nlVmbqp83wThDbH3lSO0Ngd4lbsGLTIPKOSYtiNPR1hJGklclA31XVyXQASAjdPxzD+Vimz8ooTTGl4FQVQ8BJth1hs+jXSk3ULEzeUZlvXer1cN96x3kFiaSHB060daJpwsMOQuwn9wh2S2YnkbBihnZyviuW6383FD+C/BAtG8VCxezfdcccRI02ZM1G6u0ZTmvP2lDUxqjsgwMWSlwzGB60YUv2psqUL2ni6Bd4fVaDc3r+IkVlE5Vb6JoRtOCKtAXILCX+mi5GsoRGhDkFBPIrTMiOToBJ65CSYPTet1rl3BBiZcrqao9o6zDG7AlZNeFMU7CLPjqAhsRfsmvvKZw4S5uLfw+HmMiiLa408pjSJ1Yc9DVsHlldVmXAynjKtMEjKIPqDE8lwzfrV3gHv319qP9mk5UxeIDT4gz6E4de1LwPY0ogLJkLRQf3F0K0IQOdRelmEyproglXnMzWlBheOFrYwXwZ2BiRoFrMZOm9umMvDysfwDLjL1fkIwTFgBnTi1LtGiaSwVwV69fkoVRBbwdGVBG9q406Po+kzJliGo3DX2NhXiGcm17+hhv1NhxmkJ05wmddtY=
+
+deploy:
+  provider: releases
+  api_key:
+    secure: ZgVFPOyf4PHr/ikM3mCLi39wkhuww3d7N9PSDqOBV56HQqzPUS+bHxxRiGSg4EnHNIjna4mS9eY05HuLIfBDeWiua/p6Fjzxn4jxmEgurnCE86Oqy3ONCtjOxcjjiXA2oqxqF0i6v3B6YouyV6UlhQihSTOFDKyVk50EnB5VOR64pBDW/NZJL/edJ9CuOzfbp8jBuzfJyGp++bUXW84vcmF7a2Wdz/AwoHMav5C8O6LhHEPS7LDbkNLjU+rlHHjDvuTX5sjnKHDP82FBVhHCzvcznga1fh0p7muIoDv+c4kFfK6eVj9ig0lk5CN3Kpl8sUx9Kw3R4t00epBb5Y6uY5Gby/0tdzIgYRw7qZ09Iqh9btrj8SVThG+cBZq86vYLvvxIIHF5oX2V2q97RbHEEvqd8x6K7rkkz/qH9Td6AiPIVybrPWwxLQodeU5UEfGCOD7FI7VjtF0VR2MgmKS7ZOVOcvw7VNrdDohWlgbIvx1Gqh5roTwkpFdI8dirlAl8ilAlAu/VX0bssCMSGtL4OQCDvvhcMl2iFqgse481NMex0YtbpbYY/Z9HLidAR2/L3whoLS9FGECgWnxxNbM8mNBHhJkFLJV7Lmxs9W5CA+tsrJL32Cx+xmRAGQkYn4wwmMCv4F0MacfvP5tCjbnys7k1y2tofSFPcCizpIgGRq4=
+  file: fireplace/target/release/fireplace
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: Drakulix/fireplace
+
+before_script:
+- 'echo ubuntu-mirror: http://mirrors.us.kernel.org/ubuntu/ > ~/.vagga.yaml'
+- 'echo alpine-mirror: http://mirrors.gigenet.com/alpinelinux/ >> ~/.vagga.yaml'
+- |
+  echo "$(id -un):100000:65536" | sudo tee /etc/subuid | sudo tee /etc/subgid
+  sudo apt-get install uidmap -y
+  curl http://files.zerogw.com/vagga/vagga-install-testing.sh | sh
+- |
+  pip install 'travis-cargo<0.2' --user &&
+  export PATH=$HOME/.local/bin:$PATH
+
+script:
+- vagga check-fmt
+- vagga clippy
+- vagga build
+- vagga doc
+
+after_success:
+- touch target/doc/index.html
+- travis-cargo doc-upload

@@ -1,0 +1,263 @@
+# All keys are optional an default values will be used
+#
+# They are however not always useful, e.g. most key bindings will be emtpy.
+# We try to point out default values and example values where possible
+#
+---
+# Output specific configuration
+outputs:
+    # using a key matching to your output's name get specific configuration
+    # the name can *currently* only be seen in the log (sorry)
+    #
+    # 'LgoGsbnbk':
+    #    scale: 1
+    #
+    # 'generic' or 'default' are used when no matching key is found
+    generic:
+        scale: 1 # default
+
+---
+# Logging configuration
+logging:
+    style: "Compact" # default - ["Compact"|"Full"]
+    color: "Auto" # default - ["Auto"|"Always"|"Never"] Force or disable colored terminal output
+    #
+    # Optionally log to an html file
+    #file:  "/home/<your username>/.local/share/fireplace/last_run.log.html"
+---
+# Key bindings
+#
+# Bindings are composed of 'modifiers' and a 'key' (not multiple)
+
+# Global actions
+keys: # default values:
+    terminate: { modifiers: ["Logo", "Shift"], key: "Esc" } #terminate kills the compositor
+
+# Execute program
+#
+# Executions are happening in a shell context, environment variables passed
+# to fireplace are available and shell syntax is valid
+exec:
+    keys: # default values:
+        '$TERMINAL': { modifiers: ["Logo"], key: "Enter" }
+
+# View/Window related actions
+view:
+    keys: # default values:
+        close: { "modifiers": ["Logo", "Shift"], "key": "Q" } # closes the currently focused window
+---
+# Workspace config
+workspace:
+    # Space specific configurations - there are 1-32 spaces available
+    spaces:
+        #'1': # Use numbers to add a workspace specific configuration
+        #    name: "Terminal" # You can then name specific workspaces
+        #    mode: ... # And then add a specific mode configuration
+        default:
+            mode:
+            # Modes describe how windows are managed
+            #
+            # There are currently 5 different modes, that can be combined:
+            #
+            # 1. bsp - binary split partition tiling
+            #   A bit like i3 this manages windows in a tree-like structure
+            #   that is mapped to tiles on your screen.
+            # Example:
+            #
+            # ----------
+            # bsp:
+            #     starting_orientation: "Horizontal" # default - ["Horizontal"|"Vertical"] - The orientation describes how the current window will be split
+            #     ui:
+            #         indicator: # Enable window indicators - default none
+            #             width: 4 # Thinkness of the indicator in screen points
+            #     keys: # Key configuration - default is empty
+            #         # focus key combinations switch window focus in the given direction
+            #         focus_left:  { modifiers: ["Logo"], key: "Left" }
+            #         focus_right: { modifiers: ["Logo"], key: "Right" }
+            #         focus_up:    ...
+            #         focus_down:  ...
+            #         # move key combinations switch windows around in the given direction
+            #         move_left:   { modifiers: ["Logo", "Shift"], key: "Left" }
+            #         move_right:  ...
+            #         move_up:     ...
+            #         move_down:   ...
+            #         # resize key combinations resize the border of the focused window in a given direction
+            #         resize_left:  { modifiers: ["Logo", "Alt"], key: "Left" }
+            #         resize_right: ...
+            #         resize_up:    ...
+            #         resize_down:  ...
+            #         # Switches the current orientation - see starting_orientation
+            #         horizontal_orientation: ...
+            #         vertical_orientation:   ...
+            #         toogle_orientation:     ...
+            # ----------
+            #
+            # 2. floating - traditional window management
+            #   Windows float on the desktop and can be freely rearranged.
+            # Example:
+            #
+            # ----------
+            # floating: {} # currently no configurable settings
+            # ----------
+            #
+            # 3. combined - combine multiple modes by assigning them by
+            #   given rules and enabling manual toggling of views between
+            #   these modes.
+            # Example:
+            #
+            # ----------
+            # combined: # no default configuration
+            #   predicate: # if the predicate is valid for a view, it gets assigned to the `top` mode
+            #       all: # all predicate matches all given predicates
+            #           not: #matches if the given predicate does not match
+            #               title: "dmenu" # dont `top` this specific view
+            #           any: # any matches if any given predicate matches
+            #               type: ["Splash"] # type can be "Modal", "OverrideRedirect", "Popup", "Splash", "Unmanaged"
+            #               type: ["Popop", "Unmanaged"] # <- Must be both
+            #               class: "launcher" # x11 class, if available
+            #               instance: "window1" # x11 instance, if available
+            #   top: ... # another mode
+            #   bottom: ... # another mode
+            #   keys:
+            #       # toogle the current assigned mode to the focused window
+            #       toggle: { modifiers: ["Logo", "Shift"], key: "Space" }
+            # ----------
+            #
+            # 4. switch - combine multiple modes by switching all windows
+            #   into a different one using key combinations
+            # Example:
+            #
+            # ----------
+            # switch: # no default configuration
+            #     modes:
+            #         - bsp: ...
+            #         - floating: ...
+            #     keys:
+            #         # Switch to the next or previous Mode
+            #         switch_next: { modifiers: ["Logo"], key: "PageUp" }
+            #         switch_prev: { modifiers: ["Logo"], key: "PageDown" }
+            # ----------
+            #
+            # 5. fullscreen - enables to make a window use the whole
+            #   screen and toggle it back into your main mode again
+            # Example:
+            #
+            # ----------
+            # fullscreen:
+            #     mode: ... # wrapped mode that is used for everything non-fullscreen
+            #     keys:
+            #         toggle: { modifiers: ["Logo"], key: "F" } # key to toggle fullscreen for focused view
+            # ----------
+            #
+            # Default is currently "fullscreen: { mode: { floating: {} } }"
+            #
+            # My personal configuration looks somewhat like this:
+            #
+               fullscreen:
+                   mode:
+                       combined:
+                           predicate:
+                               any:
+                                   - { "type": ["Splash"] }
+                                   - { "type": ["Popup"] }
+                                   - { "type": ["Unmanaged"] }
+                                   - { "type": ["Modal"] }
+                           top: { "floating": {} }
+                           bottom:
+                               bsp:
+                                   starting_orientation: "Horizontal"
+                                   ui:
+                                       indicator:
+                                           width: 5
+                                   keys:
+                                       focus_left:  { modifiers: ["Logo"], key: "Left" }
+                                       focus_right: { modifiers: ["Logo"], key: "Right" }
+                                       focus_up:    { modifiers: ["Logo"], key: "Up" }
+                                       focus_down:  { modifiers: ["Logo"], key: "Down" }
+                                       move_left:   { modifiers: ["Logo", "Shift"], key: "Left" }
+                                       move_right:  { modifiers: ["Logo", "Shift"], key: "Right" }
+                                       move_up:     { modifiers: ["Logo", "Shift"], key: "Up" }
+                                       move_down:   { modifiers: ["Logo", "Shift"], key: "Down" }
+                                       resize_left:  { modifiers: ["Logo", "Alt"], key: "Left" }
+                                       resize_right: { modifiers: ["Logo", "Alt"], key: "Right" }
+                                       resize_up:    { modifiers: ["Logo", "Alt"], key: "Up"}
+                                       resize_down:  { modifiers: ["Logo", "Alt"], key: "Down"}
+                                       horizontal_orientation: { modifiers: ["Logo"], key: "H" }
+                                       vertical_orientation:   { modifiers: ["Logo"], key: "V" }
+                           keys:
+                               toggle: { modifiers: ["Logo", "Shift"], key: "Space" }
+                   keys:
+                       toggle: { modifiers: ["Logo"], key: "F" }
+    # Workspace key configuration
+    #
+    # Currently there are workspaces from 1 up to 32, you dont need to use
+    # all of them, if there is no key to reach them, they are not created.
+    keys:
+        next: { modifiers: ["Logo"], key: "Equal" } # Next workspace
+        prev: { modifiers: ["Logo"], key: "Minus" } # Previous workspace
+        workspace1:  { modifiers: ["Logo"], key: "_1" } # Number keys currently need to be prefixed
+        workspace2:  { modifiers: ["Logo"], key: "_2" }
+        workspace3:  { modifiers: ["Logo"], key: "_3" }
+        workspace4:  { modifiers: ["Logo"], key: "_4" }
+        workspace5:  { modifiers: ["Logo"], key: "_5" }
+        workspace6:  { modifiers: ["Logo"], key: "_6" }
+        workspace7:  { modifiers: ["Logo"], key: "_7" }
+        workspace8:  { modifiers: ["Logo"], key: "_8" }
+        workspace9:  { modifiers: ["Logo"], key: "_9" }
+        workspace10: { modifiers: ["Logo"], key: "_0" }
+        moveto_workspace1:  { modifiers: ["Logo", "Shift"], key: "_1" }
+        moveto_workspace2:  { modifiers: ["Logo", "Shift"], key: "_2" }
+        moveto_workspace3:  { modifiers: ["Logo", "Shift"], key: "_3" }
+        moveto_workspace4:  { modifiers: ["Logo", "Shift"], key: "_4" }
+        moveto_workspace5:  { modifiers: ["Logo", "Shift"], key: "_5" }
+        moveto_workspace6:  { modifiers: ["Logo", "Shift"], key: "_6" }
+        moveto_workspace7:  { modifiers: ["Logo", "Shift"], key: "_7" }
+        moveto_workspace8:  { modifiers: ["Logo", "Shift"], key: "_8" }
+        moveto_workspace9:  { modifiers: ["Logo", "Shift"], key: "_9" }
+        moveto_workspace10: { modifiers: ["Logo", "Shift"], key: "_0" }
+---
+# Focus configuration
+focus:
+    on_creation: true # default - focus a new window on creation
+    on_click: true  # default - focus an previously unfocused window on mouse click
+    follows_mouse: false # focus an previously unfocused window when the mouse enters the window
+---
+# Ui configuration
+ui:
+    # Desktop Background
+    background:
+        color: "DARK_CHARCOAL" # Either constants (http://docs.piston.rs/conrod/conrod/color/index.html#constants) or hex color codes are excepted
+        #
+        # alternatively instead of a color value and image file may be specified
+        # image: "/usr/share/backgrounds/image/forest.png" # This must be a valid path for the whole config file to be valid!
+    # Enable gaps around windows
+    gaps:
+        width: 5 # Thinkness of the gap in screen points
+    # Statusbar configuration
+    statusbar:
+        height: 26 # Height of the statusbar in screen points
+        color: "#ffffffaa" # Background color of the statusbar - Either constants (http://docs.piston.rs/conrod/conrod/color/index.html#constants) or hex color codes are excepted
+        location: "Top" # default - ["Top"|"Buttom"] Position of the statusbar
+        # Add to display the current time in your statusbar
+        time:
+            font: # Fonts can be described with various keys
+                # family: "liberation" # name of the desired font family
+                # monospace: true # if monospacing is desired
+                # italic: true # if an italic font is desired
+                # oblique: true # if an oblique font is desired
+                # bold: true # if a bold font is desired
+                family: "liberation"
+                monospace: true
+            format: "%a, %d-%m-%Y %T" # Format of the time and date displayed
+            # valid specifiers can be found here https://docs.rs/chrono/0.3.0/chrono/format/strftime/index.html#specifiers
+            alignment: "end" # default - ["start"|"middle"|"end"] - Alignment in the statusbar
+            color: "White" # Text color -  Either constants (http://docs.piston.rs/conrod/conrod/color/index.html#constants) or hex color codes are excepted
+            margin: 6 # Margin of the text to the borders of the statusbar and neightbor elements
+        # Add to display the current workspace in your statusbar
+        workspace:
+            font: # See time font configuration
+                family: "liberation"
+                monospace: true
+            alignment: "start" # default - ["start"|"middle"|"end"] - Alignment in the statusbar
+            color: "White" # Text color - Either constants (http://docs.piston.rs/conrod/conrod/color/index.html#constants) or hex color codes are excepted
+            margin: 6 # Margin of the text to the borders of the statusbar and neightbor elements

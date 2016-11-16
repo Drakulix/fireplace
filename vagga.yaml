@@ -1,0 +1,66 @@
+minimum-vagga: v0.5.0
+
+containers:
+    base:
+        auto-clean: true
+        setup:
+            - !Ubuntu xenial
+            - !UbuntuUniverse
+            - !Install [build-essential, wget, curl, pkg-config, file, openssl, sudo, ca-certificates, gcc-multilib, clang, libclang-dev, cmake, git, libpixman-1-dev, libwayland-dev, libxkbcommon-dev, udev, libinput-dev, libx11-dev, libxfixes-dev, libx11-xcb-dev, libxcb-ewmh-dev, libxcb-composite0-dev, libxcb-xkb-dev, libxcb-xfixes0-dev, libxcb-image0-dev, libgbm-dev, libdrm-dev, libgl1-mesa-dev, libegl1-mesa-dev, libgles2-mesa-dev, libdbus-1-dev, libsystemd-dev, wayland-protocols, linux-libc-dev, fontconfig, libfontconfig1-dev, libfreetype6-dev]
+
+    nightly:
+        auto-clean: true
+        environ:
+            HOME: /work/.vagga/nightly-home
+            PATH: /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/work/.vagga/nightly-home/.cargo/bin:/work/.vagga/nightly-home/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/
+        setup:
+            - !Container base
+            - !Env HOME: /work/.vagga/nightly-home
+            - !Sh rm -rf $HOME/.rustup $HOME/.cargo
+            - !Sh curl https://sh.rustup.rs -sSf | sh -s -- -y --default-host x86_64-unknown-linux-gnu --default-toolchain nightly --no-modify-path
+            - !Env PATH: /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/work/.vagga/nightly-home/.cargo/bin
+            - !Sh cargo install --git https://github.com/hecal3/cargo-install-upgrade
+            - !Sh cargo install rustfmt
+
+commands:
+    check-fmt: !Command
+        description: Check for wrong formatting
+        container: nightly
+        run: |
+                rustup update
+                cargo install-upgrade
+                cd fireplace; cargo fmt -- --write-mode=diff; cd ..
+                cd fireplace_lib; cargo fmt -- --write-mode=diff; cd ..
+                cd fireplace_flavors/json; cargo fmt -- --write-mode=diff; cd ../..
+                cd fireplace_flavors/code; cargo fmt -- --write-mode=diff; cd ../..
+
+    build: !Command
+        description: Build fireplace
+        container: nightly
+        run: |
+                rustup update
+                cd fireplace; cargo build --release; cd ..
+
+    clippy: !Command
+        description: Run clippy over codebase in any combination
+        container: nightly
+        run: |
+                rustup update
+                cargo install -f clippy
+                cd fireplace; cargo clippy; cd ..
+                cd fireplace; cargo clippy --no-default-features --features static; cd ..
+                cd fireplace_lib; cargo clippy; cd ..
+                cd fireplace_lib; cargo clippy --no-default-features --features static; cd ..
+                cd fireplace_lib; cargo clippy --no-default-features --features "static render"; cd ..
+                cd fireplace_lib; cargo clippy --no-default-features --features "static gl"; cd ..
+                cd fireplace_lib; cargo clippy --no-default-features --features "static graphics"; cd ..
+                cd fireplace_flavors/json; cargo clippy; cd ../..
+                cd fireplace_flavors/json; cargo clippy --no-default-features --features static; cd ../..
+                cd fireplace_flavors/code; cargo clippy; cd ../..
+
+    doc: !Command
+        description: Generate documentation
+        container: nightly
+        run: |
+                rustup update
+                cd fireplace_lib; cargo doc
