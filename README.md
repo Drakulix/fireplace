@@ -7,7 +7,7 @@
 
 ![Screenshot](https://github.com/Drakulix/fireplace/raw/master/assets/screenshot.png "Screenshot")
 
-Fireplace strifes to be as feature rich as possible without compromising its slim and fast codebase. It is written in [Rust](https://www.rust-lang.org) and is based on the great [wlc](https://github.com/Cloudef/wlc) library and does it's rendering directly in OpenGL.
+Fireplace strifes to be as feature-rich as possible without compromising its slim and fast codebase. It is written in [Rust](https://www.rust-lang.org) and is based on the great [wlc](https://github.com/Cloudef/wlc) library and does its rendering directly in OpenGL.
 
 
 ### Structure
@@ -64,7 +64,7 @@ You can see a detailed example at [fireplace.yaml](https://github.com/Drakulix/f
 
 ## Building
 
-fireplace is written in [Rust](https://www.rust-lang.org) and therefor requires `Cargo` to build, which is shipped with the rust compiler.
+fireplace is written in [Rust](https://www.rust-lang.org) and therefore requires `Cargo` to build, which is shipped with the rust compiler.
 
 fireplace also needs a current (>=1.17) *nightly* version of [Rust](https://www.rust-lang.org), if you have no idea, where to start, this command should help you to bootstrap a working toolchain:
 
@@ -126,12 +126,12 @@ For additional flavors see the READMEs of a specific flavor.
 
 ## Contributing
 
-Pull requests, feature requests, bug reports, everything contribution is highly appreciated,
+Pull requests, feature requests, bug reports, every contribution is highly appreciated,
 but please note, that I do this in my free time and your request maybe be given a very low
-priority and postproned for quite some time.
+priority and postponed for quite some time.
 The best way to participate is start hacking on the codebase. I will give my best to answer
 any questions related to documentation and the core library as quickly as possible to assist
 you! A window manager sounds like a pretty complicated project, but most of the hard work is
-already done by the underlying `wlc` library! So believe me when I say: "its not that hard" :)
+already done by the underlying `wlc` library! So believe me when I say: "it's not that hard" :)
 
 Please also make sure to read through [CONTRIBUTING](https://github.com/Drakulix/fireplace/blob/master/CONTRIBUTING) for some very basic constraints to follow
