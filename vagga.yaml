@@ -6,7 +6,7 @@ containers:
         setup:
             - !Ubuntu xenial
             - !UbuntuUniverse
-            - !Install [build-essential, wget, curl, pkg-config, file, openssl, sudo, ca-certificates, gcc-multilib, clang, libclang-dev, cmake, git, libpixman-1-dev, libwayland-dev, libxkbcommon-dev, udev, libinput-dev, libx11-dev, libxfixes-dev, libx11-xcb-dev, libxcb-ewmh-dev, libxcb-composite0-dev, libxcb-xkb-dev, libxcb-xfixes0-dev, libxcb-image0-dev, libgbm-dev, libdrm-dev, libgl1-mesa-dev, libegl1-mesa-dev, libgles2-mesa-dev, libdbus-1-dev, libsystemd-dev, wayland-protocols, linux-libc-dev, fontconfig, libfontconfig1-dev, libfreetype6-dev]
+            - !Install [build-essential, wget, curl, pkg-config, file, openssl, sudo, ca-certificates, gcc-multilib, clang, libclang-dev, cmake, git, python, libpixman-1-dev, libwayland-dev, libxkbcommon-dev, udev, libinput-dev, libx11-dev, libxfixes-dev, libx11-xcb-dev, libxcb-ewmh-dev, libxcb-composite0-dev, libxcb-xkb-dev, libxcb-xfixes0-dev, libxcb-image0-dev, libgbm-dev, libdrm-dev, libgl1-mesa-dev, libegl1-mesa-dev, libgles2-mesa-dev, libdbus-1-dev, libsystemd-dev, wayland-protocols, linux-libc-dev, fontconfig, libfontconfig1-dev, libfreetype6-dev]
 
     nightly:
         auto-clean: true
@@ -21,6 +21,7 @@ containers:
             - !Env PATH: /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/work/.vagga/nightly-home/.cargo/bin
             - !Sh cargo install --git https://github.com/hecal3/cargo-install-upgrade
             - !Sh cargo install rustfmt
+            - !Sh cd $HOME; git clone https://github.com/davisp/ghp-import.git
 
 commands:
     check-fmt: !Command
@@ -64,3 +65,11 @@ commands:
         run: |
                 rustup update
                 cd fireplace_lib; cargo doc
+
+    doc_upload: !Command
+        description: Upload Documentation
+        container: nightly
+        run: |
+                echo "<meta http-equiv=refresh content=0;url=fireplace_lib/index.html>" > fireplace_lib/target/doc/index.html
+                $HOME/ghp-import/ghp_import.py -n -m "Documentation" fireplace_lib/target/doc
+                git push -fq https://$GH_TOKEN@github.com/fireplace.git gh-pages

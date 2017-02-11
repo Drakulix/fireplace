@@ -33,9 +33,6 @@ before_script:
   echo "$(id -un):100000:65536" | sudo tee /etc/subuid | sudo tee /etc/subgid
   sudo apt-get install uidmap -y
   curl http://files.zerogw.com/vagga/vagga-install-testing.sh | sh
-- |
-  pip install 'travis-cargo<0.2' --user &&
-  export PATH=$HOME/.local/bin:$PATH
 
 script:
 - vagga check-fmt
@@ -44,4 +41,4 @@ script:
 - vagga doc
 
 after_success:
-- cd fireplace_lib; travis-cargo doc-upload
+- vagga --use-env=GH_TOKEN doc_upload
