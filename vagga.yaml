@@ -64,12 +64,14 @@ commands:
         container: nightly
         run: |
                 rustup update
-                cd fireplace_lib; cargo doc
+                cd fireplace_lib; cargo doc; cd ..
+                ls fireplace_lib/target
 
     doc_upload: !Command
         description: Upload Documentation
         container: nightly
         run: |
+                ls fireplace_lib/target
                 echo "<meta http-equiv=refresh content=0;url=fireplace_lib/index.html>" > fireplace_lib/target/doc/index.html
                 $HOME/ghp-import/ghp_import.py -n -m "Documentation" fireplace_lib/target/doc
                 git push -fq https://$GH_TOKEN@github.com/fireplace.git gh-pages
