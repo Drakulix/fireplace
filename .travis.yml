@@ -44,5 +44,4 @@ script:
 - vagga doc
 
 after_success:
-- touch target/doc/index.html
-- travis-cargo doc-upload
+- cd fireplace_lib; travis-cargo doc-upload
