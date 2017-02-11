@@ -1,9 +1,6 @@
 sudo: required
 dist: trusty
 language: rust
-cache:
-  directories:
-  - ".vagga/nightly-home"
 
 addons:
   apt:
