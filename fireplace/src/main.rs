@@ -156,7 +156,7 @@ fn main() {
     handlers.push(Box::new(geometry::GeometryHandler::new().into_callback()));
     handlers.push(Box::new(geometry::GapsHandler::new(config.ui.gaps).into_callback()));
 
-    #[cfg(feature = "conrod_ui")]
+    #[cfg(feature = "ui")]
     {
         handlers.push(Box::new(render::conrod::ConrodHandler::new().into_callback()));
 
