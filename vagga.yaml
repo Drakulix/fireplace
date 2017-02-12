@@ -71,5 +71,5 @@ commands:
         container: nightly
         run: |
                 echo "<meta http-equiv=refresh content=0;url=fireplace_lib/index.html>" > target/doc/index.html
-                $HOME/ghp-import/ghp_import.py -n -m "Documentation" target/doc
+                $HOME/ghp-import/ghp_import.py -n -m "Documentation for $(git rev-parse --short HEAD)" target/doc
                 git push -fq https://$GH_TOKEN@github.com/Drakulix/fireplace.git gh-pages

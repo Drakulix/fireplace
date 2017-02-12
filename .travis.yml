@@ -7,7 +7,6 @@ addons:
     - libcurl4-openssl-dev
     - libelf-dev
     - libdw-dev
-
 deploy:
   provider: releases
   api_key:
@@ -17,11 +16,9 @@ deploy:
   on:
     tags: true
     repo: Drakulix/fireplace
-
 env:
   global:
-    secure: p3ikgPx2e9m91C35EUhXqkvyN0bGy8UnXbX2S2DQLoJnCd9z8t31s7kImbJVvFeRH0bpcr+2//WIgGvWpefgG6W3O7HoqBWP5RZqdXRgJU8roE1JmOqgqRE9xfzu+fyzQHbkuiKTx96WhmCKm1bwtT+REX+3oaixUCJ64bGuNb9N6hGiq4QN10H7Sy5N7g9Ow4buQRQa9MUxv/dOYcRZ7u38UW3RVjgPSyxgGFsmyQpeIMVQxJyqdVWKEEoAE1zCzbqCPnIIQjsaDXnJLPERApvyC2u/+ZnJ3KowJ5Hs0M5PFMSjjdLKATdTd42mic6QWsxpWpMvQUHo6juGfg49wo6oOPyAtkCfSZpHBK+Av7vjtGfXiNLWvaMoNjEDzCV5A4fykKJmbRiRuYMsd0mwGvstZkV8Y7ItIr5/jwE6Zgq2MuzHS49y4accNvXrZ+GS0+y6ysimw/bWfkwB2qtN0tSPZ/G8ibx6kx4/WYIdKJ+34YkDNxC3ip5mE0AhVXF3xOzZsfAt+Fd5hrZ+FMxi7gns49Bkm23MctmG7Rr5t+VfW3QffSh2b0a5Otlnwf0kCYNZIWgOr8CeojInsEVtPmEG0u789trmeGMFavSa9iluDEIGVwctwwNT9ex1a/3j3HhGAfCL7muaSlgd0ALgv7dhL2WbeS69x20QcBQc+AU=
-
+  - secure: w+lSPR36DdPrVPcZ+mx2avttOX+eWw7MCrTjRYBIet7FupCYUMdhH8Fvpakw+g+6gw4l4rv+HfT4Hrv2sl07dE1RD1NOVPt9/U0sz/AFHg7iufDiBwJMdLCLZ+wgIzdSahS7RAeBM5qzdY9z+Ai0sZn0GxxtG0QdCqhJu8NANzpkdJOKDmtBj6VP6YNilzaBueiZhY4A0m0iPvQoj9fvrtF15Djjedjss0lnFQEKrQl5g7ueLBH08pV376L1YSJZPTS/mojIgmLDZohnXUdO+JEjRkGUcjpaQBRso+Q7mgmZtW/A6si766XsmFeNactFpESohYos7bVqMoMXEAGJxo3uDx0mvqf+bvqC0OhoDrGmrn3dslWVHe0Kx6fS5M5TwVYx9Vclf9gKT+L34gtqUEmc33AxFgO8dgEa1J4EkslNqRyAsaMVmsu7ZiFlbo/78fa2u3Vvp/VBSsp16puC+vrpHZP4NatLto/ZTyNhk/CJmucsWoRMq2xAvzE7dPfFmNgf7VAwSjiBtxinfq0S1vKFilscz9iRpgaKxz1v7/t8DRGeZyddxW0onqQLnK60jiTNmFxkH5WsR9Zj6flUOJjHwPM+n0e/WYJV9kFCLCZc3NEJbF99L2Zp5mFjaWtF9ZwVSv2UihIRH+GsHGOk/RgkOe4K4exLJi6XNSutbEs=
 before_script:
 - 'echo ubuntu-mirror: http://mirrors.us.kernel.org/ubuntu/ > ~/.vagga.yaml'
 - 'echo alpine-mirror: http://mirrors.gigenet.com/alpinelinux/ >> ~/.vagga.yaml'
@@ -29,12 +26,10 @@ before_script:
   echo "$(id -un):100000:65536" | sudo tee /etc/subuid | sudo tee /etc/subgid
   sudo apt-get install uidmap -y
   curl http://files.zerogw.com/vagga/vagga-install-testing.sh | sh
-
 script:
 - vagga check-fmt
 - vagga clippy
 - vagga build
 - vagga doc
-
 after_success:
 - vagga --use-env=GH_TOKEN doc_upload
