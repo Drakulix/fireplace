@@ -1,17 +1,12 @@
 sudo: required
 dist: trusty
 language: rust
-
 addons:
   apt:
     packages:
     - libcurl4-openssl-dev
     - libelf-dev
     - libdw-dev
-
-env:
-  global:
-    secure: mQFTDAsNR/WOItpAfxJfFj4QJWl2OUJaBOlVoFccP5Rm7bxle5mD0CnxN6PaPiwuzRurqw++ir64PcP9eoZnMerypS4nlVmbqp83wThDbH3lSO0Ngd4lbsGLTIPKOSYtiNPR1hJGklclA31XVyXQASAjdPxzD+Vimz8ooTTGl4FQVQ8BJth1hs+jXSk3ULEzeUZlvXer1cN96x3kFiaSHB060daJpwsMOQuwn9wh2S2YnkbBihnZyviuW6383FD+C/BAtG8VCxezfdcccRI02ZM1G6u0ZTmvP2lDUxqjsgwMWSlwzGB60YUv2psqUL2ni6Bd4fVaDc3r+IkVlE5Vb6JoRtOCKtAXILCX+mi5GsoRGhDkFBPIrTMiOToBJ65CSYPTet1rl3BBiZcrqao9o6zDG7AlZNeFMU7CLPjqAhsRfsmvvKZw4S5uLfw+HmMiiLa408pjSJ1Yc9DVsHlldVmXAynjKtMEjKIPqDE8lwzfrV3gHv319qP9mk5UxeIDT4gz6E4de1LwPY0ogLJkLRQf3F0K0IQOdRelmEyproglXnMzWlBheOFrYwXwZ2BiRoFrMZOm9umMvDysfwDLjL1fkIwTFgBnTi1LtGiaSwVwV69fkoVRBbwdGVBG9q406Po+kzJliGo3DX2NhXiGcm17+hhv1NhxmkJ05wmddtY=
 
 deploy:
   provider: releases
@@ -22,6 +17,10 @@ deploy:
   on:
     tags: true
     repo: Drakulix/fireplace
+
+env:
+  global:
+    secure: p3ikgPx2e9m91C35EUhXqkvyN0bGy8UnXbX2S2DQLoJnCd9z8t31s7kImbJVvFeRH0bpcr+2//WIgGvWpefgG6W3O7HoqBWP5RZqdXRgJU8roE1JmOqgqRE9xfzu+fyzQHbkuiKTx96WhmCKm1bwtT+REX+3oaixUCJ64bGuNb9N6hGiq4QN10H7Sy5N7g9Ow4buQRQa9MUxv/dOYcRZ7u38UW3RVjgPSyxgGFsmyQpeIMVQxJyqdVWKEEoAE1zCzbqCPnIIQjsaDXnJLPERApvyC2u/+ZnJ3KowJ5Hs0M5PFMSjjdLKATdTd42mic6QWsxpWpMvQUHo6juGfg49wo6oOPyAtkCfSZpHBK+Av7vjtGfXiNLWvaMoNjEDzCV5A4fykKJmbRiRuYMsd0mwGvstZkV8Y7ItIr5/jwE6Zgq2MuzHS49y4accNvXrZ+GS0+y6ysimw/bWfkwB2qtN0tSPZ/G8ibx6kx4/WYIdKJ+34YkDNxC3ip5mE0AhVXF3xOzZsfAt+Fd5hrZ+FMxi7gns49Bkm23MctmG7Rr5t+VfW3QffSh2b0a5Otlnwf0kCYNZIWgOr8CeojInsEVtPmEG0u789trmeGMFavSa9iluDEIGVwctwwNT9ex1a/3j3HhGAfCL7muaSlgd0ALgv7dhL2WbeS69x20QcBQc+AU=
 
 before_script:
 - 'echo ubuntu-mirror: http://mirrors.us.kernel.org/ubuntu/ > ~/.vagga.yaml'
