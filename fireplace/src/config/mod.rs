@@ -5,9 +5,9 @@ use fireplace_lib::handlers::FocusConfig;
 use fireplace_lib::handlers::OutputConfig;
 use fireplace_lib::handlers::geometry::GapsConfig;
 use fireplace_lib::handlers::keyboard::KeyPattern;
-#[cfg(feature = "conrod_ui")]
+#[cfg(feature = "ui")]
 use fireplace_lib::handlers::render::conrod::provider::BackgroundConfig;
-#[cfg(feature = "conrod_ui")]
+#[cfg(feature = "ui")]
 use fireplace_lib::handlers::render::conrod::provider::StatusbarConfig;
 use fireplace_lib::handlers::workspaces::WorkspacesConfig;
 
@@ -105,19 +105,19 @@ impl Default for Exec {
     }
 }
 
-/// Ui Configuration mostly only available by enabling the `conrod_ui` feature
+/// Ui Configuration mostly only available by enabling the `ui` feature
 #[derive(Deserialize, Default)]
 #[serde(deny_unknown_fields)]
 pub struct Ui {
     /// The kind of background to be drawn
     #[serde(default)]
-    #[cfg(feature = "conrod_ui")]
+    #[cfg(feature = "ui")]
     pub background: BackgroundConfig,
     /// Configuration of gaps between windows
     #[serde(default)]
     pub gaps: GapsConfig,
     /// Statusbar configuraion
     #[serde(default)]
-    #[cfg(feature = "conrod_ui")]
+    #[cfg(feature = "ui")]
     pub statusbar: StatusbarConfig,
 }
