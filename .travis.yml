@@ -31,5 +31,5 @@ script:
 - vagga clippy
 - vagga build
 - vagga doc
-after_success:
-- vagga --use-env=GH_TOKEN doc_upload
+before_deploy:
+- if [[ TRAVIS_BRANCH == 'master' ]]; then vagga --use-env=GH_TOKEN doc_upload; done

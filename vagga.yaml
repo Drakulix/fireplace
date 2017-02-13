@@ -28,6 +28,7 @@ commands:
         description: Check for wrong formatting
         container: nightly
         run: |
+                set -ev
                 rustup update
                 cargo install-upgrade
                 cd fireplace; cargo fmt -- --write-mode=diff; cd ..
@@ -39,6 +40,7 @@ commands:
         description: Build fireplace
         container: nightly
         run: |
+                set -ev
                 rustup update
                 cd fireplace; cargo build --release; cd ..
 
@@ -46,6 +48,7 @@ commands:
         description: Run clippy over codebase in any combination
         container: nightly
         run: |
+                set -ev
                 rustup update
                 cargo install -f clippy
                 cd fireplace; cargo clippy; cd ..
@@ -63,6 +66,7 @@ commands:
         description: Generate documentation
         container: nightly
         run: |
+                set -ev
                 rustup update
                 cd fireplace; cargo doc; cd ..
 
@@ -70,6 +74,7 @@ commands:
         description: Upload Documentation
         container: nightly
         run: |
+                set -e +v
                 echo "<meta http-equiv=refresh content=0;url=fireplace_lib/index.html>" > target/doc/index.html
                 $HOME/ghp-import/ghp_import.py -n -m "Documentation for $(git rev-parse --short HEAD)" target/doc
                 git push -fq https://$GH_TOKEN@github.com/Drakulix/fireplace.git gh-pages
