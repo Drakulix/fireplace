@@ -8,7 +8,7 @@ use wlc::{Callback, Geometry, Key, KeyState, Modifiers, Point, ResizeEdge, View,
 /// A `Mode` that lets you pull one `View` into fullscreen operation while
 /// letting another wrapped `Mode` handle the rest
 pub struct Fullscreen {
-    active: Option<WeakView>,
+    active: Option<(WeakView, Geometry)>,
     mode: Box<AnyModeWrap>,
     keys: KeyPatterns,
     logger: slog::Logger,
@@ -82,10 +82,10 @@ impl Callback for Wrapper<Fullscreen> {
     fn view_request_state(&mut self, view: &View, state: ViewState::Flags, toggle: bool) {
         match state {
             x if x.contains(ViewState::Fullscreen) => {
-                if toggle {
-                    self.set_fullscreen(Some(view))
-                } else if self.active == Some(view.weak_reference()) {
+                if self.active.is_some() {
                     self.set_fullscreen(None)
+                } else if toggle {
+                    self.set_fullscreen(Some(view))
                 }
             }
             _ => self.mode.view_request_state(view, state, toggle),
@@ -99,29 +99,28 @@ impl Fullscreen {
     }
 
     fn set_fullscreen(&mut self, view: Option<&View>) {
-        {
-            let active = self.active.clone();
-            if let Some(active) = active {
-                debug!(self.logger, "Un-fullscreening {:?}", active);
-                active.run(|active_view| {
-                    active_view.set_state(ViewState::Fullscreen, false);
-                    self.mode.view_created(active_view);
-                });
-            }
-
-            if let Some(view) = view {
-                debug!(self.logger, "Fullscreening {:?}", view);
-                self.mode.view_destroyed(view);
-                view.set_geometry(ResizeEdge::Null,
-                                  Geometry {
-                                      origin: Point { x: 0, y: 0 },
-                                      size: view.output().virtual_resolution(),
-                                  });
-                view.set_state(ViewState::Fullscreen, true);
-                view.bring_to_front();
-            }
+        if let Some((active, geo)) = self.active.clone() {
+            debug!(self.logger, "Un-fullscreening {:?}", active);
+            active.run(|active_view| {
+                active_view.set_state(ViewState::Fullscreen, false);
+                active_view.set_geometry(ResizeEdge::Null, geo);
+            });
         }
+        self.active = None;
 
-        self.active = view.map(|view| view.weak_reference());
+        if let Some(view) = view {
+            debug!(self.logger, "Fullscreening {:?}", view);
+
+            let geo = view.geometry();
+            view.set_geometry(ResizeEdge::Null,
+                              Geometry {
+                                  origin: Point { x: 0, y: 0 },
+                                  size: view.output().virtual_resolution(),
+                              });
+            view.set_state(ViewState::Fullscreen, true);
+            view.bring_to_front();
+
+            self.active = Some((view.weak_reference(), geo));
+        }
     }
 }
