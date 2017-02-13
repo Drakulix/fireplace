@@ -10,4 +10,4 @@ members = [
 lto = true
 
 [replace]
-"fireplace_lib:1.0.0" = { path = "./fireplace_lib" }
+"fireplace_lib:1.0.2" = { path = "./fireplace_lib" }

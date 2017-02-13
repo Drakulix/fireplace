@@ -26,7 +26,7 @@ unable to build on docs.rs
 In your Cargo.toml
 
 ```
-fireplace_lib = "1.0.0"
+fireplace_lib = "^1.0.0"
 ```
 
 fireplace_lib offers multiple features, which are all enabled by default:
@@ -38,7 +38,7 @@ fireplace_lib offers multiple features, which are all enabled by default:
 
 E.g. to use only `gl`:
 ```
-fireplace_lib = { version = "1.0.0", default-features = false, features = ["gl"] }
+fireplace_lib = { version = "^1.0.0", default-features = false, features = ["gl"] }
 ```
 
 
