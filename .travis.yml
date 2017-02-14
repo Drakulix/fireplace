@@ -32,4 +32,4 @@ script:
 - vagga build
 - vagga doc
 before_deploy:
-- if [[ TRAVIS_BRANCH == 'master' ]]; then vagga --use-env=GH_TOKEN doc_upload; done
+- vagga --use-env=GH_TOKEN doc_upload
