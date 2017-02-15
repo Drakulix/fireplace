@@ -1,12 +1,12 @@
 use super::{AnyModeConfig, AnyModeWrap, Mode};
 use callback::{AsSplit, IntoCallback, Split};
-use handlers::keyboard::KeyPattern;
 use handlers::geometry::InitialViewGeometry;
+use handlers::keyboard::KeyPattern;
 use handlers::store::Store;
 use slog;
 use slog_scope;
-use wlc::{Button, ButtonState, Callback, Geometry, Key, KeyState, Modifiers, Point, ResizeEdge,
-          ScrollAxis, TouchType, View, ViewPropertyUpdate, ViewState, ViewType, WeakView};
+use wlc::{Button, ButtonState, Callback, Geometry, Key, KeyState, Modifiers, Point, ResizeEdge, ScrollAxis,
+          TouchType, View, ViewPropertyUpdate, ViewState, ViewType, WeakView};
 #[cfg(feature = "render")]
 use wlc::render::RenderView;
 

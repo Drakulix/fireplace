@@ -1,8 +1,8 @@
 use callback::{AsWrapper, IntoCallback, Wrapper};
 use handlers::geometry::InitialViewGeometry;
 use handlers::keyboard::KeyPattern;
-use handlers::workspaces::modes::{AnyModeConfig, AnyModeWrap, Mode};
 use handlers::store::Store;
+use handlers::workspaces::modes::{AnyModeConfig, AnyModeWrap, Mode};
 use slog;
 use slog_scope;
 use wlc::{Callback, Key, KeyState, Modifiers, Output, ResizeEdge, Size, View, WeakView};
