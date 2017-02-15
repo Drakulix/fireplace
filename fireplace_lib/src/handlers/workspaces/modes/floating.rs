@@ -7,7 +7,7 @@ use slog_scope;
 
 use std::cmp;
 use wlc::{Button, ButtonState, Callback, Geometry, Modifiers, Output, Point, ResizeEdge, Size, View,
-          ViewType, ViewState, WeakView, input};
+          ViewState, ViewType, WeakView, input};
 
 /// A `Mode` that does traditional `View` management.
 ///
@@ -79,16 +79,16 @@ impl Callback for Floating {
                 }
             }
             // center
-            if !view.view_type().intersects(ViewType::Unmanaged | ViewType::OverrideRedirect)
-            {
+            if !view.view_type().intersects(ViewType::Unmanaged | ViewType::OverrideRedirect) {
                 let view_geometry = view.geometry();
-                view.set_geometry(ResizeEdge::Null, Geometry {
-                    origin: Point {
-                        x: (self.geo.size.w as i32 / 2) - (view_geometry.size.w as i32 / 2),
-                        y: (self.geo.size.h as i32 / 2) - (view_geometry.size.h as i32 / 2),
-                    },
-                    size: view_geometry.size,
-                });
+                view.set_geometry(ResizeEdge::Null,
+                                  Geometry {
+                                      origin: Point {
+                                          x: (self.geo.size.w as i32 / 2) - (view_geometry.size.w as i32 / 2),
+                                          y: (self.geo.size.h as i32 / 2) - (view_geometry.size.h as i32 / 2),
+                                      },
+                                      size: view_geometry.size,
+                                  });
             }
         }
 

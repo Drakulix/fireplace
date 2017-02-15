@@ -59,7 +59,8 @@ pub struct ViewScissor {
 }
 
 /// Key for receiving the initial view geometry, that is the size and origin
-/// the `View` has requested at launch, from a `View`s [`Sotre`](../trait.Store.html).
+/// the `View` has requested at launch, from a `View`s
+/// [`Sotre`](../trait.Store.html).
 ///
 /// Should be considered read-only and not modified.
 ///
