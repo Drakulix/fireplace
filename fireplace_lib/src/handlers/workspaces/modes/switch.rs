@@ -1,9 +1,11 @@
 use callback::{AsWrapper, IntoCallback, Wrapper};
+use handlers::geometry::InitialViewGeometry;
 use handlers::keyboard::KeyPattern;
 use handlers::workspaces::modes::{AnyModeConfig, AnyModeWrap, Mode};
+use handlers::store::Store;
 use slog;
 use slog_scope;
-use wlc::{Callback, Key, KeyState, Modifiers, Output, Size, View, WeakView};
+use wlc::{Callback, Key, KeyState, Modifiers, Output, ResizeEdge, Size, View, WeakView};
 
 /// A `Mode` that lets you conviniently switch between different `Mode`s
 pub struct Switch {
@@ -119,6 +121,8 @@ impl Callback for Wrapper<Switch> {
                     for view in views {
                         view.run(|view| {
                             self.modes[active].view_destroyed(view);
+                            let initial = view.get::<InitialViewGeometry>().unwrap();
+                            view.set_geometry(ResizeEdge::Null, initial.read().unwrap().clone());
                             self.modes[index].view_created(view);
                         });
                     }
@@ -136,6 +140,8 @@ impl Callback for Wrapper<Switch> {
                     for view in views {
                         view.run(|view| {
                             self.modes[active].view_destroyed(view);
+                            let initial = view.get::<InitialViewGeometry>().unwrap();
+                            view.set_geometry(ResizeEdge::Null, initial.read().unwrap().clone());
                             self.modes[index].view_created(view);
                         });
                     }

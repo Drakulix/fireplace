@@ -1,10 +1,12 @@
 use super::{AnyModeConfig, AnyModeWrap, Mode};
 use callback::{AsSplit, IntoCallback, Split};
 use handlers::keyboard::KeyPattern;
+use handlers::geometry::InitialViewGeometry;
+use handlers::store::Store;
 use slog;
 use slog_scope;
-use wlc::{Button, ButtonState, Callback, Geometry, Key, KeyState, Modifiers, Point, ResizeEdge, ScrollAxis,
-          TouchType, View, ViewPropertyUpdate, ViewState, ViewType, WeakView};
+use wlc::{Button, ButtonState, Callback, Geometry, Key, KeyState, Modifiers, Point, ResizeEdge,
+          ScrollAxis, TouchType, View, ViewPropertyUpdate, ViewState, ViewType, WeakView};
 #[cfg(feature = "render")]
 use wlc::render::RenderView;
 
@@ -268,6 +270,10 @@ impl Callback for Split<Combined> {
             if let Some(view) = view {
                 match Some(KeyPattern::new(state, modifiers.mods, key)) {
                     x if x == self.keys.toggle => {
+                        // reset initial geometry
+                        let initial = view.get::<InitialViewGeometry>().unwrap();
+                        view.set_geometry(ResizeEdge::Null, initial.read().unwrap().clone());
+
                         let top_contains = self.top_views.contains(&view.weak_reference());
                         let bottom_contains = self.bottom_views.contains(&view.weak_reference());
 
