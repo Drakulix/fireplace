@@ -61,6 +61,9 @@ Configuration is done in [YAML](http://www.yaml.org/spec/1.2/spec.html) format.
 
 You can see a detailed example at [fireplace.yaml](https://github.com/Drakulix/fireplace/blob/master/fireplace.yaml)
 
+The configuration file should be placed into the `$XDG_CONFIG_DIR` - if set - or
+into `$HOME/.config` otherwise. The name may either be `fireplace.yaml` or
+`.fireplace.yaml`. 
 
 ## Building
 
