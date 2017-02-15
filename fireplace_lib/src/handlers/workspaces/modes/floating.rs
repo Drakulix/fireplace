@@ -79,7 +79,7 @@ impl Callback for Floating {
                 }
             }
             // center
-            if !view.view_type().contains(ViewType::Unmanaged)
+            if !view.view_type().intersects(ViewType::Unmanaged | ViewType::OverrideRedirect)
             {
                 let view_geometry = view.geometry();
                 view.set_geometry(ResizeEdge::Null, Geometry {
