@@ -3,7 +3,7 @@
 # They are however not always useful, e.g. most key bindings will be emtpy.
 # We try to point out default values and example values where possible
 #
----
+
 # Output specific configuration
 outputs:
     # using a key matching to your output's name get specific configuration
@@ -16,7 +16,7 @@ outputs:
     generic:
         scale: 1 # default
 
----
+
 # Logging configuration
 logging:
     style: "Compact" # default - ["Compact"|"Full"]
@@ -24,7 +24,7 @@ logging:
     #
     # Optionally log to an html file
     #file:  "/home/<your username>/.local/share/fireplace/last_run.log.html"
----
+
 # Key bindings
 #
 # Bindings are composed of 'modifiers' and a 'key' (not multiple)
@@ -45,7 +45,7 @@ exec:
 view:
     keys: # default values:
         close: { "modifiers": ["Logo", "Shift"], "key": "Q" } # closes the currently focused window
----
+
 # Workspace config
 workspace:
     # Space specific configurations - there are 1-32 spaces available
@@ -64,7 +64,7 @@ workspace:
             #   that is mapped to tiles on your screen.
             # Example:
             #
-            # ----------
+            # -
             # bsp:
             #     starting_orientation: "Horizontal" # default - ["Horizontal"|"Vertical"] - The orientation describes how the current window will be split
             #     ui:
@@ -90,22 +90,22 @@ workspace:
             #         horizontal_orientation: ...
             #         vertical_orientation:   ...
             #         toogle_orientation:     ...
-            # ----------
+            # -
             #
             # 2. floating - traditional window management
             #   Windows float on the desktop and can be freely rearranged.
             # Example:
             #
-            # ----------
+            # -
             # floating: {} # currently no configurable settings
-            # ----------
+            # -
             #
             # 3. combined - combine multiple modes by assigning them by
             #   given rules and enabling manual toggling of views between
             #   these modes.
             # Example:
             #
-            # ----------
+            # -
             # combined: # no default configuration
             #   predicate: # if the predicate is valid for a view, it gets assigned to the `top` mode
             #       all: # all predicate matches all given predicates
@@ -121,13 +121,13 @@ workspace:
             #   keys:
             #       # toogle the current assigned mode to the focused window
             #       toggle: { modifiers: ["Logo", "Shift"], key: "Space" }
-            # ----------
+            # -
             #
             # 4. switch - combine multiple modes by switching all windows
             #   into a different one using key combinations
             # Example:
             #
-            # ----------
+            # -
             # switch: # no default configuration
             #     modes:
             #         - bsp: ...
@@ -136,18 +136,18 @@ workspace:
             #         # Switch to the next or previous Mode
             #         switch_next: { modifiers: ["Logo"], key: "PageUp" }
             #         switch_prev: { modifiers: ["Logo"], key: "PageDown" }
-            # ----------
+            # -
             #
             # 5. fullscreen - enables to make a window use the whole
             #   screen and toggle it back into your main mode again
             # Example:
             #
-            # ----------
+            # -
             # fullscreen:
             #     mode: ... # wrapped mode that is used for everything non-fullscreen
             #     keys:
             #         toggle: { modifiers: ["Logo"], key: "F" } # key to toggle fullscreen for focused view
-            # ----------
+            # -
             #
             # Default is currently "fullscreen: { mode: { floating: {} } }"
             #
@@ -215,13 +215,13 @@ workspace:
         moveto_workspace8:  { modifiers: ["Logo", "Shift"], key: "_8" }
         moveto_workspace9:  { modifiers: ["Logo", "Shift"], key: "_9" }
         moveto_workspace10: { modifiers: ["Logo", "Shift"], key: "_0" }
----
+
 # Focus configuration
 focus:
     on_creation: true # default - focus a new window on creation
     on_click: true  # default - focus an previously unfocused window on mouse click
     follows_mouse: false # focus an previously unfocused window when the mouse enters the window
----
+
 # Ui configuration
 ui:
     # Desktop Background
@@ -236,7 +236,7 @@ ui:
     # Statusbar configuration
     statusbar:
         height: 26 # Height of the statusbar in screen points
-        color: "#ffffffaa" # Background color of the statusbar - Either constants (http://docs.piston.rs/conrod/conrod/color/index.html#constants) or hex color codes are excepted
+        color: "#ffffff22" # Background color of the statusbar - Either constants (http://docs.piston.rs/conrod/conrod/color/index.html#constants) or hex color codes are excepted
         location: "Top" # default - ["Top"|"Buttom"] Position of the statusbar
         # Add to display the current time in your statusbar
         time:
