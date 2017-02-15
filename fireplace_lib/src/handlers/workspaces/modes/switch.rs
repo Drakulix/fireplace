@@ -122,7 +122,7 @@ impl Callback for Wrapper<Switch> {
                         view.run(|view| {
                             self.modes[active].view_destroyed(view);
                             let initial = view.get::<InitialViewGeometry>().unwrap();
-                            view.set_geometry(ResizeEdge::Null, initial.read().unwrap().clone());
+                            view.set_geometry(ResizeEdge::Null, *initial.read().unwrap());
                             self.modes[index].view_created(view);
                         });
                     }
@@ -141,7 +141,7 @@ impl Callback for Wrapper<Switch> {
                         view.run(|view| {
                             self.modes[active].view_destroyed(view);
                             let initial = view.get::<InitialViewGeometry>().unwrap();
-                            view.set_geometry(ResizeEdge::Null, initial.read().unwrap().clone());
+                            view.set_geometry(ResizeEdge::Null, *initial.read().unwrap());
                             self.modes[index].view_created(view);
                         });
                     }
