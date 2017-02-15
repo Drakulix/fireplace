@@ -3,7 +3,8 @@ use handlers::keyboard::KeyPattern;
 use handlers::workspaces::modes::{AnyModeConfig, AnyModeWrap, Mode};
 use slog;
 use slog_scope;
-use wlc::{Callback, Geometry, Key, KeyState, Modifiers, Point, ResizeEdge, View, ViewState, WeakView};
+use wlc::{Callback, Geometry, Key, KeyState, Modifiers, Output, Point, ResizeEdge, Size, View, ViewState,
+          WeakView};
 
 /// A `Mode` that lets you pull one `View` into fullscreen operation while
 /// letting another wrapped `Mode` handle the rest
@@ -58,6 +59,17 @@ impl Mode for Wrapper<Fullscreen> {
 }
 
 impl Callback for Wrapper<Fullscreen> {
+    fn output_resolution(&mut self, output: &Output, from: Size, to: Size) {
+        let current = self.active.clone();
+        if self.active.is_some() {
+            self.set_fullscreen(None);
+        }
+        self.mode.output_resolution(output, from, to);
+        if let Some((view, _)) = current {
+            view.run(|view| self.set_fullscreen(Some(view)));
+        }
+    }
+
     fn keyboard_key(&mut self, view: Option<&View>, time: u32, modifiers: Modifiers, key: Key,
                     state: KeyState)
                     -> bool {
