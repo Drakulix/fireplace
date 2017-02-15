@@ -58,6 +58,18 @@ pub struct ViewScissor {
     pub left: usize,
 }
 
+/// Key for receiving the initial view geometry, that is the size and origin
+/// the `View` has requested at launch, from a `View`s [`Sotre`](../trait.Store.html).
+///
+/// Should be considered read-only and not modified.
+///
+/// Most useful for modes that might have lost that information otherwise.
+///
+pub struct InitialViewGeometry;
+impl StoreKey for InitialViewGeometry {
+    type Value = Geometry;
+}
+
 /// Handler that initializes default `UsableScreenGeometry` and
 /// `UsableViewGeometry` values for created `View`s and `Output`s
 ///
@@ -91,6 +103,7 @@ impl Callback for GeometryHandler {
     }
 
     fn view_created(&mut self, view: &View) -> bool {
+        view.insert::<InitialViewGeometry>(view.geometry());
         view.insert::<UsableViewGeometry>(ViewScissor {
             up: 0,
             right: 0,
