@@ -7,7 +7,7 @@ use slog_scope;
 
 use std::cmp;
 use wlc::{Button, ButtonState, Callback, Geometry, Modifiers, Output, Point, ResizeEdge, Size, View,
-          ViewState, WeakView, input};
+          ViewType, ViewState, WeakView, input};
 
 /// A `Mode` that does traditional `View` management.
 ///
@@ -61,19 +61,34 @@ impl Callback for Floating {
 
             view.set_geometry(ResizeEdge::Null, geometry);
         } else {
-            let view_geometry = view.geometry();
-            if !(view_geometry.origin > self.geo.origin) || (view_geometry.size > self.geo.size) {
-                view.set_geometry(ResizeEdge::Null,
-                                  Geometry {
-                                      origin: Point {
-                                          x: cmp::max(self.geo.origin.x, view_geometry.origin.x),
-                                          y: cmp::max(self.geo.origin.y, view_geometry.origin.y),
-                                      },
-                                      size: Size {
-                                          w: cmp::min(self.geo.size.w, view_geometry.size.w),
-                                          h: cmp::min(self.geo.size.h, view_geometry.size.h),
-                                      },
-                                  });
+            // fix out of bounds
+            {
+                let view_geometry = view.geometry();
+                if !(view_geometry.origin > self.geo.origin) || (view_geometry.size > self.geo.size) {
+                    view.set_geometry(ResizeEdge::Null,
+                                      Geometry {
+                                          origin: Point {
+                                              x: cmp::max(self.geo.origin.x, view_geometry.origin.x),
+                                              y: cmp::max(self.geo.origin.y, view_geometry.origin.y),
+                                          },
+                                          size: Size {
+                                              w: cmp::min(self.geo.size.w, view_geometry.size.w),
+                                              h: cmp::min(self.geo.size.h, view_geometry.size.h),
+                                          },
+                                      });
+                }
+            }
+            // center
+            if !view.view_type().contains(ViewType::Unmanaged)
+            {
+                let view_geometry = view.geometry();
+                view.set_geometry(ResizeEdge::Null, Geometry {
+                    origin: Point {
+                        x: (self.geo.size.w as i32 / 2) - (view_geometry.size.w as i32 / 2),
+                        y: (self.geo.size.h as i32 / 2) - (view_geometry.size.h as i32 / 2),
+                    },
+                    size: view_geometry.size,
+                });
             }
         }
 
