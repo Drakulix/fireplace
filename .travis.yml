@@ -7,6 +7,9 @@ addons:
     - libcurl4-openssl-dev
     - libelf-dev
     - libdw-dev
+cache:
+  directories:
+      - .vagga/nightly-home/.cargo
 deploy:
   provider: releases
   api_key:
@@ -29,7 +32,7 @@ before_script:
 script:
 - vagga check-fmt
 - vagga clippy
+before_deploy:
 - vagga build
 - vagga doc
-before_deploy:
 - vagga --use-env=GH_TOKEN doc_upload
