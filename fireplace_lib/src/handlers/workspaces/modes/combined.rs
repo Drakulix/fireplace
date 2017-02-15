@@ -272,7 +272,7 @@ impl Callback for Split<Combined> {
                     x if x == self.keys.toggle => {
                         // reset initial geometry
                         let initial = view.get::<InitialViewGeometry>().unwrap();
-                        view.set_geometry(ResizeEdge::Null, initial.read().unwrap().clone());
+                        view.set_geometry(ResizeEdge::Null, *initial.read().unwrap());
 
                         let top_contains = self.top_views.contains(&view.weak_reference());
                         let bottom_contains = self.bottom_views.contains(&view.weak_reference());
