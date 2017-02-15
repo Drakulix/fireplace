@@ -1,11 +1,11 @@
 [package]
 name = "fireplace_json"
-version = "1.0.1"
+version = "1.0.2"
 authors = ["Victor Brekenfeld (Drakulix) <github@drakulix.de>"]
 workspace = "../.."
 
 [dependencies]
-fireplace_lib = { version = "1.0.2", default-features = false }
+fireplace_lib = { version = "1.0.3", default-features = false }
 wlc = { version = "1.0.0", features = ["serialization"] }
 
 slog = "1.5"
