@@ -79,7 +79,7 @@ pub fn init(config: Logging) {
         .ignore_err();
 
     let root = if let Some(path) = config.file {
-		fs::create_dir_all(path.parent().unwrap()).expect("Failed to create log file directory");
+        fs::create_dir_all(path.parent().unwrap()).expect("Failed to create log file directory");
         let file = OpenOptions::new()
             .create(true)
             .write(true)
