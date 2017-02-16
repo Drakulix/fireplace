@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.3
+
+- Fix folder creation for the log file. Credit @IntrepidPig
+
 ## 1.0.2
 
 - Fix floating `View`s keeping their old adjusted geometry when switching modes instead of falling back to their initial.

@@ -1,6 +1,6 @@
 [package]
 name = "fireplace"
-version = "1.0.2"
+version = "1.0.3"
 authors = ["Victor Brekenfeld (Drakulix) <github@drakulix.de>"]
 workspace = ".."
 
