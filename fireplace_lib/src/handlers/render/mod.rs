@@ -17,6 +17,9 @@
 //! complicated of course.
 //!
 
+pub mod screenshot;
+pub use self::screenshot::ScreenshotHandler;
+
 #[cfg(feature = "gl")]
 mod gl;
 #[cfg(feature = "gl")]
