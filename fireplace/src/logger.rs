@@ -9,6 +9,7 @@ use slog_stdlog;
 use slog_stream;
 use slog_term;
 
+use std::fs;
 use std::fs::OpenOptions;
 use std::path::PathBuf;
 
@@ -78,6 +79,7 @@ pub fn init(config: Logging) {
         .ignore_err();
 
     let root = if let Some(path) = config.file {
+		fs::create_dir_all(path.parent().unwrap()).expect("Failed to create log file directory");
         let file = OpenOptions::new()
             .create(true)
             .write(true)
