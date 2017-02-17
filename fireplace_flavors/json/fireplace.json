@@ -124,7 +124,7 @@
         "statusbar": {
             "height": 26,
             "color": "Black",
-            "location": "Buttom",
+            "location": "Bottom",
             "time": {
                 "font": {
                     "family": "liberation",
