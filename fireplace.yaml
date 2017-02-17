@@ -237,7 +237,7 @@ ui:
     statusbar:
         height: 26 # Height of the statusbar in screen points
         color: "#ffffff22" # Background color of the statusbar - Either constants (http://docs.piston.rs/conrod/conrod/color/index.html#constants) or hex color codes are excepted
-        location: "Top" # default - ["Top"|"Buttom"] Position of the statusbar
+        location: "Top" # default - ["Top"|"Bottom"] Position of the statusbar
         # Add to display the current time in your statusbar
         time:
             font: # Fonts can be described with various keys

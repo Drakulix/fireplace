@@ -96,7 +96,7 @@ pub trait StatusbarItem {
 enum_str!(pub enum Location
 {
     Top,
-    Buttom,
+    Bottom,
 });
 
 impl Default for Location {
@@ -187,7 +187,7 @@ impl ConrodProvider for Statusbar {
             let builder1 = Canvas::new();
             let builder2 = match self.location {
                 Location::Top => builder1.top_left(),
-                Location::Buttom => builder1.bottom_left(),
+                Location::Bottom => builder1.bottom_left(),
             };
             builder2.h(self.height * output.scale() as f64)
                 .w(ui.window_dim()[0])
