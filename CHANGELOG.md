@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0
+
+- Fix typo in statusbar->location. (Buttom instead of Bottom).
+
+=> Breaks old config files. Bump to 2.0.0.
+
 ## 1.0.3
 
 - Fix folder creation for the log file. Credit @IntrepidPig

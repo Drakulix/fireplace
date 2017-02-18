@@ -1,6 +1,6 @@
 [package]
 name = "fireplace_lib"
-version = "1.0.3"
+version = "2.0.0"
 authors = ["Drakulix <github@drakulix.de>"]
 description = "Modular wayland window manager library"
 documentation = "https://drakulix.github.io/fireplace"

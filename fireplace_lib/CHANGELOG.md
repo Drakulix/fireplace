@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0
+
+- Fix typo in `handlers::render::conrod::providers::statusbar::Location`. (`Buttom` instead of `Bottom`).
+
+=> Breaks public api. Bump to 2.0.0.
+
 ## 1.0.3
 
 - Fix floating `View`s keeping their old adjusted geometry when switching modes instead of falling back to their initial.
