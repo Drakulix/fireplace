@@ -9,6 +9,8 @@ use fireplace_lib::handlers::keyboard::KeyPattern;
 use fireplace_lib::handlers::render::conrod::provider::BackgroundConfig;
 #[cfg(feature = "conrod_ui")]
 use fireplace_lib::handlers::render::conrod::provider::StatusbarConfig;
+#[cfg(feature = "conrod_ui")]
+use fireplace_lib::handlers::render::screenshot::ScreenshotConfig;
 use fireplace_lib::handlers::workspaces::WorkspacesConfig;
 
 use logger::Logging;
@@ -49,11 +51,33 @@ pub struct Config {
     /// Configuration for `View` focusing
     #[serde(default)]
     pub focus: FocusConfig,
+    /// Configuration for Screenshots
+    #[serde(default)]
+    #[cfg(feature = "conrod_ui")]
+    pub screenshot: ScreenshotConfig,
     /// Ui related configuration
     #[serde(default)]
     pub ui: Ui,
 }
 
+#[cfg(feature = "conrod_ui")]
+impl Default for Config {
+    fn default() -> Config {
+        Config {
+            outputs: default::outputs(),
+            keys: default::keys(),
+            logging: Logging::default(),
+            view: View::default(),
+            exec: Exec::default(),
+            workspace: WorkspacesConfig::default(),
+            focus: FocusConfig::default(),
+            screenshot: ScreenshotConfig::default(),
+            ui: Ui::default(),
+        }
+    }
+}
+
+#[cfg(not(feature = "conrod_ui"))]
 impl Default for Config {
     fn default() -> Config {
         Config {

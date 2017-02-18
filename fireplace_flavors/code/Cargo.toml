@@ -6,7 +6,7 @@ workspace = "../.."
 
 [dependencies]
 fireplace_lib = { version = "2.0.1" }
-wlc = { version = "1.0.0", features = ["serialization"] }
+wlc = { version = "1.0.2", features = ["serialization"] }
 
 slog = "1.4"
 slog-term = "1.3"

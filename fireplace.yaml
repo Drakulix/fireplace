@@ -31,7 +31,14 @@ logging:
 
 # Global actions
 keys: # default values:
+    screenshot: { modifiers: ["Logo"], key: "S" } # take screenshot of the focused output
     terminate: { modifiers: ["Logo", "Shift"], key: "Esc" } #terminate kills the compositor
+
+# View/Window related actions
+view:
+    keys: # default values:
+        screenshot: { modifiers: ["Logo", "Shift"], key: "S" } # take screenshot of the focused window
+        close: { modifiers: ["Logo", "Shift"], key: "Q" } # closes the currently focused window
 
 # Execute program
 #
@@ -40,11 +47,6 @@ keys: # default values:
 exec:
     keys: # default values:
         '$TERMINAL': { modifiers: ["Logo"], key: "Enter" }
-
-# View/Window related actions
-view:
-    keys: # default values:
-        close: { "modifiers": ["Logo", "Shift"], "key": "Q" } # closes the currently focused window
 
 # Workspace config
 workspace:

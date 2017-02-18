@@ -15,7 +15,7 @@ workspace = ".."
 travis-ci = { repository = "Drakulix/fireplace" }
 
 [dependencies]
-wlc = { version = "1.0.0", features = ["serialization"] }
+wlc = { version = "1.0.2", features = ["serialization"] }
 anymap = "0.12"
 typemap = "0.3"
 linked-hash-map = "0.4"
@@ -41,7 +41,7 @@ serde_derive = "0.9"
 default = ["conrod_ui", "static"]
 
 static = ["wlc/static"]
-render = ["wlc/render"]
+render = ["wlc/render", "image", "chrono"]
 gl = ["egli", "opengles_graphics", "render"]
 graphics = ["gl", "piston-texture", "piston2d-graphics"]
-conrod_ui = ["image", "graphics", "conrod", "chrono", "font-loader"]
+conrod_ui = ["graphics", "conrod", "font-loader"]
