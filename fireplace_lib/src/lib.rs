@@ -119,11 +119,11 @@ extern crate slog_scope;
 
 #[cfg(feature = "conrod_ui")]
 extern crate conrod;
-#[cfg(feature = "conrod_ui")]
+#[cfg(feature = "render")]
 extern crate image;
 #[cfg(feature = "conrod_ui")]
 extern crate texture;
-#[cfg(feature = "conrod_ui")]
+#[cfg(feature = "render")]
 extern crate chrono;
 #[cfg(feature = "conrod_ui")]
 extern crate font_loader;

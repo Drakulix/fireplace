@@ -167,6 +167,8 @@ fn main() {
         handlers.push(Box::new(render::conrod::provider::statusbar::StatusbarHandler::new(config.ui
                 .statusbar)
             .into_callback()));
+
+        handlers.push(Box::new(render::ScreenshotHandler::new(config.screenshot)));
     }
 
     handlers.push(Box::new(workspaces::WorkspaceHandler::new(config.workspace).into_callback()));

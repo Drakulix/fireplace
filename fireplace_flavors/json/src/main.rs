@@ -72,6 +72,7 @@ fn main() {
             impl KeyHandler for GlobalKeyHandler {
                 fn handle_key(&mut self, _time: u32, _view: Option<&View>) {
                     match &*self.command {
+                        #[cfg(feature = "conrod_ui")]
                         "terminate" => wlc::terminate(),
                         x => {
                             warn!(slog_scope::logger(),
@@ -98,8 +99,8 @@ fn main() {
                             "close" => view.close(),
                             x => {
                                 warn!(slog_scope::logger(),
-                                      "Unknown command {}. Ignoring KeyBinding",
-                                      x)
+                                  "Unknown command {}. Ignoring KeyBinding",
+                                  x)
                             }
                         };
                     }
@@ -162,6 +163,8 @@ fn main() {
         handlers.push(Box::new(render::conrod::provider::statusbar::StatusbarHandler::new(config.ui
                 .statusbar)
             .into_callback()));
+
+        handlers.push(Box::new(render::ScreenshotHandler::new(config.screenshot)));
     }
 
     handlers.push(Box::new(workspaces::WorkspaceHandler::new(config.workspace).into_callback()));
