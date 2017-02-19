@@ -19,8 +19,8 @@ containers:
             - !Sh rm -rf $HOME/.rustup $HOME/.cargo
             - !Sh curl https://sh.rustup.rs -sSf | sh -s -- -y --default-host x86_64-unknown-linux-gnu --default-toolchain nightly --no-modify-path
             - !Env PATH: /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/work/.vagga/nightly-home/.cargo/bin
-            - !Sh cargo install --git https://github.com/hecal3/cargo-install-upgrade
             - !Sh cargo install rustfmt
+            - !Sh cargo install clippy
             - !Sh cd $HOME; git clone https://github.com/davisp/ghp-import.git
 
 commands:
@@ -29,8 +29,6 @@ commands:
         container: nightly
         run: |
                 set -ev
-                rustup update
-                cargo install-upgrade
                 cd fireplace; cargo fmt -- --write-mode=diff; cd ..
                 cd fireplace_lib; cargo fmt -- --write-mode=diff; cd ..
                 cd fireplace_flavors/json; cargo fmt -- --write-mode=diff; cd ../..
@@ -41,7 +39,6 @@ commands:
         container: nightly
         run: |
                 set -ev
-                rustup update
                 cd fireplace; cargo build --release; cd ..
 
     clippy: !Command
@@ -49,8 +46,6 @@ commands:
         container: nightly
         run: |
                 set -ev
-                rustup update
-                cargo install -f clippy
                 cd fireplace; cargo clippy; cd ..
                 cd fireplace; cargo clippy --no-default-features --features static; cd ..
                 cd fireplace_lib; cargo clippy; cd ..
@@ -67,7 +62,6 @@ commands:
         container: nightly
         run: |
                 set -ev
-                rustup update
                 cd fireplace; cargo doc; cd ..
 
     doc_upload: !Command
@@ -78,3 +72,11 @@ commands:
                 echo "<meta http-equiv=refresh content=0;url=fireplace_lib/index.html>" > target/doc/index.html
                 $HOME/ghp-import/ghp_import.py -n -m "Documentation for $(git rev-parse --short HEAD)" target/doc
                 git push -fq https://$GH_TOKEN@github.com/Drakulix/fireplace.git gh-pages
+
+    update: !Command
+        description: Update container
+        container: nightly
+        run: |
+            rustup update
+            cargo install -f rustfmt
+            cargo install -f clippy
