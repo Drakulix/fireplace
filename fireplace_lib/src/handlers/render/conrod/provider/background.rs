@@ -3,19 +3,18 @@
 use conrod::{Positionable, Sizeable, Widget};
 
 use conrod::UiCell;
-use conrod::color::{self, Color as ConrodColor};
+use conrod::color;
 use conrod::image::{Id as ImageId, Map as ImageMap};
 use conrod::widget::id::Id;
 use conrod::widget::primitive::image::Image as ConrodImage;
 use conrod::widget::primitive::shape::rectangle::Rectangle;
+use handlers::UiConfig;
 use handlers::render::conrod::ConrodRenderer;
 use handlers::render::conrod::deserializer::{Color, Image};
 use handlers::render::conrod::provider::ConrodProvider;
 
 use handlers::store::Store;
-use image::{self, DynamicImage, ImageResult, RgbaImage};
 use opengles_graphics::{Texture, TextureSettings};
-use std::path::Path;
 
 use wlc::{Callback, Output};
 
@@ -24,12 +23,11 @@ use wlc::{Callback, Output};
 /// ## Dependencies
 ///
 /// - [`StoreHandler`](../../../../struct.StoreHandler.html)
+/// - [`OutputConfigHandler`](../../../../struct.OutputConfigHandler.html)
 /// - [`ConrodHandler`](../../struct.ConrodHandler.html)
 ///
 #[derive(Default)]
-pub struct BackgroundHandler {
-    data: BackgroundConfig,
-}
+pub struct BackgroundHandler;
 
 /// Configuration for a `BackgroundHandler` describing what
 /// kind of background shall be set.
@@ -51,43 +49,24 @@ impl Default for BackgroundConfig {
 }
 
 impl BackgroundHandler {
-    /// Initialize a new `BackgroundHandler` from a solid color
-    pub fn new_colored(color: ConrodColor) -> BackgroundHandler {
-        BackgroundHandler { data: BackgroundConfig::Color(Color(color)) }
-    }
-
-    /// Initialize a new `BackgroundHandler` from an image file
-    pub fn new_from_path<P: AsRef<Path>>(path: P) -> ImageResult<BackgroundHandler> {
-        Ok(BackgroundHandler {
-            data: BackgroundConfig::Image(Image(image::open(path)
-                .expect("Could not find background image")
-                .to_rgba())),
-        })
-    }
-
-    /// Initialize a new `BackgroundHandler` from an already loaded `RgbaImage`
-    pub fn new_from_image(image: RgbaImage) -> BackgroundHandler {
-        BackgroundHandler { data: BackgroundConfig::Image(Image(image)) }
-    }
-
-    /// Initialize a new `BackgroundHandler` from any already loaded image
-    pub fn new_from_dyn_image(image: DynamicImage) -> BackgroundHandler {
-        BackgroundHandler { data: BackgroundConfig::Image(Image(image.to_rgba())) }
-    }
-
     /// Initialize a new `BackgroundHandler` from a given configuration
-    pub fn new(data: BackgroundConfig) -> BackgroundHandler {
-        BackgroundHandler { data: data }
+    pub fn new() -> BackgroundHandler {
+        BackgroundHandler
     }
 }
 
 impl Callback for BackgroundHandler {
     fn output_context_created(&mut self, output: &Output) {
-        if let Some(lock) = output.get::<ConrodRenderer>() {
-            let mut ui = lock.write().unwrap();
-            let id = ui.background.widget_id_generator().next();
-            let background = Background::new(id, self.data.clone(), &mut ui.background.image_map());
-            ui.background.register(background);
+        if let Some(lock) = output.get::<UiConfig>() {
+            let conf = lock.read().unwrap();
+            if let Some(lock) = output.get::<ConrodRenderer>() {
+                let mut ui = lock.write().unwrap();
+                let id = ui.background.widget_id_generator().next();
+                let background = Background::new(id,
+                                                 (*conf).background.clone(),
+                                                 &mut ui.background.image_map());
+                ui.background.register(background);
+            }
         }
     }
 }

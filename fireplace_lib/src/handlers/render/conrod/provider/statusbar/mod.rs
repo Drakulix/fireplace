@@ -2,10 +2,11 @@
 
 use conrod::{Borderable, Colorable, Positionable, Sizeable, Widget};
 use conrod::UiCell;
-use conrod::color::{self, Color as ConrodColor};
+use conrod::color;
 use conrod::position::Align;
 use conrod::widget::Canvas;
 use conrod::widget::id::Id;
+use handlers::UiConfig;
 use handlers::geometry::UsableScreenGeometry;
 use handlers::render::conrod::ConrodRenderer;
 use handlers::render::conrod::deserializer::Color;
@@ -24,21 +25,16 @@ pub use self::workspace::{WorkspaceIndicator, WorkspaceIndicatorConfig};
 ///
 /// ## Dependencies
 ///
-/// - [`StoreHandler`](./struct.StoreHandler.html)
+/// - [`StoreHandler`](../../../../struct.StoreHandler.html)
+/// - [`OutputConfigHandler`](../../../../struct.OutputConfigHandler.html)
 /// - [`ConrodHandler`](../struct.ConrodHandler.html)
 ///
-pub struct StatusbarHandler {
-    height: u32,
-    color: ConrodColor,
-    location: Location,
-    time: Option<TimeConfig>,
-    workspace: Option<WorkspaceIndicatorConfig>,
-}
+#[derive(Default)]
+pub struct StatusbarHandler;
 
 /// Configuration for a `StatusbarHandler` describing how the statubar shall
-/// look
-/// and what it shall display
-#[derive(Deserialize)]
+/// look and what it shall display
+#[derive(Deserialize, Clone)]
 #[serde(deny_unknown_fields)]
 pub struct StatusbarConfig {
     /// Height of the statusbar
@@ -107,58 +103,55 @@ impl Default for Location {
 
 impl StatusbarHandler {
     /// Initialize a new `StatusbarHandler`
-    pub fn new(config: StatusbarConfig) -> StatusbarHandler {
-        StatusbarHandler {
-            height: config.height,
-            color: *config.color,
-            location: config.location,
-            time: config.time,
-            workspace: config.workspace,
-        }
+    pub fn new() -> StatusbarHandler {
+        StatusbarHandler
     }
 
     fn set_usable_screen_geometry(&self, output: &Output) {
-        let geometry = output.get::<UsableScreenGeometry>();
-        if let Some(mut lock) = geometry.as_ref().and_then(|x| x.write().ok()) {
-            lock.origin.y += if self.location == Location::Top {
-                (self.height * output.scale()) as i32
-            } else {
-                0
+        if let Some(lock) = output.get::<UiConfig>() {
+            let conf = &(*lock.read().unwrap()).statusbar;
+            let geometry = output.get::<UsableScreenGeometry>();
+            if let Some(mut lock) = geometry.as_ref().and_then(|x| x.write().ok()) {
+                lock.origin.y += if conf.location == Location::Top {
+                    (conf.height * output.scale()) as i32
+                } else {
+                    0
+                };
+                lock.size.h -= conf.height * output.scale();
             };
-            lock.size.h -= self.height * output.scale();
-        };
+        }
     }
 }
 
 impl Callback for StatusbarHandler {
     fn output_context_created(&mut self, output: &Output) {
-        if let Some(lock) = output.get::<ConrodRenderer>() {
-            let mut ui = lock.write().unwrap();
-            let ids = [ui.background.widget_id_generator().next(),
-                       ui.background.widget_id_generator().next(),
-                       ui.background.widget_id_generator().next(),
-                       ui.background.widget_id_generator().next()];
-            let statusbar = Statusbar {
-                ids: ids,
-                height: (self.height * output.scale()) as f64,
-                color: self.color,
-                location: self.location,
-                children: {
-                    let mut children = Vec::new();
-                    if let Some(ref time) = self.time {
-                        children.push(Box::new(Time::new(output, &mut ui.background, time.clone())) as
-                                      Box<StatusbarItem>);
-                    }
-                    if let Some(ref workspace) = self.workspace {
-                        children.push(Box::new(WorkspaceIndicator::new(output,
-                                                                       &mut ui.background,
-                                                                       workspace.clone())) as
-                                      Box<StatusbarItem>);
-                    }
-                    children
-                },
-            };
-            ui.background.register(statusbar);
+        if let Some(lock) = output.get::<UiConfig>() {
+            let conf = &(*lock.read().unwrap()).statusbar;
+            if let Some(lock) = output.get::<ConrodRenderer>() {
+                let mut ui = lock.write().unwrap();
+                let ids = [ui.background.widget_id_generator().next(),
+                           ui.background.widget_id_generator().next(),
+                           ui.background.widget_id_generator().next(),
+                           ui.background.widget_id_generator().next()];
+                let statusbar = Statusbar {
+                    ids: ids,
+                    children: {
+                        let mut children = Vec::new();
+                        if let Some(ref time) = conf.time {
+                            children.push(Box::new(Time::new(output, &mut ui.background, time.clone())) as
+                                          Box<StatusbarItem>);
+                        }
+                        if let Some(ref workspace) = conf.workspace {
+                            children.push(Box::new(WorkspaceIndicator::new(output,
+                                                                           &mut ui.background,
+                                                                           workspace.clone())) as
+                                          Box<StatusbarItem>);
+                        }
+                        children
+                    },
+                };
+                ui.background.register(statusbar);
+            }
         }
     }
 
@@ -175,64 +168,64 @@ impl Callback for StatusbarHandler {
 /// A provider rendering a statusbar
 pub struct Statusbar {
     ids: [Id; 4],
-    height: f64,
-    color: ConrodColor,
-    location: Location,
     children: Vec<Box<StatusbarItem>>,
 }
 
 impl ConrodProvider for Statusbar {
     fn render(&mut self, output: &Output, ui: &mut UiCell) {
-        let root = {
-            let builder1 = Canvas::new();
-            let builder2 = match self.location {
-                Location::Top => builder1.top_left(),
-                Location::Bottom => builder1.bottom_left(),
-            };
-            builder2.h(self.height * output.scale() as f64)
-                .w(ui.window_dim()[0])
-                .color(self.color)
-                .border(0.0)
-        };
-
-        {
-            let mut left = Vec::new();
-            let mut center = Vec::new();
-            let mut right = Vec::new();
-
-            for mut child in &mut self.children {
-                let (alignment, id, canvas) = child.positionable(output, self.height);
-
-                match alignment {
-                    Align::Start => left.push((id, canvas)),
-                    Align::Middle => center.push((id, canvas)),
-                    Align::End => right.push((id, canvas)),
+        if let Some(lock) = output.get::<UiConfig>() {
+            let conf = &(*lock.read().unwrap()).statusbar;
+            let root = {
+                let builder1 = Canvas::new();
+                let builder2 = match conf.location {
+                    Location::Top => builder1.top_left(),
+                    Location::Bottom => builder1.bottom_left(),
                 };
+                builder2.h((conf.height * output.scale()) as f64)
+                    .w(ui.window_dim()[0])
+                    .color(*conf.color)
+                    .border(0.0)
+            };
+
+            {
+                let mut left = Vec::new();
+                let mut center = Vec::new();
+                let mut right = Vec::new();
+
+                for mut child in &mut self.children {
+                    let (alignment, id, canvas) = child.positionable(output, conf.height as f64);
+
+                    match alignment {
+                        Align::Start => left.push((id, canvas)),
+                        Align::Middle => center.push((id, canvas)),
+                        Align::End => right.push((id, canvas)),
+                    };
+                }
+
+                root.flow_right(&[(self.ids[1],
+                                   Canvas::new()
+                                       .h(conf.height as f64)
+                                       .color(color::TRANSPARENT)
+                                       .border(0.0)
+                                       .flow_right(&left)),
+                                  (self.ids[2],
+                                   Canvas::new()
+                                       .h(conf.height as f64)
+                                       .color(color::TRANSPARENT)
+                                       .border(0.0)
+                                       .flow_left(&center)),
+                                  (self.ids[3],
+                                   Canvas::new()
+                                       .h(conf.height as f64)
+                                       .color(color::TRANSPARENT)
+                                       .border(0.0)
+                                       .flow_left(&right))])
+                    .set(self.ids[0], ui);
             }
 
-            root.flow_right(&[(self.ids[1],
-                               Canvas::new()
-                                   .h(self.height)
-                                   .color(color::TRANSPARENT)
-                                   .border(0.0)
-                                   .flow_right(&left)),
-                              (self.ids[2],
-                               Canvas::new()
-                                   .h(self.height)
-                                   .color(color::TRANSPARENT)
-                                   .border(0.0)
-                                   .flow_left(&center)),
-                              (self.ids[3],
-                               Canvas::new()
-                                   .h(self.height)
-                                   .color(color::TRANSPARENT)
-                                   .border(0.0)
-                                   .flow_left(&right))])
-                .set(self.ids[0], ui);
-        }
-
-        for mut child in &mut self.children {
-            child.render(output, self.height, ui);
+            for mut child in &mut self.children {
+                child.render(output, conf.height as f64, ui);
+            }
         }
     }
 }
