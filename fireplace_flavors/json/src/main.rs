@@ -99,8 +99,8 @@ fn main() {
                             "close" => view.close(),
                             x => {
                                 warn!(slog_scope::logger(),
-                                  "Unknown command {}. Ignoring KeyBinding",
-                                  x)
+                                      "Unknown command {}. Ignoring KeyBinding",
+                                      x)
                             }
                         };
                     }
