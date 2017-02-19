@@ -15,6 +15,44 @@ outputs:
     # 'generic' or 'default' are used when no matching key is found
     generic:
         scale: 1 # default
+        ui: # Ui configuration
+            # Desktop Background
+            background:
+                color: "DARK_CHARCOAL" # Either constants (http://docs.piston.rs/conrod/conrod/color/index.html#constants) or hex color codes are excepted
+                #
+                # alternatively instead of a color value and image file may be specified
+                # image: "/usr/share/backgrounds/image/forest.png" # This must be a valid path for the whole config file to be valid!
+            # Enable gaps around windows
+            gaps:
+                width: 5 # Thinkness of the gap in screen points
+            # Statusbar configuration
+            statusbar:
+                height: 26 # Height of the statusbar in screen points
+                color: "#ffffff22" # Background color of the statusbar - Either constants (http://docs.piston.rs/conrod/conrod/color/index.html#constants) or hex color codes are excepted
+                location: "Top" # default - ["Top"|"Bottom"] Position of the statusbar
+                # Add to display the current time in your statusbar
+                time:
+                    font: # Fonts can be described with various keys
+                        # family: "liberation" # name of the desired font family
+                        # monospace: true # if monospacing is desired
+                        # italic: true # if an italic font is desired
+                        # oblique: true # if an oblique font is desired
+                        # bold: true # if a bold font is desired
+                        family: "liberation"
+                        monospace: true
+                    format: "%a, %d-%m-%Y %T" # Format of the time and date displayed
+                    # valid specifiers can be found here https://docs.rs/chrono/0.3.0/chrono/format/strftime/index.html#specifiers
+                    alignment: "end" # default - ["start"|"middle"|"end"] - Alignment in the statusbar
+                    color: "White" # Text color -  Either constants (http://docs.piston.rs/conrod/conrod/color/index.html#constants) or hex color codes are excepted
+                    margin: 6 # Margin of the text to the borders of the statusbar and neightbor elements
+                # Add to display the current workspace in your statusbar
+                workspace:
+                    font: # See time font configuration
+                        family: "liberation"
+                        monospace: true
+                    alignment: "start" # default - ["start"|"middle"|"end"] - Alignment in the statusbar
+                    color: "White" # Text color - Either constants (http://docs.piston.rs/conrod/conrod/color/index.html#constants) or hex color codes are excepted
+                    margin: 6 # Margin of the text to the borders of the statusbar and neightbor elements
 
 
 # Logging configuration
@@ -223,43 +261,3 @@ focus:
     on_creation: true # default - focus a new window on creation
     on_click: true  # default - focus an previously unfocused window on mouse click
     follows_mouse: false # focus an previously unfocused window when the mouse enters the window
-
-# Ui configuration
-ui:
-    # Desktop Background
-    background:
-        color: "DARK_CHARCOAL" # Either constants (http://docs.piston.rs/conrod/conrod/color/index.html#constants) or hex color codes are excepted
-        #
-        # alternatively instead of a color value and image file may be specified
-        # image: "/usr/share/backgrounds/image/forest.png" # This must be a valid path for the whole config file to be valid!
-    # Enable gaps around windows
-    gaps:
-        width: 5 # Thinkness of the gap in screen points
-    # Statusbar configuration
-    statusbar:
-        height: 26 # Height of the statusbar in screen points
-        color: "#ffffff22" # Background color of the statusbar - Either constants (http://docs.piston.rs/conrod/conrod/color/index.html#constants) or hex color codes are excepted
-        location: "Top" # default - ["Top"|"Bottom"] Position of the statusbar
-        # Add to display the current time in your statusbar
-        time:
-            font: # Fonts can be described with various keys
-                # family: "liberation" # name of the desired font family
-                # monospace: true # if monospacing is desired
-                # italic: true # if an italic font is desired
-                # oblique: true # if an oblique font is desired
-                # bold: true # if a bold font is desired
-                family: "liberation"
-                monospace: true
-            format: "%a, %d-%m-%Y %T" # Format of the time and date displayed
-            # valid specifiers can be found here https://docs.rs/chrono/0.3.0/chrono/format/strftime/index.html#specifiers
-            alignment: "end" # default - ["start"|"middle"|"end"] - Alignment in the statusbar
-            color: "White" # Text color -  Either constants (http://docs.piston.rs/conrod/conrod/color/index.html#constants) or hex color codes are excepted
-            margin: 6 # Margin of the text to the borders of the statusbar and neightbor elements
-        # Add to display the current workspace in your statusbar
-        workspace:
-            font: # See time font configuration
-                family: "liberation"
-                monospace: true
-            alignment: "start" # default - ["start"|"middle"|"end"] - Alignment in the statusbar
-            color: "White" # Text color - Either constants (http://docs.piston.rs/conrod/conrod/color/index.html#constants) or hex color codes are excepted
-            margin: 6 # Margin of the text to the borders of the statusbar and neightbor elements
