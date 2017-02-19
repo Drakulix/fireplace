@@ -39,9 +39,7 @@ fn main() {
         Box::new(render::conrod::ConrodHandler::new().into_callback()),
         Box::new(render::conrod::provider::BackgroundHandler::default()
             .into_callback()),
-        Box::new(render::conrod::provider::StatusbarHandler::new(
-            render::conrod::provider::StatusbarConfig::default()
-        ).into_callback()),
+        Box::new(render::conrod::provider::StatusbarHandler::default().into_callback()),
         Box::new(workspaces::WorkspaceHandler::new(
             workspaces::WorkspacesConfig {
                 spaces: {

@@ -3,15 +3,9 @@
 
 use fireplace_lib::handlers::FocusConfig;
 use fireplace_lib::handlers::OutputConfig;
-use fireplace_lib::handlers::geometry::GapsConfig;
 use fireplace_lib::handlers::keyboard::KeyPattern;
-#[cfg(feature = "ui")]
-use fireplace_lib::handlers::render::conrod::provider::BackgroundConfig;
-#[cfg(feature = "ui")]
-use fireplace_lib::handlers::render::conrod::provider::StatusbarConfig;
-#[cfg(feature = "ui")]
-use fireplace_lib::handlers::render::screenshot::ScreenshotConfig;
 use fireplace_lib::handlers::workspaces::WorkspacesConfig;
+use fireplace_lib::handlers::render::screenshot::ScreenshotConfig;
 
 use logger::Logging;
 
@@ -55,9 +49,6 @@ pub struct Config {
     #[serde(default)]
     #[cfg(feature = "ui")]
     pub screenshot: ScreenshotConfig,
-    /// Ui related configuration
-    #[serde(default)]
-    pub ui: Ui,
 }
 
 #[cfg(feature = "ui")]
@@ -72,7 +63,6 @@ impl Default for Config {
             workspace: WorkspacesConfig::default(),
             focus: FocusConfig::default(),
             screenshot: ScreenshotConfig::default(),
-            ui: Ui::default(),
         }
     }
 }
@@ -88,7 +78,6 @@ impl Default for Config {
             exec: Exec::default(),
             workspace: WorkspacesConfig::default(),
             focus: FocusConfig::default(),
-            ui: Ui::default(),
         }
     }
 }
@@ -127,21 +116,4 @@ impl Default for Exec {
     fn default() -> Exec {
         Exec { keys: default::exec_keys() }
     }
-}
-
-/// Ui Configuration mostly only available by enabling the `ui` feature
-#[derive(Deserialize, Default)]
-#[serde(deny_unknown_fields)]
-pub struct Ui {
-    /// The kind of background to be drawn
-    #[serde(default)]
-    #[cfg(feature = "ui")]
-    pub background: BackgroundConfig,
-    /// Configuration of gaps between windows
-    #[serde(default)]
-    pub gaps: GapsConfig,
-    /// Statusbar configuraion
-    #[serde(default)]
-    #[cfg(feature = "ui")]
-    pub statusbar: StatusbarConfig,
 }

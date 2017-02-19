@@ -150,19 +150,15 @@ fn main() {
     handlers.push(Box::new(StoreHandler::new().into_callback()));
     handlers.push(Box::new(OutputConfigHandler::new(config.outputs)));
     handlers.push(Box::new(geometry::GeometryHandler::new().into_callback()));
-    handlers.push(Box::new(geometry::GapsHandler::new(config.ui.gaps).into_callback()));
+    handlers.push(Box::new(geometry::GapsHandler::new().into_callback()));
 
     #[cfg(feature = "conrod_ui")]
     {
         handlers.push(Box::new(render::conrod::ConrodHandler::new().into_callback()));
 
-        handlers.push(Box::new(render::conrod::provider::background::BackgroundHandler::new(config.ui
-                .background)
+        handlers.push(Box::new(render::conrod::provider::background::BackgroundHandler::new()
             .into_callback()));
-
-        handlers.push(Box::new(render::conrod::provider::statusbar::StatusbarHandler::new(config.ui
-                .statusbar)
-            .into_callback()));
+        handlers.push(Box::new(render::conrod::provider::statusbar::StatusbarHandler::new().into_callback()));
 
         handlers.push(Box::new(render::ScreenshotHandler::new(config.screenshot)));
     }
