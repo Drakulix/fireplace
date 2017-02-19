@@ -3,7 +3,39 @@
     {
         "generic":
         {
-            "scale": 1
+            "scale": 1,
+            "ui": {
+                "background": {
+                    "color": "Dark_Charcoal"
+                },
+                "gaps": {
+                    "width": 5
+                },
+                "statusbar": {
+                    "height": 26,
+                    "color": "Black",
+                    "location": "Bottom",
+                    "time": {
+                        "font": {
+                            "family": "liberation",
+                            "monospace": true
+                        },
+                        "format": "%a, %d-%m-%Y %T",
+                        "alignment": "end",
+                        "color": "White",
+                        "margin": 6
+                    },
+                    "workspace": {
+                        "font": {
+                            "family": "liberation",
+                            "monospace": true
+                        },
+                        "alignment": "start",
+                        "color": "White",
+                        "margin": 6
+                    }
+                }
+            }
         }
     },
 
@@ -112,38 +144,5 @@
         "on_creation": true,
         "on_click": false,
         "follows_mouse": true
-    },
-
-    "ui": {
-        "background": {
-            "color": "Dark_Charcoal"
-        },
-        "gaps": {
-            "width": 5
-        },
-        "statusbar": {
-            "height": 26,
-            "color": "Black",
-            "location": "Bottom",
-            "time": {
-                "font": {
-                    "family": "liberation",
-                    "monospace": true
-                },
-                "format": "%a, %d-%m-%Y %T",
-                "alignment": "end",
-                "color": "White",
-                "margin": 6
-            },
-            "workspace": {
-                "font": {
-                    "family": "liberation",
-                    "monospace": true
-                },
-                "alignment": "start",
-                "color": "White",
-                "margin": 6
-            }
-        }
     }
 }
