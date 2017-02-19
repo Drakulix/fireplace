@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+
+- Fixed an issue, when switching into a fullscreened workspace, the old geometry got restored
+
 ## 2.0.0
 
 - Fix typo in statusbar->location. (Buttom instead of Bottom).
