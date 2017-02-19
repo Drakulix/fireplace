@@ -54,6 +54,10 @@ Starting with an X Server running will run fireplace nested.
 
 For easier start up a [session file](https://github.com/Drakulix/fireplace/blob/master/fireplace.desktop) is provided, just copy it to `/usr/share/wayland-sessions/` and fireplace to `/usr/bin/` and fireplace should be visible in your desktop manager.
 
+For running as a user process logind is required to optain the required permissions.
+Alternatively set the `suid` flag on the executable and fireplace will drop privileges
+after opening the required hardware devices.
+
 
 ## Configuration
 
@@ -63,7 +67,7 @@ You can see a detailed example at [fireplace.yaml](https://github.com/Drakulix/f
 
 The configuration file should be placed into the `$XDG_CONFIG_DIR` - if set - or
 into `$HOME/.config` otherwise. The name may either be `fireplace.yaml` or
-`.fireplace.yaml`. 
+`.fireplace.yaml`.
 
 ## Building
 
