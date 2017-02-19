@@ -2,16 +2,16 @@
 //!
 
 use chrono::Local;
+use handlers::keyboard::KeyPattern;
 
 use handlers::store::{Store, StoreKey};
-use handlers::keyboard::KeyPattern;
 use image::{DynamicImage, ImageFormat, RgbaImage};
 use slog_scope;
 use std::fs::{self, File};
 
 use std::path::PathBuf;
 use std::process::{Command, Stdio};
-use wlc::{Callback, Geometry, Output, View, Modifiers, Key, KeyState, Point};
+use wlc::{Callback, Geometry, Key, KeyState, Modifiers, Output, Point, View};
 use wlc::render::{GLES2PixelFormat, RenderInstance, RenderOutput, Renderer};
 
 /// Key for receiving the current list of queued screenshot
@@ -47,17 +47,14 @@ pub struct ScreenshotHandler {
 impl ScreenshotHandler {
     /// Initialize a new `ScreenshotHandler`
     pub fn new(config: ScreenshotConfig) -> ScreenshotHandler {
-        ScreenshotHandler {
-            config
-        }
+        ScreenshotHandler { config: config }
     }
 }
 
 /// Configuration for `ScreenshotHandler`
 #[derive(Default, Clone, PartialEq, Eq, Hash, Deserialize, Debug)]
 #[serde(deny_unknown_fields)]
-pub struct ScreenshotConfig
-{
+pub struct ScreenshotConfig {
     /// Location for saved screenshots
     #[serde(default = "::handlers::render::screenshot::default_path")]
     location: PathBuf,
@@ -66,8 +63,7 @@ pub struct ScreenshotConfig
     keys: KeyPatterns,
 }
 
-fn default_path() -> PathBuf
-{
+fn default_path() -> PathBuf {
     let child = Command::new("xdg-user-dir")
         .arg("DESKTOP")
         .stdout(Stdio::piped())
@@ -128,14 +124,18 @@ impl Callback for ScreenshotHandler {
                     });
                 });
                 true
-            },
-            x if x == self.config.keys.view => if let Some(view) = view {
-                let output = view.output();
-                let queued = output.get::<QueuedScreenshots>().unwrap();
-                let mut lock = queued.write().unwrap();
-                lock.push(view.visible_geometry());
-                true
-            } else { false },
+            }
+            x if x == self.config.keys.view => {
+                if let Some(view) = view {
+                    let output = view.output();
+                    let queued = output.get::<QueuedScreenshots>().unwrap();
+                    let mut lock = queued.write().unwrap();
+                    lock.push(view.visible_geometry());
+                    true
+                } else {
+                    false
+                }
+            }
             _ => false,
         }
     }
