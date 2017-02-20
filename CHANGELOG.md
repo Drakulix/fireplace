@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.0
+
+- Update wlc dependency (considered public api)
+- Add screenshot feature
+- Move ui configuration into output config
+
 ## 2.0.1
 
 - Fixed an issue, when switching into a fullscreened workspace, the old geometry got restored

@@ -28,13 +28,13 @@ Fireplace just hit 1.0, so it is in a usable state, but a bit limited.
 - [x] BSP-style window tiling
 - [x] Floating windows
 - [x] Basic UI rendering with statusbar
+- [x] Screenshots
 - [x] ... and many more!
 
 But it still missed some rather important features for every day use:
 
 - [ ] Fix some remaining application specific bugs
 - [ ] Lock screen
-- [ ] Screenshots
 - [ ] ...and also many more...
 
 
