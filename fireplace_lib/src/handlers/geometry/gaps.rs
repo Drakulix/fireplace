@@ -42,7 +42,7 @@ impl GapsHandler {
 
 impl Callback for GapsHandler {
     fn view_created(&mut self, view: &View) -> bool {
-        if let Some(lock) = view.get::<UiConfig>() {
+        if let Some(lock) = view.output().get::<UiConfig>() {
             let conf = &(*lock.read().unwrap()).gaps;
             if let Some(lock) = view.get::<UsableViewGeometry>() {
                 let mut scissor = lock.write().unwrap();
