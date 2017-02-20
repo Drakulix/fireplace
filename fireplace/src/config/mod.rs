@@ -4,8 +4,9 @@
 use fireplace_lib::handlers::FocusConfig;
 use fireplace_lib::handlers::OutputConfig;
 use fireplace_lib::handlers::keyboard::KeyPattern;
-use fireplace_lib::handlers::workspaces::WorkspacesConfig;
+#[cfg(feature = "ui")]
 use fireplace_lib::handlers::render::screenshot::ScreenshotConfig;
+use fireplace_lib::handlers::workspaces::WorkspacesConfig;
 
 use logger::Logging;
 
