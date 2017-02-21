@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1
+
+- Updated some dependencies (no changes to any public api)
+
 ## 3.0.0
 
 - Update wlc dependency (considered public api)
