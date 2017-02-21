@@ -1,6 +1,6 @@
 [package]
 name = "fireplace_lib"
-version = "3.0.0"
+version = "3.0.1"
 authors = ["Drakulix <github@drakulix.de>"]
 description = "Modular wayland window manager library"
 documentation = "https://drakulix.github.io/fireplace"
@@ -15,7 +15,7 @@ workspace = ".."
 travis-ci = { repository = "Drakulix/fireplace" }
 
 [dependencies]
-wlc = { version = "2.0.0", features = ["serialization"] }
+wlc = { version = "2.0.1", features = ["serialization"] }
 anymap = "0.12"
 typemap = "0.3"
 linked-hash-map = "0.4"

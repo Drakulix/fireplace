@@ -1,12 +1,12 @@
 [package]
 name = "fireplace_json"
-version = "3.0.0"
+version = "3.0.1"
 authors = ["Victor Brekenfeld (Drakulix) <github@drakulix.de>"]
 workspace = "../.."
 
 [dependencies]
-fireplace_lib = { version = "3.0.0", default-features = false }
-wlc = { version = "2.0.0", features = ["serialization"] }
+fireplace_lib = { version = "3.0.1", default-features = false }
+wlc = { version = "2.0.1", features = ["serialization"] }
 
 slog = "1.5"
 slog-term = "1.3"
