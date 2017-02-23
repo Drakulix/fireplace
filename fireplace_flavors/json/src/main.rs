@@ -32,16 +32,14 @@ mod logger;
 mod config;
 pub use self::config::Config;
 
-fn try_config_locations(paths: &[PathBuf]) -> Config
-{
+fn try_config_locations(paths: &[PathBuf]) -> Config {
     for path in paths {
         if path.exists() {
-            return serde_json::from_reader(
-                OpenOptions::new()
+            return serde_json::from_reader(OpenOptions::new()
                     .read(true)
                     .open(path)
-                    .unwrap()
-            ).expect("Malformed config file");
+                    .unwrap())
+                .expect("Malformed config file");
         }
     }
     serde_json::from_str("{}").unwrap()
