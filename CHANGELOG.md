@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.0
+
+- Handle more config file locations
+
 ## 3.0.1
 
 - Updated some dependencies (no changes to any public api)

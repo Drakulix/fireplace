@@ -67,7 +67,9 @@ You can see a detailed example at [fireplace.yaml](https://github.com/Drakulix/f
 
 The configuration file should be placed into the `$XDG_CONFIG_DIR` - if set - or
 into `$HOME/.config` otherwise. The name may either be `fireplace.yaml` or
-`.fireplace.yaml`.
+`.fireplace.yaml`. You can also add a folder called `fireplace` and store the config file there, if you happen to like folders.
+
+A global configuration can be provided in `/etc/fireplace/fireplace.yaml`.
 
 ## Building
 
