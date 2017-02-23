@@ -2,8 +2,11 @@
 //! compositor.
 //!
 
-use wlc::{Callback, Output, Size};
+use wlc::{Callback, Output, Size, View, Modifiers, Key, KeyState, Button, ButtonState, Point, ScrollAxis, TouchType};
 use wlc::render::RenderOutput;
+
+#[doc(hidden)]
+pub mod convert;
 
 mod renderer;
 pub use self::renderer::*;
@@ -61,5 +64,68 @@ impl Callback for ConrodHandler {
         if let Some(mut ui) = lock.as_ref().and_then(|x| x.write().ok()) {
             ui.output_render_post(output)
         };
+    }
+
+    fn keyboard_key(&mut self, view: Option<&View>, time: u32, modifiers: Modifiers, key: Key,
+                    state: KeyState)
+                    -> bool {
+        Output::with_focused_output(|output| {
+            let lock = output.get::<ConrodRenderer>();
+            if let Some(mut ui) = lock.as_ref().and_then(|x| x.write().ok()) {
+                ui.keyboard_key(view, time, modifiers, key, state)
+            } else {
+                false
+            }
+        })
+    }
+
+    fn pointer_button(&mut self, view: Option<&View>, time: u32, modifiers: Modifiers, button: Button,
+                      state: ButtonState, origin: Point)
+                      -> bool {
+        Output::with_focused_output(|output| {
+            let lock = output.get::<ConrodRenderer>();
+            if let Some(mut ui) = lock.as_ref().and_then(|x| x.write().ok()) {
+                ui.pointer_button(view, time, modifiers, button, state, origin)
+            } else {
+                false
+            }
+        })
+    }
+
+    fn pointer_scroll(&mut self, view: Option<&View>, time: u32, modifiers: Modifiers,
+                      axis: ScrollAxis::Flags, amount: [f64; 2])
+                      -> bool {
+        Output::with_focused_output(|output| {
+            let lock = output.get::<ConrodRenderer>();
+            if let Some(mut ui) = lock.as_ref().and_then(|x| x.write().ok()) {
+                ui.pointer_scroll(view, time, modifiers, axis, amount)
+            } else {
+                false
+            }
+        })
+    }
+
+    fn pointer_motion(&mut self, view: Option<&View>, time: u32, origin: Point) -> bool {
+        Output::with_focused_output(|output| {
+            let lock = output.get::<ConrodRenderer>();
+            if let Some(mut ui) = lock.as_ref().and_then(|x| x.write().ok()) {
+                ui.pointer_motion(view, time, origin)
+            } else {
+                false
+            }
+        })
+    }
+
+    fn touch(&mut self, view: Option<&View>, time: u32, modifiers: Modifiers, touch_type: TouchType,
+             slot: i32, origin: Point)
+             -> bool {
+        Output::with_focused_output(|output| {
+            let lock = output.get::<ConrodRenderer>();
+            if let Some(mut ui) = lock.as_ref().and_then(|x| x.write().ok()) {
+                ui.touch(view, time, modifiers, touch_type, slot, origin)
+            } else {
+                false
+            }
+        })
     }
 }

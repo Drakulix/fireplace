@@ -8,7 +8,7 @@ use slog;
 use slog_scope;
 use texture::TextureSettings;
 
-use wlc::{Callback, Output, Size};
+use wlc::{Callback, Output, Size, View, Modifiers, Key, KeyState, Button, ButtonState, Point, ScrollAxis, TouchType};
 use wlc::render::RenderOutput;
 
 mod instance;
@@ -84,5 +84,73 @@ impl Callback for ConrodRenderer {
 
     fn output_render_post(&mut self, output: &mut RenderOutput) {
         self.foreground.render(output);
+    }
+
+    fn keyboard_key(&mut self, view: Option<&View>, time: u32, modifiers: Modifiers, key: Key,
+                    state: KeyState)
+                    -> bool {
+        if !self.foreground.keyboard_key(view, time, modifiers, key, state) {
+            if view.is_some() {
+                false
+            } else {
+                self.background.keyboard_key(view, time, modifiers, key, state)
+            }
+        } else {
+            true
+        }
+    }
+
+    fn pointer_button(&mut self, view: Option<&View>, time: u32, modifiers: Modifiers, button: Button,
+                      state: ButtonState, origin: Point)
+                      -> bool {
+        if !self.foreground.pointer_button(view, time, modifiers, button, state, origin) {
+            if view.is_some() {
+                false
+            } else {
+                self.background.pointer_button(view, time, modifiers, button, state, origin)
+            }
+        } else {
+            true
+        }
+    }
+
+    fn pointer_scroll(&mut self, view: Option<&View>, time: u32, modifiers: Modifiers,
+                      axis: ScrollAxis::Flags, amount: [f64; 2])
+                      -> bool {
+        if !self.foreground.pointer_scroll(view, time, modifiers, axis, amount) {
+            if view.is_some() {
+                false
+            } else {
+                self.background.pointer_scroll(view, time, modifiers, axis, amount)
+            }
+        } else {
+            true
+        }
+    }
+
+    fn pointer_motion(&mut self, view: Option<&View>, time: u32, origin: Point) -> bool {
+        if !self.foreground.pointer_motion(view, time, origin) {
+            if view.is_some() {
+                false
+            } else {
+                self.background.pointer_motion(view, time, origin)
+            }
+        } else {
+            true
+        }
+    }
+
+    fn touch(&mut self, view: Option<&View>, time: u32, modifiers: Modifiers, touch_type: TouchType,
+             slot: i32, origin: Point)
+             -> bool {
+        if !self.foreground.touch(view, time, modifiers, touch_type, slot, origin) {
+            if view.is_some() {
+                false
+            } else {
+                self.background.touch(view, time, modifiers, touch_type, slot, origin)
+            }
+        } else {
+            true
+        }
     }
 }

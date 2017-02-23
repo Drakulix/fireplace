@@ -1,5 +1,7 @@
 use conrod::{Dimensions, Ui, UiBuilder};
 use conrod::backend;
+use conrod::event;
+use conrod::input;
 use conrod::image::Map as ImageMap;
 use conrod::text::GlyphCache;
 use conrod::text::rt::Rect;
@@ -15,7 +17,10 @@ use slog;
 use std::ops::{Deref, DerefMut};
 use texture::{Format, TextureSettings, UpdateTexture};
 
+use wlc::{Callback, View, Modifiers, Modifier, Key, KeyState, Button, ButtonState, Point, ScrollAxis, TouchType};
 use wlc::render::RenderOutput;
+
+use ::handlers::render::conrod::convert::*;
 
 /// Instance to render `ConrodProvider`s
 ///
@@ -144,6 +149,92 @@ impl ConrodInstance {
                                                   texture_from_image);
             });
         }
+    }
+}
+
+impl Callback for ConrodInstance {
+    fn keyboard_key(&mut self, view: Option<&View>, time: u32, modifiers: Modifiers, key: Key,
+                    state: KeyState)
+                    -> bool {
+        if self.ui.global_input.current.widget_capturing_keyboard.is_some() {
+            //modifiers
+            if modifiers.mods.contains(Modifier::Alt) {
+                self.ui.handle_event(event::Input::Press(input::Button::Keyboard(input::Key::LAlt)))
+            } else {
+                self.ui.handle_event(event::Input::Release(input::Button::Keyboard(input::Key::LAlt)))
+            }
+            if modifiers.mods.contains(Modifier::Caps) {
+                self.ui.handle_event(event::Input::Press(input::Button::Keyboard(input::Key::CapsLock)))
+            } else {
+                self.ui.handle_event(event::Input::Release(input::Button::Keyboard(input::Key::CapsLock)))
+            }
+            if modifiers.mods.contains(Modifier::Ctrl) {
+                self.ui.handle_event(event::Input::Press(input::Button::Keyboard(input::Key::LCtrl)))
+            } else {
+                self.ui.handle_event(event::Input::Release(input::Button::Keyboard(input::Key::LCtrl)))
+            }
+            if modifiers.mods.contains(Modifier::Logo) {
+                self.ui.handle_event(event::Input::Press(input::Button::Keyboard(input::Key::LGui)))
+            } else {
+                self.ui.handle_event(event::Input::Release(input::Button::Keyboard(input::Key::LGui)))
+            }
+            if modifiers.mods.contains(Modifier::Shift) {
+                self.ui.handle_event(event::Input::Press(input::Button::Keyboard(input::Key::LShift)))
+            } else {
+                self.ui.handle_event(event::Input::Release(input::Button::Keyboard(input::Key::LShift)))
+            }
+
+            //key
+            if state == KeyState::Pressed {
+                self.ui.handle_event(event::Input::Press(input::Button::Keyboard(wlc_to_conrod_key(key))))
+            } else {
+                self.ui.handle_event(event::Input::Release(input::Button::Keyboard(wlc_to_conrod_key(key))))
+            }
+
+            true
+        } else {
+            false
+        }
+    }
+
+    fn pointer_button(&mut self, view: Option<&View>, time: u32, modifiers: Modifiers, button: Button,
+                      state: ButtonState, origin: Point)
+                      -> bool {
+        if self.ui.global_input.current.widget_capturing_mouse.is_some() || self.ui.global_input.current.widget_under_mouse.is_some() {
+            if state == ButtonState::Pressed {
+                self.ui.handle_event(event::Input::Press(input::Button::Mouse(wlc_to_conrod_button(button))))
+            } else {
+                self.ui.handle_event(event::Input::Release(input::Button::Mouse(wlc_to_conrod_button(button))))
+            }
+            true
+        } else { false }
+    }
+
+    fn pointer_scroll(&mut self, view: Option<&View>, time: u32, modifiers: Modifiers,
+                      axis: ScrollAxis::Flags, amount: [f64; 2])
+                      -> bool {
+        self.ui.handle_event(event::Input::Motion(conrod::input::Motion::Scroll { x: amount[0], y: amount[1] }));
+        if self.ui.global_input.current.widget_capturing_mouse.is_some() {
+            true
+        } else {
+            false
+        }
+    }
+
+    fn pointer_motion(&mut self, view: Option<&View>, time: u32, origin: Point) -> bool {
+        self.ui.handle_event(event::Input::Motion(input::Motion::MouseCursor { x: origin.x, y: origin.y }));
+        if self.ui.global_input.current.widget_capturing_mouse.is_some() {
+            true
+        } else {
+            false
+        }
+    }
+
+    fn touch(&mut self, view: Option<&View>, time: u32, modifiers: Modifiers, touch_type: TouchType,
+             slot: i32, origin: Point)
+             -> bool {
+        // TODO
+        false
     }
 }
 
