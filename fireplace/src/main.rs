@@ -21,8 +21,7 @@ use fireplace_lib::handlers::*;
 use fireplace_lib::handlers::keyboard::KeyHandler;
 
 use std::env;
-use std::fs::{self, OpenOptions};
-use std::io::Read;
+use std::fs::OpenOptions;
 use std::path::PathBuf;
 use std::process::Command;
 
@@ -32,41 +31,46 @@ mod logger;
 mod config;
 pub use self::config::Config;
 
-fn main() {
-
-    // Parse configuration and Initialize logger
-
-    let mut config: Config = serde_yaml::from_str(&env::home_dir()
-            .map(|x| {
-                let config_path = env::var("XDG_CONFIG_DIR")
-                    .map(PathBuf::from)
-                    .unwrap_or_else(|_| x.join(".config"));
-
-                let config = config_path.join("fireplace.yaml");
-
-                let hidden = config_path.join(".fireplace.yaml");
-
-                if config.exists() { config } else { hidden }
-            })
-            .and_then(|x| fs::create_dir_all(x.parent().unwrap()).ok().map(|_| x))
-            .and_then(|x| {
+fn try_config_locations(paths: &[PathBuf]) -> Config
+{
+    for path in paths {
+        if path.exists() {
+            return serde_yaml::from_reader(
                 OpenOptions::new()
                     .read(true)
-                    .open(x)
-                    .ok()
-            })
-            .and_then(|mut x| {
-                let mut contents = String::new();
-                x.read_to_string(&mut contents).ok().map(|_| contents)
-            })
-            .unwrap_or_else(|| String::from("{}")))
-        .unwrap();
+                    .open(path)
+                    .unwrap()
+            ).expect("Malformed config file");
+        }
+    }
+    serde_yaml::from_str("").unwrap()
+}
 
+fn main() {
+
+    // Parse configuration
+    let mut locations = Vec::new();
+    if let Ok(xdg_dir) = env::var("XDG_CONFIG_DIR") {
+        locations.push(PathBuf::from(&xdg_dir).join("fireplace").join(".fireplace.yaml"));
+        locations.push(PathBuf::from(&xdg_dir).join("fireplace").join("fireplace.yaml"));
+        locations.push(PathBuf::from(&xdg_dir).join(".fireplace.yaml"));
+        locations.push(PathBuf::from(&xdg_dir).join("fireplace.yaml"));
+    }
+    if let Some(home_dir) = env::home_dir() {
+        locations.push(PathBuf::from(&home_dir).join(".config").join("fireplace").join(".fireplace.yaml"));
+        locations.push(PathBuf::from(&home_dir).join(".config").join("fireplace").join("fireplace.yaml"));
+        locations.push(PathBuf::from(&home_dir).join(".config").join(".fireplace.yaml"));
+        locations.push(PathBuf::from(&home_dir).join(".config").join("fireplace.yaml"));
+        locations.push(PathBuf::from(&home_dir).join(".fireplace.yaml"));
+    }
+    locations.push(PathBuf::from("/etc/fireplace/fireplace.yaml"));
+    locations.push(PathBuf::from("/etc/fireplace.yaml"));
+    let mut config = try_config_locations(&locations);
+
+    // Initialize logger
     logger::init(config.logging);
 
-
     // Initialize the key combinations
-
     let mut keyboard_handler = KeyboardHandler::new();
 
     for (command, pattern) in config.keys.drain() {

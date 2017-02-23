@@ -32,33 +32,44 @@ mod logger;
 mod config;
 pub use self::config::Config;
 
-fn main() {
-
-    // Parse configuration and Initialize logger
-
-    let mut config: Config = serde_json::from_str(&env::home_dir()
-            .map(|x| {
-                env::var("XDG_CONFIG_DIR")
-                    .map(PathBuf::from)
-                    .unwrap_or_else(|_| x.join(".config"))
-                    .join(".fireplace.json")
-            })
-            .and_then(|x| fs::create_dir_all(x.parent().unwrap()).ok().map(|_| x))
-            .and_then(|x| {
+fn try_config_locations(paths: &[PathBuf]) -> Config
+{
+    for path in paths {
+        if path.exists() {
+            return serde_json::from_reader(
                 OpenOptions::new()
                     .read(true)
-                    .open(x)
-                    .ok()
-            })
-            .and_then(|mut x| {
-                let mut contents = String::new();
-                x.read_to_string(&mut contents).ok().map(|_| contents)
-            })
-            .unwrap_or_else(|| String::from("{}")))
-        .unwrap();
+                    .open(path)
+                    .unwrap()
+            ).expect("Malformed config file");
+        }
+    }
+    serde_json::from_str("{}").unwrap()
+}
 
+fn main() {
+
+    // Parse configuration
+    let mut locations = Vec::new();
+    if let Ok(xdg_dir) = env::var("XDG_CONFIG_DIR") {
+        locations.push(PathBuf::from(&xdg_dir).join("fireplace").join(".fireplace.json"));
+        locations.push(PathBuf::from(&xdg_dir).join("fireplace").join("fireplace.json"));
+        locations.push(PathBuf::from(&xdg_dir).join(".fireplace.json"));
+        locations.push(PathBuf::from(&xdg_dir).join("fireplace.json"));
+    }
+    if let Some(home_dir) = env::home_dir() {
+        locations.push(PathBuf::from(&home_dir).join(".config").join("fireplace").join(".fireplace.json"));
+        locations.push(PathBuf::from(&home_dir).join(".config").join("fireplace").join("fireplace.json"));
+        locations.push(PathBuf::from(&home_dir).join(".config").join(".fireplace.json"));
+        locations.push(PathBuf::from(&home_dir).join(".config").join("fireplace.json"));
+        locations.push(PathBuf::from(&home_dir).join(".fireplace.json"));
+    }
+    locations.push(PathBuf::from("/etc/fireplace/fireplace.json"));
+    locations.push(PathBuf::from("/etc/fireplace.json"));
+    let mut config = try_config_locations(&locations);
+
+    // Initialize logger
     logger::init(config.logging);
-
 
     // Initialize the key combinations
 
