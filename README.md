@@ -112,9 +112,11 @@ By default [wlc](https://github.com/Cloudef/wlc) is automatically build and stat
 Building then is as easy as:
 ```
 git clone https://github.com/Drakulix/fireplace.git
-cd fireplace
+cd fireplace/fireplace
 cargo build --release
 ```
+Please take note that you cannot build in the root directory.
+The resulting binary will be at `<root>/target/release/fireplace`.
 
 To avoid statically linking and disable the optional Ui code use
 ```
