@@ -204,19 +204,19 @@ impl ConrodProvider for Statusbar {
 
                 root.flow_right(&[(self.ids[1],
                                    Canvas::new()
-                                       .h(conf.height as f64)
+                                       .h((conf.height * output.scale()) as f64)
                                        .color(color::TRANSPARENT)
                                        .border(0.0)
                                        .flow_right(&left)),
                                   (self.ids[2],
                                    Canvas::new()
-                                       .h(conf.height as f64)
+                                       .h((conf.height * output.scale()) as f64)
                                        .color(color::TRANSPARENT)
                                        .border(0.0)
                                        .flow_left(&center)),
                                   (self.ids[3],
                                    Canvas::new()
-                                       .h(conf.height as f64)
+                                       .h((conf.height * output.scale()) as f64)
                                        .color(color::TRANSPARENT)
                                        .border(0.0)
                                        .flow_left(&right))])

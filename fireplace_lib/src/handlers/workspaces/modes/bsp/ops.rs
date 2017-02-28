@@ -21,18 +21,18 @@ impl BSP {
                                           Some(scissor) => {
                                               Geometry {
                                                   origin: Point {
-                                                      x: remaining.origin.x +
-                                                         (scissor.left as u32 * view.output().scale()) as i32,
-                                                      y: remaining.origin.y +
-                                                         (scissor.up as u32 * view.output().scale()) as i32,
+                                                      x: remaining.origin.x / view.output().scale() as i32 +
+                                                         (scissor.left as u32) as i32,
+                                                      y: remaining.origin.y / view.output().scale() as i32 +
+                                                         (scissor.up as u32) as i32,
                                                   },
                                                   size: Size {
-                                                      w: remaining.size.w -
-                                                         (scissor.left as u32 * view.output().scale()) -
-                                                         (scissor.right as u32 * view.output().scale()),
-                                                      h: remaining.size.h -
-                                                         (scissor.up as u32 * view.output().scale()) -
-                                                         (scissor.down as u32 * view.output().scale()),
+                                                      w: remaining.size.w / view.output().scale() -
+                                                         (scissor.left as u32) -
+                                                         (scissor.right as u32),
+                                                      h: remaining.size.h / view.output().scale() -
+                                                         (scissor.up as u32) -
+                                                         (scissor.down as u32),
                                                   },
                                               }
                                           }
