@@ -139,13 +139,13 @@ impl ConrodProvider for Indicator {
 
                 // left
                 Canvas::new()
-                    .x_y(x_wlc_to_conrod(geo.origin.x - (self.width * output.scale()) as i32,
+                    .x_y(x_wlc_to_conrod((geo.origin.x - self.width as i32) * output.scale() as i32,
                                          self.width * output.scale(),
                                          dim[0] as u32),
-                         y_wlc_to_conrod(geo.origin.y - (self.width * output.scale()) as i32,
-                                         geo.size.h + (self.width * output.scale()) * 2,
+                         y_wlc_to_conrod(geo.origin.y * output.scale() as i32,
+                                         geo.size.h * output.scale(),
                                          dim[1] as u32))
-                    .h(geo.size.h as f64 + (self.width * output.scale()) as f64 * 2.0)
+                    .h((geo.size.h * output.scale()) as f64)
                     .w((self.width * output.scale()) as f64)
                     .color(indicator_color)
                     .border(0.0)
@@ -153,13 +153,13 @@ impl ConrodProvider for Indicator {
 
                 // right
                 Canvas::new()
-                    .x_y(x_wlc_to_conrod(geo.origin.x + geo.size.w as i32,
+                    .x_y(x_wlc_to_conrod((geo.origin.x + geo.size.w as i32) * output.scale() as i32,
                                          self.width * output.scale(),
                                          dim[0] as u32),
-                         y_wlc_to_conrod(geo.origin.y - (self.width * output.scale()) as i32,
-                                         geo.size.h + self.width * output.scale() * 2,
+                         y_wlc_to_conrod(geo.origin.y * output.scale() as i32,
+                                         geo.size.h * output.scale(),
                                          dim[1] as u32))
-                    .h(geo.size.h as f64 + (self.width * output.scale()) as f64 * 2.0)
+                    .h((geo.size.h * output.scale()) as f64)
                     .w((self.width * output.scale()) as f64)
                     .color(indicator_color)
                     .border(0.0)
@@ -167,28 +167,28 @@ impl ConrodProvider for Indicator {
 
                 // up
                 Canvas::new()
-                    .x_y(x_wlc_to_conrod(geo.origin.x - (self.width * output.scale()) as i32,
-                                         geo.size.w + self.width * output.scale() * 2,
+                    .x_y(x_wlc_to_conrod((geo.origin.x - self.width as i32) * output.scale() as i32,
+                                         (geo.size.w + self.width * 2) * output.scale(),
                                          dim[0] as u32),
-                         y_wlc_to_conrod(geo.origin.y - (self.width * output.scale()) as i32,
+                         y_wlc_to_conrod((geo.origin.y - self.width as i32) * output.scale() as i32,
                                          self.width * output.scale(),
                                          dim[1] as u32))
                     .h((self.width * output.scale()) as f64)
-                    .w(geo.size.w as f64 + (self.width * output.scale()) as f64 * 2.0)
+                    .w(((geo.size.w + self.width * 2) * output.scale()) as f64)
                     .color(indicator_color)
                     .border(0.0)
                     .set(ids[2], ui);
 
                 // down
                 Canvas::new()
-                    .x_y(x_wlc_to_conrod(geo.origin.x - (self.width * output.scale()) as i32,
-                                         geo.size.w + self.width * output.scale() * 2,
+                    .x_y(x_wlc_to_conrod((geo.origin.x - self.width as i32) * output.scale() as i32,
+                                         (geo.size.w + self.width * 2) * output.scale(),
                                          dim[0] as u32),
-                         y_wlc_to_conrod(geo.origin.y + geo.size.h as i32,
+                         y_wlc_to_conrod((geo.origin.y + geo.size.h as i32) * output.scale() as i32,
                                          self.width * output.scale(),
                                          dim[1] as u32))
                     .h((self.width * output.scale()) as f64)
-                    .w(geo.size.w as f64 + (self.width * output.scale()) as f64 * 2.0)
+                    .w(((geo.size.w + self.width * 2) * output.scale()) as f64)
                     .color(indicator_color)
                     .border(0.0)
                     .set(ids[3], ui);
