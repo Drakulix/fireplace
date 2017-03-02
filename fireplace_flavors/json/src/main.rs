@@ -21,8 +21,7 @@ use fireplace_lib::handlers::*;
 use fireplace_lib::handlers::keyboard::KeyHandler;
 
 use std::env;
-use std::fs::{self, OpenOptions};
-use std::io::Read;
+use std::fs::OpenOptions;
 use std::path::PathBuf;
 use std::process::Command;
 
