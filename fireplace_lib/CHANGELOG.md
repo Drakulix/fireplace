@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.0.2
+
+- Fix scaling issues
+
+## 3.0.1
+
+- Dependency Updates
+
 ## 3.0.0
 
 - Update wlc dependency (considered public api)

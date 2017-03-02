@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.1
+
+- Fix some scaling issues
+
 ## 3.1.0
 
 - Handle more config file locations
