@@ -41,7 +41,7 @@ fn try_config_locations(paths: &[PathBuf]) -> Config {
                 .expect("Malformed config file");
         }
     }
-    serde_yaml::from_str("").unwrap()
+    Config::default()
 }
 
 fn main() {
