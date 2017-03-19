@@ -20,9 +20,9 @@ containers:
             - !Sh curl https://sh.rustup.rs -sSf | sh -s -- -y --default-host x86_64-unknown-linux-gnu --default-toolchain nightly --no-modify-path
             - !Env PATH: /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/work/.vagga/nightly-home/.cargo/bin
             - !Sh rustup update
-            - !Sh cargo install -f --git https://github.com/hecal3/cargo-install-upgrade
-            - !Sh cargo install rustfmt || cargo install-upgrade
+            - !Sh cargo install -f cargo-update
             - !Sh cargo install -f clippy
+            - !Sh cargo install rustfmt || cargo install-update rustfmt
             - !Sh cd $HOME; rm -rf ghp-import; git clone https://github.com/davisp/ghp-import.git
 
 commands:
@@ -80,5 +80,5 @@ commands:
         container: nightly
         run: |
             rustup update
-            cargo install-upgrade
             cargo install -f clippy
+            cargo install-update -a
