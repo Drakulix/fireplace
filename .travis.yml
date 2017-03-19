@@ -30,6 +30,7 @@ before_script:
   sudo apt-get install uidmap -y
   curl http://files.zerogw.com/vagga/vagga-install-testing.sh | sh
 script:
+- vagga update
 - vagga check-fmt
 - vagga clippy
 before_deploy:
