@@ -90,12 +90,12 @@ impl Default for AnyModeConfig {
 impl AsWrapper for AnyMode {
     fn child(&mut self) -> Option<&mut Callback> {
         Some(match *self {
-            AnyMode::Bsp(ref mut mode) => mode as &mut Callback,
-            AnyMode::Floating(ref mut mode) => mode as &mut Callback,
-            AnyMode::Combined(ref mut mode) => mode as &mut Callback,
-            AnyMode::Switch(ref mut mode) => mode as &mut Callback,
-            AnyMode::Fullscreen(ref mut mode) => mode as &mut Callback,
-        })
+                 AnyMode::Bsp(ref mut mode) => mode as &mut Callback,
+                 AnyMode::Floating(ref mut mode) => mode as &mut Callback,
+                 AnyMode::Combined(ref mut mode) => mode as &mut Callback,
+                 AnyMode::Switch(ref mut mode) => mode as &mut Callback,
+                 AnyMode::Fullscreen(ref mut mode) => mode as &mut Callback,
+             })
     }
 }
 

@@ -50,7 +50,7 @@ impl ConrodInstance {
                                                  dim[0] as u32,
                                                  dim[1] as u32,
                                                  &TextureSettings::new())
-                .unwrap(),
+                    .unwrap(),
             text_cache: GlyphCache::new(dim[0] as u32, dim[1] as u32, 0.1, 0.1),
             image_map: ImageMap::new(),
             provider: Vec::new(),
@@ -120,7 +120,7 @@ impl ConrodInstance {
                                       &data.iter().flat_map(|x| Bytes { b: *x, i: 0 }).collect::<Vec<u8>>(),
                                       [rect.min.x, rect.min.y],
                                       [rect.width(), rect.height()])
-                    .unwrap()
+                        .unwrap()
             }
 
             let primitives = self.ui.draw();

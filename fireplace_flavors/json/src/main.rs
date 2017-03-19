@@ -129,12 +129,12 @@ fn main() {
                     use std::process;
 
                     match Command::new(env::var("SHELL").unwrap_or_else(|_| String::from("sh")))
-                        .arg("-c")
-                        .arg(self.command.clone())
-                        .stdin(process::Stdio::null())
-                        .stdout(process::Stdio::null())
-                        .stderr(process::Stdio::null())
-                        .spawn() {
+                              .arg("-c")
+                              .arg(self.command.clone())
+                              .stdin(process::Stdio::null())
+                              .stdout(process::Stdio::null())
+                              .stderr(process::Stdio::null())
+                              .spawn() {
                         Ok(_) => {}
                         Err(x) => {
                             warn!(slog_scope::logger(),
@@ -165,7 +165,7 @@ fn main() {
         handlers.push(Box::new(render::conrod::ConrodHandler::new().into_callback()));
 
         handlers.push(Box::new(render::conrod::provider::background::BackgroundHandler::new()
-            .into_callback()));
+                                   .into_callback()));
         handlers.push(Box::new(render::conrod::provider::statusbar::StatusbarHandler::new().into_callback()));
 
         handlers.push(Box::new(render::ScreenshotHandler::new(config.screenshot)));

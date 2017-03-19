@@ -107,7 +107,10 @@ impl<T: AsVecCallback> Callback for VecCallback<T> {
     }
 
     default fn output_destroyed(&mut self, output: &Output) {
-        for hook in self.0.children().iter_mut().rev() {
+        for hook in self.0
+                .children()
+                .iter_mut()
+                .rev() {
             hook.output_destroyed(output);
         }
     }
@@ -141,14 +144,20 @@ impl<T: AsVecCallback> Callback for VecCallback<T> {
 
     #[cfg(feature = "render")]
     default fn output_render_post(&mut self, output: &mut RenderOutput) {
-        for hook in self.0.children().iter_mut().rev() {
+        for hook in self.0
+                .children()
+                .iter_mut()
+                .rev() {
             hook.output_render_post(output);
         }
     }
 
     #[cfg(not(feature = "render"))]
     default fn output_render_post(&mut self, output: &Output) {
-        for hook in self.0.children().iter_mut().rev() {
+        for hook in self.0
+                .children()
+                .iter_mut()
+                .rev() {
             hook.output_render_post(output);
         }
     }
@@ -160,7 +169,10 @@ impl<T: AsVecCallback> Callback for VecCallback<T> {
     }
 
     default fn output_context_destroyed(&mut self, output: &Output) {
-        for hook in self.0.children().iter_mut().rev() {
+        for hook in self.0
+                .children()
+                .iter_mut()
+                .rev() {
             hook.output_context_destroyed(output);
         }
     }
@@ -174,7 +186,10 @@ impl<T: AsVecCallback> Callback for VecCallback<T> {
     }
 
     default fn view_destroyed(&mut self, view: &View) {
-        for hook in self.0.children().iter_mut().rev() {
+        for hook in self.0
+                .children()
+                .iter_mut()
+                .rev() {
             hook.view_destroyed(view);
         }
     }
@@ -231,14 +246,20 @@ impl<T: AsVecCallback> Callback for VecCallback<T> {
 
     #[cfg(feature = "render")]
     default fn view_render_post(&mut self, view: &mut RenderView) {
-        for hook in self.0.children().iter_mut().rev() {
+        for hook in self.0
+                .children()
+                .iter_mut()
+                .rev() {
             hook.view_render_post(view);
         }
     }
 
     #[cfg(not(feature = "render"))]
     default fn view_render_post(&mut self, view: &View) {
-        for hook in self.0.children().iter_mut().rev() {
+        for hook in self.0
+                .children()
+                .iter_mut()
+                .rev() {
             hook.view_render_post(view);
         }
     }
@@ -304,7 +325,10 @@ impl<T: AsVecCallback> Callback for VecCallback<T> {
     }
 
     default fn compositor_terminate(&mut self) {
-        for hook in self.0.children().iter_mut().rev() {
+        for hook in self.0
+                .children()
+                .iter_mut()
+                .rev() {
             hook.compositor_terminate()
         }
     }

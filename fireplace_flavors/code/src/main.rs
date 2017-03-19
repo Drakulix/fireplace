@@ -32,19 +32,16 @@ fn main() {
                                   x.close();
                               });
 
-    let handlers: Vec<Box<Callback + 'static>> = vec![
-        Box::new(StoreHandler::new().into_callback()),
-        Box::new(geometry::GeometryHandler::new().into_callback()),
-        Box::new(geometry::GapsHandler::default().into_callback()),
-        Box::new(render::conrod::ConrodHandler::new().into_callback()),
-        Box::new(render::conrod::provider::BackgroundHandler::default()
-            .into_callback()),
-        Box::new(render::conrod::provider::StatusbarHandler::default().into_callback()),
-        Box::new(workspaces::WorkspaceHandler::new(
-            workspaces::WorkspacesConfig {
-                spaces: {
-                    let mut map = HashMap::new();
-                    map.insert(String::from("default"),
+    let handlers: Vec<Box<Callback + 'static>> = vec![Box::new(StoreHandler::new().into_callback()),
+             Box::new(geometry::GeometryHandler::new().into_callback()),
+             Box::new(geometry::GapsHandler::default().into_callback()),
+             Box::new(render::conrod::ConrodHandler::new().into_callback()),
+             Box::new(render::conrod::provider::BackgroundHandler::default().into_callback()),
+             Box::new(render::conrod::provider::StatusbarHandler::default().into_callback()),
+             Box::new(workspaces::WorkspaceHandler::new(workspaces::WorkspacesConfig {
+                                                            spaces: {
+                                                                let mut map = HashMap::new();
+                                                                map.insert(String::from("default"),
                         workspaces::WorkspaceConfig {
                             name: None,
                             mode: modes::AnyModeConfig::Bsp(modes::bsp::BSPConfig {
@@ -79,14 +76,13 @@ fn main() {
                                 ..Default::default()
                             })
                         });
-                    map
-                },
-                ..Default::default()
-            }
-        ).into_callback()),
-        Box::new(FocusHandler::default().into_callback()),
-        Box::new(keyboard_handler.into_callback()),
-    ];
+                                                                map
+                                                            },
+                                                            ..Default::default()
+                                                        })
+                              .into_callback()),
+             Box::new(FocusHandler::default().into_callback()),
+             Box::new(keyboard_handler.into_callback())];
 
     wlc::init(handlers.into_callback()).unwrap();
 }

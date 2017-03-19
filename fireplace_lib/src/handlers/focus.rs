@@ -106,10 +106,10 @@ impl Callback for FocusHandler {
                         origin.y < geometry.origin.y + geometry.size.h as i32
                     })
                     .last() {
-                if view.and_then(|view| view.parent()) != Some(new_focus_view) {
-                    new_focus_view.focus();
-                }
-            });
+                                            if view.and_then(|view| view.parent()) != Some(new_focus_view) {
+                                                new_focus_view.focus();
+                                            }
+                                        });
         }
         false
     }
@@ -129,15 +129,15 @@ impl Callback for FocusHandler {
                         origin.y < geometry.origin.y + geometry.size.h as i32
                     })
                     .last() {
-                if !new_focus_view.state().contains(ViewState::Activated) {
-                    new_focus_view.focus();
-                    true
-                } else {
-                    false
-                }
-            } else {
-                false
-            })
+                                            if !new_focus_view.state().contains(ViewState::Activated) {
+                                                new_focus_view.focus();
+                                                true
+                                            } else {
+                                                false
+                                            }
+                                        } else {
+                                            false
+                                        })
         } else {
             false
         }

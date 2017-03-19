@@ -298,23 +298,23 @@ impl WorkspaceHandler {
                 let mut new_map = HashMap::new();
                 for (key, value) in arguments.spaces.drain() {
                     if match u8::from_str(&key) {
-                        Ok(key) => new_map.insert(key, (value.name, value.mode)).is_some(),
-                        Err(x) => {
-                            match &*key {
-                                "default" | "generic" => {
-                                    new_map.insert(0, (value.name, value.mode)).is_some()
-                                }
-                                _ => {
-                                    error!(slog_scope::logger(),
-                                           "{} not a valid Workspace. Needs to be a number (> 0)
+                           Ok(key) => new_map.insert(key, (value.name, value.mode)).is_some(),
+                           Err(x) => {
+                               match &*key {
+                                   "default" | "generic" => {
+                                       new_map.insert(0, (value.name, value.mode)).is_some()
+                                   }
+                                   _ => {
+                        error!(slog_scope::logger(),
+                               "{} not a valid Workspace. Needs to be a number (> 0)
                                            or \"default\" / \"generic\". {}",
-                                           key,
-                                           x);
-                                    true
-                                }
-                            }
-                        }
-                    } {
+                               key,
+                               x);
+                        true
+                    }
+                               }
+                           }
+                       } {
                         error!(slog_scope::logger(), "Workspace used twice! {}", key);
                     }
                 }
@@ -360,7 +360,10 @@ impl WorkspaceHandler {
                                        Workspace::new(index, name.unwrap_or_default(), arg).into_callback())
             }
         };
-        self.workspaces.get_mut(&index).unwrap().output_resolution(output, self.size, self.size);
+        self.workspaces
+            .get_mut(&index)
+            .unwrap()
+            .output_resolution(output, self.size, self.size);
     }
 
     fn destroy_workspace(&mut self, index: u8) {
@@ -391,15 +394,18 @@ impl WorkspaceHandler {
         }
 
         view.insert::<ViewWorkspace>(ViewWorkspace {
-            num: index,
-            name: self.workspaces[&index].name.clone(),
-        });
+                                         num: index,
+                                         name: self.workspaces[&index].name.clone(),
+                                     });
         self.workspaces[&index].view_created(view);
     }
 
     /// Returns an array of currently active `Workspace` indicies
     pub fn active_spaces(&self) -> Vec<u8> {
-        self.workspaces.keys().cloned().collect()
+        self.workspaces
+            .keys()
+            .cloned()
+            .collect()
     }
 
     /// Switch the currently focused `Output` to the workspace of the given
@@ -412,7 +418,10 @@ impl WorkspaceHandler {
             }
 
             // Switch output if necessary
-            let last_output = self.workspaces.get(&index).unwrap().output();
+            let last_output = self.workspaces
+                .get(&index)
+                .unwrap()
+                .output();
             if last_output != Some(output.weak_reference()) {
                 if let Some(new_output) = last_output {
                     new_output.run(|output| {
@@ -444,9 +453,9 @@ impl WorkspaceHandler {
             };
 
             match output.insert::<ActiveWorkspace>(ActiveWorkspace {
-                num: index,
-                name: name,
-            }) {
+                                                       num: index,
+                                                       name: name,
+                                                   }) {
                 Some(old) => {
                     if old.num == index {
                         return;
@@ -459,7 +468,10 @@ impl WorkspaceHandler {
                         old_output.output_destroyed(output);
                     }
 
-                    if self.workspaces.get(&old.num).expect("ActiveWorkspace was invalid").is_empty() {
+                    if self.workspaces
+                           .get(&old.num)
+                           .expect("ActiveWorkspace was invalid")
+                           .is_empty() {
                         self.destroy_workspace(old.num);
                     }
                 }
@@ -498,9 +510,9 @@ impl Callback for WorkspaceHandler {
               num);
 
         output.insert::<ActiveWorkspace>(ActiveWorkspace {
-            num: num,
-            name: self.workspaces[&num].name.clone(),
-        });
+                                             num: num,
+                                             name: self.workspaces[&num].name.clone(),
+                                         });
 
         self.workspaces[&num].output_created(output);
         true
@@ -589,9 +601,9 @@ impl Callback for WorkspaceHandler {
                 Some(active) => {
                     (*self).workspaces[&active.num].view_created(view);
                     view.insert::<ViewWorkspace>(ViewWorkspace {
-                        name: active.name.clone(),
-                        num: active.num,
-                    });
+                                                     name: active.name.clone(),
+                                                     num: active.num,
+                                                 });
                     true
                 }
                 None => {
@@ -607,12 +619,18 @@ impl Callback for WorkspaceHandler {
         let lock = view.get::<ViewWorkspace>();
         match lock.as_ref().and_then(|x| x.read().ok()) {
             Some(space) => {
-                self.workspaces.get_mut(&space.num).expect("ViewWorkspace was invalid").view_destroyed(view);
+                self.workspaces
+                    .get_mut(&space.num)
+                    .expect("ViewWorkspace was invalid")
+                    .view_destroyed(view);
                 let lock = view.output().get::<ActiveWorkspace>();
                 match lock.as_ref().and_then(|x| x.read().ok()) {
                     Some(active) => {
                         if active.num != space.num &&
-                           self.workspaces.get(&space.num).expect("ViewWorkspace was invalid").is_empty() {
+                           self.workspaces
+                               .get(&space.num)
+                               .expect("ViewWorkspace was invalid")
+                               .is_empty() {
                             self.destroy_workspace(space.num);
                         }
                     }
@@ -630,7 +648,10 @@ impl Callback for WorkspaceHandler {
     fn view_focus(&mut self, view: &View, focus: bool) {
         let lock = view.get::<ViewWorkspace>();
         if let Some(space) = lock.as_ref().and_then(|x| x.read().ok()) {
-            self.workspaces.get_mut(&space.num).expect("ViewWorkspace was invalid").view_focus(view, focus)
+            self.workspaces
+                .get_mut(&space.num)
+                .expect("ViewWorkspace was invalid")
+                .view_focus(view, focus)
         };
     }
 
@@ -688,7 +709,10 @@ impl Callback for WorkspaceHandler {
     fn view_render_pre(&mut self, view: &mut RenderView) {
         let lock = view.get::<ViewWorkspace>();
         if let Some(space) = lock.as_ref().and_then(|x| x.read().ok()) {
-            self.workspaces.get_mut(&space.num).expect("ViewWorkspace was invalid").view_render_pre(view)
+            self.workspaces
+                .get_mut(&space.num)
+                .expect("ViewWorkspace was invalid")
+                .view_render_pre(view)
         };
     }
 
@@ -696,7 +720,10 @@ impl Callback for WorkspaceHandler {
     fn view_render_pre(&mut self, view: &View) {
         let lock = view.get::<ViewWorkspace>();
         if let Some(space) = lock.as_ref().and_then(|x| x.read().ok()) {
-            self.workspaces.get_mut(&space.num).expect("ViewWorkspace was invalid").view_render_pre(view)
+            self.workspaces
+                .get_mut(&space.num)
+                .expect("ViewWorkspace was invalid")
+                .view_render_pre(view)
         };
     }
 
@@ -704,7 +731,10 @@ impl Callback for WorkspaceHandler {
     fn view_render_post(&mut self, view: &mut RenderView) {
         let lock = view.get::<ViewWorkspace>();
         if let Some(space) = lock.as_ref().and_then(|x| x.read().ok()) {
-            self.workspaces.get_mut(&space.num).expect("ViewWorkspace was invalid").view_render_post(view)
+            self.workspaces
+                .get_mut(&space.num)
+                .expect("ViewWorkspace was invalid")
+                .view_render_post(view)
         };
     }
 
@@ -712,7 +742,10 @@ impl Callback for WorkspaceHandler {
     fn view_render_post(&mut self, view: &View) {
         let lock = view.get::<ViewWorkspace>();
         if let Some(space) = lock.as_ref().and_then(|x| x.read().ok()) {
-            self.workspaces.get_mut(&space.num).expect("ViewWorkspace was invalid").view_render_post(view)
+            self.workspaces
+                .get_mut(&space.num)
+                .expect("ViewWorkspace was invalid")
+                .view_render_post(view)
         };
     }
 
@@ -732,7 +765,10 @@ impl Callback for WorkspaceHandler {
                     -> bool {
         let active = Output::with_focused_output(move |output| {
             let lock = output.get::<ActiveWorkspace>();
-            let result = lock.as_ref().and_then(|x| x.read().ok()).expect("ActiveWorkspace was invalid").num;
+            let result = lock.as_ref()
+                .and_then(|x| x.read().ok())
+                .expect("ActiveWorkspace was invalid")
+                .num;
             result
         });
 
@@ -936,8 +972,8 @@ impl Callback for WorkspaceHandler {
 
             _ => {
                 return if let Some(view) = view {
-                    let lock = view.get::<ViewWorkspace>();
-                    let result = match lock.as_ref().and_then(|x| x.read().ok()) {
+                           let lock = view.get::<ViewWorkspace>();
+                           let result = match lock.as_ref().and_then(|x| x.read().ok()) {
                         Some(space) => {
                             self.workspaces
                                 .get_mut(&space.num)
@@ -946,9 +982,9 @@ impl Callback for WorkspaceHandler {
                         }
                         None => false,
                     };
-                    result
-                } else {
-                    Output::with_focused_output(|output| {
+                           result
+                       } else {
+                           Output::with_focused_output(|output| {
                         let lock = output.get::<ActiveWorkspace>();
                         let result = match lock.as_ref().and_then(|x| x.read().ok()) {
                             Some(active) => {
@@ -961,7 +997,7 @@ impl Callback for WorkspaceHandler {
                         };
                         result
                     })
-                };
+                       };
             }
         }
         true

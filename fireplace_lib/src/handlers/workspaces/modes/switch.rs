@@ -54,7 +54,10 @@ impl Mode for Wrapper<Switch> {
     fn new(mut arguments: Self::Arguments) -> Self {
         Switch {
                 active: None,
-                modes: arguments.modes.drain(..).map(AnyModeWrap::new).collect(),
+                modes: arguments.modes
+                    .drain(..)
+                    .map(AnyModeWrap::new)
+                    .collect(),
                 views: Vec::new(),
                 keys: arguments.keys,
                 logger: slog_scope::logger().new(o!("instance" => "Switch")),
@@ -120,11 +123,11 @@ impl Callback for Wrapper<Switch> {
                     let views = self.views.clone();
                     for view in views {
                         view.run(|view| {
-                            self.modes[active].view_destroyed(view);
-                            let initial = view.get::<InitialViewGeometry>().unwrap();
-                            view.set_geometry(ResizeEdge::Null, *initial.read().unwrap());
-                            self.modes[index].view_created(view);
-                        });
+                                     self.modes[active].view_destroyed(view);
+                                     let initial = view.get::<InitialViewGeometry>().unwrap();
+                                     view.set_geometry(ResizeEdge::Null, *initial.read().unwrap());
+                                     self.modes[index].view_created(view);
+                                 });
                     }
                     self.active = Some(index);
                     true
@@ -139,11 +142,11 @@ impl Callback for Wrapper<Switch> {
                     let views = self.views.clone();
                     for view in views {
                         view.run(|view| {
-                            self.modes[active].view_destroyed(view);
-                            let initial = view.get::<InitialViewGeometry>().unwrap();
-                            view.set_geometry(ResizeEdge::Null, *initial.read().unwrap());
-                            self.modes[index].view_created(view);
-                        });
+                                     self.modes[active].view_destroyed(view);
+                                     let initial = view.get::<InitialViewGeometry>().unwrap();
+                                     view.set_geometry(ResizeEdge::Null, *initial.read().unwrap());
+                                     self.modes[index].view_created(view);
+                                 });
                     }
                     self.active = Some(index);
                     true

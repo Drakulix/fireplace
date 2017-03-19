@@ -211,9 +211,9 @@ impl Callback for Floating {
                       -> bool {
         if let Some(ref view) = self.active_view {
             view.run(|view| if state == ButtonState::Released && button == Button::Left {
-                view.set_state(ViewState::Resizing, false);
-                view.set_state(ViewState::Moving, false);
-            });
+                         view.set_state(ViewState::Resizing, false);
+                         view.set_state(ViewState::Moving, false);
+                     });
         }
         false
     }

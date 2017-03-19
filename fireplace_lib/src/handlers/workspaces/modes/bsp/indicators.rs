@@ -10,7 +10,7 @@ use handlers::render::conrod::provider::ConrodProvider;
 use handlers::store::Store;
 
 use std::sync::{Arc, RwLock};
-use ::utils::coordinates::*;
+use utils::coordinates::*;
 
 use wlc::{Callback, Output, View, ViewState, WeakView};
 
@@ -73,13 +73,19 @@ impl Callback for IndicatorsHandler {
             scissor.right += (self.width * view.output().scale()) as usize;
         }
 
-        self.views.write().unwrap().push(view.weak_reference());
+        self.views
+            .write()
+            .unwrap()
+            .push(view.weak_reference());
 
         true
     }
 
     fn view_destroyed(&mut self, view: &View) {
-        self.views.write().unwrap().retain(|x| x != view);
+        self.views
+            .write()
+            .unwrap()
+            .retain(|x| x != view);
 
         if let Some(lock) = view.get::<UsableViewGeometry>() {
             let mut scissor = lock.write().unwrap();

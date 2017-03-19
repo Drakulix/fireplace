@@ -69,8 +69,7 @@ fn default_path() -> PathBuf {
         .stdout(Stdio::piped())
         .spawn()
         .expect("Failed to execute xdg-user-dir. Could not find default path for screenshots");
-    let output = child.wait_with_output()
-        .expect("xdg-user-dir did terminate in an unusual way");
+    let output = child.wait_with_output().expect("xdg-user-dir did terminate in an unusual way");
     PathBuf::from(String::from_utf8_lossy(&*output.stdout).into_owned().trim())
 }
 
@@ -103,7 +102,7 @@ impl Callback for ScreenshotHandler {
 
                     path.push(format!("{}", filename));
                     image.save(&mut File::create(path).expect("Failed to create screenshot file"),
-                              ImageFormat::PNG)
+                               ImageFormat::PNG)
                         .expect("Failed to encode screenshot");
                 }
             }
@@ -119,9 +118,9 @@ impl Callback for ScreenshotHandler {
                     let delayed = output.get::<QueuedScreenshots>().unwrap();
                     let mut lock = delayed.write().unwrap();
                     lock.push(Geometry {
-                        origin: Point { x: 0, y: 0 },
-                        size: output.resolution(),
-                    });
+                                  origin: Point { x: 0, y: 0 },
+                                  size: output.resolution(),
+                              });
                 });
                 true
             }

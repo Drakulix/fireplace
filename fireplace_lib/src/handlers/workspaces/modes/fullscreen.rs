@@ -54,7 +54,11 @@ impl Mode for Wrapper<Fullscreen> {
     }
 
     fn len(&self) -> usize {
-        self.mode.len() + self.active.as_ref().map(|_| 1).unwrap_or(0)
+        self.mode.len() +
+        self.active
+            .as_ref()
+            .map(|_| 1)
+            .unwrap_or(0)
     }
 }
 
@@ -114,9 +118,9 @@ impl Fullscreen {
         if let Some((active, geo)) = self.active.clone() {
             debug!(self.logger, "Un-fullscreening {:?}", active);
             active.run(|active_view| {
-                active_view.set_state(ViewState::Fullscreen, false);
-                active_view.set_geometry(ResizeEdge::Null, geo);
-            });
+                           active_view.set_state(ViewState::Fullscreen, false);
+                           active_view.set_geometry(ResizeEdge::Null, geo);
+                       });
         }
         self.active = None;
 

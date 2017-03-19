@@ -52,9 +52,7 @@ impl Default for Mode {
 
 /// Initialize fireplace's logging system
 pub fn init(config: Logging) {
-    let a = slog_term::streamer()
-        .stderr()
-        .async();
+    let a = slog_term::streamer().stderr().async();
     let b = match config.style {
         Mode::Compact => a.compact(),
         Mode::Full => a.full(),
@@ -67,7 +65,7 @@ pub fn init(config: Logging) {
 
     let always = Duplicate::new(LevelFilter::new(slog_journald::JournaldDrain, Level::Debug).ignore_err(),
                                 LevelFilter::new(c.build(), Level::Info).ignore_err())
-        .ignore_err();
+            .ignore_err();
 
     let root = if let Some(path) = config.file {
         let file = OpenOptions::new()

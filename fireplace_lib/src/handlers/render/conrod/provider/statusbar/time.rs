@@ -99,10 +99,7 @@ impl Time {
     pub fn new(output: &Output, ui: &mut ConrodInstance, arguments: TimeConfig) -> Self {
         let (bytes, index) = font_get(&arguments.font.property()).expect("No font could be loaded");
 
-        let font = FontCollection::from_bytes(bytes)
-            .into_fonts()
-            .nth(index as usize)
-            .unwrap();
+        let font = FontCollection::from_bytes(bytes).into_fonts().nth(index as usize).unwrap();
 
         let font_id = ui.fonts.insert(font.clone());
 
@@ -169,10 +166,10 @@ impl StatusbarItem for Time {
         let builder = Text::new(&text)
             .font_id(self.font_id)
             .justify(match self.alignment {
-                ConrodAlign::Start => Justify::Left,
-                ConrodAlign::Middle => Justify::Center,
-                ConrodAlign::End => Justify::Right,
-            })
+                         ConrodAlign::Start => Justify::Left,
+                         ConrodAlign::Middle => Justify::Center,
+                         ConrodAlign::End => Justify::Right,
+                     })
             .font_size(size)
             .h(text_height)
             .w(text_width)

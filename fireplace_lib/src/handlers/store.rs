@@ -101,9 +101,7 @@ impl<T: Handle> Store for T {
         if let Some(x) = unsafe { self.user_data::<RwLock<TypeMap>>() } {
             if let Ok(mut x) = x.write() {
                 if let Some(x) = x.insert::<KeyWrapper<A>>(Rc::new(RwLock::new(value))) {
-                    return Rc::try_unwrap(x)
-                        .ok()
-                        .and_then(|x| x.into_inner().ok());
+                    return Rc::try_unwrap(x).ok().and_then(|x| x.into_inner().ok());
                 }
             }
         }
@@ -112,9 +110,9 @@ impl<T: Handle> Store for T {
 
     fn contains<A: StoreKey + 'static>(&self) -> bool {
         match unsafe { self.user_data::<RwLock<TypeMap>>() }.map(|x| match x.read().ok() {
-            Some(x) => x.contains::<KeyWrapper<A>>(),
-            None => false,
-        }) {
+                                                                     Some(x) => x.contains::<KeyWrapper<A>>(),
+                                                                     None => false,
+                                                                 }) {
             Some(x) => x,
             None => false,
         }
@@ -135,9 +133,7 @@ impl<T: Handle> Store for T {
         if let Some(x) = unsafe { self.user_data::<RwLock<TypeMap>>() } {
             if let Ok(mut x) = x.write() {
                 if let Some(x) = x.remove::<KeyWrapper<A>>() {
-                    return Rc::try_unwrap(x)
-                        .ok()
-                        .and_then(|x| x.into_inner().ok());
+                    return Rc::try_unwrap(x).ok().and_then(|x| x.into_inner().ok());
                 }
             }
         }

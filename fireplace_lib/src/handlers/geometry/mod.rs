@@ -90,27 +90,27 @@ impl GeometryHandler {
 impl Callback for GeometryHandler {
     fn output_created(&mut self, output: &Output) -> bool {
         output.insert::<UsableScreenGeometry>(Geometry {
-            origin: Point { x: 0, y: 0 },
-            size: output.resolution(),
-        });
+                                                  origin: Point { x: 0, y: 0 },
+                                                  size: output.resolution(),
+                                              });
         true
     }
 
     fn output_resolution(&mut self, output: &Output, _from: Size, to: Size) {
         output.insert::<UsableScreenGeometry>(Geometry {
-            origin: Point { x: 0, y: 0 },
-            size: to,
-        });
+                                                  origin: Point { x: 0, y: 0 },
+                                                  size: to,
+                                              });
     }
 
     fn view_created(&mut self, view: &View) -> bool {
         view.insert::<InitialViewGeometry>(view.geometry());
         view.insert::<UsableViewGeometry>(ViewScissor {
-            up: 0,
-            right: 0,
-            down: 0,
-            left: 0,
-        });
+                                              up: 0,
+                                              right: 0,
+                                              down: 0,
+                                              left: 0,
+                                          });
         true
     }
 }

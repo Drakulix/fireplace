@@ -100,15 +100,10 @@ impl ConrodProvider for Background {
     fn render(&mut self, _output: &Output, ui: &mut UiCell) {
         match self.data {
             BackgroundConfig::Color(ref color) => {
-                Rectangle::fill_with(ui.window_dim(), **color)
-                    .xy([0.0, 0.0])
-                    .set(self.id, ui);
+                Rectangle::fill_with(ui.window_dim(), **color).xy([0.0, 0.0]).set(self.id, ui);
             }
             BackgroundConfig::Image(_) => {
-                ConrodImage::new(self.tex_id.unwrap())
-                    .xy([0.0, 0.0])
-                    .wh(ui.window_dim())
-                    .set(self.id, ui);
+                ConrodImage::new(self.tex_id.unwrap()).xy([0.0, 0.0]).wh(ui.window_dim()).set(self.id, ui);
             }
         }
     }

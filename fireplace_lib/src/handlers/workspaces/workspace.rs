@@ -38,8 +38,8 @@ impl Callback for Wrapper<Workspace> {
             output.set_visibility(Visibility::Flags::from_bits_truncate(1 << self.number));
             for view in &self.views {
                 view.run(|view| if view.output() != output {
-                    view.set_output(output);
-                });
+                             view.set_output(output);
+                         });
             }
 
             true
@@ -110,7 +110,10 @@ impl Workspace {
     }
 
     pub fn active(&self) -> bool {
-        self.output.as_ref().and_then(|x| x.run(|_| {})).is_some()
+        self.output
+            .as_ref()
+            .and_then(|x| x.run(|_| {}))
+            .is_some()
     }
 
     pub fn len(&self) -> usize {
@@ -122,7 +125,10 @@ impl Workspace {
     }
 
     pub fn restore_focus(&self) {
-        if self.last_focus.as_ref().map(|view| view.run(|view| view.focus())).is_none() {
+        if self.last_focus
+               .as_ref()
+               .map(|view| view.run(|view| view.focus()))
+               .is_none() {
             if let Some(view) = self.views.iter().last() {
                 view.run(|view| { view.focus(); });
             } else {
