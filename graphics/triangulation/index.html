@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `triangulation` mod in crate `graphics`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, triangulation">
+
+    <title>graphics::triangulation - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>graphics</a></p><script>window.sidebarCurrent = {name: 'triangulation', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>graphics</a>::<wbr><a class="mod" href=''>triangulation</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/graphics/triangulation.rs.html#1-728' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Methods for converting shapes into triangles.</p>
+</div><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rect_border_tri_list_xy.html"
+                                  title='fn graphics::triangulation::rect_border_tri_list_xy'>rect_border_tri_list_xy</a></td>
+                           <td class='docblock-short'>
+                                <p>Creates triangle list vertices from rectangle.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rect_tri_list_uv.html"
+                                  title='fn graphics::triangulation::rect_tri_list_uv'>rect_tri_list_uv</a></td>
+                           <td class='docblock-short'>
+                                <p>Creates triangle list texture coords from image.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rect_tri_list_xy.html"
+                                  title='fn graphics::triangulation::rect_tri_list_xy'>rect_tri_list_xy</a></td>
+                           <td class='docblock-short'>
+                                <p>Creates triangle list vertices from rectangle.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.stream_polygon_tri_list.html"
+                                  title='fn graphics::triangulation::stream_polygon_tri_list'>stream_polygon_tri_list</a></td>
+                           <td class='docblock-short'>
+                                <p>Streams a polygon into tri list.
+Uses buffers that fit inside L1 cache.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.stream_quad_tri_list.html"
+                                  title='fn graphics::triangulation::stream_quad_tri_list'>stream_quad_tri_list</a></td>
+                           <td class='docblock-short'>
+                                <p>Streams a quad into tri list.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.tx.html"
+                                  title='fn graphics::triangulation::tx'>tx</a></td>
+                           <td class='docblock-short'>
+                                <p>Transformed x coordinate as f32.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.ty.html"
+                                  title='fn graphics::triangulation::ty'>ty</a></td>
+                           <td class='docblock-short'>
+                                <p>Transformed y coordinate as f32.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.with_arc_tri_list.html"
+                                  title='fn graphics::triangulation::with_arc_tri_list'>with_arc_tri_list</a></td>
+                           <td class='docblock-short'>
+                                <p>Streams an arc between the two radian boundaries.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.with_ellipse_border_tri_list.html"
+                                  title='fn graphics::triangulation::with_ellipse_border_tri_list'>with_ellipse_border_tri_list</a></td>
+                           <td class='docblock-short'>
+                                <p>Streams an ellipse border specified by a resolution.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.with_ellipse_tri_list.html"
+                                  title='fn graphics::triangulation::with_ellipse_tri_list'>with_ellipse_tri_list</a></td>
+                           <td class='docblock-short'>
+                                <p>Streams an ellipse specified by a resolution.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.with_lerp_polygons_tri_list.html"
+                                  title='fn graphics::triangulation::with_lerp_polygons_tri_list'>with_lerp_polygons_tri_list</a></td>
+                           <td class='docblock-short'>
+                                <p>Streams tweened polygons using linear interpolation.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.with_polygon_tri_list.html"
+                                  title='fn graphics::triangulation::with_polygon_tri_list'>with_polygon_tri_list</a></td>
+                           <td class='docblock-short'>
+                                <p>Splits polygon into convex segments.
+Create a buffer that fits into L1 cache with 1KB overhead.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.with_round_border_line_tri_list.html"
+                                  title='fn graphics::triangulation::with_round_border_line_tri_list'>with_round_border_line_tri_list</a></td>
+                           <td class='docblock-short'>
+                                <p>Streams a round border line.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.with_round_rectangle_border_tri_list.html"
+                                  title='fn graphics::triangulation::with_round_rectangle_border_tri_list'>with_round_rectangle_border_tri_list</a></td>
+                           <td class='docblock-short'>
+                                <p>Streams a round rectangle border.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.with_round_rectangle_tri_list.html"
+                                  title='fn graphics::triangulation::with_round_rectangle_tri_list'>with_round_rectangle_tri_list</a></td>
+                           <td class='docblock-short'>
+                                <p>Streams a round rectangle.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "graphics";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

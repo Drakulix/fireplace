@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `FontInfo` struct in crate `stb_truetype`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, FontInfo">
+
+    <title>stb_truetype::FontInfo - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>stb_truetype</a></p><script>window.sidebarCurrent = {name: 'FontInfo', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>stb_truetype</a>::<wbr><a class="struct" href=''>FontInfo</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/stb_truetype/lib.rs.html#6-18' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct FontInfo&lt;Data:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html" title="trait core::ops::Deref">Deref</a>&lt;Target=<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>&gt;&gt; { /* fields omitted */ }</pre><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;Data:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html" title="trait core::ops::Deref">Deref</a>&lt;Target=<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>&gt;&gt; <a class="struct" href="../stb_truetype/struct.FontInfo.html" title="struct stb_truetype::FontInfo">FontInfo</a>&lt;Data&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/stb_truetype/lib.rs.html#199-915' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(data: Data, fontstart: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../stb_truetype/struct.FontInfo.html" title="struct stb_truetype::FontInfo">FontInfo</a>&lt;Data&gt;&gt;</code></span></h4>
+<div class='docblock'><p>Given an offset into the file that defines a font, this function builds
+the necessary cached info for the rest of the system.</p>
+</div><h4 id='method.get_num_glyphs' class="method"><span id='get_num_glyphs.v' class='invisible'><code>fn <a href='#method.get_num_glyphs' class='fnname'>get_num_glyphs</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></h4>
+<h4 id='method.find_glyph_index' class="method"><span id='find_glyph_index.v' class='invisible'><code>fn <a href='#method.find_glyph_index' class='fnname'>find_glyph_index</a>(&amp;self, unicode_codepoint: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></h4>
+<div class='docblock'><p>If you&#39;re going to perform multiple operations on the same character
+and you want a speed-up, call this function with the character you&#39;re
+going to process, then use glyph-based functions instead of the
+codepoint-based functions.</p>
+</div><h4 id='method.get_codepoint_shape' class="method"><span id='get_codepoint_shape.v' class='invisible'><code>fn <a href='#method.get_codepoint_shape' class='fnname'>get_codepoint_shape</a>(&amp;self, unicode_codepoint: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html" title="struct collections::vec::Vec">Vec</a>&lt;<a class="struct" href="../stb_truetype/struct.Vertex.html" title="struct stb_truetype::Vertex">Vertex</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>Returns the series of vertices encoding the shape of the glyph for this codepoint.</p>
+
+<p>The shape is a series of countours. Each one starts with
+a moveto, then consists of a series of mixed
+lineto and curveto segments. A lineto
+draws a line from previous endpoint to its x,y; a curveto
+draws a quadratic bezier from previous endpoint to
+its x,y, using cx,cy as the bezier control point.</p>
+</div><h4 id='method.get_glyph_box' class="method"><span id='get_glyph_box.v' class='invisible'><code>fn <a href='#method.get_glyph_box' class='fnname'>get_glyph_box</a>(&amp;self, glyph_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../stb_truetype/struct.Rect.html" title="struct stb_truetype::Rect">Rect</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i16.html">i16</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>Like <code>get_codepoint_box</code>, but takes a glyph index. Use this if you have cached the glyph index for
+a codepoint.</p>
+</div><h4 id='method.get_codepoint_box' class="method"><span id='get_codepoint_box.v' class='invisible'><code>fn <a href='#method.get_codepoint_box' class='fnname'>get_codepoint_box</a>(&amp;self, codepoint: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../stb_truetype/struct.Rect.html" title="struct stb_truetype::Rect">Rect</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i16.html">i16</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>Gets the bounding box of the visible part of the glyph, in unscaled coordinates</p>
+</div><h4 id='method.is_glyph_empty' class="method"><span id='is_glyph_empty.v' class='invisible'><code>fn <a href='#method.is_glyph_empty' class='fnname'>is_glyph_empty</a>(&amp;self, glyph_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>returns true if nothing is drawn for this glyph</p>
+</div><h4 id='method.get_glyph_shape' class="method"><span id='get_glyph_shape.v' class='invisible'><code>fn <a href='#method.get_glyph_shape' class='fnname'>get_glyph_shape</a>(&amp;self, glyph_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html" title="struct collections::vec::Vec">Vec</a>&lt;<a class="struct" href="../stb_truetype/struct.Vertex.html" title="struct stb_truetype::Vertex">Vertex</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>Like <code>get_codepoint_shape</code>, but takes a glyph index instead. Use this if you have cached the
+glyph index for a codepoint.</p>
+</div><h4 id='method.get_glyph_h_metrics' class="method"><span id='get_glyph_h_metrics.v' class='invisible'><code>fn <a href='#method.get_glyph_h_metrics' class='fnname'>get_glyph_h_metrics</a>(&amp;self, glyph_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="struct" href="../stb_truetype/struct.HMetrics.html" title="struct stb_truetype::HMetrics">HMetrics</a></code></span></h4>
+<div class='docblock'><p>like <code>get_codepoint_h_metrics</code>, but takes a glyph index instead. Use this if you have cached the
+glyph index for a codepoint.</p>
+</div><h4 id='method.get_glyph_kern_advance' class="method"><span id='get_glyph_kern_advance.v' class='invisible'><code>fn <a href='#method.get_glyph_kern_advance' class='fnname'>get_glyph_kern_advance</a>(&amp;self, glyph_1: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, glyph_2: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h4>
+<div class='docblock'><p>like <code>get_codepoint_kern_advance</code>, but takes glyph indices instead. Use this if you have cached the
+glyph indices for the codepoints.</p>
+</div><h4 id='method.get_codepoint_kern_advance' class="method"><span id='get_codepoint_kern_advance.v' class='invisible'><code>fn <a href='#method.get_codepoint_kern_advance' class='fnname'>get_codepoint_kern_advance</a>(&amp;self, cp1: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, cp2: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a></code></span></h4>
+<div class='docblock'><p>an additional amount to add to the &#39;advance&#39; value between cp1 and cp2</p>
+</div><h4 id='method.get_codepoint_h_metrics' class="method"><span id='get_codepoint_h_metrics.v' class='invisible'><code>fn <a href='#method.get_codepoint_h_metrics' class='fnname'>get_codepoint_h_metrics</a>(&amp;self, codepoint: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="struct" href="../stb_truetype/struct.HMetrics.html" title="struct stb_truetype::HMetrics">HMetrics</a></code></span></h4>
+<div class='docblock'><p><code>left_side_bearing</code> is the offset from the current horizontal position to the left edge of the character
+<code>advance_width</code> is the offset from the current horizontal position to the next horizontal position
+these are expressed in unscaled coordinates</p>
+</div><h4 id='method.get_v_metrics' class="method"><span id='get_v_metrics.v' class='invisible'><code>fn <a href='#method.get_v_metrics' class='fnname'>get_v_metrics</a>(&amp;self) -&gt; <a class="struct" href="../stb_truetype/struct.VMetrics.html" title="struct stb_truetype::VMetrics">VMetrics</a></code></span></h4>
+<div class='docblock'><p><code>ascent</code> is the coordinate above the baseline the font extends; descent
+is the coordinate below the baseline the font extends (i.e. it is typically negative)
+<code>line_gap</code> is the spacing between one row&#39;s descent and the next row&#39;s ascent...
+so you should advance the vertical position by <code>ascent - descent + line_gap</code>
+these are expressed in unscaled coordinates, so you must multiply by
+the scale factor for a given size</p>
+</div><h4 id='method.get_bounding_box' class="method"><span id='get_bounding_box.v' class='invisible'><code>fn <a href='#method.get_bounding_box' class='fnname'>get_bounding_box</a>(&amp;self) -&gt; <a class="struct" href="../stb_truetype/struct.Rect.html" title="struct stb_truetype::Rect">Rect</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i16.html">i16</a>&gt;</code></span></h4>
+<div class='docblock'><p>the bounding box around all possible characters</p>
+</div><h4 id='method.scale_for_pixel_height' class="method"><span id='scale_for_pixel_height.v' class='invisible'><code>fn <a href='#method.scale_for_pixel_height' class='fnname'>scale_for_pixel_height</a>(&amp;self, height: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a></code></span></h4>
+<div class='docblock'><p>computes a scale factor to produce a font whose &quot;height&quot; is &#39;pixels&#39; tall.
+Height is measured as the distance from the highest ascender to the lowest
+descender; in other words, it&#39;s equivalent to calling GetFontVMetrics
+and computing:
+      scale = pixels / (ascent - descent)
+so if you prefer to measure height by the ascent only, use a similar calculation.</p>
+</div><h4 id='method.scale_for_mapping_em_to_pixels' class="method"><span id='scale_for_mapping_em_to_pixels.v' class='invisible'><code>fn <a href='#method.scale_for_mapping_em_to_pixels' class='fnname'>scale_for_mapping_em_to_pixels</a>(&amp;self, pixels: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a></code></span></h4>
+<div class='docblock'><p>computes a scale factor to produce a font whose EM size is mapped to
+<code>pixels</code> tall. This is probably what traditional APIs compute, but
+I&#39;m not positive.</p>
+</div><h4 id='method.get_glyph_bitmap_box_subpixel' class="method"><span id='get_glyph_bitmap_box_subpixel.v' class='invisible'><code>fn <a href='#method.get_glyph_bitmap_box_subpixel' class='fnname'>get_glyph_bitmap_box_subpixel</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; glyph: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scale_x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scale_y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; shift_x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; shift_y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../stb_truetype/struct.Rect.html" title="struct stb_truetype::Rect">Rect</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>like <code>get_codepoint_bitmap_box_subpixel</code>, but takes a glyph index instead of a codepoint.</p>
+</div><h4 id='method.get_glyph_bitmap_box' class="method"><span id='get_glyph_bitmap_box.v' class='invisible'><code>fn <a href='#method.get_glyph_bitmap_box' class='fnname'>get_glyph_bitmap_box</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; glyph: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scale_x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scale_y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../stb_truetype/struct.Rect.html" title="struct stb_truetype::Rect">Rect</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>like <code>get_codepoint_bitmap_box</code>, but takes a glyph index instead of a codepoint.</p>
+</div><h4 id='method.get_codepoint_bitmap_box_subpixel' class="method"><span id='get_codepoint_bitmap_box_subpixel.v' class='invisible'><code>fn <a href='#method.get_codepoint_bitmap_box_subpixel' class='fnname'>get_codepoint_bitmap_box_subpixel</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; codepoint: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scale_x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scale_y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; shift_x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; shift_y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../stb_truetype/struct.Rect.html" title="struct stb_truetype::Rect">Rect</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>same as get_codepoint_bitmap_box, but you can specify a subpixel
+shift for the character</p>
+</div><h4 id='method.get_codepoint_bitmap_box' class="method"><span id='get_codepoint_bitmap_box.v' class='invisible'><code>fn <a href='#method.get_codepoint_bitmap_box' class='fnname'>get_codepoint_bitmap_box</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; codepoint: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scale_x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scale_y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../stb_truetype/struct.Rect.html" title="struct stb_truetype::Rect">Rect</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>get the bounding box of the bitmap centered around the glyph origin; so the
+bitmap width is x1-x0, height is y1-y0, and location to place
+the bitmap top left is (left_side_bearing*scale, y0).
+(Note that the bitmap uses y-increases-down, but the shape uses
+y-increases-up, so CodepointBitmapBox and CodepointBox are inverted.)</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;Data:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html" title="trait core::ops::Deref">Deref</a>&lt;Target=<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>&gt;&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../stb_truetype/struct.FontInfo.html" title="struct stb_truetype::FontInfo">FontInfo</a>&lt;Data&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/stb_truetype/lib.rs.html#5' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../stb_truetype/struct.FontInfo.html" title="struct stb_truetype::FontInfo">FontInfo</a>&lt;Data&gt;</code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "stb_truetype";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="Source to the Rust file `/work/.vagga/nightly-home/.cargo/registry/src/github.com-1ecc6299db9ec823/conrod-0.51.1/./src/backend/piston/event.rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang">
+
+    <title>event.rs.html -- source</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content source"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+</pre><pre class="rust ">
+<span class="doccomment">//! A backend for converting piston events to conrod&#39;s `Input` type.</span>
+
+<span class="kw">use</span> {<span class="ident">Point</span>, <span class="ident">Scalar</span>};
+<span class="kw">use</span> <span class="ident">event</span>::<span class="ident">Input</span>;
+<span class="kw">use</span> <span class="ident">input</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">piston_input</span>::{<span class="ident">GenericEvent</span>, <span class="ident">UpdateEvent</span>};
+
+<span class="doccomment">/// Converts any `GenericEvent` to an `Input` event for conrod.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The given `width` and `height` must be `Scalar` (DPI agnostic) values.</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">convert</span><span class="op">&lt;</span><span class="ident">E</span><span class="op">&gt;</span>(<span class="ident">event</span>: <span class="ident">E</span>, <span class="ident">win_w</span>: <span class="ident">Scalar</span>, <span class="ident">win_h</span>: <span class="ident">Scalar</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Input</span><span class="op">&gt;</span>
+    <span class="kw">where</span> <span class="ident">E</span>: <span class="ident">GenericEvent</span>,
+{
+    <span class="comment">// Translate the coordinates from top-left-origin-with-y-down to centre-origin-with-y-up.</span>
+    <span class="kw">let</span> <span class="ident">translate_coords</span> <span class="op">=</span> <span class="op">|</span><span class="ident">xy</span>: <span class="ident">Point</span><span class="op">|</span> (<span class="ident">xy</span>[<span class="number">0</span>] <span class="op">-</span> <span class="ident">win_w</span> <span class="op">/</span> <span class="number">2.0</span>, <span class="op">-</span>(<span class="ident">xy</span>[<span class="number">1</span>] <span class="op">-</span> <span class="ident">win_h</span> <span class="op">/</span> <span class="number">2.0</span>));
+
+    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">xy</span>) <span class="op">=</span> <span class="ident">event</span>.<span class="ident">mouse_cursor_args</span>() {
+        <span class="kw">let</span> (<span class="ident">x</span>, <span class="ident">y</span>) <span class="op">=</span> <span class="ident">translate_coords</span>(<span class="ident">xy</span>);
+        <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">Input</span>::<span class="ident">Move</span>(<span class="ident">input</span>::<span class="ident">Motion</span>::<span class="ident">MouseCursor</span>(<span class="ident">x</span>, <span class="ident">y</span>)));
+    }
+
+    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">rel_xy</span>) <span class="op">=</span> <span class="ident">event</span>.<span class="ident">mouse_relative_args</span>() {
+        <span class="kw">let</span> (<span class="ident">rel_x</span>, <span class="ident">rel_y</span>) <span class="op">=</span> <span class="ident">translate_coords</span>(<span class="ident">rel_xy</span>);
+        <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">Input</span>::<span class="ident">Move</span>(<span class="ident">input</span>::<span class="ident">Motion</span>::<span class="ident">MouseRelative</span>(<span class="ident">rel_x</span>, <span class="ident">rel_y</span>)));
+    }
+
+    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">xy</span>) <span class="op">=</span> <span class="ident">event</span>.<span class="ident">mouse_scroll_args</span>() {
+        <span class="comment">// Invert the scrolling of the *y* axis as *y* is up in conrod.</span>
+        <span class="kw">let</span> (<span class="ident">x</span>, <span class="ident">y</span>) <span class="op">=</span> (<span class="ident">xy</span>[<span class="number">0</span>], <span class="op">-</span><span class="ident">xy</span>[<span class="number">1</span>]);
+        <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">Input</span>::<span class="ident">Move</span>(<span class="ident">input</span>::<span class="ident">Motion</span>::<span class="ident">MouseScroll</span>(<span class="ident">x</span>, <span class="ident">y</span>)));
+    }
+
+    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">args</span>) <span class="op">=</span> <span class="ident">event</span>.<span class="ident">controller_axis_args</span>() {
+        <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">Input</span>::<span class="ident">Move</span>(<span class="ident">input</span>::<span class="ident">Motion</span>::<span class="ident">ControllerAxis</span>(<span class="ident">args</span>)));
+    }
+
+    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">button</span>) <span class="op">=</span> <span class="ident">event</span>.<span class="ident">press_args</span>() {
+        <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">Input</span>::<span class="ident">Press</span>(<span class="ident">button</span>));
+    }
+
+    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">button</span>) <span class="op">=</span> <span class="ident">event</span>.<span class="ident">release_args</span>() {
+        <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">Input</span>::<span class="ident">Release</span>(<span class="ident">button</span>));
+    }
+
+    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">text</span>) <span class="op">=</span> <span class="ident">event</span>.<span class="ident">text_args</span>() {
+        <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">Input</span>::<span class="ident">Text</span>(<span class="ident">text</span>));
+    }
+
+    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">dim</span>) <span class="op">=</span> <span class="ident">event</span>.<span class="ident">resize_args</span>() {
+        <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">Input</span>::<span class="ident">Resize</span>(<span class="ident">dim</span>[<span class="number">0</span>], <span class="ident">dim</span>[<span class="number">1</span>]));
+    }
+
+    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">b</span>) <span class="op">=</span> <span class="ident">event</span>.<span class="ident">focus_args</span>() {
+        <span class="kw">return</span> <span class="prelude-val">Some</span>(<span class="ident">Input</span>::<span class="ident">Focus</span>(<span class="ident">b</span>));
+    }
+
+    <span class="prelude-val">None</span>
+}
+</pre>
+</section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../../../jquery.js"></script>
+    <script src="../../../../main.js"></script>
+    <script defer src="../../../../search-index.js"></script>
+</body>
+</html>

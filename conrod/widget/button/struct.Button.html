@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Button` struct in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Button">
+
+    <title>conrod::widget::button::Button - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>widget</a>::<wbr><a href='index.html'>button</a></p><script>window.sidebarCurrent = {name: 'Button', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>widget</a>::<wbr><a href='index.html'>button</a>::<wbr><a class="struct" href=''>Button</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/conrod/widget/button.rs.html#12-21' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Button&lt;'a, S&gt; {
+    pub show: S,
+    pub style: <a class="struct" href="../../../conrod/widget/button/struct.Style.html" title="struct conrod::widget::button::Style">Style</a>,
+    // some fields omitted
+}</pre><div class='docblock'><p>A pressable button widget whose reaction is triggered upon release.</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.show' class="structfield">
+                           <span id='show.v' class='invisible'>
+                           <code>show: S</code>
+                           </span></span><div class='docblock'><p>Whether the <code>Button</code> is a <code>Flat</code> color or an <code>Image</code>.</p>
+</div><span id='structfield.style' class="structfield">
+                           <span id='style.v' class='invisible'>
+                           <code>style: <a class="struct" href="../../../conrod/widget/button/struct.Style.html" title="struct conrod::widget::button::Style">Style</a></code>
+                           </span></span><div class='docblock'><p>Unique styling parameters for the Button.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="struct" href="../../../conrod/widget/button/struct.Button.html" title="struct conrod::widget::button::Button">Button</a>&lt;'a, <a class="struct" href="../../../conrod/widget/button/struct.Image.html" title="struct conrod::widget::button::Image">Image</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/button.rs.html#127-176' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.image' class="method"><span id='image.v' class='invisible'><code>fn <a href='#method.image' class='fnname'>image</a>(image_id: <a class="struct" href="../../../conrod/image/struct.Id.html" title="struct conrod::image::Id">Id</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Begin building a button displaying the given <code>Image</code> on top.</p>
+</div><h4 id='method.source_rectangle' class="method"><span id='source_rectangle.v' class='invisible'><code>fn <a href='#method.source_rectangle' class='fnname'>source_rectangle</a>(self, rect: <a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>The rectangular area of the image that we wish to display.</p>
+
+<p>If this method is not called, the entire image will be used.</p>
+</div><h4 id='method.image_color' class="method"><span id='image_color.v' class='invisible'><code>fn <a href='#method.image_color' class='fnname'>image_color</a>(self, color: <a class="enum" href="../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Map the <code>Image</code>&#39;s luminance to the given color.</p>
+</div><h4 id='method.image_color_with_feedback' class="method"><span id='image_color_with_feedback.v' class='invisible'><code>fn <a href='#method.image_color_with_feedback' class='fnname'>image_color_with_feedback</a>(self, color: <a class="enum" href="../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Map the <code>Image</code>&#39;s luminance to the given color.</p>
+
+<p>The color will change slightly when the button is highlighted or clicked to give the user
+some visual feedback.</p>
+</div><h4 id='method.hover_image' class="method"><span id='hover_image.v' class='invisible'><code>fn <a href='#method.hover_image' class='fnname'>hover_image</a>(self, id: <a class="struct" href="../../../conrod/image/struct.Id.html" title="struct conrod::image::Id">Id</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>The image displayed while the mouse hovers over the <code>Button</code>.</p>
+</div><h4 id='method.press_image' class="method"><span id='press_image.v' class='invisible'><code>fn <a href='#method.press_image' class='fnname'>press_image</a>(self, id: <a class="struct" href="../../../conrod/image/struct.Id.html" title="struct conrod::image::Id">Id</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>The image displayed while the <code>Button</code> is pressed.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="struct" href="../../../conrod/widget/button/struct.Button.html" title="struct conrod::widget::button::Button">Button</a>&lt;'a, <a class="struct" href="../../../conrod/widget/button/struct.Flat.html" title="struct conrod::widget::button::Flat">Flat</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/button.rs.html#178-185' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></span></h4>
+<div class='docblock'><p>Begin building a flat-colored <code>Button</code> widget.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, S&gt; <a class="struct" href="../../../conrod/widget/button/struct.Button.html" title="struct conrod::widget::button::Button">Button</a>&lt;'a, S&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/button.rs.html#188-242' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.label_font_id' class="method"><span id='label_font_id.v' class='invisible'><code>fn <a href='#method.label_font_id' class='fnname'>label_font_id</a>(self, font_id: <a class="struct" href="../../../conrod/text/font/struct.Id.html" title="struct conrod::text::font::Id">Id</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Specify the font used for displaying the label.</p>
+</div><h4 id='method.left_justify_label' class="method"><span id='left_justify_label.v' class='invisible'><code>fn <a href='#method.left_justify_label' class='fnname'>left_justify_label</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Align the label to the left of the <code>Button</code>&#39;s surface.</p>
+</div><h4 id='method.center_justify_label' class="method"><span id='center_justify_label.v' class='invisible'><code>fn <a href='#method.center_justify_label' class='fnname'>center_justify_label</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Align the label to the mid-left of the <code>Button</code>&#39;s surface.</p>
+
+<p>This is the default label alignment.</p>
+</div><h4 id='method.right_justify_label' class="method"><span id='right_justify_label.v' class='invisible'><code>fn <a href='#method.right_justify_label' class='fnname'>right_justify_label</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Align the label to the mid-left of the <code>Button</code>&#39;s surface.</p>
+</div><h4 id='method.label_x' class="method"><span id='label_x.v' class='invisible'><code>fn <a href='#method.label_x' class='fnname'>label_x</a>(self, x: <a class="enum" href="../../../conrod/position/enum.Relative.html" title="enum conrod::position::Relative">Relative</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Specify the label&#39;s position relatively to <code>Button</code> along the <em>x</em> axis.</p>
+</div><h4 id='method.label_y' class="method"><span id='label_y.v' class='invisible'><code>fn <a href='#method.label_y' class='fnname'>label_y</a>(self, y: <a class="enum" href="../../../conrod/position/enum.Relative.html" title="enum conrod::position::Relative">Relative</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Specify the label&#39;s position relatively to <code>Button</code> along the <em>y</em> axis.</p>
+</div><h4 id='method.enabled' class="method"><span id='enabled.v' class='invisible'><code>fn <a href='#method.enabled' class='fnname'>enabled</a>(self, enabled: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Build the type&#39;s self.$($assignee).+ with the given $Type.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, S:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../../conrod/widget/button/struct.Button.html" title="struct conrod::widget::button::Button">Button</a>&lt;'a, S&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/button.rs.html#11' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../../conrod/widget/button/struct.Button.html" title="struct conrod::widget::button::Button">Button</a>&lt;'a, S&gt;</code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Widget</a> for <a class="struct" href="../../../conrod/widget/button/struct.Button.html" title="struct conrod::widget::button::Button">Button</a>&lt;'a, <a class="struct" href="../../../conrod/widget/button/struct.Flat.html" title="struct conrod::widget::button::Flat">Flat</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/button.rs.html#245-284' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.State' class="type"><span id='State.t' class='invisible'><code>type <a href='../../../conrod/widget/trait.Widget.html#associatedtype.State' class="type">State</a> = <a class="struct" href="../../../conrod/widget/button/struct.FlatIds.html" title="struct conrod::widget::button::FlatIds">FlatIds</a></code></span></h4>
+<div class='docblock'><p>State to be stored within the <code>Ui</code>s widget cache. <a href="../../../conrod/widget/trait.Widget.html#associatedtype.State">Read more</a></p>
+</div><h4 id='associatedtype.Style' class="type"><span id='Style.t' class='invisible'><code>type <a href='../../../conrod/widget/trait.Widget.html#associatedtype.Style' class="type">Style</a> = <a class="struct" href="../../../conrod/widget/button/struct.Style.html" title="struct conrod::widget::button::Style">Style</a></code></span></h4>
+<div class='docblock'><p>Every widget is required to have its own associated <code>Style</code> type. This type is intended to contain high-level styling information for the widget that can be <em>optionally specified</em> by a user of the widget. <a href="../../../conrod/widget/trait.Widget.html#associatedtype.Style">Read more</a></p>
+</div><h4 id='associatedtype.Event' class="type"><span id='Event.t' class='invisible'><code>type <a href='../../../conrod/widget/trait.Widget.html#associatedtype.Event' class="type">Event</a> = <a class="struct" href="../../../conrod/widget/button/struct.TimesClicked.html" title="struct conrod::widget::button::TimesClicked">TimesClicked</a></code></span></h4>
+<div class='docblock'><p>The type of event yielded by the widget, returned via the <code>Widget::set</code> function. <a href="../../../conrod/widget/trait.Widget.html#associatedtype.Event">Read more</a></p>
+</div><h4 id='method.common' class="method"><span id='common.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#tymethod.common' class='fnname'>common</a>(&amp;self) -&gt; &amp;<a class="struct" href="../../../conrod/widget/struct.CommonBuilder.html" title="struct conrod::widget::CommonBuilder">CommonBuilder</a></code></span></h4>
+<div class='docblock'><p>Return a reference to a <strong>CommonBuilder</strong> struct owned by the Widget. This method allows us to do a blanket impl of Positionable and Sizeable for T: Widget. <a href="../../../conrod/widget/trait.Widget.html#tymethod.common">Read more</a></p>
+</div><h4 id='method.common_mut' class="method"><span id='common_mut.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#tymethod.common_mut' class='fnname'>common_mut</a>(&amp;mut self) -&gt; &amp;mut <a class="struct" href="../../../conrod/widget/struct.CommonBuilder.html" title="struct conrod::widget::CommonBuilder">CommonBuilder</a></code></span></h4>
+<div class='docblock'><p>Return a mutable reference to a CommonBuilder struct owned by the Widget. This method allows us to do a blanket impl of Positionable and Sizeable for T: Widget. <a href="../../../conrod/widget/trait.Widget.html#tymethod.common_mut">Read more</a></p>
+</div><h4 id='method.init_state' class="method"><span id='init_state.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#tymethod.init_state' class='fnname'>init_state</a>(&amp;self, id_gen: <a class="struct" href="../../../conrod/widget/id/struct.Generator.html" title="struct conrod::widget::id::Generator">Generator</a>) -&gt; Self::<a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">State</a></code></span></h4>
+<div class='docblock'><p>Return the initial <strong>State</strong> of the Widget. <a href="../../../conrod/widget/trait.Widget.html#tymethod.init_state">Read more</a></p>
+</div><h4 id='method.style' class="method"><span id='style.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#tymethod.style' class='fnname'>style</a>(&amp;self) -&gt; <a class="struct" href="../../../conrod/widget/button/struct.Style.html" title="struct conrod::widget::button::Style">Style</a></code></span></h4>
+<div class='docblock'><p>Return the styling of the widget. <a href="../../../conrod/widget/trait.Widget.html#tymethod.style">Read more</a></p>
+</div><h4 id='method.update' class="method"><span id='update.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#tymethod.update' class='fnname'>update</a>(self, args: <a class="struct" href="../../../conrod/widget/struct.UpdateArgs.html" title="struct conrod::widget::UpdateArgs">UpdateArgs</a>&lt;Self&gt;) -&gt; Self::<a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Event</a></code></span></h4>
+<div class='docblock'><p>Update the state of the Button.</p>
+</div><h4 id='method.default_x_position' class="method"><span id='default_x_position.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.default_x_position' class='fnname'>default_x_position</a>(&amp;self, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a></code></span></h4>
+<div class='docblock'><p>The default <strong>Position</strong> for the widget along the <em>x</em> axis. <a href="../../../conrod/widget/trait.Widget.html#method.default_x_position">Read more</a></p>
+</div><h4 id='method.default_y_position' class="method"><span id='default_y_position.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.default_y_position' class='fnname'>default_y_position</a>(&amp;self, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a></code></span></h4>
+<div class='docblock'><p>The default <strong>Position</strong> for the widget along the <em>y</em> axis. <a href="../../../conrod/widget/trait.Widget.html#method.default_y_position">Read more</a></p>
+</div><h4 id='method.default_x_dimension' class="method"><span id='default_x_dimension.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.default_x_dimension' class='fnname'>default_x_dimension</a>(&amp;self, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Dimension.html" title="enum conrod::position::Dimension">Dimension</a></code></span></h4>
+<div class='docblock'><p>The default width for the <strong>Widget</strong>. <a href="../../../conrod/widget/trait.Widget.html#method.default_x_dimension">Read more</a></p>
+</div><h4 id='method.default_y_dimension' class="method"><span id='default_y_dimension.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.default_y_dimension' class='fnname'>default_y_dimension</a>(&amp;self, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Dimension.html" title="enum conrod::position::Dimension">Dimension</a></code></span></h4>
+<div class='docblock'><p>The default height of the widget. <a href="../../../conrod/widget/trait.Widget.html#method.default_y_dimension">Read more</a></p>
+</div><h4 id='method.drag_area' class="method"><span id='drag_area.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.drag_area' class='fnname'>drag_area</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _dim: <a class="type" href="../../../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _style: &amp;Self::<a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Style</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _theme: &amp;<a class="struct" href="../../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>&gt;</code></span></h4>
+<div class='docblock'><p>If the widget is draggable, implement this method and return the position and dimensions of the draggable space. The position should be relative to the center of the widget. <a href="../../../conrod/widget/trait.Widget.html#method.drag_area">Read more</a></p>
+</div><h4 id='method.kid_area' class="method"><span id='kid_area.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.kid_area' class='fnname'>kid_area</a>(&amp;self, args: <a class="struct" href="../../../conrod/widget/struct.KidAreaArgs.html" title="struct conrod::widget::KidAreaArgs">KidAreaArgs</a>&lt;Self&gt;) -&gt; <a class="struct" href="../../../conrod/widget/struct.KidArea.html" title="struct conrod::widget::KidArea">KidArea</a></code></span></h4>
+<div class='docblock'><p>The area on which child widgets will be placed when using the <code>Place</code> <code>Position</code> methods.</p>
+</div><h4 id='method.parent' class="method"><span id='parent.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.parent' class='fnname'>parent</a>(self, parent_id: <a class="type" href="../../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set the parent widget for this Widget by passing the WidgetId of the parent. <a href="../../../conrod/widget/trait.Widget.html#method.parent">Read more</a></p>
+</div><h4 id='method.no_parent' class="method"><span id='no_parent.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.no_parent' class='fnname'>no_parent</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Specify that this widget has no parent widgets.</p>
+</div><h4 id='method.place_on_kid_area' class="method"><span id='place_on_kid_area.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.place_on_kid_area' class='fnname'>place_on_kid_area</a>(self, b: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set whether or not the <strong>Widget</strong> should be placed on the kid_area. <a href="../../../conrod/widget/trait.Widget.html#method.place_on_kid_area">Read more</a></p>
+</div><h4 id='method.graphics_for' class="method"><span id='graphics_for.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.graphics_for' class='fnname'>graphics_for</a>(self, id: <a class="type" href="../../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Indicates that the <strong>Widget</strong> is used as a non-interactive graphical element for some other widget. <a href="../../../conrod/widget/trait.Widget.html#method.graphics_for">Read more</a></p>
+</div><h4 id='method.floating' class="method"><span id='floating.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.floating' class='fnname'>floating</a>(self, is_floating: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set whether or not the widget is floating (the default is <code>false</code>). A typical example of a floating widget would be a pop-up or alert window. <a href="../../../conrod/widget/trait.Widget.html#method.floating">Read more</a></p>
+</div><h4 id='method.crop_kids' class="method"><span id='crop_kids.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.crop_kids' class='fnname'>crop_kids</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Indicates that all widgets who are children of this widget should be cropped to the <code>kid_area</code> of this widget. <a href="../../../conrod/widget/trait.Widget.html#method.crop_kids">Read more</a></p>
+</div><h4 id='method.scroll_kids' class="method"><span id='scroll_kids.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.scroll_kids' class='fnname'>scroll_kids</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Makes the widget&#39;s <code>KidArea</code> scrollable. <a href="../../../conrod/widget/trait.Widget.html#method.scroll_kids">Read more</a></p>
+</div><h4 id='method.scroll_kids_vertically' class="method"><span id='scroll_kids_vertically.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.scroll_kids_vertically' class='fnname'>scroll_kids_vertically</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Makes the widget&#39;s <code>KidArea</code> scrollable. <a href="../../../conrod/widget/trait.Widget.html#method.scroll_kids_vertically">Read more</a></p>
+</div><h4 id='method.scroll_kids_horizontally' class="method"><span id='scroll_kids_horizontally.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.scroll_kids_horizontally' class='fnname'>scroll_kids_horizontally</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set whether or not the widget&#39;s <code>KidArea</code> is scrollable (the default is false). <a href="../../../conrod/widget/trait.Widget.html#method.scroll_kids_horizontally">Read more</a></p>
+</div><h4 id='method.and' class="method"><span id='and.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.and' class='fnname'>and</a>&lt;F&gt;(self, build: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(Self) -&gt; Self</span></code></span></h4>
+<div class='docblock'><p>A builder method that &quot;lifts&quot; the <strong>Widget</strong> through the given <code>build</code> function. <a href="../../../conrod/widget/trait.Widget.html#method.and">Read more</a></p>
+</div><h4 id='method.and_mut' class="method"><span id='and_mut.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.and_mut' class='fnname'>and_mut</a>&lt;F&gt;(self, mutate: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(&amp;mut Self)</span></code></span></h4>
+<div class='docblock'><p>A builder method that mutates the <strong>Widget</strong> with the given <code>mutate</code> function. <a href="../../../conrod/widget/trait.Widget.html#method.and_mut">Read more</a></p>
+</div><h4 id='method.and_if' class="method"><span id='and_if.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.and_if' class='fnname'>and_if</a>&lt;F&gt;(self, cond: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, build: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(Self) -&gt; Self</span></code></span></h4>
+<div class='docblock'><p>A method that conditionally builds the <strong>Widget</strong> with the given <code>build</code> function. <a href="../../../conrod/widget/trait.Widget.html#method.and_if">Read more</a></p>
+</div><h4 id='method.and_then' class="method"><span id='and_then.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.and_then' class='fnname'>and_then</a>&lt;T, F&gt;(self, maybe: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;, build: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(Self, T) -&gt; Self</span></code></span></h4>
+<div class='docblock'><p>A method that optionally builds the the <strong>Widget</strong> with the given <code>build</code> function. <a href="../../../conrod/widget/trait.Widget.html#method.and_then">Read more</a></p>
+</div><h4 id='method.set' class="method"><span id='set.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.set' class='fnname'>set</a>&lt;'a, 'b&gt;(self, id: <a class="type" href="../../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, ui_cell: &amp;'a mut <a class="struct" href="../../../conrod/struct.UiCell.html" title="struct conrod::UiCell">UiCell</a>&lt;'b&gt;) -&gt; Self::<a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Event</a></code></span></h4>
+<div class='docblock'><p>Note: There should be no need to override this method. <a href="../../../conrod/widget/trait.Widget.html#method.set">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Widget</a> for <a class="struct" href="../../../conrod/widget/button/struct.Button.html" title="struct conrod::widget::button::Button">Button</a>&lt;'a, <a class="struct" href="../../../conrod/widget/button/struct.Image.html" title="struct conrod::widget::button::Image">Image</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/button.rs.html#286-352' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.State-1' class="type"><span id='State.t-1' class='invisible'><code>type <a href='../../../conrod/widget/trait.Widget.html#associatedtype.State' class="type">State</a> = <a class="struct" href="../../../conrod/widget/button/struct.ImageIds.html" title="struct conrod::widget::button::ImageIds">ImageIds</a></code></span></h4>
+<div class='docblock'><p>State to be stored within the <code>Ui</code>s widget cache. <a href="../../../conrod/widget/trait.Widget.html#associatedtype.State">Read more</a></p>
+</div><h4 id='associatedtype.Style-1' class="type"><span id='Style.t-1' class='invisible'><code>type <a href='../../../conrod/widget/trait.Widget.html#associatedtype.Style' class="type">Style</a> = <a class="struct" href="../../../conrod/widget/button/struct.Style.html" title="struct conrod::widget::button::Style">Style</a></code></span></h4>
+<div class='docblock'><p>Every widget is required to have its own associated <code>Style</code> type. This type is intended to contain high-level styling information for the widget that can be <em>optionally specified</em> by a user of the widget. <a href="../../../conrod/widget/trait.Widget.html#associatedtype.Style">Read more</a></p>
+</div><h4 id='associatedtype.Event-1' class="type"><span id='Event.t-1' class='invisible'><code>type <a href='../../../conrod/widget/trait.Widget.html#associatedtype.Event' class="type">Event</a> = <a class="struct" href="../../../conrod/widget/button/struct.TimesClicked.html" title="struct conrod::widget::button::TimesClicked">TimesClicked</a></code></span></h4>
+<div class='docblock'><p>The type of event yielded by the widget, returned via the <code>Widget::set</code> function. <a href="../../../conrod/widget/trait.Widget.html#associatedtype.Event">Read more</a></p>
+</div><h4 id='method.common-1' class="method"><span id='common.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#tymethod.common' class='fnname'>common</a>(&amp;self) -&gt; &amp;<a class="struct" href="../../../conrod/widget/struct.CommonBuilder.html" title="struct conrod::widget::CommonBuilder">CommonBuilder</a></code></span></h4>
+<div class='docblock'><p>Return a reference to a <strong>CommonBuilder</strong> struct owned by the Widget. This method allows us to do a blanket impl of Positionable and Sizeable for T: Widget. <a href="../../../conrod/widget/trait.Widget.html#tymethod.common">Read more</a></p>
+</div><h4 id='method.common_mut-1' class="method"><span id='common_mut.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#tymethod.common_mut' class='fnname'>common_mut</a>(&amp;mut self) -&gt; &amp;mut <a class="struct" href="../../../conrod/widget/struct.CommonBuilder.html" title="struct conrod::widget::CommonBuilder">CommonBuilder</a></code></span></h4>
+<div class='docblock'><p>Return a mutable reference to a CommonBuilder struct owned by the Widget. This method allows us to do a blanket impl of Positionable and Sizeable for T: Widget. <a href="../../../conrod/widget/trait.Widget.html#tymethod.common_mut">Read more</a></p>
+</div><h4 id='method.init_state-1' class="method"><span id='init_state.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#tymethod.init_state' class='fnname'>init_state</a>(&amp;self, id_gen: <a class="struct" href="../../../conrod/widget/id/struct.Generator.html" title="struct conrod::widget::id::Generator">Generator</a>) -&gt; Self::<a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">State</a></code></span></h4>
+<div class='docblock'><p>Return the initial <strong>State</strong> of the Widget. <a href="../../../conrod/widget/trait.Widget.html#tymethod.init_state">Read more</a></p>
+</div><h4 id='method.style-1' class="method"><span id='style.v-2' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#tymethod.style' class='fnname'>style</a>(&amp;self) -&gt; <a class="struct" href="../../../conrod/widget/button/struct.Style.html" title="struct conrod::widget::button::Style">Style</a></code></span></h4>
+<div class='docblock'><p>Return the styling of the widget. <a href="../../../conrod/widget/trait.Widget.html#tymethod.style">Read more</a></p>
+</div><h4 id='method.update-1' class="method"><span id='update.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#tymethod.update' class='fnname'>update</a>(self, args: <a class="struct" href="../../../conrod/widget/struct.UpdateArgs.html" title="struct conrod::widget::UpdateArgs">UpdateArgs</a>&lt;Self&gt;) -&gt; Self::<a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Event</a></code></span></h4>
+<div class='docblock'><p>Update the state of the Button.</p>
+</div><h4 id='method.default_x_position-1' class="method"><span id='default_x_position.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.default_x_position' class='fnname'>default_x_position</a>(&amp;self, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a></code></span></h4>
+<div class='docblock'><p>The default <strong>Position</strong> for the widget along the <em>x</em> axis. <a href="../../../conrod/widget/trait.Widget.html#method.default_x_position">Read more</a></p>
+</div><h4 id='method.default_y_position-1' class="method"><span id='default_y_position.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.default_y_position' class='fnname'>default_y_position</a>(&amp;self, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a></code></span></h4>
+<div class='docblock'><p>The default <strong>Position</strong> for the widget along the <em>y</em> axis. <a href="../../../conrod/widget/trait.Widget.html#method.default_y_position">Read more</a></p>
+</div><h4 id='method.default_x_dimension-1' class="method"><span id='default_x_dimension.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.default_x_dimension' class='fnname'>default_x_dimension</a>(&amp;self, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Dimension.html" title="enum conrod::position::Dimension">Dimension</a></code></span></h4>
+<div class='docblock'><p>The default width for the <strong>Widget</strong>. <a href="../../../conrod/widget/trait.Widget.html#method.default_x_dimension">Read more</a></p>
+</div><h4 id='method.default_y_dimension-1' class="method"><span id='default_y_dimension.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.default_y_dimension' class='fnname'>default_y_dimension</a>(&amp;self, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Dimension.html" title="enum conrod::position::Dimension">Dimension</a></code></span></h4>
+<div class='docblock'><p>The default height of the widget. <a href="../../../conrod/widget/trait.Widget.html#method.default_y_dimension">Read more</a></p>
+</div><h4 id='method.drag_area-1' class="method"><span id='drag_area.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.drag_area' class='fnname'>drag_area</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _dim: <a class="type" href="../../../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _style: &amp;Self::<a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Style</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _theme: &amp;<a class="struct" href="../../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>&gt;</code></span></h4>
+<div class='docblock'><p>If the widget is draggable, implement this method and return the position and dimensions of the draggable space. The position should be relative to the center of the widget. <a href="../../../conrod/widget/trait.Widget.html#method.drag_area">Read more</a></p>
+</div><h4 id='method.kid_area-1' class="method"><span id='kid_area.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.kid_area' class='fnname'>kid_area</a>(&amp;self, args: <a class="struct" href="../../../conrod/widget/struct.KidAreaArgs.html" title="struct conrod::widget::KidAreaArgs">KidAreaArgs</a>&lt;Self&gt;) -&gt; <a class="struct" href="../../../conrod/widget/struct.KidArea.html" title="struct conrod::widget::KidArea">KidArea</a></code></span></h4>
+<div class='docblock'><p>The area on which child widgets will be placed when using the <code>Place</code> <code>Position</code> methods.</p>
+</div><h4 id='method.parent-1' class="method"><span id='parent.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.parent' class='fnname'>parent</a>(self, parent_id: <a class="type" href="../../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set the parent widget for this Widget by passing the WidgetId of the parent. <a href="../../../conrod/widget/trait.Widget.html#method.parent">Read more</a></p>
+</div><h4 id='method.no_parent-1' class="method"><span id='no_parent.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.no_parent' class='fnname'>no_parent</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Specify that this widget has no parent widgets.</p>
+</div><h4 id='method.place_on_kid_area-1' class="method"><span id='place_on_kid_area.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.place_on_kid_area' class='fnname'>place_on_kid_area</a>(self, b: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set whether or not the <strong>Widget</strong> should be placed on the kid_area. <a href="../../../conrod/widget/trait.Widget.html#method.place_on_kid_area">Read more</a></p>
+</div><h4 id='method.graphics_for-1' class="method"><span id='graphics_for.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.graphics_for' class='fnname'>graphics_for</a>(self, id: <a class="type" href="../../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Indicates that the <strong>Widget</strong> is used as a non-interactive graphical element for some other widget. <a href="../../../conrod/widget/trait.Widget.html#method.graphics_for">Read more</a></p>
+</div><h4 id='method.floating-1' class="method"><span id='floating.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.floating' class='fnname'>floating</a>(self, is_floating: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set whether or not the widget is floating (the default is <code>false</code>). A typical example of a floating widget would be a pop-up or alert window. <a href="../../../conrod/widget/trait.Widget.html#method.floating">Read more</a></p>
+</div><h4 id='method.crop_kids-1' class="method"><span id='crop_kids.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.crop_kids' class='fnname'>crop_kids</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Indicates that all widgets who are children of this widget should be cropped to the <code>kid_area</code> of this widget. <a href="../../../conrod/widget/trait.Widget.html#method.crop_kids">Read more</a></p>
+</div><h4 id='method.scroll_kids-1' class="method"><span id='scroll_kids.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.scroll_kids' class='fnname'>scroll_kids</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Makes the widget&#39;s <code>KidArea</code> scrollable. <a href="../../../conrod/widget/trait.Widget.html#method.scroll_kids">Read more</a></p>
+</div><h4 id='method.scroll_kids_vertically-1' class="method"><span id='scroll_kids_vertically.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.scroll_kids_vertically' class='fnname'>scroll_kids_vertically</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Makes the widget&#39;s <code>KidArea</code> scrollable. <a href="../../../conrod/widget/trait.Widget.html#method.scroll_kids_vertically">Read more</a></p>
+</div><h4 id='method.scroll_kids_horizontally-1' class="method"><span id='scroll_kids_horizontally.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.scroll_kids_horizontally' class='fnname'>scroll_kids_horizontally</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set whether or not the widget&#39;s <code>KidArea</code> is scrollable (the default is false). <a href="../../../conrod/widget/trait.Widget.html#method.scroll_kids_horizontally">Read more</a></p>
+</div><h4 id='method.and-1' class="method"><span id='and.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.and' class='fnname'>and</a>&lt;F&gt;(self, build: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(Self) -&gt; Self</span></code></span></h4>
+<div class='docblock'><p>A builder method that &quot;lifts&quot; the <strong>Widget</strong> through the given <code>build</code> function. <a href="../../../conrod/widget/trait.Widget.html#method.and">Read more</a></p>
+</div><h4 id='method.and_mut-1' class="method"><span id='and_mut.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.and_mut' class='fnname'>and_mut</a>&lt;F&gt;(self, mutate: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(&amp;mut Self)</span></code></span></h4>
+<div class='docblock'><p>A builder method that mutates the <strong>Widget</strong> with the given <code>mutate</code> function. <a href="../../../conrod/widget/trait.Widget.html#method.and_mut">Read more</a></p>
+</div><h4 id='method.and_if-1' class="method"><span id='and_if.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.and_if' class='fnname'>and_if</a>&lt;F&gt;(self, cond: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, build: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(Self) -&gt; Self</span></code></span></h4>
+<div class='docblock'><p>A method that conditionally builds the <strong>Widget</strong> with the given <code>build</code> function. <a href="../../../conrod/widget/trait.Widget.html#method.and_if">Read more</a></p>
+</div><h4 id='method.and_then-1' class="method"><span id='and_then.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.and_then' class='fnname'>and_then</a>&lt;T, F&gt;(self, maybe: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;, build: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(Self, T) -&gt; Self</span></code></span></h4>
+<div class='docblock'><p>A method that optionally builds the the <strong>Widget</strong> with the given <code>build</code> function. <a href="../../../conrod/widget/trait.Widget.html#method.and_then">Read more</a></p>
+</div><h4 id='method.set-1' class="method"><span id='set.v-1' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.set' class='fnname'>set</a>&lt;'a, 'b&gt;(self, id: <a class="type" href="../../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, ui_cell: &amp;'a mut <a class="struct" href="../../../conrod/struct.UiCell.html" title="struct conrod::UiCell">UiCell</a>&lt;'b&gt;) -&gt; Self::<a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Event</a></code></span></h4>
+<div class='docblock'><p>Note: There should be no need to override this method. <a href="../../../conrod/widget/trait.Widget.html#method.set">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, S&gt; <a class="trait" href="../../../conrod/color/trait.Colorable.html" title="trait conrod::color::Colorable">Colorable</a> for <a class="struct" href="../../../conrod/widget/button/struct.Button.html" title="struct conrod::widget::button::Button">Button</a>&lt;'a, S&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/button.rs.html#414-416' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.color' class="method"><span id='color.v' class='invisible'><code>fn <a href='../../../conrod/color/trait.Colorable.html#tymethod.color' class='fnname'>color</a>(self, color: <a class="enum" href="../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Build the type&#39;s self.$($assignee).+ with the given $Type.</p>
+</div><h4 id='method.rgba' class="method"><span id='rgba.v' class='invisible'><code>fn <a href='../../../conrod/color/trait.Colorable.html#method.rgba' class='fnname'>rgba</a>(self, r: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, g: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, b: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, a: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set the color of the widget from rgba values.</p>
+</div><h4 id='method.rgb' class="method"><span id='rgb.v' class='invisible'><code>fn <a href='../../../conrod/color/trait.Colorable.html#method.rgb' class='fnname'>rgb</a>(self, r: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, g: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, b: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set the color of the widget from rgb values.</p>
+</div><h4 id='method.hsla' class="method"><span id='hsla.v' class='invisible'><code>fn <a href='../../../conrod/color/trait.Colorable.html#method.hsla' class='fnname'>hsla</a>(self, h: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, s: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, l: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, a: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set the color of the widget from hsla values.</p>
+</div><h4 id='method.hsl' class="method"><span id='hsl.v' class='invisible'><code>fn <a href='../../../conrod/color/trait.Colorable.html#method.hsl' class='fnname'>hsl</a>(self, h: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, s: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, l: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set the color of the widget from hsl values.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, S&gt; <a class="trait" href="../../../conrod/trait.Borderable.html" title="trait conrod::Borderable">Borderable</a> for <a class="struct" href="../../../conrod/widget/button/struct.Button.html" title="struct conrod::widget::button::Button">Button</a>&lt;'a, S&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/button.rs.html#418-423' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.border' class="method"><span id='border.v' class='invisible'><code>fn <a href='../../../conrod/trait.Borderable.html#tymethod.border' class='fnname'>border</a>(self, border: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Build the type&#39;s self.$($assignee).+ with the given $Type.</p>
+</div><h4 id='method.border_color' class="method"><span id='border_color.v' class='invisible'><code>fn <a href='../../../conrod/trait.Borderable.html#tymethod.border_color' class='fnname'>border_color</a>(self, border_color: <a class="enum" href="../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Build the type&#39;s self.$($assignee).+ with the given $Type.</p>
+</div><h4 id='method.border_rgba' class="method"><span id='border_rgba.v' class='invisible'><code>fn <a href='../../../conrod/trait.Borderable.html#method.border_rgba' class='fnname'>border_rgba</a>(self, r: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, g: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, b: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, a: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set the color of the widget&#39;s border with rgba values.</p>
+</div><h4 id='method.border_rgb' class="method"><span id='border_rgb.v' class='invisible'><code>fn <a href='../../../conrod/trait.Borderable.html#method.border_rgb' class='fnname'>border_rgb</a>(self, r: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, g: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, b: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set the color of the widget&#39;s border with rgb values.</p>
+</div><h4 id='method.border_hsla' class="method"><span id='border_hsla.v' class='invisible'><code>fn <a href='../../../conrod/trait.Borderable.html#method.border_hsla' class='fnname'>border_hsla</a>(self, h: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, s: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, l: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, a: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set the color of the widget&#39;s border with hsla values.</p>
+</div><h4 id='method.border_hsl' class="method"><span id='border_hsl.v' class='invisible'><code>fn <a href='../../../conrod/trait.Borderable.html#method.border_hsl' class='fnname'>border_hsl</a>(self, h: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, s: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, l: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set the color of the widget&#39;s border with hsl values.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, S&gt; <a class="trait" href="../../../conrod/trait.Labelable.html" title="trait conrod::Labelable">Labelable</a>&lt;'a&gt; for <a class="struct" href="../../../conrod/widget/button/struct.Button.html" title="struct conrod::widget::button::Button">Button</a>&lt;'a, S&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/button.rs.html#425-431' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.label' class="method"><span id='label.v' class='invisible'><code>fn <a href='../../../conrod/trait.Labelable.html#tymethod.label' class='fnname'>label</a>(self, label: &amp;'a <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Build the type&#39;s self.$($assignee).+ with the given $Type.</p>
+</div><h4 id='method.label_color' class="method"><span id='label_color.v' class='invisible'><code>fn <a href='../../../conrod/trait.Labelable.html#tymethod.label_color' class='fnname'>label_color</a>(self, label_color: <a class="enum" href="../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Build the type&#39;s self.$($assignee).+ with the given $Type.</p>
+</div><h4 id='method.label_font_size' class="method"><span id='label_font_size.v' class='invisible'><code>fn <a href='../../../conrod/trait.Labelable.html#tymethod.label_font_size' class='fnname'>label_font_size</a>(self, label_font_size: <a class="type" href="../../../conrod/type.FontSize.html" title="type conrod::FontSize">FontSize</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Build the type&#39;s self.$($assignee).+ with the given $Type.</p>
+</div><h4 id='method.label_rgba' class="method"><span id='label_rgba.v' class='invisible'><code>fn <a href='../../../conrod/trait.Labelable.html#method.label_rgba' class='fnname'>label_rgba</a>(self, r: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, g: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, b: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, a: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set the color of the widget&#39;s label from rgba values.</p>
+</div><h4 id='method.label_rgb' class="method"><span id='label_rgb.v' class='invisible'><code>fn <a href='../../../conrod/trait.Labelable.html#method.label_rgb' class='fnname'>label_rgb</a>(self, r: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, g: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, b: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set the color of the widget&#39;s label from rgb values.</p>
+</div><h4 id='method.label_hsla' class="method"><span id='label_hsla.v' class='invisible'><code>fn <a href='../../../conrod/trait.Labelable.html#method.label_hsla' class='fnname'>label_hsla</a>(self, h: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, s: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, l: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, a: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set the color of the widget&#39;s label from hsla values.</p>
+</div><h4 id='method.label_hsl' class="method"><span id='label_hsl.v' class='invisible'><code>fn <a href='../../../conrod/trait.Labelable.html#method.label_hsl' class='fnname'>label_hsl</a>(self, h: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, s: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>, l: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set the color of the widget&#39;s label from hsl values.</p>
+</div><h4 id='method.small_font' class="method"><span id='small_font.v' class='invisible'><code>fn <a href='../../../conrod/trait.Labelable.html#method.small_font' class='fnname'>small_font</a>(self, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set a &quot;small&quot; font size for the widget&#39;s label.</p>
+</div><h4 id='method.medium_font' class="method"><span id='medium_font.v' class='invisible'><code>fn <a href='../../../conrod/trait.Labelable.html#method.medium_font' class='fnname'>medium_font</a>(self, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set a &quot;medium&quot; font size for the widget&#39;s label.</p>
+</div><h4 id='method.large_font' class="method"><span id='large_font.v' class='invisible'><code>fn <a href='../../../conrod/trait.Labelable.html#method.large_font' class='fnname'>large_font</a>(self, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set a &quot;large&quot; font size for the widget&#39;s label.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

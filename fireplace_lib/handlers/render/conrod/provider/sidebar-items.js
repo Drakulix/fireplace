@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["background","Types to render a background via `conrod` on the compositor"],["statusbar","Types to render a statusbar via `conrod` on the compositor"]],"trait":[["ConrodProvider","An Interface for dealing with types, that want to render on a `ConrodInstance`"]]});

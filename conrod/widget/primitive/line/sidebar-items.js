@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Cap","Whether the end of the **Line** should be flat or rounded."],["Pattern","The pattern used to draw the line."]],"struct":[["Line","A simple, non-interactive widget for drawing a single straight Line."],["State","Unique state for the Line widget."],["Style","Unique styling for a Line widget."]]});

@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `vecmath` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, vecmath">
+
+    <title>vecmath - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'vecmath', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>vecmath</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/vecmath/lib.rs.html#1-1997' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>A simple and generic library for vector math.</p>
+
+<p>Notice that row major is mathematical standard,
+while OpenGL uses column major format.
+This library supports both formats, prefixing functions with &#39;row_&#39; or &#39;col_&#39;.</p>
+
+<p>For row major affine transforms, use <code>Matrix2x3</code> (2D) and <code>Matrix3x4</code> (3D).
+For column major affine transforms, use <code>Matrix3x2</code> (2D) and <code>Matrix4x3</code> (3D).</p>
+
+<p>If you are using <code>Matrix3</code> or <code>Matrix4</code>,
+then you need to pick either row or column major.</p>
+
+<p>Notice that there are two kinds of transforms: Positions and vectors.
+The vector transforms ignores the translate component.
+For example, <code>row_mat2x3_transform_pos2</code> transforms a position.
+<code>row_mat2x3_transform_vec2</code> transforms a vector.</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="traits/index.html"
+                                  title='mod vecmath::traits'>traits</a></td>
+                           <td class='docblock-short'>
+                                <p>Various useful traits</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat2x3_row.html"
+                                  title='fn vecmath::col_mat2x3_row'>col_mat2x3_row</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a row vector of a column matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat3_mul.html"
+                                  title='fn vecmath::col_mat3_mul'>col_mat3_mul</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies two matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat3_mul_col.html"
+                                  title='fn vecmath::col_mat3_mul_col'>col_mat3_mul_col</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes column vector in column matrix product.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat3_row.html"
+                                  title='fn vecmath::col_mat3_row'>col_mat3_row</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a row vector of a column matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat3_transform.html"
+                                  title='fn vecmath::col_mat3_transform'>col_mat3_transform</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 3D vector through a matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat3_transform_pos2.html"
+                                  title='fn vecmath::col_mat3_transform_pos2'>col_mat3_transform_pos2</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 2D position through column matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat3_transform_vec2.html"
+                                  title='fn vecmath::col_mat3_transform_vec2'>col_mat3_transform_vec2</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 2D vector through column matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat3x2_mul.html"
+                                  title='fn vecmath::col_mat3x2_mul'>col_mat3x2_mul</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies two matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat3x2_mul_col.html"
+                                  title='fn vecmath::col_mat3x2_mul_col'>col_mat3x2_mul_col</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes column vector in column matrix product.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat3x2_row.html"
+                                  title='fn vecmath::col_mat3x2_row'>col_mat3x2_row</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a row vector of a column matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat3x2_transform_pos2.html"
+                                  title='fn vecmath::col_mat3x2_transform_pos2'>col_mat3x2_transform_pos2</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 2D position through matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat3x2_transform_vec2.html"
+                                  title='fn vecmath::col_mat3x2_transform_vec2'>col_mat3x2_transform_vec2</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 2D vector through matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat3x4_row.html"
+                                  title='fn vecmath::col_mat3x4_row'>col_mat3x4_row</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a row vector of a column matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat4_mul.html"
+                                  title='fn vecmath::col_mat4_mul'>col_mat4_mul</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies two matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat4_mul_col.html"
+                                  title='fn vecmath::col_mat4_mul_col'>col_mat4_mul_col</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes column vector in column matrix product.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat4_row.html"
+                                  title='fn vecmath::col_mat4_row'>col_mat4_row</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a row vector of a column matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat4_transform.html"
+                                  title='fn vecmath::col_mat4_transform'>col_mat4_transform</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 4D vector through a matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat4x3_mul.html"
+                                  title='fn vecmath::col_mat4x3_mul'>col_mat4x3_mul</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies two matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat4x3_mul_col.html"
+                                  title='fn vecmath::col_mat4x3_mul_col'>col_mat4x3_mul_col</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes column vector in column matrix product.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat4x3_row.html"
+                                  title='fn vecmath::col_mat4x3_row'>col_mat4x3_row</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a column vector of a row matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat4x3_transform_pos3.html"
+                                  title='fn vecmath::col_mat4x3_transform_pos3'>col_mat4x3_transform_pos3</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 3D position through matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.col_mat4x3_transform_vec3.html"
+                                  title='fn vecmath::col_mat4x3_transform_vec3'>col_mat4x3_transform_vec3</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 3D vector through matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat2x3_add.html"
+                                  title='fn vecmath::mat2x3_add'>mat2x3_add</a></td>
+                           <td class='docblock-short'>
+                                <p>Adds two matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat2x3_cast.html"
+                                  title='fn vecmath::mat2x3_cast'>mat2x3_cast</a></td>
+                           <td class='docblock-short'>
+                                <p>Converts to another matrix type.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat2x3_det.html"
+                                  title='fn vecmath::mat2x3_det'>mat2x3_det</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the determinant of a matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat2x3_id.html"
+                                  title='fn vecmath::mat2x3_id'>mat2x3_id</a></td>
+                           <td class='docblock-short'>
+                                <p>Constructs identity matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat2x3_inv.html"
+                                  title='fn vecmath::mat2x3_inv'>mat2x3_inv</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the inverse of a 2x3 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat2x3_inv_det.html"
+                                  title='fn vecmath::mat2x3_inv_det'>mat2x3_inv_det</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes inverse determinant of a 2x3 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat2x3_sub.html"
+                                  title='fn vecmath::mat2x3_sub'>mat2x3_sub</a></td>
+                           <td class='docblock-short'>
+                                <p>Subtracts &#39;b&#39; from &#39;a&#39;.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat2x3_transposed.html"
+                                  title='fn vecmath::mat2x3_transposed'>mat2x3_transposed</a></td>
+                           <td class='docblock-short'>
+                                <p>Constructs the transpose of a matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3_add.html"
+                                  title='fn vecmath::mat3_add'>mat3_add</a></td>
+                           <td class='docblock-short'>
+                                <p>Adds two matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3_cast.html"
+                                  title='fn vecmath::mat3_cast'>mat3_cast</a></td>
+                           <td class='docblock-short'>
+                                <p>Converts to another matrix type.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3_det.html"
+                                  title='fn vecmath::mat3_det'>mat3_det</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the determinant of a matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3_id.html"
+                                  title='fn vecmath::mat3_id'>mat3_id</a></td>
+                           <td class='docblock-short'>
+                                <p>Constructs identity matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3_inv.html"
+                                  title='fn vecmath::mat3_inv'>mat3_inv</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the inverse of a 3x3 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3_inv_det.html"
+                                  title='fn vecmath::mat3_inv_det'>mat3_inv_det</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes inverse determinant of a 3x3 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3_sub.html"
+                                  title='fn vecmath::mat3_sub'>mat3_sub</a></td>
+                           <td class='docblock-short'>
+                                <p>Subtracts &#39;b&#39; from &#39;a&#39;.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3_transposed.html"
+                                  title='fn vecmath::mat3_transposed'>mat3_transposed</a></td>
+                           <td class='docblock-short'>
+                                <p>Constructs the transpose of a matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x2_add.html"
+                                  title='fn vecmath::mat3x2_add'>mat3x2_add</a></td>
+                           <td class='docblock-short'>
+                                <p>Adds two matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x2_cast.html"
+                                  title='fn vecmath::mat3x2_cast'>mat3x2_cast</a></td>
+                           <td class='docblock-short'>
+                                <p>Converts to another matrix type.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x2_det.html"
+                                  title='fn vecmath::mat3x2_det'>mat3x2_det</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the determinant of a matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x2_id.html"
+                                  title='fn vecmath::mat3x2_id'>mat3x2_id</a></td>
+                           <td class='docblock-short'>
+                                <p>Constructs identity matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x2_inv.html"
+                                  title='fn vecmath::mat3x2_inv'>mat3x2_inv</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the inverse of a 3x2 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x2_inv_det.html"
+                                  title='fn vecmath::mat3x2_inv_det'>mat3x2_inv_det</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes inverse determinant of a 3x2 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x2_sub.html"
+                                  title='fn vecmath::mat3x2_sub'>mat3x2_sub</a></td>
+                           <td class='docblock-short'>
+                                <p>Subtracts &#39;b&#39; from &#39;a&#39;.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x2_transposed.html"
+                                  title='fn vecmath::mat3x2_transposed'>mat3x2_transposed</a></td>
+                           <td class='docblock-short'>
+                                <p>Constructs the transpose of a matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x4_add.html"
+                                  title='fn vecmath::mat3x4_add'>mat3x4_add</a></td>
+                           <td class='docblock-short'>
+                                <p>Adds two matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x4_cast.html"
+                                  title='fn vecmath::mat3x4_cast'>mat3x4_cast</a></td>
+                           <td class='docblock-short'>
+                                <p>Converts to another matrix type.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x4_det.html"
+                                  title='fn vecmath::mat3x4_det'>mat3x4_det</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the determinant of a matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x4_id.html"
+                                  title='fn vecmath::mat3x4_id'>mat3x4_id</a></td>
+                           <td class='docblock-short'>
+                                <p>Constructs identity matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x4_inv.html"
+                                  title='fn vecmath::mat3x4_inv'>mat3x4_inv</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the inverse of a 3x4 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x4_inv_det.html"
+                                  title='fn vecmath::mat3x4_inv_det'>mat3x4_inv_det</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes inverse determinant of a 3x4 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x4_sub.html"
+                                  title='fn vecmath::mat3x4_sub'>mat3x4_sub</a></td>
+                           <td class='docblock-short'>
+                                <p>Subtracts &#39;b&#39; from &#39;a&#39;.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat3x4_transposed.html"
+                                  title='fn vecmath::mat3x4_transposed'>mat3x4_transposed</a></td>
+                           <td class='docblock-short'>
+                                <p>Constructs the transpose of a matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4_add.html"
+                                  title='fn vecmath::mat4_add'>mat4_add</a></td>
+                           <td class='docblock-short'>
+                                <p>Adds two matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4_cast.html"
+                                  title='fn vecmath::mat4_cast'>mat4_cast</a></td>
+                           <td class='docblock-short'>
+                                <p>Converts to another matrix type.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4_det.html"
+                                  title='fn vecmath::mat4_det'>mat4_det</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the determinant of a 4x4 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4_id.html"
+                                  title='fn vecmath::mat4_id'>mat4_id</a></td>
+                           <td class='docblock-short'>
+                                <p>Constructs identity matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4_inv.html"
+                                  title='fn vecmath::mat4_inv'>mat4_inv</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the inverse of a 4x4 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4_inv_det.html"
+                                  title='fn vecmath::mat4_inv_det'>mat4_inv_det</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the inverse determinant of a 4x4 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4_sub.html"
+                                  title='fn vecmath::mat4_sub'>mat4_sub</a></td>
+                           <td class='docblock-short'>
+                                <p>Subtracts &#39;b&#39; from &#39;a&#39;.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4_transposed.html"
+                                  title='fn vecmath::mat4_transposed'>mat4_transposed</a></td>
+                           <td class='docblock-short'>
+                                <p>Constructs the transpose of a matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4x3_add.html"
+                                  title='fn vecmath::mat4x3_add'>mat4x3_add</a></td>
+                           <td class='docblock-short'>
+                                <p>Adds two matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4x3_cast.html"
+                                  title='fn vecmath::mat4x3_cast'>mat4x3_cast</a></td>
+                           <td class='docblock-short'>
+                                <p>Converts to another matrix type.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4x3_det.html"
+                                  title='fn vecmath::mat4x3_det'>mat4x3_det</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the determinant of a matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4x3_id.html"
+                                  title='fn vecmath::mat4x3_id'>mat4x3_id</a></td>
+                           <td class='docblock-short'>
+                                <p>Constructs identity matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4x3_inv.html"
+                                  title='fn vecmath::mat4x3_inv'>mat4x3_inv</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the inverse of a 4x3 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4x3_inv_det.html"
+                                  title='fn vecmath::mat4x3_inv_det'>mat4x3_inv_det</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes inverse determinant of a 4x3 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4x3_sub.html"
+                                  title='fn vecmath::mat4x3_sub'>mat4x3_sub</a></td>
+                           <td class='docblock-short'>
+                                <p>Subtracts &#39;b&#39; from &#39;a&#39;.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mat4x3_transposed.html"
+                                  title='fn vecmath::mat4x3_transposed'>mat4x3_transposed</a></td>
+                           <td class='docblock-short'>
+                                <p>Constructs the transpose of a matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat2x3_col.html"
+                                  title='fn vecmath::row_mat2x3_col'>row_mat2x3_col</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a column vector of a row matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat2x3_mul.html"
+                                  title='fn vecmath::row_mat2x3_mul'>row_mat2x3_mul</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies two matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat2x3_mul_row.html"
+                                  title='fn vecmath::row_mat2x3_mul_row'>row_mat2x3_mul_row</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes row vector in row matrix product.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat2x3_transform_pos2.html"
+                                  title='fn vecmath::row_mat2x3_transform_pos2'>row_mat2x3_transform_pos2</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 2D position through matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat2x3_transform_vec2.html"
+                                  title='fn vecmath::row_mat2x3_transform_vec2'>row_mat2x3_transform_vec2</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 2D vector through matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat3_col.html"
+                                  title='fn vecmath::row_mat3_col'>row_mat3_col</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a column vector of a row matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat3_mul.html"
+                                  title='fn vecmath::row_mat3_mul'>row_mat3_mul</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies two matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat3_mul_row.html"
+                                  title='fn vecmath::row_mat3_mul_row'>row_mat3_mul_row</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes row vector in row matrix product.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat3_transform.html"
+                                  title='fn vecmath::row_mat3_transform'>row_mat3_transform</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 3D vector through a matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat3_transform_pos2.html"
+                                  title='fn vecmath::row_mat3_transform_pos2'>row_mat3_transform_pos2</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 2D position through row matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat3_transform_vec2.html"
+                                  title='fn vecmath::row_mat3_transform_vec2'>row_mat3_transform_vec2</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 2D vector through row matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat3x2_col.html"
+                                  title='fn vecmath::row_mat3x2_col'>row_mat3x2_col</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a column vector of a row matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat3x4_col.html"
+                                  title='fn vecmath::row_mat3x4_col'>row_mat3x4_col</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a column vector of a row matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat3x4_mul.html"
+                                  title='fn vecmath::row_mat3x4_mul'>row_mat3x4_mul</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies two matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat3x4_mul_row.html"
+                                  title='fn vecmath::row_mat3x4_mul_row'>row_mat3x4_mul_row</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes row vector in row matrix product.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat3x4_transform_pos3.html"
+                                  title='fn vecmath::row_mat3x4_transform_pos3'>row_mat3x4_transform_pos3</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 3D position through matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat3x4_transform_vec3.html"
+                                  title='fn vecmath::row_mat3x4_transform_vec3'>row_mat3x4_transform_vec3</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 3D vector through matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat4_col.html"
+                                  title='fn vecmath::row_mat4_col'>row_mat4_col</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a column vector of a row matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat4_mul.html"
+                                  title='fn vecmath::row_mat4_mul'>row_mat4_mul</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies two matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat4_mul_row.html"
+                                  title='fn vecmath::row_mat4_mul_row'>row_mat4_mul_row</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes row vector in row matrix product.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat4_transform.html"
+                                  title='fn vecmath::row_mat4_transform'>row_mat4_transform</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 4D vector through a matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.row_mat4x3_col.html"
+                                  title='fn vecmath::row_mat4x3_col'>row_mat4x3_col</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a column vector of a row matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec2_add.html"
+                                  title='fn vecmath::vec2_add'>vec2_add</a></td>
+                           <td class='docblock-short'>
+                                <p>Adds two vectors.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec2_cast.html"
+                                  title='fn vecmath::vec2_cast'>vec2_cast</a></td>
+                           <td class='docblock-short'>
+                                <p>Converts to another vector type.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec2_cross.html"
+                                  title='fn vecmath::vec2_cross'>vec2_cross</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the cross product.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec2_dot.html"
+                                  title='fn vecmath::vec2_dot'>vec2_dot</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the dot product.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec2_inv_len.html"
+                                  title='fn vecmath::vec2_inv_len'>vec2_inv_len</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the inverse length of a vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec2_len.html"
+                                  title='fn vecmath::vec2_len'>vec2_len</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the length of vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec2_mul.html"
+                                  title='fn vecmath::vec2_mul'>vec2_mul</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies two vectors component wise.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec2_neg.html"
+                                  title='fn vecmath::vec2_neg'>vec2_neg</a></td>
+                           <td class='docblock-short'>
+                                <p>Negates the vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec2_normalized.html"
+                                  title='fn vecmath::vec2_normalized'>vec2_normalized</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the normalized.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec2_normalized_sub.html"
+                                  title='fn vecmath::vec2_normalized_sub'>vec2_normalized_sub</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the normalized difference between two vectors.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec2_scale.html"
+                                  title='fn vecmath::vec2_scale'>vec2_scale</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies the vector with a scalar.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec2_square_len.html"
+                                  title='fn vecmath::vec2_square_len'>vec2_square_len</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the square length of a vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec2_sub.html"
+                                  title='fn vecmath::vec2_sub'>vec2_sub</a></td>
+                           <td class='docblock-short'>
+                                <p>Subtracts &#39;b&#39; from &#39;a&#39;.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec3_add.html"
+                                  title='fn vecmath::vec3_add'>vec3_add</a></td>
+                           <td class='docblock-short'>
+                                <p>Adds two vectors.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec3_cast.html"
+                                  title='fn vecmath::vec3_cast'>vec3_cast</a></td>
+                           <td class='docblock-short'>
+                                <p>Converts to another vector type.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec3_cross.html"
+                                  title='fn vecmath::vec3_cross'>vec3_cross</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the cross product.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec3_dot.html"
+                                  title='fn vecmath::vec3_dot'>vec3_dot</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the dot product.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec3_dot_pos2.html"
+                                  title='fn vecmath::vec3_dot_pos2'>vec3_dot_pos2</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes transformed position component.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec3_dot_vec2.html"
+                                  title='fn vecmath::vec3_dot_vec2'>vec3_dot_vec2</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes transformed vector component.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec3_inv_len.html"
+                                  title='fn vecmath::vec3_inv_len'>vec3_inv_len</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the inverse length of a vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec3_len.html"
+                                  title='fn vecmath::vec3_len'>vec3_len</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the length of vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec3_mul.html"
+                                  title='fn vecmath::vec3_mul'>vec3_mul</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies two vectors component wise.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec3_neg.html"
+                                  title='fn vecmath::vec3_neg'>vec3_neg</a></td>
+                           <td class='docblock-short'>
+                                <p>Negates the vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec3_normalized.html"
+                                  title='fn vecmath::vec3_normalized'>vec3_normalized</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the normalized.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec3_normalized_sub.html"
+                                  title='fn vecmath::vec3_normalized_sub'>vec3_normalized_sub</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the normalized difference between two vectors.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec3_scale.html"
+                                  title='fn vecmath::vec3_scale'>vec3_scale</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies the vector with a scalar.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec3_square_len.html"
+                                  title='fn vecmath::vec3_square_len'>vec3_square_len</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the square length of a vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec3_sub.html"
+                                  title='fn vecmath::vec3_sub'>vec3_sub</a></td>
+                           <td class='docblock-short'>
+                                <p>Subtracts &#39;b&#39; from &#39;a&#39;.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec4_add.html"
+                                  title='fn vecmath::vec4_add'>vec4_add</a></td>
+                           <td class='docblock-short'>
+                                <p>Adds two vectors.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec4_cast.html"
+                                  title='fn vecmath::vec4_cast'>vec4_cast</a></td>
+                           <td class='docblock-short'>
+                                <p>Converts to another vector type.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec4_dot.html"
+                                  title='fn vecmath::vec4_dot'>vec4_dot</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the dot product.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec4_dot_pos3.html"
+                                  title='fn vecmath::vec4_dot_pos3'>vec4_dot_pos3</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes transformed position component.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec4_dot_vec3.html"
+                                  title='fn vecmath::vec4_dot_vec3'>vec4_dot_vec3</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes transformed vector component.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec4_inv_len.html"
+                                  title='fn vecmath::vec4_inv_len'>vec4_inv_len</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the inverse length of a vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec4_len.html"
+                                  title='fn vecmath::vec4_len'>vec4_len</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the length of vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec4_mul.html"
+                                  title='fn vecmath::vec4_mul'>vec4_mul</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies two vectors component wise.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec4_neg.html"
+                                  title='fn vecmath::vec4_neg'>vec4_neg</a></td>
+                           <td class='docblock-short'>
+                                <p>Negates the vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec4_normalized.html"
+                                  title='fn vecmath::vec4_normalized'>vec4_normalized</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the normalized.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec4_normalized_sub.html"
+                                  title='fn vecmath::vec4_normalized_sub'>vec4_normalized_sub</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the normalized difference between two vectors.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec4_scale.html"
+                                  title='fn vecmath::vec4_scale'>vec4_scale</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies the vector with a scalar.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec4_square_len.html"
+                                  title='fn vecmath::vec4_square_len'>vec4_square_len</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the square length of a vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.vec4_sub.html"
+                                  title='fn vecmath::vec4_sub'>vec4_sub</a></td>
+                           <td class='docblock-short'>
+                                <p>Subtracts &#39;b&#39; from &#39;a&#39;.</p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Matrix2x3.html"
+                                  title='type vecmath::Matrix2x3'>Matrix2x3</a></td>
+                           <td class='docblock-short'>
+                                <p>A 2x3 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Matrix3.html"
+                                  title='type vecmath::Matrix3'>Matrix3</a></td>
+                           <td class='docblock-short'>
+                                <p>A 3x3 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Matrix3x2.html"
+                                  title='type vecmath::Matrix3x2'>Matrix3x2</a></td>
+                           <td class='docblock-short'>
+                                <p>A 3x2 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Matrix3x4.html"
+                                  title='type vecmath::Matrix3x4'>Matrix3x4</a></td>
+                           <td class='docblock-short'>
+                                <p>A 3x4 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Matrix4.html"
+                                  title='type vecmath::Matrix4'>Matrix4</a></td>
+                           <td class='docblock-short'>
+                                <p>A 4x4 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Matrix4x3.html"
+                                  title='type vecmath::Matrix4x3'>Matrix4x3</a></td>
+                           <td class='docblock-short'>
+                                <p>A 4x3 matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Vector2.html"
+                                  title='type vecmath::Vector2'>Vector2</a></td>
+                           <td class='docblock-short'>
+                                <p>A 2D vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Vector3.html"
+                                  title='type vecmath::Vector3'>Vector3</a></td>
+                           <td class='docblock-short'>
+                                <p>A 3D vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Vector4.html"
+                                  title='type vecmath::Vector4'>Vector4</a></td>
+                           <td class='docblock-short'>
+                                <p>A 4D vector.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "vecmath";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

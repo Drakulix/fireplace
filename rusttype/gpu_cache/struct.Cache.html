@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Cache` struct in crate `rusttype`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Cache">
+
+    <title>rusttype::gpu_cache::Cache - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>rusttype</a>::<wbr><a href='index.html'>gpu_cache</a></p><script>window.sidebarCurrent = {name: 'Cache', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>rusttype</a>::<wbr><a href='index.html'>gpu_cache</a>::<wbr><a class="struct" href=''>Cache</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/rusttype/gpu_cache.rs.html#102-113' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Cache { /* fields omitted */ }</pre><div class='docblock'><p>An implementation of a dynamic GPU glyph cache. See the module documentation for more information.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../rusttype/gpu_cache/struct.Cache.html" title="struct rusttype::gpu_cache::Cache">Cache</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/rusttype/gpu_cache.rs.html#143-561' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(width: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; height: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; scale_tolerance: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; position_tolerance: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="struct" href="../../rusttype/gpu_cache/struct.Cache.html" title="struct rusttype::gpu_cache::Cache">Cache</a></code></span></h4>
+<div class='docblock'><p>Constructs a new cache. Note that this is just the CPU side of the cache. The GPU texture is managed
+by the user.</p>
+
+<p><code>width</code> and <code>height</code> specify the dimensions of the 2D texture that will hold the cache contents on the
+GPU. This must match the dimensions of the actual texture used, otherwise <code>cache_queued</code> will try to
+cache into coordinates outside the bounds of the texture. If you need to change the dimensions of the
+cache texture (e.g. due to high cache pressure), construct a new <code>Cache</code> and discard the old one.</p>
+
+<p><code>scale_tolerance</code> and <code>position_tolerance</code> specify the tolerances (maximum allowed difference)
+for judging whether an existing glyph
+in the cache is close enough to the requested glyph in scale and subpixel offset to be used in its
+place. Due to floating point inaccuracies that can affect user code it is not recommended to set these
+parameters too close to zero as effectively identical glyphs could end up duplicated in the cache.
+Both <code>scale_tolerance</code> and <code>position_tolerance</code> are measured in pixels. Note that since <code>pixel_tolerance</code>
+is a tolerance of subpixel offsets, setting it to 1.0 or higher is effectively a &quot;don&#39;t care&quot; option.
+A typical application will produce results with no perceptible inaccuracies with <code>scale_tolerance</code>
+and <code>position_tolerance</code> set to 0.1. Depending on the target DPI higher tolerance may be acceptable.</p>
+
+<h1 id='panics' class='section-header'><a href='#panics'>Panics</a></h1>
+<p><code>scale_tolerance</code> or <code>position_tolerance</code> are less than or equal to zero.</p>
+</div><h4 id='method.set_scale_tolerance' class="method"><span id='set_scale_tolerance.v' class='invisible'><code>fn <a href='#method.set_scale_tolerance' class='fnname'>set_scale_tolerance</a>(&amp;mut self, tolerance: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>)</code></span></h4>
+<div class='docblock'><p>Sets the scale tolerance for the cache. See the documentation for <code>Cache::new</code> for more information.</p>
+
+<h1 id='panics-1' class='section-header'><a href='#panics-1'>Panics</a></h1>
+<p><code>tolerance</code> is less than or equal to zero.</p>
+</div><h4 id='method.scale_tolerance' class="method"><span id='scale_tolerance.v' class='invisible'><code>fn <a href='#method.scale_tolerance' class='fnname'>scale_tolerance</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a></code></span></h4>
+<div class='docblock'><p>Returns the current scale tolerance for the cache.</p>
+</div><h4 id='method.set_position_tolerance' class="method"><span id='set_position_tolerance.v' class='invisible'><code>fn <a href='#method.set_position_tolerance' class='fnname'>set_position_tolerance</a>(&amp;mut self, tolerance: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>)</code></span></h4>
+<div class='docblock'><p>Sets the subpixel position tolerance for the cache. See the documentation for <code>Cache::new</code> for more
+information.</p>
+
+<h1 id='panics-2' class='section-header'><a href='#panics-2'>Panics</a></h1>
+<p><code>tolerance</code> is less than or equal to zero.</p>
+</div><h4 id='method.position_tolerance' class="method"><span id='position_tolerance.v' class='invisible'><code>fn <a href='#method.position_tolerance' class='fnname'>position_tolerance</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a></code></span></h4>
+<div class='docblock'><p>Returns the current subpixel position tolerance for the cache.</p>
+</div><h4 id='method.dimensions' class="method"><span id='dimensions.v' class='invisible'><code>fn <a href='#method.dimensions' class='fnname'>dimensions</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<div class='docblock'><p>Returns the cache texture dimensions assumed by the cache. For proper operation this should
+match the dimensions of the used GPU texture.</p>
+</div><h4 id='method.queue_glyph' class="method"><span id='queue_glyph.v' class='invisible'><code>fn <a href='#method.queue_glyph' class='fnname'>queue_glyph</a>(&amp;mut self, font_id: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, glyph: <a class="struct" href="../../rusttype/struct.PositionedGlyph.html" title="struct rusttype::PositionedGlyph">PositionedGlyph</a>)</code></span></h4>
+<div class='docblock'><p>Queue a glyph for caching by the next call to <code>cache_queued</code>. <code>font_id</code> is used to
+disambiguate glyphs from different fonts. The user should ensure that <code>font_id</code> is unique to the
+font the glyph is from.</p>
+</div><h4 id='method.clear' class="method"><span id='clear.v' class='invisible'><code>fn <a href='#method.clear' class='fnname'>clear</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>Clears the cache. Does not affect the glyph queue.</p>
+</div><h4 id='method.clear_queue' class="method"><span id='clear_queue.v' class='invisible'><code>fn <a href='#method.clear_queue' class='fnname'>clear_queue</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>Clears the glyph queue.</p>
+</div><h4 id='method.cache_queued' class="method"><span id='cache_queued.v' class='invisible'><code>fn <a href='#method.cache_queued' class='fnname'>cache_queued</a>&lt;F:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html" title="trait core::ops::FnMut">FnMut</a>(<a class="struct" href="../../rusttype/struct.Rect.html" title="struct rusttype::Rect">Rect</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>)&gt;(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; uploader: F)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>, <a class="enum" href="../../rusttype/gpu_cache/enum.CacheWriteErr.html" title="enum rusttype::gpu_cache::CacheWriteErr">CacheWriteErr</a>&gt;</code></span></h4>
+<div class='docblock'><p>Caches the queued glyphs. If this is unsuccessful, the queue is untouched.
+Any glyphs cached by previous calls to this function may be removed from the cache to make
+room for the newly queued glyphs. Thus if you want to ensure that a glyph is in the cache,
+the most recently cached queue must have contained that glyph.</p>
+
+<p><code>uploader</code> is the user-provided function that should perform the texture uploads to the GPU.
+The information provided is the rectangular region to insert the pixel data into, and the pixel data
+itself. This data is provided in horizontal scanline format (row major), with stride equal to the
+rectangle width.</p>
+</div><h4 id='method.rect_for' class="method"><span id='rect_for.v' class='invisible'><code>fn <a href='#method.rect_for' class='fnname'>rect_for</a>&lt;'a&gt;(&amp;'a self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; font_id: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; glyph: &amp;<a class="struct" href="../../rusttype/struct.PositionedGlyph.html" title="struct rusttype::PositionedGlyph">PositionedGlyph</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="../../rusttype/struct.Rect.html" title="struct rusttype::Rect">Rect</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>&gt;, <a class="struct" href="../../rusttype/struct.Rect.html" title="struct rusttype::Rect">Rect</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;, <a class="enum" href="../../rusttype/gpu_cache/enum.CacheReadErr.html" title="enum rusttype::gpu_cache::CacheReadErr">CacheReadErr</a>&gt;</code></span></h4>
+<div class='docblock'><p>Retrieves the (floating point) texture coordinates of the quad for a glyph in the cache,
+as well as the pixel-space (integer) coordinates that this region should be drawn at.
+In the majority of cases these pixel-space coordinates should be identical to the bounding box of the
+input glyph. They only differ if the cache has returned a substitute glyph that is deemed close enough
+to the requested glyph as specified by the cache tolerance parameters.</p>
+
+<p>A sucessful result is <code>Some</code> if the glyph is not an empty glyph (no shape, and thus no rect to return).</p>
+
+<p>Ensure that <code>font_id</code> matches the <code>font_id</code> that was passed to <code>queue_glyph</code> with this <code>glyph</code>.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "rusttype";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

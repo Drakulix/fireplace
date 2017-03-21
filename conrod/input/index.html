@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `input` mod in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, input">
+
+    <title>conrod::input - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>conrod</a></p><script>window.sidebarCurrent = {name: 'input', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>conrod</a>::<wbr><a class="mod" href=''>input</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/conrod/input/mod.rs.html#1-40' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>This module contains all the logic for handling input events and providing them to widgets.</p>
+
+<p>All user input is provided to the <code>Ui</code> in the form of <code>input::Input</code> events, which are received
+via the <code>Ui::handle_event</code> method. These raw input events tend to be fairly low level. The <code>Ui</code>
+stores each of these <code>Input</code> events in it&#39;s <code>GlobalInput</code>, which keeps track of the state of
+input for the entire <code>Ui</code>. <code>GlobalInput</code> will also aggregate the low level events into higher
+level ones. For instance, two events indicating that a mouse button was pressed then released
+would cause a new <code>UiEvent::MouseClick</code> to be generated. This saves individual widgets from
+having to interpret these themselves, thus freeing them from also having to store input state.</p>
+
+<p>Whenever there&#39;s an update, all of the events that have occured since the last update will be
+available for widgets to process. <code>WidgetInput</code> is used to provide input events to a specific
+widget. It filters events that do not apply to the widget. All events provided by <code>WidgetIput</code>
+will have all coordinates in the widget&#39;s own local coordinate system, where <code>(0, 0)</code> is the
+middle of the widget&#39;s bounding <code>Rect</code>. <code>GlobalInput</code>, on the other hand, will never filter out
+any events, and will always provide them with coordinates relative to the window.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use self::<a class="mod"
+                                           href="./state/index.html">state</a>::<a class="struct" href="../../conrod/input/state/struct.State.html" title="struct conrod::input::state::State">State</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./global/index.html">global</a>::<a class="struct" href="../../conrod/input/global/struct.Global.html" title="struct conrod::input::global::Global">Global</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./widget/index.html">widget</a>::<a class="struct" href="../../conrod/input/widget/struct.Widget.html" title="struct conrod::input::widget::Widget">Widget</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="global/index.html"
+                                  title='mod conrod::input::global'>global</a></td>
+                           <td class='docblock-short'>
+                                <p>Handles all of the global input events and state.
+The core of this module is the <code>Global</code> struct. It is responsible for aggregating
+and interpreting raw input events into high-level semantic events.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="keyboard/index.html"
+                                  title='mod conrod::input::keyboard'>keyboard</a></td>
+                           <td class='docblock-short'>
+                                <p>Back-end agnostic keyboard keys.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="state/index.html"
+                                  title='mod conrod::input::state'>state</a></td>
+                           <td class='docblock-short'>
+                                <p>Everything related to storing the state of user input.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="widget/index.html"
+                                  title='mod conrod::input::widget'>widget</a></td>
+                           <td class='docblock-short'>
+                                <p>Contains all the logic for filtering input events and making them relative to widgets.</p>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ControllerAxisArgs.html"
+                                  title='struct conrod::input::ControllerAxisArgs'>ControllerAxisArgs</a></td>
+                           <td class='docblock-short'>
+                                <p>Components of a controller axis move event. Not guaranteed consistent across
+backends.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ControllerButton.html"
+                                  title='struct conrod::input::ControllerButton'>ControllerButton</a></td>
+                           <td class='docblock-short'>
+                                <p>Components of a controller button event. Not guaranteed consistent across
+backends.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ModifierKey.html"
+                                  title='struct conrod::input::ModifierKey'>ModifierKey</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.RenderArgs.html"
+                                  title='struct conrod::input::RenderArgs'>RenderArgs</a></td>
+                           <td class='docblock-short'>
+                                <p>Render arguments</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.TouchArgs.html"
+                                  title='struct conrod::input::TouchArgs'>TouchArgs</a></td>
+                           <td class='docblock-short'>
+                                <p>Touch arguments</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Button.html"
+                                  title='enum conrod::input::Button'>Button</a></td>
+                           <td class='docblock-short'>
+                                <p>Models different kinds of buttons.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Key.html"
+                                  title='enum conrod::input::Key'>Key</a></td>
+                           <td class='docblock-short'>
+                                <p>Represent a keyboard key.
+Keycodes follows SDL <a href="http://wiki.libsdl.org/SDLKeycodeLookup">http://wiki.libsdl.org/SDLKeycodeLookup</a></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Motion.html"
+                                  title='enum conrod::input::Motion'>Motion</a></td>
+                           <td class='docblock-short'>
+                                <p>Models different kinds of motion.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.MouseButton.html"
+                                  title='enum conrod::input::MouseButton'>MouseButton</a></td>
+                           <td class='docblock-short'>
+                                <p>Represent a mouse button.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Touch.html"
+                                  title='enum conrod::input::Touch'>Touch</a></td>
+                           <td class='docblock-short'>
+                                <p>Stores the touch state.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

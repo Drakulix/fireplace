@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Config` struct in crate `fireplace`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Config">
+
+    <title>fireplace::Config - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>fireplace</a></p><script>window.sidebarCurrent = {name: 'Config', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>fireplace</a>::<wbr><a class="struct" href=''>Config</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/fireplace/config/mod.rs.html#23-53' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Config {
+    pub outputs: <a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html" title="struct std::collections::hash::map::HashMap">HashMap</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>, <a class="struct" href="../fireplace_lib/handlers/output/struct.OutputConfig.html" title="struct fireplace_lib::handlers::output::OutputConfig">OutputConfig</a>&gt;,
+    pub logging: Logging,
+    pub keys: <a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html" title="struct std::collections::hash::map::HashMap">HashMap</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>, <a class="struct" href="../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub view: View,
+    pub exec: Exec,
+    pub workspace: <a class="struct" href="../fireplace_lib/handlers/workspaces/struct.WorkspacesConfig.html" title="struct fireplace_lib::handlers::workspaces::WorkspacesConfig">WorkspacesConfig</a>,
+    pub focus: <a class="struct" href="../fireplace_lib/handlers/focus/struct.FocusConfig.html" title="struct fireplace_lib::handlers::focus::FocusConfig">FocusConfig</a>,
+    pub screenshot: <a class="struct" href="../fireplace_lib/handlers/render/screenshot/struct.ScreenshotConfig.html" title="struct fireplace_lib::handlers::render::screenshot::ScreenshotConfig">ScreenshotConfig</a>,
+}</pre><div class='docblock'><p>Main configuration struct</p>
+
+<p>Collects all configuration structs from the various handlers.
+Can be deserialized by <code>serde</code>.</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.outputs' class="structfield">
+                           <span id='outputs.v' class='invisible'>
+                           <code>outputs: <a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html" title="struct std::collections::hash::map::HashMap">HashMap</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>, <a class="struct" href="../fireplace_lib/handlers/output/struct.OutputConfig.html" title="struct fireplace_lib::handlers::output::OutputConfig">OutputConfig</a>&gt;</code>
+                           </span></span><div class='docblock'><p>A <code>HashMap</code> of an <code>OutputConfig</code> for each name of an <code>Output</code>.
+The name <code>default</code> or <code>generic</code> might be used for a general
+configuration.</p>
+</div><span id='structfield.logging' class="structfield">
+                           <span id='logging.v' class='invisible'>
+                           <code>logging: Logging</code>
+                           </span></span><div class='docblock'><p>Logging configuration</p>
+</div><span id='structfield.keys' class="structfield">
+                           <span id='keys.v' class='invisible'>
+                           <code>keys: <a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html" title="struct std::collections::hash::map::HashMap">HashMap</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>, <a class="struct" href="../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>A <code>HashMap</code> of global actions that may be invoked through keys.</p>
+
+<ul>
+<li>terminate =&gt; End the compositor</li>
+</ul>
+</div><span id='structfield.view' class="structfield">
+                           <span id='view.v' class='invisible'>
+                           <code>view: View</code>
+                           </span></span><div class='docblock'><p>Configuration of keys related to <code>View</code>s</p>
+</div><span id='structfield.exec' class="structfield">
+                           <span id='exec.v' class='invisible'>
+                           <code>exec: Exec</code>
+                           </span></span><div class='docblock'><p>Configuration of program execution by keys.</p>
+</div><span id='structfield.workspace' class="structfield">
+                           <span id='workspace.v' class='invisible'>
+                           <code>workspace: <a class="struct" href="../fireplace_lib/handlers/workspaces/struct.WorkspacesConfig.html" title="struct fireplace_lib::handlers::workspaces::WorkspacesConfig">WorkspacesConfig</a></code>
+                           </span></span><div class='docblock'><p>Configuration for Workspaces</p>
+</div><span id='structfield.focus' class="structfield">
+                           <span id='focus.v' class='invisible'>
+                           <code>focus: <a class="struct" href="../fireplace_lib/handlers/focus/struct.FocusConfig.html" title="struct fireplace_lib::handlers::focus::FocusConfig">FocusConfig</a></code>
+                           </span></span><div class='docblock'><p>Configuration for <code>View</code> focusing</p>
+</div><span id='structfield.screenshot' class="structfield">
+                           <span id='screenshot.v' class='invisible'>
+                           <code>screenshot: <a class="struct" href="../fireplace_lib/handlers/render/screenshot/struct.ScreenshotConfig.html" title="struct fireplace_lib::handlers::render::screenshot::ScreenshotConfig">ScreenshotConfig</a></code>
+                           </span></span><div class='docblock'><p>Configuration for Screenshots</p>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html" title="trait core::default::Default">Default</a> for <a class="struct" href="../fireplace/struct.Config.html" title="struct fireplace::Config">Config</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/fireplace/config/mod.rs.html#56-69' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.default' class="method"><span id='default.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default' class='fnname'>default</a>() -&gt; <a class="struct" href="../fireplace/struct.Config.html" title="struct fireplace::Config">Config</a></code></span></h4>
+<div class='docblock'><p>Returns the &quot;default value&quot; for a type. <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "fireplace";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `GlGraphics` struct in crate `opengles_graphics`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, GlGraphics">
+
+    <title>opengles_graphics::GlGraphics - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>opengles_graphics</a></p><script>window.sidebarCurrent = {name: 'GlGraphics', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>opengles_graphics</a>::<wbr><a class="struct" href=''>GlGraphics</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/opengles_graphics/back_end.rs.html#194-201' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct GlGraphics { /* fields omitted */ }</pre><div class='docblock'><p>Contains OpenGL data.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="struct" href="../opengles_graphics/struct.GlGraphics.html" title="struct opengles_graphics::GlGraphics">GlGraphics</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/opengles_graphics/back_end.rs.html#203-294' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(opengl: <a class="enum" href="../opengles_graphics/enum.OpenGL.html" title="enum opengles_graphics::OpenGL">OpenGL</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Creates a new OpenGL back-end.</p>
+
+<h1 id='panics' class='section-header'><a href='#panics'>Panics</a></h1>
+<p>If the OpenGL function pointers have not been loaded yet.
+See <a href="https://github.com/PistonDevelopers/opengl_graphics/issues/103">https://github.com/PistonDevelopers/opengl_graphics/issues/103</a> for more info.</p>
+</div><h4 id='method.viewport' class="method"><span id='viewport.v' class='invisible'><code>fn <a href='#method.viewport' class='fnname'>viewport</a>(&amp;mut self, x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, w: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>, h: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>)</code></span></h4>
+<div class='docblock'><p>Sets viewport with normalized coordinates and center as origin.</p>
+</div><h4 id='method.use_program' class="method"><span id='use_program.v' class='invisible'><code>fn <a href='#method.use_program' class='fnname'>use_program</a>(&amp;mut self, program: <a class="type" href="../opengles_graphics/gl/types/type.GLuint.html" title="type opengles_graphics::gl::types::GLuint">GLuint</a>)</code></span></h4>
+<div class='docblock'><p>Sets the current program only if the program is not in use.</p>
+</div><h4 id='method.clear_program' class="method"><span id='clear_program.v' class='invisible'><code>fn <a href='#method.clear_program' class='fnname'>clear_program</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>Unset the current program.</p>
+
+<p>This forces the current program to be set on next drawing call.</p>
+</div><h4 id='method.use_draw_state' class="method"><span id='use_draw_state.v' class='invisible'><code>fn <a href='#method.use_draw_state' class='fnname'>use_draw_state</a>(&amp;mut self, draw_state: &amp;<a class="struct" href="../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>)</code></span></h4>
+<div class='docblock'><p>Sets the current draw state, by detecting changes.</p>
+</div><h4 id='method.clear_draw_state' class="method"><span id='clear_draw_state.v' class='invisible'><code>fn <a href='#method.clear_draw_state' class='fnname'>clear_draw_state</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>Unsets the current draw state.</p>
+
+<p>This forces the current draw state to be set on next drawing call.</p>
+</div><h4 id='method.draw' class="method"><span id='draw.v' class='invisible'><code>fn <a href='#method.draw' class='fnname'>draw</a>&lt;F, U&gt;(&amp;mut self, viewport: <a class="struct" href="../viewport/struct.Viewport.html" title="struct viewport::Viewport">Viewport</a>, f: F) -&gt; U <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(<a class="struct" href="../graphics/context/struct.Context.html" title="struct graphics::context::Context">Context</a>, &amp;mut Self) -&gt; U</span></code></span></h4>
+<div class='docblock'><p>Draws graphics.</p>
+</div><h4 id='method.has_texture_alpha' class="method"><span id='has_texture_alpha.v' class='invisible'><code>fn <a href='#method.has_texture_alpha' class='fnname'>has_texture_alpha</a>(&amp;self, _texture: &amp;<a class="struct" href="../opengles_graphics/struct.Texture.html" title="struct opengles_graphics::Texture">Texture</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Assume all textures has alpha channel for now.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../graphics/graphics/trait.Graphics.html" title="trait graphics::graphics::Graphics">Graphics</a> for <a class="struct" href="../opengles_graphics/struct.GlGraphics.html" title="struct opengles_graphics::GlGraphics">GlGraphics</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/opengles_graphics/back_end.rs.html#296-400' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Texture' class="type"><span id='Texture.t' class='invisible'><code>type <a href='../graphics/graphics/trait.Graphics.html#associatedtype.Texture' class="type">Texture</a> = <a class="struct" href="../opengles_graphics/struct.Texture.html" title="struct opengles_graphics::Texture">Texture</a></code></span></h4>
+<div class='docblock'><p>The texture type associated with the back-end. <a href="../graphics/graphics/trait.Graphics.html#associatedtype.Texture">Read more</a></p>
+</div><h4 id='method.clear_color' class="method"><span id='clear_color.v' class='invisible'><code>fn <a href='../graphics/graphics/trait.Graphics.html#tymethod.clear_color' class='fnname'>clear_color</a>(&amp;mut self, color: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 4]</a>)</code></span></h4>
+<div class='docblock'><p>Clears background with a color. <a href="../graphics/graphics/trait.Graphics.html#tymethod.clear_color">Read more</a></p>
+</div><h4 id='method.clear_stencil' class="method"><span id='clear_stencil.v' class='invisible'><code>fn <a href='../graphics/graphics/trait.Graphics.html#tymethod.clear_stencil' class='fnname'>clear_stencil</a>(&amp;mut self, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>)</code></span></h4>
+<div class='docblock'><p>Clears stencil buffer with a value, usually 0. <a href="../graphics/graphics/trait.Graphics.html#tymethod.clear_stencil">Read more</a></p>
+</div><h4 id='method.tri_list' class="method"><span id='tri_list.v' class='invisible'><code>fn <a href='../graphics/graphics/trait.Graphics.html#tymethod.tri_list' class='fnname'>tri_list</a>&lt;F&gt;(&amp;mut self, draw_state: &amp;<a class="struct" href="../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>, color: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 4]</a>, f: F) <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html" title="trait core::ops::FnMut">FnMut</a>(&amp;mut <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html" title="trait core::ops::FnMut">FnMut</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>))</span></code></span></h4>
+<div class='docblock'><p>Renders list of 2d triangles using a solid color. <a href="../graphics/graphics/trait.Graphics.html#tymethod.tri_list">Read more</a></p>
+</div><h4 id='method.tri_list_uv' class="method"><span id='tri_list_uv.v' class='invisible'><code>fn <a href='../graphics/graphics/trait.Graphics.html#tymethod.tri_list_uv' class='fnname'>tri_list_uv</a>&lt;F&gt;(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; draw_state: &amp;<a class="struct" href="../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; color: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 4]</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; texture: &amp;<a class="struct" href="../opengles_graphics/struct.Texture.html" title="struct opengles_graphics::Texture">Texture</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f: F) <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html" title="trait core::ops::FnMut">FnMut</a>(&amp;mut <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html" title="trait core::ops::FnMut">FnMut</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>))</span></code></span></h4>
+<div class='docblock'><p>Renders list of 2d triangles using a color and a texture. <a href="../graphics/graphics/trait.Graphics.html#tymethod.tri_list_uv">Read more</a></p>
+</div><h4 id='method.rectangle' class="method"><span id='rectangle.v' class='invisible'><code>fn <a href='../graphics/graphics/trait.Graphics.html#method.rectangle' class='fnname'>rectangle</a>&lt;R&gt;(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r: &amp;<a class="struct" href="../graphics/rectangle/struct.Rectangle.html" title="struct graphics::rectangle::Rectangle">Rectangle</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rectangle: R,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; draw_state: &amp;<a class="struct" href="../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transform: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>) <span class="where fmt-newline">where R: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 4]</a>&gt;</span></code></span></h4>
+<div class='docblock'><p>Draws a rectangle. <a href="../graphics/graphics/trait.Graphics.html#method.rectangle">Read more</a></p>
+</div><h4 id='method.polygon' class="method"><span id='polygon.v' class='invisible'><code>fn <a href='../graphics/graphics/trait.Graphics.html#method.polygon' class='fnname'>polygon</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p: &amp;<a class="struct" href="../graphics/polygon/struct.Polygon.html" title="struct graphics::polygon::Polygon">Polygon</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; polygon: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; draw_state: &amp;<a class="struct" href="../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transform: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>)</code></span></h4>
+<div class='docblock'><p>Draws a polygon. <a href="../graphics/graphics/trait.Graphics.html#method.polygon">Read more</a></p>
+</div><h4 id='method.polygon_tween_lerp' class="method"><span id='polygon_tween_lerp.v' class='invisible'><code>fn <a href='../graphics/graphics/trait.Graphics.html#method.polygon_tween_lerp' class='fnname'>polygon_tween_lerp</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p: &amp;<a class="struct" href="../graphics/polygon/struct.Polygon.html" title="struct graphics::polygon::Polygon">Polygon</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; polygons: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tween_factor: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; draw_state: &amp;<a class="struct" href="../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transform: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>)</code></span></h4>
+<div class='docblock'><p>Draws a tweened polygon using linear interpolation. <a href="../graphics/graphics/trait.Graphics.html#method.polygon_tween_lerp">Read more</a></p>
+</div><h4 id='method.image' class="method"><span id='image.v' class='invisible'><code>fn <a href='../graphics/graphics/trait.Graphics.html#method.image' class='fnname'>image</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; image: &amp;<a class="struct" href="../graphics/image/struct.Image.html" title="struct graphics::image::Image">Image</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; texture: &amp;Self::<a class="trait" href="../graphics/graphics/trait.Graphics.html" title="trait graphics::graphics::Graphics">Texture</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; draw_state: &amp;<a class="struct" href="../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transform: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>)</code></span></h4>
+<div class='docblock'><p>Draws image. <a href="../graphics/graphics/trait.Graphics.html#method.image">Read more</a></p>
+</div><h4 id='method.ellipse' class="method"><span id='ellipse.v' class='invisible'><code>fn <a href='../graphics/graphics/trait.Graphics.html#method.ellipse' class='fnname'>ellipse</a>&lt;R&gt;(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e: &amp;<a class="struct" href="../graphics/ellipse/struct.Ellipse.html" title="struct graphics::ellipse::Ellipse">Ellipse</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rectangle: R,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; draw_state: &amp;<a class="struct" href="../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transform: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>) <span class="where fmt-newline">where R: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 4]</a>&gt;</span></code></span></h4>
+<div class='docblock'><p>Draws ellipse. <a href="../graphics/graphics/trait.Graphics.html#method.ellipse">Read more</a></p>
+</div><h4 id='method.line' class="method"><span id='line.v' class='invisible'><code>fn <a href='../graphics/graphics/trait.Graphics.html#method.line' class='fnname'>line</a>&lt;L&gt;(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; l: &amp;<a class="struct" href="../graphics/line/struct.Line.html" title="struct graphics::line::Line">Line</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; line: L,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; draw_state: &amp;<a class="struct" href="../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transform: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>) <span class="where fmt-newline">where L: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 4]</a>&gt;</span></code></span></h4>
+<div class='docblock'><p>Draws line. <a href="../graphics/graphics/trait.Graphics.html#method.line">Read more</a></p>
+</div><h4 id='method.circle_arc' class="method"><span id='circle_arc.v' class='invisible'><code>fn <a href='../graphics/graphics/trait.Graphics.html#method.circle_arc' class='fnname'>circle_arc</a>&lt;R&gt;(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c: &amp;<a class="struct" href="../graphics/circle_arc/struct.CircleArc.html" title="struct graphics::circle_arc::CircleArc">CircleArc</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rectangle: R,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; draw_state: &amp;<a class="struct" href="../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transform: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>) <span class="where fmt-newline">where R: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 4]</a>&gt;</span></code></span></h4>
+<div class='docblock'><p>Draws circle arc. <a href="../graphics/graphics/trait.Graphics.html#method.circle_arc">Read more</a></p>
+</div><h4 id='method.deform_image' class="method"><span id='deform_image.v' class='invisible'><code>fn <a href='../graphics/graphics/trait.Graphics.html#method.deform_image' class='fnname'>deform_image</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d: &amp;<a class="struct" href="../graphics/deform/struct.DeformGrid.html" title="struct graphics::deform::DeformGrid">DeformGrid</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; texture: &amp;Self::<a class="trait" href="../graphics/graphics/trait.Graphics.html" title="trait graphics::graphics::Graphics">Texture</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; draw_state: &amp;<a class="struct" href="../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transform: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>)</code></span></h4>
+<div class='docblock'><p>Draws deformed image. <a href="../graphics/graphics/trait.Graphics.html#method.deform_image">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "opengles_graphics";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

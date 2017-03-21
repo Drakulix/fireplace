@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ConfigFilterRef` struct in crate `egli`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ConfigFilterRef">
+
+    <title>egli::ConfigFilterRef - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>egli</a></p><script>window.sidebarCurrent = {name: 'ConfigFilterRef', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>egli</a>::<wbr><a class="struct" href=''>ConfigFilterRef</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/egli/config_filter.rs.html#16-46' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct ConfigFilterRef { /* fields omitted */ }</pre><div class='docblock'><p><code>[EGL 1.0]</code> Configuration filter builder.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../egli/struct.ConfigFilterRef.html" title="struct egli::ConfigFilterRef">ConfigFilterRef</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/egli/config_filter.rs.html#48-576' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from_native' class="method"><span id='from_native.v' class='invisible'><code>fn <a href='#method.from_native' class='fnname'>from_native</a>(handle: <a class="type" href="../egli/egl/type.EGLDisplay.html" title="type egli::egl::EGLDisplay">EGLDisplay</a>) -&gt; <a class="struct" href="../egli/struct.ConfigFilterRef.html" title="struct egli::ConfigFilterRef">ConfigFilterRef</a></code></span></h4>
+<h4 id='method.with_alpha_mask_size' class="method"><span id='with_alpha_mask_size.v' class='invisible'><code>fn <a href='#method.with_alpha_mask_size' class='fnname'>with_alpha_mask_size</a>(self, min_size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by a nonnegative integer that indicates the desired alpha
+mask buffer size, in bits.
+The smallest alpha mask buffers of at least the specified size are preferred.
+The default value is zero.</p>
+
+<p>The alpha mask buffer is used only by OpenGL and OpenGL ES client APIs.</p>
+</div><h4 id='method.with_alpha_size' class="method"><span id='with_alpha_size.v' class='invisible'><code>fn <a href='#method.with_alpha_size' class='fnname'>with_alpha_size</a>(self, min_size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by a nonnegative integer that indicates the desired size of the
+alpha component of the color buffer, in bits.
+If this value is zero, color buffers with the smallest alpha component size are
+preferred.
+Otherwise, color buffers with the largest alpha component of at least the specified
+size are preferred.
+The default value is zero.</p>
+</div><h4 id='method.with_bind_to_texture_rgb' class="method"><span id='with_bind_to_texture_rgb.v' class='invisible'><code>fn <a href='#method.with_bind_to_texture_rgb' class='fnname'>with_bind_to_texture_rgb</a>(self, value: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by <code>None</code>, <code>Some(true)</code>, or <code>Some(false)</code>.
+If <code>Some(true)</code> is specified, then only frame buffer configurations that
+support binding of color buffers to an OpenGL ES RGB texture will be considered.
+Currently only frame buffer configurations that support pbuffers allow this.
+The default value is <code>None</code>.</p>
+</div><h4 id='method.with_bind_to_texture_rgba' class="method"><span id='with_bind_to_texture_rgba.v' class='invisible'><code>fn <a href='#method.with_bind_to_texture_rgba' class='fnname'>with_bind_to_texture_rgba</a>(self, value: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by one of <code>None</code>, <code>Some(true)</code>, or <code>Some(false)</code>.
+If <code>Some(true)</code> is specified, then only frame buffer configurations that
+support binding of color buffers to an OpenGL ES RGBA texture will be
+considered.
+Currently only frame buffer configurations that support pbuffers allow this.
+The default value is <code>None</code>.</p>
+</div><h4 id='method.with_blue_size' class="method"><span id='with_blue_size.v' class='invisible'><code>fn <a href='#method.with_blue_size' class='fnname'>with_blue_size</a>(self, min_size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by a nonnegative integer that indicates the desired size
+of the blue component of the color buffer, in bits.
+If this value is zero, color buffers with the smallest blue component
+size are preferred. Otherwise, color buffers with the largest blue component
+of at least the specified size are preferred.
+The default value is zero.</p>
+</div><h4 id='method.with_buffer_size' class="method"><span id='with_buffer_size.v' class='invisible'><code>fn <a href='#method.with_buffer_size' class='fnname'>with_buffer_size</a>(self, min_size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by a nonnegative integer that indicates the desired color
+buffer size, in bits. The smallest color buffers of at least the specified
+size are preferred.
+The default value is zero.</p>
+
+<p>The color buffer size is the sum of EGL_RED_SIZE, EGL_GREEN_SIZE, EGL_BLUE_SIZE,
+and EGL_ALPHA_SIZE, and does not include any padding bits which may be present
+in the pixel format.
+It is usually preferable to specify desired sizes for these color components
+individually.</p>
+</div><h4 id='method.with_color_buffer_type' class="method"><span id='with_color_buffer_type.v' class='invisible'><code>fn <a href='#method.with_color_buffer_type' class='fnname'>with_color_buffer_type</a>(self, value: <a class="enum" href="../egli/enum.ColorBufferType.html" title="enum egli::ColorBufferType">ColorBufferType</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by one of EGL_RGB_BUFFER or EGL_LUMINANCE_BUFFER.</p>
+
+<p>EGL_RGB_BUFFER indicates an RGB color buffer; in this case, attributes
+EGL_RED_SIZE, EGL_GREEN_SIZE and EGL_BLUE_SIZE must be non-zero,
+and EGL_LUMINANCE_SIZE must be zero.</p>
+
+<p>EGL_LUMINANCE_BUFFER indicates a luminance color buffer.
+In this case EGL_RED_SIZE, EGL_GREEN_SIZE, EGL_BLUE_SIZE must be zero,
+and EGL_LUMINANCE_SIZE must be non-zero.</p>
+
+<p>For both RGB and luminance color buffers, EGL_ALPHA_SIZE may be zero or non-zero.</p>
+</div><h4 id='method.with_config_caveat' class="method"><span id='with_config_caveat.v' class='invisible'><code>fn <a href='#method.with_config_caveat' class='fnname'>with_config_caveat</a>(self, value: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../egli/enum.ConfigCaveat.html" title="enum egli::ConfigCaveat">ConfigCaveat</a>&gt;) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by <code>None</code>, <code>ConfigCaveat::None</code>, <code>ConfigCaveat::Slow</code>, or
+<code>ConfigCaveat::NonConformant</code>.</p>
+
+<p>If <code>None</code> is specified, then configs are not matched for this attribute.
+The default value is <code>None</code>.</p>
+
+<p>If <code>ConfigCaveat::None</code> is specified, then configs are matched for this attribute,
+but only configs with no caveats (neither <code>Slow</code> or <code>NonConformant</code>)
+will be considered.</p>
+
+<p>If <code>ConfigCaveat::Slow</code> is specified, then only slow configs configurations
+will be considered. The meaning of &quot;slow&quot; is implementation-dependent,
+but typically indicates a non-hardware-accelerated (software) implementation.</p>
+
+<p>If <code>ConfigCaveat::NonConformant</code> is specified, then only configs supporting
+non-conformant OpenGL ES contexts will be considered.</p>
+
+<p>If the EGL version is 1.3 or later, caveat <code>ConfigCaveat::NonConformant</code> is
+obsolete, since the same information can be specified via the EGL_CONFORMANT
+attribute on a per-client-API basis, not just for OpenGL ES.</p>
+</div><h4 id='method.with_config_id' class="method"><span id='with_config_id.v' class='invisible'><code>fn <a href='#method.with_config_id' class='fnname'>with_config_id</a>(self, value: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by a valid integer ID that indicates the desired EGL frame buffer
+configuration. When a EGL_CONFIG_ID is specified, all other attributes are ignored.
+The default value is <code>None</code>.</p>
+
+<p>The meaning of config IDs is implementation-dependent.
+They are used only to uniquely identify different frame buffer configurations.</p>
+</div><h4 id='method.with_conformant' class="method"><span id='with_conformant.v' class='invisible'><code>fn <a href='#method.with_conformant' class='fnname'>with_conformant</a>(self, value: <a class="struct" href="../egli/renderable/struct.Type.html" title="struct egli::renderable::Type">Type</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by a bitmask indicating which types of client API contexts
+created with respect to the frame buffer configuration config must pass the
+required conformance tests for that API. Mask bits include:</p>
+
+<h2 id='renderableopengl' class='section-header'><a href='#renderableopengl'>renderable::OPENGL</a></h2>
+<p>Config supports creating OpenGL contexts.</p>
+
+<h2 id='renderableopengl_es' class='section-header'><a href='#renderableopengl_es'>renderable::OPENGL_ES</a></h2>
+<p>Config supports creating OpenGL ES 1.0 and/or 1.1 contexts.</p>
+
+<h2 id='renderableopengl_es2' class='section-header'><a href='#renderableopengl_es2'>renderable::OPENGL_ES2</a></h2>
+<p>Config supports creating OpenGL ES 2.0 contexts.</p>
+
+<h2 id='renderableopenvg' class='section-header'><a href='#renderableopenvg'>renderable::OPENVG</a></h2>
+<p>Config supports creating OpenVG contexts.</p>
+
+<p>For example, if the bitmask is set to OPENGL_ES, only frame buffer
+configurations that support creating conformant OpenGL ES contexts will match.
+The default value is zero.</p>
+
+<p>Most EGLConfigs should be conformant for all supported client APIs, and it is rarely
+desirable to select a nonconformant config.
+Conformance requirements limit the number of non-conformant configs that an
+implementation can define.</p>
+</div><h4 id='method.with_depth_size' class="method"><span id='with_depth_size.v' class='invisible'><code>fn <a href='#method.with_depth_size' class='fnname'>with_depth_size</a>(self, min_size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by a nonnegative integer that indicates the desired depth buffer
+size, in bits. The smallest depth buffers of at least the specified size is preferred.
+If the desired size is zero, frame buffer configurations with no depth buffer are
+preferred. The default value is zero.</p>
+
+<p>The depth buffer is used only by OpenGL and OpenGL ES client APIs.</p>
+</div><h4 id='method.with_green_size' class="method"><span id='with_green_size.v' class='invisible'><code>fn <a href='#method.with_green_size' class='fnname'>with_green_size</a>(self, min_size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by a nonnegative integer that indicates the desired size of the green
+component of the color buffer, in bits.
+If this value is zero, color buffers with the smallest green component size are preferred.
+Otherwise, color buffers with the largest green component of at least the specified
+size are preferred. The default value is zero.</p>
+</div><h4 id='method.with_level' class="method"><span id='with_level.v' class='invisible'><code>fn <a href='#method.with_level' class='fnname'>with_level</a>(self, level: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by an integer buffer level specification.
+This specification is honored exactly.
+Buffer level zero corresponds to the default frame buffer of the display.
+Buffer level one is the first overlay frame buffer, level two the second overlay frame
+buffer, and so on. Negative buffer levels correspond to underlay frame buffers.
+The default value is zero.</p>
+
+<p>Most imlementations do not support overlay or underlay planes
+(buffer levels other than zero).</p>
+</div><h4 id='method.with_luminance_size' class="method"><span id='with_luminance_size.v' class='invisible'><code>fn <a href='#method.with_luminance_size' class='fnname'>with_luminance_size</a>(self, level: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by a nonnegative integer that indicates the desired
+size of the luminance component of the color buffer, in bits.
+If this value is zero, color buffers with the smallest luminance
+component size are preferred. Otherwise, color buffers with the largest
+luminance component of at least the specified size are preferred.
+The default value is zero.</p>
+</div><h4 id='method.with_match_native_pixmap' class="method"><span id='with_match_native_pixmap.v' class='invisible'><code>fn <a href='#method.with_match_native_pixmap' class='fnname'>with_match_native_pixmap</a>(self, handle: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by the handle of a valid native pixmap, cast to <code>Some(i32)</code>, or <code>None</code>.
+If the value is not <code>None</code>, only configs which support creating pixmap surfaces with
+this pixmap using eglCreatePixmapSurface will match this attribute.
+If the value is <code>None</code>, then configs are not matched for this attribute.
+The default value is <code>None</code>.</p>
+
+<p>EGL_MATCH_NATIVE_PIXMAP was introduced due to the difficulty of determining an EGLConfig
+compatibile with a native pixmap using only color component sizes.</p>
+</div><h4 id='method.with_native_renderable' class="method"><span id='with_native_renderable.v' class='invisible'><code>fn <a href='#method.with_native_renderable' class='fnname'>with_native_renderable</a>(self, value: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by EGL_DONT_CARE, EGL_TRUE, or EGL_FALSE. If EGL_TRUE is specified,
+then only frame buffer configurations that allow native rendering into the surface
+will be considered. The default value is EGL_DONT_CARE.</p>
+</div><h4 id='method.with_max_swap_interval' class="method"><span id='with_max_swap_interval.v' class='invisible'><code>fn <a href='#method.with_max_swap_interval' class='fnname'>with_max_swap_interval</a>(self, value: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by a integer that indicates the maximum value that can be passed to
+<code>eglSwapInterval</code>. The default value is <code>None</code>.</p>
+</div><h4 id='method.with_min_swap_interval' class="method"><span id='with_min_swap_interval.v' class='invisible'><code>fn <a href='#method.with_min_swap_interval' class='fnname'>with_min_swap_interval</a>(self, value: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by a integer that indicates the minimum value that can be passed to
+<code>eglSwapInterval</code>. The default value is <code>None</code>.</p>
+</div><h4 id='method.with_red_size' class="method"><span id='with_red_size.v' class='invisible'><code>fn <a href='#method.with_red_size' class='fnname'>with_red_size</a>(self, min_size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by a nonnegative integer that indicates the desired size of the red
+component of the color buffer, in bits. If this value is zero, color buffers with the
+smallest red component size are preferred. Otherwise, color buffers with the largest
+red component of at least the specified size are preferred.
+The default value is zero.</p>
+</div><h4 id='method.with_sample_buffers' class="method"><span id='with_sample_buffers.v' class='invisible'><code>fn <a href='#method.with_sample_buffers' class='fnname'>with_sample_buffers</a>(self, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by the minimum acceptable number of multisample buffers.
+Configurations with the smallest number of multisample buffers that meet or exceed
+this minimum number are preferred. Currently operation with more than one multisample
+buffer is undefined, so only values of zero or one will produce a match.
+The default value is zero.</p>
+</div><h4 id='method.with_samples' class="method"><span id='with_samples.v' class='invisible'><code>fn <a href='#method.with_samples' class='fnname'>with_samples</a>(self, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by the minimum number of samples required in multisample buffers.
+Configurations with the smallest number of samples that meet or exceed the specified
+minimum number are preferred. Note that it is possible for color samples in the
+multisample buffer to have fewer bits than colors in the main color buffers.
+However, multisampled colors maintain at least as much color resolution in aggregate
+as the main color buffers.</p>
+</div><h4 id='method.with_stencil_size' class="method"><span id='with_stencil_size.v' class='invisible'><code>fn <a href='#method.with_stencil_size' class='fnname'>with_stencil_size</a>(self, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by a nonnegative integer that indicates the desired stencil buffer
+size, in bits. The smallest stencil buffers of at least the specified size are
+preferred. If the desired size is zero, frame buffer configurations with no
+stencil buffer are preferred. The default value is zero.</p>
+
+<p>The stencil buffer is used only by OpenGL and OpenGL ES client APIs.</p>
+</div><h4 id='method.with_renderable_type' class="method"><span id='with_renderable_type.v' class='invisible'><code>fn <a href='#method.with_renderable_type' class='fnname'>with_renderable_type</a>(self, value: <a class="struct" href="../egli/renderable/struct.Type.html" title="struct egli::renderable::Type">Type</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by a bitmask indicating which types of client API contexts the
+frame buffer configuration must support creating with eglCreateContext).
+Mask bits are the same as for attribute EGL_CONFORMANT.
+The default value is EGL_OPENGL_ES_BIT.</p>
+</div><h4 id='method.with_surface_type' class="method"><span id='with_surface_type.v' class='invisible'><code>fn <a href='#method.with_surface_type' class='fnname'>with_surface_type</a>(self, value: <a class="struct" href="../egli/surface/struct.Type.html" title="struct egli::surface::Type">Type</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by a bitmask indicating which EGL surface types and capabilities
+the frame buffer configuration must support. Mask bits include:</p>
+
+<h2 id='surfacemultisample_resolve_box' class='section-header'><a href='#surfacemultisample_resolve_box'>surface::MULTISAMPLE_RESOLVE_BOX</a></h2>
+<p>Config allows specifying box filtered multisample resolve behavior with
+<code>eglSurfaceAttrib</code>.</p>
+
+<h2 id='surfacepbuffer' class='section-header'><a href='#surfacepbuffer'>surface::PBUFFER</a></h2>
+<p>Config supports creating pixel buffer surfaces.</p>
+
+<h2 id='surfacepixmap' class='section-header'><a href='#surfacepixmap'>surface::PIXMAP</a></h2>
+<p>Config supports creating pixmap surfaces.</p>
+
+<h2 id='surfaceswap_behavior_preserved' class='section-header'><a href='#surfaceswap_behavior_preserved'>surface::SWAP_BEHAVIOR_PRESERVED</a></h2>
+<p>Config allows setting swap behavior for color buffers with eglSurfaceAttrib.</p>
+
+<h2 id='surfacevg_alpha_format_pre' class='section-header'><a href='#surfacevg_alpha_format_pre'>surface::VG_ALPHA_FORMAT_PRE</a></h2>
+<p>Config allows specifying OpenVG rendering with premultiplied alpha values at surface
+creation time (see <code>eglCreatePbufferSurface</code>, <code>eglCreatePixmapSurface</code>, and
+<code>eglCreateWindowSurface</code>).</p>
+
+<h2 id='surfacevg_colorspace_linear' class='section-header'><a href='#surfacevg_colorspace_linear'>surface::VG_COLORSPACE_LINEAR</a></h2>
+<p>Config allows specifying OpenVG rendering in a linear colorspace at surface creation
+time (see <code>eglCreatePbufferSurface</code>, <code>eglCreatePixmapSurface</code>, and
+<code>eglCreateWindowSurface</code>).</p>
+
+<h2 id='surfacewindow' class='section-header'><a href='#surfacewindow'>surface::WINDOW</a></h2>
+<p>Config supports creating window surfaces.</p>
+
+<p>For example, if the bitmask is set to <code>surface::WINDOW</code> | <code>surface::PIXMAP</code>, only
+frame buffer configurations that support both windows and pixmaps will be considered.
+The default value is <code>surface::WINDOW</code>.</p>
+</div><h4 id='method.with_transparent_type' class="method"><span id='with_transparent_type.v' class='invisible'><code>fn <a href='#method.with_transparent_type' class='fnname'>with_transparent_type</a>(self, value: <a class="enum" href="../egli/enum.TransparentType.html" title="enum egli::TransparentType">TransparentType</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by one of <code>TransparentType::None</code> or <code>TransparentType::TransparentRgb</code>.
+If <code>TransparentType::None</code> is specified, then only opaque frame buffer configurations
+will be considered. If <code>TransparentType::TransparentRgb</code> is specified, then only
+transparent frame buffer configurations will be considered.
+The default value is <code>TransparentType::None</code>.</p>
+
+<p>Most implementations support only opaque frame buffer configurations.</p>
+</div><h4 id='method.with_transparent_red_value' class="method"><span id='with_transparent_red_value.v' class='invisible'><code>fn <a href='#method.with_transparent_red_value' class='fnname'>with_transparent_red_value</a>(self, value: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by an integer value indicating the transparent red value.
+The value must be between zero and the maximum color buffer value for red.
+Only frame buffer configurations that use the specified transparent red value
+will be considered. The default value is <code>None</code>.</p>
+
+<p>This attribute is ignored unless <code>EGL_TRANSPARENT_TYPE</code> is included in attrib_list
+and specified as <code>TransparentType::TransparentRgb</code>.</p>
+</div><h4 id='method.with_transparent_green_value' class="method"><span id='with_transparent_green_value.v' class='invisible'><code>fn <a href='#method.with_transparent_green_value' class='fnname'>with_transparent_green_value</a>(self, value: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by an integer value indicating the transparent green value.
+The value must be between zero and the maximum color buffer value for green.
+Only frame buffer configurations that use the specified transparent green value
+will be considered. The default value is <code>None</code>.</p>
+
+<p>This attribute is ignored unless <code>EGL_TRANSPARENT_TYPE</code> is included in attrib_list
+and specified as <code>TransparentType::TransparentRgb</code>.</p>
+</div><h4 id='method.with_transparent_blue_value' class="method"><span id='with_transparent_blue_value.v' class='invisible'><code>fn <a href='#method.with_transparent_blue_value' class='fnname'>with_transparent_blue_value</a>(self, value: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Must be followed by an integer value indicating the transparent blue value.
+The value must be between zero and the maximum color buffer value for blue.
+Only frame buffer configurations that use the specified transparent blue value
+will be considered. The default value is <code>None</code>.</p>
+
+<p>This attribute is ignored unless <code>EGL_TRANSPARENT_TYPE</code> is included in attrib_list
+and specified as <code>TransparentType::TransparentRgb</code>.</p>
+</div><h4 id='method.choose_configs' class="method"><span id='choose_configs.v' class='invisible'><code>fn <a href='#method.choose_configs' class='fnname'>choose_configs</a>(self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html" title="struct collections::vec::Vec">Vec</a>&lt;<a class="struct" href="../egli/struct.FrameBufferConfigRef.html" title="struct egli::FrameBufferConfigRef">FrameBufferConfigRef</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>Get filtered display configurations.</p>
+
+<p>Internally, this calls <code>eglChooseConfig</code> twice: to get total filtered config count,
+and to fill the allocated memory with config handles.</p>
+
+<p>These handles are then wrapped into a new <code>Vec&lt;FrameBufferConfigRef&gt;</code>.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "egli";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

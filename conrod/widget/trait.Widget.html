@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Widget` trait in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Widget">
+
+    <title>conrod::widget::Widget - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>conrod</a>::<wbr><a href='index.html'>widget</a></p><script>window.sidebarCurrent = {name: 'Widget', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content trait">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>conrod</a>::<wbr><a href='index.html'>widget</a>::<wbr><a class="trait" href=''>Widget</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/conrod/widget/mod.rs.html#443-785' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait Widget: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> {
+    type <a href='#associatedtype.State' class="type">State</a>: <a class="trait" href="https://doc.rust-lang.org/nightly/core/any/trait.Any.html" title="trait core::any::Any">Any</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a>;
+    type <a href='#associatedtype.Style' class="type">Style</a>: <a class="trait" href="../../conrod/widget/trait.Style.html" title="trait conrod::widget::Style">Style</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a>;
+    type <a href='#associatedtype.Event' class="type">Event</a>;
+    fn <a href='#tymethod.common' class='fnname'>common</a>(&amp;self) -&gt; &amp;<a class="struct" href="../../conrod/widget/struct.CommonBuilder.html" title="struct conrod::widget::CommonBuilder">CommonBuilder</a>;
+    fn <a href='#tymethod.common_mut' class='fnname'>common_mut</a>(&amp;mut self) -&gt; &amp;mut <a class="struct" href="../../conrod/widget/struct.CommonBuilder.html" title="struct conrod::widget::CommonBuilder">CommonBuilder</a>;
+    fn <a href='#tymethod.init_state' class='fnname'>init_state</a>(&amp;self, _: <a class="struct" href="../../conrod/widget/id/struct.Generator.html" title="struct conrod::widget::id::Generator">Generator</a>) -&gt; Self::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">State</a>;
+    fn <a href='#tymethod.style' class='fnname'>style</a>(&amp;self) -&gt; Self::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Style</a>;
+    fn <a href='#tymethod.update' class='fnname'>update</a>(self, args: <a class="struct" href="../../conrod/widget/struct.UpdateArgs.html" title="struct conrod::widget::UpdateArgs">UpdateArgs</a>&lt;Self&gt;) -&gt; Self::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Event</a>;
+
+    fn <a href='#method.default_x_position' class='fnname'>default_x_position</a>(&amp;self, ui: &amp;<a class="struct" href="../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a> { ... }
+    fn <a href='#method.default_y_position' class='fnname'>default_y_position</a>(&amp;self, ui: &amp;<a class="struct" href="../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a> { ... }
+    fn <a href='#method.default_x_dimension' class='fnname'>default_x_dimension</a>(&amp;self, ui: &amp;<a class="struct" href="../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../conrod/position/enum.Dimension.html" title="enum conrod::position::Dimension">Dimension</a> { ... }
+    fn <a href='#method.default_y_dimension' class='fnname'>default_y_dimension</a>(&amp;self, ui: &amp;<a class="struct" href="../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../conrod/position/enum.Dimension.html" title="enum conrod::position::Dimension">Dimension</a> { ... }
+    fn <a href='#method.drag_area' class='fnname'>drag_area</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _dim: <a class="type" href="../../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _style: &amp;Self::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Style</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _theme: &amp;<a class="struct" href="../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>&gt; { ... }
+    fn <a href='#method.kid_area' class='fnname'>kid_area</a>(&amp;self, args: <a class="struct" href="../../conrod/widget/struct.KidAreaArgs.html" title="struct conrod::widget::KidAreaArgs">KidAreaArgs</a>&lt;Self&gt;) -&gt; <a class="struct" href="../../conrod/widget/struct.KidArea.html" title="struct conrod::widget::KidArea">KidArea</a> { ... }
+    fn <a href='#method.parent' class='fnname'>parent</a>(self, parent_id: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; Self { ... }
+    fn <a href='#method.no_parent' class='fnname'>no_parent</a>(self) -&gt; Self { ... }
+    fn <a href='#method.place_on_kid_area' class='fnname'>place_on_kid_area</a>(self, b: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self { ... }
+    fn <a href='#method.graphics_for' class='fnname'>graphics_for</a>(self, id: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; Self { ... }
+    fn <a href='#method.floating' class='fnname'>floating</a>(self, is_floating: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self { ... }
+    fn <a href='#method.crop_kids' class='fnname'>crop_kids</a>(self) -&gt; Self { ... }
+    fn <a href='#method.scroll_kids' class='fnname'>scroll_kids</a>(self) -&gt; Self { ... }
+    fn <a href='#method.scroll_kids_vertically' class='fnname'>scroll_kids_vertically</a>(self) -&gt; Self { ... }
+    fn <a href='#method.scroll_kids_horizontally' class='fnname'>scroll_kids_horizontally</a>(self) -&gt; Self { ... }
+    fn <a href='#method.and' class='fnname'>and</a>&lt;F&gt;(self, build: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(Self) -&gt; Self</span> { ... }
+    fn <a href='#method.and_mut' class='fnname'>and_mut</a>&lt;F&gt;(self, mutate: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(&amp;mut Self)</span> { ... }
+    fn <a href='#method.and_if' class='fnname'>and_if</a>&lt;F&gt;(self, cond: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, build: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(Self) -&gt; Self</span> { ... }
+    fn <a href='#method.and_then' class='fnname'>and_then</a>&lt;T, F&gt;(self, maybe: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;, build: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(Self, T) -&gt; Self</span> { ... }
+    fn <a href='#method.set' class='fnname'>set</a>&lt;'a, 'b&gt;(self, id: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, ui_cell: &amp;'a mut <a class="struct" href="../../conrod/struct.UiCell.html" title="struct conrod::UiCell">UiCell</a>&lt;'b&gt;) -&gt; Self::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Event</a> { ... }
+}</pre><div class='docblock'><p>A trait to be implemented by all <strong>Widget</strong> types.</p>
+
+<p>A type that implements <strong>Widget</strong> can be thought of as a collection of arguments to the
+<strong>Widget</strong>&#39;s <strong>Widget::update</strong> method. They type itself is not stored between updates, but
+rather is used to update an instance of the <strong>Widget</strong>&#39;s <strong>Widget::State</strong>, which <em>is</em> stored.</p>
+
+<p>Methods that <em>must</em> be overridden:</p>
+
+<ul>
+<li>common</li>
+<li>common_mut</li>
+<li>init_state</li>
+<li>style</li>
+<li>update</li>
+</ul>
+
+<p>Methods that can be optionally overridden:</p>
+
+<ul>
+<li>default_x_position</li>
+<li>default_y_position</li>
+<li>default_width</li>
+<li>default_height</li>
+<li>drag_area</li>
+<li>kid_area</li>
+</ul>
+
+<p>Methods that should not be overridden:</p>
+
+<ul>
+<li>floating</li>
+<li>scroll_kids</li>
+<li>scroll_kids_vertically</li>
+<li>scroll_kids_horizontally</li>
+<li>place_widget_on_kid_area</li>
+<li>parent</li>
+<li>no_parent</li>
+<li>set</li>
+</ul>
+</div>
+            <h2 id='associated-types'>Associated Types</h2>
+            <div class='methods'>
+        <h3 id='associatedtype.State' class='method'><span id='State.t' class='invisible'><code>type <a href='#associatedtype.State' class="type">State</a>: <a class="trait" href="https://doc.rust-lang.org/nightly/core/any/trait.Any.html" title="trait core::any::Any">Any</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a></code></span></h3><div class='docblock'><p>State to be stored within the <code>Ui</code>s widget cache.</p>
+
+<p>Take advantage of this type for any large allocations that you would like to avoid
+repeating between updates, or any calculations that you&#39;d like to avoid repeating between
+calls to <code>update</code>.</p>
+
+<p>Conrod will never clone the state, it will only ever be moved.</p>
+</div><h3 id='associatedtype.Style' class='method'><span id='Style.t' class='invisible'><code>type <a href='#associatedtype.Style' class="type">Style</a>: <a class="trait" href="../../conrod/widget/trait.Style.html" title="trait conrod::widget::Style">Style</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a></code></span></h3><div class='docblock'><p>Every widget is required to have its own associated <code>Style</code> type. This type is intended to
+contain high-level styling information for the widget that can be <em>optionally specified</em> by
+a user of the widget.</p>
+
+<p>All <code>Style</code> structs are typically <code>Copy</code> and contain simple, descriptive fields like
+<code>color</code>, <code>font_size</code>, <code>line_spacing</code>, <code>border_width</code>, etc. These types are also required to
+be <code>PartialEq</code>. This is so that the <code>Ui</code> may automatically compare the previous style to
+the new style each time <code>.set</code> is called, allowing conrod to automatically determine
+whether or not something has changed and if a re-draw is required.</p>
+
+<p>Each field in a <code>Style</code> struct is typically an <code>Option&lt;T&gt;</code>. This is so that each field may
+be <em>optionally specified</em>, indicating to fall back to defaults if the fields are <code>None</code>
+upon style retrieval.</p>
+
+<p>The reason this data is required to be in its own <code>Style</code> type (rather than in the widget
+type itself) is so that conrod can distinguish between default style data that may be
+stored within the <code>Theme</code>&#39;s <code>widget_styling</code>, and other data that is necessary for the
+widget&#39;s behaviour logic. Having <code>Style</code> be an associated type makes it trivial to retrieve
+unique, widget-specific styling data for each widget from a single method (see
+<a href="./theme/struct.Theme.html#method.widget_style"><code>Theme::widget_style</code></a>).</p>
+
+<p>These types are often quite similar and can involve a lot of boilerplate when written by
+hand due to rust&#39;s lack of field inheritance. To get around this, conrod provides
+<a href="./macro.widget_style!.html"><code>widget_style!</code></a> - a macro that vastly simplifies the definition and implementation of
+widget <code>Style</code> types.</p>
+
+<p>Conrod doesn&#39;t yet support serializing widget styling with the <code>Theme</code> type, but we hope to
+soon.</p>
+
+<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<pre class="rust rust-example-rendered">
+<span class="doccomment">/// Unique styling for a Button widget.</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Style</span> {
+    <span class="doccomment">/// Color of the Button&#39;s pressable area.</span>
+    <span class="kw">pub</span> <span class="ident">color</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Color</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// Width of the border surrounding the button.</span>
+    <span class="kw">pub</span> <span class="ident">border</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Scalar</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// The color of the Button&#39;s rectangular border.</span>
+    <span class="kw">pub</span> <span class="ident">border_color</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Color</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// The color of the Button&#39;s label.</span>
+    <span class="kw">pub</span> <span class="ident">label_color</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Color</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// The font size for the Button&#39;s label.</span>
+    <span class="kw">pub</span> <span class="ident">label_font_size</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">FontSize</span><span class="op">&gt;</span>,
+}</pre>
+
+<p>Note: It is recommended that you don&#39;t write these types yourself as it can get tedious.
+Instead, we suggest using the <a href="./macro.widget_style!.html"><code>widget_style!</code></a> macro which also provides all necessary
+style retrieval method implementations.</p>
+</div><h3 id='associatedtype.Event' class='method'><span id='Event.t' class='invisible'><code>type <a href='#associatedtype.Event' class="type">Event</a></code></span></h3><div class='docblock'><p>The type of event yielded by the widget, returned via the <code>Widget::set</code> function.</p>
+
+<p>For a <code>Toggle</code> widget, this might be a <code>bool</code>.</p>
+
+<p>For a non-interactive, purely graphical widget, this might be <code>()</code>.</p>
+</div></div>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.common' class='method'><span id='common.v' class='invisible'><code>fn <a href='#tymethod.common' class='fnname'>common</a>(&amp;self) -&gt; &amp;<a class="struct" href="../../conrod/widget/struct.CommonBuilder.html" title="struct conrod::widget::CommonBuilder">CommonBuilder</a></code></span></h3><div class='docblock'><p>Return a reference to a <strong>CommonBuilder</strong> struct owned by the Widget.
+This method allows us to do a blanket impl of Positionable and Sizeable for T: Widget.</p>
+
+<p>Note: When rust introduces field inheritance, we will move the <strong>CommonBuilder</strong>
+accordingly (perhaps under a different name).</p>
+</div><h3 id='tymethod.common_mut' class='method'><span id='common_mut.v' class='invisible'><code>fn <a href='#tymethod.common_mut' class='fnname'>common_mut</a>(&amp;mut self) -&gt; &amp;mut <a class="struct" href="../../conrod/widget/struct.CommonBuilder.html" title="struct conrod::widget::CommonBuilder">CommonBuilder</a></code></span></h3><div class='docblock'><p>Return a mutable reference to a CommonBuilder struct owned by the Widget.
+This method allows us to do a blanket impl of Positionable and Sizeable for T: Widget.</p>
+
+<p>Note: When rust introduces field inheritance, we will move the <strong>CommonBuilder</strong>
+accordingly (perhaps under a different name).</p>
+</div><h3 id='tymethod.init_state' class='method'><span id='init_state.v' class='invisible'><code>fn <a href='#tymethod.init_state' class='fnname'>init_state</a>(&amp;self, _: <a class="struct" href="../../conrod/widget/id/struct.Generator.html" title="struct conrod::widget::id::Generator">Generator</a>) -&gt; Self::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">State</a></code></span></h3><div class='docblock'><p>Return the initial <strong>State</strong> of the Widget.</p>
+
+<p>The <code>Ui</code> will only call this once, immediately prior to the first time that
+<strong>Widget::update</strong> is first called.</p>
+</div><h3 id='tymethod.style' class='method'><span id='style.v' class='invisible'><code>fn <a href='#tymethod.style' class='fnname'>style</a>(&amp;self) -&gt; Self::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Style</a></code></span></h3><div class='docblock'><p>Return the styling of the widget.</p>
+
+<p>The <code>Ui</code> will call this once prior to each <code>update</code>. It does this so that it can check for
+differences in <code>Style</code> in case we need to re-draw the widget.</p>
+</div><h3 id='tymethod.update' class='method'><span id='update.v' class='invisible'><code>fn <a href='#tymethod.update' class='fnname'>update</a>(self, args: <a class="struct" href="../../conrod/widget/struct.UpdateArgs.html" title="struct conrod::widget::UpdateArgs">UpdateArgs</a>&lt;Self&gt;) -&gt; Self::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Event</a></code></span></h3><div class='docblock'><p>Update our <strong>Widget</strong>&#39;s unique <strong>Widget::State</strong> via the <strong>State</strong> wrapper type (the
+<code>state</code> field within the <a href="./struct.UpdateArgs"><strong>UpdateArgs</strong></a>).</p>
+
+<p>Whenever <a href="./struct.State.html#method.update"><strong>State::update</strong></a> is called, a <code>has_updated</code>
+flag is set within the <strong>State</strong>, indicating that there has been some change to the unique
+<strong>Widget::State</strong> and that we require re-drawing the <strong>Widget</strong>. As a result, widget
+designers should only call <strong>State::update</strong> when necessary, checking whether or not the
+state has changed before invoking the method. See the custom_widget.rs example for a
+demonstration of this.</p>
+
+<h1 id='arguments' class='section-header'><a href='#arguments'>Arguments</a></h1>
+<ul>
+<li>id - The <code>Widget</code>&#39;s unique index (whether <code>Public</code> or <code>Internal</code>).</li>
+<li>prev - The previous common state of the Widget. If this is the first time <strong>update</strong> is
+called, <code>Widget::init_state</code> will be used to produce some intial state instead.</li>
+<li>state - A wrapper around the <code>Widget::State</code>. See the <a href="./struct.State"><strong>State</strong> docs</a>
+for more details.</li>
+<li>rect - The position (centered) and dimensions of the widget.</li>
+<li>style - The style produced by the <code>Widget::style</code> method.</li>
+<li>ui - A wrapper around the <code>Ui</code>, offering restricted access to its functionality. See the
+docs for <code>UiCell</code> for more details.</li>
+</ul>
+</div></div>
+            <h2 id='provided-methods'>Provided Methods</h2>
+            <div class='methods'>
+        <h3 id='method.default_x_position' class='method'><span id='default_x_position.v' class='invisible'><code>fn <a href='#method.default_x_position' class='fnname'>default_x_position</a>(&amp;self, ui: &amp;<a class="struct" href="../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a></code></span></h3><div class='docblock'><p>The default <strong>Position</strong> for the widget along the <em>x</em> axis.</p>
+
+<p>This is used when no <strong>Position</strong> is explicitly given when instantiating the Widget.</p>
+</div><h3 id='method.default_y_position' class='method'><span id='default_y_position.v' class='invisible'><code>fn <a href='#method.default_y_position' class='fnname'>default_y_position</a>(&amp;self, ui: &amp;<a class="struct" href="../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a></code></span></h3><div class='docblock'><p>The default <strong>Position</strong> for the widget along the <em>y</em> axis.</p>
+
+<p>This is used when no <strong>Position</strong> is explicitly given when instantiating the Widget.</p>
+</div><h3 id='method.default_x_dimension' class='method'><span id='default_x_dimension.v' class='invisible'><code>fn <a href='#method.default_x_dimension' class='fnname'>default_x_dimension</a>(&amp;self, ui: &amp;<a class="struct" href="../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../conrod/position/enum.Dimension.html" title="enum conrod::position::Dimension">Dimension</a></code></span></h3><div class='docblock'><p>The default width for the <strong>Widget</strong>.</p>
+
+<p>This method is only used if no height is explicitly given.</p>
+
+<p>By default, this simply calls <a href="./fn.default_dimension"><strong>default_dimension</strong></a> with a
+fallback absolute dimension of 0.0.</p>
+</div><h3 id='method.default_y_dimension' class='method'><span id='default_y_dimension.v' class='invisible'><code>fn <a href='#method.default_y_dimension' class='fnname'>default_y_dimension</a>(&amp;self, ui: &amp;<a class="struct" href="../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../conrod/position/enum.Dimension.html" title="enum conrod::position::Dimension">Dimension</a></code></span></h3><div class='docblock'><p>The default height of the widget.</p>
+
+<p>By default, this simply calls <a href="./fn.default_dimension"><strong>default_dimension</strong></a> with a
+fallback absolute dimension of 0.0.</p>
+</div><h3 id='method.drag_area' class='method'><span id='drag_area.v' class='invisible'><code>fn <a href='#method.drag_area' class='fnname'>drag_area</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _dim: <a class="type" href="../../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _style: &amp;Self::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Style</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _theme: &amp;<a class="struct" href="../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>&gt;</code></span></h3><div class='docblock'><p>If the widget is draggable, implement this method and return the position and dimensions of
+the draggable space. The position should be relative to the center of the widget.</p>
+</div><h3 id='method.kid_area' class='method'><span id='kid_area.v' class='invisible'><code>fn <a href='#method.kid_area' class='fnname'>kid_area</a>(&amp;self, args: <a class="struct" href="../../conrod/widget/struct.KidAreaArgs.html" title="struct conrod::widget::KidAreaArgs">KidAreaArgs</a>&lt;Self&gt;) -&gt; <a class="struct" href="../../conrod/widget/struct.KidArea.html" title="struct conrod::widget::KidArea">KidArea</a></code></span></h3><div class='docblock'><p>The area on which child widgets will be placed when using the <code>Place</code> <code>Position</code> methods.</p>
+</div><h3 id='method.parent' class='method'><span id='parent.v' class='invisible'><code>fn <a href='#method.parent' class='fnname'>parent</a>(self, parent_id: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; Self</code></span></h3><div class='docblock'><p>Set the parent widget for this Widget by passing the WidgetId of the parent.</p>
+
+<p>This will attach this Widget to the parent widget.</p>
+</div><h3 id='method.no_parent' class='method'><span id='no_parent.v' class='invisible'><code>fn <a href='#method.no_parent' class='fnname'>no_parent</a>(self) -&gt; Self</code></span></h3><div class='docblock'><p>Specify that this widget has no parent widgets.</p>
+</div><h3 id='method.place_on_kid_area' class='method'><span id='place_on_kid_area.v' class='invisible'><code>fn <a href='#method.place_on_kid_area' class='fnname'>place_on_kid_area</a>(self, b: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self</code></span></h3><div class='docblock'><p>Set whether or not the <strong>Widget</strong> should be placed on the kid_area.</p>
+
+<p>If <code>true</code>, the <strong>Widget</strong> will be placed on the <code>kid_area</code> of the parent <strong>Widget</strong> if the
+<strong>Widget</strong> is given a <strong>Place</strong> variant for its <strong>Position</strong>.</p>
+
+<p>If <code>false</code>, the <strong>Widget</strong> will be placed on the parent <strong>Widget</strong>&#39;s <em>total</em> area.</p>
+
+<p>By default, conrod will automatically determine this for you by checking whether or not the
+<strong>Widget</strong> that our <strong>Widget</strong> is being placed upon returns <code>Some</code> from its
+<strong>Widget::kid_area</strong> method.</p>
+</div><h3 id='method.graphics_for' class='method'><span id='graphics_for.v' class='invisible'><code>fn <a href='#method.graphics_for' class='fnname'>graphics_for</a>(self, id: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; Self</code></span></h3><div class='docblock'><p>Indicates that the <strong>Widget</strong> is used as a non-interactive graphical element for some other
+widget.</p>
+
+<p>This is useful for <strong>Widget</strong>s that are used to compose some other <strong>Widget</strong>.</p>
+
+<p>When adding an edge <em>a -&gt; b</em> where <em>b</em> is considered to be a graphical element of <em>a</em>,
+several things are implied about <em>b</em>:</p>
+
+<ul>
+<li>If <em>b</em> is picked within either <strong>Graph::pick_widget</strong> or
+<strong>Graph::pick_top_scrollable_widget</strong>, it will instead return the index for <em>a</em>.</li>
+<li>When determining the <strong>Graph::scroll_offset</strong> for <em>b</em>, <em>a</em>&#39;s scrolling (if it is
+scrollable, that is) will be skipped.</li>
+<li><em>b</em> will always be placed upon <em>a</em>&#39;s total area, rather than its kid_area which is the
+default.</li>
+<li>Any <strong>Graphic</strong> child of <em>b</em> will be considered as a <strong>Graphic</strong> child of <em>a</em>.</li>
+</ul>
+</div><h3 id='method.floating' class='method'><span id='floating.v' class='invisible'><code>fn <a href='#method.floating' class='fnname'>floating</a>(self, is_floating: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self</code></span></h3><div class='docblock'><p>Set whether or not the widget is floating (the default is <code>false</code>).
+A typical example of a floating widget would be a pop-up or alert window.</p>
+
+<p>A &quot;floating&quot; widget will always be rendered <em>after</em> its parent tree and all widgets
+connected to its parent tree. If two sibling widgets are both floating, then the one that
+was last clicked will be rendered last. If neither are clicked, they will be rendered in
+the order in which they were cached into the <code>Ui</code>.</p>
+</div><h3 id='method.crop_kids' class='method'><span id='crop_kids.v' class='invisible'><code>fn <a href='#method.crop_kids' class='fnname'>crop_kids</a>(self) -&gt; Self</code></span></h3><div class='docblock'><p>Indicates that all widgets who are children of this widget should be cropped to the
+<code>kid_area</code> of this widget.</p>
+</div><h3 id='method.scroll_kids' class='method'><span id='scroll_kids.v' class='invisible'><code>fn <a href='#method.scroll_kids' class='fnname'>scroll_kids</a>(self) -&gt; Self</code></span></h3><div class='docblock'><p>Makes the widget&#39;s <code>KidArea</code> scrollable.</p>
+
+<p>If a widget is scrollable and it has children widgets that fall outside of its <code>KidArea</code>,
+the <code>KidArea</code> will become scrollable.</p>
+
+<p>This method calls <code>Widget::crop_kids</code> internally.</p>
+</div><h3 id='method.scroll_kids_vertically' class='method'><span id='scroll_kids_vertically.v' class='invisible'><code>fn <a href='#method.scroll_kids_vertically' class='fnname'>scroll_kids_vertically</a>(self) -&gt; Self</code></span></h3><div class='docblock'><p>Makes the widget&#39;s <code>KidArea</code> scrollable.</p>
+
+<p>If a widget is scrollable and it has children widgets that fall outside of its <code>KidArea</code>,
+the <code>KidArea</code> will become scrollable.</p>
+
+<p>This method calls <code>Widget::crop_kids</code> internally.</p>
+</div><h3 id='method.scroll_kids_horizontally' class='method'><span id='scroll_kids_horizontally.v' class='invisible'><code>fn <a href='#method.scroll_kids_horizontally' class='fnname'>scroll_kids_horizontally</a>(self) -&gt; Self</code></span></h3><div class='docblock'><p>Set whether or not the widget&#39;s <code>KidArea</code> is scrollable (the default is false).</p>
+
+<p>If a widget is scrollable and it has children widgets that fall outside of its <code>KidArea</code>,
+the <code>KidArea</code> will become scrollable.</p>
+
+<p>This method calls <code>Widget::crop_kids</code> internally.</p>
+</div><h3 id='method.and' class='method'><span id='and.v' class='invisible'><code>fn <a href='#method.and' class='fnname'>and</a>&lt;F&gt;(self, build: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(Self) -&gt; Self</span></code></span></h3><div class='docblock'><p>A builder method that &quot;lifts&quot; the <strong>Widget</strong> through the given <code>build</code> function.</p>
+
+<p>This method is solely for providing slight ergonomic improvement by helping to maintain
+the symmetry of the <code>builder</code> pattern in some cases.</p>
+</div><h3 id='method.and_mut' class='method'><span id='and_mut.v' class='invisible'><code>fn <a href='#method.and_mut' class='fnname'>and_mut</a>&lt;F&gt;(self, mutate: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(&amp;mut Self)</span></code></span></h3><div class='docblock'><p>A builder method that mutates the <strong>Widget</strong> with the given <code>mutate</code> function.</p>
+
+<p>This method is solely for providing slight ergonomic improvement by helping to maintain
+the symmetry of the <code>builder</code> pattern in some cases.</p>
+</div><h3 id='method.and_if' class='method'><span id='and_if.v' class='invisible'><code>fn <a href='#method.and_if' class='fnname'>and_if</a>&lt;F&gt;(self, cond: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, build: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(Self) -&gt; Self</span></code></span></h3><div class='docblock'><p>A method that conditionally builds the <strong>Widget</strong> with the given <code>build</code> function.</p>
+
+<p>If <code>cond</code> is <code>true</code>, <code>build(self)</code> is evaluated and returned.</p>
+
+<p>If <code>false</code>, <code>self</code> is returned.</p>
+</div><h3 id='method.and_then' class='method'><span id='and_then.v' class='invisible'><code>fn <a href='#method.and_then' class='fnname'>and_then</a>&lt;T, F&gt;(self, maybe: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;, build: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(Self, T) -&gt; Self</span></code></span></h3><div class='docblock'><p>A method that optionally builds the the <strong>Widget</strong> with the given <code>build</code> function.</p>
+
+<p>If <code>maybe</code> is <code>Some(t)</code>, <code>build(self, t)</code> is evaluated and returned.</p>
+
+<p>If <code>None</code>, <code>self</code> is returned.</p>
+</div><h3 id='method.set' class='method'><span id='set.v' class='invisible'><code>fn <a href='#method.set' class='fnname'>set</a>&lt;'a, 'b&gt;(self, id: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, ui_cell: &amp;'a mut <a class="struct" href="../../conrod/struct.UiCell.html" title="struct conrod::UiCell">UiCell</a>&lt;'b&gt;) -&gt; Self::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Event</a></code></span></h3><div class='docblock'><p>Note: There should be no need to override this method.</p>
+
+<p>After building the widget, you call this method to set its current state into the given
+<code>Ui</code>. More precisely, the following will occur when calling this method:
+- The widget&#39;s previous state and style will be retrieved.
+- The widget&#39;s current <code>Style</code> will be retrieved (from the <code>Widget::style</code> method).
+- The widget&#39;s state will be updated (using the <code>Widget::udpate</code> method).
+- If the widget&#39;s state or style has changed, the <strong>Ui</strong> will be notified that the widget
+needs to be re-drawn.
+- The new State and Style will be cached within the <code>Ui</code>.</p>
+</div></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl Widget for <a class="struct" href="../../conrod/widget/primitive/line/struct.Line.html" title="struct conrod::widget::primitive::line::Line">Line</a></code></li>
+<li><code>impl Widget for <a class="struct" href="../../conrod/widget/primitive/image/struct.Image.html" title="struct conrod::widget::primitive::image::Image">Image</a></code></li>
+<li><code>impl&lt;I&gt; Widget for <a class="struct" href="../../conrod/widget/primitive/point_path/struct.PointPath.html" title="struct conrod::widget::primitive::point_path::PointPath">PointPath</a>&lt;I&gt; <span class="where fmt-newline">where I: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>&lt;Item=<a class="type" href="../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a>&gt;</span></code></li>
+<li><code>impl Widget for <a class="struct" href="../../conrod/widget/primitive/shape/oval/struct.Oval.html" title="struct conrod::widget::primitive::shape::oval::Oval">Oval</a></code></li>
+<li><code>impl&lt;I&gt; Widget for <a class="struct" href="../../conrod/widget/primitive/shape/polygon/struct.Polygon.html" title="struct conrod::widget::primitive::shape::polygon::Polygon">Polygon</a>&lt;I&gt; <span class="where fmt-newline">where I: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>&lt;Item=<a class="type" href="../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a>&gt;</span></code></li>
+<li><code>impl Widget for <a class="struct" href="../../conrod/widget/primitive/shape/rectangle/struct.Rectangle.html" title="struct conrod::widget::primitive::shape::rectangle::Rectangle">Rectangle</a></code></li>
+<li><code>impl&lt;'a&gt; Widget for <a class="struct" href="../../conrod/widget/primitive/text/struct.Text.html" title="struct conrod::widget::primitive::text::Text">Text</a>&lt;'a&gt;</code></li>
+<li><code>impl Widget for <a class="struct" href="../../conrod/widget/bordered_rectangle/struct.BorderedRectangle.html" title="struct conrod::widget::bordered_rectangle::BorderedRectangle">BorderedRectangle</a></code></li>
+<li><code>impl&lt;'a&gt; Widget for <a class="struct" href="../../conrod/widget/button/struct.Button.html" title="struct conrod::widget::button::Button">Button</a>&lt;'a, <a class="struct" href="../../conrod/widget/button/struct.Flat.html" title="struct conrod::widget::button::Flat">Flat</a>&gt;</code></li>
+<li><code>impl&lt;'a&gt; Widget for <a class="struct" href="../../conrod/widget/button/struct.Button.html" title="struct conrod::widget::button::Button">Button</a>&lt;'a, <a class="struct" href="../../conrod/widget/button/struct.Image.html" title="struct conrod::widget::button::Image">Image</a>&gt;</code></li>
+<li><code>impl&lt;'a&gt; Widget for <a class="struct" href="../../conrod/widget/canvas/struct.Canvas.html" title="struct conrod::widget::canvas::Canvas">Canvas</a>&lt;'a&gt;</code></li>
+<li><code>impl&lt;'a, T&gt; Widget for <a class="struct" href="../../conrod/widget/drop_down_list/struct.DropDownList.html" title="struct conrod::widget::drop_down_list::DropDownList">DropDownList</a>&lt;'a, T&gt; <span class="where fmt-newline">where T: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</span></code></li>
+<li><code>impl&lt;'a, E&gt; Widget for <a class="struct" href="../../conrod/widget/envelope_editor/struct.EnvelopeEditor.html" title="struct conrod::widget::envelope_editor::EnvelopeEditor">EnvelopeEditor</a>&lt;'a, E&gt; <span class="where fmt-newline">where E: <a class="trait" href="../../conrod/widget/envelope_editor/trait.EnvelopePoint.html" title="trait conrod::widget::envelope_editor::EnvelopePoint">EnvelopePoint</a></span></code></li>
+<li><code>impl&lt;'a&gt; Widget for <a class="struct" href="../../conrod/widget/file_navigator/directory_view/struct.DirectoryView.html" title="struct conrod::widget::file_navigator::directory_view::DirectoryView">DirectoryView</a>&lt;'a&gt;</code></li>
+<li><code>impl&lt;'a&gt; Widget for <a class="struct" href="../../conrod/widget/file_navigator/struct.FileNavigator.html" title="struct conrod::widget::file_navigator::FileNavigator">FileNavigator</a>&lt;'a&gt;</code></li>
+<li><code>impl Widget for <a class="struct" href="../../conrod/widget/list/struct.List.html" title="struct conrod::widget::list::List">List</a></code></li>
+<li><code>impl&lt;M&gt; Widget for <a class="struct" href="../../conrod/widget/list_select/struct.ListSelect.html" title="struct conrod::widget::list_select::ListSelect">ListSelect</a>&lt;M&gt; <span class="where fmt-newline">where M: <a class="trait" href="../../conrod/widget/list_select/trait.Mode.html" title="trait conrod::widget::list_select::Mode">Mode</a></span></code></li>
+<li><code>impl Widget for <a class="struct" href="../../conrod/widget/matrix/struct.Matrix.html" title="struct conrod::widget::matrix::Matrix">Matrix</a></code></li>
+<li><code>impl&lt;'a, T&gt; Widget for <a class="struct" href="../../conrod/widget/number_dialer/struct.NumberDialer.html" title="struct conrod::widget::number_dialer::NumberDialer">NumberDialer</a>&lt;'a, T&gt; <span class="where fmt-newline">where T: <a class="trait" href="../../num_traits/float/trait.Float.html" title="trait num_traits::float::Float">Float</a> + <a class="trait" href="../../num_traits/cast/trait.NumCast.html" title="trait num_traits::cast::NumCast">NumCast</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/collections/string/trait.ToString.html" title="trait collections::string::ToString">ToString</a></span></code></li>
+<li><code>impl&lt;X, Y, F&gt; Widget for <a class="struct" href="../../conrod/widget/plot_path/struct.PlotPath.html" title="struct conrod::widget::plot_path::PlotPath">PlotPath</a>&lt;X, Y, F&gt; <span class="where fmt-newline">where X: <a class="trait" href="../../num_traits/cast/trait.NumCast.html" title="trait num_traits::cast::NumCast">NumCast</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y: <a class="trait" href="../../num_traits/cast/trait.NumCast.html" title="trait num_traits::cast::NumCast">NumCast</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html" title="trait core::ops::FnMut">FnMut</a>(X) -&gt; Y</span></code></li>
+<li><code>impl&lt;'a, T&gt; Widget for <a class="struct" href="../../conrod/widget/range_slider/struct.RangeSlider.html" title="struct conrod::widget::range_slider::RangeSlider">RangeSlider</a>&lt;'a, T&gt; <span class="where fmt-newline">where T: <a class="trait" href="../../num_traits/float/trait.Float.html" title="trait num_traits::float::Float">Float</a> + <a class="trait" href="../../num_traits/cast/trait.NumCast.html" title="trait num_traits::cast::NumCast">NumCast</a> + <a class="trait" href="../../num_traits/cast/trait.ToPrimitive.html" title="trait num_traits::cast::ToPrimitive">ToPrimitive</a></span></code></li>
+<li><code>impl Widget for <a class="struct" href="../../conrod/widget/rounded_rectangle/struct.RoundedRectangle.html" title="struct conrod::widget::rounded_rectangle::RoundedRectangle">RoundedRectangle</a></code></li>
+<li><code>impl&lt;A&gt; Widget for <a class="struct" href="../../conrod/widget/scrollbar/struct.Scrollbar.html" title="struct conrod::widget::scrollbar::Scrollbar">Scrollbar</a>&lt;A&gt; <span class="where fmt-newline">where A: <a class="trait" href="../../conrod/widget/scrollbar/trait.Axis.html" title="trait conrod::widget::scrollbar::Axis">Axis</a></span></code></li>
+<li><code>impl&lt;'a, T&gt; Widget for <a class="struct" href="../../conrod/widget/slider/struct.Slider.html" title="struct conrod::widget::slider::Slider">Slider</a>&lt;'a, T&gt; <span class="where fmt-newline">where T: <a class="trait" href="../../num_traits/float/trait.Float.html" title="trait num_traits::float::Float">Float</a> + <a class="trait" href="../../num_traits/cast/trait.NumCast.html" title="trait num_traits::cast::NumCast">NumCast</a> + <a class="trait" href="../../num_traits/cast/trait.ToPrimitive.html" title="trait num_traits::cast::ToPrimitive">ToPrimitive</a></span></code></li>
+<li><code>impl&lt;'a&gt; Widget for <a class="struct" href="../../conrod/widget/tabs/struct.Tabs.html" title="struct conrod::widget::tabs::Tabs">Tabs</a>&lt;'a&gt;</code></li>
+<li><code>impl&lt;'a&gt; Widget for <a class="struct" href="../../conrod/widget/text_box/struct.TextBox.html" title="struct conrod::widget::text_box::TextBox">TextBox</a>&lt;'a&gt;</code></li>
+<li><code>impl&lt;'a&gt; Widget for <a class="struct" href="../../conrod/widget/text_edit/struct.TextEdit.html" title="struct conrod::widget::text_edit::TextEdit">TextEdit</a>&lt;'a&gt;</code></li>
+<li><code>impl&lt;'a&gt; Widget for <a class="struct" href="../../conrod/widget/title_bar/struct.TitleBar.html" title="struct conrod::widget::title_bar::TitleBar">TitleBar</a>&lt;'a&gt;</code></li>
+<li><code>impl&lt;'a&gt; Widget for <a class="struct" href="../../conrod/widget/toggle/struct.Toggle.html" title="struct conrod::widget::toggle::Toggle">Toggle</a>&lt;'a&gt;</code></li>
+<li><code>impl&lt;'a, X, Y&gt; Widget for <a class="struct" href="../../conrod/widget/xy_pad/struct.XYPad.html" title="struct conrod::widget::xy_pad::XYPad">XYPad</a>&lt;'a, X, Y&gt; <span class="where fmt-newline">where X: <a class="trait" href="../../num_traits/float/trait.Float.html" title="trait num_traits::float::Float">Float</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/collections/string/trait.ToString.html" title="trait collections::string::ToString">ToString</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/any/trait.Any.html" title="trait core::any::Any">Any</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y: <a class="trait" href="../../num_traits/float/trait.Float.html" title="trait num_traits::float::Float">Float</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/collections/string/trait.ToString.html" title="trait collections::string::ToString">ToString</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/any/trait.Any.html" title="trait core::any::Any">Any</a></span></code></li>
+</ul><script type="text/javascript" async
+                         src="../../implementors/conrod/widget/trait.Widget.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["ControllerAxisArgs","Components of a controller axis move event. Not guaranteed consistent across backends."],["ControllerButton","Components of a controller button event. Not guaranteed consistent across backends."]],"trait":[["ControllerAxisEvent","The position of a controller axis changed."]]});

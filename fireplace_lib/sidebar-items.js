@@ -1,0 +1,1 @@
+initSidebarItems({"macro":[["enum_str","Wrapping an enum in `enum_str` will implement `De/Serialize`."]],"mod":[["callback","Partial implementations of the `Callback` trait for easy composability"],["handlers","Handlers"],["utils","Collection of utility functions and macros"]]});

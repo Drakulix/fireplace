@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `slog_html` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, slog_html">
+
+    <title>slog_html - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'slog_html', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>slog_html</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/slog_html/lib.rs.html#1-412' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Html formatter for <code>slog-rs</code></p>
+
+<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<p>Writing logs to an HTML file</p>
+
+<pre class="rust rust-example-rendered">
+<span class="attribute">#[<span class="ident">macro_use</span>]</span>
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">slog</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">slog_html</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">slog_stream</span>;
+
+<span class="kw">use</span> <span class="ident">slog</span>::<span class="ident">DrainExt</span>;
+
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fs</span>::<span class="ident">OpenOptions</span>;
+
+<span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">let</span> <span class="ident">file</span> <span class="op">=</span> <span class="ident">OpenOptions</span>::<span class="ident">new</span>()
+        .<span class="ident">create</span>(<span class="bool-val">true</span>)
+        .<span class="ident">write</span>(<span class="bool-val">true</span>)
+        .<span class="ident">truncate</span>(<span class="bool-val">true</span>)
+        .<span class="ident">open</span>(<span class="string">&quot;target/log.html&quot;</span>).<span class="ident">unwrap</span>();
+
+    <span class="kw">let</span> <span class="ident">log</span> <span class="op">=</span> <span class="ident">slog</span>::<span class="ident">Logger</span>::<span class="ident">root</span>(
+        <span class="ident">slog_stream</span>::<span class="ident">stream</span>(
+            <span class="ident">file</span>,
+            <span class="ident">slog_html</span>::<span class="ident">default</span>()
+        ).<span class="ident">fuse</span>(),
+        <span class="macro">o</span><span class="macro">!</span>(<span class="string">&quot;version&quot;</span> <span class="op">=&gt;</span> <span class="macro">env</span><span class="macro">!</span>(<span class="string">&quot;CARGO_PKG_VERSION&quot;</span>))
+    );
+
+    <span class="macro">debug</span><span class="macro">!</span>(<span class="ident">log</span>, <span class="string">&quot;debug values&quot;</span>; <span class="string">&quot;x&quot;</span> <span class="op">=&gt;</span> <span class="number">1</span>, <span class="string">&quot;y&quot;</span> <span class="op">=&gt;</span> <span class="op">-</span><span class="number">1</span>);
+}</pre>
+
+<p>Create HTML logger with custom options</p>
+
+<p>Use a greyscale color palette for the log levels and disable boldness for the message part.</p>
+
+<pre class="rust rust-example-rendered">
+            <span class="ident">slog_html</span>::<span class="ident">new</span>()
+                .<span class="ident">compact</span>()
+                .<span class="ident">color_palette</span>(<span class="ident">slog_html</span>::<span class="ident">ColorPalette</span> {
+                    <span class="ident">critical</span>: <span class="string">&quot;000000&quot;</span>,
+                    <span class="ident">error</span>: <span class="string">&quot;1e1e1e&quot;</span>,
+                    <span class="ident">warning</span>: <span class="string">&quot;3c3c3c&quot;</span>,
+                    <span class="ident">info</span>: <span class="string">&quot;5a5a5a&quot;</span>,
+                    <span class="ident">debug</span>: <span class="string">&quot;787878&quot;</span>,
+                    <span class="ident">trace</span>: <span class="string">&quot;969696&quot;</span>,
+                })
+                .<span class="ident">message_style</span>(<span class="ident">slog_html</span>::<span class="ident">Style</span> {
+                    <span class="ident">bold</span>: <span class="bool-val">false</span>,
+                    .. <span class="ident">slog_html</span>::<span class="ident">Style</span>::<span class="ident">default</span>()
+                })
+                .<span class="ident">build</span>()</pre>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ColorPalette.html"
+                                  title='struct slog_html::ColorPalette'>ColorPalette</a></td>
+                           <td class='docblock-short'>
+                                <p>Hexadecimal color codes</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Format.html"
+                                  title='struct slog_html::Format'>Format</a></td>
+                           <td class='docblock-short'>
+                                <p>Html formatter</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.FormatBuilder.html"
+                                  title='struct slog_html::FormatBuilder'>FormatBuilder</a></td>
+                           <td class='docblock-short'>
+                                <p>Streamer builder</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Style.html"
+                                  title='struct slog_html::Style'>Style</a></td>
+                           <td class='docblock-short'>
+                                <p>Formatting style</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.FormatMode.html"
+                                  title='enum slog_html::FormatMode'>FormatMode</a></td>
+                           <td class='docblock-short'>
+                                <p>Formatting mode</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.default.html"
+                                  title='fn slog_html::default'>default</a></td>
+                           <td class='docblock-short'>
+                                <p>Default html <code>Format</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.new.html"
+                                  title='fn slog_html::new'>new</a></td>
+                           <td class='docblock-short'>
+                                <p>Create new <code>FormatBuilder</code> to create <code>Format</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.timestamp_local.html"
+                                  title='fn slog_html::timestamp_local'>timestamp_local</a></td>
+                           <td class='docblock-short'>
+                                <p>Default local timestamp function used by <code>Format</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.timestamp_utc.html"
+                                  title='fn slog_html::timestamp_utc'>timestamp_utc</a></td>
+                           <td class='docblock-short'>
+                                <p>Default UTC timestamp function used by <code>Format</code></p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.TimestampFn.html"
+                                  title='type slog_html::TimestampFn'>TimestampFn</a></td>
+                           <td class='docblock-short'>
+                                <p>Timestamp function type</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "slog_html";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

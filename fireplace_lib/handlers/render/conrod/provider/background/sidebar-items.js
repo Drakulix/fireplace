@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["BackgroundConfig","Configuration for a `BackgroundHandler` describing what kind of background shall be set."]],"struct":[["Background","A provider rendering a desktop background"],["BackgroundHandler","Handler that initializes a `Background` provider for every created `Output`"]]});

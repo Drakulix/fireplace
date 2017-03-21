@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["Activated","view is active"],["Fullscreen","view is shown in fullscreen"],["Maximized","view is maximized"],["Moving","view is moving"],["Resizing","view is resizing"]],"struct":[["Flags","Bitmap that may represent multiple states"]]});

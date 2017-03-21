@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Oval","A simple, non-interactive widget for drawing a single **Oval**."],["State","Unique state for the **Oval**."]]});

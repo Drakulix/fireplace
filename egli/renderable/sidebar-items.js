@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["OPENGL","EGL_OPENGL_BIT"],["OPENGL_ES","EGL_OPENGL_ES_BIT"],["OPENGL_ES2","EGL_OPENGL_ES2_BIT"],["OPENGL_ES3","EGL_OPENGL_ES3_BIT"],["OPENVG","EGL_OPENVG_BIT"]],"struct":[["Type",""]]});

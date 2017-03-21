@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `KeyboardHandler` struct in crate `fireplace_lib`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, KeyboardHandler">
+
+    <title>fireplace_lib::handlers::keyboard::KeyboardHandler - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>fireplace_lib</a>::<wbr><a href='../index.html'>handlers</a>::<wbr><a href='index.html'>keyboard</a></p><script>window.sidebarCurrent = {name: 'KeyboardHandler', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>fireplace_lib</a>::<wbr><a href='../index.html'>handlers</a>::<wbr><a href='index.html'>keyboard</a>::<wbr><a class="struct" href=''>KeyboardHandler</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/fireplace_lib/handlers/keyboard.rs.html#90-93' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct KeyboardHandler { /* fields omitted */ }</pre><div class='docblock'><p>Handler to handle global key events</p>
+
+<p>With this handler you can register custom key events, that have
+no actual meaning to other handlers or components of the window
+manager itself, but are helping the user to interact.</p>
+
+<p>Examples can be both</p>
+
+<ul>
+<li>window related functionality like, closing a window.</li>
+<li>or external events like spawning a new terminal.</li>
+</ul>
+
+<h2 id='dependencies' class='section-header'><a href='#dependencies'>Dependencies</a></h2>
+<p>This handler has no dependencies.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyboardHandler.html" title="struct fireplace_lib::handlers::keyboard::KeyboardHandler">KeyboardHandler</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/fireplace_lib/handlers/keyboard.rs.html#101-123' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyboardHandler.html" title="struct fireplace_lib::handlers::keyboard::KeyboardHandler">KeyboardHandler</a></code></span></h4>
+<div class='docblock'><p>Initialize a new <code>KeyboardHandler</code></p>
+</div><h4 id='method.register' class="method"><span id='register.v' class='invisible'><code>fn <a href='#method.register' class='fnname'>register</a>&lt;H:&nbsp;<a class="trait" href="../../../fireplace_lib/handlers/keyboard/trait.KeyHandler.html" title="trait fireplace_lib::handlers::keyboard::KeyHandler">KeyHandler</a> + 'static&gt;(&amp;mut self, pattern: <a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>, handler: H)</code></span></h4>
+<div class='docblock'><p>Register a new <code>KeyPattern</code> and <code>KeyHandler</code> combination,
+that triggers the <code>KeyHandler</code> once the corresponding
+<code>KeyPattern</code> was encountered.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html" title="trait core::default::Default">Default</a> for <a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyboardHandler.html" title="struct fireplace_lib::handlers::keyboard::KeyboardHandler">KeyboardHandler</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/fireplace_lib/handlers/keyboard.rs.html#95-99' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.default' class="method"><span id='default.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default' class='fnname'>default</a>() -&gt; <a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyboardHandler.html" title="struct fireplace_lib::handlers::keyboard::KeyboardHandler">KeyboardHandler</a></code></span></h4>
+<div class='docblock'><p>Returns the &quot;default value&quot; for a type. <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../../wlc/trait.Callback.html" title="trait wlc::Callback">Callback</a> for <a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyboardHandler.html" title="struct fireplace_lib::handlers::keyboard::KeyboardHandler">KeyboardHandler</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/fireplace_lib/handlers/keyboard.rs.html#125-139' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.keyboard_key' class="method"><span id='keyboard_key.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.keyboard_key' class='fnname'>keyboard_key</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; view: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../../../wlc/view/struct.View.html" title="struct wlc::view::View">View</a>&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; time: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; modifiers: <a class="struct" href="../../../wlc/types/struct.Modifiers.html" title="struct wlc::types::Modifiers">Modifiers</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; key: <a class="enum" href="../../../wlc/input/consts/enum.Key.html" title="enum wlc::input::consts::Key">Key</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state: <a class="enum" href="../../../wlc/types/enum.KeyState.html" title="enum wlc::types::KeyState">KeyState</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Key event was triggered, view handle will be zero if there was no focus. <a href="../../../wlc/trait.Callback.html#method.keyboard_key">Read more</a></p>
+</div><h4 id='method.output_created' class="method"><span id='output_created.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.output_created' class='fnname'>output_created</a>(&amp;mut self, output: &amp;<a class="struct" href="../../../wlc/output/struct.Output.html" title="struct wlc::output::Output">Output</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Output was created. <a href="../../../wlc/trait.Callback.html#method.output_created">Read more</a></p>
+</div><h4 id='method.output_destroyed' class="method"><span id='output_destroyed.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.output_destroyed' class='fnname'>output_destroyed</a>(&amp;mut self, output: &amp;<a class="struct" href="../../../wlc/output/struct.Output.html" title="struct wlc::output::Output">Output</a>)</code></span></h4>
+<div class='docblock'><p>Output was destroyed</p>
+</div><h4 id='method.output_focus' class="method"><span id='output_focus.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.output_focus' class='fnname'>output_focus</a>(&amp;mut self, output: &amp;<a class="struct" href="../../../wlc/output/struct.Output.html" title="struct wlc::output::Output">Output</a>, focus: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</code></span></h4>
+<div class='docblock'><p>Output got or lost focus</p>
+</div><h4 id='method.output_resolution' class="method"><span id='output_resolution.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.output_resolution' class='fnname'>output_resolution</a>(&amp;mut self, output: &amp;<a class="struct" href="../../../wlc/output/struct.Output.html" title="struct wlc::output::Output">Output</a>, from: <a class="struct" href="../../../wlc/types/struct.Size.html" title="struct wlc::types::Size">Size</a>, to: <a class="struct" href="../../../wlc/types/struct.Size.html" title="struct wlc::types::Size">Size</a>)</code></span></h4>
+<div class='docblock'><p>Output resolution changed</p>
+</div><h4 id='method.output_render_pre' class="method"><span id='output_render_pre.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.output_render_pre' class='fnname'>output_render_pre</a>(&amp;mut self, output: &amp;mut <a class="struct" href="../../../wlc/render/output/struct.RenderOutput.html" title="struct wlc::render::output::RenderOutput">RenderOutput</a>)</code></span></h4>
+<div class='docblock'><p>Output pre render hook</p>
+</div><h4 id='method.output_render_post' class="method"><span id='output_render_post.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.output_render_post' class='fnname'>output_render_post</a>(&amp;mut self, output: &amp;mut <a class="struct" href="../../../wlc/render/output/struct.RenderOutput.html" title="struct wlc::render::output::RenderOutput">RenderOutput</a>)</code></span></h4>
+<div class='docblock'><p>Output post render hook</p>
+</div><h4 id='method.output_context_created' class="method"><span id='output_context_created.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.output_context_created' class='fnname'>output_context_created</a>(&amp;mut self, output: &amp;<a class="struct" href="../../../wlc/output/struct.Output.html" title="struct wlc::output::Output">Output</a>)</code></span></h4>
+<div class='docblock'><p>Output context is created. <a href="../../../wlc/trait.Callback.html#method.output_context_created">Read more</a></p>
+</div><h4 id='method.output_context_destroyed' class="method"><span id='output_context_destroyed.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.output_context_destroyed' class='fnname'>output_context_destroyed</a>(&amp;mut self, output: &amp;<a class="struct" href="../../../wlc/output/struct.Output.html" title="struct wlc::output::Output">Output</a>)</code></span></h4>
+<div class='docblock'><p>Output context was destroyed</p>
+</div><h4 id='method.view_created' class="method"><span id='view_created.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.view_created' class='fnname'>view_created</a>(&amp;mut self, view: &amp;<a class="struct" href="../../../wlc/view/struct.View.html" title="struct wlc::view::View">View</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>View was created. <a href="../../../wlc/trait.Callback.html#method.view_created">Read more</a></p>
+</div><h4 id='method.view_destroyed' class="method"><span id='view_destroyed.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.view_destroyed' class='fnname'>view_destroyed</a>(&amp;mut self, view: &amp;<a class="struct" href="../../../wlc/view/struct.View.html" title="struct wlc::view::View">View</a>)</code></span></h4>
+<div class='docblock'><p>View was destroyed</p>
+</div><h4 id='method.view_focus' class="method"><span id='view_focus.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.view_focus' class='fnname'>view_focus</a>(&amp;mut self, view: &amp;<a class="struct" href="../../../wlc/view/struct.View.html" title="struct wlc::view::View">View</a>, focus: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</code></span></h4>
+<div class='docblock'><p>View got or lost focus</p>
+</div><h4 id='method.view_move_to_output' class="method"><span id='view_move_to_output.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.view_move_to_output' class='fnname'>view_move_to_output</a>(&amp;mut self, view: &amp;<a class="struct" href="../../../wlc/view/struct.View.html" title="struct wlc::view::View">View</a>, from: &amp;<a class="struct" href="../../../wlc/output/struct.Output.html" title="struct wlc::output::Output">Output</a>, to: &amp;<a class="struct" href="../../../wlc/output/struct.Output.html" title="struct wlc::output::Output">Output</a>)</code></span></h4>
+<div class='docblock'><p>View was moved to output</p>
+</div><h4 id='method.view_request_geometry' class="method"><span id='view_request_geometry.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.view_request_geometry' class='fnname'>view_request_geometry</a>(&amp;mut self, view: &amp;<a class="struct" href="../../../wlc/view/struct.View.html" title="struct wlc::view::View">View</a>, geometry: <a class="struct" href="../../../wlc/types/struct.Geometry.html" title="struct wlc::types::Geometry">Geometry</a>)</code></span></h4>
+<div class='docblock'><p>Request to set given geometry for view. <a href="../../../wlc/trait.Callback.html#method.view_request_geometry">Read more</a></p>
+</div><h4 id='method.view_request_state' class="method"><span id='view_request_state.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.view_request_state' class='fnname'>view_request_state</a>(&amp;mut self, view: &amp;<a class="struct" href="../../../wlc/view/struct.View.html" title="struct wlc::view::View">View</a>, state: <a class="struct" href="../../../wlc/types/ViewState/struct.Flags.html" title="struct wlc::types::ViewState::Flags">Flags</a>, toggle: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</code></span></h4>
+<div class='docblock'><p>Request to disable or enable the given state for view. <a href="../../../wlc/trait.Callback.html#method.view_request_state">Read more</a></p>
+</div><h4 id='method.view_request_move' class="method"><span id='view_request_move.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.view_request_move' class='fnname'>view_request_move</a>(&amp;mut self, view: &amp;<a class="struct" href="../../../wlc/view/struct.View.html" title="struct wlc::view::View">View</a>, origin: <a class="struct" href="../../../wlc/types/struct.Point.html" title="struct wlc::types::Point">Point</a>)</code></span></h4>
+<div class='docblock'><p>Request to move itself. <a href="../../../wlc/trait.Callback.html#method.view_request_move">Read more</a></p>
+</div><h4 id='method.view_request_resize' class="method"><span id='view_request_resize.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.view_request_resize' class='fnname'>view_request_resize</a>(&amp;mut self, view: &amp;<a class="struct" href="../../../wlc/view/struct.View.html" title="struct wlc::view::View">View</a>, edges: <a class="struct" href="../../../wlc/types/ResizeEdge/struct.Flags.html" title="struct wlc::types::ResizeEdge::Flags">Flags</a>, origin: <a class="struct" href="../../../wlc/types/struct.Point.html" title="struct wlc::types::Point">Point</a>)</code></span></h4>
+<div class='docblock'><p>Request to resize itself with the given edges. <a href="../../../wlc/trait.Callback.html#method.view_request_resize">Read more</a></p>
+</div><h4 id='method.view_render_pre' class="method"><span id='view_render_pre.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.view_render_pre' class='fnname'>view_render_pre</a>(&amp;mut self, view: &amp;mut <a class="struct" href="../../../wlc/render/view/struct.RenderView.html" title="struct wlc::render::view::RenderView">RenderView</a>)</code></span></h4>
+<div class='docblock'><p>View pre render hook</p>
+</div><h4 id='method.view_render_post' class="method"><span id='view_render_post.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.view_render_post' class='fnname'>view_render_post</a>(&amp;mut self, view: &amp;mut <a class="struct" href="../../../wlc/render/view/struct.RenderView.html" title="struct wlc::render::view::RenderView">RenderView</a>)</code></span></h4>
+<div class='docblock'><p>View post render hook</p>
+</div><h4 id='method.view_properties_updated' class="method"><span id='view_properties_updated.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.view_properties_updated' class='fnname'>view_properties_updated</a>(&amp;mut self, view: &amp;<a class="struct" href="../../../wlc/view/struct.View.html" title="struct wlc::view::View">View</a>, mask: <a class="struct" href="../../../wlc/types/ViewPropertyUpdate/struct.Flags.html" title="struct wlc::types::ViewPropertyUpdate::Flags">Flags</a>)</code></span></h4>
+<div class='docblock'><p>View properties (title, class, app_id) were updated</p>
+</div><h4 id='method.pointer_button' class="method"><span id='pointer_button.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.pointer_button' class='fnname'>pointer_button</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; view: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../../../wlc/view/struct.View.html" title="struct wlc::view::View">View</a>&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; time: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; modifiers: <a class="struct" href="../../../wlc/types/struct.Modifiers.html" title="struct wlc::types::Modifiers">Modifiers</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; button: <a class="enum" href="../../../wlc/input/consts/enum.Button.html" title="enum wlc::input::consts::Button">Button</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; state: <a class="enum" href="../../../wlc/types/enum.ButtonState.html" title="enum wlc::types::ButtonState">ButtonState</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; origin: <a class="struct" href="../../../wlc/types/struct.Point.html" title="struct wlc::types::Point">Point</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Button event was triggered, view handle will be <code>None</code> if there was no focus. <a href="../../../wlc/trait.Callback.html#method.pointer_button">Read more</a></p>
+</div><h4 id='method.pointer_scroll' class="method"><span id='pointer_scroll.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.pointer_scroll' class='fnname'>pointer_scroll</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; view: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../../../wlc/view/struct.View.html" title="struct wlc::view::View">View</a>&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; time: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; modifiers: <a class="struct" href="../../../wlc/types/struct.Modifiers.html" title="struct wlc::types::Modifiers">Modifiers</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; axis: <a class="struct" href="../../../wlc/types/ScrollAxis/struct.Flags.html" title="struct wlc::types::ScrollAxis::Flags">Flags</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; amount: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Scroll event was triggered, view handle will be <code>None</code> if there was no focus. <a href="../../../wlc/trait.Callback.html#method.pointer_scroll">Read more</a></p>
+</div><h4 id='method.pointer_motion' class="method"><span id='pointer_motion.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.pointer_motion' class='fnname'>pointer_motion</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; view: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../../../wlc/view/struct.View.html" title="struct wlc::view::View">View</a>&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; time: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; origin: <a class="struct" href="../../../wlc/types/struct.Point.html" title="struct wlc::types::Point">Point</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Motion event was triggered, view handle will be <code>None</code> if there was no focus. <a href="../../../wlc/trait.Callback.html#method.pointer_motion">Read more</a></p>
+</div><h4 id='method.touch' class="method"><span id='touch.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.touch' class='fnname'>touch</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; view: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../../../wlc/view/struct.View.html" title="struct wlc::view::View">View</a>&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; time: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; modifiers: <a class="struct" href="../../../wlc/types/struct.Modifiers.html" title="struct wlc::types::Modifiers">Modifiers</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; touch_type: <a class="enum" href="../../../wlc/types/enum.TouchType.html" title="enum wlc::types::TouchType">TouchType</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; slot: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; origin: <a class="struct" href="../../../wlc/types/struct.Point.html" title="struct wlc::types::Point">Point</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Touch event was triggered, view handle will be <code>None</code> if there was no focus. <a href="../../../wlc/trait.Callback.html#method.touch">Read more</a></p>
+</div><h4 id='method.compositor_ready' class="method"><span id='compositor_ready.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.compositor_ready' class='fnname'>compositor_ready</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>Compositor is ready to accept clients</p>
+</div><h4 id='method.compositor_terminate' class="method"><span id='compositor_terminate.v' class='invisible'><code>fn <a href='../../../wlc/trait.Callback.html#method.compositor_terminate' class='fnname'>compositor_terminate</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>Compositor is about to terminate</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "fireplace_lib";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

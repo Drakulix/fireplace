@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `UpdateArgs` struct in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, UpdateArgs">
+
+    <title>conrod::widget::UpdateArgs - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>conrod</a>::<wbr><a href='index.html'>widget</a></p><script>window.sidebarCurrent = {name: 'UpdateArgs', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>conrod</a>::<wbr><a href='index.html'>widget</a>::<wbr><a class="struct" href=''>UpdateArgs</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/conrod/widget/mod.rs.html#86-115' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct UpdateArgs&lt;'a, 'b: 'a, 'c, 'd: 'c, W&gt; <span class="where fmt-newline">where W: <a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Widget</a></span> {
+    pub id: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>,
+    pub maybe_parent_id: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt;,
+    pub prev: &amp;'a <a class="struct" href="../../conrod/widget/struct.CommonState.html" title="struct conrod::widget::CommonState">CommonState</a>,
+    pub state: &amp;'a mut <a class="struct" href="../../conrod/widget/struct.State.html" title="struct conrod::widget::State">State</a>&lt;'b, W::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">State</a>&gt;,
+    pub rect: <a class="struct" href="../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>,
+    pub style: &amp;'a W::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Style</a>,
+    pub ui: &amp;'c mut <a class="struct" href="../../conrod/struct.UiCell.html" title="struct conrod::UiCell">UiCell</a>&lt;'d&gt;,
+}</pre><div class='docblock'><p>Arguments for the <a href="./trait.Widget#method.update"><strong>Widget::update</strong></a> method in a struct to
+simplify the method signature.</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.id' class="structfield">
+                           <span id='id.v' class='invisible'>
+                           <code>id: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a></code>
+                           </span></span><div class='docblock'><p>The <strong>Widget</strong>&#39;s unique index.</p>
+</div><span id='structfield.maybe_parent_id' class="structfield">
+                           <span id='maybe_parent_id.v' class='invisible'>
+                           <code>maybe_parent_id: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt;</code>
+                           </span></span><div class='docblock'><p>The <strong>Widget</strong>&#39;s parent unique index, if there is one.</p>
+</div><span id='structfield.prev' class="structfield">
+                           <span id='prev.v' class='invisible'>
+                           <code>prev: &amp;'a <a class="struct" href="../../conrod/widget/struct.CommonState.html" title="struct conrod::widget::CommonState">CommonState</a></code>
+                           </span></span><div class='docblock'><p>The <strong>Widget</strong>&#39;s previous state. Specifically, the state that is common between all widgets,
+such as positioning, floatability, draggability, etc.</p>
+</div><span id='structfield.state' class="structfield">
+                           <span id='state.v' class='invisible'>
+                           <code>state: &amp;'a mut <a class="struct" href="../../conrod/widget/struct.State.html" title="struct conrod::widget::State">State</a>&lt;'b, W::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">State</a>&gt;</code>
+                           </span></span><div class='docblock'><p>A wrapper around the <strong>Widget</strong>&#39;s unique state, providing methods for both immutably viewing
+and mutably updating the state.</p>
+
+<p>We wrap mutation in a method so that we can keep track of whether or not the unique state
+has been updated.</p>
+
+<p>If <strong>State::update</strong> is called, we assume that there has been some mutation and in turn
+will require re-drawing the <strong>Widget</strong>. Thus, it is recommended that you <em>only</em> call
+<strong>State::update</strong> if you need to update the unique state in some way.</p>
+</div><span id='structfield.rect' class="structfield">
+                           <span id='rect.v' class='invisible'>
+                           <code>rect: <a class="struct" href="../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a></code>
+                           </span></span><div class='docblock'><p>The rectangle describing the <strong>Widget</strong>&#39;s area.</p>
+</div><span id='structfield.style' class="structfield">
+                           <span id='style.v' class='invisible'>
+                           <code>style: &amp;'a W::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Style</a></code>
+                           </span></span><div class='docblock'><p>The <strong>Widget</strong>&#39;s current <strong>Widget::Style</strong>.</p>
+</div><span id='structfield.ui' class="structfield">
+                           <span id='ui.v' class='invisible'>
+                           <code>ui: &amp;'c mut <a class="struct" href="../../conrod/struct.UiCell.html" title="struct conrod::UiCell">UiCell</a>&lt;'d&gt;</code>
+                           </span></span><div class='docblock'><p>Restricted access to the <code>Ui</code>.</p>
+
+<p>Provides methods for immutably accessing the <code>Ui</code>&#39;s <code>Theme</code> and <code>GlyphCache</code>.  Also allows
+calling <code>Widget::set</code> within the <code>Widget::update</code> method.</p>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

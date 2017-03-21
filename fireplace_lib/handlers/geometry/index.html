@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `geometry` mod in crate `fireplace_lib`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, geometry">
+
+    <title>fireplace_lib::handlers::geometry - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>fireplace_lib</a>::<wbr><a href='../index.html'>handlers</a></p><script>window.sidebarCurrent = {name: 'geometry', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>fireplace_lib</a>::<wbr><a href='../index.html'>handlers</a>::<wbr><a class="mod" href=''>geometry</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/fireplace_lib/handlers/geometry/mod.rs.html#1-116' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Handlers related to <code>Output</code> and <code>View</code> geometry</p>
+
+<p>Contains a public interface to restrict and modify the actual used space
+for <code>View</code> and general and individually. <code>Mode</code>s setting their geometry are
+expected to follow the set values and other handlers may use this interface
+to change these values.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.GapsConfig.html"
+                                  title='struct fireplace_lib::handlers::geometry::GapsConfig'>GapsConfig</a></td>
+                           <td class='docblock-short'>
+                                <p>Configuration for the <code>GapsHandler</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.GapsHandler.html"
+                                  title='struct fireplace_lib::handlers::geometry::GapsHandler'>GapsHandler</a></td>
+                           <td class='docblock-short'>
+                                <p>Handler to make some gaps around <code>View</code>s</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.GeometryHandler.html"
+                                  title='struct fireplace_lib::handlers::geometry::GeometryHandler'>GeometryHandler</a></td>
+                           <td class='docblock-short'>
+                                <p>Handler that initializes default <code>UsableScreenGeometry</code> and
+<code>UsableViewGeometry</code> values for created <code>View</code>s and <code>Output</code>s</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.InitialViewGeometry.html"
+                                  title='struct fireplace_lib::handlers::geometry::InitialViewGeometry'>InitialViewGeometry</a></td>
+                           <td class='docblock-short'>
+                                <p>Key for receiving the initial view geometry, that is the size and origin
+the <code>View</code> has requested at launch, from a <code>View</code>s
+<a href="../trait.Store.html"><code>Sotre</code></a>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.UsableScreenGeometry.html"
+                                  title='struct fireplace_lib::handlers::geometry::UsableScreenGeometry'>UsableScreenGeometry</a></td>
+                           <td class='docblock-short'>
+                                <p>Key for receiving the usable screen geometry, that is
+the part of the screen not used by UI elements, from an <code>Output</code>s
+<a href="../trait.Store.html"><code>Store</code></a>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.UsableViewGeometry.html"
+                                  title='struct fireplace_lib::handlers::geometry::UsableViewGeometry'>UsableViewGeometry</a></td>
+                           <td class='docblock-short'>
+                                <p>Key for receiving the usable view geometry, that is
+the part of and area mapped to a <code>View</code> not used
+by UI elements around it, from a <code>View</code>s
+<a href="../trait.Store.html"><code>Store</code></a>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ViewScissor.html"
+                                  title='struct fireplace_lib::handlers::geometry::ViewScissor'>ViewScissor</a></td>
+                           <td class='docblock-short'>
+                                <p>Value to express that borders of a View shall be shortened</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "fireplace_lib";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

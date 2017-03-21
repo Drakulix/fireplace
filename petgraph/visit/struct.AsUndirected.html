@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `AsUndirected` struct in crate `petgraph`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, AsUndirected">
+
+    <title>petgraph::visit::AsUndirected - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>petgraph</a>::<wbr><a href='index.html'>visit</a></p><script>window.sidebarCurrent = {name: 'AsUndirected', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>petgraph</a>::<wbr><a href='index.html'>visit</a>::<wbr><a class="struct" href=''>AsUndirected</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/petgraph/visit.rs.html#76' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct AsUndirected&lt;G&gt;(pub G);</pre><div class='docblock'><p>Wrapper type for walking the graph as if it is undirected</p>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a, 'b, N, E:&nbsp;'a, Ty, Ix&gt; <a class="trait" href="../../petgraph/visit/trait.NeighborIter.html" title="trait petgraph::visit::NeighborIter">NeighborIter</a>&lt;'a&gt; for <a class="struct" href="../../petgraph/visit/struct.AsUndirected.html" title="struct petgraph::visit::AsUndirected">AsUndirected</a>&lt;&amp;'b <a class="struct" href="../../petgraph/graph/struct.Graph.html" title="struct petgraph::graph::Graph">Graph</a>&lt;N, E, Ty, Ix&gt;&gt; <span class="where fmt-newline">where Ty: <a class="trait" href="../../petgraph/trait.EdgeType.html" title="trait petgraph::EdgeType">EdgeType</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ix: <a class="trait" href="../../petgraph/graph/trait.IndexType.html" title="trait petgraph::graph::IndexType">IndexType</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/visit.rs.html#81-91' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Iter' class="type"><span id='Iter.t' class='invisible'><code>type <a href='../../petgraph/visit/trait.NeighborIter.html#associatedtype.Iter' class="type">Iter</a> = <a class="struct" href="../../petgraph/graph/struct.Neighbors.html" title="struct petgraph::graph::Neighbors">Neighbors</a>&lt;'a, E, Ix&gt;</code></span></h4>
+<h4 id='method.neighbors' class="method"><span id='neighbors.v' class='invisible'><code>fn <a href='../../petgraph/visit/trait.NeighborIter.html#tymethod.neighbors' class='fnname'>neighbors</a>(&amp;'a self, n: <a class="struct" href="../../petgraph/graph/struct.NodeIndex.html" title="struct petgraph::graph::NodeIndex">NodeIndex</a>&lt;Ix&gt;) -&gt; <a class="struct" href="../../petgraph/graph/struct.Neighbors.html" title="struct petgraph::graph::Neighbors">Neighbors</a>&lt;'a, E, Ix&gt;</code></span></h4>
+<div class='docblock'><p>Return an iterator that visits all neighbors of the node <strong>n</strong>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, G:&nbsp;<a class="trait" href="../../petgraph/visit/trait.Graphlike.html" title="trait petgraph::visit::Graphlike">Graphlike</a>&gt; <a class="trait" href="../../petgraph/visit/trait.Graphlike.html" title="trait petgraph::visit::Graphlike">Graphlike</a> for <a class="struct" href="../../petgraph/visit/struct.AsUndirected.html" title="struct petgraph::visit::AsUndirected">AsUndirected</a>&lt;&amp;'a G&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/visit.rs.html#310-313' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.NodeId' class="type"><span id='NodeId.t' class='invisible'><code>type <a href='../../petgraph/visit/trait.Graphlike.html#associatedtype.NodeId' class="type">NodeId</a> = G::<a class="trait" href="../../petgraph/visit/trait.Graphlike.html" title="trait petgraph::visit::Graphlike">NodeId</a></code></span></h4>
+</div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, G:&nbsp;<a class="trait" href="../../petgraph/visit/trait.Visitable.html" title="trait petgraph::visit::Visitable">Visitable</a>&gt; <a class="trait" href="../../petgraph/visit/trait.Visitable.html" title="trait petgraph::visit::Visitable">Visitable</a> for <a class="struct" href="../../petgraph/visit/struct.AsUndirected.html" title="struct petgraph::visit::AsUndirected">AsUndirected</a>&lt;&amp;'a G&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/visit.rs.html#320-326' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Map' class="type"><span id='Map.t' class='invisible'><code>type <a href='../../petgraph/visit/trait.Visitable.html#associatedtype.Map' class="type">Map</a> = G::<a class="trait" href="../../petgraph/visit/trait.Visitable.html" title="trait petgraph::visit::Visitable">Map</a></code></span></h4>
+<h4 id='method.visit_map' class="method"><span id='visit_map.v' class='invisible'><code>fn <a href='../../petgraph/visit/trait.Visitable.html#tymethod.visit_map' class='fnname'>visit_map</a>(&amp;self) -&gt; G::<a class="trait" href="../../petgraph/visit/trait.Visitable.html" title="trait petgraph::visit::Visitable">Map</a></code></span></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "petgraph";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

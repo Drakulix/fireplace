@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["DepthOrder","Contains Node indices in order of depth, starting with the deepest."]]});

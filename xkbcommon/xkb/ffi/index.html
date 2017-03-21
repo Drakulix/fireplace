@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ffi` mod in crate `xkbcommon`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ffi">
+
+    <title>xkbcommon::xkb::ffi - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>xkbcommon</a>::<wbr><a href='../index.html'>xkb</a></p><script>window.sidebarCurrent = {name: 'ffi', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>xkbcommon</a>::<wbr><a href='../index.html'>xkb</a>::<wbr><a class="mod" href=''>ffi</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/xkbcommon/xkb/ffi.rs.html#2-391' title='goto source code'>[src]</a></span></h1>
+<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.xkb_rule_names.html"
+                                  title='struct xkbcommon::xkb::ffi::xkb_rule_names'>xkb_rule_names</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.xkb_context.html"
+                                  title='enum xkbcommon::xkb::ffi::xkb_context'>xkb_context</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.xkb_key_direction.html"
+                                  title='enum xkbcommon::xkb::ffi::xkb_key_direction'>xkb_key_direction</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.xkb_keymap.html"
+                                  title='enum xkbcommon::xkb::ffi::xkb_keymap'>xkb_keymap</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.xkb_log_level.html"
+                                  title='enum xkbcommon::xkb::ffi::xkb_log_level'>xkb_log_level</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.xkb_state.html"
+                                  title='enum xkbcommon::xkb::ffi::xkb_state'>xkb_state</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_CONTEXT_NO_DEFAULT_INCLUDES.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_CONTEXT_NO_DEFAULT_INCLUDES'>XKB_CONTEXT_NO_DEFAULT_INCLUDES</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_CONTEXT_NO_ENVIRONMENT_NAMES.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_CONTEXT_NO_ENVIRONMENT_NAMES'>XKB_CONTEXT_NO_ENVIRONMENT_NAMES</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_CONTEXT_NO_FLAGS.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_CONTEXT_NO_FLAGS'>XKB_CONTEXT_NO_FLAGS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_KEYCODE_INVALID.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_KEYCODE_INVALID'>XKB_KEYCODE_INVALID</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_KEYCODE_MAX.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_KEYCODE_MAX'>XKB_KEYCODE_MAX</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_KEYMAP_COMPILE_NO_FLAGS.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_KEYMAP_COMPILE_NO_FLAGS'>XKB_KEYMAP_COMPILE_NO_FLAGS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_KEYMAP_FORMAT_TEXT_V1.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_KEYMAP_FORMAT_TEXT_V1'>XKB_KEYMAP_FORMAT_TEXT_V1</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_KEYMAP_FORMAT_USE_ORIGINAL.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_KEYMAP_FORMAT_USE_ORIGINAL'>XKB_KEYMAP_FORMAT_USE_ORIGINAL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_KEYSYM_CASE_INSENSITIVE.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_KEYSYM_CASE_INSENSITIVE'>XKB_KEYSYM_CASE_INSENSITIVE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_KEYSYM_NO_FLAGS.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_KEYSYM_NO_FLAGS'>XKB_KEYSYM_NO_FLAGS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_LAYOUT_INVALID.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_LAYOUT_INVALID'>XKB_LAYOUT_INVALID</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_LED_INVALID.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_LED_INVALID'>XKB_LED_INVALID</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_LEVEL_INVALID.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_LEVEL_INVALID'>XKB_LEVEL_INVALID</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_MOD_INVALID.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_MOD_INVALID'>XKB_MOD_INVALID</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_STATE_LAYOUT_DEPRESSED.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_STATE_LAYOUT_DEPRESSED'>XKB_STATE_LAYOUT_DEPRESSED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_STATE_LAYOUT_EFFECTIVE.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_STATE_LAYOUT_EFFECTIVE'>XKB_STATE_LAYOUT_EFFECTIVE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_STATE_LAYOUT_LATCHED.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_STATE_LAYOUT_LATCHED'>XKB_STATE_LAYOUT_LATCHED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_STATE_LAYOUT_LOCKED.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_STATE_LAYOUT_LOCKED'>XKB_STATE_LAYOUT_LOCKED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_STATE_LEDS.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_STATE_LEDS'>XKB_STATE_LEDS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_STATE_MATCH_ALL.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_STATE_MATCH_ALL'>XKB_STATE_MATCH_ALL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_STATE_MATCH_ANY.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_STATE_MATCH_ANY'>XKB_STATE_MATCH_ANY</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_STATE_MATCH_NON_EXCLUSIVE.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_STATE_MATCH_NON_EXCLUSIVE'>XKB_STATE_MATCH_NON_EXCLUSIVE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_STATE_MODS_DEPRESSED.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_STATE_MODS_DEPRESSED'>XKB_STATE_MODS_DEPRESSED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_STATE_MODS_EFFECTIVE.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_STATE_MODS_EFFECTIVE'>XKB_STATE_MODS_EFFECTIVE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_STATE_MODS_LATCHED.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_STATE_MODS_LATCHED'>XKB_STATE_MODS_LATCHED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.XKB_STATE_MODS_LOCKED.html"
+                                  title='constant xkbcommon::xkb::ffi::XKB_STATE_MODS_LOCKED'>XKB_STATE_MODS_LOCKED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_get_log_level.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_get_log_level'>xkb_context_get_log_level</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_get_log_verbosity.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_get_log_verbosity'>xkb_context_get_log_verbosity</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_get_user_data.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_get_user_data'>xkb_context_get_user_data</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_include_path_append.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_include_path_append'>xkb_context_include_path_append</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_include_path_append_default.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_include_path_append_default'>xkb_context_include_path_append_default</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_include_path_clear.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_include_path_clear'>xkb_context_include_path_clear</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_include_path_get.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_include_path_get'>xkb_context_include_path_get</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_include_path_reset_defaults.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_include_path_reset_defaults'>xkb_context_include_path_reset_defaults</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_new.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_new'>xkb_context_new</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_num_include_paths.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_num_include_paths'>xkb_context_num_include_paths</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_ref.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_ref'>xkb_context_ref</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_set_log_fn.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_set_log_fn'>xkb_context_set_log_fn</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_set_log_level.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_set_log_level'>xkb_context_set_log_level</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_set_log_verbosity.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_set_log_verbosity'>xkb_context_set_log_verbosity</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_set_user_data.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_set_user_data'>xkb_context_set_user_data</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_context_unref.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_context_unref'>xkb_context_unref</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keycode_is_legal_ext.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keycode_is_legal_ext'>xkb_keycode_is_legal_ext</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keycode_is_legal_x11.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keycode_is_legal_x11'>xkb_keycode_is_legal_x11</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_get_as_string.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_get_as_string'>xkb_keymap_get_as_string</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_key_for_each.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_key_for_each'>xkb_keymap_key_for_each</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_key_get_syms_by_level.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_key_get_syms_by_level'>xkb_keymap_key_get_syms_by_level</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_key_repeats.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_key_repeats'>xkb_keymap_key_repeats</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_layout_get_index.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_layout_get_index'>xkb_keymap_layout_get_index</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_layout_get_name.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_layout_get_name'>xkb_keymap_layout_get_name</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_led_get_index.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_led_get_index'>xkb_keymap_led_get_index</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_led_get_name.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_led_get_name'>xkb_keymap_led_get_name</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_max_keycode.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_max_keycode'>xkb_keymap_max_keycode</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_min_keycode.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_min_keycode'>xkb_keymap_min_keycode</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_mod_get_index.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_mod_get_index'>xkb_keymap_mod_get_index</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_mod_get_name.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_mod_get_name'>xkb_keymap_mod_get_name</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_new_from_buffer.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_new_from_buffer'>xkb_keymap_new_from_buffer</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_new_from_file.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_new_from_file'>xkb_keymap_new_from_file</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_new_from_names.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_new_from_names'>xkb_keymap_new_from_names</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_new_from_string.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_new_from_string'>xkb_keymap_new_from_string</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_num_layouts.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_num_layouts'>xkb_keymap_num_layouts</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_num_layouts_for_key.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_num_layouts_for_key'>xkb_keymap_num_layouts_for_key</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_num_leds.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_num_leds'>xkb_keymap_num_leds</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_num_levels_for_key.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_num_levels_for_key'>xkb_keymap_num_levels_for_key</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_num_mods.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_num_mods'>xkb_keymap_num_mods</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_ref.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_ref'>xkb_keymap_ref</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap_unref.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keymap_unref'>xkb_keymap_unref</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keysym_from_name.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keysym_from_name'>xkb_keysym_from_name</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keysym_get_name.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keysym_get_name'>xkb_keysym_get_name</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keysym_to_utf32.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keysym_to_utf32'>xkb_keysym_to_utf32</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keysym_to_utf8.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_keysym_to_utf8'>xkb_keysym_to_utf8</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_get_keymap.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_get_keymap'>xkb_state_get_keymap</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_key_get_consumed_mods.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_key_get_consumed_mods'>xkb_state_key_get_consumed_mods</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_key_get_layout.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_key_get_layout'>xkb_state_key_get_layout</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_key_get_level.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_key_get_level'>xkb_state_key_get_level</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_key_get_one_sym.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_key_get_one_sym'>xkb_state_key_get_one_sym</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_key_get_syms.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_key_get_syms'>xkb_state_key_get_syms</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_key_get_utf32.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_key_get_utf32'>xkb_state_key_get_utf32</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_key_get_utf8.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_key_get_utf8'>xkb_state_key_get_utf8</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_layout_index_is_active.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_layout_index_is_active'>xkb_state_layout_index_is_active</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_layout_name_is_active.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_layout_name_is_active'>xkb_state_layout_name_is_active</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_led_index_is_active.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_led_index_is_active'>xkb_state_led_index_is_active</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_led_name_is_active.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_led_name_is_active'>xkb_state_led_name_is_active</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_mod_index_are_active.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_mod_index_are_active'>xkb_state_mod_index_are_active</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_mod_index_is_active.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_mod_index_is_active'>xkb_state_mod_index_is_active</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_mod_index_is_consumed.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_mod_index_is_consumed'>xkb_state_mod_index_is_consumed</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_mod_mask_remove_consumed.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_mod_mask_remove_consumed'>xkb_state_mod_mask_remove_consumed</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_mod_name_is_active.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_mod_name_is_active'>xkb_state_mod_name_is_active</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_mod_names_are_active.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_mod_names_are_active'>xkb_state_mod_names_are_active</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_new.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_new'>xkb_state_new</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_ref.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_ref'>xkb_state_ref</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_serialize_layout.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_serialize_layout'>xkb_state_serialize_layout</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_serialize_mods.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_serialize_mods'>xkb_state_serialize_mods</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_unref.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_unref'>xkb_state_unref</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_update_key.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_update_key'>xkb_state_update_key</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state_update_mask.html"
+                                  title='fn xkbcommon::xkb::ffi::xkb_state_update_mask'>xkb_state_update_mask</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_context_flags.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_context_flags'>xkb_context_flags</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_keycode_t.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_keycode_t'>xkb_keycode_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_keymap_compile_flags.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_keymap_compile_flags'>xkb_keymap_compile_flags</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_keymap_format.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_keymap_format'>xkb_keymap_format</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_keymap_key_iter_t.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_keymap_key_iter_t'>xkb_keymap_key_iter_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_keysym_flags.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_keysym_flags'>xkb_keysym_flags</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_keysym_t.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_keysym_t'>xkb_keysym_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_layout_index_t.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_layout_index_t'>xkb_layout_index_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_layout_mask_t.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_layout_mask_t'>xkb_layout_mask_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_led_index_t.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_led_index_t'>xkb_led_index_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_led_mask_t.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_led_mask_t'>xkb_led_mask_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_level_index_t.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_level_index_t'>xkb_level_index_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_log_fn_t.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_log_fn_t'>xkb_log_fn_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_mod_index_t.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_mod_index_t'>xkb_mod_index_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_mod_mask_t.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_mod_mask_t'>xkb_mod_mask_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_state_component.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_state_component'>xkb_state_component</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.xkb_state_match.html"
+                                  title='type xkbcommon::xkb::ffi::xkb_state_match'>xkb_state_match</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "xkbcommon";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

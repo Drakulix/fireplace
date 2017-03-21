@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["AppID","AppID changed. Receive with `view.app_id()`"],["Class","Class changed. Receive with `view.class()`"],["PID","PID of belonging process changed. Receive with `view.pid()`"],["Title","Title changed. Receive with `view.title()`"]],"struct":[["Flags","Bitmap that may represent multiple updated properties"]]});

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `State` struct in crate `wlc`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, State">
+
+    <title>wlc::input::keyboard::State - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>wlc</a>::<wbr><a href='../index.html'>input</a>::<wbr><a href='index.html'>keyboard</a></p><script>window.sidebarCurrent = {name: 'State', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>wlc</a>::<wbr><a href='../index.html'>input</a>::<wbr><a href='index.html'>keyboard</a>::<wbr><a class="struct" href=''>State</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/xkbcommon/xkb/mod.rs.html#1099-1101' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct State { /* fields omitted */ }</pre><div class='docblock'><p>Keyboard state object.</p>
+
+<p>State objects contain the active state of a keyboard (or keyboards), such
+as the currently effective layout and the active modifiers.  It acts as a
+simple state machine, wherein key presses and releases are the input, and
+key symbols (keysyms) are the output.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../../wlc/input/keyboard/struct.State.html" title="struct wlc::input::keyboard::State">State</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/xkbcommon/xkb/mod.rs.html#1103-1481' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from_raw_ptr' class="method"><span id='from_raw_ptr.v' class='invisible'><code>unsafe fn <a href='#method.from_raw_ptr' class='fnname'>from_raw_ptr</a>(ptr: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="enum" href="../../../xkbcommon/xkb/ffi/enum.xkb_state.html" title="enum xkbcommon::xkb::ffi::xkb_state">xkb_state</a>) -&gt; <a class="struct" href="../../../wlc/input/keyboard/struct.State.html" title="struct wlc::input::keyboard::State">State</a></code></span></h4>
+<h4 id='method.get_raw_ptr' class="method"><span id='get_raw_ptr.v' class='invisible'><code>fn <a href='#method.get_raw_ptr' class='fnname'>get_raw_ptr</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="enum" href="../../../xkbcommon/xkb/ffi/enum.xkb_state.html" title="enum xkbcommon::xkb::ffi::xkb_state">xkb_state</a></code></span></h4>
+<h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(keymap: &amp;<a class="struct" href="../../../wlc/input/keyboard/struct.Keymap.html" title="struct wlc::input::keyboard::Keymap">Keymap</a>) -&gt; <a class="struct" href="../../../wlc/input/keyboard/struct.State.html" title="struct wlc::input::keyboard::State">State</a></code></span></h4>
+<div class='docblock'><p>Create a new keyboard state object from a keymap.</p>
+</div><h4 id='method.get_keymap' class="method"><span id='get_keymap.v' class='invisible'><code>fn <a href='#method.get_keymap' class='fnname'>get_keymap</a>(&amp;self) -&gt; <a class="struct" href="../../../wlc/input/keyboard/struct.Keymap.html" title="struct wlc::input::keyboard::Keymap">Keymap</a></code></span></h4>
+<div class='docblock'><p>Get the keymap which a keyboard state object is using.</p>
+
+<p>Returns the keymap which was passed to xkb_state_new() when creating
+this state object.</p>
+
+<p>This keymap can safely be used beyond the lifetime of this state</p>
+</div><h4 id='method.update_key' class="method"><span id='update_key.v' class='invisible'><code>fn <a href='#method.update_key' class='fnname'>update_key</a>(&amp;mut self, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, direction: <a class="enum" href="../../../xkbcommon/xkb/enum.KeyDirection.html" title="enum xkbcommon::xkb::KeyDirection">KeyDirection</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></h4>
+<div class='docblock'><p>Update the keyboard state to reflect a given key being pressed or
+released.</p>
+
+<p>This entry point is intended for programs which track the keyboard state
+explictly (like an evdev client).  If the state is serialized to you by
+a master process (like a Wayland compositor) using functions like
+xkb_state_serialize_mods(), you should use xkb_state_update_mask() instead.
+The two functins should not generally be used together.</p>
+
+<p>A series of calls to this function should be consistent; that is, a call
+with xkb::KEY_DOWN for a key should be matched by an xkb::KEY_UP; if a key
+is pressed twice, it should be released twice; etc. Otherwise (e.g. due
+to missed input events), situations like &quot;stuck modifiers&quot; may occur.</p>
+
+<p>This function is often used in conjunction with the function
+xkb_state_key_get_syms() (or xkb_state_key_get_one_sym()), for example,
+when handling a key event.  In this case, you should prefer to get the
+keysyms <em>before</em> updating the key, such that the keysyms reported for
+the key event are not affected by the event itself.  This is the
+conventional behavior.</p>
+
+<p>Returns A mask of state components that have changed as a result of
+the update.  If nothing in the state has changed, returns 0.</p>
+</div><h4 id='method.update_mask' class="method"><span id='update_mask.v' class='invisible'><code>fn <a href='#method.update_mask' class='fnname'>update_mask</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; depressed_mods: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; latched_mods: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; locked_mods: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; depressed_layout: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; latched_layout: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; locked_layout: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></h4>
+<div class='docblock'><p>Update a keyboard state from a set of explicit masks.</p>
+
+<p>This entry point is intended for window systems and the like, where a
+master process holds an xkb_state, then serializes it over a wire
+protocol, and clients then use the serialization to feed in to their own
+xkb_state.</p>
+
+<p>All parameters must always be passed, or the resulting state may be
+incoherent.</p>
+
+<p>The serialization is lossy and will not survive round trips; it must only
+be used to feed slave state objects, and must not be used to update the
+master state.</p>
+
+<p>If you do not fit the description above, you should use
+xkb_state_update_key() instead.  The two functions should not generally be
+used together.</p>
+
+<p>Returns a mask of state components that have changed as a result of
+the update.  If nothing in the state has changed, returns 0.</p>
+</div><h4 id='method.key_get_syms' class="method"><span id='key_get_syms.v' class='invisible'><code>fn <a href='#method.key_get_syms' class='fnname'>key_get_syms</a>(&amp;'a self, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'a [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></code></span></h4>
+<div class='docblock'><p>Get the keysyms obtained from pressing a particular key in a given
+keyboard state.</p>
+
+<p>Get the keysyms for a key according to the current active layout,
+modifiers and shift level for the key, as determined by a keyboard
+state.</p>
+
+<p>@param[in]  state    The keyboard state object.
+@param[in]  key      The keycode of the key.
+@param[out] syms_out An immutable array of keysyms corresponding the
+key in the given keyboard state.</p>
+
+<p>As an extension to XKB, this function can return more than one keysym.
+If you do not want to handle this case, you should use
+xkb_state_key_get_one_sym(), which additionally performs transformations
+which are specific to the one-keysym case.</p>
+</div><h4 id='method.key_get_utf8' class="method"><span id='key_get_utf8.v' class='invisible'><code>fn <a href='#method.key_get_utf8' class='fnname'>key_get_utf8</a>(&amp;self, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a></code></span></h4>
+<div class='docblock'><p>Get the Unicode/UTF-8 string obtained from pressing a particular key
+in a given keyboard state.</p>
+</div><h4 id='method.key_get_utf32' class="method"><span id='key_get_utf32.v' class='invisible'><code>fn <a href='#method.key_get_utf32' class='fnname'>key_get_utf32</a>(&amp;self, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></h4>
+<div class='docblock'><p>Get the Unicode/UTF-32 codepoint obtained from pressing a particular
+key in a a given keyboard state.</p>
+
+<p>Returns The UTF-32 representation for the key, if it consists of only
+a single codepoint.  Otherwise, returns 0.</p>
+</div><h4 id='method.key_get_one_sym' class="method"><span id='key_get_one_sym.v' class='invisible'><code>fn <a href='#method.key_get_one_sym' class='fnname'>key_get_one_sym</a>(&amp;self, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></h4>
+<div class='docblock'><p>Get the single keysym obtained from pressing a particular key in a
+given keyboard state.</p>
+
+<p>This function is similar to xkb_state_key_get_syms(), but intended
+for users which cannot or do not want to handle the case where
+multiple keysyms are returned (in which case this function is
+preferred).</p>
+
+<p>Returns the keysym.  If the key does not have exactly one keysym,
+returns xkb::KEY_NoSymbol</p>
+</div><h4 id='method.key_get_layout' class="method"><span id='key_get_layout.v' class='invisible'><code>fn <a href='#method.key_get_layout' class='fnname'>key_get_layout</a>(&amp;self, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></h4>
+<div class='docblock'><p>Get the effective layout index for a key in a given keyboard state.</p>
+
+<p>Returns the layout index for the key in the given keyboard state.  If
+the given keycode is invalid, or if the key is not included in any
+layout at all, returns xkb::LAYOUT_INVALID.</p>
+</div><h4 id='method.key_get_level' class="method"><span id='key_get_level.v' class='invisible'><code>fn <a href='#method.key_get_level' class='fnname'>key_get_level</a>(&amp;self, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, layout: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></h4>
+<div class='docblock'><p>Get the effective shift level for a key in a given keyboard state and
+layout.</p>
+
+<p>Return the shift level index.  If the key or layout are invalid,
+returns xkb::LEVEL_INVALID.</p>
+</div><h4 id='method.serialize_mods' class="method"><span id='serialize_mods.v' class='invisible'><code>fn <a href='#method.serialize_mods' class='fnname'>serialize_mods</a>(&amp;self, components: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></h4>
+<div class='docblock'><p>The counterpart to xkb_state_update_mask for modifiers, to be used on
+the server side of serialization.</p>
+
+<p>State components other than xkb::STATE_MODS_* are ignored.
+If xkb::STATE_MODS_EFFECTIVE is included, all other state components are
+ignored.</p>
+
+<p>Returns a ModMask representing the given components of the
+modifier state.</p>
+
+<p>This function should not be used in regular clients; please use the
+xkb::State::mod_*_is_active API instead.</p>
+</div><h4 id='method.serialize_layout' class="method"><span id='serialize_layout.v' class='invisible'><code>fn <a href='#method.serialize_layout' class='fnname'>serialize_layout</a>(&amp;self, components: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></h4>
+<h4 id='method.mod_name_is_active' class="method"><span id='mod_name_is_active.v' class='invisible'><code>fn <a href='#method.mod_name_is_active' class='fnname'>mod_name_is_active</a>&lt;S&gt;(&amp;self, name: &amp;S, type_: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> <span class="where fmt-newline">where S: <a class="trait" href="https://doc.rust-lang.org/nightly/core/borrow/trait.Borrow.html" title="trait core::borrow::Borrow">Borrow</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</span></code></span></h4>
+<div class='docblock'><p>Test whether a modifier is active in a given keyboard state by name.</p>
+</div><h4 id='method.mod_index_is_active' class="method"><span id='mod_index_is_active.v' class='invisible'><code>fn <a href='#method.mod_index_is_active' class='fnname'>mod_index_is_active</a>(&amp;self, idx: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, type_: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Test whether a modifier is active in a given keyboard state by index.</p>
+</div><h4 id='method.mod_index_is_consumed' class="method"><span id='mod_index_is_consumed.v' class='invisible'><code>fn <a href='#method.mod_index_is_consumed' class='fnname'>mod_index_is_consumed</a>(&amp;self, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, idx: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Test whether a modifier is consumed by keyboard state translation for
+a key.</p>
+
+<p>Some functions, like xkb_state_key_get_syms(), look at the state of
+the modifiers in the keymap and derive from it the correct shift level
+to use for the key.  For example, in a US layout, pressing the key
+labeled &lt;A&gt; while the Shift modifier is active, generates the keysym &#39;A&#39;.
+In this case, the Shift modifier is said to be consumed.  However, the
+Num Lock modifier does not affect this translation at all, even if it
+active, so it is not consumed by this translation.</p>
+
+<p>It may be desirable for some application to not reuse consumed modifiers
+for further processing, e.g. for hotkeys or keyboard shortcuts. To
+understand why, consider some requirements from a standard shortcut
+mechanism, and how they are implemented:</p>
+
+<ol>
+<li>The shortcut&#39;s modifiers must match exactly to the state. For example,
+it is possible to bind separate actions to &lt;Alt&gt;&lt;Tab&gt; and to
+&lt;Alt&gt;&lt;Shift&gt;&lt;Tab&gt;. Further, if only &lt;Alt&gt;&lt;Tab&gt; is bound to
+an action, pressing &lt;Alt&gt;&lt;Shift&gt;&lt;Tab&gt; should not trigger the
+shortcut.
+Effectively, this means that the modifiers are compared using the
+equality operator (==).</li>
+<li>Only relevant modifiers are considered for the matching. For example,
+Caps Lock and Num Lock should not generally affect the matching, e.g.
+when matching &lt;Alt&gt;&lt;Tab&gt; against the state, it does not matter
+whether Num Lock is active or not. These relevant, or significant,
+modifiers usually include Alt, Control, Shift, Super and similar.
+Effectively, this means that non-significant modifiers are masked out,
+before doing the comparison as described above.</li>
+<li>The matching must be independent of the layout/keymap. For example,
+the &lt;Plus&gt; (+) symbol is found on the first level on some layouts,
+and requires holding Shift on others. If you simply bind the action
+to the &lt;Plus&gt; keysym, it would work for the unshifted kind, but
+not for the others, because the match against Shift would fail. If
+you bind the action to &lt;Shift&gt;&lt;Plus&gt;, only the shifted kind would
+work. So what is needed is to recognize that Shift is used up in the
+translation of the keysym itself, and therefore should not be included
+in the matching.
+Effectively, this means that consumed modifiers (Shift in this example)
+are masked out as well, before doing the comparison.</li>
+</ol>
+
+<p>state_modifiers are the modifiers reported by
+xkb::State::mod_index_is_active() and similar functions.
+consumed_modifiers are the modifiers reported by
+xkb::State::mod_index_is_consumed().
+significant_modifiers are decided upon by the application/toolkit/user;
+it is up to them to decide whether these are configurable or hard-coded.</p>
+</div><h4 id='method.mod_mask_remove_consumed' class="method"><span id='mod_mask_remove_consumed.v' class='invisible'><code>fn <a href='#method.mod_mask_remove_consumed' class='fnname'>mod_mask_remove_consumed</a>(&amp;self, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, mask: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></h4>
+<div class='docblock'><p>Remove consumed modifiers from a modifier mask for a key.</p>
+
+<p>Takes the given modifier mask, and removes all modifiers which are
+consumed for that particular key (as in xkb_state_mod_index_is_consumed()).</p>
+</div><h4 id='method.key_get_consumed_mods' class="method"><span id='key_get_consumed_mods.v' class='invisible'><code>fn <a href='#method.key_get_consumed_mods' class='fnname'>key_get_consumed_mods</a>(&amp;self, key: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></h4>
+<div class='docblock'><p>Get the mask of modifiers consumed by translating a given key.</p>
+
+<p>Returns a mask of the consumed modifiers.</p>
+</div><h4 id='method.layout_name_is_active' class="method"><span id='layout_name_is_active.v' class='invisible'><code>fn <a href='#method.layout_name_is_active' class='fnname'>layout_name_is_active</a>&lt;S&gt;(&amp;self, name: &amp;S, type_: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> <span class="where fmt-newline">where S: <a class="trait" href="https://doc.rust-lang.org/nightly/core/borrow/trait.Borrow.html" title="trait core::borrow::Borrow">Borrow</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</span></code></span></h4>
+<div class='docblock'><p>Test whether a layout is active in a given keyboard state by name.</p>
+
+<p>If multiple layouts in the keymap have this name, the one with the lowest
+index is tested.</p>
+</div><h4 id='method.layout_index_is_active' class="method"><span id='layout_index_is_active.v' class='invisible'><code>fn <a href='#method.layout_index_is_active' class='fnname'>layout_index_is_active</a>(&amp;self, idx: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, type_: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Test whether a layout is active in a given keyboard state by index.</p>
+</div><h4 id='method.led_name_is_active' class="method"><span id='led_name_is_active.v' class='invisible'><code>fn <a href='#method.led_name_is_active' class='fnname'>led_name_is_active</a>&lt;S&gt;(&amp;self, name: &amp;S) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> <span class="where fmt-newline">where S: <a class="trait" href="https://doc.rust-lang.org/nightly/core/borrow/trait.Borrow.html" title="trait core::borrow::Borrow">Borrow</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</span></code></span></h4>
+<div class='docblock'><p>Test whether a LED is active in a given keyboard state by name.</p>
+</div><h4 id='method.led_index_is_active' class="method"><span id='led_index_is_active.v' class='invisible'><code>fn <a href='#method.led_index_is_active' class='fnname'>led_index_is_active</a>(&amp;self, idx: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Test whether a LED is active in a given keyboard state by index.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html" title="trait core::ops::Drop">Drop</a> for <a class="struct" href="../../../wlc/input/keyboard/struct.State.html" title="struct wlc::input::keyboard::State">State</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/xkbcommon/xkb/mod.rs.html#1493-1499' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>A method called when the value goes out of scope. <a href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../../wlc/input/keyboard/struct.State.html" title="struct wlc::input::keyboard::State">State</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/xkbcommon/xkb/mod.rs.html#1483-1491' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../../wlc/input/keyboard/struct.State.html" title="struct wlc::input::keyboard::State">State</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "wlc";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

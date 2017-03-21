@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ListSelect` struct in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ListSelect">
+
+    <title>conrod::widget::list_select::ListSelect - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>widget</a>::<wbr><a href='index.html'>list_select</a></p><script>window.sidebarCurrent = {name: 'ListSelect', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>widget</a>::<wbr><a href='index.html'>list_select</a>::<wbr><a class="struct" href=''>ListSelect</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/conrod/widget/list_select.rs.html#10-17' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct ListSelect&lt;M&gt; { /* fields omitted */ }</pre><div class='docblock'><p>A wrapper around the <code>List</code> widget that handles single and multiple selection logic.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../../conrod/widget/list_select/struct.ListSelect.html" title="struct conrod::widget::list_select::ListSelect">ListSelect</a>&lt;<a class="struct" href="../../../conrod/widget/list_select/struct.Single.html" title="struct conrod::widget::list_select::Single">Single</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/list_select.rs.html#150-155' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.single' class="method"><span id='single.v' class='invisible'><code>fn <a href='#method.single' class='fnname'>single</a>(num_items: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, item_h: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Construct a new ListSelect, allowing one selected item at a time.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../../conrod/widget/list_select/struct.ListSelect.html" title="struct conrod::widget::list_select::ListSelect">ListSelect</a>&lt;<a class="struct" href="../../../conrod/widget/list_select/struct.Multiple.html" title="struct conrod::widget::list_select::Multiple">Multiple</a>&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/list_select.rs.html#157-162' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.multiple' class="method"><span id='multiple.v' class='invisible'><code>fn <a href='#method.multiple' class='fnname'>multiple</a>(num_items: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, item_h: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Construct a new ListSelect, allowing multiple selected items.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;M&gt; <a class="struct" href="../../../conrod/widget/list_select/struct.ListSelect.html" title="struct conrod::widget::list_select::ListSelect">ListSelect</a>&lt;M&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/list_select.rs.html#164-228' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(num_items: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, item_h: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>, mode: M) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Begin building a new <code>ListSelect</code> with the given mode.</p>
+
+<p>This method is only useful when using a custom <code>Mode</code>, otherwise <code>ListSelect::single</code> or
+<code>ListSelect::multiple</code> will probably be more suitable.</p>
+</div><h4 id='method.scrollbar_next_to' class="method"><span id='scrollbar_next_to.v' class='invisible'><code>fn <a href='#method.scrollbar_next_to' class='fnname'>scrollbar_next_to</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Specifies that the <code>List</code> should be scrollable and should provide a <code>Scrollbar</code> to the
+right of the items.</p>
+</div><h4 id='method.scrollbar_on_top' class="method"><span id='scrollbar_on_top.v' class='invisible'><code>fn <a href='#method.scrollbar_on_top' class='fnname'>scrollbar_on_top</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Specifies that the <code>List</code> should be scrollable and should provide a <code>Scrollbar</code> that hovers
+above the right edge of the items and automatically hides when the user is not scrolling.</p>
+</div><h4 id='method.scrollbar_width' class="method"><span id='scrollbar_width.v' class='invisible'><code>fn <a href='#method.scrollbar_width' class='fnname'>scrollbar_width</a>(self, w: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>The width of the <code>Scrollbar</code>.</p>
+</div><h4 id='method.scrollbar_color' class="method"><span id='scrollbar_color.v' class='invisible'><code>fn <a href='#method.scrollbar_color' class='fnname'>scrollbar_color</a>(self, color: <a class="enum" href="../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>The color of the <code>Scrollbar</code>.</p>
+</div><h4 id='method.instantiate_all_items' class="method"><span id='instantiate_all_items.v' class='invisible'><code>fn <a href='#method.instantiate_all_items' class='fnname'>instantiate_all_items</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Indicates that an <code>Item</code> should be instatiated for every element in the list, regardless of
+whether or not the <code>Item</code> would be visible.</p>
+
+<p>Note: This may cause significantly heavier CPU load for lists containing many items (100+).
+We only recommend using this when absolutely necessary as large lists may cause unnecessary
+bloating within the widget graph, and in turn result in greater traversal times.</p>
+</div><h4 id='method.instantiate_only_visible_items' class="method"><span id='instantiate_only_visible_items.v' class='invisible'><code>fn <a href='#method.instantiate_only_visible_items' class='fnname'>instantiate_only_visible_items</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Indicates that only <code>Item</code>s that are visible should be instantiated. This ensures that we
+avoid bloating the widget graph with unnecessary nodes and in turn keep traversal times to
+a minimum.</p>
+
+<p>This is the default <code>List</code> behaviour.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;M:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../../conrod/widget/list_select/struct.ListSelect.html" title="struct conrod::widget::list_select::ListSelect">ListSelect</a>&lt;M&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/list_select.rs.html#8' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../../conrod/widget/list_select/struct.ListSelect.html" title="struct conrod::widget::list_select::ListSelect">ListSelect</a>&lt;M&gt;</code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;M&gt; <a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Widget</a> for <a class="struct" href="../../../conrod/widget/list_select/struct.ListSelect.html" title="struct conrod::widget::list_select::ListSelect">ListSelect</a>&lt;M&gt; <span class="where fmt-newline">where M: <a class="trait" href="../../../conrod/widget/list_select/trait.Mode.html" title="trait conrod::widget::list_select::Mode">Mode</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/list_select.rs.html#230-287' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.State' class="type"><span id='State.t' class='invisible'><code>type <a href='../../../conrod/widget/trait.Widget.html#associatedtype.State' class="type">State</a> = <a class="struct" href="../../../conrod/widget/list_select/struct.State.html" title="struct conrod::widget::list_select::State">State</a></code></span></h4>
+<div class='docblock'><p>State to be stored within the <code>Ui</code>s widget cache. <a href="../../../conrod/widget/trait.Widget.html#associatedtype.State">Read more</a></p>
+</div><h4 id='associatedtype.Style' class="type"><span id='Style.t' class='invisible'><code>type <a href='../../../conrod/widget/trait.Widget.html#associatedtype.Style' class="type">Style</a> = <a class="struct" href="../../../conrod/widget/list/struct.Style.html" title="struct conrod::widget::list::Style">Style</a></code></span></h4>
+<div class='docblock'><p>Every widget is required to have its own associated <code>Style</code> type. This type is intended to contain high-level styling information for the widget that can be <em>optionally specified</em> by a user of the widget. <a href="../../../conrod/widget/trait.Widget.html#associatedtype.Style">Read more</a></p>
+</div><h4 id='associatedtype.Event' class="type"><span id='Event.t' class='invisible'><code>type <a href='../../../conrod/widget/trait.Widget.html#associatedtype.Event' class="type">Event</a> = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="../../../conrod/widget/list_select/struct.Events.html" title="struct conrod::widget::list_select::Events">Events</a>&lt;M&gt;, <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../conrod/widget/list/struct.Scrollbar.html" title="struct conrod::widget::list::Scrollbar">Scrollbar</a>&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<div class='docblock'><p>The type of event yielded by the widget, returned via the <code>Widget::set</code> function. <a href="../../../conrod/widget/trait.Widget.html#associatedtype.Event">Read more</a></p>
+</div><h4 id='method.common' class="method"><span id='common.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#tymethod.common' class='fnname'>common</a>(&amp;self) -&gt; &amp;<a class="struct" href="../../../conrod/widget/struct.CommonBuilder.html" title="struct conrod::widget::CommonBuilder">CommonBuilder</a></code></span></h4>
+<div class='docblock'><p>Return a reference to a <strong>CommonBuilder</strong> struct owned by the Widget. This method allows us to do a blanket impl of Positionable and Sizeable for T: Widget. <a href="../../../conrod/widget/trait.Widget.html#tymethod.common">Read more</a></p>
+</div><h4 id='method.common_mut' class="method"><span id='common_mut.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#tymethod.common_mut' class='fnname'>common_mut</a>(&amp;mut self) -&gt; &amp;mut <a class="struct" href="../../../conrod/widget/struct.CommonBuilder.html" title="struct conrod::widget::CommonBuilder">CommonBuilder</a></code></span></h4>
+<div class='docblock'><p>Return a mutable reference to a CommonBuilder struct owned by the Widget. This method allows us to do a blanket impl of Positionable and Sizeable for T: Widget. <a href="../../../conrod/widget/trait.Widget.html#tymethod.common_mut">Read more</a></p>
+</div><h4 id='method.init_state' class="method"><span id='init_state.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#tymethod.init_state' class='fnname'>init_state</a>(&amp;self, id_gen: <a class="struct" href="../../../conrod/widget/id/struct.Generator.html" title="struct conrod::widget::id::Generator">Generator</a>) -&gt; Self::<a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">State</a></code></span></h4>
+<div class='docblock'><p>Return the initial <strong>State</strong> of the Widget. <a href="../../../conrod/widget/trait.Widget.html#tymethod.init_state">Read more</a></p>
+</div><h4 id='method.style' class="method"><span id='style.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#tymethod.style' class='fnname'>style</a>(&amp;self) -&gt; Self::<a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Style</a></code></span></h4>
+<div class='docblock'><p>Return the styling of the widget. <a href="../../../conrod/widget/trait.Widget.html#tymethod.style">Read more</a></p>
+</div><h4 id='method.update' class="method"><span id='update.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#tymethod.update' class='fnname'>update</a>(self, args: <a class="struct" href="../../../conrod/widget/struct.UpdateArgs.html" title="struct conrod::widget::UpdateArgs">UpdateArgs</a>&lt;Self&gt;) -&gt; Self::<a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Event</a></code></span></h4>
+<div class='docblock'><p>Update the state of the ListSelect.</p>
+</div><h4 id='method.default_x_position' class="method"><span id='default_x_position.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.default_x_position' class='fnname'>default_x_position</a>(&amp;self, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a></code></span></h4>
+<div class='docblock'><p>The default <strong>Position</strong> for the widget along the <em>x</em> axis. <a href="../../../conrod/widget/trait.Widget.html#method.default_x_position">Read more</a></p>
+</div><h4 id='method.default_y_position' class="method"><span id='default_y_position.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.default_y_position' class='fnname'>default_y_position</a>(&amp;self, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a></code></span></h4>
+<div class='docblock'><p>The default <strong>Position</strong> for the widget along the <em>y</em> axis. <a href="../../../conrod/widget/trait.Widget.html#method.default_y_position">Read more</a></p>
+</div><h4 id='method.default_x_dimension' class="method"><span id='default_x_dimension.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.default_x_dimension' class='fnname'>default_x_dimension</a>(&amp;self, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Dimension.html" title="enum conrod::position::Dimension">Dimension</a></code></span></h4>
+<div class='docblock'><p>The default width for the <strong>Widget</strong>. <a href="../../../conrod/widget/trait.Widget.html#method.default_x_dimension">Read more</a></p>
+</div><h4 id='method.default_y_dimension' class="method"><span id='default_y_dimension.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.default_y_dimension' class='fnname'>default_y_dimension</a>(&amp;self, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Dimension.html" title="enum conrod::position::Dimension">Dimension</a></code></span></h4>
+<div class='docblock'><p>The default height of the widget. <a href="../../../conrod/widget/trait.Widget.html#method.default_y_dimension">Read more</a></p>
+</div><h4 id='method.drag_area' class="method"><span id='drag_area.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.drag_area' class='fnname'>drag_area</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _dim: <a class="type" href="../../../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _style: &amp;Self::<a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Style</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _theme: &amp;<a class="struct" href="../../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>&gt;</code></span></h4>
+<div class='docblock'><p>If the widget is draggable, implement this method and return the position and dimensions of the draggable space. The position should be relative to the center of the widget. <a href="../../../conrod/widget/trait.Widget.html#method.drag_area">Read more</a></p>
+</div><h4 id='method.kid_area' class="method"><span id='kid_area.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.kid_area' class='fnname'>kid_area</a>(&amp;self, args: <a class="struct" href="../../../conrod/widget/struct.KidAreaArgs.html" title="struct conrod::widget::KidAreaArgs">KidAreaArgs</a>&lt;Self&gt;) -&gt; <a class="struct" href="../../../conrod/widget/struct.KidArea.html" title="struct conrod::widget::KidArea">KidArea</a></code></span></h4>
+<div class='docblock'><p>The area on which child widgets will be placed when using the <code>Place</code> <code>Position</code> methods.</p>
+</div><h4 id='method.parent' class="method"><span id='parent.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.parent' class='fnname'>parent</a>(self, parent_id: <a class="type" href="../../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set the parent widget for this Widget by passing the WidgetId of the parent. <a href="../../../conrod/widget/trait.Widget.html#method.parent">Read more</a></p>
+</div><h4 id='method.no_parent' class="method"><span id='no_parent.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.no_parent' class='fnname'>no_parent</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Specify that this widget has no parent widgets.</p>
+</div><h4 id='method.place_on_kid_area' class="method"><span id='place_on_kid_area.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.place_on_kid_area' class='fnname'>place_on_kid_area</a>(self, b: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set whether or not the <strong>Widget</strong> should be placed on the kid_area. <a href="../../../conrod/widget/trait.Widget.html#method.place_on_kid_area">Read more</a></p>
+</div><h4 id='method.graphics_for' class="method"><span id='graphics_for.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.graphics_for' class='fnname'>graphics_for</a>(self, id: <a class="type" href="../../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Indicates that the <strong>Widget</strong> is used as a non-interactive graphical element for some other widget. <a href="../../../conrod/widget/trait.Widget.html#method.graphics_for">Read more</a></p>
+</div><h4 id='method.floating' class="method"><span id='floating.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.floating' class='fnname'>floating</a>(self, is_floating: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set whether or not the widget is floating (the default is <code>false</code>). A typical example of a floating widget would be a pop-up or alert window. <a href="../../../conrod/widget/trait.Widget.html#method.floating">Read more</a></p>
+</div><h4 id='method.crop_kids' class="method"><span id='crop_kids.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.crop_kids' class='fnname'>crop_kids</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Indicates that all widgets who are children of this widget should be cropped to the <code>kid_area</code> of this widget. <a href="../../../conrod/widget/trait.Widget.html#method.crop_kids">Read more</a></p>
+</div><h4 id='method.scroll_kids' class="method"><span id='scroll_kids.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.scroll_kids' class='fnname'>scroll_kids</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Makes the widget&#39;s <code>KidArea</code> scrollable. <a href="../../../conrod/widget/trait.Widget.html#method.scroll_kids">Read more</a></p>
+</div><h4 id='method.scroll_kids_vertically' class="method"><span id='scroll_kids_vertically.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.scroll_kids_vertically' class='fnname'>scroll_kids_vertically</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Makes the widget&#39;s <code>KidArea</code> scrollable. <a href="../../../conrod/widget/trait.Widget.html#method.scroll_kids_vertically">Read more</a></p>
+</div><h4 id='method.scroll_kids_horizontally' class="method"><span id='scroll_kids_horizontally.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.scroll_kids_horizontally' class='fnname'>scroll_kids_horizontally</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Set whether or not the widget&#39;s <code>KidArea</code> is scrollable (the default is false). <a href="../../../conrod/widget/trait.Widget.html#method.scroll_kids_horizontally">Read more</a></p>
+</div><h4 id='method.and' class="method"><span id='and.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.and' class='fnname'>and</a>&lt;F&gt;(self, build: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(Self) -&gt; Self</span></code></span></h4>
+<div class='docblock'><p>A builder method that &quot;lifts&quot; the <strong>Widget</strong> through the given <code>build</code> function. <a href="../../../conrod/widget/trait.Widget.html#method.and">Read more</a></p>
+</div><h4 id='method.and_mut' class="method"><span id='and_mut.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.and_mut' class='fnname'>and_mut</a>&lt;F&gt;(self, mutate: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(&amp;mut Self)</span></code></span></h4>
+<div class='docblock'><p>A builder method that mutates the <strong>Widget</strong> with the given <code>mutate</code> function. <a href="../../../conrod/widget/trait.Widget.html#method.and_mut">Read more</a></p>
+</div><h4 id='method.and_if' class="method"><span id='and_if.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.and_if' class='fnname'>and_if</a>&lt;F&gt;(self, cond: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, build: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(Self) -&gt; Self</span></code></span></h4>
+<div class='docblock'><p>A method that conditionally builds the <strong>Widget</strong> with the given <code>build</code> function. <a href="../../../conrod/widget/trait.Widget.html#method.and_if">Read more</a></p>
+</div><h4 id='method.and_then' class="method"><span id='and_then.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.and_then' class='fnname'>and_then</a>&lt;T, F&gt;(self, maybe: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;, build: F) -&gt; Self <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(Self, T) -&gt; Self</span></code></span></h4>
+<div class='docblock'><p>A method that optionally builds the the <strong>Widget</strong> with the given <code>build</code> function. <a href="../../../conrod/widget/trait.Widget.html#method.and_then">Read more</a></p>
+</div><h4 id='method.set' class="method"><span id='set.v' class='invisible'><code>fn <a href='../../../conrod/widget/trait.Widget.html#method.set' class='fnname'>set</a>&lt;'a, 'b&gt;(self, id: <a class="type" href="../../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, ui_cell: &amp;'a mut <a class="struct" href="../../../conrod/struct.UiCell.html" title="struct conrod::UiCell">UiCell</a>&lt;'b&gt;) -&gt; Self::<a class="trait" href="../../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Event</a></code></span></h4>
+<div class='docblock'><p>Note: There should be no need to override this method. <a href="../../../conrod/widget/trait.Widget.html#method.set">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

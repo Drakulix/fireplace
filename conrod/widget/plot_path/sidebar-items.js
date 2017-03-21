@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["PlotPath","A widget that plots a series of lines using the given function *x -> y*."],["State","Unique state stored between updates for the `PlotPath` widget."],["Style","Unique styling parameters for the `PlotPath` widget."]]});

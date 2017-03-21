@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["KeyPattern","Describtion of a key combination that might be handled by the compositor."],["KeyboardHandler","Handler to handle global key events"]],"trait":[["KeyHandler","Implement to express you may handle a certain key event"]]});

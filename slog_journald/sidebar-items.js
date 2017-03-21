@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Error","Error type for logging to journald."]],"struct":[["JournaldDrain","Drain records and send to journald as structured data."]]});

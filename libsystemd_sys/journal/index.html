@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `journal` mod in crate `libsystemd_sys`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, journal">
+
+    <title>libsystemd_sys::journal - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>libsystemd_sys</a></p><script>window.sidebarCurrent = {name: 'journal', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>libsystemd_sys</a>::<wbr><a class="mod" href=''>journal</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/libsystemd_sys/journal.rs.html#1-95' title='goto source code'>[src]</a></span></h1>
+<h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.sd_journal.html"
+                                  title='enum libsystemd_sys::journal::sd_journal'>sd_journal</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_JOURNAL_CURRENT_USER.html"
+                                  title='constant libsystemd_sys::journal::SD_JOURNAL_CURRENT_USER'>SD_JOURNAL_CURRENT_USER</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_JOURNAL_LOCAL_ONLY.html"
+                                  title='constant libsystemd_sys::journal::SD_JOURNAL_LOCAL_ONLY'>SD_JOURNAL_LOCAL_ONLY</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_JOURNAL_RUNTIME_ONLY.html"
+                                  title='constant libsystemd_sys::journal::SD_JOURNAL_RUNTIME_ONLY'>SD_JOURNAL_RUNTIME_ONLY</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_JOURNAL_SYSTEM.html"
+                                  title='constant libsystemd_sys::journal::SD_JOURNAL_SYSTEM'>SD_JOURNAL_SYSTEM</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_add_conjunction.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_add_conjunction'>sd_journal_add_conjunction</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_add_disjunction.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_add_disjunction'>sd_journal_add_disjunction</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_add_match.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_add_match'>sd_journal_add_match</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_close.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_close'>sd_journal_close</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_enumerate_data.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_enumerate_data'>sd_journal_enumerate_data</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_enumerate_unique.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_enumerate_unique'>sd_journal_enumerate_unique</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_flush_matches.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_flush_matches'>sd_journal_flush_matches</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_get_catalog.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_get_catalog'>sd_journal_get_catalog</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_get_catalog_for_message_id.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_get_catalog_for_message_id'>sd_journal_get_catalog_for_message_id</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_get_cursor.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_get_cursor'>sd_journal_get_cursor</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_get_cutoff_monotonic_usec.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_get_cutoff_monotonic_usec'>sd_journal_get_cutoff_monotonic_usec</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_get_cutoff_realtime_usec.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_get_cutoff_realtime_usec'>sd_journal_get_cutoff_realtime_usec</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_get_data.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_get_data'>sd_journal_get_data</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_get_data_threshold.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_get_data_threshold'>sd_journal_get_data_threshold</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_get_events.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_get_events'>sd_journal_get_events</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_get_fd.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_get_fd'>sd_journal_get_fd</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_get_monotonic_usec.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_get_monotonic_usec'>sd_journal_get_monotonic_usec</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_get_realtime_usec.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_get_realtime_usec'>sd_journal_get_realtime_usec</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_get_timeout.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_get_timeout'>sd_journal_get_timeout</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_get_usage.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_get_usage'>sd_journal_get_usage</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_next.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_next'>sd_journal_next</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_next_skip.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_next_skip'>sd_journal_next_skip</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_open.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_open'>sd_journal_open</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_previous.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_previous'>sd_journal_previous</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_previous_skip.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_previous_skip'>sd_journal_previous_skip</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_process.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_process'>sd_journal_process</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_query_unique.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_query_unique'>sd_journal_query_unique</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_reliable_fd.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_reliable_fd'>sd_journal_reliable_fd</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_restart_data.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_restart_data'>sd_journal_restart_data</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_restart_unique.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_restart_unique'>sd_journal_restart_unique</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_seek_cursor.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_seek_cursor'>sd_journal_seek_cursor</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_seek_head.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_seek_head'>sd_journal_seek_head</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_seek_monotonic_usec.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_seek_monotonic_usec'>sd_journal_seek_monotonic_usec</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_seek_realtime_usec.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_seek_realtime_usec'>sd_journal_seek_realtime_usec</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_seek_tail.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_seek_tail'>sd_journal_seek_tail</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_sendv.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_sendv'>sd_journal_sendv</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_set_data_threshold.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_set_data_threshold'>sd_journal_set_data_threshold</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_test_cursor.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_test_cursor'>sd_journal_test_cursor</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_journal_wait.html"
+                                  title='fn libsystemd_sys::journal::sd_journal_wait'>sd_journal_wait</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "libsystemd_sys";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

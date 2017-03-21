@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Error","An enum to represent various possible run-time errors that may occur."]]});

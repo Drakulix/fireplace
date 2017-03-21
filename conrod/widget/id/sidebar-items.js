@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Generator","Used for generating new unique `widget::Id`s."],["List","A list of lazily generated `widget::Id`s."],["ListWalk","An iterator-like type for producing indices from a `List`."]],"type":[["Id","Unique widget identifier."]]});

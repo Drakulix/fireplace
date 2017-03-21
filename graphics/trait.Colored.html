@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Colored` trait in crate `graphics`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Colored">
+
+    <title>graphics::Colored - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>graphics</a></p><script>window.sidebarCurrent = {name: 'Colored', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content trait">
+<h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>graphics</a>::<wbr><a class="trait" href=''>Colored</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/graphics/colored.rs.html#7-43' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait Colored: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> {
+    fn <a href='#tymethod.mul_rgba' class='fnname'>mul_rgba</a>(self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; Self;
+    fn <a href='#tymethod.hue_rad' class='fnname'>hue_rad</a>(self, angle: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>) -&gt; Self;
+
+    fn <a href='#method.tint' class='fnname'>tint</a>(self, f: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>) -&gt; Self { ... }
+    fn <a href='#method.shade' class='fnname'>shade</a>(self, f: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>) -&gt; Self { ... }
+    fn <a href='#method.hue_deg' class='fnname'>hue_deg</a>(self, angle: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>) -&gt; Self { ... }
+}</pre><div class='docblock'><p>Implemented by contexts that contains color.</p>
+</div>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.mul_rgba' class='method'><span id='mul_rgba.v' class='invisible'><code>fn <a href='#tymethod.mul_rgba' class='fnname'>mul_rgba</a>(self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; Self</code></span></h3><div class='docblock'><p>Multiplies with red, green, blue and alpha values.</p>
+</div><h3 id='tymethod.hue_rad' class='method'><span id='hue_rad.v' class='invisible'><code>fn <a href='#tymethod.hue_rad' class='fnname'>hue_rad</a>(self, angle: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>) -&gt; Self</code></span></h3><div class='docblock'><p>Rotates hue by radians.</p>
+</div></div>
+            <h2 id='provided-methods'>Provided Methods</h2>
+            <div class='methods'>
+        <h3 id='method.tint' class='method'><span id='tint.v' class='invisible'><code>fn <a href='#method.tint' class='fnname'>tint</a>(self, f: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>) -&gt; Self</code></span></h3><div class='docblock'><p>Mixes the current color with white.</p>
+
+<p>0 is black and 1 is white.</p>
+</div><h3 id='method.shade' class='method'><span id='shade.v' class='invisible'><code>fn <a href='#method.shade' class='fnname'>shade</a>(self, f: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>) -&gt; Self</code></span></h3><div class='docblock'><p>Mixes the current color with black.</p>
+
+<p>0 is white and 1 is black.</p>
+</div><h3 id='method.hue_deg' class='method'><span id='hue_deg.v' class='invisible'><code>fn <a href='#method.hue_deg' class='fnname'>hue_deg</a>(self, angle: <a class="type" href="../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>) -&gt; Self</code></span></h3><div class='docblock'><p>Rotates hue by degrees.</p>
+</div></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl Colored for <a class="type" href="../graphics/types/type.Color.html" title="type graphics::types::Color">Color</a></code></li>
+<li><code>impl Colored for <a class="struct" href="../graphics/line/struct.Line.html" title="struct graphics::line::Line">Line</a></code></li>
+<li><code>impl Colored for <a class="struct" href="../graphics/ellipse/struct.Ellipse.html" title="struct graphics::ellipse::Ellipse">Ellipse</a></code></li>
+<li><code>impl Colored for <a class="struct" href="../graphics/rectangle/struct.Rectangle.html" title="struct graphics::rectangle::Rectangle">Rectangle</a></code></li>
+</ul><script type="text/javascript" async
+                         src="../implementors/graphics/trait.Colored.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "graphics";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

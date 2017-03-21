@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `event` mod in crate `libsystemd_sys`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, event">
+
+    <title>libsystemd_sys::event - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>libsystemd_sys</a></p><script>window.sidebarCurrent = {name: 'event', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>libsystemd_sys</a>::<wbr><a class="mod" href=''>event</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/libsystemd_sys/event.rs.html#3-149' title='goto source code'>[src]</a></span></h1>
+<h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.sd_event.html"
+                                  title='enum libsystemd_sys::event::sd_event'>sd_event</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.sd_event_source.html"
+                                  title='enum libsystemd_sys::event::sd_event_source'>sd_event_source</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_EVENT_ARMED.html"
+                                  title='constant libsystemd_sys::event::SD_EVENT_ARMED'>SD_EVENT_ARMED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_EVENT_EXITING.html"
+                                  title='constant libsystemd_sys::event::SD_EVENT_EXITING'>SD_EVENT_EXITING</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_EVENT_FINISHED.html"
+                                  title='constant libsystemd_sys::event::SD_EVENT_FINISHED'>SD_EVENT_FINISHED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_EVENT_INITIAL.html"
+                                  title='constant libsystemd_sys::event::SD_EVENT_INITIAL'>SD_EVENT_INITIAL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_EVENT_OFF.html"
+                                  title='constant libsystemd_sys::event::SD_EVENT_OFF'>SD_EVENT_OFF</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_EVENT_ON.html"
+                                  title='constant libsystemd_sys::event::SD_EVENT_ON'>SD_EVENT_ON</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_EVENT_ONESHOT.html"
+                                  title='constant libsystemd_sys::event::SD_EVENT_ONESHOT'>SD_EVENT_ONESHOT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_EVENT_PENDING.html"
+                                  title='constant libsystemd_sys::event::SD_EVENT_PENDING'>SD_EVENT_PENDING</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_EVENT_PRIORITY_IDLE.html"
+                                  title='constant libsystemd_sys::event::SD_EVENT_PRIORITY_IDLE'>SD_EVENT_PRIORITY_IDLE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_EVENT_PRIORITY_IMPORTANT.html"
+                                  title='constant libsystemd_sys::event::SD_EVENT_PRIORITY_IMPORTANT'>SD_EVENT_PRIORITY_IMPORTANT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_EVENT_PRIORITY_NORMAL.html"
+                                  title='constant libsystemd_sys::event::SD_EVENT_PRIORITY_NORMAL'>SD_EVENT_PRIORITY_NORMAL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SD_EVENT_RUNNING.html"
+                                  title='constant libsystemd_sys::event::SD_EVENT_RUNNING'>SD_EVENT_RUNNING</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_add_child.html"
+                                  title='fn libsystemd_sys::event::sd_event_add_child'>sd_event_add_child</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_add_defer.html"
+                                  title='fn libsystemd_sys::event::sd_event_add_defer'>sd_event_add_defer</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_add_exit.html"
+                                  title='fn libsystemd_sys::event::sd_event_add_exit'>sd_event_add_exit</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_add_io.html"
+                                  title='fn libsystemd_sys::event::sd_event_add_io'>sd_event_add_io</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_add_post.html"
+                                  title='fn libsystemd_sys::event::sd_event_add_post'>sd_event_add_post</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_add_signal.html"
+                                  title='fn libsystemd_sys::event::sd_event_add_signal'>sd_event_add_signal</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_add_time.html"
+                                  title='fn libsystemd_sys::event::sd_event_add_time'>sd_event_add_time</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_default.html"
+                                  title='fn libsystemd_sys::event::sd_event_default'>sd_event_default</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_dispatch.html"
+                                  title='fn libsystemd_sys::event::sd_event_dispatch'>sd_event_dispatch</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_exit.html"
+                                  title='fn libsystemd_sys::event::sd_event_exit'>sd_event_exit</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_get_exit_code.html"
+                                  title='fn libsystemd_sys::event::sd_event_get_exit_code'>sd_event_get_exit_code</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_get_fd.html"
+                                  title='fn libsystemd_sys::event::sd_event_get_fd'>sd_event_get_fd</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_get_state.html"
+                                  title='fn libsystemd_sys::event::sd_event_get_state'>sd_event_get_state</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_get_tid.html"
+                                  title='fn libsystemd_sys::event::sd_event_get_tid'>sd_event_get_tid</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_get_watchdog.html"
+                                  title='fn libsystemd_sys::event::sd_event_get_watchdog'>sd_event_get_watchdog</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_loop.html"
+                                  title='fn libsystemd_sys::event::sd_event_loop'>sd_event_loop</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_new.html"
+                                  title='fn libsystemd_sys::event::sd_event_new'>sd_event_new</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_now.html"
+                                  title='fn libsystemd_sys::event::sd_event_now'>sd_event_now</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_prepare.html"
+                                  title='fn libsystemd_sys::event::sd_event_prepare'>sd_event_prepare</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_ref.html"
+                                  title='fn libsystemd_sys::event::sd_event_ref'>sd_event_ref</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_run.html"
+                                  title='fn libsystemd_sys::event::sd_event_run'>sd_event_run</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_set_watchdog.html"
+                                  title='fn libsystemd_sys::event::sd_event_set_watchdog'>sd_event_set_watchdog</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_get_child_pid.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_get_child_pid'>sd_event_source_get_child_pid</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_get_description.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_get_description'>sd_event_source_get_description</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_get_enabled.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_get_enabled'>sd_event_source_get_enabled</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_get_event.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_get_event'>sd_event_source_get_event</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_get_io_events.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_get_io_events'>sd_event_source_get_io_events</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_get_io_fd.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_get_io_fd'>sd_event_source_get_io_fd</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_get_io_revents.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_get_io_revents'>sd_event_source_get_io_revents</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_get_pending.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_get_pending'>sd_event_source_get_pending</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_get_priority.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_get_priority'>sd_event_source_get_priority</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_get_signal.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_get_signal'>sd_event_source_get_signal</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_get_time.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_get_time'>sd_event_source_get_time</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_get_time_accuracy.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_get_time_accuracy'>sd_event_source_get_time_accuracy</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_get_time_clock.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_get_time_clock'>sd_event_source_get_time_clock</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_get_userdata.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_get_userdata'>sd_event_source_get_userdata</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_ref.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_ref'>sd_event_source_ref</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_set_description.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_set_description'>sd_event_source_set_description</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_set_enabled.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_set_enabled'>sd_event_source_set_enabled</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_set_io_events.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_set_io_events'>sd_event_source_set_io_events</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_set_io_fd.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_set_io_fd'>sd_event_source_set_io_fd</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_set_prepare.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_set_prepare'>sd_event_source_set_prepare</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_set_priority.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_set_priority'>sd_event_source_set_priority</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_set_time.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_set_time'>sd_event_source_set_time</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_set_time_accuracy.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_set_time_accuracy'>sd_event_source_set_time_accuracy</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_set_userdata.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_set_userdata'>sd_event_source_set_userdata</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_source_unref.html"
+                                  title='fn libsystemd_sys::event::sd_event_source_unref'>sd_event_source_unref</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_unref.html"
+                                  title='fn libsystemd_sys::event::sd_event_unref'>sd_event_unref</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sd_event_wait.html"
+                                  title='fn libsystemd_sys::event::sd_event_wait'>sd_event_wait</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.sd_event_child_handler_t.html"
+                                  title='type libsystemd_sys::event::sd_event_child_handler_t'>sd_event_child_handler_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.sd_event_handler_t.html"
+                                  title='type libsystemd_sys::event::sd_event_handler_t'>sd_event_handler_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.sd_event_io_handler_t.html"
+                                  title='type libsystemd_sys::event::sd_event_io_handler_t'>sd_event_io_handler_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.sd_event_signal_handler_t.html"
+                                  title='type libsystemd_sys::event::sd_event_signal_handler_t'>sd_event_signal_handler_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.sd_event_time_handler_t.html"
+                                  title='type libsystemd_sys::event::sd_event_time_handler_t'>sd_event_time_handler_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "libsystemd_sys";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

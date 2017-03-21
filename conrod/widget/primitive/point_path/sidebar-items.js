@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["PointPath","A simple, non-interactive widget for drawing a series of lines and/or points."],["State","State that is unique to the PointPath."]]});

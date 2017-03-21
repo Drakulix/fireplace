@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `CircleArc` struct in crate `graphics`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, CircleArc">
+
+    <title>graphics::circle_arc::CircleArc - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>graphics</a>::<wbr><a href='index.html'>circle_arc</a></p><script>window.sidebarCurrent = {name: 'CircleArc', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>graphics</a>::<wbr><a href='index.html'>circle_arc</a>::<wbr><a class="struct" href=''>CircleArc</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/graphics/circle_arc.rs.html#10-26' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct CircleArc {
+    pub color: <a class="type" href="../../graphics/types/type.Color.html" title="type graphics::types::Color">Color</a>,
+    pub radius: <a class="type" href="../../graphics/types/type.Radius.html" title="type graphics::types::Radius">Radius</a>,
+    pub start: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>,
+    pub end: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>,
+    pub resolution: <a class="type" href="../../graphics/types/type.Resolution.html" title="type graphics::types::Resolution">Resolution</a>,
+}</pre><div class='docblock'><p>A curved line</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.color' class="structfield">
+                           <span id='color.v' class='invisible'>
+                           <code>color: <a class="type" href="../../graphics/types/type.Color.html" title="type graphics::types::Color">Color</a></code>
+                           </span></span><div class='docblock'><p>The arcs color</p>
+</div><span id='structfield.radius' class="structfield">
+                           <span id='radius.v' class='invisible'>
+                           <code>radius: <a class="type" href="../../graphics/types/type.Radius.html" title="type graphics::types::Radius">Radius</a></code>
+                           </span></span><div class='docblock'><p>The radius of the arc (Thickness of the drawing, not the radius of the circle)</p>
+</div><span id='structfield.start' class="structfield">
+                           <span id='start.v' class='invisible'>
+                           <code>start: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a></code>
+                           </span></span><div class='docblock'><p>The start of the arc in radians</p>
+</div><span id='structfield.end' class="structfield">
+                           <span id='end.v' class='invisible'>
+                           <code>end: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a></code>
+                           </span></span><div class='docblock'><p>The end of the arc in radians</p>
+</div><span id='structfield.resolution' class="structfield">
+                           <span id='resolution.v' class='invisible'>
+                           <code>resolution: <a class="type" href="../../graphics/types/type.Resolution.html" title="type graphics::types::Resolution">Resolution</a></code>
+                           </span></span><div class='docblock'><p>The resolution for the arc.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../graphics/circle_arc/struct.CircleArc.html" title="struct graphics::circle_arc::CircleArc">CircleArc</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/graphics/circle_arc.rs.html#28-109' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(color: <a class="type" href="../../graphics/types/type.Color.html" title="type graphics::types::Color">Color</a>, radius: <a class="type" href="../../graphics/types/type.Radius.html" title="type graphics::types::Radius">Radius</a>, start: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>, end: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>) -&gt; <a class="struct" href="../../graphics/circle_arc/struct.CircleArc.html" title="struct graphics::circle_arc::CircleArc">CircleArc</a></code></span></h4>
+<div class='docblock'><p>Creates a new arc</p>
+</div><h4 id='method.color' class="method"><span id='color.v-1' class='invisible'><code>fn <a href='#method.color' class='fnname'>color</a>(self, value: <a class="type" href="../../graphics/types/type.Color.html" title="type graphics::types::Color">Color</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets the arcs color.</p>
+</div><h4 id='method.radius' class="method"><span id='radius.v-1' class='invisible'><code>fn <a href='#method.radius' class='fnname'>radius</a>(self, value: <a class="type" href="../../graphics/types/type.Radius.html" title="type graphics::types::Radius">Radius</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets the radius of the arc (Thickness of the arc, not the radius of the circle it wraps)</p>
+</div><h4 id='method.start' class="method"><span id='start.v-1' class='invisible'><code>fn <a href='#method.start' class='fnname'>start</a>(self, value: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets the start of the arc (in radians).</p>
+</div><h4 id='method.end' class="method"><span id='end.v-1' class='invisible'><code>fn <a href='#method.end' class='fnname'>end</a>(self, value: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets the end of the arc (in radians).</p>
+</div><h4 id='method.resolution' class="method"><span id='resolution.v-1' class='invisible'><code>fn <a href='#method.resolution' class='fnname'>resolution</a>(self, value: <a class="type" href="../../graphics/types/type.Resolution.html" title="type graphics::types::Resolution">Resolution</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets the resolution of the arcs smoothness.</p>
+</div><h4 id='method.draw' class="method"><span id='draw.v' class='invisible'><code>fn <a href='#method.draw' class='fnname'>draw</a>&lt;R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="type" href="../../graphics/types/type.Rectangle.html" title="type graphics::types::Rectangle">Rectangle</a>&gt;, G&gt;(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rectangle: R,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; draw_state: &amp;<a class="struct" href="../../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transform: <a class="type" href="../../graphics/math/type.Matrix2d.html" title="type graphics::math::Matrix2d">Matrix2d</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g: &amp;mut G) <span class="where fmt-newline">where G: <a class="trait" href="../../graphics/trait.Graphics.html" title="trait graphics::Graphics">Graphics</a></span></code></span></h4>
+<div class='docblock'><p>Draws circle arc using default method.</p>
+</div><h4 id='method.draw_tri' class="method"><span id='draw_tri.v' class='invisible'><code>fn <a href='#method.draw_tri' class='fnname'>draw_tri</a>&lt;R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="type" href="../../graphics/types/type.Rectangle.html" title="type graphics::types::Rectangle">Rectangle</a>&gt;, G&gt;(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rectangle: R,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; draw_state: &amp;<a class="struct" href="../../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transform: <a class="type" href="../../graphics/math/type.Matrix2d.html" title="type graphics::math::Matrix2d">Matrix2d</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g: &amp;mut G) <span class="where fmt-newline">where G: <a class="trait" href="../../graphics/trait.Graphics.html" title="trait graphics::Graphics">Graphics</a></span></code></span></h4>
+<div class='docblock'><p>Draws circle arc using triangulation.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="../../graphics/circle_arc/struct.CircleArc.html" title="struct graphics::circle_arc::CircleArc">CircleArc</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/graphics/circle_arc.rs.html#9' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../graphics/circle_arc/struct.CircleArc.html" title="struct graphics::circle_arc::CircleArc">CircleArc</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/graphics/circle_arc.rs.html#9' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../graphics/circle_arc/struct.CircleArc.html" title="struct graphics::circle_arc::CircleArc">CircleArc</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "graphics";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

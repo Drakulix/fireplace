@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Output` struct in crate `wlc`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Output">
+
+    <title>wlc::Output - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>wlc</a></p><script>window.sidebarCurrent = {name: 'Output', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>wlc</a>::<wbr><a class="struct" href=''>Output</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/wlc/output.rs.html#28' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'><div class="docblock attributes">#[repr(C)]
+</div>pub struct Output;</pre><div class='docblock'><p>An Output managed by Wlc</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../wlc/struct.Output.html" title="struct wlc::Output">Output</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/wlc/output.rs.html#41-251' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.all_outputs' class="method"><span id='all_outputs.v' class='invisible'><code>unsafe fn <a href='#method.all_outputs' class='fnname'>all_outputs</a>&lt;'a&gt;() -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'a [</a><a class="struct" href="../wlc/struct.Output.html" title="struct wlc::Output">Output</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a></code></span></h4>
+<div class='docblock'><p>Get all outputs currently active outputs</p>
+
+<h1 id='safety' class='section-header'><a href='#safety'>Safety</a></h1>
+<p>This function is unsafe, because it creates an <a href="https://doc.rust-lang.org/stable/nomicon/unbounded-lifetimes.%0Ahtml">unbound
+lifetime</a>.
+No output lives forever and might be disconnected at any time
+A disconnection is signaled by <code>Callback::output_destroyed</code> and the
+Output
+is deallocated shortly after.
+Because of this using this function one may create an invalid Output
+reference.</p>
+
+<p>Dont call this function on another thread, then the main thread</p>
+
+<p>See <code>Output::with_all_outputs</code> for a safe variant</p>
+</div><h4 id='method.with_all_outputs' class="method"><span id='with_all_outputs.v' class='invisible'><code>fn <a href='#method.with_all_outputs' class='fnname'>with_all_outputs</a>&lt;F, R&gt;(runner: F) -&gt; R <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="struct" href="../wlc/struct.Output.html" title="struct wlc::Output">Output</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; R</span></code></span></h4>
+<div class='docblock'><p>Safe version of <code>Output::all_outputs</code>
+Work with all active outputs in a short-lived scope</p>
+
+<h1 id='safety-1' class='section-header'><a href='#safety-1'>Safety</a></h1>
+<p>By enforcing a rather harsh limit on the lifetime of the outputs
+to a short lived scope of an anonymous function,
+this function makes sure no output lives longer then it exists.</p>
+
+<p>Dont call this function on another thread, then the main thread</p>
+</div><h4 id='method.focused_output' class="method"><span id='focused_output.v' class='invisible'><code>unsafe fn <a href='#method.focused_output' class='fnname'>focused_output</a>&lt;'a&gt;() -&gt; &amp;'a <a class="struct" href="../wlc/struct.Output.html" title="struct wlc::Output">Output</a></code></span></h4>
+<div class='docblock'><p>Get currently focused output</p>
+
+<h1 id='safety-2' class='section-header'><a href='#safety-2'>Safety</a></h1>
+<p>This function is unsafe, because it creates an <a href="https://doc.rust-lang.org/stable/nomicon/unbounded-lifetimes.%0Ahtml">unbound
+lifetime</a>.
+No output lives forever and might be disconnected at any time
+A disconnection is signaled by <code>Callback::output_destroyed</code> and the
+Output is
+deallocated shortly after.
+Because of this using this function one may create an invalid Output
+reference.</p>
+
+<p>Dont call this function on another thread, then the main thread</p>
+
+<p>See <code>Output::with_focused_output</code> for a safe variant</p>
+</div><h4 id='method.with_focused_output' class="method"><span id='with_focused_output.v' class='invisible'><code>fn <a href='#method.with_focused_output' class='fnname'>with_focused_output</a>&lt;F, R&gt;(runner: F) -&gt; R <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(&amp;<a class="struct" href="../wlc/struct.Output.html" title="struct wlc::Output">Output</a>) -&gt; R</span></code></span></h4>
+<div class='docblock'><p>Safe version of <code>Output::focused_output</code>
+Work with currently focused outputs in a short-lived scope</p>
+
+<h1 id='safety-3' class='section-header'><a href='#safety-3'>Safety</a></h1>
+<p>By enforcing a rather harsh limit on the lifetime of the output
+to a short lived scope of an anonymous function,
+this function makes sure the output does not live longer then it exists.</p>
+
+<p>Dont call this function on another thread, then the main thread</p>
+</div><h4 id='method.set_no_focus' class="method"><span id='set_no_focus.v' class='invisible'><code>fn <a href='#method.set_no_focus' class='fnname'>set_no_focus</a>()</code></span></h4>
+<div class='docblock'><p>Set no output focused</p>
+
+<h1 id='safety-4' class='section-header'><a href='#safety-4'>Safety</a></h1>
+<p>Dont call this function on another thread, then the main thread</p>
+</div><h4 id='method.name' class="method"><span id='name.v' class='invisible'><code>fn <a href='#method.name' class='fnname'>name</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html" title="enum collections::borrow::Cow">Cow</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span></h4>
+<div class='docblock'><p>Get output name</p>
+</div><h4 id='method.is_sleeping' class="method"><span id='is_sleeping.v' class='invisible'><code>fn <a href='#method.is_sleeping' class='fnname'>is_sleeping</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Get sleep state</p>
+</div><h4 id='method.set_sleeping' class="method"><span id='set_sleeping.v' class='invisible'><code>fn <a href='#method.set_sleeping' class='fnname'>set_sleeping</a>(&amp;self, sleep: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</code></span></h4>
+<div class='docblock'><p>Wake up / send output to sleep</p>
+</div><h4 id='method.resolution' class="method"><span id='resolution.v' class='invisible'><code>fn <a href='#method.resolution' class='fnname'>resolution</a>(&amp;self) -&gt; <a class="struct" href="../wlc/struct.Size.html" title="struct wlc::Size">Size</a></code></span></h4>
+<div class='docblock'><p>Get real resolution.</p>
+
+<p>Resolution applied by either <code>output.set_resolution</code> call or initially.
+Do not use this for coordinate boundary.</p>
+</div><h4 id='method.virtual_resolution' class="method"><span id='virtual_resolution.v' class='invisible'><code>fn <a href='#method.virtual_resolution' class='fnname'>virtual_resolution</a>(&amp;self) -&gt; <a class="struct" href="../wlc/struct.Size.html" title="struct wlc::Size">Size</a></code></span></h4>
+<div class='docblock'><p>Get virtual resolution.</p>
+
+<p>Resolution with transformations applied for proper rendering for
+example on high density displays.
+Use this to figure out coordinate boundary.</p>
+</div><h4 id='method.set_resolution' class="method"><span id='set_resolution.v' class='invisible'><code>fn <a href='#method.set_resolution' class='fnname'>set_resolution</a>(&amp;self, resolution: <a class="struct" href="../wlc/struct.Size.html" title="struct wlc::Size">Size</a>, scale: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>)</code></span></h4>
+<div class='docblock'><p>Set resolution</p>
+</div><h4 id='method.scale' class="method"><span id='scale.v' class='invisible'><code>fn <a href='#method.scale' class='fnname'>scale</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code></span></h4>
+<div class='docblock'><p>Get scale factor</p>
+</div><h4 id='method.visibility' class="method"><span id='visibility.v' class='invisible'><code>fn <a href='#method.visibility' class='fnname'>visibility</a>(&amp;self) -&gt; <a class="struct" href="../wlc/Visibility/struct.Flags.html" title="struct wlc::Visibility::Flags">Flags</a></code></span></h4>
+<div class='docblock'><p>Get current visibility bitmask</p>
+</div><h4 id='method.set_visibility' class="method"><span id='set_visibility.v' class='invisible'><code>fn <a href='#method.set_visibility' class='fnname'>set_visibility</a>(&amp;self, slots: <a class="struct" href="../wlc/Visibility/struct.Flags.html" title="struct wlc::Visibility::Flags">Flags</a>)</code></span></h4>
+<div class='docblock'><p>Set visibility bitmask</p>
+</div><h4 id='method.views' class="method"><span id='views.v' class='invisible'><code>fn <a href='#method.views' class='fnname'>views</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html" title="struct collections::vec::Vec">Vec</a>&lt;&amp;<a class="struct" href="../wlc/struct.View.html" title="struct wlc::View">View</a>&gt;</code></span></h4>
+<div class='docblock'><p>Get views in stack order</p>
+</div><h4 id='method.set_views' class="method"><span id='set_views.v' class='invisible'><code>fn <a href='#method.set_views' class='fnname'>set_views</a>&lt;'a, I:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>&lt;Item=&amp;'a <a class="struct" href="../wlc/struct.View.html" title="struct wlc::View">View</a>&gt;&gt;(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; views: I)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>, <a class="struct" href="https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html" title="struct collections::vec::Vec">Vec</a>&lt;&amp;'a <a class="struct" href="../wlc/struct.View.html" title="struct wlc::View">View</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>Sets the view stack</p>
+</div><h4 id='method.focus' class="method"><span id='focus.v' class='invisible'><code>fn <a href='#method.focus' class='fnname'>focus</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Focus output</p>
+</div><h4 id='method.gamma_size' class="method"><span id='gamma_size.v' class='invisible'><code>fn <a href='#method.gamma_size' class='fnname'>gamma_size</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a></code></span></h4>
+<div class='docblock'><p>Get the supported gamma ramp size of the <code>Output</code></p>
+</div><h4 id='method.set_gamma' class="method"><span id='set_gamma.v' class='invisible'><code>fn <a href='#method.set_gamma' class='fnname'>set_gamma</a>(&amp;self, r: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>, g: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>, b: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;mut [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>)</code></span></h4>
+<div class='docblock'><p>Set gamma ramps for this <code>Output</code></p>
+
+<p><code>r</code>,<code>g</code> and <code>b</code> sizes should correspond to <code>gamma_size</code> returned value</p>
+
+<h1 id='panic' class='section-header'><a href='#panic'>Panic</a></h1>
+<p>Panics if <code>r</code>, <code>g</code>, <code>b</code> have different sizes</p>
+</div><h4 id='method.schedule_render' class="method"><span id='schedule_render.v' class='invisible'><code>fn <a href='#method.schedule_render' class='fnname'>schedule_render</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Schedules output for rendering next frame.</p>
+
+<p>If output was already scheduled this is no-op,
+if output is currently rendering, it will render immediately after.</p>
+</div><h4 id='method.weak_reference' class="method"><span id='weak_reference.v' class='invisible'><code>fn <a href='#method.weak_reference' class='fnname'>weak_reference</a>(&amp;self) -&gt; <a class="struct" href="../wlc/struct.WeakOutput.html" title="struct wlc::WeakOutput">WeakOutput</a></code></span></h4>
+<div class='docblock'><p>Get a weak reference of the Output that may outlive its referenced
+output</p>
+
+<p>Since Output is always limited in its use by its lifetime, it is not
+very suitable for storing.
+This function allows you to optain a weak reference, that may outlive
+the output it is referencing.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> for <a class="struct" href="../wlc/struct.Output.html" title="struct wlc::Output">Output</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/wlc/output.rs.html#31' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl !<a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> for <a class="struct" href="../wlc/struct.Output.html" title="struct wlc::Output">Output</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/wlc/output.rs.html#33' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../wlc/struct.Output.html" title="struct wlc::Output">Output</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/wlc/output.rs.html#35-39' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="struct" href="../wlc/struct.Output.html" title="struct wlc::Output">Output</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/wlc/output.rs.html#319-323' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, other: &amp;<a class="struct" href="../wlc/struct.Output.html" title="struct wlc::Output">Output</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, other: &amp;Rhs) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html" title="trait core::cmp::Eq">Eq</a> for <a class="struct" href="../wlc/struct.Output.html" title="struct wlc::Output">Output</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/wlc/output.rs.html#324' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a>&lt;<a class="struct" href="../wlc/struct.WeakOutput.html" title="struct wlc::WeakOutput">WeakOutput</a>&gt; for <a class="struct" href="../wlc/struct.Output.html" title="struct wlc::Output">Output</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/wlc/output.rs.html#326-330' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq-1' class="method"><span id='eq.v-1' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, other: &amp;<a class="struct" href="../wlc/struct.WeakOutput.html" title="struct wlc::WeakOutput">WeakOutput</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne-1' class="method"><span id='ne.v-1' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, other: &amp;Rhs) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html" title="trait core::hash::Hash">Hash</a> for <a class="struct" href="../wlc/struct.Output.html" title="struct wlc::Output">Output</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/wlc/output.rs.html#347-351' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.hash' class="method"><span id='hash.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html#tymethod.hash' class='fnname'>hash</a>&lt;H:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/hash/trait.Hasher.html" title="trait core::hash::Hasher">Hasher</a>&gt;(&amp;self, state: &amp;mut H)</code></span></h4>
+<div class='docblock'><p>Feeds this value into the state given, updating the hasher as necessary.</p>
+</div><h4 id='method.hash_slice' class="method"><span id='hash_slice.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html#method.hash_slice' class='fnname'>hash_slice</a>&lt;H&gt;(data: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[Self]</a>, state: &amp;mut H) <span class="where fmt-newline">where H: <a class="trait" href="https://doc.rust-lang.org/nightly/core/hash/trait.Hasher.html" title="trait core::hash::Hasher">Hasher</a></span></code><div class='since' title='Stable since Rust version 1.3.0'>1.3.0</div></span></h4>
+<div class='docblock'><p>Feeds a slice of this type into the state provided.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../wlc/trait.Handle.html" title="trait wlc::Handle">Handle</a> for <a class="struct" href="../wlc/struct.Output.html" title="struct wlc::Output">Output</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/wlc/userdata.rs.html#52-104' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.set_user_data' class="method"><span id='set_user_data.v' class='invisible'><code>fn <a href='../wlc/trait.Handle.html#tymethod.set_user_data' class='fnname'>set_user_data</a>&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/any/trait.Any.html" title="trait core::any::Any">Any</a>&gt;(&amp;self, data: T)</code></span></h4>
+<div class='docblock'><p>Sets any data as user pointer consuming the data. <a href="../wlc/trait.Handle.html#tymethod.set_user_data">Read more</a></p>
+</div><h4 id='method.user_data' class="method"><span id='user_data.v' class='invisible'><code>unsafe fn <a href='../wlc/trait.Handle.html#tymethod.user_data' class='fnname'>user_data</a>&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/any/trait.Any.html" title="trait core::any::Any">Any</a>&gt;(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/rc/struct.Rc.html" title="struct alloc::rc::Rc">Rc</a>&lt;T&gt;&gt;</code></span></h4>
+<div class='docblock'><p>Receive a shared reference to the user data of a given type, if user data exists. <a href="../wlc/trait.Handle.html#tymethod.user_data">Read more</a></p>
+</div><h4 id='method.try_take_user_data' class="method"><span id='try_take_user_data.v' class='invisible'><code>unsafe fn <a href='../wlc/trait.Handle.html#tymethod.try_take_user_data' class='fnname'>try_take_user_data</a>&lt;T:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/any/trait.Any.html" title="trait core::any::Any">Any</a>&gt;(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;T&gt;</code></span></h4>
+<div class='docblock'><p>Tries to take the userdata exclusively and removes it from the Handle. <a href="../wlc/trait.Handle.html#tymethod.try_take_user_data">Read more</a></p>
+</div><h4 id='method.clear_user_data' class="method"><span id='clear_user_data.v' class='invisible'><code>fn <a href='../wlc/trait.Handle.html#tymethod.clear_user_data' class='fnname'>clear_user_data</a>(&amp;self)</code></span></h4>
+<div class='docblock'><p>Clears currently set user data (<code>Drop</code> gets called, after all references are dropped). <a href="../wlc/trait.Handle.html#tymethod.clear_user_data">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "wlc";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

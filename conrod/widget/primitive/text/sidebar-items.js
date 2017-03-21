@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Wrap","The way in which text should wrap around the width."]],"struct":[["State","The state to be stored between updates for the **Text**."],["Style","The styling for a **Text**'s graphics."],["Text","Displays some given text centered within a rectangular area."]]});

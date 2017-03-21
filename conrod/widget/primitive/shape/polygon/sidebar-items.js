@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["Kind","Whether the rectangle is drawn as an outline or a filled color."]],"struct":[["Polygon","A basic, non-interactive, arbitrary **Polygon** widget."],["State","Unique state for the **Polygon**."]]});

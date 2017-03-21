@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Display` struct in crate `egli`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Display">
+
+    <title>egli::Display - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>egli</a></p><script>window.sidebarCurrent = {name: 'Display', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>egli</a>::<wbr><a class="struct" href=''>Display</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/egli/display.rs.html#28-31' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Display { /* fields omitted */ }</pre><div class='docblock'><p><code>[EGL 1.0]</code> <a href="https://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization">RAII</a> wrapper for
+EGLDisplay.</p>
+
+<p>When dropped, frees up any associated surface and context using</p>
+
+<pre class="rust rust-example-rendered">
+<span class="ident">eglMakeCurrent</span>(.., <span class="ident">NO_SURFACE</span>, <span class="ident">NO_SURFACE</span>, <span class="ident">NO_CONTEXT</span>);</pre>
+
+<p>call. Followed by <code>eglTerminate</code>.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../egli/struct.Display.html" title="struct egli::Display">Display</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/egli/display.rs.html#52-270' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from_display_id' class="method"><span id='from_display_id.v' class='invisible'><code>fn <a href='#method.from_display_id' class='fnname'>from_display_id</a>(display_id: <a class="type" href="../egli/egl/type.EGLNativeDisplayType.html" title="type egli::egl::EGLNativeDisplayType">EGLNativeDisplayType</a>) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="struct" href="../egli/struct.Display.html" title="struct egli::Display">Display</a>&gt;</code></span></h4>
+<div class='docblock'><p><code>[EGL 1.0]</code> Create a <code>Display</code> from an EGL display connection.</p>
+
+<p>On success, returns a <code>Display</code> value that will clean up resources when terminated.</p>
+
+<p>If no display connection matching <code>display_id</code> is available, EGL_NO_DISPLAY is
+returned. No error is generated.</p>
+
+<h2 id='display_id' class='section-header'><a href='#display_id'>display_id</a></h2>
+<p>Specifies the display to connect to. <code>egl::EGL_DEFAULT_DISPLAY</code> indicates the
+default display.</p>
+</div><h4 id='method.from_default_display' class="method"><span id='from_default_display.v' class='invisible'><code>fn <a href='#method.from_default_display' class='fnname'>from_default_display</a>() -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="struct" href="../egli/struct.Display.html" title="struct egli::Display">Display</a>&gt;</code></span></h4>
+<div class='docblock'><p><code>[EGL 1.0]</code> Creates a <code>Display</code> from the default display.</p>
+
+<p>This is a convenience wrapper that calls <code>Display::from_display_id</code> with
+<code>egl::EGL_DEFAULT_DISPLAY</code> option.</p>
+</div><h4 id='method.initialize_and_get_version' class="method"><span id='initialize_and_get_version.v' class='invisible'><code>fn <a href='#method.initialize_and_get_version' class='fnname'>initialize_and_get_version</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="struct" href="../egli/struct.Version.html" title="struct egli::Version">Version</a>&gt;</code></span></h4>
+<div class='docblock'><p><code>[EGL 1.0]</code> Initialize this EGL display connection and return EGL version.</p>
+
+<p><code>eglInitialize</code> initializes the EGL display connection obtained with <code>eglGetDisplay</code>.
+Initializing an already initialized EGL display connection has no effect besides
+returning the version numbers.</p>
+</div><h4 id='method.initialize' class="method"><span id='initialize.v' class='invisible'><code>fn <a href='#method.initialize' class='fnname'>initialize</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+<div class='docblock'><p><code>[EGL 1.0]</code> Initialize this EGL display connection.</p>
+
+<p><code>eglInitialize</code> initializes the EGL display connection obtained with <code>eglGetDisplay</code>.
+Initializing an already initialized EGL display connection has no effect.</p>
+</div><h4 id='method.query_client_apis' class="method"><span id='query_client_apis.v' class='invisible'><code>fn <a href='#method.query_client_apis' class='fnname'>query_client_apis</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;&amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span></h4>
+<div class='docblock'><p><code>[EGL 1.2]</code> Query EGL_CLIENT_APIS.</p>
+
+<p>Returns a string describing which client rendering APIs are supported.
+The string contains a space-separate list of API names. The list must
+include at least one of OpenGL, OpenGL_ES, or OpenVG.
+These strings correspond respectively to values EGL_OPENGL_API, EGL_OPENGL_ES_API, and
+EGL_OPENVG_API of the eglBindAPI, api argument.</p>
+</div><h4 id='method.query_vendor' class="method"><span id='query_vendor.v' class='invisible'><code>fn <a href='#method.query_vendor' class='fnname'>query_vendor</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;&amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span></h4>
+<div class='docblock'><p><code>[EGL 1.0]</code> Query EGL_VENDOR.</p>
+
+<p>The vendor-specific information is optional; if present, its format
+and contents are implementation specific.</p>
+</div><h4 id='method.query_version' class="method"><span id='query_version.v' class='invisible'><code>fn <a href='#method.query_version' class='fnname'>query_version</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;&amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span></h4>
+<div class='docblock'><p><code>[EGL 1.0]</code> Get supported EGL version for this display.</p>
+
+<p>Returns a version or release number.
+The EGL_VERSION string is laid out as follows:</p>
+
+<p><code>major_version.minor_version space vendor_specific_info</code></p>
+
+<p>Both the major and minor portions of the version number are numeric.
+Their values must match the major and minor values returned by initialize.</p>
+</div><h4 id='method.query_extensions' class="method"><span id='query_extensions.v' class='invisible'><code>fn <a href='#method.query_extensions' class='fnname'>query_extensions</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;&amp;'static <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span></h4>
+<div class='docblock'><p><code>[EGL 1.0]</code> Get the set of display extensions supported by this display.</p>
+
+<p>Returns a space separated list of supported extensions.</p>
+</div><h4 id='method.get_configs' class="method"><span id='get_configs.v' class='invisible'><code>fn <a href='#method.get_configs' class='fnname'>get_configs</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html" title="struct collections::vec::Vec">Vec</a>&lt;<a class="struct" href="../egli/struct.FrameBufferConfigRef.html" title="struct egli::FrameBufferConfigRef">FrameBufferConfigRef</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p><code>[EGL 1.0]</code> Get all possible display configurations.</p>
+
+<p>Internally, this calls <code>eglGetConfigs</code> twice: to get total config count,
+and to fill allocated memory with config handles.</p>
+
+<p>These handles are then wrapped into a new <code>Vec&lt;FrameBufferConfigRef&gt;</code>.</p>
+</div><h4 id='method.config_filter' class="method"><span id='config_filter.v' class='invisible'><code>fn <a href='#method.config_filter' class='fnname'>config_filter</a>(&amp;self) -&gt; <a class="struct" href="../egli/struct.ConfigFilterRef.html" title="struct egli::ConfigFilterRef">ConfigFilterRef</a></code></span></h4>
+<div class='docblock'><p><code>[EGL 1.0]</code> Creates a new config filter for this display for safe
+invocation of <code>eglChooseConfig</code>.</p>
+
+<p>See documentation of <code>ConfigFilterRef</code> for the list of all available filter
+methods.</p>
+
+<h2 id='example' class='section-header'><a href='#example'>Example</a></h2>
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">egli</span>::<span class="ident">Display</span>;
+
+<span class="kw">let</span> <span class="ident">display</span> <span class="op">=</span> <span class="ident">Display</span>::<span class="ident">from_default_display</span>()
+                     .<span class="ident">expect</span>(<span class="string">&quot;failed to get default display&quot;</span>);
+<span class="kw">let</span> <span class="ident">configs</span> <span class="op">=</span> <span class="ident">display</span>.<span class="ident">config_filter</span>()
+                     .<span class="ident">with_red_size</span>(<span class="number">8</span>)
+                     .<span class="ident">choose_configs</span>();</pre>
+</div><h4 id='method.create_window_surface' class="method"><span id='create_window_surface.v' class='invisible'><code>fn <a href='#method.create_window_surface' class='fnname'>create_window_surface</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; config: <a class="struct" href="../egli/struct.FrameBufferConfigRef.html" title="struct egli::FrameBufferConfigRef">FrameBufferConfigRef</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; window: <a class="type" href="../egli/egl/type.EGLNativeWindowType.html" title="type egli::egl::EGLNativeWindowType">EGLNativeWindowType</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="struct" href="../egli/struct.Surface.html" title="struct egli::Surface">Surface</a>&gt;</code></span></h4>
+<div class='docblock'><p><code>[EGL 1.0]</code> Create a new EGL window surface.</p>
+</div><h4 id='method.create_context' class="method"><span id='create_context.v' class='invisible'><code>fn <a href='#method.create_context' class='fnname'>create_context</a>(&amp;self, config: <a class="struct" href="../egli/struct.FrameBufferConfigRef.html" title="struct egli::FrameBufferConfigRef">FrameBufferConfigRef</a>) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="struct" href="../egli/struct.Context.html" title="struct egli::Context">Context</a>&gt;</code></span></h4>
+<div class='docblock'><p><code>[EGL 1.0]</code> Create a new EGL rendering context.</p>
+</div><h4 id='method.create_context_with_client_version' class="method"><span id='create_context_with_client_version.v' class='invisible'><code>fn <a href='#method.create_context_with_client_version' class='fnname'>create_context_with_client_version</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; config: <a class="struct" href="../egli/struct.FrameBufferConfigRef.html" title="struct egli::FrameBufferConfigRef">FrameBufferConfigRef</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; client_version: <a class="enum" href="../egli/enum.ContextClientVersion.html" title="enum egli::ContextClientVersion">ContextClientVersion</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="struct" href="../egli/struct.Context.html" title="struct egli::Context">Context</a>&gt;</code></span></h4>
+<div class='docblock'><p><code>[EGL 1.3]</code> Create a new EGL rendering context.</p>
+</div><h4 id='method.make_current' class="method"><span id='make_current.v' class='invisible'><code>fn <a href='#method.make_current' class='fnname'>make_current</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; draw: &amp;<a class="struct" href="../egli/struct.Surface.html" title="struct egli::Surface">Surface</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read: &amp;<a class="struct" href="../egli/struct.Surface.html" title="struct egli::Surface">Surface</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; context: &amp;<a class="struct" href="../egli/struct.Context.html" title="struct egli::Context">Context</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+<div class='docblock'><p><code>[EGL 1.0]</code> Attach an EGL rendering context to EGL surfaces.</p>
+</div><h4 id='method.make_not_current' class="method"><span id='make_not_current.v' class='invisible'><code>fn <a href='#method.make_not_current' class='fnname'>make_not_current</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+<div class='docblock'><p><code>[EGL 1.0]</code> Detatch an EGL rendering context from EGL surfaces and contexts.</p>
+</div><h4 id='method.swap_buffers' class="method"><span id='swap_buffers.v' class='invisible'><code>fn <a href='#method.swap_buffers' class='fnname'>swap_buffers</a>(&amp;self, surface: &amp;<a class="struct" href="../egli/struct.Surface.html" title="struct egli::Surface">Surface</a>) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>&gt;</code></span></h4>
+<div class='docblock'><p><code>[EGL 1.0]</code> Post EGL surface color buffer to a native window.</p>
+</div><h4 id='method.with_handle' class="method"><span id='with_handle.v' class='invisible'><code>fn <a href='#method.with_handle' class='fnname'>with_handle</a>&lt;F, R&gt;(&amp;self, action: F) -&gt; R <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnOnce.html" title="trait core::ops::FnOnce">FnOnce</a>(<a class="type" href="../egli/egl/type.EGLDisplay.html" title="type egli::egl::EGLDisplay">EGLDisplay</a>) -&gt; R</span></code></span></h4>
+<div class='docblock'><p>Run an action with inner handle as parameter.</p>
+</div><h4 id='method.forget' class="method"><span id='forget.v' class='invisible'><code>fn <a href='#method.forget' class='fnname'>forget</a>(self) -&gt; <a class="type" href="../egli/egl/type.EGLDisplay.html" title="type egli::egl::EGLDisplay">EGLDisplay</a></code></span></h4>
+<div class='docblock'><p>Drops <code>Display</code> without cleaning up any resources.</p>
+
+<p>Returns <code>EGLDisplay</code> handle.</p>
+
+<p>Alias for <code>Into&lt;egl::EGLDisplay&gt;</code>.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html" title="trait core::ops::Drop">Drop</a> for <a class="struct" href="../egli/struct.Display.html" title="struct egli::Display">Display</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/egli/display.rs.html#33-44' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>A method called when the value goes out of scope. <a href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="type" href="../egli/egl/type.EGLDisplay.html" title="type egli::egl::EGLDisplay">EGLDisplay</a>&gt; for <a class="struct" href="../egli/struct.Display.html" title="struct egli::Display">Display</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/egli/display.rs.html#46-50' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.into' class="method"><span id='into.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into' class='fnname'>into</a>(self) -&gt; <a class="type" href="../egli/egl/type.EGLDisplay.html" title="type egli::egl::EGLDisplay">EGLDisplay</a></code></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "egli";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

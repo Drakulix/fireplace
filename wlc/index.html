@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `wlc` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, wlc">
+
+    <title>wlc - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'wlc', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>wlc</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/wlc/lib.rs.html#1-854' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>This crate provides idomatic and safe bindings to
+<a href="https://github.com/Cloudef/wlc">wlc</a></p>
+
+<p>wlc provides basic functionality to write a wayland compositor.</p>
+
+<p>Start your compositor by calling <code>wlc::init</code> with any struct implementing
+<code>wlc::Callback</code>.
+Handle <code>wlc::View</code> and <code>wlc::Output</code> references in your <code>Callback</code> struct
+to customize your compositor.</p>
+
+<h1 id='example' class='section-header'><a href='#example'>Example</a></h1>
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">wlc</span>::<span class="kw-2">*</span>;
+
+<span class="kw">struct</span> <span class="ident">Compositor</span>;
+<span class="kw">impl</span> <span class="ident">Callback</span> <span class="kw">for</span> <span class="ident">Compositor</span>
+{
+    <span class="kw">fn</span> <span class="ident">view_created</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">view</span>: <span class="kw-2">&amp;</span><span class="ident">View</span>) <span class="op">-&gt;</span> <span class="ident">bool</span>
+    {
+        <span class="ident">view</span>.<span class="ident">set_visibility</span>(<span class="ident">view</span>.<span class="ident">output</span>().<span class="ident">visibility</span>());
+        <span class="ident">view</span>.<span class="ident">bring_to_front</span>();
+        <span class="ident">view</span>.<span class="ident">focus</span>();
+        <span class="bool-val">true</span>
+    }
+
+    <span class="kw">fn</span> <span class="ident">view_focus</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">view</span>: <span class="kw-2">&amp;</span><span class="ident">View</span>, <span class="ident">focus</span>: <span class="ident">bool</span>)
+    {
+        <span class="ident">view</span>.<span class="ident">set_state</span>(<span class="ident">ViewState</span>::<span class="ident">Activated</span>, <span class="ident">focus</span>);
+    }
+}
+
+<span class="kw">fn</span> <span class="ident">main</span>()
+{
+    <span class="kw">let</span> <span class="ident">_wlc</span> <span class="op">=</span> <span class="ident">wlc</span>::<span class="ident">init</span>(<span class="ident">Compositor</span>).<span class="ident">unwrap</span>();
+    <span class="comment">//_wlc goes out of scope and stars running until it terminates</span>
+}</pre>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="Anchor/index.html"
+                                  title='mod wlc::Anchor'>Anchor</a></td>
+                           <td class='docblock-short'>
+                                <p>View Positioner Anchor</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="ConstraintAdjustment/index.html"
+                                  title='mod wlc::ConstraintAdjustment'>ConstraintAdjustment</a></td>
+                           <td class='docblock-short'>
+                                <p>View Positioner Adjustments when View is constraint</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="Gravity/index.html"
+                                  title='mod wlc::Gravity'>Gravity</a></td>
+                           <td class='docblock-short'>
+                                <p>View Positioner Gravity</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="Led/index.html"
+                                  title='mod wlc::Led'>Led</a></td>
+                           <td class='docblock-short'>
+                                <p>Keyboard LEDs</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="Modifier/index.html"
+                                  title='mod wlc::Modifier'>Modifier</a></td>
+                           <td class='docblock-short'>
+                                <p>Set of modifiers on a keyboard</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="ResizeEdge/index.html"
+                                  title='mod wlc::ResizeEdge'>ResizeEdge</a></td>
+                           <td class='docblock-short'>
+                                <p>Edges for interactive resizing</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="ScrollAxis/index.html"
+                                  title='mod wlc::ScrollAxis'>ScrollAxis</a></td>
+                           <td class='docblock-short'>
+                                <p>Scroll Axes</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="ViewPropertyUpdate/index.html"
+                                  title='mod wlc::ViewPropertyUpdate'>ViewPropertyUpdate</a></td>
+                           <td class='docblock-short'>
+                                <p>Updated properties of a view</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="ViewState/index.html"
+                                  title='mod wlc::ViewState'>ViewState</a></td>
+                           <td class='docblock-short'>
+                                <p>States a View may hold</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="ViewType/index.html"
+                                  title='mod wlc::ViewType'>ViewType</a></td>
+                           <td class='docblock-short'>
+                                <p>Typical view categories</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="Visibility/index.html"
+                                  title='mod wlc::Visibility'>Visibility</a></td>
+                           <td class='docblock-short'>
+                                <p>Visibility Flags
+Useful to implement workspace functionality or simply hiding views</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="event_loop/index.html"
+                                  title='mod wlc::event_loop'>event_loop</a></td>
+                           <td class='docblock-short'>
+                                <p>Exposed functionality of wlc&#39;s underlying run loop</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="input/index.html"
+                                  title='mod wlc::input'>input</a></td>
+                           <td class='docblock-short'>
+                                <p>Experimental Input API</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="render/index.html"
+                                  title='mod wlc::render'>render</a></td>
+                           <td class='docblock-short'>
+                                <p>wlc&#39;s Rendering extensions</p>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Geometry.html"
+                                  title='struct wlc::Geometry'>Geometry</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Modifiers.html"
+                                  title='struct wlc::Modifiers'>Modifiers</a></td>
+                           <td class='docblock-short'>
+                                <p>Combined keyboard Modifiers and LEDs</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Output.html"
+                                  title='struct wlc::Output'>Output</a></td>
+                           <td class='docblock-short'>
+                                <p>An Output managed by Wlc</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Point.html"
+                                  title='struct wlc::Point'>Point</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Positioner.html"
+                                  title='struct wlc::Positioner'>Positioner</a></td>
+                           <td class='docblock-short'>
+                                <p>A Positioner of a <code>View</code> managed by Wlc</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Size.html"
+                                  title='struct wlc::Size'>Size</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.View.html"
+                                  title='struct wlc::View'>View</a></td>
+                           <td class='docblock-short'>
+                                <p>A View managed by Wlc</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.WeakOutput.html"
+                                  title='struct wlc::WeakOutput'>WeakOutput</a></td>
+                           <td class='docblock-short'>
+                                <p>Weak reference to an output</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.WeakView.html"
+                                  title='struct wlc::WeakView'>WeakView</a></td>
+                           <td class='docblock-short'>
+                                <p>Weak reference to a view</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Wlc.html"
+                                  title='struct wlc::Wlc'>Wlc</a></td>
+                           <td class='docblock-short'>
+                                <p>Initialized compositor</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.BackendType.html"
+                                  title='enum wlc::BackendType'>BackendType</a></td>
+                           <td class='docblock-short'>
+                                <p>Backend used by wlc</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Button.html"
+                                  title='enum wlc::Button'>Button</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ButtonState.html"
+                                  title='enum wlc::ButtonState'>ButtonState</a></td>
+                           <td class='docblock-short'>
+                                <p>States of a button</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Error.html"
+                                  title='enum wlc::Error'>Error</a></td>
+                           <td class='docblock-short'>
+                                <p>Error representing the failure to start the Compositor</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Key.html"
+                                  title='enum wlc::Key'>Key</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.KeyState.html"
+                                  title='enum wlc::KeyState'>KeyState</a></td>
+                           <td class='docblock-short'>
+                                <p>States of a key</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.TouchType.html"
+                                  title='enum wlc::TouchType'>TouchType</a></td>
+                           <td class='docblock-short'>
+                                <p>Touch events</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Callback.html"
+                                  title='trait wlc::Callback'>Callback</a></td>
+                           <td class='docblock-short'>
+                                <p>Entry point for your code</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Handle.html"
+                                  title='trait wlc::Handle'>Handle</a></td>
+                           <td class='docblock-short'>
+                                <p>Assiciated user-provided data</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_backend_type.html"
+                                  title='fn wlc::get_backend_type'>get_backend_type</a></td>
+                           <td class='docblock-short'>
+                                <p>Gets the currently active Backend</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.init.html"
+                                  title='fn wlc::init'>init</a></td>
+                           <td class='docblock-short'>
+                                <p>Initialize Wlc. Returns <code>wlc::Error</code> on failure.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.terminate.html"
+                                  title='fn wlc::terminate'>terminate</a></td>
+                           <td class='docblock-short'>
+                                <p>Terminates the currently active wlc Compositor</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "wlc";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

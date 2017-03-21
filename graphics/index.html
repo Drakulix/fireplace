@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `graphics` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, graphics">
+
+    <title>graphics - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'graphics', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>graphics</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/graphics/lib.rs.html#1-191' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>A library for 2D graphics that works with multiple back-ends.</p>
+
+<p>Piston-Graphics was started in 2014 by Sven Nilsen to test
+back-end agnostic design for 2D in Rust.
+This means generic code can be reused across projects and platforms.</p>
+
+<h3 id='design' class='section-header'><a href='#design'>Design</a></h3>
+<p>A graphics back-end implements the <code>Graphics</code> trait.</p>
+
+<p>This library uses immediate design for flexibility.
+By default, triangles are generated from 2D shapes and passed in chunks
+to the back-end. This behavior can be overridden by a back-end library.</p>
+
+<p>The structures used for drawing 2D shapes contains settings for rendering.
+The separation of shapes and settings allows more reuse and flexibility.
+For example, to render an image, you use an <code>Image</code> object.</p>
+
+<p>The <code>math</code> module contains useful methods for 2D geometry.</p>
+
+<p><code>Context</code> stores settings that are commonly shared when rendering.
+It can be copied and changed without affecting any global state.</p>
+
+<p>At top level, there are some shortcut methods for common operations.
+For example, <code>ellipse</code> is a simplified version of <code>Ellipse</code>.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use rectangle::<a class="struct" href="../graphics/rectangle/struct.Rectangle.html" title="struct graphics::rectangle::Rectangle">Rectangle</a>;</code></td></tr><tr><td><code>pub use line::<a class="struct" href="../graphics/line/struct.Line.html" title="struct graphics::line::Line">Line</a>;</code></td></tr><tr><td><code>pub use ellipse::<a class="struct" href="../graphics/ellipse/struct.Ellipse.html" title="struct graphics::ellipse::Ellipse">Ellipse</a>;</code></td></tr><tr><td><code>pub use circle_arc::<a class="struct" href="../graphics/circle_arc/struct.CircleArc.html" title="struct graphics::circle_arc::CircleArc">CircleArc</a>;</code></td></tr><tr><td><code>pub use image::<a class="struct" href="../graphics/image/struct.Image.html" title="struct graphics::image::Image">Image</a>;</code></td></tr><tr><td><code>pub use polygon::<a class="struct" href="../graphics/polygon/struct.Polygon.html" title="struct graphics::polygon::Polygon">Polygon</a>;</code></td></tr><tr><td><code>pub use text::<a class="struct" href="../graphics/text/struct.Text.html" title="struct graphics::text::Text">Text</a>;</code></td></tr><tr><td><code>pub use context::<a class="struct" href="../graphics/context/struct.Context.html" title="struct graphics::context::Context">Context</a>;</code></td></tr><tr><td><code>pub use draw_state::<a class="struct" href="../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="character/index.html"
+                                  title='mod graphics::character'>character</a></td>
+                           <td class='docblock-short'>
+                                <p>A text character</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="circle_arc/index.html"
+                                  title='mod graphics::circle_arc'>circle_arc</a></td>
+                           <td class='docblock-short'>
+                                <p>Draw an arc</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="color/index.html"
+                                  title='mod graphics::color'>color</a></td>
+                           <td class='docblock-short'>
+                                <p>Helper methods for colors</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="context/index.html"
+                                  title='mod graphics::context'>context</a></td>
+                           <td class='docblock-short'>
+                                <p>Transformation context</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="deform/index.html"
+                                  title='mod graphics::deform'>deform</a></td>
+                           <td class='docblock-short'>
+                                <p>Least square deforming of a 2D grid.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="draw_state/index.html"
+                                  title='mod graphics::draw_state'>draw_state</a></td>
+                           <td class='docblock-short'>
+                                <p>Graphics draw state.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="ellipse/index.html"
+                                  title='mod graphics::ellipse'>ellipse</a></td>
+                           <td class='docblock-short'>
+                                <p>Draw ellipse</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="grid/index.html"
+                                  title='mod graphics::grid'>grid</a></td>
+                           <td class='docblock-short'>
+                                <p>A flat grid with square cells.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="image/index.html"
+                                  title='mod graphics::image'>image</a></td>
+                           <td class='docblock-short'>
+                                <p>Draw an image</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="line/index.html"
+                                  title='mod graphics::line'>line</a></td>
+                           <td class='docblock-short'>
+                                <p>Draw Line</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="math/index.html"
+                                  title='mod graphics::math'>math</a></td>
+                           <td class='docblock-short'>
+                                <p>Various methods for computing with vectors.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="modular_index/index.html"
+                                  title='mod graphics::modular_index'>modular_index</a></td>
+                           <td class='docblock-short'>
+                                <p>Helper functions for computing modular index safely.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="polygon/index.html"
+                                  title='mod graphics::polygon'>polygon</a></td>
+                           <td class='docblock-short'>
+                                <p>Draw polygon</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="radians/index.html"
+                                  title='mod graphics::radians'>radians</a></td>
+                           <td class='docblock-short'>
+                                <p>Reexport radians helper trait from vecmath</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="rectangle/index.html"
+                                  title='mod graphics::rectangle'>rectangle</a></td>
+                           <td class='docblock-short'>
+                                <p>Draw rectangle</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="text/index.html"
+                                  title='mod graphics::text'>text</a></td>
+                           <td class='docblock-short'>
+                                <p>Draw text</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="triangulation/index.html"
+                                  title='mod graphics::triangulation'>triangulation</a></td>
+                           <td class='docblock-short'>
+                                <p>Methods for converting shapes into triangles.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="types/index.html"
+                                  title='mod graphics::types'>types</a></td>
+                           <td class='docblock-short'>
+                                <p>Contains type aliases used in this library</p>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Viewport.html"
+                                  title='struct graphics::Viewport'>Viewport</a></td>
+                           <td class='docblock-short'>
+                                <p>Stores viewport information.</p>
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.BACK_END_MAX_VERTEX_COUNT.html"
+                                  title='constant graphics::BACK_END_MAX_VERTEX_COUNT'>BACK_END_MAX_VERTEX_COUNT</a></td>
+                           <td class='docblock-short'>
+                                <p>Any triangulation method called on the back-end
+never exceeds this number of vertices.
+This can be used to initialize buffers that fit the chunk size.</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Colored.html"
+                                  title='trait graphics::Colored'>Colored</a></td>
+                           <td class='docblock-short'>
+                                <p>Implemented by contexts that contains color.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Graphics.html"
+                                  title='trait graphics::Graphics'>Graphics</a></td>
+                           <td class='docblock-short'>
+                                <p>Implemented by all graphics back-ends.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.ImageSize.html"
+                                  title='trait graphics::ImageSize'>ImageSize</a></td>
+                           <td class='docblock-short'>
+                                <p>Implemented by all images to be used with generic algorithms.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Rectangled.html"
+                                  title='trait graphics::Rectangled'>Rectangled</a></td>
+                           <td class='docblock-short'>
+                                <p>Should be implemented by contexts that have rectangle information.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.SourceRectangled.html"
+                                  title='trait graphics::SourceRectangled'>SourceRectangled</a></td>
+                           <td class='docblock-short'>
+                                <p>Should be implemented by contexts that
+have source rectangle information.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Transformed.html"
+                                  title='trait graphics::Transformed'>Transformed</a></td>
+                           <td class='docblock-short'>
+                                <p>Implemented by contexts that can transform.</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.circle_arc.html"
+                                  title='fn graphics::circle_arc'>circle_arc</a></td>
+                           <td class='docblock-short'>
+                                <p>Draws arc</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.clear.html"
+                                  title='fn graphics::clear'>clear</a></td>
+                           <td class='docblock-short'>
+                                <p>Clears the screen.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.ellipse.html"
+                                  title='fn graphics::ellipse'>ellipse</a></td>
+                           <td class='docblock-short'>
+                                <p>Draws ellipse.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.image.html"
+                                  title='fn graphics::image'>image</a></td>
+                           <td class='docblock-short'>
+                                <p>Draws image.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.line.html"
+                                  title='fn graphics::line'>line</a></td>
+                           <td class='docblock-short'>
+                                <p>Draws line.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.polygon.html"
+                                  title='fn graphics::polygon'>polygon</a></td>
+                           <td class='docblock-short'>
+                                <p>Draws polygon.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rectangle.html"
+                                  title='fn graphics::rectangle'>rectangle</a></td>
+                           <td class='docblock-short'>
+                                <p>Draws rectangle.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.text.html"
+                                  title='fn graphics::text'>text</a></td>
+                           <td class='docblock-short'>
+                                <p>Draws text.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "graphics";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

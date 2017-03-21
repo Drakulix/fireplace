@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Id","Unique image identifier."],["Map","A type used to map the `widget::Id` of `Image` widgets to their associated `Img` data."],["NewIds","An iterator yielding an `Id` for each new `Img` inserted into the `Map` via the `extend` method."]],"type":[["HashMap","The type of `std::collections::HashMap` used within the `image::Map`."]]});

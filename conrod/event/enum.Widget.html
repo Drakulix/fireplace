@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Widget` enum in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Widget">
+
+    <title>conrod::event::Widget - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>conrod</a>::<wbr><a href='index.html'>event</a></p><script>window.sidebarCurrent = {name: 'Widget', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>conrod</a>::<wbr><a href='index.html'>event</a>::<wbr><a class="enum" href=''>Widget</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/conrod/event.rs.html#138-167' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum Widget {
+    Text(<a class="struct" href="../../conrod/event/struct.Text.html" title="struct conrod::event::Text">Text</a>),
+    Move(<a class="struct" href="../../conrod/event/struct.Move.html" title="struct conrod::event::Move">Move</a>),
+    Press(<a class="struct" href="../../conrod/event/struct.Press.html" title="struct conrod::event::Press">Press</a>),
+    Release(<a class="struct" href="../../conrod/event/struct.Release.html" title="struct conrod::event::Release">Release</a>),
+    Click(<a class="struct" href="../../conrod/event/struct.Click.html" title="struct conrod::event::Click">Click</a>),
+    DoubleClick(<a class="struct" href="../../conrod/event/struct.DoubleClick.html" title="struct conrod::event::DoubleClick">DoubleClick</a>),
+    Drag(<a class="struct" href="../../conrod/event/struct.Drag.html" title="struct conrod::event::Drag">Drag</a>),
+    Scroll(<a class="struct" href="../../conrod/event/struct.Scroll.html" title="struct conrod::event::Scroll">Scroll</a>),
+    WindowResized(<a class="type" href="../../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a>),
+    CapturesMouse,
+    UncapturesMouse,
+    CapturesKeyboard,
+    UncapturesKeyboard,
+}</pre><div class='docblock'><p>Events that apply to a specific widget.</p>
+
+<p>Rather than delivering entire <code>event::Event</code>s to the widget (with a lot of redundant
+information), this <code>event::Widget</code> is used as a refined, widget-specific event.</p>
+
+<p>All <code>Widget</code> event co-ordinates will be relative to the centre of the <code>Widget</code> to which they
+are delivered.</p>
+</div><h2 class='variants'>Variants</h2>
+<span id='variant.Text' class='variant'><span id='Text.v' class='invisible'><code>Text(<a class="struct" href="../../conrod/event/struct.Text.html" title="struct conrod::event::Text">Text</a>)</code></span></span><div class='docblock'><p>Entered text.</p>
+</div><span id='variant.Move' class='variant'><span id='Move.v' class='invisible'><code>Move(<a class="struct" href="../../conrod/event/struct.Move.html" title="struct conrod::event::Move">Move</a>)</code></span></span><div class='docblock'><p>Represents all forms of motion input.</p>
+</div><span id='variant.Press' class='variant'><span id='Press.v' class='invisible'><code>Press(<a class="struct" href="../../conrod/event/struct.Press.html" title="struct conrod::event::Press">Press</a>)</code></span></span><div class='docblock'><p>Some button was pressed.</p>
+</div><span id='variant.Release' class='variant'><span id='Release.v' class='invisible'><code>Release(<a class="struct" href="../../conrod/event/struct.Release.html" title="struct conrod::event::Release">Release</a>)</code></span></span><div class='docblock'><p>Some button was released.</p>
+</div><span id='variant.Click' class='variant'><span id='Click.v' class='invisible'><code>Click(<a class="struct" href="../../conrod/event/struct.Click.html" title="struct conrod::event::Click">Click</a>)</code></span></span><div class='docblock'><p>Represents a pointing device being pressed and subsequently released while over the same
+location.</p>
+</div><span id='variant.DoubleClick' class='variant'><span id='DoubleClick.v' class='invisible'><code>DoubleClick(<a class="struct" href="../../conrod/event/struct.DoubleClick.html" title="struct conrod::event::DoubleClick">DoubleClick</a>)</code></span></span><div class='docblock'><p>Two <code>Click</code> events with the same <code>button</code> and <code>xy</code> occurring within a duration that is less
+that the <code>theme.double_click_threshold</code>.</p>
+</div><span id='variant.Drag' class='variant'><span id='Drag.v' class='invisible'><code>Drag(<a class="struct" href="../../conrod/event/struct.Drag.html" title="struct conrod::event::Drag">Drag</a>)</code></span></span><div class='docblock'><p>Represents a pointing device button being pressed and a subsequent movement of the mouse.</p>
+</div><span id='variant.Scroll' class='variant'><span id='Scroll.v' class='invisible'><code>Scroll(<a class="struct" href="../../conrod/event/struct.Scroll.html" title="struct conrod::event::Scroll">Scroll</a>)</code></span></span><div class='docblock'><p>Represents the amount of scroll that has been applied to this widget.</p>
+</div><span id='variant.WindowResized' class='variant'><span id='WindowResized.v' class='invisible'><code>WindowResized(<a class="type" href="../../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a>)</code></span></span><div class='docblock'><p>The window&#39;s dimensions were resized.</p>
+</div><span id='variant.CapturesMouse' class='variant'><span id='CapturesMouse.v' class='invisible'><code>CapturesMouse</code></span></span><div class='docblock'><p>The widget has captured the mouse.</p>
+</div><span id='variant.UncapturesMouse' class='variant'><span id='UncapturesMouse.v' class='invisible'><code>UncapturesMouse</code></span></span><div class='docblock'><p>The widget has released the mouse from capturing.</p>
+</div><span id='variant.CapturesKeyboard' class='variant'><span id='CapturesKeyboard.v' class='invisible'><code>CapturesKeyboard</code></span></span><div class='docblock'><p>The widget has captured the keyboard.</p>
+</div><span id='variant.UncapturesKeyboard' class='variant'><span id='UncapturesKeyboard.v' class='invisible'><code>UncapturesKeyboard</code></span></span><div class='docblock'><p>Indicates that the given widget has released the keyboard from capturing.</p>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="enum" href="../../conrod/event/enum.Widget.html" title="enum conrod::event::Widget">Widget</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/event.rs.html#137' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="enum" href="../../conrod/event/enum.Widget.html" title="enum conrod::event::Widget">Widget</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="enum" href="../../conrod/event/enum.Widget.html" title="enum conrod::event::Widget">Widget</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/event.rs.html#137' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../conrod/event/enum.Widget.html" title="enum conrod::event::Widget">Widget</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../conrod/event/enum.Widget.html" title="enum conrod::event::Widget">Widget</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="enum" href="../../conrod/event/enum.Widget.html" title="enum conrod::event::Widget">Widget</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/event.rs.html#137' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;<a class="struct" href="../../conrod/event/struct.Text.html" title="struct conrod::event::Text">Text</a>&gt; for <a class="enum" href="../../conrod/event/enum.Widget.html" title="enum conrod::event::Widget">Widget</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/event.rs.html#455-459' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from' class="method"><span id='from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(text: <a class="struct" href="../../conrod/event/struct.Text.html" title="struct conrod::event::Text">Text</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;<a class="struct" href="../../conrod/event/struct.Move.html" title="struct conrod::event::Move">Move</a>&gt; for <a class="enum" href="../../conrod/event/enum.Widget.html" title="enum conrod::event::Widget">Widget</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/event.rs.html#461-465' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from-1' class="method"><span id='from.v-1' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(move_: <a class="struct" href="../../conrod/event/struct.Move.html" title="struct conrod::event::Move">Move</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;<a class="struct" href="../../conrod/event/struct.Press.html" title="struct conrod::event::Press">Press</a>&gt; for <a class="enum" href="../../conrod/event/enum.Widget.html" title="enum conrod::event::Widget">Widget</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/event.rs.html#467-471' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from-2' class="method"><span id='from.v-2' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(press: <a class="struct" href="../../conrod/event/struct.Press.html" title="struct conrod::event::Press">Press</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;<a class="struct" href="../../conrod/event/struct.Release.html" title="struct conrod::event::Release">Release</a>&gt; for <a class="enum" href="../../conrod/event/enum.Widget.html" title="enum conrod::event::Widget">Widget</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/event.rs.html#473-477' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from-3' class="method"><span id='from.v-3' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(release: <a class="struct" href="../../conrod/event/struct.Release.html" title="struct conrod::event::Release">Release</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;<a class="struct" href="../../conrod/event/struct.Click.html" title="struct conrod::event::Click">Click</a>&gt; for <a class="enum" href="../../conrod/event/enum.Widget.html" title="enum conrod::event::Widget">Widget</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/event.rs.html#479-483' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from-4' class="method"><span id='from.v-4' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(click: <a class="struct" href="../../conrod/event/struct.Click.html" title="struct conrod::event::Click">Click</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;<a class="struct" href="../../conrod/event/struct.DoubleClick.html" title="struct conrod::event::DoubleClick">DoubleClick</a>&gt; for <a class="enum" href="../../conrod/event/enum.Widget.html" title="enum conrod::event::Widget">Widget</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/event.rs.html#485-489' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from-5' class="method"><span id='from.v-5' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(double_click: <a class="struct" href="../../conrod/event/struct.DoubleClick.html" title="struct conrod::event::DoubleClick">DoubleClick</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;<a class="struct" href="../../conrod/event/struct.Scroll.html" title="struct conrod::event::Scroll">Scroll</a>&gt; for <a class="enum" href="../../conrod/event/enum.Widget.html" title="enum conrod::event::Widget">Widget</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/event.rs.html#491-495' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from-6' class="method"><span id='from.v-6' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(scroll: <a class="struct" href="../../conrod/event/struct.Scroll.html" title="struct conrod::event::Scroll">Scroll</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;<a class="struct" href="../../conrod/event/struct.Drag.html" title="struct conrod::event::Drag">Drag</a>&gt; for <a class="enum" href="../../conrod/event/enum.Widget.html" title="enum conrod::event::Widget">Widget</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/event.rs.html#497-501' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from-7' class="method"><span id='from.v-7' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.From.html#tymethod.from' class='fnname'>from</a>(drag: <a class="struct" href="../../conrod/event/struct.Drag.html" title="struct conrod::event::Drag">Drag</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

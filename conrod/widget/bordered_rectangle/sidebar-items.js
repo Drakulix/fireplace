@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["BorderedRectangle","A filled rectangle widget that may or may not have some border."],["State","Unique state for the `BorderedRectangle`."],["Style","Unique styling for the **BorderedRectangle** widget."]]});

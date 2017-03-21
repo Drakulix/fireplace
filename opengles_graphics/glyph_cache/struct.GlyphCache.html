@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `GlyphCache` struct in crate `opengles_graphics`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, GlyphCache">
+
+    <title>opengles_graphics::glyph_cache::GlyphCache - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>opengles_graphics</a>::<wbr><a href='index.html'>glyph_cache</a></p><script>window.sidebarCurrent = {name: 'GlyphCache', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>opengles_graphics</a>::<wbr><a href='index.html'>glyph_cache</a>::<wbr><a class="struct" href=''>GlyphCache</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/opengles_graphics/glyph_cache.rs.html#23-30' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct GlyphCache&lt;'a&gt; {
+    pub font: <a class="struct" href="../../rusttype/struct.Font.html" title="struct rusttype::Font">Font</a>&lt;'a&gt;,
+    // some fields omitted
+}</pre><div class='docblock'><p>A struct used for caching rendered font.</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.font' class="structfield">
+                           <span id='font.v' class='invisible'>
+                           <code>font: <a class="struct" href="../../rusttype/struct.Font.html" title="struct rusttype::Font">Font</a>&lt;'a&gt;</code>
+                           </span></span><div class='docblock'><p>The font.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="struct" href="../../opengles_graphics/glyph_cache/struct.GlyphCache.html" title="struct opengles_graphics::glyph_cache::GlyphCache">GlyphCache</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/opengles_graphics/glyph_cache.rs.html#32-92' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from_font' class="method"><span id='from_font.v' class='invisible'><code>fn <a href='#method.from_font' class='fnname'>from_font</a>(font: <a class="struct" href="../../rusttype/struct.Font.html" title="struct rusttype::Font">Font</a>&lt;'a&gt;) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Constructs a GlyphCache from a Font.</p>
+</div><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>&lt;P&gt;(font: P) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../../opengles_graphics/glyph_cache/struct.GlyphCache.html" title="struct opengles_graphics::glyph_cache::GlyphCache">GlyphCache</a>&lt;'static&gt;, <a class="enum" href="../../opengles_graphics/error/enum.Error.html" title="enum opengles_graphics::error::Error">Error</a>&gt; <span class="where fmt-newline">where P: <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/std/path/struct.Path.html" title="struct std::path::Path">Path</a>&gt;</span></code></span></h4>
+<div class='docblock'><p>Constructor for a GlyphCache.</p>
+</div><h4 id='method.from_bytes' class="method"><span id='from_bytes.v' class='invisible'><code>fn <a href='#method.from_bytes' class='fnname'>from_bytes</a>(font: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;'a [</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../../opengles_graphics/glyph_cache/struct.GlyphCache.html" title="struct opengles_graphics::glyph_cache::GlyphCache">GlyphCache</a>&lt;'a&gt;, <a class="enum" href="../../opengles_graphics/error/enum.Error.html" title="enum opengles_graphics::error::Error">Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Creates a GlyphCache for a font stored in memory.</p>
+</div><h4 id='method.preload_chars' class="method"><span id='preload_chars.v' class='invisible'><code>fn <a href='#method.preload_chars' class='fnname'>preload_chars</a>&lt;I&gt;(&amp;mut self, size: <a class="type" href="../../opengles_graphics/glyph_cache/type.FontSize.html" title="type opengles_graphics::glyph_cache::FontSize">FontSize</a>, chars: I) <span class="where fmt-newline">where I: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/iterator/trait.Iterator.html" title="trait core::iter::iterator::Iterator">Iterator</a>&lt;Item=<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>&gt;</span></code></span></h4>
+<div class='docblock'><p>Load all characters in the <code>chars</code> iterator for <code>size</code></p>
+</div><h4 id='method.preload_printable_ascii' class="method"><span id='preload_printable_ascii.v' class='invisible'><code>fn <a href='#method.preload_printable_ascii' class='fnname'>preload_printable_ascii</a>(&amp;mut self, size: <a class="type" href="../../opengles_graphics/glyph_cache/type.FontSize.html" title="type opengles_graphics::glyph_cache::FontSize">FontSize</a>)</code></span></h4>
+<div class='docblock'><p>Load all the printable ASCII characters for <code>size</code>. Includes space.</p>
+</div><h4 id='method.opt_character' class="method"><span id='opt_character.v' class='invisible'><code>fn <a href='#method.opt_character' class='fnname'>opt_character</a>(&amp;self, size: <a class="type" href="../../opengles_graphics/glyph_cache/type.FontSize.html" title="type opengles_graphics::glyph_cache::FontSize">FontSize</a>, ch: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../opengles_graphics/glyph_cache/type.Character.html" title="type opengles_graphics::glyph_cache::Character">Character</a>&gt;</code></span></h4>
+<div class='docblock'><p>Return <code>ch</code> for <code>size</code> if it&#39;s already cached. Don&#39;t load.
+See the <code>preload_*</code> functions.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'b&gt; <a class="trait" href="../../graphics/character/trait.CharacterCache.html" title="trait graphics::character::CharacterCache">CharacterCache</a> for <a class="struct" href="../../opengles_graphics/glyph_cache/struct.GlyphCache.html" title="struct opengles_graphics::glyph_cache::GlyphCache">GlyphCache</a>&lt;'b&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/opengles_graphics/glyph_cache.rs.html#94-171' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Texture' class="type"><span id='Texture.t' class='invisible'><code>type <a href='../../graphics/character/trait.CharacterCache.html#associatedtype.Texture' class="type">Texture</a> = <a class="struct" href="../../opengles_graphics/struct.Texture.html" title="struct opengles_graphics::Texture">Texture</a></code></span></h4>
+<div class='docblock'><p>The textyre type associated with the character cache.</p>
+</div><h4 id='method.character' class="method"><span id='character.v' class='invisible'><code>fn <a href='../../graphics/character/trait.CharacterCache.html#tymethod.character' class='fnname'>character</a>&lt;'a&gt;(&amp;'a mut self, size: <a class="type" href="../../opengles_graphics/glyph_cache/type.FontSize.html" title="type opengles_graphics::glyph_cache::FontSize">FontSize</a>, ch: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.char.html">char</a>) -&gt; <a class="type" href="../../opengles_graphics/glyph_cache/type.Character.html" title="type opengles_graphics::glyph_cache::Character">Character</a>&lt;'a&gt;</code></span></h4>
+<div class='docblock'><p>Get reference to character.</p>
+</div><h4 id='method.width' class="method"><span id='width.v' class='invisible'><code>fn <a href='../../graphics/character/trait.CharacterCache.html#method.width' class='fnname'>width</a>(&amp;mut self, size: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, text: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code></span></h4>
+<div class='docblock'><p>Return the width for some given text.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "opengles_graphics";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

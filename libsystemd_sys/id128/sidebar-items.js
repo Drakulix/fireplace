@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["SD_ID128_STRING_MAX",""]],"fn":[["sd_id128_from_string",""],["sd_id128_get_boot",""],["sd_id128_get_machine",""],["sd_id128_randomize",""],["sd_id128_to_string",""]],"struct":[["sd_id128_t",""]]});

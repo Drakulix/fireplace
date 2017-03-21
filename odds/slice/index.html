@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `slice` mod in crate `odds`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, slice">
+
+    <title>odds::slice - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>odds</a></p><script>window.sidebarCurrent = {name: 'slice', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>odds</a>::<wbr><a class="mod" href=''>slice</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/odds/slice/mod.rs.html#1-985' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Extra functions for slices</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="iter/index.html"
+                                  title='mod odds::slice::iter'>iter</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="unalign/index.html"
+                                  title='mod odds::slice::unalign'>unalign</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.MendSlices.html"
+                                  title='struct odds::slice::MendSlices'>MendSlices</a></td>
+                           <td class='docblock-short'>
+                                <p>An iterator adaptor that glues together adjacent contiguous slices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.RevSlice.html"
+                                  title='struct odds::slice::RevSlice'>RevSlice</a></td>
+                           <td class='docblock-short'>
+                                <p>A reversed view of a slice.</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.MendSlice.html"
+                                  title='trait odds::slice::MendSlice'>MendSlice</a></td>
+                           <td class='docblock-short'>
+                                <p>A trait for items that can <em>maybe</em> be joined together.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Pod.html"
+                                  title='trait odds::slice::Pod'>Pod</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;plain old data&quot;: Types that we can stick arbitrary bit patterns into,
+and thus use them as blocks in <code>split_aligned_for</code> or in <code>UnalignedIter</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.SliceFind.html"
+                                  title='trait odds::slice::SliceFind'>SliceFind</a></td>
+                           <td class='docblock-short'>
+                                <p>Element-finding methods for slices</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.SliceFindSplit.html"
+                                  title='trait odds::slice::SliceFindSplit'>SliceFindSplit</a></td>
+                           <td class='docblock-short'>
+                                <p>Element-finding methods for slices</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.SliceIterExt.html"
+                                  title='trait odds::slice::SliceIterExt'>SliceIterExt</a></td>
+                           <td class='docblock-short'>
+                                <p>Extra iterator adaptors for iterators of slice elements.</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rotate_left.html"
+                                  title='fn odds::slice::rotate_left'>rotate_left</a></td>
+                           <td class='docblock-short'>
+                                <p>Rotate <code>steps</code> towards lower indices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.shared_prefix.html"
+                                  title='fn odds::slice::shared_prefix'>shared_prefix</a></td>
+                           <td class='docblock-short'>
+                                <p>Return the end index of the longest shared (equal) prefix of <code>a</code> and <code>b</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.split_aligned_for.html"
+                                  title='fn odds::slice::split_aligned_for'>split_aligned_for</a></td>
+                           <td class='docblock-short'>
+                                <p>Split the input slice into three chunks,
+so that the middle chunk is a slice of a larger &quot;block size&quot;
+(for example T could be u64) that is correctly aligned for <code>T</code>.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "odds";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

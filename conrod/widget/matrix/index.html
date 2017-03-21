@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `matrix` mod in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, matrix">
+
+    <title>conrod::widget::matrix - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>widget</a></p><script>window.sidebarCurrent = {name: 'matrix', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>widget</a>::<wbr><a class="mod" href=''>matrix</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/conrod/widget/matrix.rs.html#1-266' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>A helper widget for laying out child widgets in the form of a grid.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Element.html"
+                                  title='struct conrod::widget::matrix::Element'>Element</a></td>
+                           <td class='docblock-short'>
+                                <p>Data necessary for instantiating a widget for a single <code>Matrix</code> element.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Elements.html"
+                                  title='struct conrod::widget::matrix::Elements'>Elements</a></td>
+                           <td class='docblock-short'>
+                                <p>The event type yielded by the <code>Matrix</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Matrix.html"
+                                  title='struct conrod::widget::matrix::Matrix'>Matrix</a></td>
+                           <td class='docblock-short'>
+                                <p>Draw a matrix of any rectangular widget type, where the matrix will provide a function with
+the widget number, it&#39;s <code>rows</code> and <code>cols</code> position, the width and height for the widget and
+the location at which the widget should be drawn.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.State.html"
+                                  title='struct conrod::widget::matrix::State'>State</a></td>
+                           <td class='docblock-short'>
+                                <p>The state of the Matrix, to be cached within the <code>Ui</code>&#39;s widget <code>Graph</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Style.html"
+                                  title='struct conrod::widget::matrix::Style'>Style</a></td>
+                           <td class='docblock-short'>
+                                <p>Unique styling for the <code>Matrix</code>.</p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.ColNum.html"
+                                  title='type conrod::widget::matrix::ColNum'>ColNum</a></td>
+                           <td class='docblock-short'>
+                                <p>A column index.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Height.html"
+                                  title='type conrod::widget::matrix::Height'>Height</a></td>
+                           <td class='docblock-short'>
+                                <p>The height of an element.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.PosX.html"
+                                  title='type conrod::widget::matrix::PosX'>PosX</a></td>
+                           <td class='docblock-short'>
+                                <p>The position of an element along the <em>x</em> axis.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.PosY.html"
+                                  title='type conrod::widget::matrix::PosY'>PosY</a></td>
+                           <td class='docblock-short'>
+                                <p>The position of an element along the <em>y</em> axis.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.RowNum.html"
+                                  title='type conrod::widget::matrix::RowNum'>RowNum</a></td>
+                           <td class='docblock-short'>
+                                <p>A row index.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.WidgetNum.html"
+                                  title='type conrod::widget::matrix::WidgetNum'>WidgetNum</a></td>
+                           <td class='docblock-short'>
+                                <p>The number of the widget.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Width.html"
+                                  title='type conrod::widget::matrix::Width'>Width</a></td>
+                           <td class='docblock-short'>
+                                <p>The width of an element.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

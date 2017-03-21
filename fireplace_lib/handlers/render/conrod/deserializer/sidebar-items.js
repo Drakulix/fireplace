@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Align","Wrapper around `conrod::Align` that implements `Deserialize`"],["Color","Wrapper around `conrod::color::Color` that implements `Deserialize`"],["Font","Structure describing a `Font`"],["Image","Wrapper around `image::RgbaImage` that implements `Deserialize`"],["Justify","Wrapper around `conrod::Justify` that implements `Deserialize`"]]});

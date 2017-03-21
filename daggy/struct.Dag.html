@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Dag` struct in crate `daggy`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Dag">
+
+    <title>daggy::Dag - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>daggy</a></p><script>window.sidebarCurrent = {name: 'Dag', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>daggy</a>::<wbr><a class="struct" href=''>Dag</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/daggy/lib.rs.html#63-65' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Dag&lt;N, E, Ix:&nbsp;<a class="trait" href="../petgraph/graph/trait.IndexType.html" title="trait petgraph::graph::IndexType">IndexType</a>&nbsp;=&nbsp;<a class="type" href="../petgraph/graph/type.DefIndex.html" title="type petgraph::graph::DefIndex">DefIndex</a>&gt; { /* fields omitted */ }</pre><div class='docblock'><p>A Directed acyclic graph (DAG) data structure.</p>
+
+<p>Dag is a thin wrapper around petgraph&#39;s <code>Graph</code> data structure, providing a refined API for
+dealing specifically with DAGs.</p>
+
+<p>Note: The following documentation is adapted from petgraph&#39;s <a href="http://bluss.github.io/petulant-avenger-graphlibrary/doc/petgraph/graph/struct.Graph.html"><strong>Graph</strong> documentation</a>.</p>
+
+<p><strong>Dag</strong> is parameterized over the node weight <strong>N</strong>, edge weight <strong>E</strong> and index type <strong>Ix</strong>.</p>
+
+<p><strong>NodeIndex</strong> is a type that acts as a reference to nodes, but these are only stable across
+certain operations. <strong>Removing nodes may shift other indices.</strong> Adding kids to the <strong>Dag</strong>
+keeps all indices stable, but removing a node will force the last node to shift its index to
+take its place.</p>
+
+<p>The fact that the node indices in the <strong>Dag</strong> are numbered in a compact interval from 0 to <em>n</em>-1
+simplifies some graph algorithms.</p>
+
+<p>The <strong>Ix</strong> parameter is u32 by default. The goal is that you can ignore this parameter
+completely unless you need a very large <strong>Dag</strong> -- then you can use usize.</p>
+
+<p>The <strong>Dag</strong> also offers methods for accessing the underlying <strong>Graph</strong>, which can be useful
+for taking advantage of petgraph&#39;s various graph-related algorithms.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;N, E, Ix&gt; <a class="struct" href="../daggy/struct.Dag.html" title="struct daggy::Dag">Dag</a>&lt;N, E, Ix&gt; <span class="where fmt-newline">where Ix: <a class="trait" href="../petgraph/graph/trait.IndexType.html" title="trait petgraph::graph::IndexType">IndexType</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/daggy/lib.rs.html#99-481' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></span></h4>
+<div class='docblock'><p>Create a new, empty <code>Dag</code>.</p>
+</div><h4 id='method.with_capacity' class="method"><span id='with_capacity.v' class='invisible'><code>fn <a href='#method.with_capacity' class='fnname'>with_capacity</a>(nodes: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, edges: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Create a new <code>Dag</code> with estimated capacity for its node and edge Vecs.</p>
+</div><h4 id='method.clear' class="method"><span id='clear.v' class='invisible'><code>fn <a href='#method.clear' class='fnname'>clear</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>Removes all nodes and edges from the <strong>Dag</strong>.</p>
+</div><h4 id='method.node_count' class="method"><span id='node_count.v' class='invisible'><code>fn <a href='#method.node_count' class='fnname'>node_count</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></code></span></h4>
+<div class='docblock'><p>The total number of nodes in the <strong>Dag</strong>.</p>
+</div><h4 id='method.edge_count' class="method"><span id='edge_count.v' class='invisible'><code>fn <a href='#method.edge_count' class='fnname'>edge_count</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></code></span></h4>
+<div class='docblock'><p>The total number of edgees in the <strong>Dag</strong>.</p>
+</div><h4 id='method.graph' class="method"><span id='graph.v' class='invisible'><code>fn <a href='#method.graph' class='fnname'>graph</a>(&amp;self) -&gt; &amp;<a class="type" href="../daggy/type.PetGraph.html" title="type daggy::PetGraph">PetGraph</a>&lt;N, E, Ix&gt;</code></span></h4>
+<div class='docblock'><p>Borrow the <code>Dag</code>&#39;s underlying <code>PetGraph&lt;N, Ix&gt;</code>.
+All existing indices may be used to index into this <code>PetGraph</code> the same way they may be
+used to index into the <code>Dag</code>.</p>
+</div><h4 id='method.into_graph' class="method"><span id='into_graph.v' class='invisible'><code>fn <a href='#method.into_graph' class='fnname'>into_graph</a>(self) -&gt; <a class="type" href="../daggy/type.PetGraph.html" title="type daggy::PetGraph">PetGraph</a>&lt;N, E, Ix&gt;</code></span></h4>
+<div class='docblock'><p>Take ownership of the <code>Dag</code> and return the internal <code>PetGraph</code>.
+All existing indices may be used to index into this <code>PetGraph</code> the same way they may be
+used to index into the <code>Dag</code>.</p>
+</div><h4 id='method.add_node' class="method"><span id='add_node.v' class='invisible'><code>fn <a href='#method.add_node' class='fnname'>add_node</a>(&amp;mut self, weight: N) -&gt; <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;</code></span></h4>
+<div class='docblock'><p>Add a new node to the <code>Dag</code> with the given weight.</p>
+
+<p>Computes in <strong>O(1)</strong> time.</p>
+
+<p>Returns the index of the new node.</p>
+
+<p><strong>Note:</strong> If you&#39;re adding a new node and immediately adding a single edge to that node from
+some other node, consider using the <a href="./struct.Dag.html#method.add_child">add_child</a> or
+<a href="./struct.Dag.html#method.add_parent">add_parent</a> methods instead for better performance.</p>
+
+<p><strong>Panics</strong> if the Graph is at the maximum number of nodes for its index type.</p>
+</div><h4 id='method.add_edge' class="method"><span id='add_edge.v' class='invisible'><code>fn <a href='#method.add_edge' class='fnname'>add_edge</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; weight: E)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../daggy/struct.EdgeIndex.html" title="struct daggy::EdgeIndex">EdgeIndex</a>&lt;Ix&gt;, <a class="struct" href="../daggy/struct.WouldCycle.html" title="struct daggy::WouldCycle">WouldCycle</a>&lt;E&gt;&gt;</code></span></h4>
+<div class='docblock'><p>Add a new directed edge to the <code>Dag</code> with the given weight.</p>
+
+<p>The added edge will be in the direction <code>a</code> -&gt; <code>b</code></p>
+
+<p>Checks if the edge would create a cycle in the Graph.</p>
+
+<p>If adding the edge <strong>would not</strong> cause the graph to cycle, the edge will be added and its
+<code>EdgeIndex</code> returned.</p>
+
+<p>If adding the edge <strong>would</strong> cause the graph to cycle, the edge will not be added and
+instead a <code>WouldCycle&lt;E&gt;</code> error with the given weight will be returned.</p>
+
+<p>In the worst case, petgraph&#39;s <a href="http://bluss.github.io/petulant-avenger-graphlibrary/doc/petgraph/algo/fn.is_cyclic_directed.html"><code>is_cyclic_directed</code></a>
+function is used to check whether or not adding the edge would create a cycle.</p>
+
+<p><strong>Note:</strong> Dag allows adding parallel (&quot;duplicate&quot;) edges. If you want to avoid this, use
+<a href="./struct.Dag.html#method.update_edge"><code>update_edge</code></a> instead.</p>
+
+<p><strong>Note:</strong> If you&#39;re adding a new node and immediately adding a single edge to that node from
+some other node, consider using the <a href="./struct.Dag.html#method.add_child">add_child</a> or
+<a href="./struct.Dag.html#method.add_parent">add_parent</a> methods instead for better performance.</p>
+
+<p><strong>Panics</strong> if either <code>a</code> or <code>b</code> do not exist within the <strong>Dag</strong>.</p>
+
+<p><strong>Panics</strong> if the Graph is at the maximum number of edges for its index type.</p>
+</div><h4 id='method.add_edges' class="method"><span id='add_edges.v' class='invisible'><code>fn <a href='#method.add_edges' class='fnname'>add_edges</a>&lt;I&gt;(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; edges: I)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../daggy/struct.EdgeIndices.html" title="struct daggy::EdgeIndices">EdgeIndices</a>&lt;Ix&gt;, <a class="struct" href="../daggy/struct.WouldCycle.html" title="struct daggy::WouldCycle">WouldCycle</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html" title="struct collections::vec::Vec">Vec</a>&lt;E&gt;&gt;&gt; <span class="where fmt-newline">where I: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>&lt;Item=<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;, <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;, E<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</span></code></span></h4>
+<div class='docblock'><p>Adds the given directed edges to the <code>Dag</code>, each with their own given weight.</p>
+
+<p>The given iterator should yield a <code>NodeIndex</code> pair along with a weight for each Edge to be
+added in a tuple.</p>
+
+<p>If we were to describe the tuple as <em>(a, b, weight)</em>, the connection would be directed as
+follows:</p>
+
+<p><em>a -&gt; b</em></p>
+
+<p>This method behaves similarly to the <a href="./struct.Dag.html#method.add_edge"><code>add_edge</code></a>
+method, however rather than checking whether or not a cycle has been created after adding
+each edge, it only checks after all edges have been added. This makes it a slightly more
+performant and ergonomic option that repeatedly calling <code>add_edge</code>.</p>
+
+<p>If adding the edges <strong>would not</strong> cause the graph to cycle, the edges will be added and
+their indices returned in an <code>EdgeIndices</code> iterator, yielding indices for each edge in the
+same order that they were given.</p>
+
+<p>If adding the edges <strong>would</strong> cause the graph to cycle, the edges will not be added and
+instead a <code>WouldCycle&lt;Vec&lt;E&gt;&gt;</code> error with the unused weights will be returned. The order of
+the returned <code>Vec</code> will be the reverse of the given order.</p>
+
+<p><strong>Note:</strong> Dag allows adding parallel (&quot;duplicate&quot;) edges. If you want to avoid this, use
+<a href="./struct.Dag.html#method.update_edges"><code>update_edges</code></a> instead.</p>
+
+<p><strong>Note:</strong> If you&#39;re adding a series of new nodes and edges to a single node, consider using
+ the <a href="./struct.Dag.html#method.add_child">add_child</a> or <a href="./struct.Dag.html#method.add_parent">add_parent</a> methods instead for greater convenience.</p>
+
+<p><strong>Panics</strong> if the Graph is at the maximum number of nodes for its index type.</p>
+</div><h4 id='method.update_edge' class="method"><span id='update_edge.v' class='invisible'><code>fn <a href='#method.update_edge' class='fnname'>update_edge</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; weight: E)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../daggy/struct.EdgeIndex.html" title="struct daggy::EdgeIndex">EdgeIndex</a>&lt;Ix&gt;, <a class="struct" href="../daggy/struct.WouldCycle.html" title="struct daggy::WouldCycle">WouldCycle</a>&lt;E&gt;&gt;</code></span></h4>
+<div class='docblock'><p>Update the edge from nodes <code>a</code> -&gt; <code>b</code> with the given weight.</p>
+
+<p>If the edge doesn&#39;t already exist, it will be added using the <code>add_edge</code> method.</p>
+
+<p>Please read the <a href="./struct.Dag.html#method.add_edge"><code>add_edge</code></a> for more important details.</p>
+
+<p>Checks if the edge would create a cycle in the Graph.</p>
+
+<p>Computes in <strong>O(t + e)</strong> time where &quot;t&quot; is the complexity of <code>add_edge</code> and e is the number
+of edges connected to the nodes a and b.</p>
+
+<p>Returns the index of the edge, or a <code>WouldCycle</code> error if adding the edge would create a
+cycle.</p>
+
+<p><strong>Note:</strong> If you&#39;re adding a new node and immediately adding a single edge to that node from
+some parent node, consider using the <a href="./struct.Dag.html#method.add_child"><code>add_child</code></a>
+method instead for greater convenience.</p>
+
+<p><strong>Panics</strong> if the Graph is at the maximum number of nodes for its index type.</p>
+</div><h4 id='method.find_edge' class="method"><span id='find_edge.v' class='invisible'><code>fn <a href='#method.find_edge' class='fnname'>find_edge</a>(&amp;self, a: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;, b: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../daggy/struct.EdgeIndex.html" title="struct daggy::EdgeIndex">EdgeIndex</a>&lt;Ix&gt;&gt;</code></span></h4>
+<div class='docblock'><p>Find and return the index to the edge that describes <code>a</code> -&gt; <code>b</code> if there is one.</p>
+
+<p>Computes in <strong>O(e&#39;)</strong> time, where <strong>e&#39;</strong> is the number of edges connected to the nodes <code>a</code>
+and <code>b</code>.</p>
+</div><h4 id='method.edge_endpoints' class="method"><span id='edge_endpoints.v' class='invisible'><code>fn <a href='#method.edge_endpoints' class='fnname'>edge_endpoints</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; e: <a class="struct" href="../daggy/struct.EdgeIndex.html" title="struct daggy::EdgeIndex">EdgeIndex</a>&lt;Ix&gt;)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;, <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</code></span></h4>
+<div class='docblock'><p>Access the parent and child nodes for the given <code>EdgeIndex</code>.</p>
+</div><h4 id='method.clear_edges' class="method"><span id='clear_edges.v' class='invisible'><code>fn <a href='#method.clear_edges' class='fnname'>clear_edges</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>Remove all edges.</p>
+</div><h4 id='method.add_parent' class="method"><span id='add_parent.v' class='invisible'><code>fn <a href='#method.add_parent' class='fnname'>add_parent</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; child: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; edge: E,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; node: N)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="../daggy/struct.EdgeIndex.html" title="struct daggy::EdgeIndex">EdgeIndex</a>&lt;Ix&gt;, <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<div class='docblock'><p>Add a new edge and parent node to the node at the given <code>NodeIndex</code>.
+Returns both the edge&#39;s <code>EdgeIndex</code> and the node&#39;s <code>NodeIndex</code>.</p>
+
+<p>node -&gt; edge -&gt; child</p>
+
+<p>Computes in <strong>O(1)</strong> time.</p>
+
+<p>This is faster than using <code>add_node</code> and <code>add_edge</code>. This is because we don&#39;t have to check
+if the graph would cycle when adding an edge to the new node, as we know it it will be the
+only edge connected to that node.</p>
+
+<p><strong>Panics</strong> if the given child node doesn&#39;t exist.</p>
+
+<p><strong>Panics</strong> if the Graph is at the maximum number of edges for its index.</p>
+</div><h4 id='method.add_child' class="method"><span id='add_child.v' class='invisible'><code>fn <a href='#method.add_child' class='fnname'>add_child</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; parent: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; edge: E,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; node: N)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="../daggy/struct.EdgeIndex.html" title="struct daggy::EdgeIndex">EdgeIndex</a>&lt;Ix&gt;, <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<div class='docblock'><p>Add a new edge and child node to the node at the given <code>NodeIndex</code>.
+Returns both the edge&#39;s <code>EdgeIndex</code> and the node&#39;s <code>NodeIndex</code>.</p>
+
+<p>child -&gt; edge -&gt; node</p>
+
+<p>Computes in <strong>O(1)</strong> time.</p>
+
+<p>This is faster than using <code>add_node</code> and <code>add_edge</code>. This is because we don&#39;t have to check
+if the graph would cycle when adding an edge to the new node, as we know it it will be the
+only edge connected to that node.</p>
+
+<p><strong>Panics</strong> if the given parent node doesn&#39;t exist.</p>
+
+<p><strong>Panics</strong> if the Graph is at the maximum number of edges for its index.</p>
+</div><h4 id='method.node_weight' class="method"><span id='node_weight.v' class='invisible'><code>fn <a href='#method.node_weight' class='fnname'>node_weight</a>(&amp;self, node: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;N&gt;</code></span></h4>
+<div class='docblock'><p>Borrow the weight from the node at the given index.</p>
+</div><h4 id='method.node_weight_mut' class="method"><span id='node_weight_mut.v' class='invisible'><code>fn <a href='#method.node_weight_mut' class='fnname'>node_weight_mut</a>(&amp;mut self, node: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;mut N&gt;</code></span></h4>
+<div class='docblock'><p>Mutably borrow the weight from the node at the given index.</p>
+</div><h4 id='method.raw_nodes' class="method"><span id='raw_nodes.v' class='invisible'><code>fn <a href='#method.raw_nodes' class='fnname'>raw_nodes</a>(&amp;self) -&gt; <a class="type" href="../daggy/type.RawNodes.html" title="type daggy::RawNodes">RawNodes</a>&lt;N, Ix&gt;</code></span></h4>
+<div class='docblock'><p>Read from the internal node array.</p>
+</div><h4 id='method.node_weights_mut' class="method"><span id='node_weights_mut.v' class='invisible'><code>fn <a href='#method.node_weights_mut' class='fnname'>node_weights_mut</a>(&amp;mut self) -&gt; <a class="struct" href="../daggy/struct.NodeWeightsMut.html" title="struct daggy::NodeWeightsMut">NodeWeightsMut</a>&lt;N, Ix&gt;</code></span></h4>
+<div class='docblock'><p>An iterator yielding mutable access to all node weights.</p>
+
+<p>The order in which weights are yielded matches the order of their node indices.</p>
+</div><h4 id='method.edge_weight' class="method"><span id='edge_weight.v' class='invisible'><code>fn <a href='#method.edge_weight' class='fnname'>edge_weight</a>(&amp;self, edge: <a class="struct" href="../daggy/struct.EdgeIndex.html" title="struct daggy::EdgeIndex">EdgeIndex</a>&lt;Ix&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;E&gt;</code></span></h4>
+<div class='docblock'><p>Borrow the weight from the edge at the given index.</p>
+</div><h4 id='method.edge_weight_mut' class="method"><span id='edge_weight_mut.v' class='invisible'><code>fn <a href='#method.edge_weight_mut' class='fnname'>edge_weight_mut</a>(&amp;mut self, edge: <a class="struct" href="../daggy/struct.EdgeIndex.html" title="struct daggy::EdgeIndex">EdgeIndex</a>&lt;Ix&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;mut E&gt;</code></span></h4>
+<div class='docblock'><p>Mutably borrow the weight from the edge at the given index.</p>
+</div><h4 id='method.raw_edges' class="method"><span id='raw_edges.v' class='invisible'><code>fn <a href='#method.raw_edges' class='fnname'>raw_edges</a>(&amp;self) -&gt; <a class="type" href="../daggy/type.RawEdges.html" title="type daggy::RawEdges">RawEdges</a>&lt;E, Ix&gt;</code></span></h4>
+<div class='docblock'><p>Read from the internal edge array.</p>
+</div><h4 id='method.edge_weights_mut' class="method"><span id='edge_weights_mut.v' class='invisible'><code>fn <a href='#method.edge_weights_mut' class='fnname'>edge_weights_mut</a>(&amp;mut self) -&gt; <a class="struct" href="../daggy/struct.EdgeWeightsMut.html" title="struct daggy::EdgeWeightsMut">EdgeWeightsMut</a>&lt;E, Ix&gt;</code></span></h4>
+<div class='docblock'><p>An iterator yielding mutable access to all edge weights.</p>
+
+<p>The order in which weights are yielded matches the order of their edge indices.</p>
+</div><h4 id='method.index_twice_mut' class="method"><span id='index_twice_mut.v' class='invisible'><code>fn <a href='#method.index_twice_mut' class='fnname'>index_twice_mut</a>&lt;A, B&gt;(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a: A,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b: B)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a>&amp;mut <a class="type" href="../daggy/type.PetGraph.html" title="type daggy::PetGraph">PetGraph</a>&lt;N, E, Ix&gt;::<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Index.html" title="trait core::ops::Index">Output</a>, &amp;mut <a class="type" href="../daggy/type.PetGraph.html" title="type daggy::PetGraph">PetGraph</a>&lt;N, E, Ix&gt;::<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Index.html" title="trait core::ops::Index">Output</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a> <span class="where fmt-newline">where <a class="type" href="../daggy/type.PetGraph.html" title="type daggy::PetGraph">PetGraph</a>&lt;N, E, Ix&gt;: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html" title="trait core::ops::IndexMut">IndexMut</a>&lt;A&gt; + <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html" title="trait core::ops::IndexMut">IndexMut</a>&lt;B&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A: <a class="trait" href="../petgraph/graph/trait.GraphIndex.html" title="trait petgraph::graph::GraphIndex">GraphIndex</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B: <a class="trait" href="../petgraph/graph/trait.GraphIndex.html" title="trait petgraph::graph::GraphIndex">GraphIndex</a></span></code></span></h4>
+<div class='docblock'><p>Index the <code>Dag</code> by two indices.</p>
+
+<p>Both indices can be either <code>NodeIndex</code>s, <code>EdgeIndex</code>s or a combination of the two.</p>
+
+<p><strong>Panics</strong> if the indices are equal or if they are out of bounds.</p>
+</div><h4 id='method.remove_node' class="method"><span id='remove_node.v' class='invisible'><code>fn <a href='#method.remove_node' class='fnname'>remove_node</a>(&amp;mut self, node: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;N&gt;</code></span></h4>
+<div class='docblock'><p>Remove the node at the given index from the <code>Dag</code> and return it if it exists.</p>
+
+<p>Note: Calling this may shift (and in turn invalidate) previously returned node indices!</p>
+</div><h4 id='method.remove_edge' class="method"><span id='remove_edge.v' class='invisible'><code>fn <a href='#method.remove_edge' class='fnname'>remove_edge</a>(&amp;mut self, e: <a class="struct" href="../daggy/struct.EdgeIndex.html" title="struct daggy::EdgeIndex">EdgeIndex</a>&lt;Ix&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;E&gt;</code></span></h4>
+<div class='docblock'><p>Remove an edge and return its weight, or <code>None</code> if it didn&#39;t exist.</p>
+
+<p>Computes in <strong>O(e&#39;)</strong> time, where <strong>e&#39;</strong> is the size of four particular edge lists, for the
+nodes of <strong>e</strong> and the nodes of another affected edge.</p>
+</div><h4 id='method.parents' class="method"><span id='parents.v' class='invisible'><code>fn <a href='#method.parents' class='fnname'>parents</a>(&amp;self, child: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;) -&gt; <a class="struct" href="../daggy/struct.Parents.html" title="struct daggy::Parents">Parents</a>&lt;N, E, Ix&gt;</code></span></h4>
+<div class='docblock'><p>A <strong>Walker</strong> type that may be used to step through the parents of the given child node.</p>
+
+<p>Unlike iterator types, <strong>Walker</strong>s do not require borrowing the internal <strong>Graph</strong>. This
+makes them useful for traversing the <strong>Graph</strong> while still being able to mutably borrow it.</p>
+
+<p>If you require an iterator, use one of the <strong>Walker</strong> methods for converting this
+<strong>Walker</strong> into a similarly behaving <strong>Iterator</strong> type.</p>
+
+<p>See the <a href="./walker/trait.Walker.html"><strong>Walker</strong></a> trait for more useful methods.</p>
+</div><h4 id='method.children' class="method"><span id='children.v' class='invisible'><code>fn <a href='#method.children' class='fnname'>children</a>(&amp;self, parent: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;) -&gt; <a class="struct" href="../daggy/struct.Children.html" title="struct daggy::Children">Children</a>&lt;N, E, Ix&gt;</code></span></h4>
+<div class='docblock'><p>A &quot;walker&quot; object that may be used to step through the children of the given parent node.</p>
+
+<p>Unlike iterator types, <strong>Walker</strong>s do not require borrowing the internal <strong>Graph</strong>. This
+makes them useful for traversing the <strong>Graph</strong> while still being able to mutably borrow it.</p>
+
+<p>If you require an iterator, use one of the <strong>Walker</strong> methods for converting this
+<strong>Walker</strong> into a similarly behaving <strong>Iterator</strong> type.</p>
+
+<p>See the <a href="./walker/trait.Walker.html"><strong>Walker</strong></a> trait for more useful methods.</p>
+</div><h4 id='method.recursive_walk' class="method"><span id='recursive_walk.v' class='invisible'><code>fn <a href='#method.recursive_walk' class='fnname'>recursive_walk</a>&lt;F&gt;(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; start: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; recursive_fn: F)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../daggy/type.RecursiveWalk.html" title="type daggy::RecursiveWalk">RecursiveWalk</a>&lt;N, E, Ix, F&gt; <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html" title="trait core::ops::FnMut">FnMut</a>(&amp;Self, <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="struct" href="../daggy/struct.EdgeIndex.html" title="struct daggy::EdgeIndex">EdgeIndex</a>&lt;Ix&gt;, <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</span></code></span></h4>
+<div class='docblock'><p>A <strong>Walker</strong> type that recursively walks the <strong>Dag</strong> using the given <code>recursive_fn</code>.</p>
+
+<p>See the <a href="./walker/trait.Walker.html"><strong>Walker</strong></a> trait for more useful methods.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;N:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>, E:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>, Ix:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> + <a class="trait" href="../petgraph/graph/trait.IndexType.html" title="trait petgraph::graph::IndexType">IndexType</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../daggy/struct.Dag.html" title="struct daggy::Dag">Dag</a>&lt;N, E, Ix&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/daggy/lib.rs.html#62' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../daggy/struct.Dag.html" title="struct daggy::Dag">Dag</a>&lt;N, E, Ix&gt;</code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;N:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a>, E:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a>, Ix:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> + <a class="trait" href="../petgraph/graph/trait.IndexType.html" title="trait petgraph::graph::IndexType">IndexType</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../daggy/struct.Dag.html" title="struct daggy::Dag">Dag</a>&lt;N, E, Ix&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/daggy/lib.rs.html#62' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;N, E, Ix&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Index.html" title="trait core::ops::Index">Index</a>&lt;<a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;&gt; for <a class="struct" href="../daggy/struct.Dag.html" title="struct daggy::Dag">Dag</a>&lt;N, E, Ix&gt; <span class="where fmt-newline">where Ix: <a class="trait" href="../petgraph/graph/trait.IndexType.html" title="trait petgraph::graph::IndexType">IndexType</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/daggy/lib.rs.html#497-502' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Output' class="type"><span id='Output.t' class='invisible'><code>type <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Index.html#associatedtype.Output' class="type">Output</a> = N</code></span></h4>
+<div class='docblock'><p>The returned type after indexing</p>
+</div><h4 id='method.index' class="method"><span id='index.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Index.html#tymethod.index' class='fnname'>index</a>(&amp;self, index: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;) -&gt; &amp;N</code></span></h4>
+<div class='docblock'><p>The method for the indexing (<code>container[index]</code>) operation</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;N, E, Ix&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html" title="trait core::ops::IndexMut">IndexMut</a>&lt;<a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;&gt; for <a class="struct" href="../daggy/struct.Dag.html" title="struct daggy::Dag">Dag</a>&lt;N, E, Ix&gt; <span class="where fmt-newline">where Ix: <a class="trait" href="../petgraph/graph/trait.IndexType.html" title="trait petgraph::graph::IndexType">IndexType</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/daggy/lib.rs.html#504-508' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.index_mut' class="method"><span id='index_mut.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html#tymethod.index_mut' class='fnname'>index_mut</a>(&amp;mut self, index: <a class="struct" href="../daggy/struct.NodeIndex.html" title="struct daggy::NodeIndex">NodeIndex</a>&lt;Ix&gt;) -&gt; &amp;mut N</code></span></h4>
+<div class='docblock'><p>The method for the mutable indexing (<code>container[index]</code>) operation</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;N, E, Ix&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Index.html" title="trait core::ops::Index">Index</a>&lt;<a class="struct" href="../daggy/struct.EdgeIndex.html" title="struct daggy::EdgeIndex">EdgeIndex</a>&lt;Ix&gt;&gt; for <a class="struct" href="../daggy/struct.Dag.html" title="struct daggy::Dag">Dag</a>&lt;N, E, Ix&gt; <span class="where fmt-newline">where Ix: <a class="trait" href="../petgraph/graph/trait.IndexType.html" title="trait petgraph::graph::IndexType">IndexType</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/daggy/lib.rs.html#510-515' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Output-1' class="type"><span id='Output.t-1' class='invisible'><code>type <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Index.html#associatedtype.Output' class="type">Output</a> = E</code></span></h4>
+<div class='docblock'><p>The returned type after indexing</p>
+</div><h4 id='method.index-1' class="method"><span id='index.v-1' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Index.html#tymethod.index' class='fnname'>index</a>(&amp;self, index: <a class="struct" href="../daggy/struct.EdgeIndex.html" title="struct daggy::EdgeIndex">EdgeIndex</a>&lt;Ix&gt;) -&gt; &amp;E</code></span></h4>
+<div class='docblock'><p>The method for the indexing (<code>container[index]</code>) operation</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;N, E, Ix&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html" title="trait core::ops::IndexMut">IndexMut</a>&lt;<a class="struct" href="../daggy/struct.EdgeIndex.html" title="struct daggy::EdgeIndex">EdgeIndex</a>&lt;Ix&gt;&gt; for <a class="struct" href="../daggy/struct.Dag.html" title="struct daggy::Dag">Dag</a>&lt;N, E, Ix&gt; <span class="where fmt-newline">where Ix: <a class="trait" href="../petgraph/graph/trait.IndexType.html" title="trait petgraph::graph::IndexType">IndexType</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/daggy/lib.rs.html#517-521' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.index_mut-1' class="method"><span id='index_mut.v-1' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html#tymethod.index_mut' class='fnname'>index_mut</a>(&amp;mut self, index: <a class="struct" href="../daggy/struct.EdgeIndex.html" title="struct daggy::EdgeIndex">EdgeIndex</a>&lt;Ix&gt;) -&gt; &amp;mut E</code></span></h4>
+<div class='docblock'><p>The method for the mutable indexing (<code>container[index]</code>) operation</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "daggy";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

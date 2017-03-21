@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["coordinates","Utility functions regarding different coordinate systems used in fireplace"],["enum_serialization","Automatic De/Serialization implementation for enums"]]});

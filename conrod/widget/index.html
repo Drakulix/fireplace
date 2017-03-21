@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `widget` mod in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, widget">
+
+    <title>conrod::widget - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>conrod</a></p><script>window.sidebarCurrent = {name: 'widget', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>conrod</a>::<wbr><a class="mod" href=''>widget</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/conrod/widget/mod.rs.html#1-1230' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Widgets are the core building blocks for every conrod user interface.</p>
+
+<p>This module contains items related to the implementation of the <code>Widget</code> trait. It also
+re-exports all widgets (and their modules) that are provided by conrod.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use self::<a class="mod"
+                                           href="./id/index.html">id</a>::<a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod" href="../../conrod/widget/primitive/line/index.html" title="mod conrod::widget::primitive::line">line</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod"
+                                           href="./primitive/line/index.html">line</a>::<a class="struct" href="../../conrod/widget/primitive/line/struct.Line.html" title="struct conrod::widget::primitive::line::Line">Line</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod" href="../../conrod/widget/primitive/image/index.html" title="mod conrod::widget::primitive::image">image</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod"
+                                           href="./primitive/image/index.html">image</a>::<a class="struct" href="../../conrod/widget/primitive/image/struct.Image.html" title="struct conrod::widget::primitive::image::Image">Image</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod" href="../../conrod/widget/primitive/point_path/index.html" title="mod conrod::widget::primitive::point_path">point_path</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod"
+                                           href="./primitive/point_path/index.html">point_path</a>::<a class="struct" href="../../conrod/widget/primitive/point_path/struct.PointPath.html" title="struct conrod::widget::primitive::point_path::PointPath">PointPath</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod"
+                                           href="./primitive/shape/index.html">shape</a>::<a class="mod" href="../../conrod/widget/primitive/shape/circle/index.html" title="mod conrod::widget::primitive::shape::circle">circle</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod"
+                                           href="./primitive/shape/index.html">shape</a>::<a class="mod"
+                                           href="./primitive/shape/circle/index.html">circle</a>::<a class="struct" href="../../conrod/widget/primitive/shape/circle/struct.Circle.html" title="struct conrod::widget::primitive::shape::circle::Circle">Circle</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod"
+                                           href="./primitive/shape/index.html">shape</a>::<a class="mod" href="../../conrod/widget/primitive/shape/oval/index.html" title="mod conrod::widget::primitive::shape::oval">oval</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod"
+                                           href="./primitive/shape/index.html">shape</a>::<a class="mod"
+                                           href="./primitive/shape/oval/index.html">oval</a>::<a class="struct" href="../../conrod/widget/primitive/shape/oval/struct.Oval.html" title="struct conrod::widget::primitive::shape::oval::Oval">Oval</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod"
+                                           href="./primitive/shape/index.html">shape</a>::<a class="mod" href="../../conrod/widget/primitive/shape/polygon/index.html" title="mod conrod::widget::primitive::shape::polygon">polygon</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod"
+                                           href="./primitive/shape/index.html">shape</a>::<a class="mod"
+                                           href="./primitive/shape/polygon/index.html">polygon</a>::<a class="struct" href="../../conrod/widget/primitive/shape/polygon/struct.Polygon.html" title="struct conrod::widget::primitive::shape::polygon::Polygon">Polygon</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod"
+                                           href="./primitive/shape/index.html">shape</a>::<a class="mod" href="../../conrod/widget/primitive/shape/rectangle/index.html" title="mod conrod::widget::primitive::shape::rectangle">rectangle</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod"
+                                           href="./primitive/shape/index.html">shape</a>::<a class="mod"
+                                           href="./primitive/shape/rectangle/index.html">rectangle</a>::<a class="struct" href="../../conrod/widget/primitive/shape/rectangle/struct.Rectangle.html" title="struct conrod::widget::primitive::shape::rectangle::Rectangle">Rectangle</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod" href="../../conrod/widget/primitive/text/index.html" title="mod conrod::widget::primitive::text">text</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./primitive/index.html">primitive</a>::<a class="mod"
+                                           href="./primitive/text/index.html">text</a>::<a class="struct" href="../../conrod/widget/primitive/text/struct.Text.html" title="struct conrod::widget::primitive::text::Text">Text</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./bordered_rectangle/index.html">bordered_rectangle</a>::<a class="struct" href="../../conrod/widget/bordered_rectangle/struct.BorderedRectangle.html" title="struct conrod::widget::bordered_rectangle::BorderedRectangle">BorderedRectangle</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./button/index.html">button</a>::<a class="struct" href="../../conrod/widget/button/struct.Button.html" title="struct conrod::widget::button::Button">Button</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./canvas/index.html">canvas</a>::<a class="struct" href="../../conrod/widget/canvas/struct.Canvas.html" title="struct conrod::widget::canvas::Canvas">Canvas</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./drop_down_list/index.html">drop_down_list</a>::<a class="struct" href="../../conrod/widget/drop_down_list/struct.DropDownList.html" title="struct conrod::widget::drop_down_list::DropDownList">DropDownList</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./list_select/index.html">list_select</a>::<a class="struct" href="../../conrod/widget/list_select/struct.ListSelect.html" title="struct conrod::widget::list_select::ListSelect">ListSelect</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./envelope_editor/index.html">envelope_editor</a>::<a class="struct" href="../../conrod/widget/envelope_editor/struct.EnvelopeEditor.html" title="struct conrod::widget::envelope_editor::EnvelopeEditor">EnvelopeEditor</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./file_navigator/index.html">file_navigator</a>::<a class="struct" href="../../conrod/widget/file_navigator/struct.FileNavigator.html" title="struct conrod::widget::file_navigator::FileNavigator">FileNavigator</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./list/index.html">list</a>::<a class="struct" href="../../conrod/widget/list/struct.List.html" title="struct conrod::widget::list::List">List</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./matrix/index.html">matrix</a>::<a class="struct" href="../../conrod/widget/matrix/struct.Matrix.html" title="struct conrod::widget::matrix::Matrix">Matrix</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./number_dialer/index.html">number_dialer</a>::<a class="struct" href="../../conrod/widget/number_dialer/struct.NumberDialer.html" title="struct conrod::widget::number_dialer::NumberDialer">NumberDialer</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./plot_path/index.html">plot_path</a>::<a class="struct" href="../../conrod/widget/plot_path/struct.PlotPath.html" title="struct conrod::widget::plot_path::PlotPath">PlotPath</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./range_slider/index.html">range_slider</a>::<a class="struct" href="../../conrod/widget/range_slider/struct.RangeSlider.html" title="struct conrod::widget::range_slider::RangeSlider">RangeSlider</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./rounded_rectangle/index.html">rounded_rectangle</a>::<a class="struct" href="../../conrod/widget/rounded_rectangle/struct.RoundedRectangle.html" title="struct conrod::widget::rounded_rectangle::RoundedRectangle">RoundedRectangle</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./scrollbar/index.html">scrollbar</a>::<a class="struct" href="../../conrod/widget/scrollbar/struct.Scrollbar.html" title="struct conrod::widget::scrollbar::Scrollbar">Scrollbar</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./slider/index.html">slider</a>::<a class="struct" href="../../conrod/widget/slider/struct.Slider.html" title="struct conrod::widget::slider::Slider">Slider</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./tabs/index.html">tabs</a>::<a class="struct" href="../../conrod/widget/tabs/struct.Tabs.html" title="struct conrod::widget::tabs::Tabs">Tabs</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./text_box/index.html">text_box</a>::<a class="struct" href="../../conrod/widget/text_box/struct.TextBox.html" title="struct conrod::widget::text_box::TextBox">TextBox</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./text_edit/index.html">text_edit</a>::<a class="struct" href="../../conrod/widget/text_edit/struct.TextEdit.html" title="struct conrod::widget::text_edit::TextEdit">TextEdit</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./title_bar/index.html">title_bar</a>::<a class="struct" href="../../conrod/widget/title_bar/struct.TitleBar.html" title="struct conrod::widget::title_bar::TitleBar">TitleBar</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./toggle/index.html">toggle</a>::<a class="struct" href="../../conrod/widget/toggle/struct.Toggle.html" title="struct conrod::widget::toggle::Toggle">Toggle</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./xy_pad/index.html">xy_pad</a>::<a class="struct" href="../../conrod/widget/xy_pad/struct.XYPad.html" title="struct conrod::widget::xy_pad::XYPad">XYPad</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="bordered_rectangle/index.html"
+                                  title='mod conrod::widget::bordered_rectangle'>bordered_rectangle</a></td>
+                           <td class='docblock-short'>
+                                <p>The <code>BorderedRectangle</code> widget and related items.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="button/index.html"
+                                  title='mod conrod::widget::button'>button</a></td>
+                           <td class='docblock-short'>
+                                <p>The <code>Button</code> widget and related items.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="canvas/index.html"
+                                  title='mod conrod::widget::canvas'>canvas</a></td>
+                           <td class='docblock-short'>
+                                <p>The <code>Canvas</code> widget and related items.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="drop_down_list/index.html"
+                                  title='mod conrod::widget::drop_down_list'>drop_down_list</a></td>
+                           <td class='docblock-short'>
+                                <p>The <code>DropDownList</code> and related items.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="envelope_editor/index.html"
+                                  title='mod conrod::widget::envelope_editor'>envelope_editor</a></td>
+                           <td class='docblock-short'>
+                                <p>The <code>EnvelopeEditor</code> widget and related items.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="file_navigator/index.html"
+                                  title='mod conrod::widget::file_navigator'>file_navigator</a></td>
+                           <td class='docblock-short'>
+                                <p>A widget for navigating through through a file system. Generally inspired by Finder.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="id/index.html"
+                                  title='mod conrod::widget::id'>id</a></td>
+                           <td class='docblock-short'>
+                                <p>The widget identifier type used throughout conrod, along with helper types and macros to
+simplify the process of generating them.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="list/index.html"
+                                  title='mod conrod::widget::list'>list</a></td>
+                           <td class='docblock-short'>
+                                <p>A helper widget, useful for instantiating a sequence of widgets in a vertical list.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="list_select/index.html"
+                                  title='mod conrod::widget::list_select'>list_select</a></td>
+                           <td class='docblock-short'>
+                                <p>A wrapper around the <code>List</code> widget providing the ability to select one or more items.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="matrix/index.html"
+                                  title='mod conrod::widget::matrix'>matrix</a></td>
+                           <td class='docblock-short'>
+                                <p>A helper widget for laying out child widgets in the form of a grid.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="number_dialer/index.html"
+                                  title='mod conrod::widget::number_dialer'>number_dialer</a></td>
+                           <td class='docblock-short'>
+                                <p>A widget for precision control over any base-10 digit within a given value.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="plot_path/index.html"
+                                  title='mod conrod::widget::plot_path'>plot_path</a></td>
+                           <td class='docblock-short'>
+                                <p>A widget for plotting a series of lines using the given function <em>x -&gt; y</em>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="primitive/index.html"
+                                  title='mod conrod::widget::primitive'>primitive</a></td>
+                           <td class='docblock-short'>
+                                <p>Primitive widgets are special in that they are built into conrod&#39;s <code>render</code>ing logic.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="range_slider/index.html"
+                                  title='mod conrod::widget::range_slider'>range_slider</a></td>
+                           <td class='docblock-short'>
+                                <p>A widget for specifying start and end values for some linear range.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="rounded_rectangle/index.html"
+                                  title='mod conrod::widget::rounded_rectangle'>rounded_rectangle</a></td>
+                           <td class='docblock-short'>
+                                <p>Similar to the <code>Rectangle</code> widget however is drawn with rounded corners.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="scroll/index.html"
+                                  title='mod conrod::widget::scroll'>scroll</a></td>
+                           <td class='docblock-short'>
+                                <p>Scroll related types and logic.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="scrollbar/index.html"
+                                  title='mod conrod::widget::scrollbar'>scrollbar</a></td>
+                           <td class='docblock-short'>
+                                <p>A widget that allows for manually scrolling via dragging the mouse.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="slider/index.html"
+                                  title='mod conrod::widget::slider'>slider</a></td>
+                           <td class='docblock-short'>
+                                <p>A widget for selecting a single value along some linear range.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="tabs/index.html"
+                                  title='mod conrod::widget::tabs'>tabs</a></td>
+                           <td class='docblock-short'>
+                                <p>A wrapper around a list of <code>Canvas</code>ses that displays them as a list of selectable tabs.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="text_box/index.html"
+                                  title='mod conrod::widget::text_box'>text_box</a></td>
+                           <td class='docblock-short'>
+                                <p>A widget for displaying and mutating a one-line field of text.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="text_edit/index.html"
+                                  title='mod conrod::widget::text_edit'>text_edit</a></td>
+                           <td class='docblock-short'>
+                                <p>A widget for displaying and mutating multi-line text, given as a <code>String</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="title_bar/index.html"
+                                  title='mod conrod::widget::title_bar'>title_bar</a></td>
+                           <td class='docblock-short'>
+                                <p>A simple title bar widget that automatically sizes itself to the top of some other widget.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="toggle/index.html"
+                                  title='mod conrod::widget::toggle'>toggle</a></td>
+                           <td class='docblock-short'>
+                                <p>A button that allows for toggling boolean state.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="xy_pad/index.html"
+                                  title='mod conrod::widget::xy_pad'>xy_pad</a></td>
+                           <td class='docblock-short'>
+                                <p>Used for displaying and controlling a 2D point on a cartesian plane within a given range.</p>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CommonBuilder.html"
+                                  title='struct conrod::widget::CommonBuilder'>CommonBuilder</a></td>
+                           <td class='docblock-short'>
+                                <p>A struct containing builder data common to all <strong>Widget</strong> types.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CommonState.html"
+                                  title='struct conrod::widget::CommonState'>CommonState</a></td>
+                           <td class='docblock-short'>
+                                <p>A wrapper around state that is common to all <strong>Widget</strong> types.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CommonStyle.html"
+                                  title='struct conrod::widget::CommonStyle'>CommonStyle</a></td>
+                           <td class='docblock-short'>
+                                <p>Styling and positioning data that is common between all widget types.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Floating.html"
+                                  title='struct conrod::widget::Floating'>Floating</a></td>
+                           <td class='docblock-short'>
+                                <p>State necessary for &quot;floating&quot; (pop-up style) widgets.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.KidArea.html"
+                                  title='struct conrod::widget::KidArea'>KidArea</a></td>
+                           <td class='docblock-short'>
+                                <p>The area upon which a <strong>Widget</strong>&#39;s child widgets will be placed.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.KidAreaArgs.html"
+                                  title='struct conrod::widget::KidAreaArgs'>KidAreaArgs</a></td>
+                           <td class='docblock-short'>
+                                <p>Arguments to the <a href="./trait.Widget#method.kid_area"><strong>Widget::kid_area</strong></a> method in a struct to
+simplify the method signature.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.PostUpdateCache.html"
+                                  title='struct conrod::widget::PostUpdateCache'>PostUpdateCache</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.PreUpdateCache.html"
+                                  title='struct conrod::widget::PreUpdateCache'>PreUpdateCache</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.State.html"
+                                  title='struct conrod::widget::State'>State</a></td>
+                           <td class='docblock-short'>
+                                <p>A wrapper around a <strong>Widget</strong>&#39;s unique <strong>Widget::State</strong>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.UpdateArgs.html"
+                                  title='struct conrod::widget::UpdateArgs'>UpdateArgs</a></td>
+                           <td class='docblock-short'>
+                                <p>Arguments for the <a href="./trait.Widget#method.update"><strong>Widget::update</strong></a> method in a struct to
+simplify the method signature.</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.MaybeParent.html"
+                                  title='enum conrod::widget::MaybeParent'>MaybeParent</a></td>
+                           <td class='docblock-short'>
+                                <p>The builder argument for the <strong>Widget</strong>&#39;s parent.</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Style.html"
+                                  title='trait conrod::widget::Style'>Style</a></td>
+                           <td class='docblock-short'>
+                                <p>The necessary bounds for a <strong>Widget</strong>&#39;s associated <strong>Style</strong> type.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Widget.html"
+                                  title='trait conrod::widget::Widget'>Widget</a></td>
+                           <td class='docblock-short'>
+                                <p>A trait to be implemented by all <strong>Widget</strong> types.</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.default_x_dimension.html"
+                                  title='fn conrod::widget::default_x_dimension'>default_x_dimension</a></td>
+                           <td class='docblock-short'>
+                                <p>Determines the default <strong>Dimension</strong> for a <strong>Widget</strong>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.default_y_dimension.html"
+                                  title='fn conrod::widget::default_y_dimension'>default_y_dimension</a></td>
+                           <td class='docblock-short'>
+                                <p>Determines the default <strong>Dimension</strong> for a <strong>Widget</strong>.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

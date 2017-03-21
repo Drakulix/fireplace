@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `position` mod in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, position">
+
+    <title>conrod::position - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>conrod</a></p><script>window.sidebarCurrent = {name: 'position', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>conrod</a>::<wbr><a class="mod" href=''>position</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/conrod/position/mod.rs.html#1-822' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Items related to 2D positioning, used throughout conrod.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use self::<a class="mod"
+                                           href="./range/index.html">range</a>::<a class="enum" href="../../conrod/position/range/enum.Edge.html" title="enum conrod::position::range::Edge">Edge</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./range/index.html">range</a>::<a class="struct" href="../../conrod/position/range/struct.Range.html" title="struct conrod::position::range::Range">Range</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./rect/index.html">rect</a>::<a class="enum" href="../../conrod/position/rect/enum.Corner.html" title="enum conrod::position::rect::Corner">Corner</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./rect/index.html">rect</a>::<a class="struct" href="../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="range/index.html"
+                                  title='mod conrod::position::range'>range</a></td>
+                           <td class='docblock-short'>
+                                <p>A type for working one-dimensional ranges.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="rect/index.html"
+                                  title='mod conrod::position::rect'>rect</a></td>
+                           <td class='docblock-short'>
+                                <p>Defines the scalar <code>Rect</code> type used throughout conrod.</p>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Padding.html"
+                                  title='struct conrod::position::Padding'>Padding</a></td>
+                           <td class='docblock-short'>
+                                <p>The distance between the inner edge of a border and the outer edge of the inner content.</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Align.html"
+                                  title='enum conrod::position::Align'>Align</a></td>
+                           <td class='docblock-short'>
+                                <p>The orientation of <strong>Align</strong>ment along some <strong>Axis</strong>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Axis.html"
+                                  title='enum conrod::position::Axis'>Axis</a></td>
+                           <td class='docblock-short'>
+                                <p>Represents either <strong>Axis</strong> in the 2-dimensional plane.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Dimension.html"
+                                  title='enum conrod::position::Dimension'>Dimension</a></td>
+                           <td class='docblock-short'>
+                                <p>The length of a <strong>Widget</strong> over either the <em>x</em> or <em>y</em> axes.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Direction.html"
+                                  title='enum conrod::position::Direction'>Direction</a></td>
+                           <td class='docblock-short'>
+                                <p>Directionally positioned, normally relative to some other widget.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Place.html"
+                                  title='enum conrod::position::Place'>Place</a></td>
+                           <td class='docblock-short'>
+                                <p>Place the widget at a position on some other widget.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Position.html"
+                                  title='enum conrod::position::Position'>Position</a></td>
+                           <td class='docblock-short'>
+                                <p>Some <strong>Position</strong> of some <strong>Widget</strong> along a single axis.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Relative.html"
+                                  title='enum conrod::position::Relative'>Relative</a></td>
+                           <td class='docblock-short'>
+                                <p>Positions that are described as <strong>Relative</strong> to some other <strong>Widget</strong>.</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Positionable.html"
+                                  title='trait conrod::position::Positionable'>Positionable</a></td>
+                           <td class='docblock-short'>
+                                <p>Widgets that are positionable.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Sizeable.html"
+                                  title='trait conrod::position::Sizeable'>Sizeable</a></td>
+                           <td class='docblock-short'>
+                                <p>Widgets that support different dimensions.</p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Depth.html"
+                                  title='type conrod::position::Depth'>Depth</a></td>
+                           <td class='docblock-short'>
+                                <p>The depth at which the widget will be rendered.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Dimensions.html"
+                                  title='type conrod::position::Dimensions'>Dimensions</a></td>
+                           <td class='docblock-short'>
+                                <p>General use 2D spatial dimensions.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Margin.html"
+                                  title='type conrod::position::Margin'>Margin</a></td>
+                           <td class='docblock-short'>
+                                <p>The margin for some <code>Place</code>ment on either end of an axis.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Point.html"
+                                  title='type conrod::position::Point'>Point</a></td>
+                           <td class='docblock-short'>
+                                <p>General use 2D spatial point.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Scalar.html"
+                                  title='type conrod::position::Scalar'>Scalar</a></td>
+                           <td class='docblock-short'>
+                                <p>An alias over the Scalar type used throughout Conrod.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Yaml` enum in crate `yaml_rust`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Yaml">
+
+    <title>yaml_rust::yaml::Yaml - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>yaml_rust</a>::<wbr><a href='index.html'>yaml</a></p><script>window.sidebarCurrent = {name: 'Yaml', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>yaml_rust</a>::<wbr><a href='index.html'>yaml</a>::<wbr><a class="enum" href=''>Yaml</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/yaml_rust/yaml.rs.html#28-59' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum Yaml {
+    Real(<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>),
+    Integer(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>),
+    String(<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>),
+    Boolean(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>),
+    Array(<a class="type" href="../../yaml_rust/yaml/type.Array.html" title="type yaml_rust::yaml::Array">Array</a>),
+    Hash(<a class="type" href="../../yaml_rust/yaml/type.Hash.html" title="type yaml_rust::yaml::Hash">Hash</a>),
+    Alias(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>),
+    Null,
+    BadValue,
+}</pre><div class='docblock'><p>A YAML node is stored as this <code>Yaml</code> enumeration, which provides an easy way to
+access your YAML document.</p>
+
+<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">yaml_rust</span>::<span class="ident">Yaml</span>;
+<span class="kw">let</span> <span class="ident">foo</span> <span class="op">=</span> <span class="ident">Yaml</span>::<span class="ident">from_str</span>(<span class="string">&quot;-123&quot;</span>); <span class="comment">// convert the string to the appropriate YAML type</span>
+<span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">foo</span>.<span class="ident">as_i64</span>().<span class="ident">unwrap</span>(), <span class="op">-</span><span class="number">123</span>);
+
+<span class="comment">// iterate over an Array</span>
+<span class="kw">let</span> <span class="ident">vec</span> <span class="op">=</span> <span class="ident">Yaml</span>::<span class="ident">Array</span>(<span class="macro">vec</span><span class="macro">!</span>[<span class="ident">Yaml</span>::<span class="ident">Integer</span>(<span class="number">1</span>), <span class="ident">Yaml</span>::<span class="ident">Integer</span>(<span class="number">2</span>)]);
+<span class="kw">for</span> <span class="ident">v</span> <span class="kw">in</span> <span class="ident">vec</span>.<span class="ident">as_vec</span>().<span class="ident">unwrap</span>() {
+    <span class="macro">assert</span><span class="macro">!</span>(<span class="ident">v</span>.<span class="ident">as_i64</span>().<span class="ident">is_some</span>());
+}</pre>
+</div><h2 class='variants'>Variants</h2>
+<span id='variant.Real' class='variant'><span id='Real.v' class='invisible'><code>Real(<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>)</code></span></span><div class='docblock'><p>Float types are stored as String and parsed on demand.
+Note that f64 does NOT implement Eq trait and can NOT be stored in BTreeMap.</p>
+</div><span id='variant.Integer' class='variant'><span id='Integer.v' class='invisible'><code>Integer(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>)</code></span></span><div class='docblock'><p>YAML int is stored as i64.</p>
+</div><span id='variant.String' class='variant'><span id='String.v' class='invisible'><code>String(<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>)</code></span></span><div class='docblock'><p>YAML scalar.</p>
+</div><span id='variant.Boolean' class='variant'><span id='Boolean.v' class='invisible'><code>Boolean(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</code></span></span><div class='docblock'><p>YAML bool, e.g. <code>true</code> or <code>false</code>.</p>
+</div><span id='variant.Array' class='variant'><span id='Array.v' class='invisible'><code>Array(<a class="type" href="../../yaml_rust/yaml/type.Array.html" title="type yaml_rust::yaml::Array">Array</a>)</code></span></span><div class='docblock'><p>YAML array, can be accessed as a <code>Vec</code>.</p>
+</div><span id='variant.Hash' class='variant'><span id='Hash.v' class='invisible'><code>Hash(<a class="type" href="../../yaml_rust/yaml/type.Hash.html" title="type yaml_rust::yaml::Hash">Hash</a>)</code></span></span><div class='docblock'><p>YAML hash, can be accessed as a <code>BTreeMap</code>.</p>
+
+<p>If the order of keys is meaningful, enable the <code>preserve_order</code> feature to
+store hashes as a <code>LinkedHashMap</code> intead of <code>BTreeMap</code>. When using a
+<code>LinkedHashMap</code>, the itertion order will match the order of insertion into
+the map.</p>
+
+<pre><code class="language-toml">yaml-rust = { version = &quot;*&quot;, features = [&quot;preserve_order&quot;] }
+</code></pre>
+</div><span id='variant.Alias' class='variant'><span id='Alias.v' class='invisible'><code>Alias(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>)</code></span></span><div class='docblock'><p>Alias, not fully supported yet.</p>
+</div><span id='variant.Null' class='variant'><span id='Null.v' class='invisible'><code>Null</code></span></span><div class='docblock'><p>YAML null, e.g. <code>null</code> or <code>~</code>.</p>
+</div><span id='variant.BadValue' class='variant'><span id='BadValue.v' class='invisible'><code>BadValue</code></span></span><div class='docblock'><p>Accessing a nonexistent node via the Index trait returns <code>BadValue</code>. This
+simplifies error handling in the calling code. Invalid type conversion also
+returns <code>BadValue</code>.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/yaml_rust/yaml.rs.html#240-285' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.as_bool' class="method"><span id='as_bool.v' class='invisible'><code>fn <a href='#method.as_bool' class='fnname'>as_bool</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;</code></span></h4>
+<h4 id='method.as_i64' class="method"><span id='as_i64.v' class='invisible'><code>fn <a href='#method.as_i64' class='fnname'>as_i64</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>&gt;</code></span></h4>
+<h4 id='method.as_str' class="method"><span id='as_str.v' class='invisible'><code>fn <a href='#method.as_str' class='fnname'>as_str</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt;</code></span></h4>
+<h4 id='method.as_hash' class="method"><span id='as_hash.v' class='invisible'><code>fn <a href='#method.as_hash' class='fnname'>as_hash</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="type" href="../../yaml_rust/yaml/type.Hash.html" title="type yaml_rust::yaml::Hash">Hash</a>&gt;</code></span></h4>
+<h4 id='method.as_vec' class="method"><span id='as_vec.v' class='invisible'><code>fn <a href='#method.as_vec' class='fnname'>as_vec</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="type" href="../../yaml_rust/yaml/type.Array.html" title="type yaml_rust::yaml::Array">Array</a>&gt;</code></span></h4>
+<h4 id='method.into_bool' class="method"><span id='into_bool.v' class='invisible'><code>fn <a href='#method.into_bool' class='fnname'>into_bool</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;</code></span></h4>
+<h4 id='method.into_i64' class="method"><span id='into_i64.v' class='invisible'><code>fn <a href='#method.into_i64' class='fnname'>into_i64</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>&gt;</code></span></h4>
+<h4 id='method.into_string' class="method"><span id='into_string.v' class='invisible'><code>fn <a href='#method.into_string' class='fnname'>into_string</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>&gt;</code></span></h4>
+<h4 id='method.into_hash' class="method"><span id='into_hash.v' class='invisible'><code>fn <a href='#method.into_hash' class='fnname'>into_hash</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../yaml_rust/yaml/type.Hash.html" title="type yaml_rust::yaml::Hash">Hash</a>&gt;</code></span></h4>
+<h4 id='method.into_vec' class="method"><span id='into_vec.v' class='invisible'><code>fn <a href='#method.into_vec' class='fnname'>into_vec</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../yaml_rust/yaml/type.Array.html" title="type yaml_rust::yaml::Array">Array</a>&gt;</code></span></h4>
+<h4 id='method.is_null' class="method"><span id='is_null.v' class='invisible'><code>fn <a href='#method.is_null' class='fnname'>is_null</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<h4 id='method.is_badvalue' class="method"><span id='is_badvalue.v' class='invisible'><code>fn <a href='#method.is_badvalue' class='fnname'>is_badvalue</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<h4 id='method.as_f64' class="method"><span id='as_f64.v' class='invisible'><code>fn <a href='#method.as_f64' class='fnname'>as_f64</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>&gt;</code></span></h4>
+<h4 id='method.into_f64' class="method"><span id='into_f64.v' class='invisible'><code>fn <a href='#method.into_f64' class='fnname'>into_f64</a>(self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>&gt;</code></span></h4>
+</div><h3 class='impl'><span class='in-band'><code>impl <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/yaml_rust/yaml.rs.html#288-317' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from_str' class="method"><span id='from_str.v' class='invisible'><code>fn <a href='#method.from_str' class='fnname'>from_str</a>(v: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/yaml_rust/yaml.rs.html#27' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/yaml_rust/yaml.rs.html#27' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html" title="trait core::cmp::PartialOrd">PartialOrd</a> for <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/yaml_rust/yaml.rs.html#27' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.partial_cmp' class="method"><span id='partial_cmp.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#tymethod.partial_cmp' class='fnname'>partial_cmp</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/cmp/enum.Ordering.html" title="enum core::cmp::Ordering">Ordering</a>&gt;</code></span></h4>
+<div class='docblock'><p>This method returns an ordering between <code>self</code> and <code>other</code> values if one exists. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#tymethod.partial_cmp">Read more</a></p>
+</div><h4 id='method.lt' class="method"><span id='lt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.lt' class='fnname'>lt</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests less than (for <code>self</code> and <code>other</code>) and is used by the <code>&lt;</code> operator. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.lt">Read more</a></p>
+</div><h4 id='method.le' class="method"><span id='le.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.le' class='fnname'>le</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests less than or equal to (for <code>self</code> and <code>other</code>) and is used by the <code>&lt;=</code> operator. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.le">Read more</a></p>
+</div><h4 id='method.gt' class="method"><span id='gt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.gt' class='fnname'>gt</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests greater than (for <code>self</code> and <code>other</code>) and is used by the <code>&gt;</code> operator. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.gt">Read more</a></p>
+</div><h4 id='method.ge' class="method"><span id='ge.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.ge' class='fnname'>ge</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests greater than or equal to (for <code>self</code> and <code>other</code>) and is used by the <code>&gt;=</code> operator. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialOrd.html#method.ge">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/yaml_rust/yaml.rs.html#27' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html" title="trait core::cmp::Eq">Eq</a> for <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/yaml_rust/yaml.rs.html#27' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html" title="trait core::cmp::Ord">Ord</a> for <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/yaml_rust/yaml.rs.html#27' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.cmp' class="method"><span id='cmp.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html#tymethod.cmp' class='fnname'>cmp</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/cmp/enum.Ordering.html" title="enum core::cmp::Ordering">Ordering</a></code></span></h4>
+<div class='docblock'><p>This method returns an <code>Ordering</code> between <code>self</code> and <code>other</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html#tymethod.cmp">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html" title="trait core::hash::Hash">Hash</a> for <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/yaml_rust/yaml.rs.html#27' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.hash' class="method"><span id='hash.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html#tymethod.hash' class='fnname'>hash</a>&lt;__H:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/hash/trait.Hasher.html" title="trait core::hash::Hasher">Hasher</a>&gt;(&amp;self, __arg_0: &amp;mut __H)</code></span></h4>
+<div class='docblock'><p>Feeds this value into the state given, updating the hasher as necessary.</p>
+</div><h4 id='method.hash_slice' class="method"><span id='hash_slice.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html#method.hash_slice' class='fnname'>hash_slice</a>&lt;H&gt;(data: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[Self]</a>, state: &amp;mut H) <span class="where fmt-newline">where H: <a class="trait" href="https://doc.rust-lang.org/nightly/core/hash/trait.Hasher.html" title="trait core::hash::Hasher">Hasher</a></span></code><div class='since' title='Stable since Rust version 1.3.0'>1.3.0</div></span></h4>
+<div class='docblock'><p>Feeds a slice of this type into the state provided.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Index.html" title="trait core::ops::Index">Index</a>&lt;&amp;'a <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>&gt; for <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/yaml_rust/yaml.rs.html#320-330' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Output' class="type"><span id='Output.t' class='invisible'><code>type <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Index.html#associatedtype.Output' class="type">Output</a> = <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span></h4>
+<div class='docblock'><p>The returned type after indexing</p>
+</div><h4 id='method.index' class="method"><span id='index.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Index.html#tymethod.index' class='fnname'>index</a>(&amp;self, idx: &amp;'a <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.str.html">str</a>) -&gt; &amp;<a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span></h4>
+<div class='docblock'><p>The method for the indexing (<code>container[index]</code>) operation</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Index.html" title="trait core::ops::Index">Index</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt; for <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/yaml_rust/yaml.rs.html#332-341' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Output-1' class="type"><span id='Output.t-1' class='invisible'><code>type <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Index.html#associatedtype.Output' class="type">Output</a> = <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span></h4>
+<div class='docblock'><p>The returned type after indexing</p>
+</div><h4 id='method.index-1' class="method"><span id='index.v-1' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Index.html#tymethod.index' class='fnname'>index</a>(&amp;self, idx: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; &amp;<a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span></h4>
+<div class='docblock'><p>The method for the indexing (<code>container[index]</code>) operation</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a> for <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/yaml_rust/yaml.rs.html#343-353' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Item' class="type"><span id='Item.t' class='invisible'><code>type <a href='https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html#associatedtype.Item' class="type">Item</a> = <a class="enum" href="../../yaml_rust/yaml/enum.Yaml.html" title="enum yaml_rust::yaml::Yaml">Yaml</a></code></span></h4>
+<div class='docblock'><p>The type of the elements being iterated over.</p>
+</div><h4 id='associatedtype.IntoIter' class="type"><span id='IntoIter.t' class='invisible'><code>type <a href='https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html#associatedtype.IntoIter' class="type">IntoIter</a> = <a class="struct" href="../../yaml_rust/yaml/struct.YamlIter.html" title="struct yaml_rust::yaml::YamlIter">YamlIter</a></code></span></h4>
+<div class='docblock'><p>Which kind of iterator are we turning this into?</p>
+</div><h4 id='method.into_iter' class="method"><span id='into_iter.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html#tymethod.into_iter' class='fnname'>into_iter</a>(self) -&gt; Self::<a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIter</a></code></span></h4>
+<div class='docblock'><p>Creates an iterator from a value. <a href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html#tymethod.into_iter">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "yaml_rust";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

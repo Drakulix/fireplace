@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Axis` trait in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Axis">
+
+    <title>conrod::widget::scrollbar::Axis - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>widget</a>::<wbr><a href='index.html'>scrollbar</a></p><script>window.sidebarCurrent = {name: 'Axis', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content trait">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>widget</a>::<wbr><a href='index.html'>scrollbar</a>::<wbr><a class="trait" href=''>Axis</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/conrod/widget/scrollbar.rs.html#21-37' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait Axis: <a class="trait" href="../../../conrod/widget/scroll/trait.Axis.html" title="trait conrod::widget::scroll::Axis">Axis</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> {
+    fn <a href='#tymethod.track_rect' class='fnname'>track_rect</a>(container: <a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>, thickness: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; <a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>;
+    fn <a href='#tymethod.handle_rect' class='fnname'>handle_rect</a>(perpendicular_track_range: <a class="struct" href="../../../conrod/position/range/struct.Range.html" title="struct conrod::position::range::Range">Range</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; handle_range: <a class="struct" href="../../../conrod/position/range/struct.Range.html" title="struct conrod::position::range::Range">Range</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>;
+    fn <a href='#tymethod.scroll_state' class='fnname'>scroll_state</a>(widget: &amp;<a class="struct" href="../../../conrod/graph/struct.Container.html" title="struct conrod::graph::Container">Container</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../../../conrod/widget/scroll/struct.State.html" title="struct conrod::widget::scroll::State">State</a>&lt;Self&gt;&gt;;
+    fn <a href='#tymethod.default_x_dimension' class='fnname'>default_x_dimension</a>(scrollbar: &amp;<a class="struct" href="../../../conrod/widget/scrollbar/struct.Scrollbar.html" title="struct conrod::widget::scrollbar::Scrollbar">Scrollbar</a>&lt;Self&gt;, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Dimension.html" title="enum conrod::position::Dimension">Dimension</a>;
+    fn <a href='#tymethod.default_y_dimension' class='fnname'>default_y_dimension</a>(scrollbar: &amp;<a class="struct" href="../../../conrod/widget/scrollbar/struct.Scrollbar.html" title="struct conrod::widget::scrollbar::Scrollbar">Scrollbar</a>&lt;Self&gt;, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Dimension.html" title="enum conrod::position::Dimension">Dimension</a>;
+    fn <a href='#tymethod.to_2d' class='fnname'>to_2d</a>(scalar: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>;
+}</pre><div class='docblock'><p>The axis that is scrolled by the <code>Scrollbar</code>.</p>
+</div>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.track_rect' class='method'><span id='track_rect.v' class='invisible'><code>fn <a href='#tymethod.track_rect' class='fnname'>track_rect</a>(container: <a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>, thickness: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; <a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a></code></span></h3><div class='docblock'><p>The <code>Rect</code> for a scroll &quot;track&quot; with the given <code>thickness</code> for a container with the given
+<code>Rect</code>.</p>
+</div><h3 id='tymethod.handle_rect' class='method'><span id='handle_rect.v' class='invisible'><code>fn <a href='#tymethod.handle_rect' class='fnname'>handle_rect</a>(perpendicular_track_range: <a class="struct" href="../../../conrod/position/range/struct.Range.html" title="struct conrod::position::range::Range">Range</a>, handle_range: <a class="struct" href="../../../conrod/position/range/struct.Range.html" title="struct conrod::position::range::Range">Range</a>) -&gt; <a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a></code></span></h3><div class='docblock'><p>The <code>Rect</code> for a scroll handle given both <code>Range</code>s.</p>
+</div><h3 id='tymethod.scroll_state' class='method'><span id='scroll_state.v' class='invisible'><code>fn <a href='#tymethod.scroll_state' class='fnname'>scroll_state</a>(widget: &amp;<a class="struct" href="../../../conrod/graph/struct.Container.html" title="struct conrod::graph::Container">Container</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../../../conrod/widget/scroll/struct.State.html" title="struct conrod::widget::scroll::State">State</a>&lt;Self&gt;&gt;</code></span></h3><div class='docblock'><p>Retrieve the related <code>scroll::State</code> for the axis from a given widget container.</p>
+</div><h3 id='tymethod.default_x_dimension' class='method'><span id='default_x_dimension.v' class='invisible'><code>fn <a href='#tymethod.default_x_dimension' class='fnname'>default_x_dimension</a>(scrollbar: &amp;<a class="struct" href="../../../conrod/widget/scrollbar/struct.Scrollbar.html" title="struct conrod::widget::scrollbar::Scrollbar">Scrollbar</a>&lt;Self&gt;, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Dimension.html" title="enum conrod::position::Dimension">Dimension</a></code></span></h3><div class='docblock'><p>Determine a default <em>x</em> dimension for the scrollbar in the case that no specific width is
+given.</p>
+</div><h3 id='tymethod.default_y_dimension' class='method'><span id='default_y_dimension.v' class='invisible'><code>fn <a href='#tymethod.default_y_dimension' class='fnname'>default_y_dimension</a>(scrollbar: &amp;<a class="struct" href="../../../conrod/widget/scrollbar/struct.Scrollbar.html" title="struct conrod::widget::scrollbar::Scrollbar">Scrollbar</a>&lt;Self&gt;, ui: &amp;<a class="struct" href="../../../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Dimension.html" title="enum conrod::position::Dimension">Dimension</a></code></span></h3><div class='docblock'><p>Determine a default <em>y</em> dimension for the scrollbar in the case that no specific height is
+given.</p>
+</div><h3 id='tymethod.to_2d' class='method'><span id='to_2d.v' class='invisible'><code>fn <a href='#tymethod.to_2d' class='fnname'>to_2d</a>(scalar: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a></code></span></h3><div class='docblock'><p>Convert a given <code>Scalar</code> along the axis into two dimensions.</p>
+</div></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl Axis for <a class="enum" href="../../../conrod/widget/scroll/enum.X.html" title="enum conrod::widget::scroll::X">X</a></code></li>
+<li><code>impl Axis for <a class="enum" href="../../../conrod/widget/scroll/enum.Y.html" title="enum conrod::widget::scroll::Y">Y</a></code></li>
+</ul><script type="text/javascript" async
+                         src="../../../implementors/conrod/widget/scrollbar/trait.Axis.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

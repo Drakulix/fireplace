@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Keysym` type in crate `xkbcommon`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Keysym">
+
+    <title>xkbcommon::xkb::Keysym - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>xkbcommon</a>::<wbr><a href='index.html'>xkb</a></p><script>window.sidebarCurrent = {name: 'Keysym', ty: 'type', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content type">
+<h1 class='fqn'><span class='in-band'>Type Definition <a href='../index.html'>xkbcommon</a>::<wbr><a href='index.html'>xkb</a>::<wbr><a class="type" href=''>Keysym</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/xkbcommon/xkb/mod.rs.html#74' title='goto source code'>[src]</a></span></h1>
+<pre class='rust typedef'>type Keysym = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>;</pre><div class='docblock'><p>A number used to represent the symbols generated from a key on a keyboard.</p>
+
+<p>A key, represented by a keycode, may generate different symbols according
+to keyboard state.  For example, on a QWERTY keyboard, pressing the key
+labled &lt;A&gt; generates the symbol &#39;a&#39;.  If the Shift key is held, it
+generates the symbol &#39;A&#39;.  If a different layout is used, say Greek,
+it generates the symbol &#39;α&#39;.  And so on.</p>
+
+<p>Each such symbol is represented by a keysym.  Note that keysyms are
+somewhat more general, in that they can also represent some &quot;function&quot;,
+such as &quot;Left&quot; or &quot;Right&quot; for the arrow keys.  For more information,
+see:
+<a href="http://www.x.org/releases/X11R7.7/doc/xproto/x11protocol.html#keysym_encoding">http://www.x.org/releases/X11R7.7/doc/xproto/x11protocol.html#keysym_encoding</a></p>
+
+<p>Specifically named keysyms can be found in the
+xkbcommon/xkbcommon-keysyms.h header file.  Their name does not include
+the xkb::KEY_ prefix.</p>
+
+<p>Besides those, any Unicode/ISO 10646 character in the range U0100 to
+U10FFFF can be represented by a keysym value in the range 0x01000100 to
+0x0110FFFF.  The name of Unicode keysyms is &quot;U<codepoint>&quot;, e.g. &quot;UA1B2&quot;.</p>
+
+<p>The name of other unnamed keysyms is the hexadecimal representation of
+their value, e.g. &quot;0xabcd1234&quot;.</p>
+
+<p>Keysym names are case-sensitive.</p>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "xkbcommon";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

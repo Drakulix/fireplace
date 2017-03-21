@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `chapter_1` mod in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, chapter_1">
+
+    <title>conrod::guide::chapter_1 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>guide</a></p><script>window.sidebarCurrent = {name: 'chapter_1', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>guide</a>::<wbr><a class="mod" href=''>chapter_1</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/conrod/guide/chapter_1.rs.html#1-332' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p><strong>What is Conrod?</strong></p>
+
+<h2 id='a-brief-summary' class='section-header'><a href='#a-brief-summary'>A Brief Summary</a></h2>
+<p>Conrod is a portable, 2D, <a href="https://en.wikipedia.org/wiki/Graphical_user_interface" title="Wikipedia - Graphical User Interface">GUI</a> library for the <a href="https://www.rust-lang.org/" title="The Rust Programming Language">Rust programming language</a>.</p>
+
+<p>It provides an immediate-mode API that wraps a retained-mode widget state graph. This allows us to
+expose a simple, robust and reactive interface while approaching the performance of traditional,
+retained GUI frameworks.</p>
+
+<p>We provide a set of primitive and commonly useful widgets, along with a <a href="../../widget/trait.Widget.html" title="Widget trait">Widget</a> API that allows
+for designing new, custom widgets composed of unique logic and other widgets.</p>
+
+<p>Widgets are instantiated using the &quot;Builder&quot; aka &quot;Method Chaining&quot; pattern within an update loop.
+In this sense, we can think of a Widget and its builder methods as a function with a highly
+flexible and readable set of arguments.</p>
+
+<h2 id='screenshots-and-videos' class='section-header'><a href='#screenshots-and-videos'>Screenshots and Videos</a></h2>
+<p>If you have an awesome looking GUI made with conrod, please send us a screenshot and we&#39;ll add it here :)</p>
+
+<p>Here&#39;s <a href="https://www.youtube.com/watch?v=n2UrjogA0j0">a youtube demo</a> of the <a href="https://github.com/PistonDevelopers/conrod/blob/master/examples/all_widgets.rs">all_widgets.rs example</a>.</p>
+
+<p>Here&#39;s <a href="https://www.youtube.com/watch?v=_ZXLCVibI8c">another youtube demo</a> of conrod being used to create a basic synth editor.</p>
+
+<p><strong>A multimedia timeline widget.</strong></p>
+
+<p><img src="http://imgur.com/34NEw90.png" alt="timeline" style="width:700px;"></p>
+
+<p><strong>The <a href="https://github.com/PistonDevelopers/conrod/blob/master/examples/all_widgets.rs">all_widgets.rs example</a>.</strong></p>
+
+<p><img src="http://i.imgur.com/xKXISdc.png" alt="all_widgets.rs" style="width:700px;"></p>
+
+<p><strong>The <a href="https://github.com/PistonDevelopers/conrod/blob/master/examples/canvas.rs">canvas.rs example</a>.</strong></p>
+
+<p><img src="http://i.imgur.com/YtjjEJX.png" alt="canvas.rs" style="width:700px;"></p>
+
+<h2 id='feature-overview' class='section-header'><a href='#feature-overview'>Feature Overview</a></h2>
+<ul>
+<li><strong>Reactive</strong> and <strong>Immediate</strong> API. Produce the UI from your application state in one place, rather than as a separate entity spread across callbacks, instantiation, updates and drawing.</li>
+<li>A <strong>Widget trait</strong> to simplify the composition and design of widgets.</li>
+<li><strong>Scrolling</strong> that is opt-in, generalised and easy-to-use. Call <code>.scroll_kids(true)</code> on a widget and it will become a scrollable container for its children.</li>
+<li><strong>Powerful layout and positioning</strong>:
+
+<ul>
+<li>Placement - <code>.middle()</code>, <code>.top_left_of(CANVAS)</code>, <code>.mid_right_with_margin(20.0)</code>, etc.</li>
+<li>Alignment - <code>.align_left()</code>, <code>.align_top_of(LABEL)</code>, etc.</li>
+<li>Relative - <code>.down(20.0)</code>, <code>.right_from(BUTTON, 40.0)</code>, <code>.x_y_relative(20.0, 42.0)</code>, etc.</li>
+<li>Absolute - <code>.x_y(6.0, 7.0)</code></li>
+<li>Draggable pop-up / floating canvasses - <code>.floating(true)</code>.</li>
+<li><strong>WidgetMatrix</strong> and <strong>PositionMatrix</strong> for instantiating a grid of widgets.</li>
+</ul></li>
+<li><strong><a href="../../theme/struct.Theme.html" title="Theme struct">Theme</a></strong>s for unique style and layout defaults.</li>
+<li><strong><a href="../../macro.widget_ids!.html" title="widget_ids! macro">widget_ids!</a></strong> macro for easily and safely generating unique widget identifiers.</li>
+<li>Generic over events and graphics backends - compatible with:
+
+<ul>
+<li><a href="https://github.com/PistonDevelopers/glutin_window" title="glutin_window crate">glutin</a>, <a href="https://github.com/PistonDevelopers/sdl2_window" title="sdl2_window crate">sdl2</a> and <a href="https://github.com/PistonDevelopers/glfw_window" title="glfw_window crate">glfw</a> <a href="http://docs.piston.rs/piston/window/trait.Window.html" title="piston Window trait"><strong>Window</strong></a> backends.</li>
+<li><a href="https://github.com/PistonDevelopers/gfx_graphics" title="gfx_graphics crate">gfx</a>, <a href="https://github.com/PistonDevelopers/glium_graphics" title="glium_graphics crate">glium</a> and raw <a href="https://github.com/PistonDevelopers/opengl_graphics" title="opengl_graphics crate">opengl</a> <a href="http://docs.piston.rs/graphics/graphics/trait.Graphics.html" title="piston Graphics trait"><strong>Graphics</strong></a> backends.</li>
+</ul></li>
+<li>Provides a collection of commonly useful widgets.</li>
+</ul>
+
+<h2 id='available-widgets' class='section-header'><a href='#available-widgets'>Available Widgets</a></h2>
+<p>The widgets that are provided by conrod can be broken into two sets: <a href="./index.html#primitive-widgets" title="Primitive Widgets"><strong>primitive</strong></a> and <a href="./index.html#common-use-widgets" title="Common Use Widgets"><strong>common
+use</strong></a>.</p>
+
+<h3 id='primitive-widgets' class='section-header'><a href='#primitive-widgets'>Primitive Widgets</a></h3>
+<p>Primitive widgets are the fundamental graphical components in any conrod user interface. They are a
+special set of widgets from which all other widgets may be composed. For example, a <code>Button</code> widget
+may be composed of one <code>Rectangle</code> primitive widget and one <code>Text</code> primitive widget. A
+<code>DropDownList</code> may be composed of <em>n</em> <code>Button</code> widgets, and in turn <em>n</em> <code>Rectangle</code> primitive
+widgets and <em>n</em> <code>Text</code> primitive widgets.</p>
+
+<p>When drawing the widget graph to the screen, conrod <em>only</em> draws the primitive widgets. This allows
+widget designers to create custom widgets by simply instantiating other widgets, without having to
+directly write any graphics code themselves. This also greatly simplifies the caching of common
+widget state like text, positioning and styling as the primitive widgets take care of all of this
+automatically.</p>
+
+<p>The following are the primitive widgets provided by conrod:</p>
+
+<ul>
+<li><strong><a href="../../widget/primitive/line/struct.Line.html" title="Line Widget">Line</a></strong></li>
+<li><strong><a href="../../widget/primitive/point_path/struct.PointPath.html" title="PointPath Widget">PointPath</a></strong></li>
+<li>Shapes:
+
+<ul>
+<li><strong><a href="../../widget/primitive/shape/circle/struct.Circle.html" title="Circle Widget">Circle</a></strong></li>
+<li><strong><a href="../../widget/primitive/shape/rectangle/struct.Rectangle.html" title="Rectangle Widget">Rectangle</a></strong></li>
+<li><strong><a href="../../widget/primitive/shape/oval/struct.Oval.html" title="Oval Widget">Oval</a></strong></li>
+<li><strong><a href="../../widget/primitive/shape/polygon/struct.Polygon.html" title="Polygon Widget">Polygon</a></strong></li>
+</ul></li>
+<li><strong><a href="../../widget/primitive/text/struct.Text.html" title="Text Widget">Text</a></strong> - automatic line-wrapping, line spacing, etc.</li>
+<li><strong><a href="../../widget/primitive/image/struct.Image.html" title="Image Widget">Image</a></strong></li>
+</ul>
+
+<p>If conrod is lacking a primitive widget that you require, please let us know! There are currently
+plans to allow for a user to design their own primitive widgets, however these will likely remain
+low priority until requested.</p>
+
+<h3 id='common-use-widgets' class='section-header'><a href='#common-use-widgets'>Common Use Widgets</a></h3>
+<p>Common use widgets are simply widgets that are commonly required by GUIs. There is nothing special
+about these widgets in the sense that they could just as easily be implemented in an external
+crate by third-party users. However, their usage is common enough that we choose to distribute them
+with conrod itself.</p>
+
+<p>The following are the common use widgets provided by conrod:</p>
+
+<ul>
+<li><strong><a href="../../widget/bordered_rectangle/struct.BorderedRectangle.html" title="BorderedRectangle Widget">BorderedRectangle</a></strong></li>
+<li><strong><a href="../../widget/button/struct.Button.html" title="Button Widget">Button</a></strong></li>
+<li><strong><a href="../../widget/canvas/struct.Canvas.html" title="Canvas Widget">Canvas</a></strong> - a container-like widget</li>
+<li><strong><a href="../../widget/drop_down_list/struct.DropDownList.html" title="DropDownList Widget">DropDownList</a></strong></li>
+<li><strong><a href="../../widget/envelope_editor/struct.EnvelopeEditor.html" title="EnvelopeEditor Widget">EnvelopeEditor</a></strong></li>
+<li><strong><a href="../../widget/matrix/struct.Matrix.html" title="Matrix Widget">Matrix</a></strong></li>
+<li><strong><a href="../../widget/number_dialer/struct.NumberDialer.html" title="NumberDialer Widget">NumberDialer</a></strong></li>
+<li><strong><a href="../../widget/plot_path/struct.PlotPath.html" title="PlotPath Widget">PlotPath</a></strong></li>
+<li><strong><a href="../../widget/scrollbar/struct.Scrollbar.html" title="Scrollbar Widget">Scrollbar</a></strong> - emits scroll events to some target scroll widget</li>
+<li><strong><a href="../../widget/slider/struct.Slider.html" title="Slider Widget">Slider</a></strong></li>
+<li><strong><a href="../../widget/tabs/struct.Tabs.html" title="Tabs Widget">Tabs</a></strong> - for easily switching between multiple <a href="../../widget/canvas/struct.Canvas.html" title="Canvas Widget">Canvas</a>ses with ease</li>
+<li><strong><a href="../../widget/text_box/struct.TextBox.html" title="TextBox Widget">TextBox</a></strong> - an editable one-line text field</li>
+<li><strong><a href="../../widget/text_edit/struct.TextEdit.html" title="TextBox Widget">TextEdit</a></strong> - an editable block of text</li>
+<li><strong><a href="../../widget/title_bar/struct.TitleBar.html" title="TitleBar Widget">TitleBar</a></strong></li>
+<li><strong><a href="../../widget/toggle/struct.Toggle.html" title="Toggle Widget">Toggle</a></strong></li>
+<li><strong><a href="../../widget/xy_pad/struct.XYPad.html" title="XYPad Widget">XYPad</a></strong></li>
+</ul>
+
+<p>The following are planned, but not yet implemented:</p>
+
+<ul>
+<li><a href="https://github.com/PistonDevelopers/conrod/issues/417">Menu Bar / Tool Bar</a></li>
+<li><a href="https://github.com/PistonDevelopers/conrod/issues/394">Right-click Context Menu</a></li>
+<li><a href="https://github.com/PistonDevelopers/conrod/issues/84">Graph / Chart</a></li>
+<li><a href="https://github.com/PistonDevelopers/conrod/issues/381">File/Directory Navigator</a></li>
+<li><a href="https://github.com/PistonDevelopers/mush">Advanced graph visualisation and control</a></li>
+</ul>
+
+<p>If you notice that we&#39;re missing important widgets, or if you have a widget that you feel would
+make a nice addition to conrod, please let us know by leaving an <a href="https://github.com/PistonDevelopers/conrod/issues" title="Conrod Github Issues">issue</a> or <a href="https://github.com/PistonDevelopers/conrod/pulls" title="Conrod Github Pull Requests">pull request</a>!
+Be sure to check <a href="https://github.com/PistonDevelopers/conrod/issues?q=is%3Aopen+is%3Aissue+label%3Awidget">issues with the widget
+label</a>
+first, as your desired widget may have already been requested.</p>
+
+<h2 id='immediate-mode' class='section-header'><a href='#immediate-mode'>&quot;Immediate Mode&quot;</a></h2>
+<h3 id='what-is-it' class='section-header'><a href='#what-is-it'>What is it?</a></h3>
+<p>The term &quot;Immediate Mode&quot; describes a style of user interface API.</p>
+
+<p>In an immediate mode GUI, widgets are instantiated using functions in an <em>update</em> or <em>draw</em> loop.
+This is quite different to the more traditional &quot;retained mode&quot;, where widget <em>types</em> are
+constructed during the <em>setup</em> stage.</p>
+
+<p>Immediate mode encourages a less stateful, more data-driven design as the user interface is
+instantiated as a <em>result</em> of the application state every frame or update. On the other hand,
+retained user interfaces tend to work the other way around, driving the application by sending
+events or triggering callback functions upon user interaction.</p>
+
+<h3 id='why-use-it' class='section-header'><a href='#why-use-it'>Why use it?</a></h3>
+<p>Immediate mode tends to be the easier style to use for highly dynamic interfaces and those that
+require frequent synchronisation with application state. This is because immediate widgets handle
+changes in application state at the same place in which they are instantiated (during the update
+or draw stage). While retained interface logic is often divided up between instantiation, updating,
+drawing and event handling, immediate interfaces aim to consolidate all UI related logic within one
+place.</p>
+
+<p>Historically, due to their statelessness and frequent re-instantiation, immediate mode interfaces
+have been known to pay the price of performance for their convenience. Although retained interfaces
+can be more tedious to maintain and synchronise with application state, they are often less CPU
+intensive as the majority of their state remains untouched following the application&#39;s setup stage.</p>
+
+<h3 id='is-conrod-immediate-or-retained' class='section-header'><a href='#is-conrod-immediate-or-retained'>Is Conrod Immediate or Retained?</a></h3>
+<p>Conrod aims to adopt the best of both worlds by providing an immediate mode API over a hidden,
+retained widget state graph. From the user&#39;s perspective conrod widgets tend to feel stateless, as
+though they only exist for the lifetime of the scope in which they are instantiated. In actuality,
+each widget&#39;s state is cached (or &quot;retained&quot;) within the <code>Ui</code>&#39;s internal widget graph. This allows
+for efficient re-use of allocations and the ability to easily defer the drawing of widgets to a
+stage that is more suited to the user&#39;s application. As a result, Conrod should be able to provide
+the convenience of an immediate mode API alongside performance that approaches that of traditional,
+retained GUIs.</p>
+
+<h2 id='the-builder-pattern' class='section-header'><a href='#the-builder-pattern'>The Builder Pattern</a></h2>
+<p>The &quot;Builder Pattern&quot; describes the process of &quot;building&quot; a type by chaining together method calls.
+Conrod uses this pattern within its API for widget instantiation. This pattern is perhaps easiest
+to grasp with an example.</p>
+
+<p>Let&#39;s say we have a <code>Button</code> widget. We want to make sure that a user may instantiate it with
+specific dimensions, position, color, label, label font size and label color. A naiive constructor
+might look like this:</p>
+
+<pre class="rust rust-example-rendered">
+<span class="ident">Button</span>::<span class="ident">new</span>(<span class="ident">dimensions</span>,
+            <span class="ident">position</span>,
+            <span class="ident">color</span>::<span class="ident">RED</span>,
+            <span class="string">&quot;DONT PRESS&quot;</span>,
+            <span class="ident">label_font_size</span>,
+            <span class="ident">label_color</span>,
+            <span class="op">||</span> <span class="ident">do_stuff</span>(),
+            <span class="ident">BUTTON_ID</span>,
+            <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ui</span>);</pre>
+
+<p>The problem is that most of the time users will just want the <code>Button</code> to choose defaults straight
+from the <code>Ui</code>&#39;s <code>Theme</code>, rather than specifying every parameter for every instance of a <code>Button</code>
+themselves. We want parameters to be <em>optional</em>. Perhaps then, we should make optional parameters
+take an <code>Option</code>?</p>
+
+<pre class="rust rust-example-rendered">
+<span class="ident">Button</span>::<span class="ident">new</span>(<span class="prelude-val">Some</span>(<span class="ident">dimensions</span>),
+            <span class="prelude-val">Some</span>(<span class="ident">position</span>),
+            <span class="prelude-val">None</span>,
+            <span class="string">&quot;DONT PRESS&quot;</span>,
+            <span class="prelude-val">None</span>,
+            <span class="prelude-val">None</span>,
+            <span class="prelude-val">Some</span>(<span class="op">||</span> <span class="ident">do_stuff</span>()),
+            <span class="ident">BUTTON_ID</span>,
+            <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ui</span>);</pre>
+
+<p>Although the user no longer has to think about the values for parameters they don&#39;t care about,
+this is still extremely verbose and the <code>None</code> parameters seem quite ambiguous.</p>
+
+<p>In some languages, this problem might be solved using a combination of features called &quot;named
+parameters&quot; and &quot;default parameters&quot;. If rust had these features, the above might look like this:</p>
+
+<pre class="rust rust-example-rendered">
+<span class="ident">Button</span>::<span class="ident">new</span>(<span class="ident">dimensions</span><span class="op">=</span><span class="ident">dimensions</span>,
+            <span class="ident">position</span><span class="op">=</span><span class="ident">position</span>,
+            <span class="ident">label</span><span class="op">=</span><span class="string">&quot;DONT PRESS&quot;</span>,
+            <span class="ident">react</span><span class="op">=</span><span class="op">||</span> <span class="ident">do_stuff</span>(),
+            <span class="ident">id</span><span class="op">=</span><span class="ident">BUTTON_ID</span>,
+            <span class="ident">ui</span><span class="op">=</span><span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ui</span>);</pre>
+
+<p>Certainly an improvement in conciseness and readability. Although these features are not available
+to us in Rust, there is a way in which we can emulate their behaviour - This is where the builder
+pattern comes in.</p>
+
+<p>By moving each parameter out of the <code>new</code> function args and into their own methods, we can treat
+methods almost as though they are named parameters as in the above example. Here is what the above
+might look like using the builder pattern:</p>
+
+<pre class="rust rust-example-rendered">
+<span class="ident">Button</span>::<span class="ident">new</span>()
+    .<span class="ident">dimensions</span>(<span class="ident">dimensions</span>)
+    .<span class="ident">position</span>(<span class="ident">position</span>)
+    .<span class="ident">label</span>(<span class="string">&quot;DONT PRESS&quot;</span>)
+    .<span class="ident">react</span>(<span class="op">||</span> <span class="ident">do_stuff</span>())
+    .<span class="ident">id</span>(<span class="ident">BUTTON_ID</span>)
+    .<span class="ident">ui</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ui</span>);</pre>
+
+<p><em>This is in fact the method of widget instantiation used by conrod, though with some slight
+differences in method naming (best to check the examples directory for a proper demo).</em></p>
+
+<p>Although this certainly certainly seems like the nicest solution from an API perspective, the
+attentive rustacean may notice that this requires extra work for the widget designer compared to
+the previous examples. Previously, all work for widget instantiation was done within the <code>new</code>
+function. The builder pattern implementation introduces a few differences worth noticing:</p>
+
+<ol>
+<li>A method must be implemented on <code>Button</code> for every optional parameter.</li>
+<li>The <code>Button::new</code> function must return some type that can be treated as a set of <code>Option</code>
+arguments which can be set as it is passed from buidler method to builder method.</li>
+<li>There must be some method that indicates the end of building and the instantiation of the widget.</li>
+</ol>
+
+<p>In Conrod, we are of the opinion that, in the common case, the extra work on behalf of the widget
+designers is worth the benefits gained by the users. However, we also make a significant effort to
+address each of the above points best we can in order to reduce the workload of widget developers:</p>
+
+<ol>
+<li>We provide a <a href="../../macro.builder_methods!.html" title="builder_methods! macro"><code>builder_methods!</code></a> macro which reduces the boilerplate of builder method
+implementation.</li>
+<li>In Conrod, widgets are treated as a set of arguments to their state, rather than containing
+their own state themselves. This suits the immediate mode style of conrod, where widget state is
+hidden and stored within the <code>Ui</code>.</li>
+<li>All Conrod widgets must take a unique identifier and a mutable reference to the <code>Ui</code>. We
+consolidate this into a single <code>.set(ID, &amp;mut ui)</code> method, which we also use as the indication
+method to stop building and instantiate the widget wihtin the <code>Ui</code>.</li>
+</ol>
+
+<p>All of these points will be covered later in more detail within the widget implementation section
+of the guide.</p>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

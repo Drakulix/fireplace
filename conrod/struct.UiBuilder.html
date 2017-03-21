@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `UiBuilder` struct in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, UiBuilder">
+
+    <title>conrod::UiBuilder - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>conrod</a></p><script>window.sidebarCurrent = {name: 'UiBuilder', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>conrod</a>::<wbr><a class="struct" href=''>UiBuilder</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/conrod/ui.rs.html#14-35' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct UiBuilder {
+    pub window_dimensions: <a class="type" href="../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a>,
+    pub maybe_theme: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>&gt;,
+    pub maybe_widgets_capacity: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;,
+}</pre><div class='docblock'><p>A constructor type for building a <code>Ui</code> instance with a set of optional parameters.</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.window_dimensions' class="structfield">
+                           <span id='window_dimensions.v' class='invisible'>
+                           <code>window_dimensions: <a class="type" href="../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a></code>
+                           </span></span><div class='docblock'><p>The initial dimensions of the window in which the <code>Ui</code> exists.</p>
+</div><span id='structfield.maybe_theme' class="structfield">
+                           <span id='maybe_theme.v' class='invisible'>
+                           <code>maybe_theme: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>&gt;</code>
+                           </span></span><div class='docblock'><p>The theme used to set default styling for widgets.</p>
+
+<p>If this field is <code>None</code> when <code>build</code> is called, <code>Theme::default</code> will be used.</p>
+</div><span id='structfield.maybe_widgets_capacity' class="structfield">
+                           <span id='maybe_widgets_capacity.v' class='invisible'>
+                           <code>maybe_widgets_capacity: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>&gt;</code>
+                           </span></span><div class='docblock'><p>An estimation of the maximum number of widgets that will be used with this <code>Ui</code> instance.</p>
+
+<p>This value is used to determine the size with which various collections should be
+reserved. This may make the first cycle of widget instantiations more efficient as the
+collections will not be required to grow dynamically. These collections include:</p>
+
+<ul>
+<li>the widget graph node and edge <code>Vec</code>s</li>
+<li>the <code>HashSet</code> used to track updated widgets</li>
+<li>the widget <code>DepthOrder</code> (a kind of toposort describing the order of widgets in their
+rendering order).</li>
+</ul>
+
+<p>If this field is <code>None</code> when <code>build</code> is called, these collections will be initialised with
+no pre-reserved size and will instead grow organically as needed.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../conrod/struct.UiBuilder.html" title="struct conrod::UiBuilder">UiBuilder</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/conrod/ui.rs.html#113-158' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(window_dimensions: <a class="type" href="../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Begin building a new <code>Ui</code> instance.</p>
+
+<p>Give the initial dimensions of the window within which the <code>Ui</code> will be instantiated as a
+<code>Scalar</code> (DPI agnostic) value.</p>
+</div><h4 id='method.theme' class="method"><span id='theme.v' class='invisible'><code>fn <a href='#method.theme' class='fnname'>theme</a>(self, value: <a class="struct" href="../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>The theme used to set default styling for widgets.</p>
+
+<p>If this field is <code>None</code> when <code>build</code> is called, <code>Theme::default</code> will be used.</p>
+</div><h4 id='method.widgets_capacity' class="method"><span id='widgets_capacity.v' class='invisible'><code>fn <a href='#method.widgets_capacity' class='fnname'>widgets_capacity</a>(self, value: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>An estimation of the maximum number of widgets that will be used with this <code>Ui</code> instance.</p>
+
+<p>This value is used to determine the size with which various collections should be
+reserved. This may make the first cycle of widget instantiations more efficient as the
+collections will not be required to grow dynamically. These collections include:</p>
+
+<ul>
+<li>the widget graph node and edge <code>Vec</code>s</li>
+<li>the <code>HashSet</code> used to track updated widgets</li>
+<li>the widget <code>DepthOrder</code> (a kind of toposort describing the order of widgets in their
+rendering order).</li>
+</ul>
+
+<p>If this field is <code>None</code> when <code>build</code> is called, these collections will be initialised with
+no pre-reserved size and will instead grow organically as required.</p>
+</div><h4 id='method.build' class="method"><span id='build.v' class='invisible'><code>fn <a href='#method.build' class='fnname'>build</a>(self) -&gt; <a class="struct" href="../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a></code></span></h4>
+<div class='docblock'><p>Build <strong>Ui</strong> from the given builder</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

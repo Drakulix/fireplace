@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `modes` mod in crate `fireplace_lib`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, modes">
+
+    <title>fireplace_lib::handlers::workspaces::modes - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../../index.html'>fireplace_lib</a>::<wbr><a href='../../index.html'>handlers</a>::<wbr><a href='../index.html'>workspaces</a></p><script>window.sidebarCurrent = {name: 'modes', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../../../index.html'>fireplace_lib</a>::<wbr><a href='../../index.html'>handlers</a>::<wbr><a href='../index.html'>workspaces</a>::<wbr><a class="mod" href=''>modes</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../../src/fireplace_lib/handlers/workspaces/modes/mod.rs.html#1-130' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Collection of different <code>Mode</code>s</p>
+
+<p><code>Mode</code>s handle how <code>View</code>s on an <code>Output</code> or <code>Workspace</code> are layouted
+and behave. They handle positioning, sizing, reacting to <code>View</code>&#39;s requests
+or may choose to ignore them.</p>
+
+<p>They can be used individually as handlers, but are normally indirectly
+created and managed by workspaces via their matching configurations.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use self::<a class="mod"
+                                           href="./bsp/index.html">bsp</a>::<a class="struct" href="../../../../fireplace_lib/handlers/workspaces/modes/bsp/struct.BSP.html" title="struct fireplace_lib::handlers::workspaces::modes::bsp::BSP">BSP</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./bsp/index.html">bsp</a>::<a class="struct" href="../../../../fireplace_lib/handlers/workspaces/modes/bsp/struct.BSPConfig.html" title="struct fireplace_lib::handlers::workspaces::modes::bsp::BSPConfig">BSPConfig</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./bsp/index.html">bsp</a>::<a class="type" href="../../../../fireplace_lib/handlers/workspaces/modes/bsp/type.BSPWrap.html" title="type fireplace_lib::handlers::workspaces::modes::bsp::BSPWrap">BSPWrap</a>;</code></td></tr><tr><td><code>pub use self::<a class="mod"
+                                           href="./bsp/index.html">bsp</a>::<a class="struct" href="../../../../fireplace_lib/handlers/workspaces/modes/bsp/struct.KeyPatterns.html" title="struct fireplace_lib::handlers::workspaces::modes::bsp::KeyPatterns">KeyPatterns</a> as BSPKeyPatterns;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="bsp/index.html"
+                                  title='mod fireplace_lib::handlers::workspaces::modes::bsp'>bsp</a></td>
+                           <td class='docblock-short'>
+                                <p>i3-like <strong>B</strong>inary <strong>S</strong>plit  <strong>P</strong>artitioning <code>Mode</code> and corresponding
+handlers and types</p>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Combined.html"
+                                  title='struct fireplace_lib::handlers::workspaces::modes::Combined'>Combined</a></td>
+                           <td class='docblock-short'>
+                                <p>A <code>Mode</code> that splits <code>View</code> by given filter rules onto two given <code>Mode</code>s</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CombinedConfig.html"
+                                  title='struct fireplace_lib::handlers::workspaces::modes::CombinedConfig'>CombinedConfig</a></td>
+                           <td class='docblock-short'>
+                                <p>Configuration for <code>Combined</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CombinedKeyPatterns.html"
+                                  title='struct fireplace_lib::handlers::workspaces::modes::CombinedKeyPatterns'>CombinedKeyPatterns</a></td>
+                           <td class='docblock-short'>
+                                <p><code>KeyPattern</code>s toggling modes</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Floating.html"
+                                  title='struct fireplace_lib::handlers::workspaces::modes::Floating'>Floating</a></td>
+                           <td class='docblock-short'>
+                                <p>A <code>Mode</code> that does traditional <code>View</code> management.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.FloatingConfig.html"
+                                  title='struct fireplace_lib::handlers::workspaces::modes::FloatingConfig'>FloatingConfig</a></td>
+                           <td class='docblock-short'>
+                                <p>Configuration for <code>Floating</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Fullscreen.html"
+                                  title='struct fireplace_lib::handlers::workspaces::modes::Fullscreen'>Fullscreen</a></td>
+                           <td class='docblock-short'>
+                                <p>A <code>Mode</code> that lets you pull one <code>View</code> into fullscreen operation while
+letting another wrapped <code>Mode</code> handle the rest</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.FullscreenConfig.html"
+                                  title='struct fireplace_lib::handlers::workspaces::modes::FullscreenConfig'>FullscreenConfig</a></td>
+                           <td class='docblock-short'>
+                                <p>Configuration of <code>Fullscreen</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.FullscreenKeyPatterns.html"
+                                  title='struct fireplace_lib::handlers::workspaces::modes::FullscreenKeyPatterns'>FullscreenKeyPatterns</a></td>
+                           <td class='docblock-short'>
+                                <p><code>KeyPattern</code>s toggling fullscreen</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Switch.html"
+                                  title='struct fireplace_lib::handlers::workspaces::modes::Switch'>Switch</a></td>
+                           <td class='docblock-short'>
+                                <p>A <code>Mode</code> that lets you conviniently switch between different <code>Mode</code>s</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SwitchConfig.html"
+                                  title='struct fireplace_lib::handlers::workspaces::modes::SwitchConfig'>SwitchConfig</a></td>
+                           <td class='docblock-short'>
+                                <p>Configuration for <code>Switch</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SwitchKeyPatterns.html"
+                                  title='struct fireplace_lib::handlers::workspaces::modes::SwitchKeyPatterns'>SwitchKeyPatterns</a></td>
+                           <td class='docblock-short'>
+                                <p><code>KeyPattern</code>s switching modes</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.AnyMode.html"
+                                  title='enum fireplace_lib::handlers::workspaces::modes::AnyMode'>AnyMode</a></td>
+                           <td class='docblock-short'>
+                                <p>Enumeration of all possible <code>Mode</code>s, makes storing any mode much easier</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.AnyModeConfig.html"
+                                  title='enum fireplace_lib::handlers::workspaces::modes::AnyModeConfig'>AnyModeConfig</a></td>
+                           <td class='docblock-short'>
+                                <p>Configuration for <code>AnyMode</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.CombinedPredicate.html"
+                                  title='enum fireplace_lib::handlers::workspaces::modes::CombinedPredicate'>CombinedPredicate</a></td>
+                           <td class='docblock-short'>
+                                <p>A <code>Predicate</code> may filter given <code>Views</code></p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Mode.html"
+                                  title='trait fireplace_lib::handlers::workspaces::modes::Mode'>Mode</a></td>
+                           <td class='docblock-short'>
+                                <p>Common interface for <code>Mode</code>s mostly used by workspaces</p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.AnyModeWrap.html"
+                                  title='type fireplace_lib::handlers::workspaces::modes::AnyModeWrap'>AnyModeWrap</a></td>
+                           <td class='docblock-short'>
+                                <p>Convinient type alias for a wrapped <code>AnyMode</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.CombinedWrap.html"
+                                  title='type fireplace_lib::handlers::workspaces::modes::CombinedWrap'>CombinedWrap</a></td>
+                           <td class='docblock-short'>
+                                <p>Convinient type alias for a wrapped <code>Combined</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.FullscreenWrap.html"
+                                  title='type fireplace_lib::handlers::workspaces::modes::FullscreenWrap'>FullscreenWrap</a></td>
+                           <td class='docblock-short'>
+                                <p>Convinient type alias for a wrapped <code>Fullscreen</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.SwitchWrap.html"
+                                  title='type fireplace_lib::handlers::workspaces::modes::SwitchWrap'>SwitchWrap</a></td>
+                           <td class='docblock-short'>
+                                <p>Convinient type alias for a wrapped <code>Switch</code></p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../../";
+        window.currentCrate = "fireplace_lib";
+    </script>
+    <script src="../../../../jquery.js"></script>
+    <script src="../../../../main.js"></script>
+    <script defer src="../../../../search-index.js"></script>
+</body>
+</html>

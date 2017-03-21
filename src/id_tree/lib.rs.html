@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="Source to the Rust file `/work/.vagga/nightly-home/.cargo/registry/src/github.com-1ecc6299db9ec823/id_tree-1.0.2/src/lib.rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang">
+
+    <title>lib.rs.html -- source</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content source"><pre class="line-numbers"><span id="1">  1</span>
+<span id="2">  2</span>
+<span id="3">  3</span>
+<span id="4">  4</span>
+<span id="5">  5</span>
+<span id="6">  6</span>
+<span id="7">  7</span>
+<span id="8">  8</span>
+<span id="9">  9</span>
+<span id="10"> 10</span>
+<span id="11"> 11</span>
+<span id="12"> 12</span>
+<span id="13"> 13</span>
+<span id="14"> 14</span>
+<span id="15"> 15</span>
+<span id="16"> 16</span>
+<span id="17"> 17</span>
+<span id="18"> 18</span>
+<span id="19"> 19</span>
+<span id="20"> 20</span>
+<span id="21"> 21</span>
+<span id="22"> 22</span>
+<span id="23"> 23</span>
+<span id="24"> 24</span>
+<span id="25"> 25</span>
+<span id="26"> 26</span>
+<span id="27"> 27</span>
+<span id="28"> 28</span>
+<span id="29"> 29</span>
+<span id="30"> 30</span>
+<span id="31"> 31</span>
+<span id="32"> 32</span>
+<span id="33"> 33</span>
+<span id="34"> 34</span>
+<span id="35"> 35</span>
+<span id="36"> 36</span>
+<span id="37"> 37</span>
+<span id="38"> 38</span>
+<span id="39"> 39</span>
+<span id="40"> 40</span>
+<span id="41"> 41</span>
+<span id="42"> 42</span>
+<span id="43"> 43</span>
+<span id="44"> 44</span>
+<span id="45"> 45</span>
+<span id="46"> 46</span>
+<span id="47"> 47</span>
+<span id="48"> 48</span>
+<span id="49"> 49</span>
+<span id="50"> 50</span>
+<span id="51"> 51</span>
+<span id="52"> 52</span>
+<span id="53"> 53</span>
+<span id="54"> 54</span>
+<span id="55"> 55</span>
+<span id="56"> 56</span>
+<span id="57"> 57</span>
+<span id="58"> 58</span>
+<span id="59"> 59</span>
+<span id="60"> 60</span>
+<span id="61"> 61</span>
+<span id="62"> 62</span>
+<span id="63"> 63</span>
+<span id="64"> 64</span>
+<span id="65"> 65</span>
+<span id="66"> 66</span>
+<span id="67"> 67</span>
+<span id="68"> 68</span>
+<span id="69"> 69</span>
+<span id="70"> 70</span>
+<span id="71"> 71</span>
+<span id="72"> 72</span>
+<span id="73"> 73</span>
+<span id="74"> 74</span>
+<span id="75"> 75</span>
+<span id="76"> 76</span>
+<span id="77"> 77</span>
+<span id="78"> 78</span>
+<span id="79"> 79</span>
+<span id="80"> 80</span>
+<span id="81"> 81</span>
+<span id="82"> 82</span>
+<span id="83"> 83</span>
+<span id="84"> 84</span>
+<span id="85"> 85</span>
+<span id="86"> 86</span>
+<span id="87"> 87</span>
+<span id="88"> 88</span>
+<span id="89"> 89</span>
+<span id="90"> 90</span>
+<span id="91"> 91</span>
+<span id="92"> 92</span>
+<span id="93"> 93</span>
+<span id="94"> 94</span>
+<span id="95"> 95</span>
+<span id="96"> 96</span>
+<span id="97"> 97</span>
+<span id="98"> 98</span>
+<span id="99"> 99</span>
+<span id="100">100</span>
+<span id="101">101</span>
+<span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
+<span id="121">121</span>
+<span id="122">122</span>
+<span id="123">123</span>
+<span id="124">124</span>
+<span id="125">125</span>
+<span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
+<span id="131">131</span>
+<span id="132">132</span>
+<span id="133">133</span>
+<span id="134">134</span>
+<span id="135">135</span>
+<span id="136">136</span>
+<span id="137">137</span>
+<span id="138">138</span>
+<span id="139">139</span>
+<span id="140">140</span>
+<span id="141">141</span>
+<span id="142">142</span>
+<span id="143">143</span>
+<span id="144">144</span>
+<span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+</pre><pre class="rust ">
+<span class="doccomment">//! A library for creating and modifying Tree structures.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! # Overview</span>
+<span class="doccomment">//! In this implementation, the `Tree` owns all of the `Node`s and all inter-`Node` relationships</span>
+<span class="doccomment">//! are managed with `NodeId`s.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! `Tree`s in this library are &quot;just&quot; trees.  They do not allow cycles.  They do not allow</span>
+<span class="doccomment">//! the creation of arbitrary Graph structures.  There is no weight associated with edges between</span>
+<span class="doccomment">//! `Node`s.  In addition, each `Node` can have an arbitrary number of child `Node`s.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! It is important to note that this library does not support comparison-based `Node` insertion.</span>
+<span class="doccomment">//! In other words, this is not a Binary Search Tree (or any other kind of search tree) library.</span>
+<span class="doccomment">//! It is purely a library for storing data in a hierarchical manner.  The caller must know the</span>
+<span class="doccomment">//! structure that they wish to build and then use this library to do so;  this library will not</span>
+<span class="doccomment">//! make those structural decisions for you.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ## Example Usage</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//! use id_tree::*;</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! fn main() {</span>
+<span class="doccomment">//!     use id_tree::InsertBehavior::*;</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//!     //      0</span>
+<span class="doccomment">//!     //     / \</span>
+<span class="doccomment">//!     //    1   2</span>
+<span class="doccomment">//!     //   / \</span>
+<span class="doccomment">//!     //  3   4</span>
+<span class="doccomment">//!     let mut tree: Tree&lt;i32&gt; = TreeBuilder::new()</span>
+<span class="doccomment">//!         .with_node_capacity(5)</span>
+<span class="doccomment">//!         .build();</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//!     let root_id: NodeId = tree.insert(Node::new(0), AsRoot).unwrap();</span>
+<span class="doccomment">//!     let child_id: NodeId = tree.insert(Node::new(1), UnderNode(&amp;root_id)).unwrap();</span>
+<span class="doccomment">//!     tree.insert(Node::new(2), UnderNode(&amp;root_id)).unwrap();</span>
+<span class="doccomment">//!     tree.insert(Node::new(3), UnderNode(&amp;child_id)).unwrap();</span>
+<span class="doccomment">//!     tree.insert(Node::new(4), UnderNode(&amp;child_id)).unwrap();</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//!     println!(&quot;Pre-order:&quot;);</span>
+<span class="doccomment">//!     print_pre_order(&amp;tree, &amp;root_id);</span>
+<span class="doccomment">//!     // results in the output &quot;0, 1, 3, 4, 2, &quot;</span>
+<span class="doccomment">//! }</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! fn print_pre_order(tree: &amp;Tree&lt;i32&gt;, node_id: &amp;NodeId) {</span>
+<span class="doccomment">//!     let node_ref = tree.get(node_id).unwrap();</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//!     print!(&quot;{}, &quot;, node_ref.data());</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//!     for child_id in node_ref.children() {</span>
+<span class="doccomment">//!         print_pre_order(tree, &amp;child_id);</span>
+<span class="doccomment">//!     }</span>
+<span class="doccomment">//! }</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ## Project Goals</span>
+<span class="doccomment">//! * Allow caller control of as many allocations as possible (through pre-allocation)</span>
+<span class="doccomment">//! * Fast `Node` insertion and removal</span>
+<span class="doccomment">//! * Arbitrary _Tree_ structure creation and manipulation</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ## Non-Goals</span>
+<span class="doccomment">//! * Arbitrary _Graph_ structure creation and manipulation</span>
+<span class="doccomment">//! * Comparison-based node insertion of any kind</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! #### Drawbacks of this Library</span>
+<span class="doccomment">//! Sadly, Rust&#39;s ownership/reference system is sidestepped a bit by this implementation and this</span>
+<span class="doccomment">//! can cause issues if the caller doesn&#39;t pay attention to what they are doing with `NodeId`s.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! We try to solve these issues with very careful usage of `NodeId`s so that the caller doesn&#39;t</span>
+<span class="doccomment">//! have to be bothered (too much) with these concerns.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Please see the [Potential `NodeId` Issues](struct.NodeId.html#potential-nodeid-issues) section</span>
+<span class="doccomment">//! of the `NodeId` documentation for more info on what these issues are and how this library</span>
+<span class="doccomment">//! attempts to solve them.</span>
+<span class="doccomment">//!</span>
+
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">snowflake</span>;
+<span class="kw">use</span> <span class="self">self</span>::<span class="ident">snowflake</span>::<span class="ident">ProcessUniqueId</span>;
+
+<span class="kw">mod</span> <span class="ident">behaviors</span>;
+<span class="kw">mod</span> <span class="ident">error</span>;
+<span class="kw">mod</span> <span class="ident">node</span>;
+<span class="kw">mod</span> <span class="ident">tree</span>;
+
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">behaviors</span>::<span class="ident">RemoveBehavior</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">behaviors</span>::<span class="ident">MoveBehavior</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">behaviors</span>::<span class="ident">InsertBehavior</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">behaviors</span>::<span class="ident">SwapBehavior</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">error</span>::<span class="ident">NodeIdError</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">node</span>::<span class="ident">NodeBuilder</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">node</span>::<span class="ident">Node</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">tree</span>::<span class="ident">TreeBuilder</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">tree</span>::<span class="ident">Tree</span>;
+
+<span class="doccomment">///</span>
+<span class="doccomment">/// An identifier used to differentiate between `Node`s within a `Tree`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// `NodeId`s are not something that the calling context will ever have to worry about generating.</span>
+<span class="doccomment">/// `Tree`s generate `NodeId`s as `Node`s are inserted into them.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// In addition, each `NodeId` is specific to the `Tree` that generated it.  This means that if</span>
+<span class="doccomment">/// there are two `Tree`s - `A` and `B` - there&#39;s no worry of trying to access a `Node` in `A` with</span>
+<span class="doccomment">/// an identifier that came from `B`.  Doing so will return a `Result::Err` value instead of</span>
+<span class="doccomment">/// returning the wrong `Node`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// #### Potential `NodeId` Issues</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Because `Tree`s pass out `NodeId`s as `Node`s are inserted, several issues can occur:</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// 1. If a `Node` is removed, the `NodeId` that previously identified it now points to nothing</span>
+<span class="doccomment">/// (technically a `None` value in this case).</span>
+<span class="doccomment">/// 2. If a `Node` is removed and then another is inserted later, the &quot;new&quot; `NodeId` that is</span>
+<span class="doccomment">/// returned can (and will) be the same `NodeId` that was used to identify a different `Node`</span>
+<span class="doccomment">/// previously.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The above issues may seem like deal-breakers, but our situation isn&#39;t as bad as it seems:</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The first issue can be easily detected by the library itself.  In this situation, a</span>
+<span class="doccomment">/// `Result::Err` will be returned with the appropriate `NodeIdError`. The second issue, however, is</span>
+<span class="doccomment">/// not something that the library can detect. To mitigate this problem, this library ensures the</span>
+<span class="doccomment">/// following:</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// 1. All `Node` methods that provide `NodeId`s will **return** `&amp;NodeId`s instead of `NodeId`s.</span>
+<span class="doccomment">/// 2. All `Tree` methods that **read** or **insert** data accept `&amp;NodeId`s instead of taking</span>
+<span class="doccomment">/// `NodeId`s.</span>
+<span class="doccomment">/// 3. All `Tree` methods that **remove** data take `NodeId`s instead of accepting `&amp;NodeId`s.</span>
+<span class="doccomment">/// 4. All `Node`s that have been removed from a `Tree` will have their parent and child references</span>
+<span class="doccomment">/// cleared (to avoid leaking extra `NodeId` copies).</span>
+<span class="doccomment">/// 5. `NodeId`s themselves are `Clone`, but not `Copy`.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This means that no methods will ever take ownership of a `NodeId` except for methods that remove</span>
+<span class="doccomment">/// a `Node` from a `Tree`. The resulting behavior is that unless the caller **explicitly `Clone`s a</span>
+<span class="doccomment">/// `NodeId`** they should never be in a situation where they accidentally hold onto a `NodeId` too</span>
+<span class="doccomment">/// long.  This means that we have &quot;almost safe references&quot; that the caller can clone if they choose</span>
+<span class="doccomment">/// to.  Doing so, however, will open up the possibility of confusing which `NodeId`s refer to which</span>
+<span class="doccomment">/// `Node`s in the calling context.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This _does_ transfer some of the burden to the caller, but any errors should be fairly easy to</span>
+<span class="doccomment">/// sort out because an explicit `Clone` is required for such an error to occur.</span>
+<span class="doccomment">///</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Eq</span>, <span class="ident">Ord</span>, <span class="ident">Debug</span>, <span class="ident">Hash</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">NodeId</span> {
+    <span class="ident">tree_id</span>: <span class="ident">ProcessUniqueId</span>,
+    <span class="ident">index</span>: <span class="ident">usize</span>,
+}
+
+<span class="kw">trait</span> <span class="ident">MutableNode</span> {
+    <span class="kw">fn</span> <span class="ident">set_parent</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">parent</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">NodeId</span><span class="op">&gt;</span>);
+    <span class="kw">fn</span> <span class="ident">add_child</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">child</span>: <span class="ident">NodeId</span>);
+    <span class="kw">fn</span> <span class="ident">replace_child</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">old</span>: <span class="ident">NodeId</span>, <span class="ident">new</span>: <span class="ident">NodeId</span>);
+    <span class="kw">fn</span> <span class="ident">children_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">NodeId</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">set_children</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">children</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">NodeId</span><span class="op">&gt;</span>);
+    <span class="kw">fn</span> <span class="ident">take_children</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">NodeId</span><span class="op">&gt;</span>;
+}
+</pre>
+</section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "id_tree";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

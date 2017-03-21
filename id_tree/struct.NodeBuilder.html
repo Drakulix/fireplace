@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `NodeBuilder` struct in crate `id_tree`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, NodeBuilder">
+
+    <title>id_tree::NodeBuilder - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>id_tree</a></p><script>window.sidebarCurrent = {name: 'NodeBuilder', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>id_tree</a>::<wbr><a class="struct" href=''>NodeBuilder</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/id_tree/node.rs.html#7-10' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct NodeBuilder&lt;T&gt; { /* fields omitted */ }</pre><div class='docblock'><p>A <code>Node</code> builder that provides more control over how a <code>Node</code> is created.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;T&gt; <a class="struct" href="../id_tree/struct.NodeBuilder.html" title="struct id_tree::NodeBuilder">NodeBuilder</a>&lt;T&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/id_tree/node.rs.html#12-74' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(data: T) -&gt; <a class="struct" href="../id_tree/struct.NodeBuilder.html" title="struct id_tree::NodeBuilder">NodeBuilder</a>&lt;T&gt;</code></span></h4>
+<div class='docblock'><p>Creates a new <code>NodeBuilder</code> with the required data.</p>
+
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">id_tree</span>::<span class="ident">NodeBuilder</span>;
+
+<span class="kw">let</span> <span class="ident">_node_builder</span> <span class="op">=</span> <span class="ident">NodeBuilder</span>::<span class="ident">new</span>(<span class="number">5</span>);</pre>
+</div><h4 id='method.with_child_capacity' class="method"><span id='with_child_capacity.v' class='invisible'><code>fn <a href='#method.with_child_capacity' class='fnname'>with_child_capacity</a>(self, child_capacity: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="struct" href="../id_tree/struct.NodeBuilder.html" title="struct id_tree::NodeBuilder">NodeBuilder</a>&lt;T&gt;</code></span></h4>
+<div class='docblock'><p>Set the child capacity of the <code>NodeBuilder</code>.</p>
+
+<p>As <code>Node</code>s are added to a <code>Tree</code>, parent and child references must be maintained. To do
+this, an allocation must be made every time a child is added to a <code>Node</code>.  Using this
+setting allows the <code>Node</code> to pre-allocate space for its children so that the allocations
+aren&#39;t made as children are added.</p>
+
+<p><em>Use of this setting is recommended if you know the <strong>maximum number</strong> of children (not
+including grandchildren, great-grandchildren, etc.) that a <code>Node</code> will have <strong>at any given
+time</strong></em>.</p>
+
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">id_tree</span>::<span class="ident">NodeBuilder</span>;
+
+<span class="kw">let</span> <span class="ident">_node_builder</span> <span class="op">=</span> <span class="ident">NodeBuilder</span>::<span class="ident">new</span>(<span class="number">5</span>).<span class="ident">with_child_capacity</span>(<span class="number">3</span>);</pre>
+</div><h4 id='method.build' class="method"><span id='build.v' class='invisible'><code>fn <a href='#method.build' class='fnname'>build</a>(self) -&gt; <a class="struct" href="../id_tree/struct.Node.html" title="struct id_tree::Node">Node</a>&lt;T&gt;</code></span></h4>
+<div class='docblock'><p>Build a <code>Node</code> based upon the current settings in the <code>NodeBuilder</code>.</p>
+
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">id_tree</span>::<span class="ident">NodeBuilder</span>;
+<span class="kw">use</span> <span class="ident">id_tree</span>::<span class="ident">Node</span>;
+
+<span class="kw">let</span> <span class="ident">node</span>: <span class="ident">Node</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">NodeBuilder</span>::<span class="ident">new</span>(<span class="number">5</span>)
+        .<span class="ident">with_child_capacity</span>(<span class="number">3</span>)
+        .<span class="ident">build</span>();
+
+<span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">node</span>.<span class="ident">data</span>(), <span class="kw-2">&amp;</span><span class="number">5</span>);
+<span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">node</span>.<span class="ident">children</span>().<span class="ident">capacity</span>(), <span class="number">3</span>);</pre>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "id_tree";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

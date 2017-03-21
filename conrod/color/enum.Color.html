@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Color` enum in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Color">
+
+    <title>conrod::color::Color - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>conrod</a>::<wbr><a href='index.html'>color</a></p><script>window.sidebarCurrent = {name: 'Color', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>conrod</a>::<wbr><a href='index.html'>color</a>::<wbr><a class="enum" href=''>Color</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/conrod/color.rs.html#19-24' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum Color {
+    Rgba(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>),
+    Hsla(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>),
+}</pre><div class='docblock'><p>Color supporting RGB and HSL variants.</p>
+</div><h2 class='variants'>Variants</h2>
+<span id='variant.Rgba' class='variant'><span id='Rgba.v' class='invisible'><code>Rgba(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>)</code></span></span><div class='docblock'><p>Red, Green, Blue, Alpha - All values&#39; scales represented between 0.0 and 1.0.</p>
+</div><span id='variant.Hsla' class='variant'><span id='Hsla.v' class='invisible'><code>Hsla(<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>,&nbsp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>)</code></span></span><div class='docblock'><p>Hue, Saturation, Lightness, Alpha - all valuess scales represented between 0.0 and 1.0.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/color.rs.html#101-280' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.complement' class="method"><span id='complement.v' class='invisible'><code>fn <a href='#method.complement' class='fnname'>complement</a>(self) -&gt; <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span></h4>
+<div class='docblock'><p>Produce a complementary color. The two colors will accent each other. This is the same as
+rotating the hue by 180 degrees.</p>
+</div><h4 id='method.luminance' class="method"><span id='luminance.v' class='invisible'><code>fn <a href='#method.luminance' class='fnname'>luminance</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a></code></span></h4>
+<div class='docblock'><p>Calculate and return the luminance of the Color.</p>
+</div><h4 id='method.plain_contrast' class="method"><span id='plain_contrast.v' class='invisible'><code>fn <a href='#method.plain_contrast' class='fnname'>plain_contrast</a>(self) -&gt; <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span></h4>
+<div class='docblock'><p>Return either black or white, depending which contrasts the Color the most. This will be
+useful for determining a readable color for text on any given background Color.</p>
+</div><h4 id='method.to_hsl' class="method"><span id='to_hsl.v' class='invisible'><code>fn <a href='#method.to_hsl' class='fnname'>to_hsl</a>(self) -&gt; <a class="struct" href="../../conrod/color/struct.Hsla.html" title="struct conrod::color::Hsla">Hsla</a></code></span></h4>
+<div class='docblock'><p>Extract the components of a color in the HSL format.</p>
+</div><h4 id='method.to_rgb' class="method"><span id='to_rgb.v' class='invisible'><code>fn <a href='#method.to_rgb' class='fnname'>to_rgb</a>(self) -&gt; <a class="struct" href="../../conrod/color/struct.Rgba.html" title="struct conrod::color::Rgba">Rgba</a></code></span></h4>
+<div class='docblock'><p>Extract the components of a color in the RGB format.</p>
+</div><h4 id='method.to_fsa' class="method"><span id='to_fsa.v' class='invisible'><code>fn <a href='#method.to_fsa' class='fnname'>to_fsa</a>(self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 4]</a></code></span></h4>
+<div class='docblock'><p>Extract the components of a color in the RGB format within a fixed-size array.</p>
+</div><h4 id='method.to_byte_fsa' class="method"><span id='to_byte_fsa.v' class='invisible'><code>fn <a href='#method.to_byte_fsa' class='fnname'>to_byte_fsa</a>(self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 4]</a></code></span></h4>
+<div class='docblock'><p>Same as <code>to_fsa</code>, except r, g, b and a are represented in byte form.</p>
+</div><h4 id='method.with_luminance' class="method"><span id='with_luminance.v' class='invisible'><code>fn <a href='#method.with_luminance' class='fnname'>with_luminance</a>(self, l: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span></h4>
+<div class='docblock'><p>Return the same color but with the given luminance.</p>
+</div><h4 id='method.alpha' class="method"><span id='alpha.v' class='invisible'><code>fn <a href='#method.alpha' class='fnname'>alpha</a>(self, alpha: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span></h4>
+<div class='docblock'><p>Return the same color but with the alpha multiplied by the given alpha.</p>
+</div><h4 id='method.with_alpha' class="method"><span id='with_alpha.v' class='invisible'><code>fn <a href='#method.with_alpha' class='fnname'>with_alpha</a>(self, a: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>) -&gt; <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span></h4>
+<div class='docblock'><p>Return the same color but with the given alpha.</p>
+</div><h4 id='method.highlighted' class="method"><span id='highlighted.v' class='invisible'><code>fn <a href='#method.highlighted' class='fnname'>highlighted</a>(self) -&gt; <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span></h4>
+<div class='docblock'><p>Return a highlighted version of the current Color.</p>
+</div><h4 id='method.clicked' class="method"><span id='clicked.v' class='invisible'><code>fn <a href='#method.clicked' class='fnname'>clicked</a>(&amp;self) -&gt; <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span></h4>
+<div class='docblock'><p>Return a clicked version of the current Color.</p>
+</div><h4 id='method.invert' class="method"><span id='invert.v' class='invisible'><code>fn <a href='#method.invert' class='fnname'>invert</a>(self) -&gt; <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span></h4>
+<div class='docblock'><p>Return the Color&#39;s invert.</p>
+</div><h4 id='method.red' class="method"><span id='red.v' class='invisible'><code>fn <a href='#method.red' class='fnname'>red</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a></code></span></h4>
+<div class='docblock'><p>Return the red value.</p>
+</div><h4 id='method.green' class="method"><span id='green.v' class='invisible'><code>fn <a href='#method.green' class='fnname'>green</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a></code></span></h4>
+<div class='docblock'><p>Return the green value.</p>
+</div><h4 id='method.blue' class="method"><span id='blue.v' class='invisible'><code>fn <a href='#method.blue' class='fnname'>blue</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a></code></span></h4>
+<div class='docblock'><p>Return the blue value.</p>
+</div><h4 id='method.set_red' class="method"><span id='set_red.v' class='invisible'><code>fn <a href='#method.set_red' class='fnname'>set_red</a>(&amp;mut self, r: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>)</code></span></h4>
+<div class='docblock'><p>Set the red value.</p>
+</div><h4 id='method.set_green' class="method"><span id='set_green.v' class='invisible'><code>fn <a href='#method.set_green' class='fnname'>set_green</a>(&amp;mut self, g: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>)</code></span></h4>
+<div class='docblock'><p>Set the green value.</p>
+</div><h4 id='method.set_blue' class="method"><span id='set_blue.v' class='invisible'><code>fn <a href='#method.set_blue' class='fnname'>set_blue</a>(&amp;mut self, b: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a>)</code></span></h4>
+<div class='docblock'><p>Set the blue value.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/color.rs.html#18' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/color.rs.html#18' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/color.rs.html#18' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/color.rs.html#18' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

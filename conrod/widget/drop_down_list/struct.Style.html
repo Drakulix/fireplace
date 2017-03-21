@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Style` struct in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Style">
+
+    <title>conrod::widget::drop_down_list::Style - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>widget</a>::<wbr><a href='index.html'>drop_down_list</a></p><script>window.sidebarCurrent = {name: 'Style', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>widget</a>::<wbr><a href='index.html'>drop_down_list</a>::<wbr><a class="struct" href=''>Style</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/conrod/widget/style.rs.html#16-21' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Style {
+    pub color: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>&gt;,
+    pub border: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>&gt;,
+    pub border_color: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>&gt;,
+    pub label_color: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>&gt;,
+    pub label_font_size: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../../conrod/type.FontSize.html" title="type conrod::FontSize">FontSize</a>&gt;,
+    pub label_justify: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/text/enum.Justify.html" title="enum conrod::text::Justify">Justify</a>&gt;,
+    pub label_x: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/position/enum.Relative.html" title="enum conrod::position::Relative">Relative</a>&gt;,
+    pub label_y: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/position/enum.Relative.html" title="enum conrod::position::Relative">Relative</a>&gt;,
+    pub maybe_max_visible_height: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/widget/drop_down_list/enum.MaxHeight.html" title="enum conrod::widget::drop_down_list::MaxHeight">MaxHeight</a>&gt;&gt;,
+    pub scrollbar_position: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/widget/list/enum.ScrollbarPosition.html" title="enum conrod::widget::list::ScrollbarPosition">ScrollbarPosition</a>&gt;&gt;,
+    pub scrollbar_width: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>&gt;&gt;,
+    pub label_font_id: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../conrod/text/font/struct.Id.html" title="struct conrod::text::font::Id">Id</a>&gt;&gt;,
+}</pre><div class='docblock'><p>Styling for the DropDownList, necessary for constructing its renderable Element.</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.color' class="structfield">
+                           <span id='color.v' class='invisible'>
+                           <code>color: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Color of the widget.</p>
+</div><span id='structfield.border' class="structfield">
+                           <span id='border.v' class='invisible'>
+                           <code>border: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Width of the widget&#39;s border.</p>
+</div><span id='structfield.border_color' class="structfield">
+                           <span id='border_color.v' class='invisible'>
+                           <code>border_color: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Color of the widget&#39;s border.</p>
+</div><span id='structfield.label_color' class="structfield">
+                           <span id='label_color.v' class='invisible'>
+                           <code>label_color: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Color of the item labels.</p>
+</div><span id='structfield.label_font_size' class="structfield">
+                           <span id='label_font_size.v' class='invisible'>
+                           <code>label_font_size: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../../conrod/type.FontSize.html" title="type conrod::FontSize">FontSize</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Font size for the item labels.</p>
+</div><span id='structfield.label_justify' class="structfield">
+                           <span id='label_justify.v' class='invisible'>
+                           <code>label_justify: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/text/enum.Justify.html" title="enum conrod::text::Justify">Justify</a>&gt;</code>
+                           </span></span><div class='docblock'><p>The label&#39;s typographic alignment over the <em>x</em> axis.</p>
+</div><span id='structfield.label_x' class="structfield">
+                           <span id='label_x.v' class='invisible'>
+                           <code>label_x: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/position/enum.Relative.html" title="enum conrod::position::Relative">Relative</a>&gt;</code>
+                           </span></span><div class='docblock'><p>The label&#39;s position relative to its <code>Button</code> along the <em>x</em> axis.</p>
+</div><span id='structfield.label_y' class="structfield">
+                           <span id='label_y.v' class='invisible'>
+                           <code>label_y: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/position/enum.Relative.html" title="enum conrod::position::Relative">Relative</a>&gt;</code>
+                           </span></span><div class='docblock'><p>The label&#39;s position relative to its <code>Button</code> along the <em>y</em> axis.</p>
+</div><span id='structfield.maybe_max_visible_height' class="structfield">
+                           <span id='maybe_max_visible_height.v' class='invisible'>
+                           <code>maybe_max_visible_height: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/widget/drop_down_list/enum.MaxHeight.html" title="enum conrod::widget::drop_down_list::MaxHeight">MaxHeight</a>&gt;&gt;</code>
+                           </span></span><div class='docblock'><p>Maximum height of the Open menu before the scrollbar appears.</p>
+</div><span id='structfield.scrollbar_position' class="structfield">
+                           <span id='scrollbar_position.v' class='invisible'>
+                           <code>scrollbar_position: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/widget/list/enum.ScrollbarPosition.html" title="enum conrod::widget::list::ScrollbarPosition">ScrollbarPosition</a>&gt;&gt;</code>
+                           </span></span><div class='docblock'><p>The position of the scrollbar in the case that the list is scrollable.</p>
+</div><span id='structfield.scrollbar_width' class="structfield">
+                           <span id='scrollbar_width.v' class='invisible'>
+                           <code>scrollbar_width: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>&gt;&gt;</code>
+                           </span></span><div class='docblock'><p>The width of the scrollbar in the case that the list is scrollable.</p>
+</div><span id='structfield.label_font_id' class="structfield">
+                           <span id='label_font_id.v' class='invisible'>
+                           <code>label_font_id: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../conrod/text/font/struct.Id.html" title="struct conrod::text::font::Id">Id</a>&gt;&gt;</code>
+                           </span></span><div class='docblock'><p>The ID of the font used to display the labels.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../../conrod/widget/drop_down_list/struct.Style.html" title="struct conrod::widget::drop_down_list::Style">Style</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/style.rs.html#89-94' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></span></h4>
+<div class='docblock'><p>Construct the default <code>Style</code>, initialising all fields to <code>None</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../../conrod/widget/drop_down_list/struct.Style.html" title="struct conrod::widget::drop_down_list::Style">Style</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/style.rs.html#317-319' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.color' class="method"><span id='color.v-1' class='invisible'><code>fn <a href='#method.color' class='fnname'>color</a>(&amp;self, theme: &amp;<a class="struct" href="../../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>) -&gt; <a class="enum" href="../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span></h4>
+<div class='docblock'><p>Retrieves the value from the <code>Style</code>.</p>
+
+<p>If the <code>Style</code>&#39;s field is <code>None</code>, falls back to default specified within the <code>Theme</code>.</p>
+</div><h4 id='method.border' class="method"><span id='border.v-1' class='invisible'><code>fn <a href='#method.border' class='fnname'>border</a>(&amp;self, theme: &amp;<a class="struct" href="../../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>) -&gt; <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a></code></span></h4>
+<div class='docblock'><p>Retrieves the value from the <code>Style</code>.</p>
+
+<p>If the <code>Style</code>&#39;s field is <code>None</code>, falls back to default specified within the <code>Theme</code>.</p>
+</div><h4 id='method.border_color' class="method"><span id='border_color.v-1' class='invisible'><code>fn <a href='#method.border_color' class='fnname'>border_color</a>(&amp;self, theme: &amp;<a class="struct" href="../../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>) -&gt; <a class="enum" href="../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span></h4>
+<div class='docblock'><p>Retrieves the value from the <code>Style</code>.</p>
+
+<p>If the <code>Style</code>&#39;s field is <code>None</code>, falls back to default specified within the <code>Theme</code>.</p>
+</div><h4 id='method.label_color' class="method"><span id='label_color.v-1' class='invisible'><code>fn <a href='#method.label_color' class='fnname'>label_color</a>(&amp;self, theme: &amp;<a class="struct" href="../../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>) -&gt; <a class="enum" href="../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code></span></h4>
+<div class='docblock'><p>Retrieves the value from the <code>Style</code>.</p>
+
+<p>If the <code>Style</code>&#39;s field is <code>None</code>, falls back to default specified within the <code>Theme</code>.</p>
+</div><h4 id='method.label_font_size' class="method"><span id='label_font_size.v-1' class='invisible'><code>fn <a href='#method.label_font_size' class='fnname'>label_font_size</a>(&amp;self, theme: &amp;<a class="struct" href="../../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>) -&gt; <a class="type" href="../../../conrod/type.FontSize.html" title="type conrod::FontSize">FontSize</a></code></span></h4>
+<div class='docblock'><p>Retrieves the value from the <code>Style</code>.</p>
+
+<p>If the <code>Style</code>&#39;s field is <code>None</code>, falls back to default specified within the <code>Theme</code>.</p>
+</div><h4 id='method.label_justify' class="method"><span id='label_justify.v-1' class='invisible'><code>fn <a href='#method.label_justify' class='fnname'>label_justify</a>(&amp;self, theme: &amp;<a class="struct" href="../../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>) -&gt; <a class="enum" href="../../../conrod/text/enum.Justify.html" title="enum conrod::text::Justify">Justify</a></code></span></h4>
+<div class='docblock'><p>Retrieves the value from the <code>Style</code>.</p>
+
+<p>If the <code>Style</code>&#39;s field is <code>None</code>, falls back to default specified within the <code>Theme</code>.</p>
+</div><h4 id='method.label_x' class="method"><span id='label_x.v-1' class='invisible'><code>fn <a href='#method.label_x' class='fnname'>label_x</a>(&amp;self, theme: &amp;<a class="struct" href="../../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Relative.html" title="enum conrod::position::Relative">Relative</a></code></span></h4>
+<div class='docblock'><p>Retrieves the value from the <code>Style</code>.</p>
+
+<p>If the <code>Style</code>&#39;s field is <code>None</code>, falls back to default specified within the <code>Theme</code>.</p>
+</div><h4 id='method.label_y' class="method"><span id='label_y.v-1' class='invisible'><code>fn <a href='#method.label_y' class='fnname'>label_y</a>(&amp;self, theme: &amp;<a class="struct" href="../../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>) -&gt; <a class="enum" href="../../../conrod/position/enum.Relative.html" title="enum conrod::position::Relative">Relative</a></code></span></h4>
+<div class='docblock'><p>Retrieves the value from the <code>Style</code>.</p>
+
+<p>If the <code>Style</code>&#39;s field is <code>None</code>, falls back to default specified within the <code>Theme</code>.</p>
+</div><h4 id='method.maybe_max_visible_height' class="method"><span id='maybe_max_visible_height.v-1' class='invisible'><code>fn <a href='#method.maybe_max_visible_height' class='fnname'>maybe_max_visible_height</a>(&amp;self, theme: &amp;<a class="struct" href="../../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/widget/drop_down_list/enum.MaxHeight.html" title="enum conrod::widget::drop_down_list::MaxHeight">MaxHeight</a>&gt;</code></span></h4>
+<div class='docblock'><p>Retrieves the value from the <code>Style</code>.</p>
+
+<p>If the <code>Style</code>&#39;s field is <code>None</code>, falls back to default specified within the <code>Theme</code>.</p>
+</div><h4 id='method.scrollbar_position' class="method"><span id='scrollbar_position.v-1' class='invisible'><code>fn <a href='#method.scrollbar_position' class='fnname'>scrollbar_position</a>(&amp;self, theme: &amp;<a class="struct" href="../../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../../conrod/widget/list/enum.ScrollbarPosition.html" title="enum conrod::widget::list::ScrollbarPosition">ScrollbarPosition</a>&gt;</code></span></h4>
+<div class='docblock'><p>Retrieves the value from the <code>Style</code>.</p>
+
+<p>If the <code>Style</code>&#39;s field is <code>None</code>, falls back to default specified within the <code>Theme</code>.</p>
+</div><h4 id='method.scrollbar_width' class="method"><span id='scrollbar_width.v-1' class='invisible'><code>fn <a href='#method.scrollbar_width' class='fnname'>scrollbar_width</a>(&amp;self, theme: &amp;<a class="struct" href="../../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>&gt;</code></span></h4>
+<div class='docblock'><p>Retrieves the value from the <code>Style</code>.</p>
+
+<p>If the <code>Style</code>&#39;s field is <code>None</code>, falls back to default specified within the <code>Theme</code>.</p>
+</div><h4 id='method.label_font_id' class="method"><span id='label_font_id.v-1' class='invisible'><code>fn <a href='#method.label_font_id' class='fnname'>label_font_id</a>(&amp;self, theme: &amp;<a class="struct" href="../../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../conrod/text/font/struct.Id.html" title="struct conrod::text::font::Id">Id</a>&gt;</code></span></h4>
+<div class='docblock'><p>Retrieves the value from the <code>Style</code>.</p>
+
+<p>If the <code>Style</code>&#39;s field is <code>None</code>, falls back to default specified within the <code>Theme</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../../conrod/widget/drop_down_list/struct.Style.html" title="struct conrod::widget::drop_down_list::Style">Style</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/drop_down_list.rs.html#344-361' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.button_style' class="method"><span id='button_style.v' class='invisible'><code>fn <a href='#method.button_style' class='fnname'>button_style</a>(&amp;self, is_selected: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="struct" href="../../../conrod/widget/button/struct.Style.html" title="struct conrod::widget::button::Style">Style</a></code></span></h4>
+<div class='docblock'><p>Style for a <code>Button</code> given this <code>Style</code>&#39;s current state.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="../../../conrod/widget/drop_down_list/struct.Style.html" title="struct conrod::widget::drop_down_list::Style">Style</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/style.rs.html#15' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../../conrod/widget/drop_down_list/struct.Style.html" title="struct conrod::widget::drop_down_list::Style">Style</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/style.rs.html#15' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../../conrod/widget/drop_down_list/struct.Style.html" title="struct conrod::widget::drop_down_list::Style">Style</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../../../conrod/widget/drop_down_list/struct.Style.html" title="struct conrod::widget::drop_down_list::Style">Style</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/style.rs.html#15' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="struct" href="../../../conrod/widget/drop_down_list/struct.Style.html" title="struct conrod::widget::drop_down_list::Style">Style</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/widget/style.rs.html#15' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="struct" href="../../../conrod/widget/drop_down_list/struct.Style.html" title="struct conrod::widget::drop_down_list::Style">Style</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="struct" href="../../../conrod/widget/drop_down_list/struct.Style.html" title="struct conrod::widget::drop_down_list::Style">Style</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

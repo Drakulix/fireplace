@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["OpenGL",""]],"mod":[["error","Errors"],["gl",""],["glyph_cache","Glyph caching"],["shader_utils","Helper functions for dealing with shaders."]],"struct":[["GlGraphics","Contains OpenGL data."],["Texture","Wraps OpenGL texture data. The texture gets deleted when running out of scope."]]});

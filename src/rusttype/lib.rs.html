@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="Source to the Rust file `/work/.vagga/nightly-home/.cargo/registry/src/github.com-1ecc6299db9ec823/rusttype-0.2.1/src/lib.rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang">
+
+    <title>lib.rs.html -- source</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content source"><pre class="line-numbers"><span id="1">  1</span>
+<span id="2">  2</span>
+<span id="3">  3</span>
+<span id="4">  4</span>
+<span id="5">  5</span>
+<span id="6">  6</span>
+<span id="7">  7</span>
+<span id="8">  8</span>
+<span id="9">  9</span>
+<span id="10"> 10</span>
+<span id="11"> 11</span>
+<span id="12"> 12</span>
+<span id="13"> 13</span>
+<span id="14"> 14</span>
+<span id="15"> 15</span>
+<span id="16"> 16</span>
+<span id="17"> 17</span>
+<span id="18"> 18</span>
+<span id="19"> 19</span>
+<span id="20"> 20</span>
+<span id="21"> 21</span>
+<span id="22"> 22</span>
+<span id="23"> 23</span>
+<span id="24"> 24</span>
+<span id="25"> 25</span>
+<span id="26"> 26</span>
+<span id="27"> 27</span>
+<span id="28"> 28</span>
+<span id="29"> 29</span>
+<span id="30"> 30</span>
+<span id="31"> 31</span>
+<span id="32"> 32</span>
+<span id="33"> 33</span>
+<span id="34"> 34</span>
+<span id="35"> 35</span>
+<span id="36"> 36</span>
+<span id="37"> 37</span>
+<span id="38"> 38</span>
+<span id="39"> 39</span>
+<span id="40"> 40</span>
+<span id="41"> 41</span>
+<span id="42"> 42</span>
+<span id="43"> 43</span>
+<span id="44"> 44</span>
+<span id="45"> 45</span>
+<span id="46"> 46</span>
+<span id="47"> 47</span>
+<span id="48"> 48</span>
+<span id="49"> 49</span>
+<span id="50"> 50</span>
+<span id="51"> 51</span>
+<span id="52"> 52</span>
+<span id="53"> 53</span>
+<span id="54"> 54</span>
+<span id="55"> 55</span>
+<span id="56"> 56</span>
+<span id="57"> 57</span>
+<span id="58"> 58</span>
+<span id="59"> 59</span>
+<span id="60"> 60</span>
+<span id="61"> 61</span>
+<span id="62"> 62</span>
+<span id="63"> 63</span>
+<span id="64"> 64</span>
+<span id="65"> 65</span>
+<span id="66"> 66</span>
+<span id="67"> 67</span>
+<span id="68"> 68</span>
+<span id="69"> 69</span>
+<span id="70"> 70</span>
+<span id="71"> 71</span>
+<span id="72"> 72</span>
+<span id="73"> 73</span>
+<span id="74"> 74</span>
+<span id="75"> 75</span>
+<span id="76"> 76</span>
+<span id="77"> 77</span>
+<span id="78"> 78</span>
+<span id="79"> 79</span>
+<span id="80"> 80</span>
+<span id="81"> 81</span>
+<span id="82"> 82</span>
+<span id="83"> 83</span>
+<span id="84"> 84</span>
+<span id="85"> 85</span>
+<span id="86"> 86</span>
+<span id="87"> 87</span>
+<span id="88"> 88</span>
+<span id="89"> 89</span>
+<span id="90"> 90</span>
+<span id="91"> 91</span>
+<span id="92"> 92</span>
+<span id="93"> 93</span>
+<span id="94"> 94</span>
+<span id="95"> 95</span>
+<span id="96"> 96</span>
+<span id="97"> 97</span>
+<span id="98"> 98</span>
+<span id="99"> 99</span>
+<span id="100">100</span>
+<span id="101">101</span>
+<span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
+<span id="121">121</span>
+<span id="122">122</span>
+<span id="123">123</span>
+<span id="124">124</span>
+<span id="125">125</span>
+<span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
+<span id="131">131</span>
+<span id="132">132</span>
+<span id="133">133</span>
+<span id="134">134</span>
+<span id="135">135</span>
+<span id="136">136</span>
+<span id="137">137</span>
+<span id="138">138</span>
+<span id="139">139</span>
+<span id="140">140</span>
+<span id="141">141</span>
+<span id="142">142</span>
+<span id="143">143</span>
+<span id="144">144</span>
+<span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
+<span id="163">163</span>
+<span id="164">164</span>
+<span id="165">165</span>
+<span id="166">166</span>
+<span id="167">167</span>
+<span id="168">168</span>
+<span id="169">169</span>
+<span id="170">170</span>
+<span id="171">171</span>
+<span id="172">172</span>
+<span id="173">173</span>
+<span id="174">174</span>
+<span id="175">175</span>
+<span id="176">176</span>
+<span id="177">177</span>
+<span id="178">178</span>
+<span id="179">179</span>
+<span id="180">180</span>
+<span id="181">181</span>
+<span id="182">182</span>
+<span id="183">183</span>
+<span id="184">184</span>
+<span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
+<span id="222">222</span>
+<span id="223">223</span>
+<span id="224">224</span>
+<span id="225">225</span>
+<span id="226">226</span>
+<span id="227">227</span>
+<span id="228">228</span>
+<span id="229">229</span>
+<span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
+<span id="246">246</span>
+<span id="247">247</span>
+<span id="248">248</span>
+<span id="249">249</span>
+<span id="250">250</span>
+<span id="251">251</span>
+<span id="252">252</span>
+<span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
+<span id="258">258</span>
+<span id="259">259</span>
+<span id="260">260</span>
+<span id="261">261</span>
+<span id="262">262</span>
+<span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
+<span id="276">276</span>
+<span id="277">277</span>
+<span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
+<span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
+<span id="303">303</span>
+<span id="304">304</span>
+<span id="305">305</span>
+<span id="306">306</span>
+<span id="307">307</span>
+<span id="308">308</span>
+<span id="309">309</span>
+<span id="310">310</span>
+<span id="311">311</span>
+<span id="312">312</span>
+<span id="313">313</span>
+<span id="314">314</span>
+<span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
+<span id="320">320</span>
+<span id="321">321</span>
+<span id="322">322</span>
+<span id="323">323</span>
+<span id="324">324</span>
+<span id="325">325</span>
+<span id="326">326</span>
+<span id="327">327</span>
+<span id="328">328</span>
+<span id="329">329</span>
+<span id="330">330</span>
+<span id="331">331</span>
+<span id="332">332</span>
+<span id="333">333</span>
+<span id="334">334</span>
+<span id="335">335</span>
+<span id="336">336</span>
+<span id="337">337</span>
+<span id="338">338</span>
+<span id="339">339</span>
+<span id="340">340</span>
+<span id="341">341</span>
+<span id="342">342</span>
+<span id="343">343</span>
+<span id="344">344</span>
+<span id="345">345</span>
+<span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
+<span id="349">349</span>
+<span id="350">350</span>
+<span id="351">351</span>
+<span id="352">352</span>
+<span id="353">353</span>
+<span id="354">354</span>
+<span id="355">355</span>
+<span id="356">356</span>
+<span id="357">357</span>
+<span id="358">358</span>
+<span id="359">359</span>
+<span id="360">360</span>
+<span id="361">361</span>
+<span id="362">362</span>
+<span id="363">363</span>
+<span id="364">364</span>
+<span id="365">365</span>
+<span id="366">366</span>
+<span id="367">367</span>
+<span id="368">368</span>
+<span id="369">369</span>
+<span id="370">370</span>
+<span id="371">371</span>
+<span id="372">372</span>
+<span id="373">373</span>
+<span id="374">374</span>
+<span id="375">375</span>
+<span id="376">376</span>
+<span id="377">377</span>
+<span id="378">378</span>
+<span id="379">379</span>
+<span id="380">380</span>
+<span id="381">381</span>
+<span id="382">382</span>
+<span id="383">383</span>
+<span id="384">384</span>
+<span id="385">385</span>
+<span id="386">386</span>
+<span id="387">387</span>
+<span id="388">388</span>
+<span id="389">389</span>
+<span id="390">390</span>
+<span id="391">391</span>
+<span id="392">392</span>
+<span id="393">393</span>
+<span id="394">394</span>
+<span id="395">395</span>
+<span id="396">396</span>
+<span id="397">397</span>
+<span id="398">398</span>
+<span id="399">399</span>
+<span id="400">400</span>
+<span id="401">401</span>
+<span id="402">402</span>
+<span id="403">403</span>
+<span id="404">404</span>
+<span id="405">405</span>
+<span id="406">406</span>
+<span id="407">407</span>
+<span id="408">408</span>
+<span id="409">409</span>
+<span id="410">410</span>
+<span id="411">411</span>
+<span id="412">412</span>
+<span id="413">413</span>
+<span id="414">414</span>
+<span id="415">415</span>
+<span id="416">416</span>
+<span id="417">417</span>
+<span id="418">418</span>
+<span id="419">419</span>
+<span id="420">420</span>
+<span id="421">421</span>
+<span id="422">422</span>
+<span id="423">423</span>
+<span id="424">424</span>
+<span id="425">425</span>
+<span id="426">426</span>
+<span id="427">427</span>
+<span id="428">428</span>
+<span id="429">429</span>
+<span id="430">430</span>
+<span id="431">431</span>
+<span id="432">432</span>
+<span id="433">433</span>
+<span id="434">434</span>
+<span id="435">435</span>
+<span id="436">436</span>
+<span id="437">437</span>
+<span id="438">438</span>
+<span id="439">439</span>
+<span id="440">440</span>
+<span id="441">441</span>
+<span id="442">442</span>
+<span id="443">443</span>
+<span id="444">444</span>
+<span id="445">445</span>
+<span id="446">446</span>
+<span id="447">447</span>
+<span id="448">448</span>
+<span id="449">449</span>
+<span id="450">450</span>
+<span id="451">451</span>
+<span id="452">452</span>
+<span id="453">453</span>
+<span id="454">454</span>
+<span id="455">455</span>
+<span id="456">456</span>
+<span id="457">457</span>
+<span id="458">458</span>
+<span id="459">459</span>
+<span id="460">460</span>
+<span id="461">461</span>
+<span id="462">462</span>
+<span id="463">463</span>
+<span id="464">464</span>
+<span id="465">465</span>
+<span id="466">466</span>
+<span id="467">467</span>
+<span id="468">468</span>
+<span id="469">469</span>
+<span id="470">470</span>
+<span id="471">471</span>
+<span id="472">472</span>
+<span id="473">473</span>
+<span id="474">474</span>
+<span id="475">475</span>
+<span id="476">476</span>
+<span id="477">477</span>
+<span id="478">478</span>
+<span id="479">479</span>
+<span id="480">480</span>
+<span id="481">481</span>
+<span id="482">482</span>
+<span id="483">483</span>
+<span id="484">484</span>
+<span id="485">485</span>
+<span id="486">486</span>
+<span id="487">487</span>
+<span id="488">488</span>
+<span id="489">489</span>
+<span id="490">490</span>
+<span id="491">491</span>
+<span id="492">492</span>
+<span id="493">493</span>
+<span id="494">494</span>
+<span id="495">495</span>
+<span id="496">496</span>
+<span id="497">497</span>
+<span id="498">498</span>
+<span id="499">499</span>
+<span id="500">500</span>
+<span id="501">501</span>
+<span id="502">502</span>
+<span id="503">503</span>
+<span id="504">504</span>
+<span id="505">505</span>
+<span id="506">506</span>
+<span id="507">507</span>
+<span id="508">508</span>
+<span id="509">509</span>
+<span id="510">510</span>
+<span id="511">511</span>
+<span id="512">512</span>
+<span id="513">513</span>
+<span id="514">514</span>
+<span id="515">515</span>
+<span id="516">516</span>
+<span id="517">517</span>
+<span id="518">518</span>
+<span id="519">519</span>
+<span id="520">520</span>
+<span id="521">521</span>
+<span id="522">522</span>
+<span id="523">523</span>
+<span id="524">524</span>
+<span id="525">525</span>
+<span id="526">526</span>
+<span id="527">527</span>
+<span id="528">528</span>
+<span id="529">529</span>
+<span id="530">530</span>
+<span id="531">531</span>
+<span id="532">532</span>
+<span id="533">533</span>
+<span id="534">534</span>
+<span id="535">535</span>
+<span id="536">536</span>
+<span id="537">537</span>
+<span id="538">538</span>
+<span id="539">539</span>
+<span id="540">540</span>
+<span id="541">541</span>
+<span id="542">542</span>
+<span id="543">543</span>
+<span id="544">544</span>
+<span id="545">545</span>
+<span id="546">546</span>
+<span id="547">547</span>
+<span id="548">548</span>
+<span id="549">549</span>
+<span id="550">550</span>
+<span id="551">551</span>
+<span id="552">552</span>
+<span id="553">553</span>
+<span id="554">554</span>
+<span id="555">555</span>
+<span id="556">556</span>
+<span id="557">557</span>
+<span id="558">558</span>
+<span id="559">559</span>
+<span id="560">560</span>
+<span id="561">561</span>
+<span id="562">562</span>
+<span id="563">563</span>
+<span id="564">564</span>
+<span id="565">565</span>
+<span id="566">566</span>
+<span id="567">567</span>
+<span id="568">568</span>
+<span id="569">569</span>
+<span id="570">570</span>
+<span id="571">571</span>
+<span id="572">572</span>
+<span id="573">573</span>
+<span id="574">574</span>
+<span id="575">575</span>
+<span id="576">576</span>
+<span id="577">577</span>
+<span id="578">578</span>
+<span id="579">579</span>
+<span id="580">580</span>
+<span id="581">581</span>
+<span id="582">582</span>
+<span id="583">583</span>
+<span id="584">584</span>
+<span id="585">585</span>
+<span id="586">586</span>
+<span id="587">587</span>
+<span id="588">588</span>
+<span id="589">589</span>
+<span id="590">590</span>
+<span id="591">591</span>
+<span id="592">592</span>
+<span id="593">593</span>
+<span id="594">594</span>
+<span id="595">595</span>
+<span id="596">596</span>
+<span id="597">597</span>
+<span id="598">598</span>
+<span id="599">599</span>
+<span id="600">600</span>
+<span id="601">601</span>
+<span id="602">602</span>
+<span id="603">603</span>
+<span id="604">604</span>
+<span id="605">605</span>
+<span id="606">606</span>
+<span id="607">607</span>
+<span id="608">608</span>
+<span id="609">609</span>
+<span id="610">610</span>
+<span id="611">611</span>
+<span id="612">612</span>
+<span id="613">613</span>
+<span id="614">614</span>
+<span id="615">615</span>
+<span id="616">616</span>
+<span id="617">617</span>
+<span id="618">618</span>
+<span id="619">619</span>
+<span id="620">620</span>
+<span id="621">621</span>
+<span id="622">622</span>
+<span id="623">623</span>
+<span id="624">624</span>
+<span id="625">625</span>
+<span id="626">626</span>
+<span id="627">627</span>
+<span id="628">628</span>
+<span id="629">629</span>
+<span id="630">630</span>
+<span id="631">631</span>
+<span id="632">632</span>
+<span id="633">633</span>
+<span id="634">634</span>
+<span id="635">635</span>
+<span id="636">636</span>
+<span id="637">637</span>
+<span id="638">638</span>
+<span id="639">639</span>
+<span id="640">640</span>
+<span id="641">641</span>
+<span id="642">642</span>
+<span id="643">643</span>
+<span id="644">644</span>
+<span id="645">645</span>
+<span id="646">646</span>
+<span id="647">647</span>
+<span id="648">648</span>
+<span id="649">649</span>
+<span id="650">650</span>
+<span id="651">651</span>
+<span id="652">652</span>
+<span id="653">653</span>
+<span id="654">654</span>
+<span id="655">655</span>
+<span id="656">656</span>
+<span id="657">657</span>
+<span id="658">658</span>
+<span id="659">659</span>
+<span id="660">660</span>
+<span id="661">661</span>
+<span id="662">662</span>
+<span id="663">663</span>
+<span id="664">664</span>
+<span id="665">665</span>
+<span id="666">666</span>
+<span id="667">667</span>
+<span id="668">668</span>
+<span id="669">669</span>
+<span id="670">670</span>
+<span id="671">671</span>
+<span id="672">672</span>
+<span id="673">673</span>
+<span id="674">674</span>
+<span id="675">675</span>
+<span id="676">676</span>
+<span id="677">677</span>
+<span id="678">678</span>
+<span id="679">679</span>
+<span id="680">680</span>
+<span id="681">681</span>
+<span id="682">682</span>
+<span id="683">683</span>
+<span id="684">684</span>
+<span id="685">685</span>
+<span id="686">686</span>
+<span id="687">687</span>
+<span id="688">688</span>
+<span id="689">689</span>
+<span id="690">690</span>
+<span id="691">691</span>
+<span id="692">692</span>
+<span id="693">693</span>
+<span id="694">694</span>
+<span id="695">695</span>
+<span id="696">696</span>
+<span id="697">697</span>
+<span id="698">698</span>
+<span id="699">699</span>
+<span id="700">700</span>
+<span id="701">701</span>
+<span id="702">702</span>
+<span id="703">703</span>
+<span id="704">704</span>
+<span id="705">705</span>
+<span id="706">706</span>
+<span id="707">707</span>
+<span id="708">708</span>
+<span id="709">709</span>
+<span id="710">710</span>
+<span id="711">711</span>
+<span id="712">712</span>
+<span id="713">713</span>
+<span id="714">714</span>
+<span id="715">715</span>
+<span id="716">716</span>
+<span id="717">717</span>
+<span id="718">718</span>
+<span id="719">719</span>
+<span id="720">720</span>
+<span id="721">721</span>
+<span id="722">722</span>
+<span id="723">723</span>
+<span id="724">724</span>
+<span id="725">725</span>
+<span id="726">726</span>
+<span id="727">727</span>
+<span id="728">728</span>
+<span id="729">729</span>
+<span id="730">730</span>
+<span id="731">731</span>
+<span id="732">732</span>
+<span id="733">733</span>
+<span id="734">734</span>
+<span id="735">735</span>
+<span id="736">736</span>
+<span id="737">737</span>
+<span id="738">738</span>
+<span id="739">739</span>
+<span id="740">740</span>
+<span id="741">741</span>
+<span id="742">742</span>
+<span id="743">743</span>
+<span id="744">744</span>
+<span id="745">745</span>
+<span id="746">746</span>
+<span id="747">747</span>
+<span id="748">748</span>
+<span id="749">749</span>
+<span id="750">750</span>
+<span id="751">751</span>
+<span id="752">752</span>
+<span id="753">753</span>
+<span id="754">754</span>
+<span id="755">755</span>
+<span id="756">756</span>
+<span id="757">757</span>
+<span id="758">758</span>
+<span id="759">759</span>
+<span id="760">760</span>
+<span id="761">761</span>
+<span id="762">762</span>
+<span id="763">763</span>
+<span id="764">764</span>
+<span id="765">765</span>
+<span id="766">766</span>
+<span id="767">767</span>
+<span id="768">768</span>
+<span id="769">769</span>
+<span id="770">770</span>
+<span id="771">771</span>
+<span id="772">772</span>
+<span id="773">773</span>
+<span id="774">774</span>
+<span id="775">775</span>
+<span id="776">776</span>
+<span id="777">777</span>
+<span id="778">778</span>
+</pre><pre class="rust ">
+<span class="doccomment">//! RustType is a pure Rust alternative to libraries like FreeType.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! The current capabilities of RustType:</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! * Reading TrueType formatted fonts and font collections. This includes `*.ttf` as well as a subset</span>
+<span class="doccomment">//!   of `*.otf` font files.</span>
+<span class="doccomment">//! * Retrieving glyph shapes and commonly used properties for a font and its glyphs.</span>
+<span class="doccomment">//! * Laying out glyphs horizontally using horizontal and vertical metrics, and glyph-pair-specific kerning.</span>
+<span class="doccomment">//! * Rasterising glyphs with sub-pixel positioning using an accurate analytical algorithm</span>
+<span class="doccomment">//!   (not based on sampling).</span>
+<span class="doccomment">//! * Managing a font cache on the GPU with the `gpu_cache` module. This keeps recently used glyph renderings</span>
+<span class="doccomment">//!   in a dynamic cache in GPU memory to minimise texture uploads per-frame. It also allows you keep the draw</span>
+<span class="doccomment">//!   call count for text very low, as all glyphs are kept in one GPU texture.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Notable things that RustType does not support *yet*:</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! * OpenType formatted fonts that are not just TrueType fonts (OpenType is a superset of TrueType). Notably</span>
+<span class="doccomment">//!   there is no support yet for cubic Bezier curves used in glyphs.</span>
+<span class="doccomment">//! * Font hinting.</span>
+<span class="doccomment">//! * Ligatures of any kind.</span>
+<span class="doccomment">//! * Some less common TrueType sub-formats.</span>
+<span class="doccomment">//! * Right-to-left and vertical text layout.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! # Getting Started</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! Add the following to your Cargo.toml:</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```toml</span>
+<span class="doccomment">//! [dependencies]</span>
+<span class="doccomment">//! rusttype = &quot;0.2.0&quot;</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! To hit the ground running with RustType, look at the `simple.rs` example supplied with the crate. It</span>
+<span class="doccomment">//! demonstrates loading a font file, rasterising an arbitrary string, and displaying the result as ASCII art.</span>
+<span class="doccomment">//! If you prefer to just look at the documentation, the entry point for loading fonts is `FontCollection`,</span>
+<span class="doccomment">//! from which you can access individual fonts, then their glyphs.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! # Glyphs</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! The glyph API uses wrapper structs to augment a glyph with</span>
+<span class="doccomment">//! information such as scaling and positioning, making relevant methods that make use of this information</span>
+<span class="doccomment">//! available as appropriate. For example, given a `Glyph` `glyph` obtained directly from a `Font`:</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! ```no_run</span>
+<span class="doccomment">//! # use rusttype::*;</span>
+<span class="doccomment">//! # let glyph: Glyph&lt;&#39;static&gt; = unimplemented!();</span>
+<span class="doccomment">//! // One of the few things you can do with an unsized, positionless glyph is get its id.</span>
+<span class="doccomment">//! let id = glyph.id();</span>
+<span class="doccomment">//! let glyph = glyph.scaled(Scale::uniform(10.0));</span>
+<span class="doccomment">//! // Now glyph is a ScaledGlyph, you can do more with it, as well as what you can do with Glyph.</span>
+<span class="doccomment">//! // For example, you can access the correctly scaled horizontal metrics for the glyph.</span>
+<span class="doccomment">//! let h_metrics = glyph.h_metrics();</span>
+<span class="doccomment">//! let glyph = glyph.positioned(point(5.0, 3.0));</span>
+<span class="doccomment">//! // Now glyph is a PositionedGlyph, and you can do even more with it, e.g. drawing.</span>
+<span class="doccomment">//! glyph.draw(|x, y, v| {}); // In this case the pixel values are not used.</span>
+<span class="doccomment">//! ```</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! # Unicode terminology</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! This crate uses terminology for computerised typography as specified by the Unicode standard. If you are</span>
+<span class="doccomment">//! not sure of the differences between a code point, a character, and a glyph, you may want to check the</span>
+<span class="doccomment">//! [official Unicode glossary](http://unicode.org/glossary/), or alternatively, here&#39;s my take on it from a</span>
+<span class="doccomment">//! practical perspective:</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! * A character is what you would conventionally call a single symbol, independent of its appearance or</span>
+<span class="doccomment">//!   representation in a particular font. Examples include `a`, `A`, `ä`, `å`, `1`, `*`, `Ω`, etc.</span>
+<span class="doccomment">//! * A Unicode code point is the particular number that the Unicode standard associates with a particular</span>
+<span class="doccomment">//!   character.</span>
+<span class="doccomment">//!   Note however that code points also exist for things not conventionally thought of as characters by</span>
+<span class="doccomment">//!   themselves, but can be combined to form characters, such as diacritics like accents. These</span>
+<span class="doccomment">//!   &quot;characters&quot; are known in Unicode as &quot;combining characters&quot;.</span>
+<span class="doccomment">//!   E.g., a diaeresis (`¨`) has the code point U+0308. If this code point follows the code point U+0055</span>
+<span class="doccomment">//!   (the letter `u`), this sequence represents the character `ü`. Note that there is also a</span>
+<span class="doccomment">//!   single codepoint for `ü`, U+00FC. This means that what visually looks like the same string can have</span>
+<span class="doccomment">//!   multiple different Unicode representations. Some fonts will have glyphs (see below) for one sequence of</span>
+<span class="doccomment">//!   codepoints, but not another that has the same meaning. To deal with this problem it is recommended to use</span>
+<span class="doccomment">//!   Unicode normalisation, as provided by, for example, the</span>
+<span class="doccomment">//!   [unicode-normalization](http://crates.io/crates/unicode-normalization) crate, to convert to code point</span>
+<span class="doccomment">//!   sequences that work with the font in question. Typically a font is more likely to support a single code</span>
+<span class="doccomment">//!   point vs. a sequence with the same meaning, so the best normalisation to use is &quot;canonical recomposition&quot;,</span>
+<span class="doccomment">//!   known as NFC in the normalisation crate.</span>
+<span class="doccomment">//! * A glyph is a particular font&#39;s shape to draw the character for a particular Unicode code point. This will</span>
+<span class="doccomment">//!   have its own identifying number unique to the font, its ID.</span>
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">arrayvec</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">stb_truetype</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">linked_hash_map</span>;
+
+<span class="kw">mod</span> <span class="ident">geometry</span>;
+<span class="kw">mod</span> <span class="ident">rasterizer</span>;
+
+<span class="kw">mod</span> <span class="ident">support</span>;
+
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">gpu_cache</span>;
+
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">sync</span>::<span class="ident">Arc</span>;
+
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">geometry</span>::{<span class="ident">Rect</span>, <span class="ident">Point</span>, <span class="ident">point</span>, <span class="ident">Vector</span>, <span class="ident">vector</span>, <span class="ident">Line</span>, <span class="ident">Curve</span>};
+<span class="kw">use</span> <span class="ident">stb_truetype</span> <span class="kw">as</span> <span class="ident">tt</span>;
+
+<span class="doccomment">/// A collection of fonts read straight from a font file&#39;s data. The data in the collection is not validated.</span>
+<span class="doccomment">/// This structure may or may not own the font data.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">FontCollection</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>(<span class="ident">SharedBytes</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>);
+<span class="doccomment">/// A single font. This may or may not own the font data.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Font</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="ident">info</span>: <span class="ident">tt</span>::<span class="ident">FontInfo</span><span class="op">&lt;</span><span class="ident">SharedBytes</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;&gt;</span>
+}
+
+<span class="doccomment">/// `SharedBytes` handles the lifetime of font data used in RustType. The data is either a shared</span>
+<span class="doccomment">/// reference to externally owned data, or managed by reference counting. `SharedBytes` can be</span>
+<span class="doccomment">/// conveniently used with `From` and `Into`, and dereferences to the contained bytes.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
+<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">SharedBytes</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="ident">ByRef</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">u8</span>]),
+    <span class="ident">ByArc</span>(<span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;&gt;</span>)
+}
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> ::<span class="ident">std</span>::<span class="ident">ops</span>::<span class="ident">Deref</span> <span class="kw">for</span> <span class="ident">SharedBytes</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="kw">type</span> <span class="ident">Target</span> <span class="op">=</span> [<span class="ident">u8</span>];
+    <span class="kw">fn</span> <span class="ident">deref</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span>[<span class="ident">u8</span>] {
+        <span class="kw">match</span> <span class="kw-2">*</span><span class="self">self</span> {
+            <span class="ident">SharedBytes</span>::<span class="ident">ByRef</span>(<span class="ident">bytes</span>) <span class="op">=&gt;</span> <span class="ident">bytes</span>,
+            <span class="ident">SharedBytes</span>::<span class="ident">ByArc</span>(<span class="kw-2">ref</span> <span class="ident">bytes</span>) <span class="op">=&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="kw-2">*</span><span class="kw-2">*</span><span class="ident">bytes</span>
+        }
+    }
+}
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">From</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">u8</span>]<span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">SharedBytes</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">bytes</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> [<span class="ident">u8</span>]) <span class="op">-&gt;</span> <span class="ident">SharedBytes</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+        <span class="ident">SharedBytes</span>::<span class="ident">ByRef</span>(<span class="ident">bytes</span>)
+    }
+}
+<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;&gt;</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">SharedBytes</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">bytes</span>: <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;&gt;</span>) <span class="op">-&gt;</span> <span class="ident">SharedBytes</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
+        <span class="ident">SharedBytes</span>::<span class="ident">ByArc</span>(<span class="ident">bytes</span>)
+    }
+}
+<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;&gt;</span> <span class="kw">for</span> <span class="ident">SharedBytes</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">bytes</span>: <span class="ident">Box</span><span class="op">&lt;</span>[<span class="ident">u8</span>]<span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">SharedBytes</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
+        <span class="ident">SharedBytes</span>::<span class="ident">ByArc</span>(<span class="ident">Arc</span>::<span class="ident">new</span>(<span class="ident">bytes</span>))
+    }
+}
+<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;&gt;</span> <span class="kw">for</span> <span class="ident">SharedBytes</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">bytes</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">SharedBytes</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
+        <span class="ident">SharedBytes</span>::<span class="ident">ByArc</span>(<span class="ident">Arc</span>::<span class="ident">new</span>(<span class="ident">bytes</span>.<span class="ident">into_boxed_slice</span>()))
+    }
+}
+<span class="doccomment">/// Represents a Unicode code point.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Codepoint</span>(<span class="kw">pub</span> <span class="ident">u32</span>);
+<span class="doccomment">/// Represents either a Unicode code point, or a glyph identifier for a font.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This is used as input for functions that can accept code points or glyph identifiers.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// You typically won&#39;t construct this type directly, instead relying on `From` and `Into`.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>)]</span>
+<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">CodepointOrGlyphId</span> {
+    <span class="ident">Codepoint</span>(<span class="ident">Codepoint</span>),
+    <span class="ident">GlyphId</span>(<span class="ident">GlyphId</span>)
+}
+<span class="doccomment">/// Represents a glyph identifier for a particular font. This identifier will not necessarily correspond to</span>
+<span class="doccomment">/// the correct glyph in a font other than the one that it was obtained from.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">PartialOrd</span>, <span class="ident">Ord</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">GlyphId</span>(<span class="kw">pub</span> <span class="ident">u32</span>);
+<span class="doccomment">/// A single glyph of a font. this may either be a thin wrapper referring to the font and the glyph id, or</span>
+<span class="doccomment">/// it may be a standalone glyph that owns the data needed by it.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// A `Glyph` does not have an inherent scale or position associated with it. To augment a glyph with a</span>
+<span class="doccomment">/// size, give it a scale using `scaled`. You can then position it using `positioned`.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Glyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="ident">inner</span>: <span class="ident">GlyphInner</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>
+}
+
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
+<span class="kw">enum</span> <span class="ident">GlyphInner</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="ident">Proxy</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Font</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>, <span class="ident">u32</span>),
+    <span class="ident">Shared</span>(<span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">SharedGlyphData</span><span class="op">&gt;</span>)
+}
+
+<span class="kw">struct</span> <span class="ident">SharedGlyphData</span> {
+    <span class="ident">id</span>: <span class="ident">u32</span>,
+    <span class="ident">extents</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Rect</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;&gt;</span>,
+    <span class="ident">scale_for_1_pixel</span>: <span class="ident">f32</span>,
+    <span class="ident">unit_h_metrics</span>: <span class="ident">HMetrics</span>,
+    <span class="ident">shape</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">tt</span>::<span class="ident">Vertex</span><span class="op">&gt;&gt;</span>
+}
+<span class="doccomment">/// The &quot;horizontal metrics&quot; of a glyph. This is useful for calculating the horizontal offset of a glyph</span>
+<span class="doccomment">/// from the previous one in a string when laying a string out horizontally.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">PartialOrd</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">HMetrics</span> {
+    <span class="doccomment">/// The horizontal offset that the origin of the next glyph should be from the origin of this glyph.</span>
+    <span class="kw">pub</span> <span class="ident">advance_width</span>: <span class="ident">f32</span>,
+    <span class="doccomment">/// The horizontal offset between the origin of this glyph and the leftmost edge/point of the glyph.</span>
+    <span class="kw">pub</span> <span class="ident">left_side_bearing</span>: <span class="ident">f32</span>
+}
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">PartialOrd</span>)]</span>
+<span class="doccomment">/// The &quot;vertical metrics&quot; of a font at a particular scale. This is useful for calculating the amount of</span>
+<span class="doccomment">/// vertical space to give a line of text, and for computing the vertical offset between successive lines.</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">VMetrics</span> {
+    <span class="doccomment">/// The highest point that any glyph in the font extends to above the baseline. Typically positive.</span>
+    <span class="kw">pub</span> <span class="ident">ascent</span>: <span class="ident">f32</span>,
+    <span class="doccomment">/// The lowest point that any glyph in the font extends to below the baseline. Typically negative.</span>
+    <span class="kw">pub</span> <span class="ident">descent</span>: <span class="ident">f32</span>,
+    <span class="doccomment">/// The gap to leave between the descent of one line and the ascent of the next. This is of</span>
+    <span class="doccomment">/// course only a guideline given by the font&#39;s designers.</span>
+    <span class="kw">pub</span> <span class="ident">line_gap</span>: <span class="ident">f32</span>
+}
+<span class="doccomment">/// A glyph augmented with scaling information. You can query such a glyph for information that depends</span>
+<span class="doccomment">/// on the scale of the glyph.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ScaledGlyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="ident">g</span>: <span class="ident">Glyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
+    <span class="ident">api_scale</span>: <span class="ident">Scale</span>,
+    <span class="ident">scale</span>: <span class="ident">Vector</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>
+}
+<span class="doccomment">/// A glyph augmented with positioning and scaling information. You can query such a glyph for information</span>
+<span class="doccomment">/// that depends on the scale and position of the glyph.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">PositionedGlyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="ident">sg</span>: <span class="ident">ScaledGlyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
+    <span class="ident">position</span>: <span class="ident">Point</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>,
+    <span class="ident">bb</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Rect</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;&gt;</span>
+}
+<span class="doccomment">/// Defines the size of a rendered face of a font, in pixels, horizontally and vertically. A vertical</span>
+<span class="doccomment">/// scale of `y` pixels means that the distance betwen the ascent and descent lines (see `VMetrics`) of the</span>
+<span class="doccomment">/// face will be `y` pixels. If `x` and `y` are equal the scaling is uniform. Non-uniform scaling by a factor</span>
+<span class="doccomment">/// *f* in the horizontal direction is achieved by setting `x` equal to *f* times `y`.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">PartialEq</span>, <span class="ident">PartialOrd</span>, <span class="ident">Debug</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Scale</span> {
+    <span class="doccomment">/// Horizontal scale, in pixels.</span>
+    <span class="kw">pub</span> <span class="ident">x</span>: <span class="ident">f32</span>,
+    <span class="doccomment">/// Vertical scale, in pixels.</span>
+    <span class="kw">pub</span> <span class="ident">y</span>: <span class="ident">f32</span>
+}
+
+<span class="kw">impl</span> <span class="ident">Scale</span> {
+    <span class="doccomment">/// Uniform scaling, equivalent to `Scale { x: s, y: s }`.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">uniform</span>(<span class="ident">s</span>: <span class="ident">f32</span>) <span class="op">-&gt;</span> <span class="ident">Scale</span> {
+        <span class="ident">Scale</span> { <span class="ident">x</span>: <span class="ident">s</span>, <span class="ident">y</span>: <span class="ident">s</span> }
+    }
+}
+<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Codepoint</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">c</span>: <span class="ident">char</span>) <span class="op">-&gt;</span> <span class="ident">Codepoint</span> {
+        <span class="ident">Codepoint</span>(<span class="ident">c</span> <span class="kw">as</span> <span class="ident">u32</span>)
+    }
+}
+<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">Codepoint</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">CodepointOrGlyphId</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">c</span>: <span class="ident">Codepoint</span>) <span class="op">-&gt;</span> <span class="ident">CodepointOrGlyphId</span> {
+        <span class="ident">CodepointOrGlyphId</span>::<span class="ident">Codepoint</span>(<span class="ident">c</span>)
+    }
+}
+<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">GlyphId</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">CodepointOrGlyphId</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">g</span>: <span class="ident">GlyphId</span>) <span class="op">-&gt;</span> <span class="ident">CodepointOrGlyphId</span> {
+        <span class="ident">CodepointOrGlyphId</span>::<span class="ident">GlyphId</span>(<span class="ident">g</span>)
+    }
+}
+<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">char</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">CodepointOrGlyphId</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">c</span>: <span class="ident">char</span>) <span class="op">-&gt;</span> <span class="ident">CodepointOrGlyphId</span> {
+        <span class="ident">Codepoint</span>(<span class="ident">c</span> <span class="kw">as</span> <span class="ident">u32</span>).<span class="ident">into</span>()
+    }
+}
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">FontCollection</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// Constructs a font collection from an array of bytes, typically loaded from a font file.</span>
+    <span class="doccomment">/// This array may be owned (e.g. `Vec&lt;u8&gt;`), or borrowed (`&amp;[u8]`).</span>
+    <span class="doccomment">/// As long as `From&lt;T&gt;` is implemented for `Bytes` for some type `T`, `T` can be used as input.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">from_bytes</span><span class="op">&lt;</span><span class="ident">B</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">SharedBytes</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;&gt;</span><span class="op">&gt;</span>(<span class="ident">bytes</span>: <span class="ident">B</span>) <span class="op">-&gt;</span> <span class="ident">FontCollection</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+        <span class="ident">FontCollection</span>(<span class="ident">bytes</span>.<span class="ident">into</span>())
+    }
+    <span class="doccomment">/// In the common case that a font collection consists of only one font, this function</span>
+    <span class="doccomment">/// consumes this font collection and turns it into a font. If this is not the case,</span>
+    <span class="doccomment">/// or the font is not valid (read: not supported by this library), `None` is returned.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_font</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Font</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;&gt;</span> {
+        <span class="kw">if</span> <span class="ident">tt</span>::<span class="ident">is_font</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>) <span class="op">&amp;&amp;</span> <span class="ident">tt</span>::<span class="ident">get_font_offset_for_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, <span class="number">1</span>).<span class="ident">is_none</span>() {
+            <span class="ident">tt</span>::<span class="ident">FontInfo</span>::<span class="ident">new</span>(<span class="self">self</span>.<span class="number">0</span>, <span class="number">0</span>).<span class="ident">map</span>(
+                <span class="op">|</span><span class="ident">info</span><span class="op">|</span> <span class="ident">Font</span> {
+                    <span class="ident">info</span>: <span class="ident">info</span>
+                })
+        } <span class="kw">else</span> {
+            <span class="prelude-val">None</span>
+        }
+    }
+    <span class="doccomment">/// Gets the font at index `i` in the font collection, if it exists and is valid.</span>
+    <span class="doccomment">/// The produced font borrows the font data that is either borrowed or owned by this font collection.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">font_at</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">i</span>: <span class="ident">usize</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Font</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;&gt;</span> {
+        <span class="ident">tt</span>::<span class="ident">get_font_offset_for_index</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="number">0</span>, <span class="ident">i</span> <span class="kw">as</span> <span class="ident">i32</span>)
+            .<span class="ident">and_then</span>(<span class="op">|</span><span class="ident">o</span><span class="op">|</span> <span class="ident">tt</span>::<span class="ident">FontInfo</span>::<span class="ident">new</span>(<span class="self">self</span>.<span class="number">0</span>.<span class="ident">clone</span>(), <span class="ident">o</span> <span class="kw">as</span> <span class="ident">usize</span>))
+            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">info</span><span class="op">|</span> <span class="ident">Font</span> { <span class="ident">info</span>: <span class="ident">info</span> })
+    }
+    <span class="doccomment">/// Converts `self` into an `Iterator` yielding each `Font` that exists within the collection.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_fonts</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">IntoFontsIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+        <span class="ident">IntoFontsIter</span> {
+            <span class="ident">collection</span>: <span class="self">self</span>,
+            <span class="ident">next_index</span>: <span class="number">0</span>,
+        }
+    }
+}
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">IntoFontsIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="ident">next_index</span>: <span class="ident">usize</span>,
+    <span class="ident">collection</span>: <span class="ident">FontCollection</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
+}
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Iterator</span> <span class="kw">for</span> <span class="ident">IntoFontsIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">Font</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="self">Self</span>::<span class="ident">Item</span><span class="op">&gt;</span> {
+        <span class="self">self</span>.<span class="ident">collection</span>.<span class="ident">font_at</span>(<span class="self">self</span>.<span class="ident">next_index</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">font</span><span class="op">|</span> {
+            <span class="self">self</span>.<span class="ident">next_index</span> <span class="op">+=</span> <span class="number">1</span>;
+            <span class="ident">font</span>
+        })
+    }
+}
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Font</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+
+    <span class="doccomment">/// The &quot;vertical metrics&quot; for this font at a given scale. These metrics are shared by all of the glyphs</span>
+    <span class="doccomment">/// in the font.</span>
+    <span class="doccomment">/// See `VMetrics` for more detail.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">v_metrics</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">scale</span>: <span class="ident">Scale</span>) <span class="op">-&gt;</span> <span class="ident">VMetrics</span> {
+        <span class="kw">let</span> <span class="ident">vm</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">info</span>.<span class="ident">get_v_metrics</span>();
+        <span class="kw">let</span> <span class="ident">scale</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">info</span>.<span class="ident">scale_for_pixel_height</span>(<span class="ident">scale</span>.<span class="ident">y</span>);
+        <span class="ident">VMetrics</span> {
+            <span class="ident">ascent</span>: <span class="ident">vm</span>.<span class="ident">ascent</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="ident">scale</span>,
+            <span class="ident">descent</span>: <span class="ident">vm</span>.<span class="ident">descent</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="ident">scale</span>,
+            <span class="ident">line_gap</span>: <span class="ident">vm</span>.<span class="ident">line_gap</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="ident">scale</span>
+        }
+    }
+
+    <span class="doccomment">/// The number of glyphs present in this font. Glyph identifiers for this font will always be in the range</span>
+    <span class="doccomment">/// `0..self.glyph_count()`</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">glyph_count</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">usize</span> {
+        <span class="self">self</span>.<span class="ident">info</span>.<span class="ident">get_num_glyphs</span>() <span class="kw">as</span> <span class="ident">usize</span>
+    }
+
+    <span class="doccomment">/// Returns the corresponding glyph for a Unicode code point or a glyph id for this font.</span>
+    <span class="doccomment">/// If id corresponds to a glyph identifier, the identifier must be valid (smaller than `self.glyph_count()`),</span>
+    <span class="doccomment">/// otherwise `None` is returned.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Note that code points without corresponding glyphs in this font map to the &quot;undef&quot; glyph, glyph 0.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">glyph</span><span class="op">&lt;</span><span class="ident">C</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">CodepointOrGlyphId</span><span class="op">&gt;&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">id</span>: <span class="ident">C</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Glyph</span><span class="op">&gt;</span> {
+        <span class="kw">let</span> <span class="ident">gid</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">id</span>.<span class="ident">into</span>() {
+            <span class="ident">CodepointOrGlyphId</span>::<span class="ident">Codepoint</span>(<span class="ident">Codepoint</span>(<span class="ident">c</span>)) <span class="op">=&gt;</span> <span class="self">self</span>.<span class="ident">info</span>.<span class="ident">find_glyph_index</span>(<span class="ident">c</span>),
+            <span class="ident">CodepointOrGlyphId</span>::<span class="ident">GlyphId</span>(<span class="ident">GlyphId</span>(<span class="ident">gid</span>)) <span class="op">=&gt;</span> <span class="ident">gid</span>
+        };
+        <span class="prelude-val">Some</span>(<span class="ident">Glyph</span>::<span class="ident">new</span>(<span class="ident">GlyphInner</span>::<span class="ident">Proxy</span>(<span class="self">self</span>, <span class="ident">gid</span>)))
+    }
+    <span class="doccomment">/// A convenience function.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Returns an iterator that produces the glyphs corresponding to the code points or glyph ids produced</span>
+    <span class="doccomment">/// by the given iterator `itr`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This is equivalent in behaviour to `itr.map(|c| font.glyph(c).unwrap())`.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">glyphs_for</span><span class="op">&lt;</span><span class="ident">I</span>: <span class="ident">Iterator</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">itr</span>: <span class="ident">I</span>) <span class="op">-&gt;</span> <span class="ident">GlyphIter</span><span class="op">&lt;</span><span class="ident">I</span><span class="op">&gt;</span> <span class="kw">where</span> <span class="ident">I</span>::<span class="ident">Item</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">CodepointOrGlyphId</span><span class="op">&gt;</span> {
+        <span class="ident">GlyphIter</span> {
+            <span class="ident">font</span>: <span class="self">self</span>,
+            <span class="ident">itr</span>: <span class="ident">itr</span>
+        }
+    }
+    <span class="doccomment">/// A convenience function for laying out glyphs for a string horizontally. It does not take control</span>
+    <span class="doccomment">/// characters like line breaks into account, as treatment of these is likely to depend on the application.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Note that this function does not perform Unicode normalisation. Composite characters (such as ö</span>
+    <span class="doccomment">/// constructed from two code points, ¨ and o), will not be normalised to single code points. So if a font</span>
+    <span class="doccomment">/// does not contain a glyph for each separate code point, but does contain one for the normalised single</span>
+    <span class="doccomment">/// code point (which is common), the desired glyph will not be produced, despite being present in the font.</span>
+    <span class="doccomment">/// Deal with this by performing Unicode normalisation on the input string before passing it to `layout`.</span>
+    <span class="doccomment">/// The crate [unicode-normalization](http://crates.io/crates/unicode-normalization) is perfect for this</span>
+    <span class="doccomment">/// purpose.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Calling this function is equivalent to a longer sequence of operations involving `glyphs_for`, e.g.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ```no_run</span>
+    <span class="doccomment">/// # use rusttype::*;</span>
+    <span class="doccomment">/// # let (scale, start) = (Scale::uniform(0.0), point(0.0, 0.0));</span>
+    <span class="doccomment">/// # let font: Font = unimplemented!();</span>
+    <span class="doccomment">/// font.layout(&quot;Hello World!&quot;, scale, start)</span>
+    <span class="doccomment">/// # ;</span>
+    <span class="doccomment">/// ```</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// produces an iterator with behaviour equivalent to the following:</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ```no_run</span>
+    <span class="doccomment">/// # use rusttype::*;</span>
+    <span class="doccomment">/// # let (scale, start) = (Scale::uniform(0.0), point(0.0, 0.0));</span>
+    <span class="doccomment">/// # let font: Font = unimplemented!();</span>
+    <span class="doccomment">/// font.glyphs_for(&quot;Hello World!&quot;.chars())</span>
+    <span class="doccomment">///     .scan((None, 0.0), |&amp;mut (mut last, mut x), g| {</span>
+    <span class="doccomment">///         let g = g.scaled(scale);</span>
+    <span class="doccomment">///         let w = g.h_metrics().advance_width</span>
+    <span class="doccomment">///             + last.map(|last| font.pair_kerning(scale, last, g.id())).unwrap_or(0.0);</span>
+    <span class="doccomment">///         let next = g.positioned(start + vector(x, 0.0));</span>
+    <span class="doccomment">///         last = Some(next.id());</span>
+    <span class="doccomment">///         x += w;</span>
+    <span class="doccomment">///         Some(next)</span>
+    <span class="doccomment">///     })</span>
+    <span class="doccomment">/// # ;</span>
+    <span class="doccomment">/// ```</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">layout</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span>, <span class="lifetime">&#39;c</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="self">self</span>, <span class="ident">s</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;c</span> <span class="ident">str</span>, <span class="ident">scale</span>: <span class="ident">Scale</span>, <span class="ident">start</span>: <span class="ident">Point</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">LayoutIter</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span>, <span class="lifetime">&#39;c</span><span class="op">&gt;</span> {
+        <span class="ident">LayoutIter</span> {
+            <span class="ident">font</span>: <span class="self">self</span>,
+            <span class="ident">chars</span>: <span class="ident">s</span>.<span class="ident">chars</span>(),
+            <span class="ident">caret</span>: <span class="number">0.0</span>,
+            <span class="ident">scale</span>: <span class="ident">scale</span>,
+            <span class="ident">start</span>: <span class="ident">start</span>,
+            <span class="ident">last_glyph</span>: <span class="prelude-val">None</span>
+        }
+    }
+    <span class="doccomment">/// Returns additional kerning to apply as well as that given by HMetrics for a particular pair of glyphs.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pair_kerning</span><span class="op">&lt;</span><span class="ident">A</span>, <span class="ident">B</span><span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">scale</span>: <span class="ident">Scale</span>, <span class="ident">first</span>: <span class="ident">A</span>, <span class="ident">second</span>: <span class="ident">B</span>) <span class="op">-&gt;</span> <span class="ident">f32</span>
+        <span class="kw">where</span> <span class="ident">A</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">CodepointOrGlyphId</span><span class="op">&gt;</span>, <span class="ident">B</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">CodepointOrGlyphId</span><span class="op">&gt;</span>
+    {
+        <span class="kw">let</span> (<span class="ident">first</span>, <span class="ident">second</span>) <span class="op">=</span> (<span class="self">self</span>.<span class="ident">glyph</span>(<span class="ident">first</span>).<span class="ident">unwrap</span>(), <span class="self">self</span>.<span class="ident">glyph</span>(<span class="ident">second</span>).<span class="ident">unwrap</span>());
+        <span class="kw">let</span> <span class="ident">factor</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">info</span>.<span class="ident">scale_for_pixel_height</span>(<span class="ident">scale</span>.<span class="ident">y</span>) <span class="op">*</span> (<span class="ident">scale</span>.<span class="ident">x</span> <span class="op">/</span> <span class="ident">scale</span>.<span class="ident">y</span>);
+        <span class="kw">let</span> <span class="ident">kern</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">info</span>.<span class="ident">get_glyph_kern_advance</span>(<span class="ident">first</span>.<span class="ident">id</span>().<span class="number">0</span>, <span class="ident">second</span>.<span class="ident">id</span>().<span class="number">0</span>);
+        <span class="ident">factor</span> <span class="op">*</span> <span class="ident">kern</span> <span class="kw">as</span> <span class="ident">f32</span>
+    }
+}
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">GlyphIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">I</span>: <span class="ident">Iterator</span><span class="op">&gt;</span> <span class="kw">where</span> <span class="ident">I</span>::<span class="ident">Item</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">CodepointOrGlyphId</span><span class="op">&gt;</span> {
+    <span class="ident">font</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Font</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
+    <span class="ident">itr</span>: <span class="ident">I</span>
+}
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">I</span>: <span class="ident">Iterator</span><span class="op">&gt;</span> <span class="ident">Iterator</span> <span class="kw">for</span> <span class="ident">GlyphIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">I</span><span class="op">&gt;</span> <span class="kw">where</span> <span class="ident">I</span>::<span class="ident">Item</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="ident">CodepointOrGlyphId</span><span class="op">&gt;</span> {
+    <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">Glyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Glyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;&gt;</span> {
+        <span class="self">self</span>.<span class="ident">itr</span>.<span class="ident">next</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> <span class="self">self</span>.<span class="ident">font</span>.<span class="ident">glyph</span>(<span class="ident">c</span>).<span class="ident">unwrap</span>())
+    }
+}
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">LayoutIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="lifetime">&#39;b</span><span class="op">&gt;</span> {
+    <span class="ident">font</span>: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a</span> <span class="ident">Font</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>,
+    <span class="ident">chars</span>: ::<span class="ident">std</span>::<span class="ident">str</span>::<span class="ident">Chars</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span>,
+    <span class="ident">caret</span>: <span class="ident">f32</span>,
+    <span class="ident">scale</span>: <span class="ident">Scale</span>,
+    <span class="ident">start</span>: <span class="ident">Point</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>,
+    <span class="ident">last_glyph</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">GlyphId</span><span class="op">&gt;</span>
+}
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="lifetime">&#39;b</span><span class="op">&gt;</span> <span class="ident">Iterator</span> <span class="kw">for</span> <span class="ident">LayoutIter</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="lifetime">&#39;b</span><span class="op">&gt;</span> {
+    <span class="kw">type</span> <span class="ident">Item</span> <span class="op">=</span> <span class="ident">PositionedGlyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span>;
+    <span class="kw">fn</span> <span class="ident">next</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">PositionedGlyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;&gt;</span> {
+        <span class="self">self</span>.<span class="ident">chars</span>.<span class="ident">next</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">c</span><span class="op">|</span> {
+            <span class="kw">let</span> <span class="ident">g</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">font</span>.<span class="ident">glyph</span>(<span class="ident">c</span>).<span class="ident">unwrap</span>().<span class="ident">scaled</span>(<span class="self">self</span>.<span class="ident">scale</span>);
+            <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">last</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">last_glyph</span> {
+                <span class="self">self</span>.<span class="ident">caret</span> <span class="op">+=</span> <span class="self">self</span>.<span class="ident">font</span>.<span class="ident">pair_kerning</span>(<span class="self">self</span>.<span class="ident">scale</span>, <span class="ident">last</span>, <span class="ident">g</span>.<span class="ident">id</span>());
+            }
+            <span class="kw">let</span> <span class="ident">g</span> <span class="op">=</span> <span class="ident">g</span>.<span class="ident">positioned</span>(<span class="ident">point</span>(<span class="self">self</span>.<span class="ident">start</span>.<span class="ident">x</span> <span class="op">+</span> <span class="self">self</span>.<span class="ident">caret</span>, <span class="self">self</span>.<span class="ident">start</span>.<span class="ident">y</span>));
+            <span class="self">self</span>.<span class="ident">caret</span> <span class="op">+=</span> <span class="ident">g</span>.<span class="ident">sg</span>.<span class="ident">h_metrics</span>().<span class="ident">advance_width</span>;
+            <span class="self">self</span>.<span class="ident">last_glyph</span> <span class="op">=</span> <span class="prelude-val">Some</span>(<span class="ident">g</span>.<span class="ident">id</span>());
+            <span class="ident">g</span>
+        })
+    }
+}
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">Glyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">new</span>(<span class="ident">inner</span>: <span class="ident">GlyphInner</span>) <span class="op">-&gt;</span> <span class="ident">Glyph</span> {
+        <span class="ident">Glyph</span> {
+            <span class="ident">inner</span>: <span class="ident">inner</span>
+        }
+    }
+    <span class="doccomment">/// The font to which this glyph belongs. If the glyph is a standalone glyph that owns its resources,</span>
+    <span class="doccomment">/// it no longer has a reference to the font which it was created from (using `standalone()`). In which</span>
+    <span class="doccomment">/// case, `None` is returned.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">font</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Font</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;&gt;</span> {
+        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">inner</span> {
+            <span class="ident">GlyphInner</span>::<span class="ident">Proxy</span>(<span class="ident">f</span>, _) <span class="op">=&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">f</span>),
+            <span class="ident">GlyphInner</span>::<span class="ident">Shared</span>(_) <span class="op">=&gt;</span> <span class="prelude-val">None</span>
+        }
+    }
+    <span class="doccomment">/// The glyph identifier for this glyph.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">GlyphId</span> {
+        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">inner</span> {
+            <span class="ident">GlyphInner</span>::<span class="ident">Proxy</span>(_, <span class="ident">id</span>) <span class="op">=&gt;</span> <span class="ident">GlyphId</span>(<span class="ident">id</span>),
+            <span class="ident">GlyphInner</span>::<span class="ident">Shared</span>(<span class="kw-2">ref</span> <span class="ident">data</span>) <span class="op">=&gt;</span> <span class="ident">GlyphId</span>(<span class="ident">data</span>.<span class="ident">id</span>),
+        }
+    }
+    <span class="doccomment">/// Augments this glyph with scaling information, making methods that depend on the scale of the glyph</span>
+    <span class="doccomment">/// available.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scaled</span>(<span class="self">self</span>, <span class="ident">scale</span>: <span class="ident">Scale</span>) <span class="op">-&gt;</span> <span class="ident">ScaledGlyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+        <span class="kw">let</span> (<span class="ident">scale_x</span>, <span class="ident">scale_y</span>) <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">inner</span> {
+            <span class="ident">GlyphInner</span>::<span class="ident">Proxy</span>(<span class="ident">font</span>, _) <span class="op">=&gt;</span> {
+                <span class="kw">let</span> <span class="ident">scale_y</span> <span class="op">=</span> <span class="ident">font</span>.<span class="ident">info</span>.<span class="ident">scale_for_pixel_height</span>(<span class="ident">scale</span>.<span class="ident">y</span>);
+                <span class="kw">let</span> <span class="ident">scale_x</span> <span class="op">=</span> <span class="ident">scale_y</span> <span class="op">*</span> <span class="ident">scale</span>.<span class="ident">x</span> <span class="op">/</span> <span class="ident">scale</span>.<span class="ident">y</span>;
+                (<span class="ident">scale_x</span>, <span class="ident">scale_y</span>)
+            }
+            <span class="ident">GlyphInner</span>::<span class="ident">Shared</span>(<span class="kw-2">ref</span> <span class="ident">data</span>) <span class="op">=&gt;</span> {
+                <span class="kw">let</span> <span class="ident">scale_y</span> <span class="op">=</span> <span class="ident">data</span>.<span class="ident">scale_for_1_pixel</span> <span class="op">*</span> <span class="ident">scale</span>.<span class="ident">y</span>;
+                <span class="kw">let</span> <span class="ident">scale_x</span> <span class="op">=</span> <span class="ident">scale_y</span> <span class="op">*</span> <span class="ident">scale</span>.<span class="ident">x</span> <span class="op">/</span> <span class="ident">scale</span>.<span class="ident">y</span>;
+                (<span class="ident">scale_x</span>, <span class="ident">scale_y</span>)
+            }
+        };
+        <span class="ident">ScaledGlyph</span> {
+            <span class="ident">g</span>: <span class="self">self</span>,
+            <span class="ident">api_scale</span>: <span class="ident">scale</span>,
+            <span class="ident">scale</span>: <span class="ident">vector</span>(<span class="ident">scale_x</span>, <span class="ident">scale_y</span>)
+        }
+    }
+    <span class="doccomment">/// Turns a `Glyph&lt;&#39;a&gt;` into a `Glyph&lt;&#39;static&gt;`. This produces a glyph that owns its resources,</span>
+    <span class="doccomment">/// extracted from the font. This glyph can outlive the font that it comes from.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Calling `standalone()` on a standalone glyph shares the resources, and is equivalent to `clone()`.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">standalone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Glyph</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
+        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">inner</span> {
+            <span class="ident">GlyphInner</span>::<span class="ident">Proxy</span>(<span class="ident">font</span>, <span class="ident">id</span>) <span class="op">=&gt;</span> <span class="ident">Glyph</span>::<span class="ident">new</span>(<span class="ident">GlyphInner</span>::<span class="ident">Shared</span>(<span class="ident">Arc</span>::<span class="ident">new</span>(<span class="ident">SharedGlyphData</span> {
+                <span class="ident">id</span>: <span class="ident">id</span>,
+                <span class="ident">scale_for_1_pixel</span>: <span class="ident">font</span>.<span class="ident">info</span>.<span class="ident">scale_for_pixel_height</span>(<span class="number">1.0</span>),
+                <span class="ident">unit_h_metrics</span>: {
+                    <span class="kw">let</span> <span class="ident">hm</span> <span class="op">=</span> <span class="ident">font</span>.<span class="ident">info</span>.<span class="ident">get_glyph_h_metrics</span>(<span class="ident">id</span>);
+                    <span class="ident">HMetrics</span> {
+                        <span class="ident">advance_width</span>: <span class="ident">hm</span>.<span class="ident">advance_width</span> <span class="kw">as</span> <span class="ident">f32</span>,
+                        <span class="ident">left_side_bearing</span>: <span class="ident">hm</span>.<span class="ident">left_side_bearing</span> <span class="kw">as</span> <span class="ident">f32</span>
+                    }
+                },
+                <span class="ident">extents</span>: <span class="ident">font</span>.<span class="ident">info</span>.<span class="ident">get_glyph_box</span>(<span class="ident">id</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">bb</span><span class="op">|</span> <span class="ident">Rect</span> {
+                    <span class="ident">min</span>: <span class="ident">point</span>(<span class="ident">bb</span>.<span class="ident">x0</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="op">-</span>(<span class="ident">bb</span>.<span class="ident">y1</span> <span class="kw">as</span> <span class="ident">i32</span>)),
+                    <span class="ident">max</span>: <span class="ident">point</span>(<span class="ident">bb</span>.<span class="ident">x1</span> <span class="kw">as</span> <span class="ident">i32</span>, <span class="op">-</span>(<span class="ident">bb</span>.<span class="ident">y0</span> <span class="kw">as</span> <span class="ident">i32</span>))
+                }),
+                <span class="ident">shape</span>: <span class="ident">font</span>.<span class="ident">info</span>.<span class="ident">get_glyph_shape</span>(<span class="ident">id</span>)
+            }))),
+            <span class="ident">GlyphInner</span>::<span class="ident">Shared</span>(<span class="kw-2">ref</span> <span class="ident">data</span>) <span class="op">=&gt;</span> <span class="ident">Glyph</span>::<span class="ident">new</span>(<span class="ident">GlyphInner</span>::<span class="ident">Shared</span>(<span class="ident">data</span>.<span class="ident">clone</span>()))
+        }
+    }
+}
+<span class="doccomment">/// Part of a `Contour`, either a `Line` or a `Curve`.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Copy</span>, <span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
+<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Segment</span> {
+    <span class="ident">Line</span>(<span class="ident">Line</span>),
+    <span class="ident">Curve</span>(<span class="ident">Curve</span>)
+}
+<span class="doccomment">/// A closed loop consisting of a sequence of `Segment`s.</span>
+<span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Debug</span>)]</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Contour</span> {
+    <span class="kw">pub</span> <span class="ident">segments</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Segment</span><span class="op">&gt;</span>
+}
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">ScaledGlyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// The glyph identifier for this glyph.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">GlyphId</span> {
+        <span class="self">self</span>.<span class="ident">g</span>.<span class="ident">id</span>()
+    }
+    <span class="doccomment">/// The font to which this glyph belongs. If the glyph is a standalone glyph that owns its resources,</span>
+    <span class="doccomment">/// it no longer has a reference to the font which it was created from (using `standalone()`). In which</span>
+    <span class="doccomment">/// case, `None` is returned.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">font</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Font</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;&gt;</span> {
+        <span class="self">self</span>.<span class="ident">g</span>.<span class="ident">font</span>()
+    }
+    <span class="doccomment">/// A reference to this glyph without the scaling</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_unscaled</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Glyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+        <span class="self">self</span>.<span class="ident">g</span>
+    }
+    <span class="doccomment">/// Removes the scaling from this glyph</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unscaled</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">Glyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">g</span>
+    }
+    <span class="doccomment">/// Augments this glyph with positioning information, making methods that depend on the position of the</span>
+    <span class="doccomment">/// glyph available.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">positioned</span>(<span class="self">self</span>, <span class="ident">p</span>: <span class="ident">Point</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">PositionedGlyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+        <span class="kw">let</span> <span class="ident">bb</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">g</span>.<span class="ident">inner</span> {
+            <span class="ident">GlyphInner</span>::<span class="ident">Proxy</span>(<span class="ident">font</span>, <span class="ident">id</span>) <span class="op">=&gt;</span> {
+                <span class="ident">font</span>.<span class="ident">info</span>.<span class="ident">get_glyph_bitmap_box_subpixel</span>(<span class="ident">id</span>,
+                                                        <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">x</span>, <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">y</span>,
+                                                        <span class="ident">p</span>.<span class="ident">x</span>, <span class="ident">p</span>.<span class="ident">y</span>)
+                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">bb</span><span class="op">|</span> <span class="ident">Rect</span> {
+                        <span class="ident">min</span>: <span class="ident">point</span>(<span class="ident">bb</span>.<span class="ident">x0</span>, <span class="ident">bb</span>.<span class="ident">y0</span>),
+                        <span class="ident">max</span>: <span class="ident">point</span>(<span class="ident">bb</span>.<span class="ident">x1</span>, <span class="ident">bb</span>.<span class="ident">y1</span>)
+                    })
+            }
+            <span class="ident">GlyphInner</span>::<span class="ident">Shared</span>(<span class="kw-2">ref</span> <span class="ident">data</span>) <span class="op">=&gt;</span> {
+                <span class="ident">data</span>.<span class="ident">extents</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">bb</span><span class="op">|</span> <span class="ident">Rect</span> {
+                    <span class="ident">min</span>: <span class="ident">point</span>((<span class="ident">bb</span>.<span class="ident">min</span>.<span class="ident">x</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">x</span> <span class="op">+</span> <span class="ident">p</span>.<span class="ident">x</span>).<span class="ident">floor</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+                               (<span class="ident">bb</span>.<span class="ident">min</span>.<span class="ident">y</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">y</span> <span class="op">+</span> <span class="ident">p</span>.<span class="ident">y</span>).<span class="ident">floor</span>() <span class="kw">as</span> <span class="ident">i32</span>),
+                    <span class="ident">max</span>: <span class="ident">point</span>((<span class="ident">bb</span>.<span class="ident">max</span>.<span class="ident">x</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">x</span> <span class="op">+</span> <span class="ident">p</span>.<span class="ident">x</span>).<span class="ident">ceil</span>() <span class="kw">as</span> <span class="ident">i32</span>,
+                               (<span class="ident">bb</span>.<span class="ident">max</span>.<span class="ident">y</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">y</span> <span class="op">+</span> <span class="ident">p</span>.<span class="ident">y</span>).<span class="ident">ceil</span>() <span class="kw">as</span> <span class="ident">i32</span>)
+                })
+            }
+        };
+        <span class="ident">PositionedGlyph</span> {
+            <span class="ident">sg</span>: <span class="self">self</span>,
+            <span class="ident">position</span>: <span class="ident">p</span>,
+            <span class="ident">bb</span>: <span class="ident">bb</span>
+        }
+    }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scale</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Scale</span> {
+        <span class="self">self</span>.<span class="ident">api_scale</span>
+    }
+    <span class="doccomment">/// Retrieves the &quot;horizontal metrics&quot; of this glyph. See `HMetrics` for more detail.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">h_metrics</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">HMetrics</span> {
+        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">g</span>.<span class="ident">inner</span> {
+            <span class="ident">GlyphInner</span>::<span class="ident">Proxy</span>(<span class="ident">font</span>, <span class="ident">id</span>) <span class="op">=&gt;</span> {
+                <span class="kw">let</span> <span class="ident">hm</span> <span class="op">=</span> <span class="ident">font</span>.<span class="ident">info</span>.<span class="ident">get_glyph_h_metrics</span>(<span class="ident">id</span>);
+                <span class="ident">HMetrics</span> {
+                    <span class="ident">advance_width</span>: <span class="ident">hm</span>.<span class="ident">advance_width</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">x</span>,
+                    <span class="ident">left_side_bearing</span>: <span class="ident">hm</span>.<span class="ident">left_side_bearing</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">x</span>
+                }
+            }
+            <span class="ident">GlyphInner</span>::<span class="ident">Shared</span>(<span class="kw-2">ref</span> <span class="ident">data</span>) <span class="op">=&gt;</span> {
+                <span class="ident">HMetrics</span> {
+                    <span class="ident">advance_width</span>: <span class="ident">data</span>.<span class="ident">unit_h_metrics</span>.<span class="ident">advance_width</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">x</span>,
+                    <span class="ident">left_side_bearing</span>: <span class="ident">data</span>.<span class="ident">unit_h_metrics</span>.<span class="ident">left_side_bearing</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">y</span>
+                }
+            }
+        }
+    }
+    <span class="kw">fn</span> <span class="ident">shape_with_offset</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">offset</span>: <span class="ident">Point</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Contour</span><span class="op">&gt;&gt;</span> {
+        <span class="kw">use</span> <span class="ident">stb_truetype</span>::<span class="ident">VertexType</span>;
+        <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">mem</span>::<span class="ident">replace</span>;
+        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">g</span>.<span class="ident">inner</span> {
+            <span class="ident">GlyphInner</span>::<span class="ident">Proxy</span>(<span class="ident">font</span>, <span class="ident">id</span>) <span class="op">=&gt;</span> <span class="ident">font</span>.<span class="ident">info</span>.<span class="ident">get_glyph_shape</span>(<span class="ident">id</span>),
+            <span class="ident">GlyphInner</span>::<span class="ident">Shared</span>(<span class="kw-2">ref</span> <span class="ident">data</span>) <span class="op">=&gt;</span> <span class="ident">data</span>.<span class="ident">shape</span>.<span class="ident">clone</span>()
+        }.<span class="ident">map</span>(<span class="op">|</span><span class="ident">shape</span><span class="op">|</span> {
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">current</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
+            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">last</span> <span class="op">=</span> <span class="ident">point</span>(<span class="number">0.0</span>, <span class="number">0.0</span>);
+            <span class="kw">for</span> <span class="ident">v</span> <span class="kw">in</span> <span class="ident">shape</span> {
+                <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span> <span class="ident">point</span>(<span class="ident">v</span>.<span class="ident">x</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">x</span> <span class="op">+</span> <span class="ident">offset</span>.<span class="ident">x</span>,
+                                <span class="ident">v</span>.<span class="ident">y</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">y</span> <span class="op">+</span> <span class="ident">offset</span>.<span class="ident">y</span>);
+                <span class="kw">match</span> <span class="ident">v</span>.<span class="ident">vertex_type</span>() {
+                    <span class="ident">VertexType</span>::<span class="ident">MoveTo</span> <span class="kw">if</span> <span class="ident">result</span>.<span class="ident">len</span>() <span class="op">!=</span> <span class="number">0</span> <span class="op">=&gt;</span> {
+                        <span class="ident">result</span>.<span class="ident">push</span>(<span class="ident">Contour</span> {
+                            <span class="ident">segments</span>: <span class="ident">replace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">current</span>, <span class="ident">Vec</span>::<span class="ident">new</span>())
+                        })
+                    }
+                    <span class="ident">VertexType</span>::<span class="ident">LineTo</span> <span class="op">=&gt;</span> {
+                        <span class="ident">current</span>.<span class="ident">push</span>(<span class="ident">Segment</span>::<span class="ident">Line</span>(<span class="ident">Line</span> {
+                            <span class="ident">p</span>: [<span class="ident">last</span>, <span class="ident">end</span>]
+                        }))
+                    }
+                    <span class="ident">VertexType</span>::<span class="ident">CurveTo</span> <span class="op">=&gt;</span> {
+                        <span class="kw">let</span> <span class="ident">control</span> <span class="op">=</span> <span class="ident">point</span>(<span class="ident">v</span>.<span class="ident">cx</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">x</span> <span class="op">+</span> <span class="ident">offset</span>.<span class="ident">x</span>,
+                                            <span class="ident">v</span>.<span class="ident">cy</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">y</span> <span class="op">+</span> <span class="ident">offset</span>.<span class="ident">y</span>);
+                        <span class="ident">current</span>.<span class="ident">push</span>(<span class="ident">Segment</span>::<span class="ident">Curve</span>(<span class="ident">Curve</span> {
+                            <span class="ident">p</span>: [<span class="ident">last</span>, <span class="ident">control</span>, <span class="ident">end</span>]
+                        }))
+                    }
+                    _ <span class="op">=&gt;</span> ()
+                }
+                <span class="ident">last</span> <span class="op">=</span> <span class="ident">end</span>;
+            }
+            <span class="kw">if</span> <span class="ident">current</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="number">0</span> {
+                <span class="ident">result</span>.<span class="ident">push</span>(<span class="ident">Contour</span> {
+                    <span class="ident">segments</span>: <span class="ident">replace</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">current</span>, <span class="ident">Vec</span>::<span class="ident">new</span>())
+                });
+            }
+            <span class="ident">result</span>
+        })
+    }
+    <span class="doccomment">/// Produces a list of the contours that make up the shape of this glyph. Each contour consists of</span>
+    <span class="doccomment">/// a sequence of segments. Each segment is either a straight `Line` or a `Curve`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The winding of the produced contours is clockwise for closed shapes, anticlockwise for holes.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">shape</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Contour</span><span class="op">&gt;&gt;</span> {
+        <span class="self">self</span>.<span class="ident">shape_with_offset</span>(<span class="ident">point</span>(<span class="number">0.0</span>, <span class="number">0.0</span>))
+    }
+    <span class="doccomment">/// The bounding box of the shape of this glyph, not to be confused with `pixel_bounding_box`, the</span>
+    <span class="doccomment">/// conservative pixel-boundary bounding box. The coordinates are relative to the glyph&#39;s origin.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">exact_bounding_box</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Rect</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;&gt;</span> {
+        <span class="kw">match</span> <span class="self">self</span>.<span class="ident">g</span>.<span class="ident">inner</span> {
+            <span class="ident">GlyphInner</span>::<span class="ident">Proxy</span>(<span class="ident">font</span>, <span class="ident">id</span>) <span class="op">=&gt;</span> <span class="ident">font</span>.<span class="ident">info</span>.<span class="ident">get_glyph_box</span>(<span class="ident">id</span>).<span class="ident">map</span>(<span class="op">|</span><span class="ident">bb</span><span class="op">|</span> {
+                <span class="ident">Rect</span> {
+                    <span class="ident">min</span>: <span class="ident">point</span>(<span class="ident">bb</span>.<span class="ident">x0</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">x</span>, <span class="op">-</span><span class="ident">bb</span>.<span class="ident">y1</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">y</span>),
+                    <span class="ident">max</span>: <span class="ident">point</span>(<span class="ident">bb</span>.<span class="ident">x1</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">x</span>, <span class="op">-</span><span class="ident">bb</span>.<span class="ident">y0</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">y</span>)
+                }
+            }),
+            <span class="ident">GlyphInner</span>::<span class="ident">Shared</span>(<span class="kw-2">ref</span> <span class="ident">data</span>) <span class="op">=&gt;</span> <span class="ident">data</span>.<span class="ident">extents</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">bb</span><span class="op">|</span> <span class="ident">Rect</span> {
+                <span class="ident">min</span>: <span class="ident">point</span>(<span class="ident">bb</span>.<span class="ident">min</span>.<span class="ident">x</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">x</span>, <span class="ident">bb</span>.<span class="ident">min</span>.<span class="ident">y</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">y</span>),
+                <span class="ident">max</span>: <span class="ident">point</span>(<span class="ident">bb</span>.<span class="ident">max</span>.<span class="ident">x</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">x</span>, <span class="ident">bb</span>.<span class="ident">max</span>.<span class="ident">y</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">scale</span>.<span class="ident">y</span>)
+            })
+        }
+    }
+    <span class="doccomment">/// Constructs a glyph that owns its data from this glyph. This is similar to `Glyph::standalone`. See</span>
+    <span class="doccomment">/// that function for more details.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">standalone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">ScaledGlyph</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
+        <span class="ident">ScaledGlyph</span> {
+            <span class="ident">g</span>: <span class="self">self</span>.<span class="ident">g</span>.<span class="ident">standalone</span>(),
+            <span class="ident">api_scale</span>: <span class="self">self</span>.<span class="ident">api_scale</span>,
+            <span class="ident">scale</span>: <span class="self">self</span>.<span class="ident">scale</span>
+        }
+    }
+}
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="ident">PositionedGlyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+    <span class="doccomment">/// The glyph identifier for this glyph.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">id</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">GlyphId</span> {
+        <span class="self">self</span>.<span class="ident">sg</span>.<span class="ident">id</span>()
+    }
+    <span class="doccomment">/// The font to which this glyph belongs. If the glyph is a standalone glyph that owns its resources,</span>
+    <span class="doccomment">/// it no longer has a reference to the font which it was created from (using `standalone()`). In which</span>
+    <span class="doccomment">/// case, `None` is returned.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">font</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Font</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;&gt;</span> {
+        <span class="self">self</span>.<span class="ident">sg</span>.<span class="ident">font</span>()
+    }
+    <span class="doccomment">/// A reference to this glyph without positioning</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">unpositioned</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">ScaledGlyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+        <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">sg</span>
+    }
+    <span class="doccomment">/// Removes the positioning from this glyph</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">into_unpositioned</span>(<span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">ScaledGlyph</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> {
+        <span class="self">self</span>.<span class="ident">sg</span>
+    }
+    <span class="doccomment">/// The conservative pixel-boundary bounding box for this glyph. This is the smallest rectangle</span>
+    <span class="doccomment">/// aligned to pixel boundaries that encloses the shape of this glyph at this position.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">pixel_bounding_box</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Rect</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;&gt;</span> {
+        <span class="self">self</span>.<span class="ident">bb</span>
+    }
+    <span class="doccomment">/// Similar to `ScaledGlyph::shape()`, but with the position of the glyph taken into account.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">shape</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Contour</span><span class="op">&gt;&gt;</span> {
+        <span class="self">self</span>.<span class="ident">sg</span>.<span class="ident">shape_with_offset</span>(<span class="self">self</span>.<span class="ident">position</span>)
+    }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">scale</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Scale</span> {
+        <span class="self">self</span>.<span class="ident">sg</span>.<span class="ident">api_scale</span>
+    }
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">position</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">Point</span><span class="op">&lt;</span><span class="ident">f32</span><span class="op">&gt;</span> {
+        <span class="self">self</span>.<span class="ident">position</span>
+    }
+    <span class="doccomment">/// Rasterises this glyph. For each pixel in the rect given by `pixel_bounding_box()`, `o` is called:</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ```ignore</span>
+    <span class="doccomment">/// o(x, y, v)</span>
+    <span class="doccomment">/// ```</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// where `x` and `y` are the coordinates of the pixel relative to the `min` coordinates of the bounding box,</span>
+    <span class="doccomment">/// and `v` is the analytically calculated coverage of the pixel by the shape of the glyph.</span>
+    <span class="doccomment">/// Calls to `o` proceed in horizontal scanline order, similar to this pseudo-code:</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ```ignore</span>
+    <span class="doccomment">/// let bb = glyph.pixel_bounding_box();</span>
+    <span class="doccomment">/// for y in 0..bb.height() {</span>
+    <span class="doccomment">///     for x in 0..bb.width() {</span>
+    <span class="doccomment">///         o(x, y, calc_coverage(&amp;glyph, x, y));</span>
+    <span class="doccomment">///     }</span>
+    <span class="doccomment">/// }</span>
+    <span class="doccomment">/// ```</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">draw</span><span class="op">&lt;</span><span class="ident">O</span>: <span class="ident">FnMut</span>(<span class="ident">u32</span>, <span class="ident">u32</span>, <span class="ident">f32</span>)<span class="op">&gt;</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">o</span>: <span class="ident">O</span>) {
+        <span class="kw">use</span> <span class="ident">geometry</span>::{<span class="ident">Line</span>, <span class="ident">Curve</span>};
+        <span class="kw">use</span> <span class="ident">stb_truetype</span>::<span class="ident">VertexType</span>;
+        <span class="kw">let</span> <span class="ident">shape</span> <span class="op">=</span> <span class="kw">match</span> <span class="self">self</span>.<span class="ident">sg</span>.<span class="ident">g</span>.<span class="ident">inner</span> {
+            <span class="ident">GlyphInner</span>::<span class="ident">Proxy</span>(<span class="ident">font</span>, <span class="ident">id</span>) <span class="op">=&gt;</span> <span class="ident">font</span>.<span class="ident">info</span>.<span class="ident">get_glyph_shape</span>(<span class="ident">id</span>).<span class="ident">unwrap_or_else</span>(<span class="op">||</span> <span class="ident">Vec</span>::<span class="ident">new</span>()),
+            <span class="ident">GlyphInner</span>::<span class="ident">Shared</span>(<span class="kw-2">ref</span> <span class="ident">data</span>) <span class="op">=&gt;</span> <span class="ident">data</span>.<span class="ident">shape</span>.<span class="ident">clone</span>().<span class="ident">unwrap_or_else</span>(<span class="op">||</span> <span class="ident">Vec</span>::<span class="ident">new</span>())
+        };
+        <span class="kw">let</span> <span class="ident">bb</span> <span class="op">=</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">bb</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">bb</span>.<span class="ident">as_ref</span>() {
+            <span class="ident">bb</span>
+        } <span class="kw">else</span> {
+            <span class="kw">return</span>
+        };
+        <span class="kw">let</span> <span class="ident">offset</span> <span class="op">=</span> <span class="ident">vector</span>(<span class="ident">bb</span>.<span class="ident">min</span>.<span class="ident">x</span> <span class="kw">as</span> <span class="ident">f32</span>, <span class="ident">bb</span>.<span class="ident">min</span>.<span class="ident">y</span> <span class="kw">as</span> <span class="ident">f32</span>);
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">lines</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">curves</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">last</span> <span class="op">=</span> <span class="ident">point</span>(<span class="number">0.0</span>, <span class="number">0.0</span>);
+        <span class="kw">for</span> <span class="ident">v</span> <span class="kw">in</span> <span class="ident">shape</span> {
+            <span class="kw">let</span> <span class="ident">end</span> <span class="op">=</span> <span class="ident">point</span>(<span class="ident">v</span>.<span class="ident">x</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">sg</span>.<span class="ident">scale</span>.<span class="ident">x</span> <span class="op">+</span> <span class="self">self</span>.<span class="ident">position</span>.<span class="ident">x</span>,
+                            <span class="op">-</span><span class="ident">v</span>.<span class="ident">y</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">sg</span>.<span class="ident">scale</span>.<span class="ident">y</span> <span class="op">+</span> <span class="self">self</span>.<span class="ident">position</span>.<span class="ident">y</span>)
+                <span class="op">-</span> <span class="ident">offset</span>;
+            <span class="kw">match</span> <span class="ident">v</span>.<span class="ident">vertex_type</span>() {
+                <span class="ident">VertexType</span>::<span class="ident">LineTo</span> <span class="op">=&gt;</span> {
+                    <span class="ident">lines</span>.<span class="ident">push</span>(<span class="ident">Line</span> {
+                        <span class="ident">p</span>: [<span class="ident">last</span>, <span class="ident">end</span>]
+                    })
+                }
+                <span class="ident">VertexType</span>::<span class="ident">CurveTo</span> <span class="op">=&gt;</span> {
+                    <span class="kw">let</span> <span class="ident">control</span> <span class="op">=</span> <span class="ident">point</span>(<span class="ident">v</span>.<span class="ident">cx</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">sg</span>.<span class="ident">scale</span>.<span class="ident">x</span> <span class="op">+</span> <span class="self">self</span>.<span class="ident">position</span>.<span class="ident">x</span>,
+                                        <span class="op">-</span><span class="ident">v</span>.<span class="ident">cy</span> <span class="kw">as</span> <span class="ident">f32</span> <span class="op">*</span> <span class="self">self</span>.<span class="ident">sg</span>.<span class="ident">scale</span>.<span class="ident">y</span> <span class="op">+</span> <span class="self">self</span>.<span class="ident">position</span>.<span class="ident">y</span>)
+                        <span class="op">-</span> <span class="ident">offset</span>;
+                    <span class="ident">curves</span>.<span class="ident">push</span>(<span class="ident">Curve</span> {
+                        <span class="ident">p</span>: [<span class="ident">last</span>, <span class="ident">control</span>, <span class="ident">end</span>]
+                    })
+                }
+                <span class="ident">VertexType</span>::<span class="ident">MoveTo</span> <span class="op">=&gt;</span> {}
+            }
+            <span class="ident">last</span> <span class="op">=</span> <span class="ident">end</span>;
+        }
+        <span class="ident">rasterizer</span>::<span class="ident">rasterize</span>(<span class="kw-2">&amp;</span><span class="ident">lines</span>, <span class="kw-2">&amp;</span><span class="ident">curves</span>,
+                              (<span class="ident">bb</span>.<span class="ident">max</span>.<span class="ident">x</span> <span class="op">-</span> <span class="ident">bb</span>.<span class="ident">min</span>.<span class="ident">x</span>) <span class="kw">as</span> <span class="ident">u32</span>,
+                              (<span class="ident">bb</span>.<span class="ident">max</span>.<span class="ident">y</span> <span class="op">-</span> <span class="ident">bb</span>.<span class="ident">min</span>.<span class="ident">y</span>) <span class="kw">as</span> <span class="ident">u32</span>,
+                              <span class="ident">o</span>);
+    }
+    <span class="doccomment">/// Constructs a glyph that owns its data from this glyph. This is similar to `Glyph::standalone`. See</span>
+    <span class="doccomment">/// that function for more details.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">standalone</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="ident">PositionedGlyph</span><span class="op">&lt;</span><span class="lifetime">&#39;static</span><span class="op">&gt;</span> {
+        <span class="ident">PositionedGlyph</span> {
+            <span class="ident">sg</span>: <span class="self">self</span>.<span class="ident">sg</span>.<span class="ident">standalone</span>(),
+            <span class="ident">bb</span>: <span class="self">self</span>.<span class="ident">bb</span>,
+            <span class="ident">position</span>: <span class="self">self</span>.<span class="ident">position</span>
+        }
+    }
+}
+</pre>
+</section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "rusttype";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

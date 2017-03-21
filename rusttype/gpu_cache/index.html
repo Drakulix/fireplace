@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `gpu_cache` mod in crate `rusttype`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, gpu_cache">
+
+    <title>rusttype::gpu_cache - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>rusttype</a></p><script>window.sidebarCurrent = {name: 'gpu_cache', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>rusttype</a>::<wbr><a class="mod" href=''>gpu_cache</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/rusttype/gpu_cache.rs.html#1-587' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>This module provides capabilities for managing a cache of rendered glyphs in GPU memory, with the goal of
+minimisng the size and frequency of glyph uploads to GPU memory from the CPU.</p>
+
+<p>Typical applications that render directly with hardware graphics APIs (e.g. games) need text rendering.
+There is not yet a performant solution for high quality text rendering directly on the GPU that isn&#39;t
+experimental research work. Quality is often critical for legibility, so many applications use text or
+individual characters that have been rendered on the CPU. This is done either ahead-of-time, giving a
+fixed set of fonts, characters, and sizes that can be used at runtime, or dynamically as text is required.
+This latter scenario is more flexible and the focus of this module.
+To minimise the CPU load and texture upload bandwidth saturation, recently used glyphs should be cached
+on the GPU for use by future frames. This module provides a mechanism for maintaining such a cache in the
+form of a single packed 2D GPU texture. When a rendered glyph is requested, it is either retrieved from its
+location in the texture if it is present or room is made in the cache (if necessary),
+the CPU renders the glyph then it is uploaded into a gap in the texture to be available for GPU rendering.
+This cache uses a Least Recently Used (LRU) cache eviction scheme - glyphs in the cache that have not been
+used recently are as a rule of thumb not likely to be used again soon, so they are the best candidates for
+eviction to make room for required glyphs.</p>
+
+<p>The API for the cache does not assume a particular graphics API. The intended usage is to queue up glyphs
+that need to be present for the current frame using <code>Cache::queue_glyph</code>, update the cache to ensure that
+the queued glyphs are present using <code>Cache::cache_queued</code> (providing a function for uploading pixel data),
+then when it&#39;s time to render call <code>Cache::rect_for</code> to get the UV coordinates in the cache texture for
+each glyph. For a concrete use case see the <code>gpu_cache</code> example.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Cache.html"
+                                  title='struct rusttype::gpu_cache::Cache'>Cache</a></td>
+                           <td class='docblock-short'>
+                                <p>An implementation of a dynamic GPU glyph cache. See the module documentation for more information.</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.CacheReadErr.html"
+                                  title='enum rusttype::gpu_cache::CacheReadErr'>CacheReadErr</a></td>
+                           <td class='docblock-short'>
+                                <p>Returned from <code>Cache::rect_for</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.CacheWriteErr.html"
+                                  title='enum rusttype::gpu_cache::CacheWriteErr'>CacheWriteErr</a></td>
+                           <td class='docblock-short'>
+                                <p>Returned from <code>Cache::cache_queued</code>.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "rusttype";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["Caps",""],["Num",""],["Scroll",""]],"struct":[["Flags","Bitmap that may represent multiple leds"]]});

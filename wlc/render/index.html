@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `render` mod in crate `wlc`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, render">
+
+    <title>wlc::render - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>wlc</a></p><script>window.sidebarCurrent = {name: 'render', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>wlc</a>::<wbr><a class="mod" href=''>render</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/wlc/render/mod.rs.html#1-210' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>wlc&#39;s Rendering extensions</p>
+
+<p>Enabled by feature <code>render</code></p>
+
+<p>Some of the original function may be added as functions to View and Output,
+when this feature is enabled</p>
+
+<p>The types/functions in this module provide some basic rendering
+capabilities.</p>
+
+<p>For more advanced drawing you should directly use GLES2.
+This is not documented as it&#39;s currently relying on the implementation
+details of wlc.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.GLES2Renderer.html"
+                                  title='struct wlc::render::GLES2Renderer'>GLES2Renderer</a></td>
+                           <td class='docblock-short'>
+                                <p>OpenGL ES 2 Renderer</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.NoPixelFormat.html"
+                                  title='struct wlc::render::NoPixelFormat'>NoPixelFormat</a></td>
+                           <td class='docblock-short'>
+                                <p><code>PixelFormat</code> of the <code>NoRenderer</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.NoRenderer.html"
+                                  title='struct wlc::render::NoRenderer'>NoRenderer</a></td>
+                           <td class='docblock-short'>
+                                <p>Headless renderer</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.NoTexture.html"
+                                  title='struct wlc::render::NoTexture'>NoTexture</a></td>
+                           <td class='docblock-short'>
+                                <p>Texture of the <code>NoRenderer</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.RenderOutput.html"
+                                  title='struct wlc::render::RenderOutput'>RenderOutput</a></td>
+                           <td class='docblock-short'>
+                                <p>Output with Render Extensions</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.RenderView.html"
+                                  title='struct wlc::render::RenderView'>RenderView</a></td>
+                           <td class='docblock-short'>
+                                <p>View with Render Extensions</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.GLES2PixelFormat.html"
+                                  title='enum wlc::render::GLES2PixelFormat'>GLES2PixelFormat</a></td>
+                           <td class='docblock-short'>
+                                <p>Supported PixelFormats of the GLES2Renderer</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.RenderInstance.html"
+                                  title='enum wlc::render::RenderInstance'>RenderInstance</a></td>
+                           <td class='docblock-short'>
+                                <p>Wlc&#39;s Renderer Types</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.SurfaceFormat.html"
+                                  title='enum wlc::render::SurfaceFormat'>SurfaceFormat</a></td>
+                           <td class='docblock-short'>
+                                <p>Possible Surface formats</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.PixelFormat.html"
+                                  title='trait wlc::render::PixelFormat'>PixelFormat</a></td>
+                           <td class='docblock-short'>
+                                <p>Renderer specific pixel format marker</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Renderer.html"
+                                  title='trait wlc::render::Renderer'>Renderer</a></td>
+                           <td class='docblock-short'>
+                                <p>Renderer API</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Texture.html"
+                                  title='trait wlc::render::Texture'>Texture</a></td>
+                           <td class='docblock-short'>
+                                <p>Renderer specific Texture marker</p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.GLTexture.html"
+                                  title='type wlc::render::GLTexture'>GLTexture</a></td>
+                           <td class='docblock-short'>
+                                <p>Texture of the <code>GLES2Renderer</code> (Raw OpenGL ES 2 Texture)</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "wlc";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

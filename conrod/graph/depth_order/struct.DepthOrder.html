@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `DepthOrder` struct in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, DepthOrder">
+
+    <title>conrod::graph::depth_order::DepthOrder - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>graph</a>::<wbr><a href='index.html'>depth_order</a></p><script>window.sidebarCurrent = {name: 'DepthOrder', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>graph</a>::<wbr><a href='index.html'>depth_order</a>::<wbr><a class="struct" href=''>DepthOrder</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/conrod/graph/depth_order.rs.html#10-16' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct DepthOrder {
+    pub indices: <a class="struct" href="https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html" title="struct collections::vec::Vec">Vec</a>&lt;<a class="type" href="../../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt;,
+    // some fields omitted
+}</pre><div class='docblock'><p>Contains Node indices in order of depth, starting with the deepest.</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.indices' class="structfield">
+                           <span id='indices.v' class='invisible'>
+                           <code>indices: <a class="struct" href="https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html" title="struct collections::vec::Vec">Vec</a>&lt;<a class="type" href="../../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt;</code>
+                           </span></span><div class='docblock'><p>The primary <strong>Vec</strong> storing the <strong>DepthOrder</strong>&#39;s ordered indices.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../../conrod/graph/depth_order/struct.DepthOrder.html" title="struct conrod::graph::depth_order::DepthOrder">DepthOrder</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/graph/depth_order.rs.html#19-87' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class="struct" href="../../../conrod/graph/depth_order/struct.DepthOrder.html" title="struct conrod::graph::depth_order::DepthOrder">DepthOrder</a></code></span></h4>
+<div class='docblock'><p>Construct a new empty <strong>DepthOrder</strong>.</p>
+</div><h4 id='method.with_node_capacity' class="method"><span id='with_node_capacity.v' class='invisible'><code>fn <a href='#method.with_node_capacity' class='fnname'>with_node_capacity</a>(n_nodes: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; <a class="struct" href="../../../conrod/graph/depth_order/struct.DepthOrder.html" title="struct conrod::graph::depth_order::DepthOrder">DepthOrder</a></code></span></h4>
+<div class='docblock'><p>Construct a new empty <strong>DepthOrder</strong>.</p>
+
+<p>There can be at most two indices per widget (the widget and the widget&#39;s scrollbar). Thus
+we&#39;ll reserve double the number of nodes given.</p>
+</div><h4 id='method.update' class="method"><span id='update.v' class='invisible'><code>fn <a href='#method.update' class='fnname'>update</a>(&amp;mut self, graph: &amp;<a class="struct" href="../../../conrod/graph/struct.Graph.html" title="struct conrod::graph::Graph">Graph</a>, root: <a class="type" href="../../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, updated_widgets: &amp;<a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html" title="struct std::collections::hash::set::HashSet">HashSet</a>&lt;<a class="type" href="../../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt;)</code></span></h4>
+<div class='docblock'><p>Update the <strong>DepthOrder</strong> (starting with the deepest) for all nodes in the given <strong>Graph</strong>.</p>
+
+<p>FIXME:
+This likely needs to be re-written, and will probably fail for graphs with many floating
+widgets instantiated upon other floating widgets.</p>
+
+<p>The proper algorithm should be a full toposort where the neighbours of each node are
+visited in the order specified within <code>visit_by_depth</code>.</p>
+
+<p>The <code>visit_by_depth</code> algorithm should not be recursive and instead use either looping,
+walking or iteration.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

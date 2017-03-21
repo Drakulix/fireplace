@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["Bottom",""],["Left",""],["Null",""],["Right",""],["Top",""]],"struct":[["Flags","Bitmap that may represent multiple edges"]]});

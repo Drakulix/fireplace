@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["Bottom",""],["Left",""],["Null",""],["Right",""],["Top",""]],"struct":[["Flags","Bitmap that may represent multiple Gravity Values for a `View` by it's `Positioner`"]]});

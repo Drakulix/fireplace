@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["InsertBehavior",""],["MoveBehavior",""],["NodeIdError",""],["RemoveBehavior",""],["SwapBehavior",""]],"struct":[["Node",""],["NodeBuilder",""],["NodeId",""],["Tree",""],["TreeBuilder",""]]});

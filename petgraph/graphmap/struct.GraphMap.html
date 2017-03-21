@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `GraphMap` struct in crate `petgraph`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, GraphMap">
+
+    <title>petgraph::graphmap::GraphMap - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>petgraph</a>::<wbr><a href='index.html'>graphmap</a></p><script>window.sidebarCurrent = {name: 'GraphMap', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>petgraph</a>::<wbr><a href='index.html'>graphmap</a>::<wbr><a class="struct" href=''>GraphMap</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/petgraph/graphmap.rs.html#33-36' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct GraphMap&lt;N, E&gt; { /* fields omitted */ }</pre><div class='docblock'><p><code>GraphMap&lt;N, E&gt;</code> is an undirected graph, with generic node values <code>N</code> and edge weights <code>E</code>.</p>
+
+<p>It uses an combined adjacency list and sparse adjacency matrix representation, using <strong>O(|V|
++ |E|)</strong> space, and allows testing for edge existance in constant time.</p>
+
+<p>The node type <code>N</code> must implement <code>Copy</code> and will be used as node identifier, duplicated
+into several places in the data structure.
+It must be suitable as a hash table key (implementing <code>Eq + Hash</code>).
+The node type must also implement <code>Ord</code> so that the implementation can
+order the pair (<code>a</code>, <code>b</code>) for an edge connecting any two nodes <code>a</code> and <code>b</code>.</p>
+
+<p><code>GraphMap</code> does not allow parallel edges, but self loops are allowed.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;N, E&gt; <a class="struct" href="../../petgraph/graphmap/struct.GraphMap.html" title="struct petgraph::graphmap::GraphMap">GraphMap</a>&lt;N, E&gt; <span class="where fmt-newline">where N: <a class="trait" href="../../petgraph/graphmap/trait.NodeTrait.html" title="trait petgraph::graphmap::NodeTrait">NodeTrait</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/graphmap.rs.html#54-275' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></span></h4>
+<div class='docblock'><p>Create a new <code>GraphMap</code>.</p>
+</div><h4 id='method.with_capacity' class="method"><span id='with_capacity.v' class='invisible'><code>fn <a href='#method.with_capacity' class='fnname'>with_capacity</a>(nodes: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, edges: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Create a new <code>GraphMap</code> with estimated capacity.</p>
+</div><h4 id='method.capacity' class="method"><span id='capacity.v' class='invisible'><code>fn <a href='#method.capacity' class='fnname'>capacity</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>, <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<div class='docblock'><p>Return the current node and edge capacity of the graph.</p>
+</div><h4 id='method.from_edges' class="method"><span id='from_edges.v' class='invisible'><code>fn <a href='#method.from_edges' class='fnname'>from_edges</a>&lt;I&gt;(iterable: I) -&gt; Self <span class="where fmt-newline">where I: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>, I::<a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">Item</a>: <a class="trait" href="../../petgraph/trait.IntoWeightedEdge.html" title="trait petgraph::IntoWeightedEdge">IntoWeightedEdge</a>&lt;E, NodeId=N&gt;</span></code></span></h4>
+<div class='docblock'><p>Create a new <code>GraphMap</code> from an iterable of edges.</p>
+
+<p>Node values are taken directly from the list.
+Edge weights <code>E</code> may either be specified in the list,
+or they are filled with default values.</p>
+
+<p>Nodes are inserted automatically to match the edges.</p>
+
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">petgraph</span>::<span class="ident">GraphMap</span>;
+
+<span class="kw">let</span> <span class="ident">gr</span> <span class="op">=</span> <span class="ident">GraphMap</span>::<span class="op">&lt;</span>_, ()<span class="op">&gt;</span>::<span class="ident">from_edges</span>(<span class="kw-2">&amp;</span>[
+    (<span class="number">0</span>, <span class="number">1</span>), (<span class="number">0</span>, <span class="number">2</span>), (<span class="number">0</span>, <span class="number">3</span>),
+    (<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">3</span>),
+    (<span class="number">2</span>, <span class="number">3</span>),
+]);</pre>
+</div><h4 id='method.node_count' class="method"><span id='node_count.v' class='invisible'><code>fn <a href='#method.node_count' class='fnname'>node_count</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></code></span></h4>
+<div class='docblock'><p>Return the number of nodes in the graph.</p>
+</div><h4 id='method.edge_count' class="method"><span id='edge_count.v' class='invisible'><code>fn <a href='#method.edge_count' class='fnname'>edge_count</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></code></span></h4>
+<div class='docblock'><p>Return the number of edges in the graph.</p>
+</div><h4 id='method.clear' class="method"><span id='clear.v' class='invisible'><code>fn <a href='#method.clear' class='fnname'>clear</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>Remove all nodes and edges</p>
+</div><h4 id='method.add_node' class="method"><span id='add_node.v' class='invisible'><code>fn <a href='#method.add_node' class='fnname'>add_node</a>(&amp;mut self, n: N) -&gt; N</code></span></h4>
+<div class='docblock'><p>Add node <code>n</code> to the graph.</p>
+</div><h4 id='method.remove_node' class="method"><span id='remove_node.v' class='invisible'><code>fn <a href='#method.remove_node' class='fnname'>remove_node</a>(&amp;mut self, n: N) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Return <code>true</code> if node <code>n</code> was removed.</p>
+</div><h4 id='method.contains_node' class="method"><span id='contains_node.v' class='invisible'><code>fn <a href='#method.contains_node' class='fnname'>contains_node</a>(&amp;self, n: N) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Return <code>true</code> if the node is contained in the graph.</p>
+</div><h4 id='method.add_edge' class="method"><span id='add_edge.v' class='invisible'><code>fn <a href='#method.add_edge' class='fnname'>add_edge</a>(&amp;mut self, a: N, b: N, weight: E) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;E&gt;</code></span></h4>
+<div class='docblock'><p>Add an edge connecting <code>a</code> and <code>b</code> to the graph, with associated
+data <code>weight</code>.</p>
+
+<p>Inserts nodes <code>a</code> and/or <code>b</code> if they aren&#39;t already part of the graph.</p>
+
+<p>Return <code>None</code> if the edge did not previously exist, otherwise,
+the associated data is updated and the old value is returned
+as <code>Some(old_weight)</code>.</p>
+
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">petgraph</span>::<span class="ident">GraphMap</span>;
+
+<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">g</span> <span class="op">=</span> <span class="ident">GraphMap</span>::<span class="ident">new</span>();
+<span class="ident">g</span>.<span class="ident">add_edge</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="op">-</span><span class="number">1</span>);
+<span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">g</span>.<span class="ident">node_count</span>(), <span class="number">2</span>);
+<span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">g</span>.<span class="ident">edge_count</span>(), <span class="number">1</span>);</pre>
+</div><h4 id='method.remove_edge' class="method"><span id='remove_edge.v' class='invisible'><code>fn <a href='#method.remove_edge' class='fnname'>remove_edge</a>(&amp;mut self, a: N, b: N) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;E&gt;</code></span></h4>
+<div class='docblock'><p>Remove edge from <code>a</code> to <code>b</code> from the graph and return the edge weight.</p>
+
+<p>Return <code>None</code> if the edge didn&#39;t exist.</p>
+
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">petgraph</span>::<span class="ident">GraphMap</span>;
+
+<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">g</span> <span class="op">=</span> <span class="ident">GraphMap</span>::<span class="ident">new</span>();
+<span class="ident">g</span>.<span class="ident">add_edge</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="op">-</span><span class="number">1</span>);
+
+<span class="kw">let</span> <span class="ident">edge_data</span> <span class="op">=</span> <span class="ident">g</span>.<span class="ident">remove_edge</span>(<span class="number">2</span>, <span class="number">1</span>);
+<span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">edge_data</span>, <span class="prelude-val">Some</span>(<span class="op">-</span><span class="number">1</span>));
+<span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">g</span>.<span class="ident">edge_count</span>(), <span class="number">0</span>);</pre>
+</div><h4 id='method.contains_edge' class="method"><span id='contains_edge.v' class='invisible'><code>fn <a href='#method.contains_edge' class='fnname'>contains_edge</a>(&amp;self, a: N, b: N) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Return <code>true</code> if the edge connecting <code>a</code> with <code>b</code> is contained in the graph.</p>
+</div><h4 id='method.nodes' class="method"><span id='nodes.v' class='invisible'><code>fn <a href='#method.nodes' class='fnname'>nodes</a>(&amp;self) -&gt; <a class="struct" href="../../petgraph/graphmap/struct.Nodes.html" title="struct petgraph::graphmap::Nodes">Nodes</a>&lt;N&gt;</code></span></h4>
+<div class='docblock'><p>Return an iterator over the nodes of the graph.</p>
+
+<p>Iterator element type is <code>N</code>.</p>
+</div><h4 id='method.neighbors' class="method"><span id='neighbors.v' class='invisible'><code>fn <a href='#method.neighbors' class='fnname'>neighbors</a>(&amp;self, from: N) -&gt; <a class="struct" href="../../petgraph/graphmap/struct.Neighbors.html" title="struct petgraph::graphmap::Neighbors">Neighbors</a>&lt;N&gt;</code></span></h4>
+<div class='docblock'><p>Return an iterator over the nodes that are connected with <code>from</code> by edges.</p>
+
+<p>If the node <code>from</code> does not exist in the graph, return an empty iterator.</p>
+
+<p>Iterator element type is <code>N</code>.</p>
+</div><h4 id='method.edges' class="method"><span id='edges.v' class='invisible'><code>fn <a href='#method.edges' class='fnname'>edges</a>(&amp;self, from: N) -&gt; <a class="struct" href="../../petgraph/graphmap/struct.Edges.html" title="struct petgraph::graphmap::Edges">Edges</a>&lt;N, E&gt;</code></span></h4>
+<div class='docblock'><p>Return an iterator over the nodes that are connected with <code>from</code> by edges,
+paired with the edge weight.</p>
+
+<p>If the node <code>from</code> does not exist in the graph, return an empty iterator.</p>
+
+<p>Iterator element type is <code>(N, &amp;E)</code>.</p>
+</div><h4 id='method.edge_weight' class="method"><span id='edge_weight.v' class='invisible'><code>fn <a href='#method.edge_weight' class='fnname'>edge_weight</a>(&amp;self, a: N, b: N) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;E&gt;</code></span></h4>
+<div class='docblock'><p>Return a reference to the edge weight connecting <code>a</code> with <code>b</code>, or
+<code>None</code> if the edge does not exist in the graph.</p>
+</div><h4 id='method.edge_weight_mut' class="method"><span id='edge_weight_mut.v' class='invisible'><code>fn <a href='#method.edge_weight_mut' class='fnname'>edge_weight_mut</a>(&amp;mut self, a: N, b: N) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;mut E&gt;</code></span></h4>
+<div class='docblock'><p>Return a mutable reference to the edge weight connecting <code>a</code> with <code>b</code>, or
+<code>None</code> if the edge does not exist in the graph.</p>
+</div><h4 id='method.all_edges' class="method"><span id='all_edges.v' class='invisible'><code>fn <a href='#method.all_edges' class='fnname'>all_edges</a>(&amp;self) -&gt; <a class="struct" href="../../petgraph/graphmap/struct.AllEdges.html" title="struct petgraph::graphmap::AllEdges">AllEdges</a>&lt;N, E&gt;</code></span></h4>
+<div class='docblock'><p>Return an iterator over all edges of the graph with their weight in arbitrary order.</p>
+
+<p>Iterator element type is <code>(N, N, &amp;E)</code></p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;N:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>, E:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../petgraph/graphmap/struct.GraphMap.html" title="struct petgraph::graphmap::GraphMap">GraphMap</a>&lt;N, E&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/graphmap.rs.html#32' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../petgraph/graphmap/struct.GraphMap.html" title="struct petgraph::graphmap::GraphMap">GraphMap</a>&lt;N, E&gt;</code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;N:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html" title="trait core::cmp::Eq">Eq</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html" title="trait core::hash::Hash">Hash</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a>, E:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a>&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../../petgraph/graphmap/struct.GraphMap.html" title="struct petgraph::graphmap::GraphMap">GraphMap</a>&lt;N, E&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/graphmap.rs.html#38-42' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;N, E, Item&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.FromIterator.html" title="trait core::iter::traits::FromIterator">FromIterator</a>&lt;Item&gt; for <a class="struct" href="../../petgraph/graphmap/struct.GraphMap.html" title="struct petgraph::graphmap::GraphMap">GraphMap</a>&lt;N, E&gt; <span class="where fmt-newline">where Item: <a class="trait" href="../../petgraph/trait.IntoWeightedEdge.html" title="trait petgraph::IntoWeightedEdge">IntoWeightedEdge</a>&lt;E, NodeId=N&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N: <a class="trait" href="../../petgraph/graphmap/trait.NodeTrait.html" title="trait petgraph::graphmap::NodeTrait">NodeTrait</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/graphmap.rs.html#278-291' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>Create a new <code>GraphMap</code> from an iterable of edges.</p>
+</div><div class='impl-items'><h4 id='method.from_iter' class="method"><span id='from_iter.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/iter/traits/trait.FromIterator.html#tymethod.from_iter' class='fnname'>from_iter</a>&lt;I&gt;(iterable: I) -&gt; Self <span class="where fmt-newline">where I: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>&lt;Item=Item&gt;</span></code></span></h4>
+<div class='docblock'><p>Creates a value from an iterator. <a href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.FromIterator.html#tymethod.from_iter">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;N, E, Item&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.Extend.html" title="trait core::iter::traits::Extend">Extend</a>&lt;Item&gt; for <a class="struct" href="../../petgraph/graphmap/struct.GraphMap.html" title="struct petgraph::graphmap::GraphMap">GraphMap</a>&lt;N, E&gt; <span class="where fmt-newline">where Item: <a class="trait" href="../../petgraph/trait.IntoWeightedEdge.html" title="trait petgraph::IntoWeightedEdge">IntoWeightedEdge</a>&lt;E, NodeId=N&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N: <a class="trait" href="../../petgraph/graphmap/trait.NodeTrait.html" title="trait petgraph::graphmap::NodeTrait">NodeTrait</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/graphmap.rs.html#296-312' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>Extend the graph from an iterable of edges.</p>
+
+<p>Nodes are inserted automatically to match the edges.</p>
+</div><div class='impl-items'><h4 id='method.extend' class="method"><span id='extend.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/iter/traits/trait.Extend.html#tymethod.extend' class='fnname'>extend</a>&lt;I&gt;(&amp;mut self, iterable: I) <span class="where fmt-newline">where I: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>&lt;Item=Item&gt;</span></code></span></h4>
+<div class='docblock'><p>Extends a collection with the contents of an iterator. <a href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.Extend.html#tymethod.extend">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;N, E&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Index.html" title="trait core::ops::Index">Index</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a>N, N<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt; for <a class="struct" href="../../petgraph/graphmap/struct.GraphMap.html" title="struct petgraph::graphmap::GraphMap">GraphMap</a>&lt;N, E&gt; <span class="where fmt-newline">where N: <a class="trait" href="../../petgraph/graphmap/trait.NodeTrait.html" title="trait petgraph::graphmap::NodeTrait">NodeTrait</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/graphmap.rs.html#421-429' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>Index <code>GraphMap</code> by node pairs to access edge weights.</p>
+</div><div class='impl-items'><h4 id='associatedtype.Output' class="type"><span id='Output.t' class='invisible'><code>type <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Index.html#associatedtype.Output' class="type">Output</a> = E</code></span></h4>
+<div class='docblock'><p>The returned type after indexing</p>
+</div><h4 id='method.index' class="method"><span id='index.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Index.html#tymethod.index' class='fnname'>index</a>(&amp;self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a>N, N<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>) -&gt; &amp;E</code></span></h4>
+<div class='docblock'><p>The method for the indexing (<code>container[index]</code>) operation</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;N, E&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html" title="trait core::ops::IndexMut">IndexMut</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a>N, N<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt; for <a class="struct" href="../../petgraph/graphmap/struct.GraphMap.html" title="struct petgraph::graphmap::GraphMap">GraphMap</a>&lt;N, E&gt; <span class="where fmt-newline">where N: <a class="trait" href="../../petgraph/graphmap/trait.NodeTrait.html" title="trait petgraph::graphmap::NodeTrait">NodeTrait</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/graphmap.rs.html#432-439' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>Index <code>GraphMap</code> by node pairs to access edge weights.</p>
+</div><div class='impl-items'><h4 id='method.index_mut' class="method"><span id='index_mut.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html#tymethod.index_mut' class='fnname'>index_mut</a>(&amp;mut self, index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a>N, N<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>) -&gt; &amp;mut E</code></span></h4>
+<div class='docblock'><p>The method for the mutable indexing (<code>container[index]</code>) operation</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;N, E&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html" title="trait core::default::Default">Default</a> for <a class="struct" href="../../petgraph/graphmap/struct.GraphMap.html" title="struct petgraph::graphmap::GraphMap">GraphMap</a>&lt;N, E&gt; <span class="where fmt-newline">where N: <a class="trait" href="../../petgraph/graphmap/trait.NodeTrait.html" title="trait petgraph::graphmap::NodeTrait">NodeTrait</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/graphmap.rs.html#442-446' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>Create a new empty <code>GraphMap</code>.</p>
+</div><div class='impl-items'><h4 id='method.default' class="method"><span id='default.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default' class='fnname'>default</a>() -&gt; Self</code></span></h4>
+<div class='docblock'><p>Returns the &quot;default value&quot; for a type. <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a, N:&nbsp;'a, E&gt; <a class="trait" href="../../petgraph/visit/trait.NeighborIter.html" title="trait petgraph::visit::NeighborIter">NeighborIter</a>&lt;'a&gt; for <a class="struct" href="../../petgraph/graphmap/struct.GraphMap.html" title="struct petgraph::graphmap::GraphMap">GraphMap</a>&lt;N, E&gt; <span class="where fmt-newline">where N: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html" title="trait core::cmp::Ord">Ord</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html" title="trait core::hash::Hash">Hash</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/visit.rs.html#65-73' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Iter' class="type"><span id='Iter.t' class='invisible'><code>type <a href='../../petgraph/visit/trait.NeighborIter.html#associatedtype.Iter' class="type">Iter</a> = <a class="struct" href="../../petgraph/graphmap/struct.Neighbors.html" title="struct petgraph::graphmap::Neighbors">Neighbors</a>&lt;'a, N&gt;</code></span></h4>
+<h4 id='method.neighbors-1' class="method"><span id='neighbors.v-1' class='invisible'><code>fn <a href='../../petgraph/visit/trait.NeighborIter.html#tymethod.neighbors' class='fnname'>neighbors</a>(&amp;'a self, n: N) -&gt; <a class="struct" href="../../petgraph/graphmap/struct.Neighbors.html" title="struct petgraph::graphmap::Neighbors">Neighbors</a>&lt;'a, N&gt;</code></span></h4>
+<div class='docblock'><p>Return an iterator that visits all neighbors of the node <strong>n</strong>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;N:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a>, E&gt; <a class="trait" href="../../petgraph/visit/trait.Graphlike.html" title="trait petgraph::visit::Graphlike">Graphlike</a> for <a class="struct" href="../../petgraph/graphmap/struct.GraphMap.html" title="struct petgraph::graphmap::GraphMap">GraphMap</a>&lt;N, E&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/visit.rs.html#290-293' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.NodeId' class="type"><span id='NodeId.t' class='invisible'><code>type <a href='../../petgraph/visit/trait.Graphlike.html#associatedtype.NodeId' class="type">NodeId</a> = N</code></span></h4>
+</div><h3 class='impl'><span class='in-band'><code>impl&lt;N, E&gt; <a class="trait" href="../../petgraph/visit/trait.Visitable.html" title="trait petgraph::visit::Visitable">Visitable</a> for <a class="struct" href="../../petgraph/graphmap/struct.GraphMap.html" title="struct petgraph::graphmap::GraphMap">GraphMap</a>&lt;N, E&gt; <span class="where fmt-newline">where N: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html" title="trait core::cmp::Ord">Ord</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html" title="trait core::hash::Hash">Hash</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/visit.rs.html#295-300' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Map' class="type"><span id='Map.t' class='invisible'><code>type <a href='../../petgraph/visit/trait.Visitable.html#associatedtype.Map' class="type">Map</a> = <a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html" title="struct std::collections::hash::set::HashSet">HashSet</a>&lt;N&gt;</code></span></h4>
+<h4 id='method.visit_map' class="method"><span id='visit_map.v' class='invisible'><code>fn <a href='../../petgraph/visit/trait.Visitable.html#tymethod.visit_map' class='fnname'>visit_map</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html" title="struct std::collections::hash::set::HashSet">HashSet</a>&lt;N&gt;</code></span></h4>
+</div><h3 class='impl'><span class='in-band'><code>impl&lt;N, E&gt; <a class="trait" href="../../petgraph/visit/trait.Revisitable.html" title="trait petgraph::visit::Revisitable">Revisitable</a> for <a class="struct" href="../../petgraph/graphmap/struct.GraphMap.html" title="struct petgraph::graphmap::GraphMap">GraphMap</a>&lt;N, E&gt; <span class="where fmt-newline">where N: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html" title="trait core::cmp::Ord">Ord</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html" title="trait core::hash::Hash">Hash</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/visit.rs.html#302-308' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.reset_map' class="method"><span id='reset_map.v' class='invisible'><code>fn <a href='../../petgraph/visit/trait.Revisitable.html#tymethod.reset_map' class='fnname'>reset_map</a>(&amp;self, map: &amp;mut Self::<a class="trait" href="../../petgraph/visit/trait.Visitable.html" title="trait petgraph::visit::Visitable">Map</a>)</code></span></h4>
+</div><h3 class='impl'><span class='in-band'><code>impl&lt;N, E&gt; <a class="trait" href="../../petgraph/visit/trait.GetAdjacencyMatrix.html" title="trait petgraph::visit::GetAdjacencyMatrix">GetAdjacencyMatrix</a> for <a class="struct" href="../../petgraph/graphmap/struct.GraphMap.html" title="struct petgraph::graphmap::GraphMap">GraphMap</a>&lt;N, E&gt; <span class="where fmt-newline">where N: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Ord.html" title="trait core::cmp::Ord">Ord</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html" title="trait core::hash::Hash">Hash</a></span></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/petgraph/visit.rs.html#344-354' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>The <code>GraphMap</code> keeps an adjacency matrix internally.</p>
+</div><div class='impl-items'><h4 id='associatedtype.AdjMatrix' class="type"><span id='AdjMatrix.t' class='invisible'><code>type <a href='../../petgraph/visit/trait.GetAdjacencyMatrix.html#associatedtype.AdjMatrix' class="type">AdjMatrix</a> = <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a></code></span></h4>
+<h4 id='method.adjacency_matrix' class="method"><span id='adjacency_matrix.v' class='invisible'><code>fn <a href='../../petgraph/visit/trait.GetAdjacencyMatrix.html#tymethod.adjacency_matrix' class='fnname'>adjacency_matrix</a>(&amp;self)</code></span></h4>
+<h4 id='method.is_adjacent' class="method"><span id='is_adjacent.v' class='invisible'><code>fn <a href='../../petgraph/visit/trait.GetAdjacencyMatrix.html#tymethod.is_adjacent' class='fnname'>is_adjacent</a>(&amp;self, _: &amp;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>, a: N, b: N) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "petgraph";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

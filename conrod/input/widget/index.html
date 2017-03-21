@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `widget` mod in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, widget">
+
+    <title>conrod::input::widget - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>input</a></p><script>window.sidebarCurrent = {name: 'widget', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>input</a>::<wbr><a class="mod" href=''>widget</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/conrod/input/widget.rs.html#1-654' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Contains all the logic for filtering input events and making them relative to widgets.</p>
+
+<p>The core of this module is the <code>Widget::for_widget</code> method, which creates an
+<code>InputProvider</code> that provides input events for a specific widget.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ButtonClicks.html"
+                                  title='struct conrod::input::widget::ButtonClicks'>ButtonClicks</a></td>
+                           <td class='docblock-short'>
+                                <p>An <code>Iterator</code> yielding all mouse <code>button</code> clicks occuring within the given sequence of
+<code>widget::Click</code>s.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ButtonDrags.html"
+                                  title='struct conrod::input::widget::ButtonDrags'>ButtonDrags</a></td>
+                           <td class='docblock-short'>
+                                <p>An <code>Iterator</code> yielding all mouse <code>button</code> drags occuring within the given sequence of
+<code>widget::Drag</code>s.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Clicks.html"
+                                  title='struct conrod::input::widget::Clicks'>Clicks</a></td>
+                           <td class='docblock-short'>
+                                <p>An <code>Iterator</code> yielding all mouse clicks occuring within the given sequence of <code>widget::Event</code>s.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Drags.html"
+                                  title='struct conrod::input::widget::Drags'>Drags</a></td>
+                           <td class='docblock-short'>
+                                <p>An iterator that yields all <code>event::Drag</code> events yielded by the <code>Events</code> iterator.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Events.html"
+                                  title='struct conrod::input::widget::Events'>Events</a></td>
+                           <td class='docblock-short'>
+                                <p>An iterator yielding all events that are relevant to a specific widget.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.KeyPresses.html"
+                                  title='struct conrod::input::widget::KeyPresses'>KeyPresses</a></td>
+                           <td class='docblock-short'>
+                                <p>An <code>Iterator</code> yielding all keyboard button presses occuring within the given sequence of
+<code>Presses</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.KeyReleases.html"
+                                  title='struct conrod::input::widget::KeyReleases'>KeyReleases</a></td>
+                           <td class='docblock-short'>
+                                <p>An <code>Iterator</code> yielding all keyboard button releases occuring within the given sequence of
+<code>Releases</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Mouse.html"
+                                  title='struct conrod::input::widget::Mouse'>Mouse</a></td>
+                           <td class='docblock-short'>
+                                <p>A view of the <code>input::state::Mouse</code> that is specific to a single widget.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.MouseButtonPresses.html"
+                                  title='struct conrod::input::widget::MouseButtonPresses'>MouseButtonPresses</a></td>
+                           <td class='docblock-short'>
+                                <p>An <code>Iterator</code> yielding all mouse button presses occuring within the given sequence of
+<code>Presses</code> for some specific mouse button.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.MouseButtonReleases.html"
+                                  title='struct conrod::input::widget::MouseButtonReleases'>MouseButtonReleases</a></td>
+                           <td class='docblock-short'>
+                                <p>An <code>Iterator</code> yielding all mouse button releases occuring within the given sequence of
+<code>Releases</code> for some specific mouse button.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.MousePresses.html"
+                                  title='struct conrod::input::widget::MousePresses'>MousePresses</a></td>
+                           <td class='docblock-short'>
+                                <p>An <code>Iterator</code> yielding all mouse button presses occuring within the given sequence of <code>Presses</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.MouseReleases.html"
+                                  title='struct conrod::input::widget::MouseReleases'>MouseReleases</a></td>
+                           <td class='docblock-short'>
+                                <p>An <code>Iterator</code> yielding all mouse button releases occuring within the given sequence of
+<code>Releases</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Presses.html"
+                                  title='struct conrod::input::widget::Presses'>Presses</a></td>
+                           <td class='docblock-short'>
+                                <p>An <code>Iterator</code> yielding all button presses occuring within the given sequence of
+<code>widget::Event</code>s.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Releases.html"
+                                  title='struct conrod::input::widget::Releases'>Releases</a></td>
+                           <td class='docblock-short'>
+                                <p>An <code>Iterator</code> yielding all button releases occuring within the given sequence of
+<code>widget::Event</code>s.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Scrolls.html"
+                                  title='struct conrod::input::widget::Scrolls'>Scrolls</a></td>
+                           <td class='docblock-short'>
+                                <p>An iterator that yields all <code>Scroll</code> events yielded by the given <code>Events</code> iterator.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Texts.html"
+                                  title='struct conrod::input::widget::Texts'>Texts</a></td>
+                           <td class='docblock-short'>
+                                <p>An iterator that yields all <code>Input::Text</code> events yielded by the <code>Events</code> iterator.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Widget.html"
+                                  title='struct conrod::input::widget::Widget'>Widget</a></td>
+                           <td class='docblock-short'>
+                                <p>Provides only events and input state that are relevant to a specific widget.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

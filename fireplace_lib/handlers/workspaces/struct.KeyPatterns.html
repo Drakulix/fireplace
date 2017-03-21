@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `KeyPatterns` struct in crate `fireplace_lib`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, KeyPatterns">
+
+    <title>fireplace_lib::handlers::workspaces::KeyPatterns - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>fireplace_lib</a>::<wbr><a href='../index.html'>handlers</a>::<wbr><a href='index.html'>workspaces</a></p><script>window.sidebarCurrent = {name: 'KeyPatterns', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>fireplace_lib</a>::<wbr><a href='../index.html'>handlers</a>::<wbr><a href='index.html'>workspaces</a>::<wbr><a class="struct" href=''>KeyPatterns</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/fireplace_lib/handlers/workspaces/mod.rs.html#106-241' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct KeyPatterns {
+    pub next: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub prev: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace1: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace2: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace3: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace4: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace5: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace6: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace7: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace8: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace9: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace10: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace11: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace12: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace13: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace14: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace15: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace16: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace17: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace18: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace19: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace20: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace21: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace22: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace23: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace24: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace25: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace26: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace27: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace28: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace29: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace30: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace31: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub workspace32: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace1: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace2: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace3: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace4: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace5: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace6: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace7: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace8: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace9: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace10: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace11: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace12: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace13: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace14: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace15: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace16: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace17: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace18: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace19: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace20: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace21: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace22: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace23: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace24: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace25: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace26: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace27: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace28: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace29: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace30: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace31: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+    pub moveto_workspace32: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;,
+}</pre><div class='docblock'><p><code>KeyPattern</code>s triggering workspace related actions</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.next' class="structfield">
+                           <span id='next.v' class='invisible'>
+                           <code>next: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to next workspace</p>
+</div><span id='structfield.prev' class="structfield">
+                           <span id='prev.v' class='invisible'>
+                           <code>prev: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to previous workspace</p>
+</div><span id='structfield.workspace1' class="structfield">
+                           <span id='workspace1.v' class='invisible'>
+                           <code>workspace1: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 1</p>
+</div><span id='structfield.workspace2' class="structfield">
+                           <span id='workspace2.v' class='invisible'>
+                           <code>workspace2: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 2</p>
+</div><span id='structfield.workspace3' class="structfield">
+                           <span id='workspace3.v' class='invisible'>
+                           <code>workspace3: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 3</p>
+</div><span id='structfield.workspace4' class="structfield">
+                           <span id='workspace4.v' class='invisible'>
+                           <code>workspace4: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 4</p>
+</div><span id='structfield.workspace5' class="structfield">
+                           <span id='workspace5.v' class='invisible'>
+                           <code>workspace5: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 5</p>
+</div><span id='structfield.workspace6' class="structfield">
+                           <span id='workspace6.v' class='invisible'>
+                           <code>workspace6: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 6</p>
+</div><span id='structfield.workspace7' class="structfield">
+                           <span id='workspace7.v' class='invisible'>
+                           <code>workspace7: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 7</p>
+</div><span id='structfield.workspace8' class="structfield">
+                           <span id='workspace8.v' class='invisible'>
+                           <code>workspace8: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 8</p>
+</div><span id='structfield.workspace9' class="structfield">
+                           <span id='workspace9.v' class='invisible'>
+                           <code>workspace9: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 9</p>
+</div><span id='structfield.workspace10' class="structfield">
+                           <span id='workspace10.v' class='invisible'>
+                           <code>workspace10: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 10</p>
+</div><span id='structfield.workspace11' class="structfield">
+                           <span id='workspace11.v' class='invisible'>
+                           <code>workspace11: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 11</p>
+</div><span id='structfield.workspace12' class="structfield">
+                           <span id='workspace12.v' class='invisible'>
+                           <code>workspace12: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 12</p>
+</div><span id='structfield.workspace13' class="structfield">
+                           <span id='workspace13.v' class='invisible'>
+                           <code>workspace13: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 13</p>
+</div><span id='structfield.workspace14' class="structfield">
+                           <span id='workspace14.v' class='invisible'>
+                           <code>workspace14: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 14</p>
+</div><span id='structfield.workspace15' class="structfield">
+                           <span id='workspace15.v' class='invisible'>
+                           <code>workspace15: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 15</p>
+</div><span id='structfield.workspace16' class="structfield">
+                           <span id='workspace16.v' class='invisible'>
+                           <code>workspace16: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 16</p>
+</div><span id='structfield.workspace17' class="structfield">
+                           <span id='workspace17.v' class='invisible'>
+                           <code>workspace17: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 17</p>
+</div><span id='structfield.workspace18' class="structfield">
+                           <span id='workspace18.v' class='invisible'>
+                           <code>workspace18: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 18</p>
+</div><span id='structfield.workspace19' class="structfield">
+                           <span id='workspace19.v' class='invisible'>
+                           <code>workspace19: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 19</p>
+</div><span id='structfield.workspace20' class="structfield">
+                           <span id='workspace20.v' class='invisible'>
+                           <code>workspace20: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 20</p>
+</div><span id='structfield.workspace21' class="structfield">
+                           <span id='workspace21.v' class='invisible'>
+                           <code>workspace21: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 21</p>
+</div><span id='structfield.workspace22' class="structfield">
+                           <span id='workspace22.v' class='invisible'>
+                           <code>workspace22: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 22</p>
+</div><span id='structfield.workspace23' class="structfield">
+                           <span id='workspace23.v' class='invisible'>
+                           <code>workspace23: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 23</p>
+</div><span id='structfield.workspace24' class="structfield">
+                           <span id='workspace24.v' class='invisible'>
+                           <code>workspace24: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 24</p>
+</div><span id='structfield.workspace25' class="structfield">
+                           <span id='workspace25.v' class='invisible'>
+                           <code>workspace25: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 25</p>
+</div><span id='structfield.workspace26' class="structfield">
+                           <span id='workspace26.v' class='invisible'>
+                           <code>workspace26: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 26</p>
+</div><span id='structfield.workspace27' class="structfield">
+                           <span id='workspace27.v' class='invisible'>
+                           <code>workspace27: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 27</p>
+</div><span id='structfield.workspace28' class="structfield">
+                           <span id='workspace28.v' class='invisible'>
+                           <code>workspace28: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 28</p>
+</div><span id='structfield.workspace29' class="structfield">
+                           <span id='workspace29.v' class='invisible'>
+                           <code>workspace29: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 29</p>
+</div><span id='structfield.workspace30' class="structfield">
+                           <span id='workspace30.v' class='invisible'>
+                           <code>workspace30: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 30</p>
+</div><span id='structfield.workspace31' class="structfield">
+                           <span id='workspace31.v' class='invisible'>
+                           <code>workspace31: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 31</p>
+</div><span id='structfield.workspace32' class="structfield">
+                           <span id='workspace32.v' class='invisible'>
+                           <code>workspace32: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Switch to workspace 32</p>
+</div><span id='structfield.moveto_workspace1' class="structfield">
+                           <span id='moveto_workspace1.v' class='invisible'>
+                           <code>moveto_workspace1: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 1</p>
+</div><span id='structfield.moveto_workspace2' class="structfield">
+                           <span id='moveto_workspace2.v' class='invisible'>
+                           <code>moveto_workspace2: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 2</p>
+</div><span id='structfield.moveto_workspace3' class="structfield">
+                           <span id='moveto_workspace3.v' class='invisible'>
+                           <code>moveto_workspace3: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 3</p>
+</div><span id='structfield.moveto_workspace4' class="structfield">
+                           <span id='moveto_workspace4.v' class='invisible'>
+                           <code>moveto_workspace4: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 4</p>
+</div><span id='structfield.moveto_workspace5' class="structfield">
+                           <span id='moveto_workspace5.v' class='invisible'>
+                           <code>moveto_workspace5: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 5</p>
+</div><span id='structfield.moveto_workspace6' class="structfield">
+                           <span id='moveto_workspace6.v' class='invisible'>
+                           <code>moveto_workspace6: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 6</p>
+</div><span id='structfield.moveto_workspace7' class="structfield">
+                           <span id='moveto_workspace7.v' class='invisible'>
+                           <code>moveto_workspace7: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 7</p>
+</div><span id='structfield.moveto_workspace8' class="structfield">
+                           <span id='moveto_workspace8.v' class='invisible'>
+                           <code>moveto_workspace8: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 8</p>
+</div><span id='structfield.moveto_workspace9' class="structfield">
+                           <span id='moveto_workspace9.v' class='invisible'>
+                           <code>moveto_workspace9: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 9</p>
+</div><span id='structfield.moveto_workspace10' class="structfield">
+                           <span id='moveto_workspace10.v' class='invisible'>
+                           <code>moveto_workspace10: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 10</p>
+</div><span id='structfield.moveto_workspace11' class="structfield">
+                           <span id='moveto_workspace11.v' class='invisible'>
+                           <code>moveto_workspace11: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 11</p>
+</div><span id='structfield.moveto_workspace12' class="structfield">
+                           <span id='moveto_workspace12.v' class='invisible'>
+                           <code>moveto_workspace12: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 12</p>
+</div><span id='structfield.moveto_workspace13' class="structfield">
+                           <span id='moveto_workspace13.v' class='invisible'>
+                           <code>moveto_workspace13: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 13</p>
+</div><span id='structfield.moveto_workspace14' class="structfield">
+                           <span id='moveto_workspace14.v' class='invisible'>
+                           <code>moveto_workspace14: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 14</p>
+</div><span id='structfield.moveto_workspace15' class="structfield">
+                           <span id='moveto_workspace15.v' class='invisible'>
+                           <code>moveto_workspace15: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 15</p>
+</div><span id='structfield.moveto_workspace16' class="structfield">
+                           <span id='moveto_workspace16.v' class='invisible'>
+                           <code>moveto_workspace16: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 16</p>
+</div><span id='structfield.moveto_workspace17' class="structfield">
+                           <span id='moveto_workspace17.v' class='invisible'>
+                           <code>moveto_workspace17: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 17</p>
+</div><span id='structfield.moveto_workspace18' class="structfield">
+                           <span id='moveto_workspace18.v' class='invisible'>
+                           <code>moveto_workspace18: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 18</p>
+</div><span id='structfield.moveto_workspace19' class="structfield">
+                           <span id='moveto_workspace19.v' class='invisible'>
+                           <code>moveto_workspace19: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 19</p>
+</div><span id='structfield.moveto_workspace20' class="structfield">
+                           <span id='moveto_workspace20.v' class='invisible'>
+                           <code>moveto_workspace20: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 20</p>
+</div><span id='structfield.moveto_workspace21' class="structfield">
+                           <span id='moveto_workspace21.v' class='invisible'>
+                           <code>moveto_workspace21: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 21</p>
+</div><span id='structfield.moveto_workspace22' class="structfield">
+                           <span id='moveto_workspace22.v' class='invisible'>
+                           <code>moveto_workspace22: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 22</p>
+</div><span id='structfield.moveto_workspace23' class="structfield">
+                           <span id='moveto_workspace23.v' class='invisible'>
+                           <code>moveto_workspace23: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 23</p>
+</div><span id='structfield.moveto_workspace24' class="structfield">
+                           <span id='moveto_workspace24.v' class='invisible'>
+                           <code>moveto_workspace24: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 24</p>
+</div><span id='structfield.moveto_workspace25' class="structfield">
+                           <span id='moveto_workspace25.v' class='invisible'>
+                           <code>moveto_workspace25: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 25</p>
+</div><span id='structfield.moveto_workspace26' class="structfield">
+                           <span id='moveto_workspace26.v' class='invisible'>
+                           <code>moveto_workspace26: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 26</p>
+</div><span id='structfield.moveto_workspace27' class="structfield">
+                           <span id='moveto_workspace27.v' class='invisible'>
+                           <code>moveto_workspace27: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 27</p>
+</div><span id='structfield.moveto_workspace28' class="structfield">
+                           <span id='moveto_workspace28.v' class='invisible'>
+                           <code>moveto_workspace28: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 28</p>
+</div><span id='structfield.moveto_workspace29' class="structfield">
+                           <span id='moveto_workspace29.v' class='invisible'>
+                           <code>moveto_workspace29: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 29</p>
+</div><span id='structfield.moveto_workspace30' class="structfield">
+                           <span id='moveto_workspace30.v' class='invisible'>
+                           <code>moveto_workspace30: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 30</p>
+</div><span id='structfield.moveto_workspace31' class="structfield">
+                           <span id='moveto_workspace31.v' class='invisible'>
+                           <code>moveto_workspace31: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 31</p>
+</div><span id='structfield.moveto_workspace32' class="structfield">
+                           <span id='moveto_workspace32.v' class='invisible'>
+                           <code>moveto_workspace32: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../fireplace_lib/handlers/keyboard/struct.KeyPattern.html" title="struct fireplace_lib::handlers::keyboard::KeyPattern">KeyPattern</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Move focused <code>View</code> to workspace 32</p>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../../../fireplace_lib/handlers/workspaces/struct.KeyPatterns.html" title="struct fireplace_lib::handlers::workspaces::KeyPatterns">KeyPatterns</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/fireplace_lib/handlers/workspaces/mod.rs.html#104' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../../fireplace_lib/handlers/workspaces/struct.KeyPatterns.html" title="struct fireplace_lib::handlers::workspaces::KeyPatterns">KeyPatterns</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/fireplace_lib/handlers/workspaces/mod.rs.html#104' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../../fireplace_lib/handlers/workspaces/struct.KeyPatterns.html" title="struct fireplace_lib::handlers::workspaces::KeyPatterns">KeyPatterns</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="struct" href="../../../fireplace_lib/handlers/workspaces/struct.KeyPatterns.html" title="struct fireplace_lib::handlers::workspaces::KeyPatterns">KeyPatterns</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/fireplace_lib/handlers/workspaces/mod.rs.html#104' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="struct" href="../../../fireplace_lib/handlers/workspaces/struct.KeyPatterns.html" title="struct fireplace_lib::handlers::workspaces::KeyPatterns">KeyPatterns</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="struct" href="../../../fireplace_lib/handlers/workspaces/struct.KeyPatterns.html" title="struct fireplace_lib::handlers::workspaces::KeyPatterns">KeyPatterns</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html" title="trait core::cmp::Eq">Eq</a> for <a class="struct" href="../../../fireplace_lib/handlers/workspaces/struct.KeyPatterns.html" title="struct fireplace_lib::handlers::workspaces::KeyPatterns">KeyPatterns</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/fireplace_lib/handlers/workspaces/mod.rs.html#104' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html" title="trait core::hash::Hash">Hash</a> for <a class="struct" href="../../../fireplace_lib/handlers/workspaces/struct.KeyPatterns.html" title="struct fireplace_lib::handlers::workspaces::KeyPatterns">KeyPatterns</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/fireplace_lib/handlers/workspaces/mod.rs.html#104' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.hash' class="method"><span id='hash.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html#tymethod.hash' class='fnname'>hash</a>&lt;__H:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/hash/trait.Hasher.html" title="trait core::hash::Hasher">Hasher</a>&gt;(&amp;self, __arg_0: &amp;mut __H)</code></span></h4>
+<div class='docblock'><p>Feeds this value into the state given, updating the hasher as necessary.</p>
+</div><h4 id='method.hash_slice' class="method"><span id='hash_slice.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/hash/trait.Hash.html#method.hash_slice' class='fnname'>hash_slice</a>&lt;H&gt;(data: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[Self]</a>, state: &amp;mut H) <span class="where fmt-newline">where H: <a class="trait" href="https://doc.rust-lang.org/nightly/core/hash/trait.Hasher.html" title="trait core::hash::Hasher">Hasher</a></span></code><div class='since' title='Stable since Rust version 1.3.0'>1.3.0</div></span></h4>
+<div class='docblock'><p>Feeds a slice of this type into the state provided.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html" title="trait core::default::Default">Default</a> for <a class="struct" href="../../../fireplace_lib/handlers/workspaces/struct.KeyPatterns.html" title="struct fireplace_lib::handlers::workspaces::KeyPatterns">KeyPatterns</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/fireplace_lib/handlers/workspaces/mod.rs.html#104' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.default' class="method"><span id='default.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default' class='fnname'>default</a>() -&gt; <a class="struct" href="../../../fireplace_lib/handlers/workspaces/struct.KeyPatterns.html" title="struct fireplace_lib::handlers::workspaces::KeyPatterns">KeyPatterns</a></code></span></h4>
+<div class='docblock'><p>Returns the &quot;default value&quot; for a type. <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "fireplace_lib";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

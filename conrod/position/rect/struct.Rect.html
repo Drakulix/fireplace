@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Rect` struct in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Rect">
+
+    <title>conrod::position::rect::Rect - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>position</a>::<wbr><a href='index.html'>rect</a></p><script>window.sidebarCurrent = {name: 'Rect', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>position</a>::<wbr><a href='index.html'>rect</a>::<wbr><a class="struct" href=''>Rect</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/conrod/position/rect.rs.html#10-15' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Rect {
+    pub x: <a class="struct" href="../../../conrod/position/range/struct.Range.html" title="struct conrod::position::range::Range">Range</a>,
+    pub y: <a class="struct" href="../../../conrod/position/range/struct.Range.html" title="struct conrod::position::range::Range">Range</a>,
+}</pre><div class='docblock'><p>Defines a Rectangle&#39;s bounds across the x and y axes.</p>
+
+<p>This is a conrod-specific Rectangle in that it&#39;s designed to help with layout.</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.x' class="structfield">
+                           <span id='x.v' class='invisible'>
+                           <code>x: <a class="struct" href="../../../conrod/position/range/struct.Range.html" title="struct conrod::position::range::Range">Range</a></code>
+                           </span></span><div class='docblock'><p>The start and end positions of the Rectangle on the x axis.</p>
+</div><span id='structfield.y' class="structfield">
+                           <span id='y.v' class='invisible'>
+                           <code>y: <a class="struct" href="../../../conrod/position/range/struct.Range.html" title="struct conrod::position::range::Range">Range</a></code>
+                           </span></span><div class='docblock'><p>The start and end positions of the Rectangle on the y axis.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/position/rect.rs.html#31-409' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from_xy_dim' class="method"><span id='from_xy_dim.v' class='invisible'><code>fn <a href='#method.from_xy_dim' class='fnname'>from_xy_dim</a>(xy: <a class="type" href="../../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a>, dim: <a class="type" href="../../../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Construct a Rect from a given <code>Point</code> and <code>Dimensions</code>.</p>
+</div><h4 id='method.from_corners' class="method"><span id='from_corners.v' class='invisible'><code>fn <a href='#method.from_corners' class='fnname'>from_corners</a>(a: <a class="type" href="../../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a>, b: <a class="type" href="../../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Construct a Rect from the coordinates of two points.</p>
+</div><h4 id='method.overlap' class="method"><span id='overlap.v' class='invisible'><code>fn <a href='#method.overlap' class='fnname'>overlap</a>(self, other: Self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;Self&gt;</code></span></h4>
+<div class='docblock'><p>The Rect representing the area in which two Rects overlap.</p>
+</div><h4 id='method.max' class="method"><span id='max.v' class='invisible'><code>fn <a href='#method.max' class='fnname'>max</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>The Rect that encompass the two given sets of Rect.</p>
+</div><h4 id='method.x' class="method"><span id='x.v-1' class='invisible'><code>fn <a href='#method.x' class='fnname'>x</a>(&amp;self) -&gt; <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a></code></span></h4>
+<div class='docblock'><p>The position in the middle of the x bounds.</p>
+</div><h4 id='method.y' class="method"><span id='y.v-1' class='invisible'><code>fn <a href='#method.y' class='fnname'>y</a>(&amp;self) -&gt; <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a></code></span></h4>
+<div class='docblock'><p>The position in the middle of the y bounds.</p>
+</div><h4 id='method.xy' class="method"><span id='xy.v' class='invisible'><code>fn <a href='#method.xy' class='fnname'>xy</a>(&amp;self) -&gt; <a class="type" href="../../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a></code></span></h4>
+<div class='docblock'><p>The xy position in the middle of the bounds.</p>
+</div><h4 id='method.x_y' class="method"><span id='x_y.v' class='invisible'><code>fn <a href='#method.x_y' class='fnname'>x_y</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>, <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<div class='docblock'><p>The centered x and y coordinates as a tuple.</p>
+</div><h4 id='method.w' class="method"><span id='w.v' class='invisible'><code>fn <a href='#method.w' class='fnname'>w</a>(&amp;self) -&gt; <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a></code></span></h4>
+<div class='docblock'><p>The width of the Rect.</p>
+</div><h4 id='method.h' class="method"><span id='h.v' class='invisible'><code>fn <a href='#method.h' class='fnname'>h</a>(&amp;self) -&gt; <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a></code></span></h4>
+<div class='docblock'><p>The height of the Rect.</p>
+</div><h4 id='method.dim' class="method"><span id='dim.v' class='invisible'><code>fn <a href='#method.dim' class='fnname'>dim</a>(&amp;self) -&gt; <a class="type" href="../../../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a></code></span></h4>
+<div class='docblock'><p>The total dimensions of the Rect.</p>
+</div><h4 id='method.w_h' class="method"><span id='w_h.v' class='invisible'><code>fn <a href='#method.w_h' class='fnname'>w_h</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>, <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<div class='docblock'><p>The width and height of the Rect as a tuple.</p>
+</div><h4 id='method.xy_dim' class="method"><span id='xy_dim.v' class='invisible'><code>fn <a href='#method.xy_dim' class='fnname'>xy_dim</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="type" href="../../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a>, <a class="type" href="../../../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<div class='docblock'><p>Convert the Rect to a <code>Point</code> and <code>Dimensions</code>.</p>
+</div><h4 id='method.x_y_w_h' class="method"><span id='x_y_w_h.v' class='invisible'><code>fn <a href='#method.x_y_w_h' class='fnname'>x_y_w_h</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>, <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>, <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>, <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<div class='docblock'><p>The Rect&#39;s centered coordinates and dimensions in a tuple.</p>
+</div><h4 id='method.len' class="method"><span id='len.v' class='invisible'><code>fn <a href='#method.len' class='fnname'>len</a>(&amp;self) -&gt; <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a></code></span></h4>
+<div class='docblock'><p>The length of the longest side of the rectangle.</p>
+</div><h4 id='method.bottom' class="method"><span id='bottom.v' class='invisible'><code>fn <a href='#method.bottom' class='fnname'>bottom</a>(&amp;self) -&gt; <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a></code></span></h4>
+<div class='docblock'><p>The Rect&#39;s lowest y value.</p>
+</div><h4 id='method.top' class="method"><span id='top.v' class='invisible'><code>fn <a href='#method.top' class='fnname'>top</a>(&amp;self) -&gt; <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a></code></span></h4>
+<div class='docblock'><p>The Rect&#39;s highest y value.</p>
+</div><h4 id='method.left' class="method"><span id='left.v' class='invisible'><code>fn <a href='#method.left' class='fnname'>left</a>(&amp;self) -&gt; <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a></code></span></h4>
+<div class='docblock'><p>The Rect&#39;s lowest x value.</p>
+</div><h4 id='method.right' class="method"><span id='right.v' class='invisible'><code>fn <a href='#method.right' class='fnname'>right</a>(&amp;self) -&gt; <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a></code></span></h4>
+<div class='docblock'><p>The Rect&#39;s highest x value.</p>
+</div><h4 id='method.top_left' class="method"><span id='top_left.v' class='invisible'><code>fn <a href='#method.top_left' class='fnname'>top_left</a>(&amp;self) -&gt; <a class="type" href="../../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a></code></span></h4>
+<div class='docblock'><p>The top left corner <strong>Point</strong>.</p>
+</div><h4 id='method.bottom_left' class="method"><span id='bottom_left.v' class='invisible'><code>fn <a href='#method.bottom_left' class='fnname'>bottom_left</a>(&amp;self) -&gt; <a class="type" href="../../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a></code></span></h4>
+<div class='docblock'><p>The bottom left corner <strong>Point</strong>.</p>
+</div><h4 id='method.top_right' class="method"><span id='top_right.v' class='invisible'><code>fn <a href='#method.top_right' class='fnname'>top_right</a>(&amp;self) -&gt; <a class="type" href="../../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a></code></span></h4>
+<div class='docblock'><p>The top right corner <strong>Point</strong>.</p>
+</div><h4 id='method.bottom_right' class="method"><span id='bottom_right.v' class='invisible'><code>fn <a href='#method.bottom_right' class='fnname'>bottom_right</a>(&amp;self) -&gt; <a class="type" href="../../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a></code></span></h4>
+<div class='docblock'><p>The bottom right corner <strong>Point</strong>.</p>
+</div><h4 id='method.l_r_b_t' class="method"><span id='l_r_b_t.v' class='invisible'><code>fn <a href='#method.l_r_b_t' class='fnname'>l_r_b_t</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>, <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>, <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>, <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<div class='docblock'><p>The edges of the <strong>Rect</strong> in a tuple (top, bottom, left, right).</p>
+</div><h4 id='method.l_t_w_h' class="method"><span id='l_t_w_h.v' class='invisible'><code>fn <a href='#method.l_t_w_h' class='fnname'>l_t_w_h</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>, <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>, <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>, <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<div class='docblock'><p>The left and top edges of the <strong>Rect</strong> along with the width and height.</p>
+</div><h4 id='method.l_b_w_h' class="method"><span id='l_b_w_h.v' class='invisible'><code>fn <a href='#method.l_b_w_h' class='fnname'>l_b_w_h</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>, <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>, <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>, <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<div class='docblock'><p>The left and bottom edges of the <strong>Rect</strong> along with the width and height.</p>
+</div><h4 id='method.shift_x' class="method"><span id='shift_x.v' class='invisible'><code>fn <a href='#method.shift_x' class='fnname'>shift_x</a>(self, x: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Shift the Rect along the x axis.</p>
+</div><h4 id='method.shift_y' class="method"><span id='shift_y.v' class='invisible'><code>fn <a href='#method.shift_y' class='fnname'>shift_y</a>(self, y: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Shift the Rect along the y axis.</p>
+</div><h4 id='method.shift' class="method"><span id='shift.v' class='invisible'><code>fn <a href='#method.shift' class='fnname'>shift</a>(self, xy: <a class="type" href="../../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Shift the Rect by the given Point.</p>
+</div><h4 id='method.relative_to_x' class="method"><span id='relative_to_x.v' class='invisible'><code>fn <a href='#method.relative_to_x' class='fnname'>relative_to_x</a>(self, x: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Returns a <code>Rect</code> with a position relative to the given position on the <em>x</em> axis.</p>
+</div><h4 id='method.relative_to_y' class="method"><span id='relative_to_y.v' class='invisible'><code>fn <a href='#method.relative_to_y' class='fnname'>relative_to_y</a>(self, y: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Returns a <code>Rect</code> with a position relative to the given position on the <em>y</em> axis.</p>
+</div><h4 id='method.relative_to' class="method"><span id='relative_to.v' class='invisible'><code>fn <a href='#method.relative_to' class='fnname'>relative_to</a>(self, xy: <a class="type" href="../../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Returns a <code>Rect</code> with a position relative to the given position.</p>
+</div><h4 id='method.is_over' class="method"><span id='is_over.v' class='invisible'><code>fn <a href='#method.is_over' class='fnname'>is_over</a>(&amp;self, xy: <a class="type" href="../../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Does the given point touch the Rectangle.</p>
+</div><h4 id='method.pad_left' class="method"><span id='pad_left.v' class='invisible'><code>fn <a href='#method.pad_left' class='fnname'>pad_left</a>(self, pad: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>The Rect with some padding applied to the left edge.</p>
+</div><h4 id='method.pad_right' class="method"><span id='pad_right.v' class='invisible'><code>fn <a href='#method.pad_right' class='fnname'>pad_right</a>(self, pad: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>The Rect with some padding applied to the right edge.</p>
+</div><h4 id='method.pad_bottom' class="method"><span id='pad_bottom.v' class='invisible'><code>fn <a href='#method.pad_bottom' class='fnname'>pad_bottom</a>(self, pad: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>The rect with some padding applied to the bottom edge.</p>
+</div><h4 id='method.pad_top' class="method"><span id='pad_top.v' class='invisible'><code>fn <a href='#method.pad_top' class='fnname'>pad_top</a>(self, pad: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>The Rect with some padding applied to the top edge.</p>
+</div><h4 id='method.pad' class="method"><span id='pad.v' class='invisible'><code>fn <a href='#method.pad' class='fnname'>pad</a>(self, pad: <a class="type" href="../../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>The Rect with some padding amount applied to each edge.</p>
+</div><h4 id='method.padding' class="method"><span id='padding.v' class='invisible'><code>fn <a href='#method.padding' class='fnname'>padding</a>(self, padding: <a class="struct" href="../../../conrod/position/struct.Padding.html" title="struct conrod::position::Padding">Padding</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>The Rect with some padding applied.</p>
+</div><h4 id='method.stretch_to_point' class="method"><span id='stretch_to_point.v' class='invisible'><code>fn <a href='#method.stretch_to_point' class='fnname'>stretch_to_point</a>(self, point: <a class="type" href="../../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Stretches the closest edge(s) to the given point if the point lies outside of the Rect area.</p>
+</div><h4 id='method.left_of' class="method"><span id='left_of.v' class='invisible'><code>fn <a href='#method.left_of' class='fnname'>left_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Align <code>self</code>&#39;s right edge with the left edge of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.right_of' class="method"><span id='right_of.v' class='invisible'><code>fn <a href='#method.right_of' class='fnname'>right_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Align <code>self</code>&#39;s left edge with the right dge of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.below' class="method"><span id='below.v' class='invisible'><code>fn <a href='#method.below' class='fnname'>below</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Align <code>self</code>&#39;s top edge with the bottom edge of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.above' class="method"><span id='above.v' class='invisible'><code>fn <a href='#method.above' class='fnname'>above</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Align <code>self</code>&#39;s bottom edge with the top edge of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.align_x_of' class="method"><span id='align_x_of.v' class='invisible'><code>fn <a href='#method.align_x_of' class='fnname'>align_x_of</a>(self, align: <a class="enum" href="../../../conrod/position/enum.Align.html" title="enum conrod::position::Align">Align</a>, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Align <code>self</code> to <code>other</code> along the <em>x</em> axis in accordance with the given <code>Align</code> variant.</p>
+</div><h4 id='method.align_y_of' class="method"><span id='align_y_of.v' class='invisible'><code>fn <a href='#method.align_y_of' class='fnname'>align_y_of</a>(self, align: <a class="enum" href="../../../conrod/position/enum.Align.html" title="enum conrod::position::Align">Align</a>, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Align <code>self</code> to <code>other</code> along the <em>y</em> axis in accordance with the given <code>Align</code> variant.</p>
+</div><h4 id='method.align_left_of' class="method"><span id='align_left_of.v' class='invisible'><code>fn <a href='#method.align_left_of' class='fnname'>align_left_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Align <code>self</code>&#39;s left edge with the left edge of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.align_middle_x_of' class="method"><span id='align_middle_x_of.v' class='invisible'><code>fn <a href='#method.align_middle_x_of' class='fnname'>align_middle_x_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Align the middle of <code>self</code> with the middle of the <code>other</code> <strong>Rect</strong> along the <em>x</em> axis.</p>
+</div><h4 id='method.align_right_of' class="method"><span id='align_right_of.v' class='invisible'><code>fn <a href='#method.align_right_of' class='fnname'>align_right_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Align <code>self</code>&#39;s right edge with the right edge of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.align_bottom_of' class="method"><span id='align_bottom_of.v' class='invisible'><code>fn <a href='#method.align_bottom_of' class='fnname'>align_bottom_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Align <code>self</code>&#39;s bottom edge with the bottom edge of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.align_middle_y_of' class="method"><span id='align_middle_y_of.v' class='invisible'><code>fn <a href='#method.align_middle_y_of' class='fnname'>align_middle_y_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Align the middle of <code>self</code> with the middle of the <code>other</code> <strong>Rect</strong> along the <em>y</em> axis.</p>
+</div><h4 id='method.align_top_of' class="method"><span id='align_top_of.v' class='invisible'><code>fn <a href='#method.align_top_of' class='fnname'>align_top_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Align <code>self</code>&#39;s top edge with the top edge of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.top_left_of' class="method"><span id='top_left_of.v' class='invisible'><code>fn <a href='#method.top_left_of' class='fnname'>top_left_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Place <code>self</code> along the top left edges of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.top_right_of' class="method"><span id='top_right_of.v' class='invisible'><code>fn <a href='#method.top_right_of' class='fnname'>top_right_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Place <code>self</code> along the top right edges of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.bottom_left_of' class="method"><span id='bottom_left_of.v' class='invisible'><code>fn <a href='#method.bottom_left_of' class='fnname'>bottom_left_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Place <code>self</code> along the bottom left edges of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.bottom_right_of' class="method"><span id='bottom_right_of.v' class='invisible'><code>fn <a href='#method.bottom_right_of' class='fnname'>bottom_right_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Place <code>self</code> along the bottom right edges of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.mid_top_of' class="method"><span id='mid_top_of.v' class='invisible'><code>fn <a href='#method.mid_top_of' class='fnname'>mid_top_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Place <code>self</code> in the middle of the top edge of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.mid_bottom_of' class="method"><span id='mid_bottom_of.v' class='invisible'><code>fn <a href='#method.mid_bottom_of' class='fnname'>mid_bottom_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Place <code>self</code> in the middle of the bottom edge of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.mid_left_of' class="method"><span id='mid_left_of.v' class='invisible'><code>fn <a href='#method.mid_left_of' class='fnname'>mid_left_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Place <code>self</code> in the middle of the left edge of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.mid_right_of' class="method"><span id='mid_right_of.v' class='invisible'><code>fn <a href='#method.mid_right_of' class='fnname'>mid_right_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Place <code>self</code> in the middle of the right edge of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.middle_of' class="method"><span id='middle_of.v' class='invisible'><code>fn <a href='#method.middle_of' class='fnname'>middle_of</a>(self, other: Self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Place <code>self</code> directly in the middle of the <code>other</code> <strong>Rect</strong>.</p>
+</div><h4 id='method.closest_corner' class="method"><span id='closest_corner.v' class='invisible'><code>fn <a href='#method.closest_corner' class='fnname'>closest_corner</a>(&amp;self, xy: <a class="type" href="../../../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a>) -&gt; <a class="enum" href="../../../conrod/position/rect/enum.Corner.html" title="enum conrod::position::rect::Corner">Corner</a></code></span></h4>
+<div class='docblock'><p>Return the <strong>Corner</strong> of <code>self</code> that is closest to the given <strong>Point</strong>.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/position/rect.rs.html#9' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/position/rect.rs.html#9' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/position/rect.rs.html#9' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../src/conrod/position/rect.rs.html#9' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="struct" href="../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

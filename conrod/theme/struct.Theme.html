@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Theme` struct in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Theme">
+
+    <title>conrod::theme::Theme - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>conrod</a>::<wbr><a href='index.html'>theme</a></p><script>window.sidebarCurrent = {name: 'Theme', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>conrod</a>::<wbr><a href='index.html'>theme</a>::<wbr><a class="struct" href=''>Theme</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/conrod/theme.rs.html#15-50' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Theme {
+    pub name: <a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a>,
+    pub padding: <a class="struct" href="../../conrod/position/struct.Padding.html" title="struct conrod::position::Padding">Padding</a>,
+    pub x_position: <a class="enum" href="../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a>,
+    pub y_position: <a class="enum" href="../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a>,
+    pub background_color: <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>,
+    pub shape_color: <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>,
+    pub border_color: <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>,
+    pub border_width: <a class="type" href="../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>,
+    pub label_color: <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>,
+    pub font_id: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../conrod/text/font/struct.Id.html" title="struct conrod::text::font::Id">Id</a>&gt;,
+    pub font_size_large: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub font_size_medium: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub font_size_small: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub widget_styling: <a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html" title="struct std::collections::hash::map::HashMap">HashMap</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/core/any/struct.TypeId.html" title="struct core::any::TypeId">TypeId</a>, <a class="struct" href="../../conrod/theme/struct.WidgetDefault.html" title="struct conrod::theme::WidgetDefault">WidgetDefault</a>&gt;,
+    pub mouse_drag_threshold: <a class="type" href="../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>,
+    pub double_click_threshold: <a class="struct" href="https://doc.rust-lang.org/nightly/std/time/duration/struct.Duration.html" title="struct std::time::duration::Duration">Duration</a>,
+}</pre><div class='docblock'><p>A serializable collection of canvas and widget styling defaults.</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.name' class="structfield">
+                           <span id='name.v' class='invisible'>
+                           <code>name: <a class="struct" href="https://doc.rust-lang.org/nightly/collections/string/struct.String.html" title="struct collections::string::String">String</a></code>
+                           </span></span><div class='docblock'><p>A name for the theme used for identification.</p>
+</div><span id='structfield.padding' class="structfield">
+                           <span id='padding.v' class='invisible'>
+                           <code>padding: <a class="struct" href="../../conrod/position/struct.Padding.html" title="struct conrod::position::Padding">Padding</a></code>
+                           </span></span><div class='docblock'><p>Padding for Canvas layout and positioning.</p>
+</div><span id='structfield.x_position' class="structfield">
+                           <span id='x_position.v' class='invisible'>
+                           <code>x_position: <a class="enum" href="../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a></code>
+                           </span></span><div class='docblock'><p>A default widget position along the <em>x</em> axis.</p>
+</div><span id='structfield.y_position' class="structfield">
+                           <span id='y_position.v' class='invisible'>
+                           <code>y_position: <a class="enum" href="../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a></code>
+                           </span></span><div class='docblock'><p>A default widget position along the <em>y</em> axis.</p>
+</div><span id='structfield.background_color' class="structfield">
+                           <span id='background_color.v' class='invisible'>
+                           <code>background_color: <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code>
+                           </span></span><div class='docblock'><p>A default background for the theme.</p>
+</div><span id='structfield.shape_color' class="structfield">
+                           <span id='shape_color.v' class='invisible'>
+                           <code>shape_color: <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code>
+                           </span></span><div class='docblock'><p>A default color for widget shapes.</p>
+</div><span id='structfield.border_color' class="structfield">
+                           <span id='border_color.v' class='invisible'>
+                           <code>border_color: <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code>
+                           </span></span><div class='docblock'><p>A default color for widget borders.</p>
+</div><span id='structfield.border_width' class="structfield">
+                           <span id='border_width.v' class='invisible'>
+                           <code>border_width: <a class="type" href="../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a></code>
+                           </span></span><div class='docblock'><p>A default width for widget borders.</p>
+</div><span id='structfield.label_color' class="structfield">
+                           <span id='label_color.v' class='invisible'>
+                           <code>label_color: <a class="enum" href="../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a></code>
+                           </span></span><div class='docblock'><p>A default color for widget labels.</p>
+</div><span id='structfield.font_id' class="structfield">
+                           <span id='font_id.v' class='invisible'>
+                           <code>font_id: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../conrod/text/font/struct.Id.html" title="struct conrod::text::font::Id">Id</a>&gt;</code>
+                           </span></span><div class='docblock'><p>The <code>Id</code> of the default font used for text widgets when one is not specified.</p>
+</div><span id='structfield.font_size_large' class="structfield">
+                           <span id='font_size_large.v' class='invisible'>
+                           <code>font_size_large: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><div class='docblock'><p>A default &quot;large&quot; font size.</p>
+</div><span id='structfield.font_size_medium' class="structfield">
+                           <span id='font_size_medium.v' class='invisible'>
+                           <code>font_size_medium: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><div class='docblock'><p>A default &quot;medium&quot; font size.</p>
+</div><span id='structfield.font_size_small' class="structfield">
+                           <span id='font_size_small.v' class='invisible'>
+                           <code>font_size_small: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><div class='docblock'><p>A default &quot;small&quot; font size.</p>
+</div><span id='structfield.widget_styling' class="structfield">
+                           <span id='widget_styling.v' class='invisible'>
+                           <code>widget_styling: <a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.HashMap.html" title="struct std::collections::hash::map::HashMap">HashMap</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/core/any/struct.TypeId.html" title="struct core::any::TypeId">TypeId</a>, <a class="struct" href="../../conrod/theme/struct.WidgetDefault.html" title="struct conrod::theme::WidgetDefault">WidgetDefault</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Unique styling for each widget, index-able by the <strong>Widget::kind</strong>.</p>
+</div><span id='structfield.mouse_drag_threshold' class="structfield">
+                           <span id='mouse_drag_threshold.v' class='invisible'>
+                           <code>mouse_drag_threshold: <a class="type" href="../../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a></code>
+                           </span></span><div class='docblock'><p>Mouse Drag distance threshold determines the minimum distance from the mouse-down point
+that the mouse must move before starting a drag operation.</p>
+</div><span id='structfield.double_click_threshold' class="structfield">
+                           <span id='double_click_threshold.v' class='invisible'>
+                           <code>double_click_threshold: <a class="struct" href="https://doc.rust-lang.org/nightly/std/time/duration/struct.Duration.html" title="struct std::time::duration::Duration">Duration</a></code>
+                           </span></span><div class='docblock'><p>Once the <code>Duration</code> that separates two consecutive <code>Click</code>s is greater than this value, a
+<code>DoubleClick</code> event will no longer be generated.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/theme.rs.html#79-121' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.default' class="method"><span id='default.v' class='invisible'><code>fn <a href='#method.default' class='fnname'>default</a>() -&gt; <a class="struct" href="../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a></code></span></h4>
+<div class='docblock'><p>The default theme if not loading from file.</p>
+</div><h4 id='method.widget_style' class="method"><span id='widget_style.v' class='invisible'><code>fn <a href='#method.widget_style' class='fnname'>widget_style</a>&lt;T&gt;(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../conrod/theme/struct.UniqueDefault.html" title="struct conrod::theme::UniqueDefault">UniqueDefault</a>&lt;T&gt;&gt; <span class="where fmt-newline">where T: <a class="trait" href="../../conrod/widget/trait.Style.html" title="trait conrod::widget::Style">Style</a></span></code></span></h4>
+<div class='docblock'><p>Retrieve the unique default styling for a widget.</p>
+
+<p>Attempts to cast the <code>Box&lt;WidgetStyle&gt;</code> to the <strong>Widget</strong>&#39;s unique associated style <strong>T</strong>.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

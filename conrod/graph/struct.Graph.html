@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Graph` struct in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Graph">
+
+    <title>conrod::graph::Graph - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>conrod</a>::<wbr><a href='index.html'>graph</a></p><script>window.sidebarCurrent = {name: 'Graph', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>conrod</a>::<wbr><a href='index.html'>graph</a>::<wbr><a class="struct" href=''>Graph</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/conrod/graph/mod.rs.html#143-147' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Graph { /* fields omitted */ }</pre><div class='docblock'><p>Stores the dynamic state of a UI tree of Widgets.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../conrod/graph/struct.Graph.html" title="struct conrod::graph::Graph">Graph</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/graph/mod.rs.html#183-740' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></span></h4>
+<div class='docblock'><p>A new empty <strong>Graph</strong>.</p>
+</div><h4 id='method.with_node_capacity' class="method"><span id='with_node_capacity.v' class='invisible'><code>fn <a href='#method.with_node_capacity' class='fnname'>with_node_capacity</a>(n_nodes: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>A new <strong>Graph</strong> with the given node capacity.</p>
+
+<p>We know that there can be no more than three parents per node as the public API enforces a
+maximum of one Depth, Position and Graphic parent each. Thus, we can assume an edge
+capacity of exactly three times the given node capacity.</p>
+</div><h4 id='method.clear' class="method"><span id='clear.v' class='invisible'><code>fn <a href='#method.clear' class='fnname'>clear</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>Removes all <strong>Node</strong>s and <strong>Edge</strong>s from the <strong>Graph</strong>.</p>
+</div><h4 id='method.node_count' class="method"><span id='node_count.v' class='invisible'><code>fn <a href='#method.node_count' class='fnname'>node_count</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></code></span></h4>
+<div class='docblock'><p>The total number of <strong>Node</strong>s in the <strong>Graph</strong>.</p>
+</div><h4 id='method.widget_count' class="method"><span id='widget_count.v' class='invisible'><code>fn <a href='#method.widget_count' class='fnname'>widget_count</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></code></span></h4>
+<div class='docblock'><p>The total number of <strong>Node::Widget</strong>s in the <strong>Graph</strong>.</p>
+</div><h4 id='method.edge_count' class="method"><span id='edge_count.v' class='invisible'><code>fn <a href='#method.edge_count' class='fnname'>edge_count</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></code></span></h4>
+<div class='docblock'><p>The total number of <strong>Edge</strong>s in the <strong>Graph</strong>.</p>
+</div><h4 id='method.node_capacity' class="method"><span id='node_capacity.v' class='invisible'><code>fn <a href='#method.node_capacity' class='fnname'>node_capacity</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></code></span></h4>
+<div class='docblock'><p>The current capacity for the <strong>Graph</strong>&#39;s internal node <code>Vec</code>.</p>
+</div><h4 id='method.add_placeholder' class="method"><span id='add_placeholder.v' class='invisible'><code>fn <a href='#method.add_placeholder' class='fnname'>add_placeholder</a>(&amp;mut self) -&gt; <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a></code></span></h4>
+<div class='docblock'><p>Add a new placeholder node and return it&#39;s <code>widget::Id</code> into the <code>Graph</code>.</p>
+
+<p>This method is used by the <code>widget::set_widget</code> function when some internal widget does not
+yet have it&#39;s own <code>widget::Id</code>.</p>
+</div><h4 id='method.node' class="method"><span id='node.v' class='invisible'><code>fn <a href='#method.node' class='fnname'>node</a>(&amp;self, idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="enum" href="../../conrod/graph/enum.Node.html" title="enum conrod::graph::Node">Node</a>&gt;</code></span></h4>
+<div class='docblock'><p>Borrow the node at the given <strong>widget::Id</strong> if there is one.</p>
+</div><h4 id='method.node_mut' class="method"><span id='node_mut.v' class='invisible'><code>fn <a href='#method.node_mut' class='fnname'>node_mut</a>(&amp;mut self, idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;mut <a class="enum" href="../../conrod/graph/enum.Node.html" title="enum conrod::graph::Node">Node</a>&gt;</code></span></h4>
+<div class='docblock'><p>Mutably borrow the node at the given <strong>widget::Id</strong> if there is one.</p>
+</div><h4 id='method.edge' class="method"><span id='edge.v' class='invisible'><code>fn <a href='#method.edge' class='fnname'>edge</a>(&amp;self, idx: <a class="type" href="../../conrod/graph/type.EdgeIndex.html" title="type conrod::graph::EdgeIndex">EdgeIndex</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="enum" href="../../conrod/graph/enum.Edge.html" title="enum conrod::graph::Edge">Edge</a>&gt;</code></span></h4>
+<div class='docblock'><p>Borrow the edge at the given <strong>EdgeIndex</strong> if there is one.</p>
+</div><h4 id='method.edge_mut' class="method"><span id='edge_mut.v' class='invisible'><code>fn <a href='#method.edge_mut' class='fnname'>edge_mut</a>(&amp;mut self, idx: <a class="type" href="../../conrod/graph/type.EdgeIndex.html" title="type conrod::graph::EdgeIndex">EdgeIndex</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;mut <a class="enum" href="../../conrod/graph/enum.Edge.html" title="enum conrod::graph::Edge">Edge</a>&gt;</code></span></h4>
+<div class='docblock'><p>Mutably borrow the edge at the given <strong>EdgeIndex</strong> if there is one.</p>
+</div><h4 id='method.edge_endpoints' class="method"><span id='edge_endpoints.v' class='invisible'><code>fn <a href='#method.edge_endpoints' class='fnname'>edge_endpoints</a>(&amp;self, idx: <a class="type" href="../../conrod/graph/type.EdgeIndex.html" title="type conrod::graph::EdgeIndex">EdgeIndex</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</code></span></h4>
+<div class='docblock'><p>Return the parent and child nodes on either end of the <strong>Edge</strong> at the given index.</p>
+</div><h4 id='method.widget' class="method"><span id='widget.v' class='invisible'><code>fn <a href='#method.widget' class='fnname'>widget</a>(&amp;self, idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="struct" href="../../conrod/graph/struct.Container.html" title="struct conrod::graph::Container">Container</a>&gt;</code></span></h4>
+<div class='docblock'><p>If there is a Widget for the given index, return a reference to it.</p>
+</div><h4 id='method.widget_mut' class="method"><span id='widget_mut.v' class='invisible'><code>fn <a href='#method.widget_mut' class='fnname'>widget_mut</a>(&amp;mut self, idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;mut <a class="struct" href="../../conrod/graph/struct.Container.html" title="struct conrod::graph::Container">Container</a>&gt;</code></span></h4>
+<div class='docblock'><p>If there is a Widget for the given Id, return a mutable reference to it.</p>
+</div><h4 id='method.parents' class="method"><span id='parents.v' class='invisible'><code>fn <a href='#method.parents' class='fnname'>parents</a>(&amp;self, child: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="type" href="../../conrod/graph/type.Parents.html" title="type conrod::graph::Parents">Parents</a></code></span></h4>
+<div class='docblock'><p>A <strong>Walker</strong> type that may be used to step through the parents of the given child node.</p>
+</div><h4 id='method.recursive_walk' class="method"><span id='recursive_walk.v' class='invisible'><code>fn <a href='#method.recursive_walk' class='fnname'>recursive_walk</a>&lt;F&gt;(&amp;self, start: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, recursive_fn: F) -&gt; <a class="type" href="../../conrod/graph/type.RecursiveWalk.html" title="type conrod::graph::RecursiveWalk">RecursiveWalk</a>&lt;F&gt; <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html" title="trait core::ops::FnMut">FnMut</a>(&amp;Self, <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="type" href="../../conrod/graph/type.EdgeIndex.html" title="type conrod::graph::EdgeIndex">EdgeIndex</a>, <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a>&gt;</span></code></span></h4>
+<div class='docblock'><p>A <strong>Walker</strong> type that recursively walks the <strong>Graph</strong> using the given <code>recursive_fn</code>.</p>
+
+<p><strong>Panics</strong> If the given start index does not exist within the <strong>Graph</strong>.</p>
+</div><h4 id='method.edge_parent' class="method"><span id='edge_parent.v' class='invisible'><code>fn <a href='#method.edge_parent' class='fnname'>edge_parent</a>(&amp;self, idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, edge: <a class="enum" href="../../conrod/graph/enum.Edge.html" title="enum conrod::graph::Edge">Edge</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt;</code></span></h4>
+<div class='docblock'><p>If the widget at the given index has some parent along an <strong>Edge</strong> of the given variant,
+return an index to it.</p>
+</div><h4 id='method.depth_parent' class="method"><span id='depth_parent.v' class='invisible'><code>fn <a href='#method.depth_parent' class='fnname'>depth_parent</a>(&amp;self, idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt;</code></span></h4>
+<div class='docblock'><p>Return the index of the parent along the given widget&#39;s <strong>Depth</strong> <strong>Edge</strong>.</p>
+</div><h4 id='method.x_position_parent' class="method"><span id='x_position_parent.v' class='invisible'><code>fn <a href='#method.x_position_parent' class='fnname'>x_position_parent</a>(&amp;self, idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt;</code></span></h4>
+<div class='docblock'><p>Return the index of the parent along the given widget&#39;s <strong>Position</strong> <strong>Edge</strong>.</p>
+</div><h4 id='method.y_position_parent' class="method"><span id='y_position_parent.v' class='invisible'><code>fn <a href='#method.y_position_parent' class='fnname'>y_position_parent</a>(&amp;self, idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt;</code></span></h4>
+<div class='docblock'><p>Return the index of the parent along the given widget&#39;s <strong>Position</strong> <strong>Edge</strong>.</p>
+</div><h4 id='method.position_parents' class="method"><span id='position_parents.v' class='invisible'><code>fn <a href='#method.position_parents' class='fnname'>position_parents</a>(&amp;self, idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="type" href="../../conrod/graph/type.PositionParents.html" title="type conrod::graph::PositionParents">PositionParents</a></code></span></h4>
+<div class='docblock'><p>Produces an iterator yielding the parents along both the <strong>X</strong> and <strong>Y</strong> <strong>Position</strong>
+<strong>Edge</strong>s respectively.</p>
+</div><h4 id='method.graphic_parent' class="method"><span id='graphic_parent.v' class='invisible'><code>fn <a href='#method.graphic_parent' class='fnname'>graphic_parent</a>(&amp;self, idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt;</code></span></h4>
+<div class='docblock'><p>Return the index of the parent along the given widget&#39;s <strong>Graphic</strong> <strong>Edge</strong>.</p>
+</div><h4 id='method.depth_parent_recursion' class="method"><span id='depth_parent_recursion.v' class='invisible'><code>fn <a href='#method.depth_parent_recursion' class='fnname'>depth_parent_recursion</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../../conrod/graph/type.RecursiveWalk.html" title="type conrod::graph::RecursiveWalk">RecursiveWalk</a>&lt;fn(_: &amp;<a class="struct" href="../../conrod/graph/struct.Graph.html" title="struct conrod::graph::Graph">Graph</a>, _: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../conrod/graph/type.IndexPair.html" title="type conrod::graph::IndexPair">IndexPair</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>A <strong>Walker</strong> type that recursively walks <strong>Depth</strong> parents starting from the given node.</p>
+</div><h4 id='method.x_position_parent_recursion' class="method"><span id='x_position_parent_recursion.v' class='invisible'><code>fn <a href='#method.x_position_parent_recursion' class='fnname'>x_position_parent_recursion</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../../conrod/graph/type.RecursiveWalk.html" title="type conrod::graph::RecursiveWalk">RecursiveWalk</a>&lt;fn(_: &amp;<a class="struct" href="../../conrod/graph/struct.Graph.html" title="struct conrod::graph::Graph">Graph</a>, _: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../conrod/graph/type.IndexPair.html" title="type conrod::graph::IndexPair">IndexPair</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>A <strong>Walker</strong> type that recursively walks <strong>X</strong> <strong>Position</strong> parents starting from the given
+node.</p>
+</div><h4 id='method.y_position_parent_recursion' class="method"><span id='y_position_parent_recursion.v' class='invisible'><code>fn <a href='#method.y_position_parent_recursion' class='fnname'>y_position_parent_recursion</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../../conrod/graph/type.RecursiveWalk.html" title="type conrod::graph::RecursiveWalk">RecursiveWalk</a>&lt;fn(_: &amp;<a class="struct" href="../../conrod/graph/struct.Graph.html" title="struct conrod::graph::Graph">Graph</a>, _: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../conrod/graph/type.IndexPair.html" title="type conrod::graph::IndexPair">IndexPair</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>A <strong>Walker</strong> type that recursively walks <strong>Y</strong> <strong>Position</strong> parents starting from the given
+node.</p>
+</div><h4 id='method.graphic_parent_recursion' class="method"><span id='graphic_parent_recursion.v' class='invisible'><code>fn <a href='#method.graphic_parent_recursion' class='fnname'>graphic_parent_recursion</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../../conrod/graph/type.RecursiveWalk.html" title="type conrod::graph::RecursiveWalk">RecursiveWalk</a>&lt;fn(_: &amp;<a class="struct" href="../../conrod/graph/struct.Graph.html" title="struct conrod::graph::Graph">Graph</a>, _: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../conrod/graph/type.IndexPair.html" title="type conrod::graph::IndexPair">IndexPair</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>A <strong>Walker</strong> type that recursively walks <strong>Graphic</strong> parents starting from the given node.</p>
+</div><h4 id='method.scrollable_y_parent_recursion' class="method"><span id='scrollable_y_parent_recursion.v' class='invisible'><code>fn <a href='#method.scrollable_y_parent_recursion' class='fnname'>scrollable_y_parent_recursion</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../../conrod/graph/type.RecursiveWalk.html" title="type conrod::graph::RecursiveWalk">RecursiveWalk</a>&lt;fn(_: &amp;<a class="struct" href="../../conrod/graph/struct.Graph.html" title="struct conrod::graph::Graph">Graph</a>, _: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../conrod/graph/type.IndexPair.html" title="type conrod::graph::IndexPair">IndexPair</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>A <strong>Walker</strong> type that recursively walks <strong>Depth</strong> parents that are scrollable along the
+<em>y</em> axis for the given node.</p>
+</div><h4 id='method.scrollable_x_parent_recursion' class="method"><span id='scrollable_x_parent_recursion.v' class='invisible'><code>fn <a href='#method.scrollable_x_parent_recursion' class='fnname'>scrollable_x_parent_recursion</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../../conrod/graph/type.RecursiveWalk.html" title="type conrod::graph::RecursiveWalk">RecursiveWalk</a>&lt;fn(_: &amp;<a class="struct" href="../../conrod/graph/struct.Graph.html" title="struct conrod::graph::Graph">Graph</a>, _: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../conrod/graph/type.IndexPair.html" title="type conrod::graph::IndexPair">IndexPair</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>A <strong>Walker</strong> type that recursively walks <strong>Depth</strong> parents that are scrollable along the
+<em>x</em> axis for the given node.</p>
+</div><h4 id='method.children' class="method"><span id='children.v' class='invisible'><code>fn <a href='#method.children' class='fnname'>children</a>(&amp;self, parent: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="type" href="../../conrod/graph/type.Children.html" title="type conrod::graph::Children">Children</a></code></span></h4>
+<div class='docblock'><p>A <strong>Walker</strong> type that may be used to step through the children of the given parent node.</p>
+</div><h4 id='method.depth_children' class="method"><span id='depth_children.v' class='invisible'><code>fn <a href='#method.depth_children' class='fnname'>depth_children</a>(&amp;self, idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="type" href="../../conrod/graph/type.DepthChildren.html" title="type conrod::graph::DepthChildren">DepthChildren</a></code></span></h4>
+<div class='docblock'><p>For walking the <strong>Depth</strong> children of the given parent node.</p>
+</div><h4 id='method.x_position_children' class="method"><span id='x_position_children.v' class='invisible'><code>fn <a href='#method.x_position_children' class='fnname'>x_position_children</a>(&amp;self, idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="type" href="../../conrod/graph/type.XPositionChildren.html" title="type conrod::graph::XPositionChildren">XPositionChildren</a></code></span></h4>
+<div class='docblock'><p>For walking the <strong>Position(X)</strong> children of the given parent node.</p>
+</div><h4 id='method.y_position_children' class="method"><span id='y_position_children.v' class='invisible'><code>fn <a href='#method.y_position_children' class='fnname'>y_position_children</a>(&amp;self, idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="type" href="../../conrod/graph/type.YPositionChildren.html" title="type conrod::graph::YPositionChildren">YPositionChildren</a></code></span></h4>
+<div class='docblock'><p>For walking the <strong>Position(Y)</strong> children of the given parent node.</p>
+</div><h4 id='method.position_children' class="method"><span id='position_children.v' class='invisible'><code>fn <a href='#method.position_children' class='fnname'>position_children</a>(&amp;self, idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="type" href="../../conrod/graph/type.PositionChildren.html" title="type conrod::graph::PositionChildren">PositionChildren</a></code></span></h4>
+<div class='docblock'><p>For walking the <strong>Position</strong> children of the given parent node.</p>
+
+<p>This first walks the <strong>Axis::X</strong> children, before walking the <strong>Axis::Y</strong> children.</p>
+</div><h4 id='method.graphic_children' class="method"><span id='graphic_children.v' class='invisible'><code>fn <a href='#method.graphic_children' class='fnname'>graphic_children</a>(&amp;self, idx: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="type" href="../../conrod/graph/type.GraphicChildren.html" title="type conrod::graph::GraphicChildren">GraphicChildren</a></code></span></h4>
+<div class='docblock'><p>For walking the <strong>Graphic</strong> children of the given parent node.</p>
+</div><h4 id='method.does_edge_exist' class="method"><span id='does_edge_exist.v' class='invisible'><code>fn <a href='#method.does_edge_exist' class='fnname'>does_edge_exist</a>&lt;F&gt;(&amp;self, parent: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, child: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, is_edge: F) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html" title="trait core::ops::Fn">Fn</a>(<a class="enum" href="../../conrod/graph/enum.Edge.html" title="enum conrod::graph::Edge">Edge</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></span></code></span></h4>
+<div class='docblock'><p>Does the given edge type exist between the nodes <code>parent</code> -&gt; <code>child</code>.</p>
+
+<p>Returns <code>false</code> if either of the given node indices do not exist.</p>
+</div><h4 id='method.does_depth_edge_exist' class="method"><span id='does_depth_edge_exist.v' class='invisible'><code>fn <a href='#method.does_depth_edge_exist' class='fnname'>does_depth_edge_exist</a>(&amp;self, parent: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, child: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Does a <strong>Edge::Depth</strong> exist between the nodes <code>parent</code> -&gt; <code>child</code>.</p>
+
+<p>Returns <code>false</code> if either of the given node indices do not exist.</p>
+</div><h4 id='method.does_position_edge_exist' class="method"><span id='does_position_edge_exist.v' class='invisible'><code>fn <a href='#method.does_position_edge_exist' class='fnname'>does_position_edge_exist</a>(&amp;self, parent: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, child: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Does a <strong>Edge::Position</strong> exist between the nodes <code>parent</code> -&gt; <code>child</code>.</p>
+
+<p>Returns <code>false</code> if either of the given node indices do not exist.</p>
+</div><h4 id='method.does_graphic_edge_exist' class="method"><span id='does_graphic_edge_exist.v' class='invisible'><code>fn <a href='#method.does_graphic_edge_exist' class='fnname'>does_graphic_edge_exist</a>(&amp;self, parent: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, child: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Does a <strong>Edge::Graphic</strong> exist between the nodes <code>parent</code> -&gt; <code>child</code>.</p>
+
+<p>Returns <code>false</code> if either of the given node indices do not exist.</p>
+</div><h4 id='method.does_recursive_edge_exist' class="method"><span id='does_recursive_edge_exist.v' class='invisible'><code>fn <a href='#method.does_recursive_edge_exist' class='fnname'>does_recursive_edge_exist</a>&lt;F&gt;(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; parent: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; child: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is_edge: F)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a> <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Fn.html" title="trait core::ops::Fn">Fn</a>(<a class="enum" href="../../conrod/graph/enum.Edge.html" title="enum conrod::graph::Edge">Edge</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></span></code></span></h4>
+<div class='docblock'><p>Are the given <code>parent</code> and <code>child</code> nodes connected by a single chain of edges of the given
+kind?</p>
+
+<p>i.e. <code>parent</code> -&gt; x -&gt; y -&gt; <code>child</code>.</p>
+
+<p>Returns <code>false</code> if either of the given node indices do not exist.</p>
+</div><h4 id='method.does_recursive_depth_edge_exist' class="method"><span id='does_recursive_depth_edge_exist.v' class='invisible'><code>fn <a href='#method.does_recursive_depth_edge_exist' class='fnname'>does_recursive_depth_edge_exist</a>(&amp;self, parent: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, child: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Are the given <code>parent</code> and <code>child</code> nodes connected by a single chain of <strong>Depth</strong> edges?</p>
+
+<p>i.e. <code>parent</code> -&gt; x -&gt; y -&gt; <code>child</code>.</p>
+
+<p>Returns <code>false</code> if either of the given node indices do not exist.</p>
+</div><h4 id='method.does_recursive_graphic_edge_exist' class="method"><span id='does_recursive_graphic_edge_exist.v' class='invisible'><code>fn <a href='#method.does_recursive_graphic_edge_exist' class='fnname'>does_recursive_graphic_edge_exist</a>(&amp;self, parent: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, child: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Are the given <code>parent</code> and <code>child</code> nodes connected by a single chain of <strong>Graphic</strong> edges?</p>
+
+<p>i.e. <code>parent</code> -&gt; x -&gt; y -&gt; <code>child</code>.</p>
+
+<p>Returns <code>false</code> if either of the given node indices do not exist.</p>
+</div><h4 id='method.pre_update_cache' class="method"><span id='pre_update_cache.v' class='invisible'><code>fn <a href='#method.pre_update_cache' class='fnname'>pre_update_cache</a>(&amp;mut self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; root: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; widget: <a class="struct" href="../../conrod/widget/struct.PreUpdateCache.html" title="struct conrod::widget::PreUpdateCache">PreUpdateCache</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; instantiation_order_idx: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a>)</code></span></h4>
+<div class='docblock'><p>Cache some <code>PreUpdateCache</code> widget data into the graph.</p>
+
+<p>This is called (via the <code>ui</code> module) from within the <code>widget::set_widget</code> function prior to
+the <code>Widget::update</code> method being called.</p>
+
+<p>This is done so that if this Widget were to internally <code>set</code> some other <code>Widget</code>s within
+its own <code>update</code> method, this <code>Widget</code>s positioning and dimension data already exists
+within the <code>Graph</code> for reference.</p>
+</div><h4 id='method.post_update_cache' class="method"><span id='post_update_cache.v' class='invisible'><code>fn <a href='#method.post_update_cache' class='fnname'>post_update_cache</a>&lt;W&gt;(&amp;mut self, widget: <a class="struct" href="../../conrod/widget/struct.PostUpdateCache.html" title="struct conrod::widget::PostUpdateCache">PostUpdateCache</a>&lt;W&gt;) <span class="where fmt-newline">where W: <a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Widget</a>, W::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">State</a>: 'static, W::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Style</a>: 'static</span></code></span></h4>
+<div class='docblock'><p>Cache some <code>PostUpdateCache</code> widget data into the graph.</p>
+
+<p>This is called (via the <code>ui</code> module) from within the <code>widget::set_widget</code> function after
+the <code>Widget::update</code> method is called and some new state is returned.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../../conrod/graph/struct.Graph.html" title="struct conrod::graph::Graph">Graph</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/graph/mod.rs.html#142' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Index.html" title="trait core::ops::Index">Index</a>&lt;<a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt; for <a class="struct" href="../../conrod/graph/struct.Graph.html" title="struct conrod::graph::Graph">Graph</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/graph/mod.rs.html#777-782' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Output' class="type"><span id='Output.t' class='invisible'><code>type <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Index.html#associatedtype.Output' class="type">Output</a> = <a class="enum" href="../../conrod/graph/enum.Node.html" title="enum conrod::graph::Node">Node</a></code></span></h4>
+<div class='docblock'><p>The returned type after indexing</p>
+</div><h4 id='method.index' class="method"><span id='index.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Index.html#tymethod.index' class='fnname'>index</a>&lt;'a&gt;(&amp;'a self, id: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; &amp;'a <a class="enum" href="../../conrod/graph/enum.Node.html" title="enum conrod::graph::Node">Node</a></code></span></h4>
+<div class='docblock'><p>The method for the indexing (<code>container[index]</code>) operation</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html" title="trait core::ops::IndexMut">IndexMut</a>&lt;<a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt; for <a class="struct" href="../../conrod/graph/struct.Graph.html" title="struct conrod::graph::Graph">Graph</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/graph/mod.rs.html#784-788' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.index_mut' class="method"><span id='index_mut.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html#tymethod.index_mut' class='fnname'>index_mut</a>&lt;'a&gt;(&amp;'a mut self, id: <a class="type" href="../../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; &amp;'a mut <a class="enum" href="../../conrod/graph/enum.Node.html" title="enum conrod::graph::Node">Node</a></code></span></h4>
+<div class='docblock'><p>The method for the mutable indexing (<code>container[index]</code>) operation</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Index.html" title="trait core::ops::Index">Index</a>&lt;<a class="type" href="../../conrod/graph/type.EdgeIndex.html" title="type conrod::graph::EdgeIndex">EdgeIndex</a>&gt; for <a class="struct" href="../../conrod/graph/struct.Graph.html" title="struct conrod::graph::Graph">Graph</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/graph/mod.rs.html#790-795' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Output-1' class="type"><span id='Output.t-1' class='invisible'><code>type <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Index.html#associatedtype.Output' class="type">Output</a> = <a class="enum" href="../../conrod/graph/enum.Edge.html" title="enum conrod::graph::Edge">Edge</a></code></span></h4>
+<div class='docblock'><p>The returned type after indexing</p>
+</div><h4 id='method.index-1' class="method"><span id='index.v-1' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Index.html#tymethod.index' class='fnname'>index</a>&lt;'a&gt;(&amp;'a self, idx: <a class="type" href="../../conrod/graph/type.EdgeIndex.html" title="type conrod::graph::EdgeIndex">EdgeIndex</a>) -&gt; &amp;'a <a class="enum" href="../../conrod/graph/enum.Edge.html" title="enum conrod::graph::Edge">Edge</a></code></span></h4>
+<div class='docblock'><p>The method for the indexing (<code>container[index]</code>) operation</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html" title="trait core::ops::IndexMut">IndexMut</a>&lt;<a class="type" href="../../conrod/graph/type.EdgeIndex.html" title="type conrod::graph::EdgeIndex">EdgeIndex</a>&gt; for <a class="struct" href="../../conrod/graph/struct.Graph.html" title="struct conrod::graph::Graph">Graph</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/graph/mod.rs.html#797-801' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.index_mut-1' class="method"><span id='index_mut.v-1' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.IndexMut.html#tymethod.index_mut' class='fnname'>index_mut</a>&lt;'a&gt;(&amp;'a mut self, idx: <a class="type" href="../../conrod/graph/type.EdgeIndex.html" title="type conrod::graph::EdgeIndex">EdgeIndex</a>) -&gt; &amp;'a mut <a class="enum" href="../../conrod/graph/enum.Edge.html" title="enum conrod::graph::Edge">Edge</a></code></span></h4>
+<div class='docblock'><p>The method for the mutable indexing (<code>container[index]</code>) operation</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

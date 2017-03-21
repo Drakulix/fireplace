@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `UiCell` struct in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, UiCell">
+
+    <title>conrod::UiCell - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>conrod</a></p><script>window.sidebarCurrent = {name: 'UiCell', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>conrod</a>::<wbr><a class="struct" href=''>UiCell</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/conrod/ui.rs.html#102-105' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct UiCell&lt;'a&gt; { /* fields omitted */ }</pre><div class='docblock'><p>A wrapper around the <code>Ui</code> that restricts the user from mutating the <code>Ui</code> in certain ways while
+in the scope of the <code>Ui::set_widgets</code> function and within <code>Widget</code>s&#39; <code>update</code> methods. Using
+the <code>UiCell</code>, users may access the <code>Ui</code> immutably (via <code>Deref</code>) however they wish, however they
+may only mutate the <code>Ui</code> via the <code>&amp;mut self</code> methods provided by the <code>UiCell</code>.</p>
+
+<p>The name came from its likening to a &quot;jail cell for the <code>Ui</code>&quot;, as it restricts a user&#39;s access
+to it. However, we realise that the name may also cause ambiguity with the std <code>Cell</code> and
+<code>RefCell</code> types (which <code>UiCell</code> has nothing to do with). Thus, if you have a better name for
+this type in mind, please let us know at the github repo via an issue or PR sometime before we
+hit 1.0.0!</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="struct" href="../conrod/struct.UiCell.html" title="struct conrod::UiCell">UiCell</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/conrod/ui.rs.html#1033-1094' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.theme' class="method"><span id='theme.v' class='invisible'><code>fn <a href='#method.theme' class='fnname'>theme</a>(&amp;self) -&gt; &amp;<a class="struct" href="../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a></code></span></h4>
+<div class='docblock'><p>A reference to the <code>Theme</code> that is currently active within the <code>Ui</code>.</p>
+</div><h4 id='method.font' class="method"><span id='font.v' class='invisible'><code>fn <a href='#method.font' class='fnname'>font</a>(&amp;self, id: <a class="struct" href="../conrod/text/font/struct.Id.html" title="struct conrod::text::font::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;<a class="type" href="../conrod/text/type.Font.html" title="type conrod::text::Font">Font</a>&gt;</code></span></h4>
+<div class='docblock'><p>A convenience method for borrowing the <code>Font</code> for the given <code>Id</code> if it exists.</p>
+</div><h4 id='method.window_dim' class="method"><span id='window_dim.v' class='invisible'><code>fn <a href='#method.window_dim' class='fnname'>window_dim</a>(&amp;self) -&gt; <a class="type" href="../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a></code></span></h4>
+<div class='docblock'><p>Returns the dimensions of the window</p>
+</div><h4 id='method.global_input' class="method"><span id='global_input.v' class='invisible'><code>fn <a href='#method.global_input' class='fnname'>global_input</a>(&amp;self) -&gt; &amp;<a class="struct" href="../conrod/input/global/struct.Global.html" title="struct conrod::input::global::Global">Global</a></code></span></h4>
+<div class='docblock'><p>Returns an immutable reference to the <code>input::Global</code> of the <code>Ui</code>.</p>
+
+<p>All coordinates here will be relative to the center of the window.</p>
+</div><h4 id='method.widget_input' class="method"><span id='widget_input.v' class='invisible'><code>fn <a href='#method.widget_input' class='fnname'>widget_input</a>(&amp;self, id: <a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="struct" href="../conrod/input/widget/struct.Widget.html" title="struct conrod::input::widget::Widget">Widget</a></code></span></h4>
+<div class='docblock'><p>Returns a <code>input::Widget</code> with input events for the widget.</p>
+
+<p>All coordinates in the <code>input::Widget</code> will be relative to the widget at the given index.</p>
+</div><h4 id='method.widget_id_generator' class="method"><span id='widget_id_generator.v' class='invisible'><code>fn <a href='#method.widget_id_generator' class='fnname'>widget_id_generator</a>(&amp;mut self) -&gt; <a class="struct" href="../conrod/widget/id/struct.Generator.html" title="struct conrod::widget::id::Generator">Generator</a></code></span></h4>
+<div class='docblock'><p>Produces a type that may be used to generate new unique <code>widget::Id</code>s.</p>
+
+<p>See the <a href="../widget/id/struct.Generator.html"><strong>widget::id::Generator</strong></a> docs for details on
+how to use this correctly.</p>
+</div><h4 id='method.kids_bounding_box' class="method"><span id='kids_bounding_box.v' class='invisible'><code>fn <a href='#method.kids_bounding_box' class='fnname'>kids_bounding_box</a>(&amp;self, id: <a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>&gt;</code></span></h4>
+<div class='docblock'><p>The <strong>Rect</strong> that bounds the kids of the widget with the given index.</p>
+
+<p>Returns <code>None</code> if the widget has no children or if there&#39;s is no widget for the given index.</p>
+</div><h4 id='method.scroll_widget' class="method"><span id='scroll_widget.v' class='invisible'><code>fn <a href='#method.scroll_widget' class='fnname'>scroll_widget</a>(&amp;mut self, id: <a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>, offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="type" href="../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>)</code></span></h4>
+<div class='docblock'><p>Scroll the widget at the given index by the given offset amount.</p>
+
+<p>The produced <code>Scroll</code> event will be pushed to the <code>pending_scroll_events</code> and will be
+applied to the widget during the next call to <code>Ui::set_widgets</code>.</p>
+</div></div><h2 id='deref-methods'>Methods from <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html" title="trait core::ops::Deref">Deref</a>&lt;Target=<a class="struct" href="../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>&gt;</h2><div class='impl-items'><h4 id='method.widget_input-1' class="method"><span id='widget_input.v-1' class='invisible'><code>fn <a href='#method.widget_input-1' class='fnname'>widget_input</a>(&amp;self, widget: <a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="struct" href="../conrod/input/widget/struct.Widget.html" title="struct conrod::input::widget::Widget">Widget</a></code></span></h4>
+<div class='docblock'><p>Returns a <code>input::Widget</code> for the given widget</p>
+</div><h4 id='method.rect_of' class="method"><span id='rect_of.v' class='invisible'><code>fn <a href='#method.rect_of' class='fnname'>rect_of</a>(&amp;self, id: <a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>&gt;</code></span></h4>
+<div class='docblock'><p>The <strong>Rect</strong> for the widget at the given index.</p>
+
+<p>Returns <code>None</code> if there is no widget for the given index.</p>
+</div><h4 id='method.w_of' class="method"><span id='w_of.v' class='invisible'><code>fn <a href='#method.w_of' class='fnname'>w_of</a>(&amp;self, id: <a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>&gt;</code></span></h4>
+<div class='docblock'><p>The absolute width of the widget at the given index.</p>
+
+<p>Returns <code>None</code> if there is no widget for the given index.</p>
+</div><h4 id='method.h_of' class="method"><span id='h_of.v' class='invisible'><code>fn <a href='#method.h_of' class='fnname'>h_of</a>(&amp;self, id: <a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../conrod/position/type.Scalar.html" title="type conrod::position::Scalar">Scalar</a>&gt;</code></span></h4>
+<div class='docblock'><p>The absolute height of the widget at the given index.</p>
+
+<p>Returns <code>None</code> if there is no widget for the given index.</p>
+</div><h4 id='method.wh_of' class="method"><span id='wh_of.v' class='invisible'><code>fn <a href='#method.wh_of' class='fnname'>wh_of</a>(&amp;self, id: <a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a>&gt;</code></span></h4>
+<div class='docblock'><p>The absolute dimensions for the widget at the given index.</p>
+
+<p>Returns <code>None</code> if there is no widget for the given index.</p>
+</div><h4 id='method.xy_of' class="method"><span id='xy_of.v' class='invisible'><code>fn <a href='#method.xy_of' class='fnname'>xy_of</a>(&amp;self, id: <a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a>&gt;</code></span></h4>
+<div class='docblock'><p>The coordinates for the widget at the given index.</p>
+
+<p>Returns <code>None</code> if there is no widget for the given index.</p>
+</div><h4 id='method.kid_area_of' class="method"><span id='kid_area_of.v' class='invisible'><code>fn <a href='#method.kid_area_of' class='fnname'>kid_area_of</a>(&amp;self, id: <a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>&gt;</code></span></h4>
+<div class='docblock'><p>The <code>kid_area</code> of the widget at the given index.</p>
+
+<p>Returns <code>None</code> if there is no widget for the given index.</p>
+</div><h4 id='method.maybe_prev_widget' class="method"><span id='maybe_prev_widget.v' class='invisible'><code>fn <a href='#method.maybe_prev_widget' class='fnname'>maybe_prev_widget</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt;</code></span></h4>
+<div class='docblock'><p>An index to the previously updated widget if there is one.</p>
+</div><h4 id='method.widget_graph' class="method"><span id='widget_graph.v' class='invisible'><code>fn <a href='#method.widget_graph' class='fnname'>widget_graph</a>(&amp;self) -&gt; &amp;<a class="struct" href="../conrod/graph/struct.Graph.html" title="struct conrod::graph::Graph">Graph</a></code></span></h4>
+<div class='docblock'><p>Borrow the <strong>Ui</strong>&#39;s <code>widget_graph</code>.</p>
+</div><h4 id='method.updated_widgets' class="method"><span id='updated_widgets.v' class='invisible'><code>fn <a href='#method.updated_widgets' class='fnname'>updated_widgets</a>(&amp;self) -&gt; &amp;<a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html" title="struct std::collections::hash::set::HashSet">HashSet</a>&lt;<a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt;</code></span></h4>
+<div class='docblock'><p>Borrow the <strong>Ui</strong>&#39;s set of updated widgets.</p>
+
+<p>This set indicates which widgets have been instantiated since the beginning of the most
+recent <code>Ui::set_widgets</code> call.</p>
+</div><h4 id='method.prev_updated_widgets' class="method"><span id='prev_updated_widgets.v' class='invisible'><code>fn <a href='#method.prev_updated_widgets' class='fnname'>prev_updated_widgets</a>(&amp;self) -&gt; &amp;<a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html" title="struct std::collections::hash::set::HashSet">HashSet</a>&lt;<a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt;</code></span></h4>
+<div class='docblock'><p>Borrow the <strong>Ui</strong>&#39;s set of updated widgets.</p>
+
+<p>This set indicates which widgets have were instantiated during the previous call to
+<code>Ui::set_widgets</code>.</p>
+</div><h4 id='method.calc_xy' class="method"><span id='calc_xy.v' class='invisible'><code>fn <a href='#method.calc_xy' class='fnname'>calc_xy</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; maybe_id: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x_position: <a class="enum" href="../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y_position: <a class="enum" href="../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dim: <a class="type" href="../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; place_on_kid_area: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="type" href="../conrod/position/type.Point.html" title="type conrod::position::Point">Point</a></code></span></h4>
+<div class='docblock'><p>Get the centred xy coords for some given <code>Dimension</code>s, <code>Position</code> and alignment.</p>
+
+<p>If getting the xy for a specific widget, its <code>widget::Id</code> should be specified so that we
+can also consider the scroll offset of the scrollable parent widgets.</p>
+
+<p>The <code>place_on_kid_area</code> argument specifies whether or not <strong>Place</strong> <strong>Position</strong> variants
+should target a <strong>Widget</strong>&#39;s <code>kid_area</code>, or simply the <strong>Widget</strong>&#39;s total area.</p>
+</div><h4 id='method.kids_bounding_box-1' class="method"><span id='kids_bounding_box.v-1' class='invisible'><code>fn <a href='#method.kids_bounding_box-1' class='fnname'>kids_bounding_box</a>(&amp;self, id: <a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>&gt;</code></span></h4>
+<div class='docblock'><p>The <strong>Rect</strong> that bounds the kids of the widget with the given index.</p>
+</div><h4 id='method.visible_area' class="method"><span id='visible_area.v' class='invisible'><code>fn <a href='#method.visible_area' class='fnname'>visible_area</a>(&amp;self, id: <a class="type" href="../conrod/widget/id/type.Id.html" title="type conrod::widget::id::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>&gt;</code></span></h4>
+<div class='docblock'><p>The <strong>Rect</strong> that represents the maximum fully visible area for the widget with the given
+index, including consideration of cropped scroll area.</p>
+
+<p>Otherwise, return None if the widget is not visible.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html" title="trait core::ops::Drop">Drop</a> for <a class="struct" href="../conrod/struct.UiCell.html" title="struct conrod::UiCell">UiCell</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/conrod/ui.rs.html#1096-1125' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>A method called when the value goes out of scope. <a href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html" title="trait core::ops::Deref">Deref</a> for <a class="struct" href="../conrod/struct.UiCell.html" title="struct conrod::UiCell">UiCell</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/conrod/ui.rs.html#1127-1132' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Target' class="type"><span id='Target.t' class='invisible'><code>type <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html#associatedtype.Target' class="type">Target</a> = <a class="struct" href="../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a></code></span></h4>
+<div class='docblock'><p>The resulting type after dereferencing</p>
+</div><h4 id='method.deref' class="method"><span id='deref.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html#tymethod.deref' class='fnname'>deref</a>(&amp;self) -&gt; &amp;<a class="struct" href="../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a></code></span></h4>
+<div class='docblock'><p>The method called to dereference a value</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;'a&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html" title="trait core::convert::AsRef">AsRef</a>&lt;<a class="struct" href="../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a>&gt; for <a class="struct" href="../conrod/struct.UiCell.html" title="struct conrod::UiCell">UiCell</a>&lt;'a&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/conrod/ui.rs.html#1134-1138' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.as_ref' class="method"><span id='as_ref.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref' class='fnname'>as_ref</a>(&amp;self) -&gt; &amp;<a class="struct" href="../conrod/struct.Ui.html" title="struct conrod::Ui">Ui</a></code></span></h4>
+<div class='docblock'><p>Performs the conversion.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

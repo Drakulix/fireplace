@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Ease` trait in crate `interpolation`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Ease">
+
+    <title>interpolation::Ease - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>interpolation</a></p><script>window.sidebarCurrent = {name: 'Ease', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content trait">
+<h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>interpolation</a>::<wbr><a class="trait" href=''>Ease</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/interpolation/ease.rs.html#48-91' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait Ease {
+    fn <a href='#tymethod.calc' class='fnname'>calc</a>(self, f: <a class="enum" href="../interpolation/enum.EaseFunction.html" title="enum interpolation::EaseFunction">EaseFunction</a>) -&gt; Self;
+    fn <a href='#tymethod.quadratic_in' class='fnname'>quadratic_in</a>(self) -&gt; Self;
+    fn <a href='#tymethod.quadratic_out' class='fnname'>quadratic_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.quadratic_in_out' class='fnname'>quadratic_in_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.cubic_in' class='fnname'>cubic_in</a>(self) -&gt; Self;
+    fn <a href='#tymethod.cubic_out' class='fnname'>cubic_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.cubic_in_out' class='fnname'>cubic_in_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.quartic_in' class='fnname'>quartic_in</a>(self) -&gt; Self;
+    fn <a href='#tymethod.quartic_out' class='fnname'>quartic_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.quartic_in_out' class='fnname'>quartic_in_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.quintic_in' class='fnname'>quintic_in</a>(self) -&gt; Self;
+    fn <a href='#tymethod.quintic_out' class='fnname'>quintic_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.quintic_in_out' class='fnname'>quintic_in_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.sine_in' class='fnname'>sine_in</a>(self) -&gt; Self;
+    fn <a href='#tymethod.sine_out' class='fnname'>sine_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.sine_in_out' class='fnname'>sine_in_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.circular_in' class='fnname'>circular_in</a>(self) -&gt; Self;
+    fn <a href='#tymethod.circular_out' class='fnname'>circular_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.circular_in_out' class='fnname'>circular_in_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.exponential_in' class='fnname'>exponential_in</a>(self) -&gt; Self;
+    fn <a href='#tymethod.exponential_out' class='fnname'>exponential_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.exponential_in_out' class='fnname'>exponential_in_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.elastic_in' class='fnname'>elastic_in</a>(self) -&gt; Self;
+    fn <a href='#tymethod.elastic_out' class='fnname'>elastic_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.elastic_in_out' class='fnname'>elastic_in_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.back_in' class='fnname'>back_in</a>(self) -&gt; Self;
+    fn <a href='#tymethod.back_out' class='fnname'>back_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.back_in_out' class='fnname'>back_in_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.bounce_in' class='fnname'>bounce_in</a>(self) -&gt; Self;
+    fn <a href='#tymethod.bounce_out' class='fnname'>bounce_out</a>(self) -&gt; Self;
+    fn <a href='#tymethod.bounce_in_out' class='fnname'>bounce_in_out</a>(self) -&gt; Self;
+}</pre>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.calc' class='method'><span id='calc.v' class='invisible'><code>fn <a href='#tymethod.calc' class='fnname'>calc</a>(self, f: <a class="enum" href="../interpolation/enum.EaseFunction.html" title="enum interpolation::EaseFunction">EaseFunction</a>) -&gt; Self</code></span></h3><div class='docblock'><p>Calculate the eased value, normalized</p>
+</div><h3 id='tymethod.quadratic_in' class='method'><span id='quadratic_in.v' class='invisible'><code>fn <a href='#tymethod.quadratic_in' class='fnname'>quadratic_in</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.quadratic_out' class='method'><span id='quadratic_out.v' class='invisible'><code>fn <a href='#tymethod.quadratic_out' class='fnname'>quadratic_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.quadratic_in_out' class='method'><span id='quadratic_in_out.v' class='invisible'><code>fn <a href='#tymethod.quadratic_in_out' class='fnname'>quadratic_in_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.cubic_in' class='method'><span id='cubic_in.v' class='invisible'><code>fn <a href='#tymethod.cubic_in' class='fnname'>cubic_in</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.cubic_out' class='method'><span id='cubic_out.v' class='invisible'><code>fn <a href='#tymethod.cubic_out' class='fnname'>cubic_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.cubic_in_out' class='method'><span id='cubic_in_out.v' class='invisible'><code>fn <a href='#tymethod.cubic_in_out' class='fnname'>cubic_in_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.quartic_in' class='method'><span id='quartic_in.v' class='invisible'><code>fn <a href='#tymethod.quartic_in' class='fnname'>quartic_in</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.quartic_out' class='method'><span id='quartic_out.v' class='invisible'><code>fn <a href='#tymethod.quartic_out' class='fnname'>quartic_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.quartic_in_out' class='method'><span id='quartic_in_out.v' class='invisible'><code>fn <a href='#tymethod.quartic_in_out' class='fnname'>quartic_in_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.quintic_in' class='method'><span id='quintic_in.v' class='invisible'><code>fn <a href='#tymethod.quintic_in' class='fnname'>quintic_in</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.quintic_out' class='method'><span id='quintic_out.v' class='invisible'><code>fn <a href='#tymethod.quintic_out' class='fnname'>quintic_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.quintic_in_out' class='method'><span id='quintic_in_out.v' class='invisible'><code>fn <a href='#tymethod.quintic_in_out' class='fnname'>quintic_in_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.sine_in' class='method'><span id='sine_in.v' class='invisible'><code>fn <a href='#tymethod.sine_in' class='fnname'>sine_in</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.sine_out' class='method'><span id='sine_out.v' class='invisible'><code>fn <a href='#tymethod.sine_out' class='fnname'>sine_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.sine_in_out' class='method'><span id='sine_in_out.v' class='invisible'><code>fn <a href='#tymethod.sine_in_out' class='fnname'>sine_in_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.circular_in' class='method'><span id='circular_in.v' class='invisible'><code>fn <a href='#tymethod.circular_in' class='fnname'>circular_in</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.circular_out' class='method'><span id='circular_out.v' class='invisible'><code>fn <a href='#tymethod.circular_out' class='fnname'>circular_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.circular_in_out' class='method'><span id='circular_in_out.v' class='invisible'><code>fn <a href='#tymethod.circular_in_out' class='fnname'>circular_in_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.exponential_in' class='method'><span id='exponential_in.v' class='invisible'><code>fn <a href='#tymethod.exponential_in' class='fnname'>exponential_in</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.exponential_out' class='method'><span id='exponential_out.v' class='invisible'><code>fn <a href='#tymethod.exponential_out' class='fnname'>exponential_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.exponential_in_out' class='method'><span id='exponential_in_out.v' class='invisible'><code>fn <a href='#tymethod.exponential_in_out' class='fnname'>exponential_in_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.elastic_in' class='method'><span id='elastic_in.v' class='invisible'><code>fn <a href='#tymethod.elastic_in' class='fnname'>elastic_in</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.elastic_out' class='method'><span id='elastic_out.v' class='invisible'><code>fn <a href='#tymethod.elastic_out' class='fnname'>elastic_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.elastic_in_out' class='method'><span id='elastic_in_out.v' class='invisible'><code>fn <a href='#tymethod.elastic_in_out' class='fnname'>elastic_in_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.back_in' class='method'><span id='back_in.v' class='invisible'><code>fn <a href='#tymethod.back_in' class='fnname'>back_in</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.back_out' class='method'><span id='back_out.v' class='invisible'><code>fn <a href='#tymethod.back_out' class='fnname'>back_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.back_in_out' class='method'><span id='back_in_out.v' class='invisible'><code>fn <a href='#tymethod.back_in_out' class='fnname'>back_in_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.bounce_in' class='method'><span id='bounce_in.v' class='invisible'><code>fn <a href='#tymethod.bounce_in' class='fnname'>bounce_in</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.bounce_out' class='method'><span id='bounce_out.v' class='invisible'><code>fn <a href='#tymethod.bounce_out' class='fnname'>bounce_out</a>(self) -&gt; Self</code></span></h3><h3 id='tymethod.bounce_in_out' class='method'><span id='bounce_in_out.v' class='invisible'><code>fn <a href='#tymethod.bounce_in_out' class='fnname'>bounce_in_out</a>(self) -&gt; Self</code></span></h3></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl Ease for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f32.html">f32</a></code></li>
+<li><code>impl Ease for <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code></li>
+</ul><script type="text/javascript" async
+                         src="../implementors/interpolation/trait.Ease.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "interpolation";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

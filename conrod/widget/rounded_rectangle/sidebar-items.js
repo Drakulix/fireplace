@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["DEFAULT_CORNER_RESOLUTION","The default resolution of the circle used to draw the rounded corners."]],"struct":[["RoundedRectangle","Draws a rectangle with corners rounded via the given radius."],["State","Unique state for the `RoundedRectangle`."]]});

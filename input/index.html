@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `input` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, input">
+
+    <title>input - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'input', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>input</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/input/lib.rs.html#1-399' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>A flexible structure for user interactions
+to be used in window frameworks and widgets libraries.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use mouse::<a class="enum" href="../input/mouse/enum.MouseButton.html" title="enum input::mouse::MouseButton">MouseButton</a>;</code></td></tr><tr><td><code>pub use keyboard::<a class="enum" href="../input/keyboard/enum.Key.html" title="enum input::keyboard::Key">Key</a>;</code></td></tr><tr><td><code>pub use controller::<a class="struct" href="../input/controller/struct.ControllerAxisArgs.html" title="struct input::controller::ControllerAxisArgs">ControllerAxisArgs</a>;</code></td></tr><tr><td><code>pub use controller::<a class="struct" href="../input/controller/struct.ControllerButton.html" title="struct input::controller::ControllerButton">ControllerButton</a>;</code></td></tr><tr><td><code>pub use controller::<a class="trait" href="../input/controller/trait.ControllerAxisEvent.html" title="trait input::controller::ControllerAxisEvent">ControllerAxisEvent</a>;</code></td></tr><tr><td><code>pub use generic_event::<a class="trait" href="../input/generic_event/trait.GenericEvent.html" title="trait input::generic_event::GenericEvent">GenericEvent</a>;</code></td></tr><tr><td><code>pub use mouse::<a class="trait" href="../input/mouse/trait.MouseCursorEvent.html" title="trait input::mouse::MouseCursorEvent">MouseCursorEvent</a>;</code></td></tr><tr><td><code>pub use mouse::<a class="trait" href="../input/mouse/trait.MouseRelativeEvent.html" title="trait input::mouse::MouseRelativeEvent">MouseRelativeEvent</a>;</code></td></tr><tr><td><code>pub use mouse::<a class="trait" href="../input/mouse/trait.MouseScrollEvent.html" title="trait input::mouse::MouseScrollEvent">MouseScrollEvent</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="controller/index.html"
+                                  title='mod input::controller'>controller</a></td>
+                           <td class='docblock-short'>
+                                <p>Back-end agnostic controller events.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="generic_event/index.html"
+                                  title='mod input::generic_event'>generic_event</a></td>
+                           <td class='docblock-short'>
+                                <p>Trait for generic events</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="keyboard/index.html"
+                                  title='mod input::keyboard'>keyboard</a></td>
+                           <td class='docblock-short'>
+                                <p>Back-end agnostic keyboard keys.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="mouse/index.html"
+                                  title='mod input::mouse'>mouse</a></td>
+                           <td class='docblock-short'>
+                                <p>Back-end agnostic mouse buttons.</p>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.AfterRenderArgs.html"
+                                  title='struct input::AfterRenderArgs'>AfterRenderArgs</a></td>
+                           <td class='docblock-short'>
+                                <p>After render arguments.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.CloseArgs.html"
+                                  title='struct input::CloseArgs'>CloseArgs</a></td>
+                           <td class='docblock-short'>
+                                <p>Close arguments.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.EventId.html"
+                                  title='struct input::EventId'>EventId</a></td>
+                           <td class='docblock-short'>
+                                <p>Used to identify events arguments provided by traits.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.IdleArgs.html"
+                                  title='struct input::IdleArgs'>IdleArgs</a></td>
+                           <td class='docblock-short'>
+                                <p>Idle arguments, such as expected idle time in seconds.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.RenderArgs.html"
+                                  title='struct input::RenderArgs'>RenderArgs</a></td>
+                           <td class='docblock-short'>
+                                <p>Render arguments</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.TouchArgs.html"
+                                  title='struct input::TouchArgs'>TouchArgs</a></td>
+                           <td class='docblock-short'>
+                                <p>Touch arguments</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.UpdateArgs.html"
+                                  title='struct input::UpdateArgs'>UpdateArgs</a></td>
+                           <td class='docblock-short'>
+                                <p>Update arguments, such as delta time in seconds</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Button.html"
+                                  title='enum input::Button'>Button</a></td>
+                           <td class='docblock-short'>
+                                <p>Models different kinds of buttons.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Input.html"
+                                  title='enum input::Input'>Input</a></td>
+                           <td class='docblock-short'>
+                                <p>Models input events.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Motion.html"
+                                  title='enum input::Motion'>Motion</a></td>
+                           <td class='docblock-short'>
+                                <p>Models different kinds of motion.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Touch.html"
+                                  title='enum input::Touch'>Touch</a></td>
+                           <td class='docblock-short'>
+                                <p>Stores the touch state.</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.AfterRenderEvent.html"
+                                  title='trait input::AfterRenderEvent'>AfterRenderEvent</a></td>
+                           <td class='docblock-short'>
+                                <p>After rendering and buffers are swapped.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.CloseEvent.html"
+                                  title='trait input::CloseEvent'>CloseEvent</a></td>
+                           <td class='docblock-short'>
+                                <p>Window is closing.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.CursorEvent.html"
+                                  title='trait input::CursorEvent'>CursorEvent</a></td>
+                           <td class='docblock-short'>
+                                <p>When window gets or loses cursor</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.FocusEvent.html"
+                                  title='trait input::FocusEvent'>FocusEvent</a></td>
+                           <td class='docblock-short'>
+                                <p>When window gets or loses focus</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.IdleEvent.html"
+                                  title='trait input::IdleEvent'>IdleEvent</a></td>
+                           <td class='docblock-short'>
+                                <p>When background tasks should be performed</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.PressEvent.html"
+                                  title='trait input::PressEvent'>PressEvent</a></td>
+                           <td class='docblock-short'>
+                                <p>The press of a button</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.ReleaseEvent.html"
+                                  title='trait input::ReleaseEvent'>ReleaseEvent</a></td>
+                           <td class='docblock-short'>
+                                <p>The release of a button</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.RenderEvent.html"
+                                  title='trait input::RenderEvent'>RenderEvent</a></td>
+                           <td class='docblock-short'>
+                                <p>When the next frame should be rendered</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.ResizeEvent.html"
+                                  title='trait input::ResizeEvent'>ResizeEvent</a></td>
+                           <td class='docblock-short'>
+                                <p>When the window is resized</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.TextEvent.html"
+                                  title='trait input::TextEvent'>TextEvent</a></td>
+                           <td class='docblock-short'>
+                                <p>When receiving text from user, such as typing a character</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.TouchEvent.html"
+                                  title='trait input::TouchEvent'>TouchEvent</a></td>
+                           <td class='docblock-short'>
+                                <p>When a touch is started, moved, ended or cancelled.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.UpdateEvent.html"
+                                  title='trait input::UpdateEvent'>UpdateEvent</a></td>
+                           <td class='docblock-short'>
+                                <p>When the application state should be updated</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "input";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

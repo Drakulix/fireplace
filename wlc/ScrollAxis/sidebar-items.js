@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["Horizontal","Horizontal Scroll Axis"],["Vertical","Vertical Scroll Axis"]],"struct":[["Flags","Bitmap that may represent multiple axis"]]});

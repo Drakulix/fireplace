@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `id_tree` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, id_tree">
+
+    <title>id_tree - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'id_tree', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>id_tree</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/id_tree/lib.rs.html#1-153' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>A library for creating and modifying Tree structures.</p>
+
+<h1 id='overview' class='section-header'><a href='#overview'>Overview</a></h1>
+<p>In this implementation, the <code>Tree</code> owns all of the <code>Node</code>s and all inter-<code>Node</code> relationships
+are managed with <code>NodeId</code>s.</p>
+
+<p><code>Tree</code>s in this library are &quot;just&quot; trees.  They do not allow cycles.  They do not allow
+the creation of arbitrary Graph structures.  There is no weight associated with edges between
+<code>Node</code>s.  In addition, each <code>Node</code> can have an arbitrary number of child <code>Node</code>s.</p>
+
+<p>It is important to note that this library does not support comparison-based <code>Node</code> insertion.
+In other words, this is not a Binary Search Tree (or any other kind of search tree) library.
+It is purely a library for storing data in a hierarchical manner.  The caller must know the
+structure that they wish to build and then use this library to do so;  this library will not
+make those structural decisions for you.</p>
+
+<h2 id='example-usage' class='section-header'><a href='#example-usage'>Example Usage</a></h2>
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">id_tree</span>::<span class="kw-2">*</span>;
+
+<span class="kw">fn</span> <span class="ident">main</span>() {
+    <span class="kw">use</span> <span class="ident">id_tree</span>::<span class="ident">InsertBehavior</span>::<span class="kw-2">*</span>;
+
+    <span class="comment">//      0</span>
+    <span class="comment">//     / \</span>
+    <span class="comment">//    1   2</span>
+    <span class="comment">//   / \</span>
+    <span class="comment">//  3   4</span>
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">tree</span>: <span class="ident">Tree</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">TreeBuilder</span>::<span class="ident">new</span>()
+        .<span class="ident">with_node_capacity</span>(<span class="number">5</span>)
+        .<span class="ident">build</span>();
+
+    <span class="kw">let</span> <span class="ident">root_id</span>: <span class="ident">NodeId</span> <span class="op">=</span> <span class="ident">tree</span>.<span class="ident">insert</span>(<span class="ident">Node</span>::<span class="ident">new</span>(<span class="number">0</span>), <span class="ident">AsRoot</span>).<span class="ident">unwrap</span>();
+    <span class="kw">let</span> <span class="ident">child_id</span>: <span class="ident">NodeId</span> <span class="op">=</span> <span class="ident">tree</span>.<span class="ident">insert</span>(<span class="ident">Node</span>::<span class="ident">new</span>(<span class="number">1</span>), <span class="ident">UnderNode</span>(<span class="kw-2">&amp;</span><span class="ident">root_id</span>)).<span class="ident">unwrap</span>();
+    <span class="ident">tree</span>.<span class="ident">insert</span>(<span class="ident">Node</span>::<span class="ident">new</span>(<span class="number">2</span>), <span class="ident">UnderNode</span>(<span class="kw-2">&amp;</span><span class="ident">root_id</span>)).<span class="ident">unwrap</span>();
+    <span class="ident">tree</span>.<span class="ident">insert</span>(<span class="ident">Node</span>::<span class="ident">new</span>(<span class="number">3</span>), <span class="ident">UnderNode</span>(<span class="kw-2">&amp;</span><span class="ident">child_id</span>)).<span class="ident">unwrap</span>();
+    <span class="ident">tree</span>.<span class="ident">insert</span>(<span class="ident">Node</span>::<span class="ident">new</span>(<span class="number">4</span>), <span class="ident">UnderNode</span>(<span class="kw-2">&amp;</span><span class="ident">child_id</span>)).<span class="ident">unwrap</span>();
+
+    <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;Pre-order:&quot;</span>);
+    <span class="ident">print_pre_order</span>(<span class="kw-2">&amp;</span><span class="ident">tree</span>, <span class="kw-2">&amp;</span><span class="ident">root_id</span>);
+    <span class="comment">// results in the output &quot;0, 1, 3, 4, 2, &quot;</span>
+}
+
+<span class="kw">fn</span> <span class="ident">print_pre_order</span>(<span class="ident">tree</span>: <span class="kw-2">&amp;</span><span class="ident">Tree</span><span class="op">&lt;</span><span class="ident">i32</span><span class="op">&gt;</span>, <span class="ident">node_id</span>: <span class="kw-2">&amp;</span><span class="ident">NodeId</span>) {
+    <span class="kw">let</span> <span class="ident">node_ref</span> <span class="op">=</span> <span class="ident">tree</span>.<span class="ident">get</span>(<span class="ident">node_id</span>).<span class="ident">unwrap</span>();
+
+    <span class="macro">print</span><span class="macro">!</span>(<span class="string">&quot;{}, &quot;</span>, <span class="ident">node_ref</span>.<span class="ident">data</span>());
+
+    <span class="kw">for</span> <span class="ident">child_id</span> <span class="kw">in</span> <span class="ident">node_ref</span>.<span class="ident">children</span>() {
+        <span class="ident">print_pre_order</span>(<span class="ident">tree</span>, <span class="kw-2">&amp;</span><span class="ident">child_id</span>);
+    }
+}</pre>
+
+<h2 id='project-goals' class='section-header'><a href='#project-goals'>Project Goals</a></h2>
+<ul>
+<li>Allow caller control of as many allocations as possible (through pre-allocation)</li>
+<li>Fast <code>Node</code> insertion and removal</li>
+<li>Arbitrary <em>Tree</em> structure creation and manipulation</li>
+</ul>
+
+<h2 id='non-goals' class='section-header'><a href='#non-goals'>Non-Goals</a></h2>
+<ul>
+<li>Arbitrary <em>Graph</em> structure creation and manipulation</li>
+<li>Comparison-based node insertion of any kind</li>
+</ul>
+
+<h4 id='drawbacks-of-this-library' class='section-header'><a href='#drawbacks-of-this-library'>Drawbacks of this Library</a></h4>
+<p>Sadly, Rust&#39;s ownership/reference system is sidestepped a bit by this implementation and this
+can cause issues if the caller doesn&#39;t pay attention to what they are doing with <code>NodeId</code>s.</p>
+
+<p>We try to solve these issues with very careful usage of <code>NodeId</code>s so that the caller doesn&#39;t
+have to be bothered (too much) with these concerns.</p>
+
+<p>Please see the <a href="struct.NodeId.html#potential-nodeid-issues">Potential <code>NodeId</code> Issues</a> section
+of the <code>NodeId</code> documentation for more info on what these issues are and how this library
+attempts to solve them.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Node.html"
+                                  title='struct id_tree::Node'>Node</a></td>
+                           <td class='docblock-short'>
+                                <p>A container that wraps data in a given <code>Tree</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.NodeBuilder.html"
+                                  title='struct id_tree::NodeBuilder'>NodeBuilder</a></td>
+                           <td class='docblock-short'>
+                                <p>A <code>Node</code> builder that provides more control over how a <code>Node</code> is created.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.NodeId.html"
+                                  title='struct id_tree::NodeId'>NodeId</a></td>
+                           <td class='docblock-short'>
+                                <p>An identifier used to differentiate between <code>Node</code>s within a <code>Tree</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Tree.html"
+                                  title='struct id_tree::Tree'>Tree</a></td>
+                           <td class='docblock-short'>
+                                <p>A tree structure consisting of <code>Node</code>s.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.TreeBuilder.html"
+                                  title='struct id_tree::TreeBuilder'>TreeBuilder</a></td>
+                           <td class='docblock-short'>
+                                <p>A <code>Tree</code> builder that provides more control over how a <code>Tree</code> is created.</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.InsertBehavior.html"
+                                  title='enum id_tree::InsertBehavior'>InsertBehavior</a></td>
+                           <td class='docblock-short'>
+                                <p>Describes the possible behaviors of the <code>Tree::insert</code> method.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.MoveBehavior.html"
+                                  title='enum id_tree::MoveBehavior'>MoveBehavior</a></td>
+                           <td class='docblock-short'>
+                                <p>Describes the possible behaviors of the <code>Tree::move_node</code> method.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.NodeIdError.html"
+                                  title='enum id_tree::NodeIdError'>NodeIdError</a></td>
+                           <td class='docblock-short'>
+                                <p>Enum for all of the possible <code>NodeId</code> errors that could occur.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.RemoveBehavior.html"
+                                  title='enum id_tree::RemoveBehavior'>RemoveBehavior</a></td>
+                           <td class='docblock-short'>
+                                <p>Describes the possible behaviors of the <code>Tree::remove_node</code> method.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.SwapBehavior.html"
+                                  title='enum id_tree::SwapBehavior'>SwapBehavior</a></td>
+                           <td class='docblock-short'>
+                                <p>Describes the possible behaviors of the <code>Tree::swap_nodes</code> method.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "id_tree";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Context` struct in crate `graphics`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Context">
+
+    <title>graphics::context::Context - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>graphics</a>::<wbr><a href='index.html'>context</a></p><script>window.sidebarCurrent = {name: 'Context', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>graphics</a>::<wbr><a href='index.html'>context</a>::<wbr><a class="struct" href=''>Context</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/graphics/context.rs.html#16-25' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Context {
+    pub viewport: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../graphics/struct.Viewport.html" title="struct graphics::Viewport">Viewport</a>&gt;,
+    pub view: <a class="type" href="../../graphics/math/type.Matrix2d.html" title="type graphics::math::Matrix2d">Matrix2d</a>,
+    pub transform: <a class="type" href="../../graphics/math/type.Matrix2d.html" title="type graphics::math::Matrix2d">Matrix2d</a>,
+    pub draw_state: <a class="struct" href="../../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>,
+}</pre><div class='docblock'><p>Drawing 2d context.</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.viewport' class="structfield">
+                           <span id='viewport.v' class='invisible'>
+                           <code>viewport: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../graphics/struct.Viewport.html" title="struct graphics::Viewport">Viewport</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Viewport information.</p>
+</div><span id='structfield.view' class="structfield">
+                           <span id='view.v' class='invisible'>
+                           <code>view: <a class="type" href="../../graphics/math/type.Matrix2d.html" title="type graphics::math::Matrix2d">Matrix2d</a></code>
+                           </span></span><div class='docblock'><p>View transformation.</p>
+</div><span id='structfield.transform' class="structfield">
+                           <span id='transform.v' class='invisible'>
+                           <code>transform: <a class="type" href="../../graphics/math/type.Matrix2d.html" title="type graphics::math::Matrix2d">Matrix2d</a></code>
+                           </span></span><div class='docblock'><p>Current transformation.</p>
+</div><span id='structfield.draw_state' class="structfield">
+                           <span id='draw_state.v' class='invisible'>
+                           <code>draw_state: <a class="struct" href="../../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a></code>
+                           </span></span><div class='docblock'><p>Current draw state settings.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../graphics/context/struct.Context.html" title="struct graphics::context::Context">Context</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/graphics/context.rs.html#27-116' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class="struct" href="../../graphics/context/struct.Context.html" title="struct graphics::context::Context">Context</a></code></span></h4>
+<div class='docblock'><p>Creates a new drawing context.</p>
+</div><h4 id='method.new_viewport' class="method"><span id='new_viewport.v' class='invisible'><code>fn <a href='#method.new_viewport' class='fnname'>new_viewport</a>(viewport: <a class="struct" href="../../graphics/struct.Viewport.html" title="struct graphics::Viewport">Viewport</a>) -&gt; <a class="struct" href="../../graphics/context/struct.Context.html" title="struct graphics::context::Context">Context</a></code></span></h4>
+<div class='docblock'><p>Creates a new context with absolute transform in point coordinates.</p>
+
+<p>This function assumes the default coordinate system
+being centered with x axis pointing to the right
+and y axis pointing up.</p>
+
+<p>Returns a drawing context
+with origin in the upper left corner
+and x axis pointing to the right
+and y axis pointing down.</p>
+</div><h4 id='method.new_abs' class="method"><span id='new_abs.v' class='invisible'><code>fn <a href='#method.new_abs' class='fnname'>new_abs</a>(w: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>, h: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>) -&gt; <a class="struct" href="../../graphics/context/struct.Context.html" title="struct graphics::context::Context">Context</a></code></span></h4>
+<div class='docblock'><p>Creates a new drawing context in absolute coordinates.</p>
+
+<p>This function assumes the default coordinate system
+being centered with x axis pointing to the right
+and y axis pointing up.</p>
+
+<p>Returns a drawing context
+with origin in the upper left corner
+and x axis pointing to the right
+and y axis pointing down.</p>
+</div><h4 id='method.view' class="method"><span id='view.v-1' class='invisible'><code>fn <a href='#method.view' class='fnname'>view</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Moves the current transform to the view coordinate system.</p>
+
+<p>This is usually [0.0, 0.0] in the upper left corner
+with the x axis pointing to the right
+and the y axis pointing down.</p>
+</div><h4 id='method.reset' class="method"><span id='reset.v' class='invisible'><code>fn <a href='#method.reset' class='fnname'>reset</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Moves the current transform to the default coordinate system.</p>
+
+<p>This is usually [0.0, 0.0] in the center
+with the x axis pointing to the right
+and the y axis pointing up.</p>
+</div><h4 id='method.store_view' class="method"><span id='store_view.v' class='invisible'><code>fn <a href='#method.store_view' class='fnname'>store_view</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Stores the current transform as new view.</p>
+</div><h4 id='method.get_view_size' class="method"><span id='get_view_size.v' class='invisible'><code>fn <a href='#method.get_view_size' class='fnname'>get_view_size</a>(&amp;self) -&gt; <a class="type" href="../../graphics/math/type.Vec2d.html" title="type graphics::math::Vec2d">Vec2d</a></code></span></h4>
+<div class='docblock'><p>Computes the current view size.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../graphics/trait.Transformed.html" title="trait graphics::Transformed">Transformed</a> for <a class="struct" href="../../graphics/context/struct.Context.html" title="struct graphics::context::Context">Context</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/graphics/transformed.rs.html#115-157' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.append_transform' class="method"><span id='append_transform.v' class='invisible'><code>fn <a href='../../graphics/trait.Transformed.html#tymethod.append_transform' class='fnname'>append_transform</a>(self, transform: <a class="type" href="../../graphics/math/type.Matrix2d.html" title="type graphics::math::Matrix2d">Matrix2d</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Appends transform to the current one.</p>
+</div><h4 id='method.prepend_transform' class="method"><span id='prepend_transform.v' class='invisible'><code>fn <a href='../../graphics/trait.Transformed.html#tymethod.prepend_transform' class='fnname'>prepend_transform</a>(self, transform: <a class="type" href="../../graphics/math/type.Matrix2d.html" title="type graphics::math::Matrix2d">Matrix2d</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Prepends transform to the current one.</p>
+</div><h4 id='method.trans' class="method"><span id='trans.v' class='invisible'><code>fn <a href='../../graphics/trait.Transformed.html#tymethod.trans' class='fnname'>trans</a>(self, x: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>, y: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Translate x an y in local coordinates.</p>
+</div><h4 id='method.rot_rad' class="method"><span id='rot_rad.v' class='invisible'><code>fn <a href='../../graphics/trait.Transformed.html#tymethod.rot_rad' class='fnname'>rot_rad</a>(self, angle: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Rotate radians in local coordinates.</p>
+</div><h4 id='method.orient' class="method"><span id='orient.v' class='invisible'><code>fn <a href='../../graphics/trait.Transformed.html#tymethod.orient' class='fnname'>orient</a>(self, x: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>, y: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Orients x axis to look at point locally. <a href="../../graphics/trait.Transformed.html#tymethod.orient">Read more</a></p>
+</div><h4 id='method.scale' class="method"><span id='scale.v' class='invisible'><code>fn <a href='../../graphics/trait.Transformed.html#tymethod.scale' class='fnname'>scale</a>(self, sx: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>, sy: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Scales in local coordinates.</p>
+</div><h4 id='method.shear' class="method"><span id='shear.v' class='invisible'><code>fn <a href='../../graphics/trait.Transformed.html#tymethod.shear' class='fnname'>shear</a>(self, v: <a class="type" href="../../graphics/math/type.Vec2d.html" title="type graphics::math::Vec2d">Vec2d</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Shears in local coordinates.</p>
+</div><h4 id='method.rot_deg' class="method"><span id='rot_deg.v' class='invisible'><code>fn <a href='../../graphics/trait.Transformed.html#method.rot_deg' class='fnname'>rot_deg</a>(self, angle: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Rotates degrees in local coordinates.</p>
+</div><h4 id='method.zoom' class="method"><span id='zoom.v' class='invisible'><code>fn <a href='../../graphics/trait.Transformed.html#method.zoom' class='fnname'>zoom</a>(self, s: <a class="type" href="../../graphics/math/type.Scalar.html" title="type graphics::math::Scalar">Scalar</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Scales in both directions in local coordinates.</p>
+</div><h4 id='method.flip_v' class="method"><span id='flip_v.v' class='invisible'><code>fn <a href='../../graphics/trait.Transformed.html#method.flip_v' class='fnname'>flip_v</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Flips vertically in local coordinates.</p>
+</div><h4 id='method.flip_h' class="method"><span id='flip_h.v' class='invisible'><code>fn <a href='../../graphics/trait.Transformed.html#method.flip_h' class='fnname'>flip_h</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Flips horizontally in local coordinates.</p>
+</div><h4 id='method.flip_hv' class="method"><span id='flip_hv.v' class='invisible'><code>fn <a href='../../graphics/trait.Transformed.html#method.flip_hv' class='fnname'>flip_hv</a>(self) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Flips horizontally and vertically in local coordinates.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="../../graphics/context/struct.Context.html" title="struct graphics::context::Context">Context</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/graphics/context.rs.html#15' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../graphics/context/struct.Context.html" title="struct graphics::context::Context">Context</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/graphics/context.rs.html#15' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../graphics/context/struct.Context.html" title="struct graphics::context::Context">Context</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "graphics";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

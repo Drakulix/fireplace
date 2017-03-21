@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `GenericEvent` trait in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, GenericEvent">
+
+    <title>conrod::backend::piston::event::GenericEvent - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../../index.html'>conrod</a>::<wbr><a href='../../index.html'>backend</a>::<wbr><a href='../index.html'>piston</a>::<wbr><a href='index.html'>event</a></p><script>window.sidebarCurrent = {name: 'GenericEvent', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content trait">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../../../index.html'>conrod</a>::<wbr><a href='../../index.html'>backend</a>::<wbr><a href='../index.html'>piston</a>::<wbr><a href='index.html'>event</a>::<wbr><a class="trait" href=''>GenericEvent</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../../src/input/generic_event.rs.html#13-24' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait GenericEvent: <a class="trait" href="../../../../input/controller/trait.ControllerAxisEvent.html" title="trait input::controller::ControllerAxisEvent">ControllerAxisEvent</a> + <a class="trait" href="../../../../input/mouse/trait.MouseCursorEvent.html" title="trait input::mouse::MouseCursorEvent">MouseCursorEvent</a> + <a class="trait" href="../../../../input/mouse/trait.MouseRelativeEvent.html" title="trait input::mouse::MouseRelativeEvent">MouseRelativeEvent</a> + <a class="trait" href="../../../../input/mouse/trait.MouseScrollEvent.html" title="trait input::mouse::MouseScrollEvent">MouseScrollEvent</a> + <a class="trait" href="../../../../input/after_render/trait.AfterRenderEvent.html" title="trait input::after_render::AfterRenderEvent">AfterRenderEvent</a> + <a class="trait" href="../../../../input/cursor/trait.CursorEvent.html" title="trait input::cursor::CursorEvent">CursorEvent</a> + <a class="trait" href="../../../../input/focus/trait.FocusEvent.html" title="trait input::focus::FocusEvent">FocusEvent</a> + <a class="trait" href="../../../../input/idle/trait.IdleEvent.html" title="trait input::idle::IdleEvent">IdleEvent</a> + <a class="trait" href="../../../../input/press/trait.PressEvent.html" title="trait input::press::PressEvent">PressEvent</a> + <a class="trait" href="../../../../input/release/trait.ReleaseEvent.html" title="trait input::release::ReleaseEvent">ReleaseEvent</a> + <a class="trait" href="../../../../input/render/trait.RenderEvent.html" title="trait input::render::RenderEvent">RenderEvent</a> + <a class="trait" href="../../../../input/resize/trait.ResizeEvent.html" title="trait input::resize::ResizeEvent">ResizeEvent</a> + <a class="trait" href="../../../../input/text/trait.TextEvent.html" title="trait input::text::TextEvent">TextEvent</a> + <a class="trait" href="../../../../input/touch/trait.TouchEvent.html" title="trait input::touch::TouchEvent">TouchEvent</a> + <a class="trait" href="../../../../conrod/backend/piston/event/trait.UpdateEvent.html" title="trait conrod::backend::piston::event::UpdateEvent">UpdateEvent</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.From.html" title="trait core::convert::From">From</a>&lt;<a class="enum" href="../../../../input/enum.Input.html" title="enum input::Input">Input</a>&gt; {
+    fn <a href='#tymethod.event_id' class='fnname'>event_id</a>(&amp;self) -&gt; <a class="struct" href="../../../../input/struct.EventId.html" title="struct input::EventId">EventId</a>;
+    fn <a href='#tymethod.with_args' class='fnname'>with_args</a>&lt;F, U&gt;(&amp;'a self, f: F) -&gt; U <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html" title="trait core::ops::FnMut">FnMut</a>(&amp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/any/trait.Any.html" title="trait core::any::Any">Any</a> + 'static) -&gt; U</span>;
+}</pre><div class='docblock'><p>Implemented by all events</p>
+</div>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.event_id' class='method'><span id='event_id.v' class='invisible'><code>fn <a href='#tymethod.event_id' class='fnname'>event_id</a>(&amp;self) -&gt; <a class="struct" href="../../../../input/struct.EventId.html" title="struct input::EventId">EventId</a></code></span></h3><div class='docblock'><p>The id of this event.</p>
+</div><h3 id='tymethod.with_args' class='method'><span id='with_args.v' class='invisible'><code>fn <a href='#tymethod.with_args' class='fnname'>with_args</a>&lt;F, U&gt;(&amp;'a self, f: F) -&gt; U <span class="where fmt-newline">where F: <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.FnMut.html" title="trait core::ops::FnMut">FnMut</a>(&amp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/any/trait.Any.html" title="trait core::any::Any">Any</a> + 'static) -&gt; U</span></code></span></h3><div class='docblock'><p>Calls closure with arguments</p>
+</div></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl GenericEvent for <a class="enum" href="../../../../input/enum.Input.html" title="enum input::Input">Input</a></code></li>
+</ul><script type="text/javascript" async
+                         src="../../../../implementors/input/generic_event/trait.GenericEvent.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../../../jquery.js"></script>
+    <script src="../../../../main.js"></script>
+    <script defer src="../../../../search-index.js"></script>
+</body>
+</html>

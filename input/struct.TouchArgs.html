@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `TouchArgs` struct in crate `input`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, TouchArgs">
+
+    <title>input::TouchArgs - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>input</a></p><script>window.sidebarCurrent = {name: 'TouchArgs', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>input</a>::<wbr><a class="struct" href=''>TouchArgs</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/input/touch.rs.html#31-52' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct TouchArgs {
+    pub device: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
+    pub id: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,
+    pub x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+    pub y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+    pub z: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+    pub px: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+    pub py: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+    pub pz: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,
+    pub is_3d: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
+    pub touch: <a class="enum" href="../input/enum.Touch.html" title="enum input::Touch">Touch</a>,
+}</pre><div class='docblock'><p>Touch arguments</p>
+
+<p>The <code>id</code> might be reused for different touches that do not overlap in time.</p>
+
+<ul>
+<li>Coordinates are normalized to support both touch screens and trackpads</li>
+<li>Supports both 2D and 3D touch</li>
+<li>The pressure direction vector should have maximum length 1</li>
+</ul>
+
+<p>For 2D touch the pressure is pointed the z direction.
+Use <code>.pressure()</code> to get the pressure magnitude.</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.device' class="structfield">
+                           <span id='device.v' class='invisible'>
+                           <code>device: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code>
+                           </span></span><div class='docblock'><p>A unique identifier for touch device.</p>
+</div><span id='structfield.id' class="structfield">
+                           <span id='id.v' class='invisible'>
+                           <code>id: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a></code>
+                           </span></span><div class='docblock'><p>A unique identifier for touch event.</p>
+</div><span id='structfield.x' class="structfield">
+                           <span id='x.v' class='invisible'>
+                           <code>x: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code>
+                           </span></span><div class='docblock'><p>The x coordinate of the touch position, normalized 0..1.</p>
+</div><span id='structfield.y' class="structfield">
+                           <span id='y.v' class='invisible'>
+                           <code>y: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code>
+                           </span></span><div class='docblock'><p>The y coordinate of the touch position, normalized 0..1.</p>
+</div><span id='structfield.z' class="structfield">
+                           <span id='z.v' class='invisible'>
+                           <code>z: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code>
+                           </span></span><div class='docblock'><p>The z coordinate of the touch position, normalized 0..1.</p>
+</div><span id='structfield.px' class="structfield">
+                           <span id='px.v' class='invisible'>
+                           <code>px: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code>
+                           </span></span><div class='docblock'><p>The x coordinate of the touch pressure direction.</p>
+</div><span id='structfield.py' class="structfield">
+                           <span id='py.v' class='invisible'>
+                           <code>py: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code>
+                           </span></span><div class='docblock'><p>The y coordinate of the touch pressure direction.</p>
+</div><span id='structfield.pz' class="structfield">
+                           <span id='pz.v' class='invisible'>
+                           <code>pz: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code>
+                           </span></span><div class='docblock'><p>The z coordinate of the touch pressure direction.</p>
+</div><span id='structfield.is_3d' class="structfield">
+                           <span id='is_3d.v' class='invisible'>
+                           <code>is_3d: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code>
+                           </span></span><div class='docblock'><p>Whether the touch is in 3D.</p>
+</div><span id='structfield.touch' class="structfield">
+                           <span id='touch.v' class='invisible'>
+                           <code>touch: <a class="enum" href="../input/enum.Touch.html" title="enum input::Touch">Touch</a></code>
+                           </span></span><div class='docblock'><p>The touch state.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../input/struct.TouchArgs.html" title="struct input::TouchArgs">TouchArgs</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/input/touch.rs.html#54-113' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(device: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; id: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pos: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pressure: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; touch: <a class="enum" href="../input/enum.Touch.html" title="enum input::Touch">Touch</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="struct" href="../input/struct.TouchArgs.html" title="struct input::TouchArgs">TouchArgs</a></code></span></h4>
+<div class='docblock'><p>Creates arguments for 2D touch.</p>
+</div><h4 id='method.new_3d' class="method"><span id='new_3d.v' class='invisible'><code>fn <a href='#method.new_3d' class='fnname'>new_3d</a>(device: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; id: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i64.html">i64</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pos: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pressure: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; touch: <a class="enum" href="../input/enum.Touch.html" title="enum input::Touch">Touch</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="struct" href="../input/struct.TouchArgs.html" title="struct input::TouchArgs">TouchArgs</a></code></span></h4>
+<div class='docblock'><p>Creates arguments for 3D touch.</p>
+
+<p>The pressure direction vector should have maximum length 1.</p>
+</div><h4 id='method.position' class="method"><span id='position.v' class='invisible'><code>fn <a href='#method.position' class='fnname'>position</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a></code></span></h4>
+<div class='docblock'><p>The position of the touch in 2D.</p>
+</div><h4 id='method.position_3d' class="method"><span id='position_3d.v' class='invisible'><code>fn <a href='#method.position_3d' class='fnname'>position_3d</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a></code></span></h4>
+<div class='docblock'><p>The position of the touch in 3D.</p>
+</div><h4 id='method.pressure' class="method"><span id='pressure.v' class='invisible'><code>fn <a href='#method.pressure' class='fnname'>pressure</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a></code></span></h4>
+<div class='docblock'><p>The pressure magnitude, normalized 0..1.</p>
+</div><h4 id='method.pressure_3d' class="method"><span id='pressure_3d.v' class='invisible'><code>fn <a href='#method.pressure_3d' class='fnname'>pressure_3d</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a></code></span></h4>
+<div class='docblock'><p>The pressure vector in 3D.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="../input/struct.TouchArgs.html" title="struct input::TouchArgs">TouchArgs</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/input/touch.rs.html#30' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../input/struct.TouchArgs.html" title="struct input::TouchArgs">TouchArgs</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/input/touch.rs.html#30' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../input/struct.TouchArgs.html" title="struct input::TouchArgs">TouchArgs</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../rustc_serialize/serialize/trait.Decodable.html" title="trait rustc_serialize::serialize::Decodable">Decodable</a> for <a class="struct" href="../input/struct.TouchArgs.html" title="struct input::TouchArgs">TouchArgs</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/input/touch.rs.html#30' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.decode' class="method"><span id='decode.v' class='invisible'><code>fn <a href='../rustc_serialize/serialize/trait.Decodable.html#tymethod.decode' class='fnname'>decode</a>&lt;__D:&nbsp;<a class="trait" href="../rustc_serialize/serialize/trait.Decoder.html" title="trait rustc_serialize::serialize::Decoder">Decoder</a>&gt;(__arg_0: &amp;mut __D) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="struct" href="../input/struct.TouchArgs.html" title="struct input::TouchArgs">TouchArgs</a>, __D::<a class="trait" href="../rustc_serialize/serialize/trait.Decoder.html" title="trait rustc_serialize::serialize::Decoder">Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Deserialize a value using a <code>Decoder</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../rustc_serialize/serialize/trait.Encodable.html" title="trait rustc_serialize::serialize::Encodable">Encodable</a> for <a class="struct" href="../input/struct.TouchArgs.html" title="struct input::TouchArgs">TouchArgs</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/input/touch.rs.html#30' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.encode' class="method"><span id='encode.v' class='invisible'><code>fn <a href='../rustc_serialize/serialize/trait.Encodable.html#tymethod.encode' class='fnname'>encode</a>&lt;__S:&nbsp;<a class="trait" href="../rustc_serialize/serialize/trait.Encoder.html" title="trait rustc_serialize::serialize::Encoder">Encoder</a>&gt;(&amp;self, __arg_0: &amp;mut __S) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">()</a>, __S::<a class="trait" href="../rustc_serialize/serialize/trait.Encoder.html" title="trait rustc_serialize::serialize::Encoder">Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Serialize a value using an <code>Encoder</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html" title="trait core::cmp::PartialEq">PartialEq</a> for <a class="struct" href="../input/struct.TouchArgs.html" title="struct input::TouchArgs">TouchArgs</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/input/touch.rs.html#30' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class="method"><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class="struct" href="../input/struct.TouchArgs.html" title="struct input::TouchArgs">TouchArgs</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class="method"><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class="struct" href="../input/struct.TouchArgs.html" title="struct input::TouchArgs">TouchArgs</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../input/struct.TouchArgs.html" title="struct input::TouchArgs">TouchArgs</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/input/touch.rs.html#30' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "input";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

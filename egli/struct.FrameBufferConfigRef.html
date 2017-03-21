@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `FrameBufferConfigRef` struct in crate `egli`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, FrameBufferConfigRef">
+
+    <title>egli::FrameBufferConfigRef - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>egli</a></p><script>window.sidebarCurrent = {name: 'FrameBufferConfigRef', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>egli</a>::<wbr><a class="struct" href=''>FrameBufferConfigRef</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/egli/frame_buffer_config.rs.html#22-25' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct FrameBufferConfigRef { /* fields omitted */ }</pre><div class='docblock'><p><code>[EGL 1.0]</code> Reference to frame buffer configuration.</p>
+
+<p>This is not a RAII object, so nothing will be cleaned up when it is dropped.</p>
+
+<p>Instead, the individual methods of this object may return errors if they are used
+after the display is terminated.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../egli/struct.FrameBufferConfigRef.html" title="struct egli::FrameBufferConfigRef">FrameBufferConfigRef</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/egli/frame_buffer_config.rs.html#27-348' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.from_native' class="method"><span id='from_native.v' class='invisible'><code>fn <a href='#method.from_native' class='fnname'>from_native</a>(display_id: <a class="type" href="../egli/egl/type.EGLDisplay.html" title="type egli::egl::EGLDisplay">EGLDisplay</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; config_handle: <a class="type" href="../egli/egl/type.EGLConfig.html" title="type egli::egl::EGLConfig">EGLConfig</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="struct" href="../egli/struct.FrameBufferConfigRef.html" title="struct egli::FrameBufferConfigRef">FrameBufferConfigRef</a></code></span></h4>
+<h4 id='method.handle' class="method"><span id='handle.v' class='invisible'><code>fn <a href='#method.handle' class='fnname'>handle</a>(&amp;self) -&gt; <a class="type" href="../egli/egl/type.EGLConfig.html" title="type egli::egl::EGLConfig">EGLConfig</a></code></span></h4>
+<div class='docblock'><p>Get native config handle.</p>
+</div><h4 id='method.alpha_size' class="method"><span id='alpha_size.v' class='invisible'><code>fn <a href='#method.alpha_size' class='fnname'>alpha_size</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the number of bits of alpha stored in the color buffer.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_ALPHA_SIZE</code> attribute.</p>
+</div><h4 id='method.alpha_mask_size' class="method"><span id='alpha_mask_size.v' class='invisible'><code>fn <a href='#method.alpha_mask_size' class='fnname'>alpha_mask_size</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the number of bits in the alpha mask buffer.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_ALPHA_MASK_SIZE</code> attribute.</p>
+</div><h4 id='method.bind_to_texture_rgb' class="method"><span id='bind_to_texture_rgb.v' class='invisible'><code>fn <a href='#method.bind_to_texture_rgb' class='fnname'>bind_to_texture_rgb</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns whether color buffers can be bound to an RGB texture.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_BIND_TO_TEXTURE_RGB</code> attribute.</p>
+</div><h4 id='method.bind_to_texture_rgba' class="method"><span id='bind_to_texture_rgba.v' class='invisible'><code>fn <a href='#method.bind_to_texture_rgba' class='fnname'>bind_to_texture_rgba</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns whether buffers can be bound to an RGBA texture.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_BIND_TO_TEXTURE_RGBA</code> attribute.</p>
+</div><h4 id='method.blue_size' class="method"><span id='blue_size.v' class='invisible'><code>fn <a href='#method.blue_size' class='fnname'>blue_size</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the number of bits of blue stored in the color buffer.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_BLUE_SIZE</code> attribute.</p>
+</div><h4 id='method.buffer_size' class="method"><span id='buffer_size.v' class='invisible'><code>fn <a href='#method.buffer_size' class='fnname'>buffer_size</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the depth of the color buffer.
+It is the sum of EGL_RED_SIZE, EGL_GREEN_SIZE, EGL_BLUE_SIZE,
+and EGL_ALPHA_SIZE.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_BUFFER_SIZE</code> attribute.</p>
+</div><h4 id='method.color_buffer_type' class="method"><span id='color_buffer_type.v' class='invisible'><code>fn <a href='#method.color_buffer_type' class='fnname'>color_buffer_type</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="enum" href="../egli/enum.ColorBufferType.html" title="enum egli::ColorBufferType">ColorBufferType</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the color buffer type.
+Possible types are EGL_RGB_BUFFER and EGL_LUMINANCE_BUFFER.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_COLOR_BUFFER_TYPE</code> attribute.</p>
+</div><h4 id='method.config_caveat' class="method"><span id='config_caveat.v' class='invisible'><code>fn <a href='#method.config_caveat' class='fnname'>config_caveat</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="enum" href="../egli/enum.ConfigCaveat.html" title="enum egli::ConfigCaveat">ConfigCaveat</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the caveats for the frame buffer configuration.
+Possible caveat values are EGL_NONE, EGL_SLOW_CONFIG, and EGL_NON_CONFORMANT.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_CONFIG_CAVEAT</code> attribute.</p>
+</div><h4 id='method.config_id' class="method"><span id='config_id.v' class='invisible'><code>fn <a href='#method.config_id' class='fnname'>config_id</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the ID of the frame buffer configuration.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_CONFIG_ID</code> attribute.</p>
+</div><h4 id='method.conformant' class="method"><span id='conformant.v' class='invisible'><code>fn <a href='#method.conformant' class='fnname'>conformant</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="struct" href="../egli/renderable/struct.Type.html" title="struct egli::renderable::Type">Type</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns a bitmask indicating which client API contexts created with respect to
+this config are conformant.</p>
+
+<p>EGL_CONFORMANT is supported only if the EGL version is 1.3 or greater.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_CONFORMANT</code> attribute.</p>
+</div><h4 id='method.depth_size' class="method"><span id='depth_size.v' class='invisible'><code>fn <a href='#method.depth_size' class='fnname'>depth_size</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the number of bits in the depth buffer.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_DEPTH_SIZE</code> attribute.</p>
+</div><h4 id='method.green_size' class="method"><span id='green_size.v' class='invisible'><code>fn <a href='#method.green_size' class='fnname'>green_size</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the number of bits of green stored in the color buffer.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_GREEN_SIZE</code> attribute.</p>
+</div><h4 id='method.level' class="method"><span id='level.v' class='invisible'><code>fn <a href='#method.level' class='fnname'>level</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the frame buffer level.
+Level zero is the default frame buffer.
+Positive levels correspond to frame buffers that overlay the default buffer and negative
+levels correspond to frame buffers that underlay the default buffer.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_LEVEL</code> attribute.</p>
+</div><h4 id='method.luminance_size' class="method"><span id='luminance_size.v' class='invisible'><code>fn <a href='#method.luminance_size' class='fnname'>luminance_size</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the number of bits of luminance stored in the luminance buffer.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_LUMINANCE_SIZE</code> attribute.</p>
+</div><h4 id='method.max_pbuffer_width' class="method"><span id='max_pbuffer_width.v' class='invisible'><code>fn <a href='#method.max_pbuffer_width' class='fnname'>max_pbuffer_width</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the maximum width of a pixel buffer surface in pixels.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_MAX_PBUFFER_WIDTH</code> attribute.</p>
+</div><h4 id='method.max_pbuffer_height' class="method"><span id='max_pbuffer_height.v' class='invisible'><code>fn <a href='#method.max_pbuffer_height' class='fnname'>max_pbuffer_height</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the maximum height of a pixel buffer surface in pixels.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_MAX_PBUFFER_HEIGHT</code> attribute.</p>
+</div><h4 id='method.max_pbuffer_pixels' class="method"><span id='max_pbuffer_pixels.v' class='invisible'><code>fn <a href='#method.max_pbuffer_pixels' class='fnname'>max_pbuffer_pixels</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the maximum size of a pixel buffer surface in pixels.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_MAX_PBUFFER_PIXELS</code> attribute.</p>
+</div><h4 id='method.max_swap_interval' class="method"><span id='max_swap_interval.v' class='invisible'><code>fn <a href='#method.max_swap_interval' class='fnname'>max_swap_interval</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the maximum value that can be passed to eglSwapInterval.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_MAX_SWAP_INTERVAL</code> attribute.</p>
+</div><h4 id='method.min_swap_interval' class="method"><span id='min_swap_interval.v' class='invisible'><code>fn <a href='#method.min_swap_interval' class='fnname'>min_swap_interval</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the minimum value that can be passed to eglSwapInterval.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_MIN_SWAP_INTERVAL</code> attribute.</p>
+</div><h4 id='method.native_renderable' class="method"><span id='native_renderable.v' class='invisible'><code>fn <a href='#method.native_renderable' class='fnname'>native_renderable</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns whether native rendering APIs can render into the surface.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_NATIVE_RENDERABLE</code> attribute.</p>
+</div><h4 id='method.native_visual_id' class="method"><span id='native_visual_id.v' class='invisible'><code>fn <a href='#method.native_visual_id' class='fnname'>native_visual_id</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the ID of the associated native visual.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_NATIVE_VISUAL_ID</code> attribute.</p>
+</div><h4 id='method.native_visual_type' class="method"><span id='native_visual_type.v' class='invisible'><code>fn <a href='#method.native_visual_type' class='fnname'>native_visual_type</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the type of the associated native visual.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_NATIVE_VISUAL_TYPE</code> attribute.</p>
+</div><h4 id='method.red_size' class="method"><span id='red_size.v' class='invisible'><code>fn <a href='#method.red_size' class='fnname'>red_size</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the number of bits of red stored in the color buffer.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_RED_SIZE</code> attribute.</p>
+</div><h4 id='method.renderable_type' class="method"><span id='renderable_type.v' class='invisible'><code>fn <a href='#method.renderable_type' class='fnname'>renderable_type</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="struct" href="../egli/renderable/struct.Type.html" title="struct egli::renderable::Type">Type</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns a bitmask indicating the types of supported client API contexts.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_RENDERABLE_TYPE</code> attribute.</p>
+</div><h4 id='method.sample_buffers' class="method"><span id='sample_buffers.v' class='invisible'><code>fn <a href='#method.sample_buffers' class='fnname'>sample_buffers</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the number of multisample buffers.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_SAMPLE_BUFFERS</code> attribute.</p>
+</div><h4 id='method.samples' class="method"><span id='samples.v' class='invisible'><code>fn <a href='#method.samples' class='fnname'>samples</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.i32.html">i32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the number of samples per pixel.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_SAMPLES</code> attribute.</p>
+</div><h4 id='method.stencil_size' class="method"><span id='stencil_size.v' class='invisible'><code>fn <a href='#method.stencil_size' class='fnname'>stencil_size</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the number of bits in the stencil buffer.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_STENCIL_SIZE</code> attribute.</p>
+</div><h4 id='method.surface_type' class="method"><span id='surface_type.v' class='invisible'><code>fn <a href='#method.surface_type' class='fnname'>surface_type</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="struct" href="../egli/surface/struct.Type.html" title="struct egli::surface::Type">Type</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns a bitmask indicating the types of supported EGL surfaces.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_SURFACE_TYPE</code> attribute.</p>
+</div><h4 id='method.transparent_type' class="method"><span id='transparent_type.v' class='invisible'><code>fn <a href='#method.transparent_type' class='fnname'>transparent_type</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="enum" href="../egli/enum.TransparentType.html" title="enum egli::TransparentType">TransparentType</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the type of supported transparency.
+Possible transparency values are: EGL_NONE, and EGL_TRANSPARENT_RGB.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_TRANSPARENT_TYPE</code> attribute.</p>
+</div><h4 id='method.transparent_red_value' class="method"><span id='transparent_red_value.v' class='invisible'><code>fn <a href='#method.transparent_red_value' class='fnname'>transparent_red_value</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the transparent red value.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_TRANSPARENT_RED_VALUE</code> attribute.</p>
+</div><h4 id='method.transparent_green_value' class="method"><span id='transparent_green_value.v' class='invisible'><code>fn <a href='#method.transparent_green_value' class='fnname'>transparent_green_value</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the transparent green value.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_TRANSPARENT_GREEN_VALUE</code> attribute.</p>
+</div><h4 id='method.transparent_blue_value' class="method"><span id='transparent_blue_value.v' class='invisible'><code>fn <a href='#method.transparent_blue_value' class='fnname'>transparent_blue_value</a>(&amp;self) -&gt; <a class="type" href="../egli/error/type.Result.html" title="type egli::error::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;</code></span></h4>
+<div class='docblock'><p>Returns the transparent blue value.</p>
+
+<p>Calls <code>eglGetConfigAttrib</code> with <code>EGL_TRANSPARENT_BLUE_VALUE</code> attribute.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="../egli/struct.FrameBufferConfigRef.html" title="struct egli::FrameBufferConfigRef">FrameBufferConfigRef</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/egli/frame_buffer_config.rs.html#21' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../egli/struct.FrameBufferConfigRef.html" title="struct egli::FrameBufferConfigRef">FrameBufferConfigRef</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/egli/frame_buffer_config.rs.html#21' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../egli/struct.FrameBufferConfigRef.html" title="struct egli::FrameBufferConfigRef">FrameBufferConfigRef</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html" title="trait core::fmt::Debug">Debug</a> for <a class="struct" href="../egli/struct.FrameBufferConfigRef.html" title="struct egli::FrameBufferConfigRef">FrameBufferConfigRef</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/egli/frame_buffer_config.rs.html#350-361' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class="method"><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class="struct" href="https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html" title="struct core::fmt::Formatter">Formatter</a>) -&gt; <a class="type" href="https://doc.rust-lang.org/nightly/core/fmt/type.Result.html" title="type core::fmt::Result">Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "egli";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

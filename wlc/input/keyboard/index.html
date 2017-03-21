@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `keyboard` mod in crate `wlc`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, keyboard">
+
+    <title>wlc::input::keyboard - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>wlc</a>::<wbr><a href='../index.html'>input</a></p><script>window.sidebarCurrent = {name: 'keyboard', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>wlc</a>::<wbr><a href='../index.html'>input</a>::<wbr><a class="mod" href=''>keyboard</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/wlc/input/mod.rs.html#15-69' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Keyboard related functionality</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="Keysyms/index.html"
+                                  title='mod wlc::input::keyboard::Keysyms'>Keysyms</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Keymap.html"
+                                  title='struct wlc::input::keyboard::Keymap'>Keymap</a></td>
+                           <td class='docblock-short'>
+                                <p>Compiled keymap object.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.State.html"
+                                  title='struct wlc::input::keyboard::State'>State</a></td>
+                           <td class='docblock-short'>
+                                <p>Keyboard state object.</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Key.html"
+                                  title='enum wlc::input::keyboard::Key'>Key</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.current_keys.html"
+                                  title='fn wlc::input::keyboard::current_keys'>current_keys</a></td>
+                           <td class='docblock-short'>
+                                <p>Get currently held keys</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.keysym_for_key.html"
+                                  title='fn wlc::input::keyboard::keysym_for_key'>keysym_for_key</a></td>
+                           <td class='docblock-short'>
+                                <p>Utility function to convert raw keycode to keysym. Passed modifiers may
+transform the key</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.utf32_for_key.html"
+                                  title='fn wlc::input::keyboard::utf32_for_key'>utf32_for_key</a></td>
+                           <td class='docblock-short'>
+                                <p>Utility function to convert raw keycode to Unicode/UTF-32 codepoint.
+Passed modifiers may transform the key</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_keymap.html"
+                                  title='fn wlc::input::keyboard::xkb_keymap'>xkb_keymap</a></td>
+                           <td class='docblock-short'>
+                                <p>Internal <code>xkb_keymap</code> exposed. You can use it to do more advanced key
+handling</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.xkb_state.html"
+                                  title='fn wlc::input::keyboard::xkb_state'>xkb_state</a></td>
+                           <td class='docblock-short'>
+                                <p>Internal <code>xkb_state</code> exposed. You can use it to do more advanced key
+handling.
+However you should avoid messing with its state</p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Keysym.html"
+                                  title='type wlc::input::keyboard::Keysym'>Keysym</a></td>
+                           <td class='docblock-short'>
+                                <p>A number used to represent the symbols generated from a key on a keyboard.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "wlc";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

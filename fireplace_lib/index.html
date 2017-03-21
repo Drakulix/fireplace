@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `fireplace_lib` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, fireplace_lib">
+
+    <title>fireplace_lib - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'fireplace_lib', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>fireplace_lib</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/fireplace_lib/lib.rs.html#1-140' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'>
+<h1 id='fireplace-window-manager-library' class='section-header'><a href='#fireplace-window-manager-library'>Fireplace Window Manager Library</a></h1>
+<p>Fireplace is a modular wayland window manager.
+This library can be used to build your own window manager by</p>
+
+<ul>
+<li>adding additional functionality to fireplace</li>
+<li>replacing functionality of fireplace</li>
+<li>or just build upon the concepts of fireplace</li>
+</ul>
+
+<p>As a starting point you might want to fork the <a href="../fireplace"><code>fireplace</code></a>
+binary
+to get a functional window manager and use this library to implement your
+changes.
+By keeping your changes in the binary or even additional libraries you can
+make
+your changes/additions easier accessible to a broder audicence and your
+fork does
+not need to maintain a whole window manager with most of the functionality
+still
+kept in the unmodified <code>fireplace_lib</code> library.</p>
+
+<p>For a more low level wayland Rust Library take a look at:</p>
+
+<ul>
+<li><a href="https://github.com/Drakulix/wlc">wlc</a> (used by fireplace)</li>
+<li>or even
+<a href="https://github.%0Acom/vberger/wayland-client-rs/tree/master/wayland-server">wayland-server</a></li>
+</ul>
+
+<h1 id='concepts' class='section-header'><a href='#concepts'>Concepts</a></h1>
+<h2 id='the-callback-trait' class='section-header'><a href='#the-callback-trait'>The <code>Callback</code> trait</a></h2>
+<p>To understand why fireplace was build the way it was, you need to
+understand basics
+of the underlying library <a href="../wlc/">wlc</a>:</p>
+
+<ul>
+<li>The <a href="../wlc/trait.Callback.html"><code>Callback</code></a> Trait</li>
+<li>The <a href="../wlc/struct.View.html"><code>View</code></a> Struct</li>
+<li>The <a href="../wlc/struct.Output.html"><code>Output</code></a> Struct</li>
+</ul>
+
+<h3 id='a-hrefwlcstructoutputhtmloutputa' class='section-header'><a href='#a-hrefwlcstructoutputhtmloutputa'><a href="../wlc/struct.Output.html"><code>Output</code></a></a></h3>
+<p>An <code>Output</code> represents a Display or the X Window when running Fireplace
+nested in X.
+In future there may be even more options. An Output is basically everthing
+<code>wlc</code>
+and therefor fireplace may render on.</p>
+
+<h3 id='a-hrefwlcstructviewhtmlviewa' class='section-header'><a href='#a-hrefwlcstructviewhtmlviewa'><a href="../wlc/struct.View.html"><code>View</code></a></a></h3>
+<p>A <code>View</code> represents an Application Window in the most basic way.
+Everything rendered by a wayland client is represented as a <code>View</code>.</p>
+
+<h3 id='a-hrefwlcstructcallbackhtmlcallbacka' class='section-header'><a href='#a-hrefwlcstructcallbackhtmlcallbacka'><a href="../wlc/struct.Callback.html"><code>Callback</code></a></a></h3>
+<p>Any object implementing the <code>Callback</code> trait can be used by <code>wlc</code> to drive
+the compositor.
+It includes many optionally handled functions that represents events
+changing the state
+of the compositor.</p>
+
+<p>Some examples might be:</p>
+
+<ul>
+<li><a href="../wlc/trait.Callback.html#method.output_created"><code>output_created</code></a></li>
+<li><a href="../wlc/trait.Callback.html#method.output_destroyed"><code>output_destroyed</code></a></li>
+<li><a href="../wlc/trait.Callback.html#method.view_created"><code>view_created</code></a></li>
+<li><a href="../wlc/trait.Callback.html#method.view_destroyed"><code>view_destroyed</code></a></li>
+<li><a href="../wlc/trait.Callback.html#method.pointer_motion"><code>pointer_motion</code></a></li>
+<li><a href="../wlc/trait.Callback.html#method.keyboard_key"><code>keyboard_key</code></a></li>
+</ul>
+
+<p>In <code>wlc</code> you may only use one callback to drive the compositor.
+Fireplace breaks this restriction by providing <code>Callback</code> implementations
+that might
+split the calls onto two or even more other <code>Callback</code>s and implementations
+that may
+wrap existing <code>Callback</code>s modifing parameters, injecting calls or blocking
+calls
+however you want.</p>
+
+<p>Using this functionality every complex process might be split into multiple
+self-contained so called <code>handlers</code> that can be recombined to create new
+functionality
+and can be composed in the end to provide a fully functional window manager.</p>
+
+<h2 id='handlers' class='section-header'><a href='#handlers'>Handlers</a></h2>
+<p>All <code>handlers</code> implement the <code>Callback</code> trait in some way:</p>
+
+<ul>
+<li>directly</li>
+<li>by implementing <a href="./callback/trait.AsWrapper.html"><code>AsWrapper</code></a> - Wrapping
+existing handlers</li>
+<li>by implementing <a href="./callback/trait.AsSplit.html"><code>AsSplit</code></a> - Splitting
+calls between up to two handlers</li>
+<li>by implementing <a href="./callback/trait.AsVec.html"><code>AsVec</code></a> - Splitting calls
+onto an arbitrary number of handlers</li>
+</ul>
+
+<p>All these traits can be found in the <a href="./callback/index.html"><code>callback</code></a>
+module</p>
+
+<p>All handlers provided and used by fireplace and a more specific
+introduction can be found
+in the <a href="./handlers/"><code>handlers</code></a> module.</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="callback/index.html"
+                                  title='mod fireplace_lib::callback'>callback</a></td>
+                           <td class='docblock-short'>
+                                <p>Partial implementations of the <a href="../wlc/trait.Callback.html"><code>Callback</code></a>
+trait for easy composability</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="handlers/index.html"
+                                  title='mod fireplace_lib::handlers'>handlers</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="utils/index.html"
+                                  title='mod fireplace_lib::utils'>utils</a></td>
+                           <td class='docblock-short'>
+                                <p>Collection of utility functions and macros</p>
+                           </td>
+                       </tr></table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.enum_str.html"
+                                  title='macro fireplace_lib::enum_str'>enum_str</a></td>
+                           <td class='docblock-short'>
+                                <p>Wrapping an enum in <code>enum_str</code> will implement <code>De/Serialize</code>.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "fireplace_lib";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

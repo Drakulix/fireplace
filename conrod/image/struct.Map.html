@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Map` struct in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Map">
+
+    <title>conrod::image::Map - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>conrod</a>::<wbr><a href='index.html'>image</a></p><script>window.sidebarCurrent = {name: 'Map', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>conrod</a>::<wbr><a href='index.html'>image</a>::<wbr><a class="struct" href=''>Map</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/conrod/image.rs.html#27-34' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Map&lt;Img&gt; {
+    pub trigger_redraw: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;,
+    // some fields omitted
+}</pre><div class='docblock'><p>A type used to map the <code>widget::Id</code> of <code>Image</code> widgets to their associated <code>Img</code> data.</p>
+
+<p>The <code>image::Map</code> type is usually instantiated and loaded during the &quot;setup&quot; stage of the
+application before the main loop begins. A macro is provided to simplify the construction of
+maps with multiple images.</p>
+
+<pre class="rust rust-example-rendered">
+<span class="kw">let</span> <span class="ident">image_map</span> <span class="op">=</span> <span class="macro">image_map</span><span class="macro">!</span> {
+    (<span class="ident">RUST_LOGO</span>, <span class="macro">try</span><span class="macro">!</span>(<span class="ident">image</span>::<span class="ident">open</span>(<span class="string">&quot;rust-logo.png&quot;</span>))),
+    (<span class="ident">CAT_PIC</span>, <span class="macro">try</span><span class="macro">!</span>(<span class="ident">image</span>::<span class="ident">open</span>(<span class="string">&quot;floof.jpeg&quot;</span>))),
+};</pre>
+</div><h2 class='fields'>Fields</h2><span id='structfield.trigger_redraw' class="structfield">
+                           <span id='trigger_redraw.v' class='invisible'>
+                           <code>trigger_redraw: <a class="struct" href="https://doc.rust-lang.org/nightly/core/cell/struct.Cell.html" title="struct core::cell::Cell">Cell</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Whether or not the <code>image::Map</code> will trigger a redraw the next time <code>Ui::draw</code> is called.</p>
+
+<p>This is automatically set to <code>true</code> when any method that takes <code>&amp;mut self</code> is called.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;Img&gt; <a class="struct" href="../../conrod/image/struct.Map.html" title="struct conrod::image::Map">Map</a>&lt;Img&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/image.rs.html#54-123' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; Self</code></span></h4>
+<div class='docblock'><p>Construct a new, empty <code>image::Map</code>.</p>
+</div><h4 id='method.get_mut' class="method"><span id='get_mut.v' class='invisible'><code>fn <a href='#method.get_mut' class='fnname'>get_mut</a>(&amp;mut self, id: <a class="struct" href="../../conrod/image/struct.Id.html" title="struct conrod::image::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;&amp;mut Img&gt;</code></span></h4>
+<div class='docblock'><p>Uniquely borrow the <code>Img</code> associated with the given widget.</p>
+
+<p>Note: Calling this will trigger a redraw the next time <code>Ui::draw_if_changed</code> is called.</p>
+</div><h4 id='method.insert' class="method"><span id='insert.v' class='invisible'><code>fn <a href='#method.insert' class='fnname'>insert</a>(&amp;mut self, img: Img) -&gt; <a class="struct" href="../../conrod/image/struct.Id.html" title="struct conrod::image::Id">Id</a></code></span></h4>
+<div class='docblock'><p>Inserts the given image into the map, returning its associated <code>image::Id</code>. The user <em>must</em>
+store the returned <code>image::Id</code> in order to use, modify or remove the inserted image.</p>
+
+<p>Note: Calling this will trigger a redraw the next time <code>Ui::draw_if_changed</code> is called.</p>
+</div><h4 id='method.replace' class="method"><span id='replace.v' class='invisible'><code>fn <a href='#method.replace' class='fnname'>replace</a>(&amp;mut self, id: <a class="struct" href="../../conrod/image/struct.Id.html" title="struct conrod::image::Id">Id</a>, img: Img) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;Img&gt;</code></span></h4>
+<div class='docblock'><p>Replaces the given image in the map if it exists. Returns the image or None.</p>
+
+<p>Note: Calling this will trigger a redraw the next time <code>Ui::draw_if_changed</code> is called.</p>
+</div><h4 id='method.remove' class="method"><span id='remove.v' class='invisible'><code>fn <a href='#method.remove' class='fnname'>remove</a>(&amp;mut self, id: <a class="struct" href="../../conrod/image/struct.Id.html" title="struct conrod::image::Id">Id</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;Img&gt;</code></span></h4>
+<div class='docblock'><p>Removes the given image from the map if it exists. Returns the image or None.</p>
+
+<p>Any future use of the given <code>image::Id</code> will be invalid.</p>
+
+<p>Note: Calling this will trigger a redraw the next time <code>Ui::draw_if_changed</code> is called.</p>
+</div><h4 id='method.extend' class="method"><span id='extend.v' class='invisible'><code>fn <a href='#method.extend' class='fnname'>extend</a>&lt;I&gt;(&amp;mut self, images: I) -&gt; <a class="struct" href="../../conrod/image/struct.NewIds.html" title="struct conrod::image::NewIds">NewIds</a> <span class="where fmt-newline">where I: <a class="trait" href="https://doc.rust-lang.org/nightly/core/iter/traits/trait.IntoIterator.html" title="trait core::iter::traits::IntoIterator">IntoIterator</a>&lt;Item=Img&gt;</span></code></span></h4>
+<div class='docblock'><p>Insert each of the images yielded by the given iterator and produce an iterator yielding
+their generated <code>Ids</code> in the same order.</p>
+
+<p>Note: Calling this will trigger a redraw the next time <code>Ui::draw_if_changed</code> is called.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;Img&gt; <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html" title="trait core::ops::Deref">Deref</a> for <a class="struct" href="../../conrod/image/struct.Map.html" title="struct conrod::image::Map">Map</a>&lt;Img&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/conrod/image.rs.html#46-51' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Target' class="type"><span id='Target.t' class='invisible'><code>type <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html#associatedtype.Target' class="type">Target</a> = <a class="type" href="../../conrod/image/type.HashMap.html" title="type conrod::image::HashMap">HashMap</a>&lt;Img&gt;</code></span></h4>
+<div class='docblock'><p>The resulting type after dereferencing</p>
+</div><h4 id='method.deref' class="method"><span id='deref.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html#tymethod.deref' class='fnname'>deref</a>(&amp;self) -&gt; &amp;Self::<a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html" title="trait core::ops::Deref">Target</a></code></span></h4>
+<div class='docblock'><p>The method called to dereference a value</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

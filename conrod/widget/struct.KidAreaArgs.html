@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `KidAreaArgs` struct in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, KidAreaArgs">
+
+    <title>conrod::widget::KidAreaArgs - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>conrod</a>::<wbr><a href='index.html'>widget</a></p><script>window.sidebarCurrent = {name: 'KidAreaArgs', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>conrod</a>::<wbr><a href='index.html'>widget</a>::<wbr><a class="struct" href=''>KidAreaArgs</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/conrod/widget/mod.rs.html#119-130' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct KidAreaArgs&lt;'a, W&gt; <span class="where fmt-newline">where W: <a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Widget</a></span> {
+    pub rect: <a class="struct" href="../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>,
+    pub style: &amp;'a W::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Style</a>,
+    pub theme: &amp;'a <a class="struct" href="../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a>,
+    pub fonts: &amp;'a <a class="struct" href="../../conrod/text/font/struct.Map.html" title="struct conrod::text::font::Map">Map</a>,
+}</pre><div class='docblock'><p>Arguments to the <a href="./trait.Widget#method.kid_area"><strong>Widget::kid_area</strong></a> method in a struct to
+simplify the method signature.</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.rect' class="structfield">
+                           <span id='rect.v' class='invisible'>
+                           <code>rect: <a class="struct" href="../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a></code>
+                           </span></span><div class='docblock'><p>The <strong>Rect</strong> describing the <strong>Widget</strong>&#39;s position and dimensions.</p>
+</div><span id='structfield.style' class="structfield">
+                           <span id='style.v' class='invisible'>
+                           <code>style: &amp;'a W::<a class="trait" href="../../conrod/widget/trait.Widget.html" title="trait conrod::widget::Widget">Style</a></code>
+                           </span></span><div class='docblock'><p>Current <strong>Widget::Style</strong> of the <strong>Widget</strong>.</p>
+</div><span id='structfield.theme' class="structfield">
+                           <span id='theme.v' class='invisible'>
+                           <code>theme: &amp;'a <a class="struct" href="../../conrod/theme/struct.Theme.html" title="struct conrod::theme::Theme">Theme</a></code>
+                           </span></span><div class='docblock'><p>The active <strong>Theme</strong> within the <strong>Ui</strong>.</p>
+</div><span id='structfield.fonts' class="structfield">
+                           <span id='fonts.v' class='invisible'>
+                           <code>fonts: &amp;'a <a class="struct" href="../../conrod/text/font/struct.Map.html" title="struct conrod::text::font::Map">Map</a></code>
+                           </span></span><div class='docblock'><p>The <strong>Font</strong> (for determining text width).</p>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

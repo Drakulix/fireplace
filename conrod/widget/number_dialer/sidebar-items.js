@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["GlyphSlot","Each digit in the adjustable value has its own **Rectangle** and **Text** widgets."],["NumberDialer","A widget for precision control over any digit within a value."],["State","The state of the NumberDialer."],["Style","Unique graphical styling for the NumberDialer."]]});

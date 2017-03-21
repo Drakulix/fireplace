@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `chapter_2` mod in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, chapter_2">
+
+    <title>conrod::guide::chapter_2 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>guide</a></p><script>window.sidebarCurrent = {name: 'chapter_2', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>conrod</a>::<wbr><a href='../index.html'>guide</a>::<wbr><a class="mod" href=''>chapter_2</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../src/conrod/guide/chapter_2.rs.html#1-74' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p><strong>Getting Started</strong></p>
+
+<p>In this chapter we&#39;ll make sure that your environment is setup correctly for using Conrod.</p>
+
+<h2 id='installing-rust-and-cargo' class='section-header'><a href='#installing-rust-and-cargo'>Installing Rust and Cargo</a></h2>
+<p>Conrod is a Rust library (aka crate), so you&#39;ll need Rust! Conrod tracks the stable branch, so you
+can be assured that we&#39;ll always be compatible with the latest stable version of rustc.</p>
+
+<p>We also rely on the Rust package manager <a href="https://crates.io/">Cargo</a> for managing dependencies
+and hosting the latest version of conrod.</p>
+
+<p>The easiest way to acquire both of these is by downloading the Rust installer from <a href="https://www.rust-lang.org/" title="The Rust Homepage">the Rust
+homepage</a>. This installer will install the latest stable version of both rustc and
+cargo.</p>
+
+<p>Once installed, you can test that rustc and cargo are working by entering <code>rustc --version</code> and
+<code>cargo --version</code> into your command line.</p>
+
+<p>If you&#39;re brand new to Rust, we recommend first checking out <a href="https://doc.rust-lang.org/book/" title="The Official Rust Book">The Official Rust Book</a>, or at least
+keeping it on hand as a reference. It also contains a <a href="https://doc.rust-lang.org/book/getting-started.html" title="Getting Started with Rust">Getting Started</a> guide
+with more details on installing Rust, which may be useful in the case that you run into any issues
+with the above steps.</p>
+
+<h2 id='running-the-conrod-examples' class='section-header'><a href='#running-the-conrod-examples'>Running the Conrod Examples</a></h2>
+<p>We can test that everything is working by cloning the github repository and running the examples.
+First, open up the command line on your system and follow these steps:</p>
+
+<ol>
+<li>Clone the repo</li>
+</ol>
+
+<pre><code class="language-txt">git clone https://github.com/PistonDevelopers/conrod.git
+</code></pre>
+
+<ol>
+<li>Change to the <code>conrod</code> directory that we just cloned</li>
+</ol>
+
+<pre><code class="language-txt">cd conrod
+</code></pre>
+
+<ol>
+<li>Test that conrod builds without problems</li>
+</ol>
+
+<pre><code class="language-txt">cargo build
+</code></pre>
+
+<ol>
+<li>Build and run the examples (with --release optimisations turned on)!</li>
+</ol>
+
+<pre><code class="language-txt">cargo run --release --example all_widgets
+cargo run --release --example canvas
+cargo run --release --example primitives
+cargo run --release --example text
+</code></pre>
+
+<p>If you ran into any issues with these steps, please let us know by filing an issue at the Conrod
+<a href="https://github.com/PistonDevelopers/conrod/issues" title="Conrod issue tracker">issue tracker</a>. Be sure to search for your issue first, as another user may have already
+encountered your problem.</p>
+
+<p>Otherwise, you&#39;re now ready to use conrod!</p>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    <script defer src="../../../search-index.js"></script>
+</body>
+</html>

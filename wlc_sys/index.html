@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `wlc_sys` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, wlc_sys">
+
+    <title>wlc_sys - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'wlc_sys', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>wlc_sys</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/wlc_sys/lib.rs.html#1-11' title='goto source code'>[src]</a></span></h1>
+<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.libinput_device.html"
+                                  title='struct wlc_sys::libinput_device'>libinput_device</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.wlc_event_source.html"
+                                  title='struct wlc_sys::wlc_event_source'>wlc_event_source</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.wlc_geometry.html"
+                                  title='struct wlc_sys::wlc_geometry'>wlc_geometry</a></td>
+                           <td class='docblock-short'>
+                                <p>Fixed 2D point, size pair</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.wlc_modifiers.html"
+                                  title='struct wlc_sys::wlc_modifiers'>wlc_modifiers</a></td>
+                           <td class='docblock-short'>
+                                <p>State of keyboard modifiers in various functions.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.wlc_point.html"
+                                  title='struct wlc_sys::wlc_point'>wlc_point</a></td>
+                           <td class='docblock-short'>
+                                <p>Fixed 2D point</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.wlc_size.html"
+                                  title='struct wlc_sys::wlc_size'>wlc_size</a></td>
+                           <td class='docblock-short'>
+                                <p>Fixed 2D size</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.xkb_keymap.html"
+                                  title='struct wlc_sys::xkb_keymap'>xkb_keymap</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.xkb_state.html"
+                                  title='struct wlc_sys::xkb_state'>xkb_state</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_backend_type_WLC_BACKEND_DRM.html"
+                                  title='constant wlc_sys::wlc_backend_type_WLC_BACKEND_DRM'>wlc_backend_type_WLC_BACKEND_DRM</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_backend_type_WLC_BACKEND_NONE.html"
+                                  title='constant wlc_sys::wlc_backend_type_WLC_BACKEND_NONE'>wlc_backend_type_WLC_BACKEND_NONE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_backend_type_WLC_BACKEND_X11.html"
+                                  title='constant wlc_sys::wlc_backend_type_WLC_BACKEND_X11'>wlc_backend_type_WLC_BACKEND_X11</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_button_state_WLC_BUTTON_STATE_PRESSED.html"
+                                  title='constant wlc_sys::wlc_button_state_WLC_BUTTON_STATE_PRESSED'>wlc_button_state_WLC_BUTTON_STATE_PRESSED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_button_state_WLC_BUTTON_STATE_RELEASED.html"
+                                  title='constant wlc_sys::wlc_button_state_WLC_BUTTON_STATE_RELEASED'>wlc_button_state_WLC_BUTTON_STATE_RELEASED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_event_bit_WLC_EVENT_ERROR.html"
+                                  title='constant wlc_sys::wlc_event_bit_WLC_EVENT_ERROR'>wlc_event_bit_WLC_EVENT_ERROR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_event_bit_WLC_EVENT_HANGUP.html"
+                                  title='constant wlc_sys::wlc_event_bit_WLC_EVENT_HANGUP'>wlc_event_bit_WLC_EVENT_HANGUP</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_event_bit_WLC_EVENT_READABLE.html"
+                                  title='constant wlc_sys::wlc_event_bit_WLC_EVENT_READABLE'>wlc_event_bit_WLC_EVENT_READABLE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_event_bit_WLC_EVENT_WRITABLE.html"
+                                  title='constant wlc_sys::wlc_event_bit_WLC_EVENT_WRITABLE'>wlc_event_bit_WLC_EVENT_WRITABLE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_key_state_WLC_KEY_STATE_PRESSED.html"
+                                  title='constant wlc_sys::wlc_key_state_WLC_KEY_STATE_PRESSED'>wlc_key_state_WLC_KEY_STATE_PRESSED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_key_state_WLC_KEY_STATE_RELEASED.html"
+                                  title='constant wlc_sys::wlc_key_state_WLC_KEY_STATE_RELEASED'>wlc_key_state_WLC_KEY_STATE_RELEASED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_led_bit_WLC_BIT_LED_CAPS.html"
+                                  title='constant wlc_sys::wlc_led_bit_WLC_BIT_LED_CAPS'>wlc_led_bit_WLC_BIT_LED_CAPS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_led_bit_WLC_BIT_LED_NUM.html"
+                                  title='constant wlc_sys::wlc_led_bit_WLC_BIT_LED_NUM'>wlc_led_bit_WLC_BIT_LED_NUM</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_led_bit_WLC_BIT_LED_SCROLL.html"
+                                  title='constant wlc_sys::wlc_led_bit_WLC_BIT_LED_SCROLL'>wlc_led_bit_WLC_BIT_LED_SCROLL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_log_type_WLC_LOG_ERROR.html"
+                                  title='constant wlc_sys::wlc_log_type_WLC_LOG_ERROR'>wlc_log_type_WLC_LOG_ERROR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_log_type_WLC_LOG_INFO.html"
+                                  title='constant wlc_sys::wlc_log_type_WLC_LOG_INFO'>wlc_log_type_WLC_LOG_INFO</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_log_type_WLC_LOG_WARN.html"
+                                  title='constant wlc_sys::wlc_log_type_WLC_LOG_WARN'>wlc_log_type_WLC_LOG_WARN</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_log_type_WLC_LOG_WAYLAND.html"
+                                  title='constant wlc_sys::wlc_log_type_WLC_LOG_WAYLAND'>wlc_log_type_WLC_LOG_WAYLAND</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_modifier_bit_WLC_BIT_MOD_ALT.html"
+                                  title='constant wlc_sys::wlc_modifier_bit_WLC_BIT_MOD_ALT'>wlc_modifier_bit_WLC_BIT_MOD_ALT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_modifier_bit_WLC_BIT_MOD_CAPS.html"
+                                  title='constant wlc_sys::wlc_modifier_bit_WLC_BIT_MOD_CAPS'>wlc_modifier_bit_WLC_BIT_MOD_CAPS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_modifier_bit_WLC_BIT_MOD_CTRL.html"
+                                  title='constant wlc_sys::wlc_modifier_bit_WLC_BIT_MOD_CTRL'>wlc_modifier_bit_WLC_BIT_MOD_CTRL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_modifier_bit_WLC_BIT_MOD_LOGO.html"
+                                  title='constant wlc_sys::wlc_modifier_bit_WLC_BIT_MOD_LOGO'>wlc_modifier_bit_WLC_BIT_MOD_LOGO</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_modifier_bit_WLC_BIT_MOD_MOD2.html"
+                                  title='constant wlc_sys::wlc_modifier_bit_WLC_BIT_MOD_MOD2'>wlc_modifier_bit_WLC_BIT_MOD_MOD2</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_modifier_bit_WLC_BIT_MOD_MOD3.html"
+                                  title='constant wlc_sys::wlc_modifier_bit_WLC_BIT_MOD_MOD3'>wlc_modifier_bit_WLC_BIT_MOD_MOD3</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_modifier_bit_WLC_BIT_MOD_MOD5.html"
+                                  title='constant wlc_sys::wlc_modifier_bit_WLC_BIT_MOD_MOD5'>wlc_modifier_bit_WLC_BIT_MOD_MOD5</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_modifier_bit_WLC_BIT_MOD_SHIFT.html"
+                                  title='constant wlc_sys::wlc_modifier_bit_WLC_BIT_MOD_SHIFT'>wlc_modifier_bit_WLC_BIT_MOD_SHIFT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_pixel_format_WLC_RGBA8888.html"
+                                  title='constant wlc_sys::wlc_pixel_format_WLC_RGBA8888'>wlc_pixel_format_WLC_RGBA8888</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_anchor_bit_WLC_BIT_ANCHOR_BOTTOM.html"
+                                  title='constant wlc_sys::wlc_positioner_anchor_bit_WLC_BIT_ANCHOR_BOTTOM'>wlc_positioner_anchor_bit_WLC_BIT_ANCHOR_BOTTOM</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_anchor_bit_WLC_BIT_ANCHOR_LEFT.html"
+                                  title='constant wlc_sys::wlc_positioner_anchor_bit_WLC_BIT_ANCHOR_LEFT'>wlc_positioner_anchor_bit_WLC_BIT_ANCHOR_LEFT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_anchor_bit_WLC_BIT_ANCHOR_NONE.html"
+                                  title='constant wlc_sys::wlc_positioner_anchor_bit_WLC_BIT_ANCHOR_NONE'>wlc_positioner_anchor_bit_WLC_BIT_ANCHOR_NONE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_anchor_bit_WLC_BIT_ANCHOR_RIGHT.html"
+                                  title='constant wlc_sys::wlc_positioner_anchor_bit_WLC_BIT_ANCHOR_RIGHT'>wlc_positioner_anchor_bit_WLC_BIT_ANCHOR_RIGHT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_anchor_bit_WLC_BIT_ANCHOR_TOP.html"
+                                  title='constant wlc_sys::wlc_positioner_anchor_bit_WLC_BIT_ANCHOR_TOP'>wlc_positioner_anchor_bit_WLC_BIT_ANCHOR_TOP</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_FLIP_X.html"
+                                  title='constant wlc_sys::wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_FLIP_X'>wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_FLIP_X</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_FLIP_Y.html"
+                                  title='constant wlc_sys::wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_FLIP_Y'>wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_FLIP_Y</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_NONE.html"
+                                  title='constant wlc_sys::wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_NONE'>wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_NONE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_RESIZE_X.html"
+                                  title='constant wlc_sys::wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_RESIZE_X'>wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_RESIZE_X</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_RESIZE_Y.html"
+                                  title='constant wlc_sys::wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_RESIZE_Y'>wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_RESIZE_Y</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_SLIDE_X.html"
+                                  title='constant wlc_sys::wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_SLIDE_X'>wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_SLIDE_X</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_SLIDE_Y.html"
+                                  title='constant wlc_sys::wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_SLIDE_Y'>wlc_positioner_constraint_adjustment_bit_WLC_BIT_CONSTRAINT_ADJUSTMENT_SLIDE_Y</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_gravity_bit_WLC_BIT_GRAVITY_BOTTOM.html"
+                                  title='constant wlc_sys::wlc_positioner_gravity_bit_WLC_BIT_GRAVITY_BOTTOM'>wlc_positioner_gravity_bit_WLC_BIT_GRAVITY_BOTTOM</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_gravity_bit_WLC_BIT_GRAVITY_LEFT.html"
+                                  title='constant wlc_sys::wlc_positioner_gravity_bit_WLC_BIT_GRAVITY_LEFT'>wlc_positioner_gravity_bit_WLC_BIT_GRAVITY_LEFT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_gravity_bit_WLC_BIT_GRAVITY_NONE.html"
+                                  title='constant wlc_sys::wlc_positioner_gravity_bit_WLC_BIT_GRAVITY_NONE'>wlc_positioner_gravity_bit_WLC_BIT_GRAVITY_NONE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_gravity_bit_WLC_BIT_GRAVITY_RIGHT.html"
+                                  title='constant wlc_sys::wlc_positioner_gravity_bit_WLC_BIT_GRAVITY_RIGHT'>wlc_positioner_gravity_bit_WLC_BIT_GRAVITY_RIGHT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_positioner_gravity_bit_WLC_BIT_GRAVITY_TOP.html"
+                                  title='constant wlc_sys::wlc_positioner_gravity_bit_WLC_BIT_GRAVITY_TOP'>wlc_positioner_gravity_bit_WLC_BIT_GRAVITY_TOP</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_renderer_WLC_NO_RENDERER.html"
+                                  title='constant wlc_sys::wlc_renderer_WLC_NO_RENDERER'>wlc_renderer_WLC_NO_RENDERER</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_renderer_WLC_RENDERER_GLES2.html"
+                                  title='constant wlc_sys::wlc_renderer_WLC_RENDERER_GLES2'>wlc_renderer_WLC_RENDERER_GLES2</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_resize_edge_WLC_RESIZE_EDGE_BOTTOM.html"
+                                  title='constant wlc_sys::wlc_resize_edge_WLC_RESIZE_EDGE_BOTTOM'>wlc_resize_edge_WLC_RESIZE_EDGE_BOTTOM</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_resize_edge_WLC_RESIZE_EDGE_BOTTOM_LEFT.html"
+                                  title='constant wlc_sys::wlc_resize_edge_WLC_RESIZE_EDGE_BOTTOM_LEFT'>wlc_resize_edge_WLC_RESIZE_EDGE_BOTTOM_LEFT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_resize_edge_WLC_RESIZE_EDGE_BOTTOM_RIGHT.html"
+                                  title='constant wlc_sys::wlc_resize_edge_WLC_RESIZE_EDGE_BOTTOM_RIGHT'>wlc_resize_edge_WLC_RESIZE_EDGE_BOTTOM_RIGHT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_resize_edge_WLC_RESIZE_EDGE_LEFT.html"
+                                  title='constant wlc_sys::wlc_resize_edge_WLC_RESIZE_EDGE_LEFT'>wlc_resize_edge_WLC_RESIZE_EDGE_LEFT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_resize_edge_WLC_RESIZE_EDGE_NONE.html"
+                                  title='constant wlc_sys::wlc_resize_edge_WLC_RESIZE_EDGE_NONE'>wlc_resize_edge_WLC_RESIZE_EDGE_NONE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_resize_edge_WLC_RESIZE_EDGE_RIGHT.html"
+                                  title='constant wlc_sys::wlc_resize_edge_WLC_RESIZE_EDGE_RIGHT'>wlc_resize_edge_WLC_RESIZE_EDGE_RIGHT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_resize_edge_WLC_RESIZE_EDGE_TOP.html"
+                                  title='constant wlc_sys::wlc_resize_edge_WLC_RESIZE_EDGE_TOP'>wlc_resize_edge_WLC_RESIZE_EDGE_TOP</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_resize_edge_WLC_RESIZE_EDGE_TOP_LEFT.html"
+                                  title='constant wlc_sys::wlc_resize_edge_WLC_RESIZE_EDGE_TOP_LEFT'>wlc_resize_edge_WLC_RESIZE_EDGE_TOP_LEFT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_resize_edge_WLC_RESIZE_EDGE_TOP_RIGHT.html"
+                                  title='constant wlc_sys::wlc_resize_edge_WLC_RESIZE_EDGE_TOP_RIGHT'>wlc_resize_edge_WLC_RESIZE_EDGE_TOP_RIGHT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_scroll_axis_bit_WLC_SCROLL_AXIS_HORIZONTAL.html"
+                                  title='constant wlc_sys::wlc_scroll_axis_bit_WLC_SCROLL_AXIS_HORIZONTAL'>wlc_scroll_axis_bit_WLC_SCROLL_AXIS_HORIZONTAL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_scroll_axis_bit_WLC_SCROLL_AXIS_VERTICAL.html"
+                                  title='constant wlc_sys::wlc_scroll_axis_bit_WLC_SCROLL_AXIS_VERTICAL'>wlc_scroll_axis_bit_WLC_SCROLL_AXIS_VERTICAL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_surface_format_SURFACE_EGL.html"
+                                  title='constant wlc_sys::wlc_surface_format_SURFACE_EGL'>wlc_surface_format_SURFACE_EGL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_surface_format_SURFACE_RGB.html"
+                                  title='constant wlc_sys::wlc_surface_format_SURFACE_RGB'>wlc_surface_format_SURFACE_RGB</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_surface_format_SURFACE_RGBA.html"
+                                  title='constant wlc_sys::wlc_surface_format_SURFACE_RGBA'>wlc_surface_format_SURFACE_RGBA</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_surface_format_SURFACE_Y_UV.html"
+                                  title='constant wlc_sys::wlc_surface_format_SURFACE_Y_UV'>wlc_surface_format_SURFACE_Y_UV</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_surface_format_SURFACE_Y_U_V.html"
+                                  title='constant wlc_sys::wlc_surface_format_SURFACE_Y_U_V'>wlc_surface_format_SURFACE_Y_U_V</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_surface_format_SURFACE_Y_XUXV.html"
+                                  title='constant wlc_sys::wlc_surface_format_SURFACE_Y_XUXV'>wlc_surface_format_SURFACE_Y_XUXV</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_touch_type_WLC_TOUCH_CANCEL.html"
+                                  title='constant wlc_sys::wlc_touch_type_WLC_TOUCH_CANCEL'>wlc_touch_type_WLC_TOUCH_CANCEL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_touch_type_WLC_TOUCH_DOWN.html"
+                                  title='constant wlc_sys::wlc_touch_type_WLC_TOUCH_DOWN'>wlc_touch_type_WLC_TOUCH_DOWN</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_touch_type_WLC_TOUCH_FRAME.html"
+                                  title='constant wlc_sys::wlc_touch_type_WLC_TOUCH_FRAME'>wlc_touch_type_WLC_TOUCH_FRAME</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_touch_type_WLC_TOUCH_MOTION.html"
+                                  title='constant wlc_sys::wlc_touch_type_WLC_TOUCH_MOTION'>wlc_touch_type_WLC_TOUCH_MOTION</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_touch_type_WLC_TOUCH_UP.html"
+                                  title='constant wlc_sys::wlc_touch_type_WLC_TOUCH_UP'>wlc_touch_type_WLC_TOUCH_UP</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_view_property_update_bit_WLC_BIT_PROPERTY_APP_ID.html"
+                                  title='constant wlc_sys::wlc_view_property_update_bit_WLC_BIT_PROPERTY_APP_ID'>wlc_view_property_update_bit_WLC_BIT_PROPERTY_APP_ID</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_view_property_update_bit_WLC_BIT_PROPERTY_CLASS.html"
+                                  title='constant wlc_sys::wlc_view_property_update_bit_WLC_BIT_PROPERTY_CLASS'>wlc_view_property_update_bit_WLC_BIT_PROPERTY_CLASS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_view_property_update_bit_WLC_BIT_PROPERTY_PID.html"
+                                  title='constant wlc_sys::wlc_view_property_update_bit_WLC_BIT_PROPERTY_PID'>wlc_view_property_update_bit_WLC_BIT_PROPERTY_PID</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_view_property_update_bit_WLC_BIT_PROPERTY_TITLE.html"
+                                  title='constant wlc_sys::wlc_view_property_update_bit_WLC_BIT_PROPERTY_TITLE'>wlc_view_property_update_bit_WLC_BIT_PROPERTY_TITLE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_view_state_bit_WLC_BIT_ACTIVATED.html"
+                                  title='constant wlc_sys::wlc_view_state_bit_WLC_BIT_ACTIVATED'>wlc_view_state_bit_WLC_BIT_ACTIVATED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_view_state_bit_WLC_BIT_FULLSCREEN.html"
+                                  title='constant wlc_sys::wlc_view_state_bit_WLC_BIT_FULLSCREEN'>wlc_view_state_bit_WLC_BIT_FULLSCREEN</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_view_state_bit_WLC_BIT_MAXIMIZED.html"
+                                  title='constant wlc_sys::wlc_view_state_bit_WLC_BIT_MAXIMIZED'>wlc_view_state_bit_WLC_BIT_MAXIMIZED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_view_state_bit_WLC_BIT_MOVING.html"
+                                  title='constant wlc_sys::wlc_view_state_bit_WLC_BIT_MOVING'>wlc_view_state_bit_WLC_BIT_MOVING</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_view_state_bit_WLC_BIT_RESIZING.html"
+                                  title='constant wlc_sys::wlc_view_state_bit_WLC_BIT_RESIZING'>wlc_view_state_bit_WLC_BIT_RESIZING</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_view_type_bit_WLC_BIT_MODAL.html"
+                                  title='constant wlc_sys::wlc_view_type_bit_WLC_BIT_MODAL'>wlc_view_type_bit_WLC_BIT_MODAL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_view_type_bit_WLC_BIT_OVERRIDE_REDIRECT.html"
+                                  title='constant wlc_sys::wlc_view_type_bit_WLC_BIT_OVERRIDE_REDIRECT'>wlc_view_type_bit_WLC_BIT_OVERRIDE_REDIRECT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_view_type_bit_WLC_BIT_POPUP.html"
+                                  title='constant wlc_sys::wlc_view_type_bit_WLC_BIT_POPUP'>wlc_view_type_bit_WLC_BIT_POPUP</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_view_type_bit_WLC_BIT_SPLASH.html"
+                                  title='constant wlc_sys::wlc_view_type_bit_WLC_BIT_SPLASH'>wlc_view_type_bit_WLC_BIT_SPLASH</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.wlc_view_type_bit_WLC_BIT_UNMANAGED.html"
+                                  title='constant wlc_sys::wlc_view_type_bit_WLC_BIT_UNMANAGED'>wlc_view_type_bit_WLC_BIT_UNMANAGED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_event_loop_add_fd.html"
+                                  title='fn wlc_sys::wlc_event_loop_add_fd'>wlc_event_loop_add_fd</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Add fd to event loop. Return value of callback is unused, you should return 0.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_event_loop_add_timer.html"
+                                  title='fn wlc_sys::wlc_event_loop_add_timer'>wlc_event_loop_add_timer</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Add timer to event loop. Return value of callback is unused, you should return 0.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_event_source_remove.html"
+                                  title='fn wlc_sys::wlc_event_source_remove'>wlc_event_source_remove</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Remove event source from event loop.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_event_source_timer_update.html"
+                                  title='fn wlc_sys::wlc_event_source_timer_update'>wlc_event_source_timer_update</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Update timer to trigger after delay. Returns true on success.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_exec.html"
+                                  title='fn wlc_sys::wlc_exec'>wlc_exec</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Exec program.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_get_backend_type.html"
+                                  title='fn wlc_sys::wlc_get_backend_type'>wlc_get_backend_type</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Query backend wlc is using.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_get_focused_output.html"
+                                  title='fn wlc_sys::wlc_get_focused_output'>wlc_get_focused_output</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get focused output.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_get_outputs.html"
+                                  title='fn wlc_sys::wlc_get_outputs'>wlc_get_outputs</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get outputs. Returned array is a direct reference, careful when moving and destroying handles.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_get_subsurface_geometry.html"
+                                  title='fn wlc_sys::wlc_get_subsurface_geometry'>wlc_get_subsurface_geometry</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the size of a subsurface and its position relative to parent</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_get_wl_display.html"
+                                  title='fn wlc_sys::wlc_get_wl_display'>wlc_get_wl_display</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Returns Wayland display.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_handle_from_wl_output_resource.html"
+                                  title='fn wlc_sys::wlc_handle_from_wl_output_resource'>wlc_handle_from_wl_output_resource</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Returns output handle from wl_output resource.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_handle_from_wl_surface_resource.html"
+                                  title='fn wlc_sys::wlc_handle_from_wl_surface_resource'>wlc_handle_from_wl_surface_resource</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Returns view handle from wl_surface resource.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_handle_get_user_data.html"
+                                  title='fn wlc_sys::wlc_handle_get_user_data'>wlc_handle_get_user_data</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get linked custom data from handle.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_handle_set_user_data.html"
+                                  title='fn wlc_sys::wlc_handle_set_user_data'>wlc_handle_set_user_data</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Link custom data to handle.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_init.html"
+                                  title='fn wlc_sys::wlc_init'>wlc_init</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Initialize wlc. Returns false on failure.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_keyboard_get_current_keys.html"
+                                  title='fn wlc_sys::wlc_keyboard_get_current_keys'>wlc_keyboard_get_current_keys</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get currently held keys.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_keyboard_get_keysym_for_key.html"
+                                  title='fn wlc_sys::wlc_keyboard_get_keysym_for_key'>wlc_keyboard_get_keysym_for_key</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Utility function to convert raw keycode to keysym. Passed modifiers may transform the key.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_keyboard_get_utf32_for_key.html"
+                                  title='fn wlc_sys::wlc_keyboard_get_utf32_for_key'>wlc_keyboard_get_utf32_for_key</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Utility function to convert raw keycode to Unicode/UTF-32 codepoint. Passed modifiers may transform the key.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_keyboard_get_xkb_keymap.html"
+                                  title='fn wlc_sys::wlc_keyboard_get_xkb_keymap'>wlc_keyboard_get_xkb_keymap</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Internal xkb_keymap exposed. You can use it to do more advanced key handling.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_keyboard_get_xkb_state.html"
+                                  title='fn wlc_sys::wlc_keyboard_get_xkb_state'>wlc_keyboard_get_xkb_state</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Internal xkb_state exposed. You can use it to do more advanced key handling.
+*  However you should avoid messing up with its state. </p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_log_set_handler.html"
+                                  title='fn wlc_sys::wlc_log_set_handler'>wlc_log_set_handler</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Set log handler. Can be set before wlc_init.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_focus.html"
+                                  title='fn wlc_sys::wlc_output_focus'>wlc_output_focus</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Focus output. Pass zero for no focus.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_get_gamma_size.html"
+                                  title='fn wlc_sys::wlc_output_get_gamma_size'>wlc_output_get_gamma_size</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get gamma size</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_get_mask.html"
+                                  title='fn wlc_sys::wlc_output_get_mask'>wlc_output_get_mask</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get current visibility bitmask.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_get_mutable_views.html"
+                                  title='fn wlc_sys::wlc_output_get_mutable_views'>wlc_output_get_mutable_views</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get mutable views in creation order. Returned array is a direct reference, careful when moving and destroying handles.
+This is mainly useful for wm&#39;s who need another view stack for inplace sorting.
+For example tiling wms, may want to use this to keep their tiling order separated from floating order.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_get_name.html"
+                                  title='fn wlc_sys::wlc_output_get_name'>wlc_output_get_name</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get output name.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_get_renderer.html"
+                                  title='fn wlc_sys::wlc_output_get_renderer'>wlc_output_get_renderer</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Returns currently active renderer on the given output</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_get_resolution.html"
+                                  title='fn wlc_sys::wlc_output_get_resolution'>wlc_output_get_resolution</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get real resolution.
+Resolution applied by either wlc_output_set_resolution call or initially.
+Do not use this for coordinate boundary.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_get_scale.html"
+                                  title='fn wlc_sys::wlc_output_get_scale'>wlc_output_get_scale</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get scale factor.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_get_sleep.html"
+                                  title='fn wlc_sys::wlc_output_get_sleep'>wlc_output_get_sleep</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get sleep state.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_get_views.html"
+                                  title='fn wlc_sys::wlc_output_get_views'>wlc_output_get_views</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get views in stack order. Returned array is a direct reference, careful when moving and destroying handles.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_get_virtual_resolution.html"
+                                  title='fn wlc_sys::wlc_output_get_virtual_resolution'>wlc_output_get_virtual_resolution</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get virtual resolution.
+Resolution with transformations applied for proper rendering for example on high density displays.
+Use this to figure out coordinate boundary.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_schedule_render.html"
+                                  title='fn wlc_sys::wlc_output_schedule_render'>wlc_output_schedule_render</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Schedules output for rendering next frame. If output was already scheduled this is no-op,
+if output is currently rendering, it will render immediately after.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_set_gamma.html"
+                                  title='fn wlc_sys::wlc_output_set_gamma'>wlc_output_set_gamma</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Set gamma. R, G, and B are color ramp arrays of size elements.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_set_mask.html"
+                                  title='fn wlc_sys::wlc_output_set_mask'>wlc_output_set_mask</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Set visibility bitmask.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_set_resolution.html"
+                                  title='fn wlc_sys::wlc_output_set_resolution'>wlc_output_set_resolution</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Set resolution.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_set_sleep.html"
+                                  title='fn wlc_sys::wlc_output_set_sleep'>wlc_output_set_sleep</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Wake up / sleep.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_output_set_views.html"
+                                  title='fn wlc_sys::wlc_output_set_views'>wlc_output_set_views</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Set views in stack order. This will also change mutable views. Returns false on failure.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_pixels_read.html"
+                                  title='fn wlc_sys::wlc_pixels_read'>wlc_pixels_read</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Read pixel data from output&#39;s framebuffer.
+If the geometry is out of bounds, it will be automatically clamped.
+Potentially clamped geometry will be stored in out_geometry, to indicate width / height of the returned data.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_pixels_write.html"
+                                  title='fn wlc_sys::wlc_pixels_write'>wlc_pixels_write</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Write pixel data with the specific format to output&#39;s framebuffer.
+If the geometry is out of bounds, it will be automaticall clamped.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_pointer_get_position.html"
+                                  title='fn wlc_sys::wlc_pointer_get_position'>wlc_pointer_get_position</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get current pointer position.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_pointer_set_position.html"
+                                  title='fn wlc_sys::wlc_pointer_set_position'>wlc_pointer_set_position</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Set current pointer position.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_resource_from_wl_surface_resource.html"
+                                  title='fn wlc_sys::wlc_resource_from_wl_surface_resource'>wlc_resource_from_wl_surface_resource</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Returns internal wlc surface from wl_surface resource.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_run.html"
+                                  title='fn wlc_sys::wlc_run'>wlc_run</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Run event loop.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_compositor_ready_cb.html"
+                                  title='fn wlc_sys::wlc_set_compositor_ready_cb'>wlc_set_compositor_ready_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Compositor is ready to accept clients.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_compositor_terminate_cb.html"
+                                  title='fn wlc_sys::wlc_set_compositor_terminate_cb'>wlc_set_compositor_terminate_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Compositor is about to terminate</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_input_created_cb.html"
+                                  title='fn wlc_sys::wlc_set_input_created_cb'>wlc_set_input_created_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Input device was created. Return value does nothing. (Experimental)</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_input_destroyed_cb.html"
+                                  title='fn wlc_sys::wlc_set_input_destroyed_cb'>wlc_set_input_destroyed_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Input device was destroyed. (Experimental)</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_keyboard_key_cb.html"
+                                  title='fn wlc_sys::wlc_set_keyboard_key_cb'>wlc_set_keyboard_key_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Key event was triggered, view handle will be zero if there was no focus. Return true to prevent sending the event to clients.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_output_context_created_cb.html"
+                                  title='fn wlc_sys::wlc_set_output_context_created_cb'>wlc_set_output_context_created_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Output context is created. This generally happens on startup and when current tty changes</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_output_context_destroyed_cb.html"
+                                  title='fn wlc_sys::wlc_set_output_context_destroyed_cb'>wlc_set_output_context_destroyed_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Output context was destroyed.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_output_created_cb.html"
+                                  title='fn wlc_sys::wlc_set_output_created_cb'>wlc_set_output_created_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Output was created. Return false if you want to destroy the output. (e.g. failed to allocate data related to view)</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_output_destroyed_cb.html"
+                                  title='fn wlc_sys::wlc_set_output_destroyed_cb'>wlc_set_output_destroyed_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Output was destroyed.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_output_focus_cb.html"
+                                  title='fn wlc_sys::wlc_set_output_focus_cb'>wlc_set_output_focus_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Output got or lost focus.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_output_render_post_cb.html"
+                                  title='fn wlc_sys::wlc_set_output_render_post_cb'>wlc_set_output_render_post_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Output post render hook.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_output_render_pre_cb.html"
+                                  title='fn wlc_sys::wlc_set_output_render_pre_cb'>wlc_set_output_render_pre_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Output pre render hook.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_output_resolution_cb.html"
+                                  title='fn wlc_sys::wlc_set_output_resolution_cb'>wlc_set_output_resolution_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Output resolution changed.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_pointer_button_cb.html"
+                                  title='fn wlc_sys::wlc_set_pointer_button_cb'>wlc_set_pointer_button_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Button event was triggered, view handle will be zero if there was no focus. Return true to prevent sending the event to clients.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_pointer_motion_cb.html"
+                                  title='fn wlc_sys::wlc_set_pointer_motion_cb'>wlc_set_pointer_motion_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Motion event was triggered, view handle will be zero if there was no focus. Apply with wlc_pointer_set_position to agree. Return true to prevent sending the event to clients.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_pointer_scroll_cb.html"
+                                  title='fn wlc_sys::wlc_set_pointer_scroll_cb'>wlc_set_pointer_scroll_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Scroll event was triggered, view handle will be zero if there was no focus. Return true to prevent sending the event to clients.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_touch_cb.html"
+                                  title='fn wlc_sys::wlc_set_touch_cb'>wlc_set_touch_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Touch event was triggered, view handle will be zero if there was no focus. Return true to prevent sending the event to clients.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_view_created_cb.html"
+                                  title='fn wlc_sys::wlc_set_view_created_cb'>wlc_set_view_created_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>View was created. Return false if you want to destroy the view. (e.g. failed to allocate data related to view)</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_view_destroyed_cb.html"
+                                  title='fn wlc_sys::wlc_set_view_destroyed_cb'>wlc_set_view_destroyed_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>View was destroyed.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_view_focus_cb.html"
+                                  title='fn wlc_sys::wlc_set_view_focus_cb'>wlc_set_view_focus_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>View got or lost focus.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_view_move_to_output_cb.html"
+                                  title='fn wlc_sys::wlc_set_view_move_to_output_cb'>wlc_set_view_move_to_output_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>View was moved to output.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_view_properties_updated_cb.html"
+                                  title='fn wlc_sys::wlc_set_view_properties_updated_cb'>wlc_set_view_properties_updated_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>View properties (title, class, app_id) was updated</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_view_render_post_cb.html"
+                                  title='fn wlc_sys::wlc_set_view_render_post_cb'>wlc_set_view_render_post_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>View post render hook.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_view_render_pre_cb.html"
+                                  title='fn wlc_sys::wlc_set_view_render_pre_cb'>wlc_set_view_render_pre_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>View pre render hook.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_view_request_geometry_cb.html"
+                                  title='fn wlc_sys::wlc_set_view_request_geometry_cb'>wlc_set_view_request_geometry_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Request to set given geometry for view. Apply using wlc_view_set_geometry to agree.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_view_request_move_cb.html"
+                                  title='fn wlc_sys::wlc_set_view_request_move_cb'>wlc_set_view_request_move_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Request to move itself. Start a interactive move to agree.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_view_request_resize_cb.html"
+                                  title='fn wlc_sys::wlc_set_view_request_resize_cb'>wlc_set_view_request_resize_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Request to resize itself with the given edges. Start a interactive resize to agree.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_set_view_request_state_cb.html"
+                                  title='fn wlc_sys::wlc_set_view_request_state_cb'>wlc_set_view_request_state_cb</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Request to disable or enable the given state for view. Apply using wlc_view_set_state to agree.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_surface_flush_frame_callbacks.html"
+                                  title='fn wlc_sys::wlc_surface_flush_frame_callbacks'>wlc_surface_flush_frame_callbacks</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Adds frame callbacks of the given surface for the next output frame.
+It applies recursively to all subsurfaces.
+Useful when the compositor creates custom animations which require disabling internal rendering,
+but still need to update the surface textures (for ex. video players).</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_surface_get_size.html"
+                                  title='fn wlc_sys::wlc_surface_get_size'>wlc_surface_get_size</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get surface size.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_surface_get_subsurfaces.html"
+                                  title='fn wlc_sys::wlc_surface_get_subsurfaces'>wlc_surface_get_subsurfaces</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a list of the subsurfaces of the given surface</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_surface_get_textures.html"
+                                  title='fn wlc_sys::wlc_surface_get_textures'>wlc_surface_get_textures</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Fills out_textures[] with the textures of a surface. Returns false if surface is invalid.
+Array must have at least 3 elements and should be refreshed at each frame.
+Note that these are not only OpenGL textures but rather render-specific.
+For more info what they are check the renderer&#39;s source code </p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_surface_get_wl_resource.html"
+                                  title='fn wlc_sys::wlc_surface_get_wl_resource'>wlc_surface_get_wl_resource</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Return wl_surface resource from internal wlc surface.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_surface_render.html"
+                                  title='fn wlc_sys::wlc_surface_render'>wlc_surface_render</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Renders surface.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_terminate.html"
+                                  title='fn wlc_sys::wlc_terminate'>wlc_terminate</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Terminate wlc.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_bring_above.html"
+                                  title='fn wlc_sys::wlc_view_bring_above'>wlc_view_bring_above</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Send above another view.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_bring_to_front.html"
+                                  title='fn wlc_sys::wlc_view_bring_to_front'>wlc_view_bring_to_front</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Bring to front of everything.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_close.html"
+                                  title='fn wlc_sys::wlc_view_close'>wlc_view_close</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Close view.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_focus.html"
+                                  title='fn wlc_sys::wlc_view_focus'>wlc_view_focus</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Focus view. Pass zero for no focus.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_from_surface.html"
+                                  title='fn wlc_sys::wlc_view_from_surface'>wlc_view_from_surface</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Turns wl_surface into a wlc view. Returns 0 on failure. This will also trigger view.created callback as any view would.
+For the extra arguments see details of wl_resource_create and wl_resource_set_implementation.
+The extra arguments may be set NULL, if you are not implementing Wayland interface for the surface role.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_get_app_id.html"
+                                  title='fn wlc_sys::wlc_view_get_app_id'>wlc_view_get_app_id</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get app id. (xdg-surface only)</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_get_class.html"
+                                  title='fn wlc_sys::wlc_view_get_class'>wlc_view_get_class</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get class. (shell-surface only)</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_get_geometry.html"
+                                  title='fn wlc_sys::wlc_view_get_geometry'>wlc_view_get_geometry</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get current geometry. (what client sees)</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_get_instance.html"
+                                  title='fn wlc_sys::wlc_view_get_instance'>wlc_view_get_instance</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get instance. (shell-surface only)</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_get_mask.html"
+                                  title='fn wlc_sys::wlc_view_get_mask'>wlc_view_get_mask</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get current visibility bitmask.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_get_output.html"
+                                  title='fn wlc_sys::wlc_view_get_output'>wlc_view_get_output</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get current output.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_get_parent.html"
+                                  title='fn wlc_sys::wlc_view_get_parent'>wlc_view_get_parent</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get parent view.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_get_pid.html"
+                                  title='fn wlc_sys::wlc_view_get_pid'>wlc_view_get_pid</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get pid.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_get_role.html"
+                                  title='fn wlc_sys::wlc_view_get_role'>wlc_view_get_role</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Returns surface role resource from view handle. Return value will be NULL if the view was not assigned role or created with wlc_view_create_from_surface().</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_get_state.html"
+                                  title='fn wlc_sys::wlc_view_get_state'>wlc_view_get_state</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get current state bitfield.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_get_surface.html"
+                                  title='fn wlc_sys::wlc_view_get_surface'>wlc_view_get_surface</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Returns internal wlc surface from view handle</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_get_title.html"
+                                  title='fn wlc_sys::wlc_view_get_title'>wlc_view_get_title</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get title.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_get_type.html"
+                                  title='fn wlc_sys::wlc_view_get_type'>wlc_view_get_type</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get type bitfield.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_get_visible_geometry.html"
+                                  title='fn wlc_sys::wlc_view_get_visible_geometry'>wlc_view_get_visible_geometry</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get visible geometry. (what wlc displays)</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_get_wl_client.html"
+                                  title='fn wlc_sys::wlc_view_get_wl_client'>wlc_view_get_wl_client</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Returns wl_client from view handle</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_positioner_get_anchor.html"
+                                  title='fn wlc_sys::wlc_view_positioner_get_anchor'>wlc_view_positioner_get_anchor</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get anchor requested by positioner, as defined in xdg-shell v6.
+Returns default value WLC_BIT_ANCHOR_NONE if view has no valid positioner
+or if positioner has no anchor set.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_positioner_get_anchor_rect.html"
+                                  title='fn wlc_sys::wlc_view_positioner_get_anchor_rect'>wlc_view_positioner_get_anchor_rect</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get anchor rectangle requested by positioner, as defined in xdg-shell v6.
+Returns NULL if view has no valid positioner.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_positioner_get_constraint_adjustment.html"
+                                  title='fn wlc_sys::wlc_view_positioner_get_constraint_adjustment'>wlc_view_positioner_get_constraint_adjustment</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get constraint adjustment requested by positioner, as defined in xdg-shell v6.
+Returns default value WLC_BIT_CONSTRAINT_ADJUSTMENT_NONE if view has no
+valid positioner or if positioner has no constraint adjustment set.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_positioner_get_gravity.html"
+                                  title='fn wlc_sys::wlc_view_positioner_get_gravity'>wlc_view_positioner_get_gravity</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get anchor requested by positioner, as defined in xdg-shell v6.
+Returns default value WLC_BIT_GRAVITY_NONE if view has no valid positioner
+or if positioner has no gravity set.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_positioner_get_offset.html"
+                                  title='fn wlc_sys::wlc_view_positioner_get_offset'>wlc_view_positioner_get_offset</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get offset requested by positioner, as defined in xdg-shell v6.
+Returns NULL if view has no valid positioner,
+or default value (0, 0) if positioner has no offset set.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_positioner_get_size.html"
+                                  title='fn wlc_sys::wlc_view_positioner_get_size'>wlc_view_positioner_get_size</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Get size requested by positioner, as defined in xdg-shell v6.
+Returns NULL if view has no valid positioner</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_send_below.html"
+                                  title='fn wlc_sys::wlc_view_send_below'>wlc_view_send_below</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Send below another view.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_send_to_back.html"
+                                  title='fn wlc_sys::wlc_view_send_to_back'>wlc_view_send_to_back</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Send behind everything.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_set_geometry.html"
+                                  title='fn wlc_sys::wlc_view_set_geometry'>wlc_view_set_geometry</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Set geometry. Set edges if the geometry change is caused by interactive resize.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_set_mask.html"
+                                  title='fn wlc_sys::wlc_view_set_mask'>wlc_view_set_mask</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Set visibility bitmask.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_set_output.html"
+                                  title='fn wlc_sys::wlc_view_set_output'>wlc_view_set_output</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Set output. Alternatively you can wlc_output_set_views.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_set_parent.html"
+                                  title='fn wlc_sys::wlc_view_set_parent'>wlc_view_set_parent</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Set parent view.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_set_state.html"
+                                  title='fn wlc_sys::wlc_view_set_state'>wlc_view_set_state</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Set state bit. Toggle indicates whether it is set or not.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wlc_view_set_type.html"
+                                  title='fn wlc_sys::wlc_view_set_type'>wlc_view_set_type</a><a title='unsafe function' href='#'><sup>⚠</sup></a></td>
+                           <td class='docblock-short'>
+                                <p>Set type bit. Toggle indicates whether it is set or not.</p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.__pid_t.html"
+                                  title='type wlc_sys::__pid_t'>__pid_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.pid_t.html"
+                                  title='type wlc_sys::pid_t'>pid_t</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_backend_type.html"
+                                  title='type wlc_sys::wlc_backend_type'>wlc_backend_type</a></td>
+                           <td class='docblock-short'>
+                                <p>wlc_get_backend_type();</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_button_state.html"
+                                  title='type wlc_sys::wlc_button_state'>wlc_button_state</a></td>
+                           <td class='docblock-short'>
+                                <p>State in interface.pointer.button function.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_event_bit.html"
+                                  title='type wlc_sys::wlc_event_bit'>wlc_event_bit</a></td>
+                           <td class='docblock-short'>
+                                <p>mask in wlc_event_loop_add_fd();</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_handle.html"
+                                  title='type wlc_sys::wlc_handle'>wlc_handle</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_key_state.html"
+                                  title='type wlc_sys::wlc_key_state'>wlc_key_state</a></td>
+                           <td class='docblock-short'>
+                                <p>State in interface.keyboard.key function.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_led_bit.html"
+                                  title='type wlc_sys::wlc_led_bit'>wlc_led_bit</a></td>
+                           <td class='docblock-short'>
+                                <p>Leds in interface.keyboard.key function.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_log_type.html"
+                                  title='type wlc_sys::wlc_log_type'>wlc_log_type</a></td>
+                           <td class='docblock-short'>
+                                <p>wlc_log(), wlc_vlog();</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_modifier_bit.html"
+                                  title='type wlc_sys::wlc_modifier_bit'>wlc_modifier_bit</a></td>
+                           <td class='docblock-short'>
+                                <p>Mods in interface.keyboard.key function.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_pixel_format.html"
+                                  title='type wlc_sys::wlc_pixel_format'>wlc_pixel_format</a></td>
+                           <td class='docblock-short'>
+                                <p>Allowed pixel formats.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_positioner_anchor_bit.html"
+                                  title='type wlc_sys::wlc_positioner_anchor_bit'>wlc_positioner_anchor_bit</a></td>
+                           <td class='docblock-short'>
+                                <p>wlc_view_positioner_get_anchor();</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_positioner_constraint_adjustment_bit.html"
+                                  title='type wlc_sys::wlc_positioner_constraint_adjustment_bit'>wlc_positioner_constraint_adjustment_bit</a></td>
+                           <td class='docblock-short'>
+                                <p>wlc_view_positioner_get_gravity();</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_positioner_gravity_bit.html"
+                                  title='type wlc_sys::wlc_positioner_gravity_bit'>wlc_positioner_gravity_bit</a></td>
+                           <td class='docblock-short'>
+                                <p>wlc_view_positioner_get_gravity();</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_renderer.html"
+                                  title='type wlc_sys::wlc_renderer'>wlc_renderer</a></td>
+                           <td class='docblock-short'>
+                                <p>Enabled renderers</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_resize_edge.html"
+                                  title='type wlc_sys::wlc_resize_edge'>wlc_resize_edge</a></td>
+                           <td class='docblock-short'>
+                                <p>wlc_view_set_geometry(); Edges in interface interface.view.request.resize function.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_resource.html"
+                                  title='type wlc_sys::wlc_resource'>wlc_resource</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_scroll_axis_bit.html"
+                                  title='type wlc_sys::wlc_scroll_axis_bit'>wlc_scroll_axis_bit</a></td>
+                           <td class='docblock-short'>
+                                <p>Axis in interface.pointer.scroll function.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_surface_format.html"
+                                  title='type wlc_sys::wlc_surface_format'>wlc_surface_format</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_touch_type.html"
+                                  title='type wlc_sys::wlc_touch_type'>wlc_touch_type</a></td>
+                           <td class='docblock-short'>
+                                <p>Type in interface.touch.touch function</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_view_property_update_bit.html"
+                                  title='type wlc_sys::wlc_view_property_update_bit'>wlc_view_property_update_bit</a></td>
+                           <td class='docblock-short'>
+                                <p>wlc_set_view_properties_updated_cb();</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_view_state_bit.html"
+                                  title='type wlc_sys::wlc_view_state_bit'>wlc_view_state_bit</a></td>
+                           <td class='docblock-short'>
+                                <p>wlc_view_get_state();</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.wlc_view_type_bit.html"
+                                  title='type wlc_sys::wlc_view_type_bit'>wlc_view_type_bit</a></td>
+                           <td class='docblock-short'>
+                                <p>wlc_view_get_type();</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "wlc_sys";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

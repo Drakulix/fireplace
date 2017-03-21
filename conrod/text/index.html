@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `text` mod in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, text">
+
+    <title>conrod::text - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>conrod</a></p><script>window.sidebarCurrent = {name: 'text', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>conrod</a>::<wbr><a class="mod" href=''>text</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/conrod/text.rs.html#1-1487' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Text layout logic.</p>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="cursor/index.html"
+                                  title='mod conrod::text::cursor'>cursor</a></td>
+                           <td class='docblock-short'>
+                                <p>Logic related to the positioning of the cursor within text.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="font/index.html"
+                                  title='mod conrod::text::font'>font</a></td>
+                           <td class='docblock-short'>
+                                <p>The <code>font::Id</code> and <code>font::Map</code> types.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="glyph/index.html"
+                                  title='mod conrod::text::glyph'>glyph</a></td>
+                           <td class='docblock-short'>
+                                <p>Logic and types specific to individual glyph layout.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="line/index.html"
+                                  title='mod conrod::text::line'>line</a></td>
+                           <td class='docblock-short'>
+                                <p>Text handling logic related to individual lines of text.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="rt/index.html"
+                                  title='mod conrod::text::rt'>rt</a></td>
+                           <td class='docblock-short'>
+                                <p>Re-exported RustType geometrical types.</p>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Glyph.html"
+                                  title='struct conrod::text::Glyph'>Glyph</a></td>
+                           <td class='docblock-short'>
+                                <p>A single glyph of a font. this may either be a thin wrapper referring to the font and the glyph id, or
+it may be a standalone glyph that owns the data needed by it.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.GlyphCache.html"
+                                  title='struct conrod::text::GlyphCache'>GlyphCache</a></td>
+                           <td class='docblock-short'>
+                                <p>An implementation of a dynamic GPU glyph cache. See the module documentation for more information.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.GlyphId.html"
+                                  title='struct conrod::text::GlyphId'>GlyphId</a></td>
+                           <td class='docblock-short'>
+                                <p>Represents a glyph identifier for a particular font. This identifier will not necessarily correspond to
+the correct glyph in a font other than the one that it was obtained from.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.GlyphIter.html"
+                                  title='struct conrod::text::GlyphIter'>GlyphIter</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.LayoutIter.html"
+                                  title='struct conrod::text::LayoutIter'>LayoutIter</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Lines.html"
+                                  title='struct conrod::text::Lines'>Lines</a></td>
+                           <td class='docblock-short'>
+                                <p>An iterator yielding each line within the given <code>text</code> as a new <code>&amp;str</code>, where the start and end
+indices into each line are provided by the given iterator.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Scale.html"
+                                  title='struct conrod::text::Scale'>Scale</a></td>
+                           <td class='docblock-short'>
+                                <p>Defines the size of a rendered face of a font, in pixels, horizontally and vertically. A vertical
+scale of <code>y</code> pixels means that the distance betwen the ascent and descent lines (see <code>VMetrics</code>) of the
+face will be <code>y</code> pixels. If <code>x</code> and <code>y</code> are equal the scaling is uniform. Non-uniform scaling by a factor
+<em>f</em> in the horizontal direction is achieved by setting <code>x</code> equal to <em>f</em> times <code>y</code>.</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Justify.html"
+                                  title='enum conrod::text::Justify'>Justify</a></td>
+                           <td class='docblock-short'>
+                                <p>A type used for referring to typographic alignment of <code>Text</code>.</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.height.html"
+                                  title='fn conrod::text::height'>height</a></td>
+                           <td class='docblock-short'>
+                                <p>Determine the total height of a block of text with the given number of lines, font size and
+<code>line_spacing</code> (the space that separates each line of text).</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.lines.html"
+                                  title='fn conrod::text::lines'>lines</a></td>
+                           <td class='docblock-short'>
+                                <p>Produce an iterator yielding each line within the given <code>text</code> as a new <code>&amp;str</code>, where the
+start and end indices into each line are provided by the given iterator.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.pt_to_px.html"
+                                  title='fn conrod::text::pt_to_px'>pt_to_px</a></td>
+                           <td class='docblock-short'>
+                                <p>Converts the given font size in &quot;points&quot; to its font size in pixels.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.pt_to_scale.html"
+                                  title='fn conrod::text::pt_to_scale'>pt_to_scale</a></td>
+                           <td class='docblock-short'>
+                                <p>Converts the given font size in &quot;points&quot; to a uniform <code>rusttype::Scale</code>.</p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Font.html"
+                                  title='type conrod::text::Font'>Font</a></td>
+                           <td class='docblock-short'>
+                                <p>The RustType <code>Font</code> type used by conrod.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.FontCollection.html"
+                                  title='type conrod::text::FontCollection'>FontCollection</a></td>
+                           <td class='docblock-short'>
+                                <p>The RustType <code>FontCollection</code> type used by conrod.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.PositionedGlyph.html"
+                                  title='type conrod::text::PositionedGlyph'>PositionedGlyph</a></td>
+                           <td class='docblock-short'>
+                                <p>The RustType <code>PositionedGlyph</code> type used by conrod.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

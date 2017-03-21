@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `event` mod in crate `conrod`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, event">
+
+    <title>conrod::event - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>conrod</a></p><script>window.sidebarCurrent = {name: 'event', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>conrod</a>::<wbr><a class="mod" href=''>event</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/conrod/event.rs.html#1-501' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Contains all types used to describe the input events that <code>Widget</code>s may handle.</p>
+
+<p>The two primary types of this module are:</p>
+
+<ul>
+<li><code>Input</code>: conrod&#39;s input type passed by the user to <code>Ui::handle_event</code> in order to drive the
+<code>Ui</code>.</li>
+<li><code>Event</code>: enumerates all possible events interpreted by conrod that may be propagated to
+widgets.</li>
+</ul>
+
+<h2 id='the-event-system' class='section-header'><a href='#the-event-system'>The Event System</a></h2>
+<p>Conrod&#39;s event system looks like this:</p>
+
+<p><em>Input -&gt; Ui -&gt; Event -&gt; Widget</em></p>
+
+<p>The <strong>Ui</strong> receives <strong>Input</strong>s such as <code>Press</code> and <code>Release</code> via the <code>Ui::handle_event</code> method.
+It interprets these <strong>Input</strong>s to create higher-level <strong>Event</strong>s such as <code>DoubleClick</code>,
+<code>WidgetCapturesKeyboard</code>, etc. These <strong>Event</strong>s are stored and then fed to each <strong>Widget</strong> when
+<code>Ui::set_widgets</code> is called. At the end of <code>Ui::set_widgets</code> the stored <strong>Event</strong>s are flushed
+ready for the next incoming <strong>Input</strong>s.</p>
+
+<p>Conrod uses the <code>pistoncore-input</code> crate&#39;s <code>Input</code> type. There are a few reasons for this:</p>
+
+<ol>
+<li>This <code>Input</code> type already provides a number of useful variants of events that we wish to
+provide and handle within conrod, and we do not yet see any great need to re-write it and
+duplicate code.</li>
+<li>The <code>Input</code> type is already compatible with all <code>pistoncore-window</code> backends including
+<code>glfw_window</code>, <code>sdl2_window</code> and <code>glutin_window</code>. That said, co-ordinates and scroll
+directions may need to be translated to conrod&#39;s orientation.</li>
+<li>The <code>pistoncore-input</code> crate also provides a <code>GenericEvent</code> trait which allows us to easily
+provide a blanket implementation of <code>ToRawEvent</code> for all event types that already implement
+this trait.</li>
+</ol>
+
+<p>Because we use the <code>pistoncore-input</code> <code>Event</code> type, we also re-export its associated data
+types (<code>Button</code>, <code>ControllerAxisArgs</code>, <code>Key</code>, etc).</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Click.html"
+                                  title='struct conrod::event::Click'>Click</a></td>
+                           <td class='docblock-short'>
+                                <p>Contains all the relevant information for a mouse click.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.DoubleClick.html"
+                                  title='struct conrod::event::DoubleClick'>DoubleClick</a></td>
+                           <td class='docblock-short'>
+                                <p>Contains all the relevant information for a double click.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Drag.html"
+                                  title='struct conrod::event::Drag'>Drag</a></td>
+                           <td class='docblock-short'>
+                                <p>Contains all the relevant information for a mouse drag.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.KeyPress.html"
+                                  title='struct conrod::event::KeyPress'>KeyPress</a></td>
+                           <td class='docblock-short'>
+                                <p>Contains all relevant information for the event where a keyboard button was pressed.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.KeyRelease.html"
+                                  title='struct conrod::event::KeyRelease'>KeyRelease</a></td>
+                           <td class='docblock-short'>
+                                <p>Contains all relevant information for the event where a keyboard button was release.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.MousePress.html"
+                                  title='struct conrod::event::MousePress'>MousePress</a></td>
+                           <td class='docblock-short'>
+                                <p>Contains all relevant information for the event where a mouse button was pressed.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.MouseRelease.html"
+                                  title='struct conrod::event::MouseRelease'>MouseRelease</a></td>
+                           <td class='docblock-short'>
+                                <p>Contains all relevant information for the event where a mouse button was released.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Move.html"
+                                  title='struct conrod::event::Move'>Move</a></td>
+                           <td class='docblock-short'>
+                                <p>Contains all relevant information for a Motion event.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Press.html"
+                                  title='struct conrod::event::Press'>Press</a></td>
+                           <td class='docblock-short'>
+                                <p>Contains all relevant information for a Press event.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Release.html"
+                                  title='struct conrod::event::Release'>Release</a></td>
+                           <td class='docblock-short'>
+                                <p>Contains all relevant information for a Release event.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Scroll.html"
+                                  title='struct conrod::event::Scroll'>Scroll</a></td>
+                           <td class='docblock-short'>
+                                <p>Holds all the relevant information about a scroll event</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Text.html"
+                                  title='struct conrod::event::Text'>Text</a></td>
+                           <td class='docblock-short'>
+                                <p>Contains all relevant information for a Text event.</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Button.html"
+                                  title='enum conrod::event::Button'>Button</a></td>
+                           <td class='docblock-short'>
+                                <p>The different kinds of <code>Button</code>s that may be <code>Press</code>ed or <code>Release</code>d.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Event.html"
+                                  title='enum conrod::event::Event'>Event</a></td>
+                           <td class='docblock-short'>
+                                <p>Enum containing all the events that the <code>Ui</code> may provide.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Input.html"
+                                  title='enum conrod::event::Input'>Input</a></td>
+                           <td class='docblock-short'>
+                                <p>The event type that is used by conrod to track inputs from the world. Events yielded by polling
+window backends should be converted to this type. This can be thought of as the event type
+which is supplied by the window backend to drive the state of the <code>Ui</code> forward.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Ui.html"
+                                  title='enum conrod::event::Ui'>Ui</a></td>
+                           <td class='docblock-short'>
+                                <p>Represents all events interpreted by the <code>Ui</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Widget.html"
+                                  title='enum conrod::event::Widget'>Widget</a></td>
+                           <td class='docblock-short'>
+                                <p>Events that apply to a specific widget.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "conrod";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

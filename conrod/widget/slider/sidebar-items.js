@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Slider","Linear value selection."],["State","Represents the state of the Slider widget."],["Style","Graphical styling unique to the Slider widget."]]});

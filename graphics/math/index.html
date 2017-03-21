@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `math` mod in crate `graphics`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, math">
+
+    <title>graphics::math - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>graphics</a></p><script>window.sidebarCurrent = {name: 'math', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>graphics</a>::<wbr><a class="mod" href=''>math</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/graphics/math.rs.html#1-587' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Various methods for computing with vectors.</p>
+</div><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.abs_transform.html"
+                                  title='fn graphics::math::abs_transform'>abs_transform</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms from normalized to absolute coordinates.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.add.html"
+                                  title='fn graphics::math::add'>add</a></td>
+                           <td class='docblock-short'>
+                                <p>Adds two vectors.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.area.html"
+                                  title='fn graphics::math::area'>area</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes area of a simple polygon.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.area_centroid.html"
+                                  title='fn graphics::math::area_centroid'>area_centroid</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the area and centroid of a simple polygon.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.cast.html"
+                                  title='fn graphics::math::cast'>cast</a></td>
+                           <td class='docblock-short'>
+                                <p>Converts to another vector type.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.centroid.html"
+                                  title='fn graphics::math::centroid'>centroid</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes centroid of a simple polygon.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.cross.html"
+                                  title='fn graphics::math::cross'>cross</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the cross product.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.dot.html"
+                                  title='fn graphics::math::dot'>dot</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the dot product.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.from_barycentric.html"
+                                  title='fn graphics::math::from_barycentric'>from_barycentric</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms from barycentric coordinates to cartesian.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_scale.html"
+                                  title='fn graphics::math::get_scale'>get_scale</a></td>
+                           <td class='docblock-short'>
+                                <p>Extract scale information from matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.hsv.html"
+                                  title='fn graphics::math::hsv'>hsv</a></td>
+                           <td class='docblock-short'>
+                                <p>Transform color with hue, saturation and value.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.identity.html"
+                                  title='fn graphics::math::identity'>identity</a></td>
+                           <td class='docblock-short'>
+                                <p>Create an identity matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.inside_triangle.html"
+                                  title='fn graphics::math::inside_triangle'>inside_triangle</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns true if point is inside triangle.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.least_separation_4.html"
+                                  title='fn graphics::math::least_separation_4'>least_separation_4</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the least separation out of four.
+Each seperation can be computed using <code>separation</code> function.
+The separation returned can be used
+to solve collision of rectangles.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.line_side.html"
+                                  title='fn graphics::math::line_side'>line_side</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a number that tells which side it is relative to a line.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.margin_rectangle.html"
+                                  title='fn graphics::math::margin_rectangle'>margin_rectangle</a></td>
+                           <td class='docblock-short'>
+                                <p>Shrinks a rectangle by a factor on all sides.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.modular_offset.html"
+                                  title='fn graphics::math::modular_offset'>modular_offset</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes modular offset safely for numbers.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mul.html"
+                                  title='fn graphics::math::mul'>mul</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies two vectors component wise.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.mul_scalar.html"
+                                  title='fn graphics::math::mul_scalar'>mul_scalar</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies the vector with a scalar.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.multiply.html"
+                                  title='fn graphics::math::multiply'>multiply</a></td>
+                           <td class='docblock-short'>
+                                <p>Multiplies two matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.orient.html"
+                                  title='fn graphics::math::orient'>orient</a></td>
+                           <td class='docblock-short'>
+                                <p>Orients x axis to look at point.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.overlap_rectangle.html"
+                                  title='fn graphics::math::overlap_rectangle'>overlap_rectangle</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes overlap between two rectangles.
+The area of the overlapping rectangle is positive.
+A shared edge or corner is not considered overlap.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.perp.html"
+                                  title='fn graphics::math::perp'>perp</a></td>
+                           <td class='docblock-short'>
+                                <p>Creates a perpendicular vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.relative_rectangle.html"
+                                  title='fn graphics::math::relative_rectangle'>relative_rectangle</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes a relative rectangle using the rectangle as a tile.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.relative_source_rectangle.html"
+                                  title='fn graphics::math::relative_source_rectangle'>relative_source_rectangle</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes a relative source rectangle using
+the source rectangle as a tile.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.rotate_radians.html"
+                                  title='fn graphics::math::rotate_radians'>rotate_radians</a></td>
+                           <td class='docblock-short'>
+                                <p>Creates a rotation matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.scale.html"
+                                  title='fn graphics::math::scale'>scale</a></td>
+                           <td class='docblock-short'>
+                                <p>Create a scale matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.separation.html"
+                                  title='fn graphics::math::separation'>separation</a></td>
+                           <td class='docblock-short'>
+                                <p>Compute the shortest vector from point to ray.
+A ray stores starting point and directional vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.shear.html"
+                                  title='fn graphics::math::shear'>shear</a></td>
+                           <td class='docblock-short'>
+                                <p>Create a shear matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.square_len.html"
+                                  title='fn graphics::math::square_len'>square_len</a></td>
+                           <td class='docblock-short'>
+                                <p>Computes the square length of a vector.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.sub.html"
+                                  title='fn graphics::math::sub'>sub</a></td>
+                           <td class='docblock-short'>
+                                <p>Subtracts &#39;b&#39; from &#39;a&#39;.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.to_barycentric.html"
+                                  title='fn graphics::math::to_barycentric'>to_barycentric</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms from cartesian coordinates to barycentric.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.transform_pos.html"
+                                  title='fn graphics::math::transform_pos'>transform_pos</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 2D position through matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.transform_vec.html"
+                                  title='fn graphics::math::transform_vec'>transform_vec</a></td>
+                           <td class='docblock-short'>
+                                <p>Transforms a 2D vector through matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.translate.html"
+                                  title='fn graphics::math::translate'>translate</a></td>
+                           <td class='docblock-short'>
+                                <p>Creates a translation matrix.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.triangle_face.html"
+                                  title='fn graphics::math::triangle_face'>triangle_face</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns true if triangle is clockwise.</p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Matrix2d.html"
+                                  title='type graphics::math::Matrix2d'>Matrix2d</a></td>
+                           <td class='docblock-short'>
+                                <p>The type used for matrices.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Scalar.html"
+                                  title='type graphics::math::Scalar'>Scalar</a></td>
+                           <td class='docblock-short'>
+                                <p>The type used for scalars.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Vec2d.html"
+                                  title='type graphics::math::Vec2d'>Vec2d</a></td>
+                           <td class='docblock-short'>
+                                <p>The type used for 2D vectors.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.Vec3d.html"
+                                  title='type graphics::math::Vec3d'>Vec3d</a></td>
+                           <td class='docblock-short'>
+                                <p>The type used for 3D vectors.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "graphics";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

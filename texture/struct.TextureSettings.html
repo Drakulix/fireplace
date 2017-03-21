@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `TextureSettings` struct in crate `texture`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, TextureSettings">
+
+    <title>texture::TextureSettings - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>texture</a></p><script>window.sidebarCurrent = {name: 'TextureSettings', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>texture</a>::<wbr><a class="struct" href=''>TextureSettings</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/texture/lib.rs.html#34-47' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct TextureSettings { /* fields omitted */ }</pre><div class='docblock'><p>Texture creation parameters.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../texture/struct.TextureSettings.html" title="struct texture::TextureSettings">TextureSettings</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../src/texture/lib.rs.html#49-145' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class="struct" href="../texture/struct.TextureSettings.html" title="struct texture::TextureSettings">TextureSettings</a></code></span></h4>
+<div class='docblock'><p>Create default settings.</p>
+</div><h4 id='method.get_convert_gamma' class="method"><span id='get_convert_gamma.v' class='invisible'><code>fn <a href='#method.get_convert_gamma' class='fnname'>get_convert_gamma</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Gets whether to convert gamma, treated as sRGB color space.</p>
+</div><h4 id='method.set_convert_gamma' class="method"><span id='set_convert_gamma.v' class='invisible'><code>fn <a href='#method.set_convert_gamma' class='fnname'>set_convert_gamma</a>(&amp;mut self, val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</code></span></h4>
+<div class='docblock'><p>Sets convert gamma.</p>
+</div><h4 id='method.convert_gamma' class="method"><span id='convert_gamma.v' class='invisible'><code>fn <a href='#method.convert_gamma' class='fnname'>convert_gamma</a>(self, val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets convert gamma.</p>
+</div><h4 id='method.get_compress' class="method"><span id='get_compress.v' class='invisible'><code>fn <a href='#method.get_compress' class='fnname'>get_compress</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Gets wheter compress on the GPU.</p>
+</div><h4 id='method.set_compress' class="method"><span id='set_compress.v' class='invisible'><code>fn <a href='#method.set_compress' class='fnname'>set_compress</a>(&amp;mut self, val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</code></span></h4>
+<div class='docblock'><p>Sets compress.</p>
+</div><h4 id='method.compress' class="method"><span id='compress.v' class='invisible'><code>fn <a href='#method.compress' class='fnname'>compress</a>(self, val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets compress.</p>
+</div><h4 id='method.get_generate_mipmap' class="method"><span id='get_generate_mipmap.v' class='invisible'><code>fn <a href='#method.get_generate_mipmap' class='fnname'>get_generate_mipmap</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a></code></span></h4>
+<div class='docblock'><p>Gets generate mipmap.</p>
+</div><h4 id='method.set_generate_mipmap' class="method"><span id='set_generate_mipmap.v' class='invisible'><code>fn <a href='#method.set_generate_mipmap' class='fnname'>set_generate_mipmap</a>(&amp;mut self, val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)</code></span></h4>
+<div class='docblock'><p>Sets generate mipmap.</p>
+</div><h4 id='method.generate_mipmap' class="method"><span id='generate_mipmap.v' class='invisible'><code>fn <a href='#method.generate_mipmap' class='fnname'>generate_mipmap</a>(self, val: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets generate mipmap.</p>
+</div><h4 id='method.get_min' class="method"><span id='get_min.v' class='invisible'><code>fn <a href='#method.get_min' class='fnname'>get_min</a>(&amp;self) -&gt; <a class="enum" href="../texture/enum.Filter.html" title="enum texture::Filter">Filter</a></code></span></h4>
+<div class='docblock'><p>Gets minify filter.</p>
+</div><h4 id='method.set_min' class="method"><span id='set_min.v' class='invisible'><code>fn <a href='#method.set_min' class='fnname'>set_min</a>(&amp;mut self, val: <a class="enum" href="../texture/enum.Filter.html" title="enum texture::Filter">Filter</a>)</code></span></h4>
+<div class='docblock'><p>Sets minify filter.</p>
+</div><h4 id='method.min' class="method"><span id='min.v' class='invisible'><code>fn <a href='#method.min' class='fnname'>min</a>(self, val: <a class="enum" href="../texture/enum.Filter.html" title="enum texture::Filter">Filter</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets minify filter.</p>
+</div><h4 id='method.get_mag' class="method"><span id='get_mag.v' class='invisible'><code>fn <a href='#method.get_mag' class='fnname'>get_mag</a>(&amp;self) -&gt; <a class="enum" href="../texture/enum.Filter.html" title="enum texture::Filter">Filter</a></code></span></h4>
+<div class='docblock'><p>Gets magnify filter</p>
+</div><h4 id='method.set_mag' class="method"><span id='set_mag.v' class='invisible'><code>fn <a href='#method.set_mag' class='fnname'>set_mag</a>(&amp;mut self, val: <a class="enum" href="../texture/enum.Filter.html" title="enum texture::Filter">Filter</a>)</code></span></h4>
+<div class='docblock'><p>Sets magnify filter</p>
+</div><h4 id='method.mag' class="method"><span id='mag.v' class='invisible'><code>fn <a href='#method.mag' class='fnname'>mag</a>(self, val: <a class="enum" href="../texture/enum.Filter.html" title="enum texture::Filter">Filter</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets magnify filter</p>
+</div><h4 id='method.get_mipmap' class="method"><span id='get_mipmap.v' class='invisible'><code>fn <a href='#method.get_mipmap' class='fnname'>get_mipmap</a>(&amp;self) -&gt; <a class="enum" href="../texture/enum.Filter.html" title="enum texture::Filter">Filter</a></code></span></h4>
+<div class='docblock'><p>Gets minify mipmap filter</p>
+</div><h4 id='method.set_mipmap' class="method"><span id='set_mipmap.v' class='invisible'><code>fn <a href='#method.set_mipmap' class='fnname'>set_mipmap</a>(&amp;mut self, val: <a class="enum" href="../texture/enum.Filter.html" title="enum texture::Filter">Filter</a>)</code></span></h4>
+<div class='docblock'><p>Sets magnify mipmap filter, and sets generate_mipmap to true.</p>
+</div><h4 id='method.mipmap' class="method"><span id='mipmap.v' class='invisible'><code>fn <a href='#method.mipmap' class='fnname'>mipmap</a>(self, val: <a class="enum" href="../texture/enum.Filter.html" title="enum texture::Filter">Filter</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets magnify mipmap filter, and sets generate_mipmap to true</p>
+</div><h4 id='method.get_filter' class="method"><span id='get_filter.v' class='invisible'><code>fn <a href='#method.get_filter' class='fnname'>get_filter</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">(</a><a class="enum" href="../texture/enum.Filter.html" title="enum texture::Filter">Filter</a>, <a class="enum" href="../texture/enum.Filter.html" title="enum texture::Filter">Filter</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.tuple.html">)</a></code></span></h4>
+<div class='docblock'><p>Returns the min and mag filter</p>
+</div><h4 id='method.set_filter' class="method"><span id='set_filter.v' class='invisible'><code>fn <a href='#method.set_filter' class='fnname'>set_filter</a>(&amp;mut self, val: <a class="enum" href="../texture/enum.Filter.html" title="enum texture::Filter">Filter</a>)</code></span></h4>
+<div class='docblock'><p>Sets the min and mag filter</p>
+</div><h4 id='method.filter' class="method"><span id='filter.v' class='invisible'><code>fn <a href='#method.filter' class='fnname'>filter</a>(self, val: <a class="enum" href="../texture/enum.Filter.html" title="enum texture::Filter">Filter</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets the min and mag filter</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "texture";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

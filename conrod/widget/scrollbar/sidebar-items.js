@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Scrollbar","A widget that allows for scrolling via dragging the mouse."],["State","The state of the `Scrollbar`."],["Style","Styling for the DropDownList, necessary for constructing its renderable Element."]],"trait":[["Axis","The axis that is scrolled by the `Scrollbar`."]]});

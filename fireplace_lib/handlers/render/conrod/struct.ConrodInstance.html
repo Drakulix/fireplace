@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ConrodInstance` struct in crate `fireplace_lib`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ConrodInstance">
+
+    <title>fireplace_lib::handlers::render::conrod::ConrodInstance - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../../../index.html'>fireplace_lib</a>::<wbr><a href='../../index.html'>handlers</a>::<wbr><a href='../index.html'>render</a>::<wbr><a href='index.html'>conrod</a></p><script>window.sidebarCurrent = {name: 'ConrodInstance', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../../index.html'>fireplace_lib</a>::<wbr><a href='../../index.html'>handlers</a>::<wbr><a href='../index.html'>render</a>::<wbr><a href='index.html'>conrod</a>::<wbr><a class="struct" href=''>ConrodInstance</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../../../src/fireplace_lib/handlers/render/conrod/renderer/instance.rs.html#25-36' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct ConrodInstance {
+    pub ui: <a class="struct" href="../../../../conrod/ui/struct.Ui.html" title="struct conrod::ui::Ui">Ui</a>,
+    pub text_tex: <a class="struct" href="../../../../opengles_graphics/texture/struct.Texture.html" title="struct opengles_graphics::texture::Texture">Texture</a>,
+    pub text_cache: <a class="struct" href="../../../../rusttype/gpu_cache/struct.Cache.html" title="struct rusttype::gpu_cache::Cache">GlyphCache</a>,
+    pub image_map: <a class="struct" href="../../../../conrod/image/struct.Map.html" title="struct conrod::image::Map">ImageMap</a>&lt;<a class="struct" href="../../../../opengles_graphics/texture/struct.Texture.html" title="struct opengles_graphics::texture::Texture">Texture</a>&gt;,
+    // some fields omitted
+}</pre><div class='docblock'><p>Instance to render <code>ConrodProvider</code>s</p>
+
+<p><code>ConrodInstance</code> manages <code>ConrodProvider</code>s as well as the
+concrete <code>conrod</code> types used for rendering, like <code>Ui</code>, which
+it also dereferences to for rendering.</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.ui' class="structfield">
+                           <span id='ui.v' class='invisible'>
+                           <code>ui: <a class="struct" href="../../../../conrod/ui/struct.Ui.html" title="struct conrod::ui::Ui">Ui</a></code>
+                           </span></span><div class='docblock'><p>conrod <code>Ui</code> used for rendering</p>
+</div><span id='structfield.text_tex' class="structfield">
+                           <span id='text_tex.v' class='invisible'>
+                           <code>text_tex: <a class="struct" href="../../../../opengles_graphics/texture/struct.Texture.html" title="struct opengles_graphics::texture::Texture">Texture</a></code>
+                           </span></span><div class='docblock'><p>GL ES <code>Texture</code> used for caching rendered glyphs</p>
+</div><span id='structfield.text_cache' class="structfield">
+                           <span id='text_cache.v' class='invisible'>
+                           <code>text_cache: <a class="struct" href="../../../../rusttype/gpu_cache/struct.Cache.html" title="struct rusttype::gpu_cache::Cache">GlyphCache</a></code>
+                           </span></span><div class='docblock'><p>Glyph cache for <code>conrod</code> rendering</p>
+</div><span id='structfield.image_map' class="structfield">
+                           <span id='image_map.v' class='invisible'>
+                           <code>image_map: <a class="struct" href="../../../../conrod/image/struct.Map.html" title="struct conrod::image::Map">ImageMap</a>&lt;<a class="struct" href="../../../../opengles_graphics/texture/struct.Texture.html" title="struct opengles_graphics::texture::Texture">Texture</a>&gt;</code>
+                           </span></span><div class='docblock'><p>Map loading images as <code>Texture</code>s to be used by <code>conrod</code> via their <code>Id</code>s</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../../../fireplace_lib/handlers/render/conrod/struct.ConrodInstance.html" title="struct fireplace_lib::handlers::render::conrod::ConrodInstance">ConrodInstance</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../../src/fireplace_lib/handlers/render/conrod/renderer/instance.rs.html#38-148' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(dim: <a class="type" href="../../../../conrod/position/type.Dimensions.html" title="type conrod::position::Dimensions">Dimensions</a>, logger: <a class="struct" href="../../../../slog/struct.Logger.html" title="struct slog::Logger">Logger</a>) -&gt; <a class="struct" href="../../../../fireplace_lib/handlers/render/conrod/struct.ConrodInstance.html" title="struct fireplace_lib::handlers::render::conrod::ConrodInstance">ConrodInstance</a></code></span></h4>
+<div class='docblock'><p>Initializes a new <code>ConrodInstance</code></p>
+</div><h4 id='method.register' class="method"><span id='register.v' class='invisible'><code>fn <a href='#method.register' class='fnname'>register</a>&lt;P:&nbsp;<a class="trait" href="../../../../fireplace_lib/handlers/render/conrod/provider/trait.ConrodProvider.html" title="trait fireplace_lib::handlers::render::conrod::provider::ConrodProvider">ConrodProvider</a> + 'static&gt;(&amp;mut self, provider: P)</code></span></h4>
+<div class='docblock'><p>Register a new <code>ConrodProvider</code> to be rendered</p>
+</div><h4 id='method.image_map' class="method"><span id='image_map.v-1' class='invisible'><code>fn <a href='#method.image_map' class='fnname'>image_map</a>(&amp;mut self) -&gt; &amp;mut <a class="struct" href="../../../../conrod/image/struct.Map.html" title="struct conrod::image::Map">ImageMap</a>&lt;<a class="struct" href="../../../../opengles_graphics/texture/struct.Texture.html" title="struct opengles_graphics::texture::Texture">Texture</a>&gt;</code></span></h4>
+<div class='docblock'><p>Obtain a reference to the <code>ImageMap</code> to store images
+used by <code>Widget</code>s</p>
+</div><h4 id='method.render' class="method"><span id='render.v' class='invisible'><code>fn <a href='#method.render' class='fnname'>render</a>(&amp;mut self, output: &amp;mut <a class="struct" href="../../../../wlc/render/output/struct.RenderOutput.html" title="struct wlc::render::output::RenderOutput">RenderOutput</a>)</code></span></h4>
+<div class='docblock'><p>Render on a given <code>RenderOutput</code></p>
+</div></div><h2 id='deref-methods'>Methods from <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html" title="trait core::ops::Deref">Deref</a>&lt;Target=<a class="struct" href="../../../../conrod/ui/struct.Ui.html" title="struct conrod::ui::Ui">Ui</a>&gt;</h2><div class='impl-items'><h4 id='method.widget_input' class="method"><span id='widget_input.v' class='invisible'><code>fn <a href='#method.widget_input' class='fnname'>widget_input</a>(&amp;self, widget: <a class="struct" href="../../../../petgraph/graph/struct.NodeIndex.html" title="struct petgraph::graph::NodeIndex">NodeIndex</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;) -&gt; <a class="struct" href="../../../../conrod/input/widget/struct.Widget.html" title="struct conrod::input::widget::Widget">Widget</a></code></span></h4>
+<div class='docblock'><p>Returns a <code>input::Widget</code> for the given widget</p>
+</div><h4 id='method.rect_of' class="method"><span id='rect_of.v' class='invisible'><code>fn <a href='#method.rect_of' class='fnname'>rect_of</a>(&amp;self, id: <a class="struct" href="../../../../petgraph/graph/struct.NodeIndex.html" title="struct petgraph::graph::NodeIndex">NodeIndex</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>&gt;</code></span></h4>
+<div class='docblock'><p>The <strong>Rect</strong> for the widget at the given index.</p>
+
+<p>Returns <code>None</code> if there is no widget for the given index.</p>
+</div><h4 id='method.w_of' class="method"><span id='w_of.v' class='invisible'><code>fn <a href='#method.w_of' class='fnname'>w_of</a>(&amp;self, id: <a class="struct" href="../../../../petgraph/graph/struct.NodeIndex.html" title="struct petgraph::graph::NodeIndex">NodeIndex</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>&gt;</code></span></h4>
+<div class='docblock'><p>The absolute width of the widget at the given index.</p>
+
+<p>Returns <code>None</code> if there is no widget for the given index.</p>
+</div><h4 id='method.h_of' class="method"><span id='h_of.v' class='invisible'><code>fn <a href='#method.h_of' class='fnname'>h_of</a>(&amp;self, id: <a class="struct" href="../../../../petgraph/graph/struct.NodeIndex.html" title="struct petgraph::graph::NodeIndex">NodeIndex</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a>&gt;</code></span></h4>
+<div class='docblock'><p>The absolute height of the widget at the given index.</p>
+
+<p>Returns <code>None</code> if there is no widget for the given index.</p>
+</div><h4 id='method.wh_of' class="method"><span id='wh_of.v' class='invisible'><code>fn <a href='#method.wh_of' class='fnname'>wh_of</a>(&amp;self, id: <a class="struct" href="../../../../petgraph/graph/struct.NodeIndex.html" title="struct petgraph::graph::NodeIndex">NodeIndex</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>&gt;</code></span></h4>
+<div class='docblock'><p>The absolute dimensions for the widget at the given index.</p>
+
+<p>Returns <code>None</code> if there is no widget for the given index.</p>
+</div><h4 id='method.xy_of' class="method"><span id='xy_of.v' class='invisible'><code>fn <a href='#method.xy_of' class='fnname'>xy_of</a>(&amp;self, id: <a class="struct" href="../../../../petgraph/graph/struct.NodeIndex.html" title="struct petgraph::graph::NodeIndex">NodeIndex</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>&gt;</code></span></h4>
+<div class='docblock'><p>The coordinates for the widget at the given index.</p>
+
+<p>Returns <code>None</code> if there is no widget for the given index.</p>
+</div><h4 id='method.kid_area_of' class="method"><span id='kid_area_of.v' class='invisible'><code>fn <a href='#method.kid_area_of' class='fnname'>kid_area_of</a>(&amp;self, id: <a class="struct" href="../../../../petgraph/graph/struct.NodeIndex.html" title="struct petgraph::graph::NodeIndex">NodeIndex</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>&gt;</code></span></h4>
+<div class='docblock'><p>The <code>kid_area</code> of the widget at the given index.</p>
+
+<p>Returns <code>None</code> if there is no widget for the given index.</p>
+</div><h4 id='method.maybe_prev_widget' class="method"><span id='maybe_prev_widget.v' class='invisible'><code>fn <a href='#method.maybe_prev_widget' class='fnname'>maybe_prev_widget</a>(&amp;self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../../petgraph/graph/struct.NodeIndex.html" title="struct petgraph::graph::NodeIndex">NodeIndex</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;&gt;</code></span></h4>
+<div class='docblock'><p>An index to the previously updated widget if there is one.</p>
+</div><h4 id='method.widget_graph' class="method"><span id='widget_graph.v' class='invisible'><code>fn <a href='#method.widget_graph' class='fnname'>widget_graph</a>(&amp;self) -&gt; &amp;<a class="struct" href="../../../../conrod/graph/struct.Graph.html" title="struct conrod::graph::Graph">Graph</a></code></span></h4>
+<div class='docblock'><p>Borrow the <strong>Ui</strong>&#39;s <code>widget_graph</code>.</p>
+</div><h4 id='method.updated_widgets' class="method"><span id='updated_widgets.v' class='invisible'><code>fn <a href='#method.updated_widgets' class='fnname'>updated_widgets</a>(&amp;self) -&gt; &amp;<a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html" title="struct std::collections::hash::set::HashSet">HashSet</a>&lt;<a class="struct" href="../../../../petgraph/graph/struct.NodeIndex.html" title="struct petgraph::graph::NodeIndex">NodeIndex</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;, <a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.RandomState.html" title="struct std::collections::hash::map::RandomState">RandomState</a>&gt;</code></span></h4>
+<div class='docblock'><p>Borrow the <strong>Ui</strong>&#39;s set of updated widgets.</p>
+
+<p>This set indicates which widgets have been instantiated since the beginning of the most
+recent <code>Ui::set_widgets</code> call.</p>
+</div><h4 id='method.prev_updated_widgets' class="method"><span id='prev_updated_widgets.v' class='invisible'><code>fn <a href='#method.prev_updated_widgets' class='fnname'>prev_updated_widgets</a>(&amp;self) -&gt; &amp;<a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/set/struct.HashSet.html" title="struct std::collections::hash::set::HashSet">HashSet</a>&lt;<a class="struct" href="../../../../petgraph/graph/struct.NodeIndex.html" title="struct petgraph::graph::NodeIndex">NodeIndex</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;, <a class="struct" href="https://doc.rust-lang.org/nightly/std/collections/hash/map/struct.RandomState.html" title="struct std::collections::hash::map::RandomState">RandomState</a>&gt;</code></span></h4>
+<div class='docblock'><p>Borrow the <strong>Ui</strong>&#39;s set of updated widgets.</p>
+
+<p>This set indicates which widgets have were instantiated during the previous call to
+<code>Ui::set_widgets</code>.</p>
+</div><h4 id='method.widget_id_generator' class="method"><span id='widget_id_generator.v' class='invisible'><code>fn <a href='#method.widget_id_generator' class='fnname'>widget_id_generator</a>(&amp;mut self) -&gt; <a class="struct" href="../../../../conrod/widget/id/struct.Generator.html" title="struct conrod::widget::id::Generator">Generator</a></code></span></h4>
+<div class='docblock'><p>Produces a type that may be used to generate new unique <code>widget::Id</code>s.</p>
+
+<p>See the <a href="../widget/id/struct.Generator.html"><strong>widget::id::Generator</strong></a> docs for details on
+how to use this correctly.</p>
+</div><h4 id='method.scroll_widget' class="method"><span id='scroll_widget.v' class='invisible'><code>fn <a href='#method.scroll_widget' class='fnname'>scroll_widget</a>(&amp;mut self, widget_id: <a class="struct" href="../../../../petgraph/graph/struct.NodeIndex.html" title="struct petgraph::graph::NodeIndex">NodeIndex</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;, offset: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>)</code></span></h4>
+<div class='docblock'><p>Scroll the widget at the given index by the given offset amount.</p>
+
+<p>The produced <code>Scroll</code> event will be applied upon the next call to <code>Ui::set_widgets</code>.</p>
+</div><h4 id='method.handle_event' class="method"><span id='handle_event.v' class='invisible'><code>fn <a href='#method.handle_event' class='fnname'>handle_event</a>(&amp;mut self, event: <a class="enum" href="../../../../conrod/event/enum.Input.html" title="enum conrod::event::Input">Input</a>)</code></span></h4>
+<div class='docblock'><p>Handle raw window events and update the <code>Ui</code> state accordingly.</p>
+
+<p>This occurs within several stages:</p>
+
+<ol>
+<li>Convert the user&#39;s given <code>event</code> to a <code>RawEvent</code> so that the <code>Ui</code> may use it.</li>
+<li>Interpret the <code>RawEvent</code> for higher-level <code>Event</code>s such as <code>DoubleClick</code>,
+<code>WidgetCapturesKeyboard</code>, etc.</li>
+<li>Update the <code>Ui</code>&#39;s <code>global_input</code> <code>State</code> accordingly, depending on the <code>RawEvent</code>.</li>
+<li>Store newly produced <code>event::Ui</code>s within the <code>global_input</code> so that they may be filtered
+and fed to <code>Widget</code>s next time <code>Ui::set_widget</code> is called.</li>
+</ol>
+
+<p>This method <em>drives</em> the <code>Ui</code> forward, and is what allows for using conrod&#39;s <code>Ui</code> with any
+window event stream.</p>
+
+<p>The given <code>event</code> must implement the <strong>ToRawEvent</strong> trait so that it can be converted to a
+<code>RawEvent</code> that can be used by the <code>Ui</code>.</p>
+</div><h4 id='method.calc_xy' class="method"><span id='calc_xy.v' class='invisible'><code>fn <a href='#method.calc_xy' class='fnname'>calc_xy</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; maybe_id: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../../petgraph/graph/struct.NodeIndex.html" title="struct petgraph::graph::NodeIndex">NodeIndex</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x_position: <a class="enum" href="../../../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y_position: <a class="enum" href="../../../../conrod/position/enum.Position.html" title="enum conrod::position::Position">Position</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dim: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; place_on_kid_area: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.f64.html">f64</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 2]</a></code></span></h4>
+<div class='docblock'><p>Get the centred xy coords for some given <code>Dimension</code>s, <code>Position</code> and alignment.</p>
+
+<p>If getting the xy for a specific widget, its <code>widget::Id</code> should be specified so that we
+can also consider the scroll offset of the scrollable parent widgets.</p>
+
+<p>The <code>place_on_kid_area</code> argument specifies whether or not <strong>Place</strong> <strong>Position</strong> variants
+should target a <strong>Widget</strong>&#39;s <code>kid_area</code>, or simply the <strong>Widget</strong>&#39;s total area.</p>
+</div><h4 id='method.set_widgets' class="method"><span id='set_widgets.v' class='invisible'><code>fn <a href='#method.set_widgets' class='fnname'>set_widgets</a>(&amp;mut self) -&gt; <a class="struct" href="../../../../conrod/ui/struct.UiCell.html" title="struct conrod::ui::UiCell">UiCell</a></code></span></h4>
+<div class='docblock'><p>A function within which all widgets are instantiated by the user, normally situated within
+the &quot;update&quot; stage of an event loop.</p>
+</div><h4 id='method.set_num_redraw_frames' class="method"><span id='set_num_redraw_frames.v' class='invisible'><code>fn <a href='#method.set_num_redraw_frames' class='fnname'>set_num_redraw_frames</a>(&amp;mut self, num_frames: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>)</code></span></h4>
+<div class='docblock'><p>Set the number of frames that the <code>Ui</code> should draw in the case that <code>needs_redraw</code> is
+called. The default is <code>3</code> (see the SAFE_REDRAW_COUNT docs for details).</p>
+</div><h4 id='method.needs_redraw' class="method"><span id='needs_redraw.v' class='invisible'><code>fn <a href='#method.needs_redraw' class='fnname'>needs_redraw</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>Tells the <code>Ui</code> that it needs to be re-draw everything. It does this by setting the redraw
+count to <code>num_redraw_frames</code>. See the docs for <code>set_num_redraw_frames</code>, SAFE_REDRAW_COUNT
+or <code>draw_if_changed</code> for more info on how/why the redraw count is used.</p>
+</div><h4 id='method.clear_with' class="method"><span id='clear_with.v' class='invisible'><code>fn <a href='#method.clear_with' class='fnname'>clear_with</a>(&amp;mut self, color: <a class="enum" href="../../../../conrod/color/enum.Color.html" title="enum conrod::color::Color">Color</a>)</code></span></h4>
+<div class='docblock'><p>The first of the <code>Primitivees</code> yielded by <code>Ui::draw</code> or <code>Ui::draw_if_changed</code> will always
+be a <code>Rectangle</code> the size of the window in which conrod is hosted.</p>
+
+<p>This method sets the colour with which this <code>Rectangle</code> is drawn (the default being
+<code>conrod::color::TRANSPARENT</code>.</p>
+</div><h4 id='method.draw' class="method"><span id='draw.v' class='invisible'><code>fn <a href='#method.draw' class='fnname'>draw</a>(&amp;mut self) -&gt; <a class="struct" href="../../../../conrod/render/struct.Primitives.html" title="struct conrod::render::Primitives">Primitives</a></code></span></h4>
+<div class='docblock'><p>Draw the <code>Ui</code> in it&#39;s current state.</p>
+
+<p>NOTE: If you don&#39;t need to redraw your conrod GUI every frame, it is recommended to use the
+<code>Ui::draw_if_changed</code> method instead.</p>
+</div><h4 id='method.draw_if_changed' class="method"><span id='draw_if_changed.v' class='invisible'><code>fn <a href='#method.draw_if_changed' class='fnname'>draw_if_changed</a>(&amp;mut self) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../../conrod/render/struct.Primitives.html" title="struct conrod::render::Primitives">Primitives</a>&gt;</code></span></h4>
+<div class='docblock'><p>Same as the <code>Ui::draw</code> method, but <em>only</em> draws if the <code>redraw_count</code> is greater than 0.</p>
+
+<p>The <code>redraw_count</code> is set to <code>SAFE_REDRAW_COUNT</code> whenever a <code>Widget</code> indicates that it
+needs to be re-drawn.</p>
+
+<p>It can also be triggered manually by the user using the <code>Ui::needs_redraw</code> method.</p>
+
+<p>This method is generally preferred over <code>Ui::draw</code> as it requires far less CPU usage, only
+redrawing to the screen if necessary.</p>
+
+<p>Note that when <code>Ui::needs_redraw</code> is triggered, it sets the <code>redraw_count</code> to 3 by default.
+This ensures that conrod is drawn to each buffer in the case that there is buffer swapping
+happening. Let us know if you need finer control over this and we&#39;ll expose a way for you
+to set the redraw count manually.</p>
+</div><h4 id='method.kids_bounding_box' class="method"><span id='kids_bounding_box.v' class='invisible'><code>fn <a href='#method.kids_bounding_box' class='fnname'>kids_bounding_box</a>(&amp;self, id: <a class="struct" href="../../../../petgraph/graph/struct.NodeIndex.html" title="struct petgraph::graph::NodeIndex">NodeIndex</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>&gt;</code></span></h4>
+<div class='docblock'><p>The <strong>Rect</strong> that bounds the kids of the widget with the given index.</p>
+</div><h4 id='method.visible_area' class="method"><span id='visible_area.v' class='invisible'><code>fn <a href='#method.visible_area' class='fnname'>visible_area</a>(&amp;self, id: <a class="struct" href="../../../../petgraph/graph/struct.NodeIndex.html" title="struct petgraph::graph::NodeIndex">NodeIndex</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt;) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../../../conrod/position/rect/struct.Rect.html" title="struct conrod::position::rect::Rect">Rect</a>&gt;</code></span></h4>
+<div class='docblock'><p>The <strong>Rect</strong> that represents the maximum fully visible area for the widget with the given
+index, including consideration of cropped scroll area.</p>
+
+<p>Otherwise, return None if the widget is not visible.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html" title="trait core::ops::Deref">Deref</a> for <a class="struct" href="../../../../fireplace_lib/handlers/render/conrod/struct.ConrodInstance.html" title="struct fireplace_lib::handlers::render::conrod::ConrodInstance">ConrodInstance</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../../src/fireplace_lib/handlers/render/conrod/renderer/instance.rs.html#150-156' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='associatedtype.Target' class="type"><span id='Target.t' class='invisible'><code>type <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html#associatedtype.Target' class="type">Target</a> = <a class="struct" href="../../../../conrod/ui/struct.Ui.html" title="struct conrod::ui::Ui">Ui</a></code></span></h4>
+<div class='docblock'><p>The resulting type after dereferencing</p>
+</div><h4 id='method.deref' class="method"><span id='deref.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Deref.html#tymethod.deref' class='fnname'>deref</a>(&amp;self) -&gt; &amp;<a class="struct" href="../../../../conrod/ui/struct.Ui.html" title="struct conrod::ui::Ui">Ui</a></code></span></h4>
+<div class='docblock'><p>The method called to dereference a value</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.DerefMut.html" title="trait core::ops::DerefMut">DerefMut</a> for <a class="struct" href="../../../../fireplace_lib/handlers/render/conrod/struct.ConrodInstance.html" title="struct fireplace_lib::handlers::render::conrod::ConrodInstance">ConrodInstance</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../../../src/fireplace_lib/handlers/render/conrod/renderer/instance.rs.html#158-162' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.deref_mut' class="method"><span id='deref_mut.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.DerefMut.html#tymethod.deref_mut' class='fnname'>deref_mut</a>(&amp;mut self) -&gt; &amp;mut <a class="struct" href="../../../../conrod/ui/struct.Ui.html" title="struct conrod::ui::Ui">Ui</a></code></span></h4>
+<div class='docblock'><p>The method called to mutably dereference a value</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../../../";
+        window.currentCrate = "fireplace_lib";
+    </script>
+    <script src="../../../../jquery.js"></script>
+    <script src="../../../../main.js"></script>
+    <script defer src="../../../../search-index.js"></script>
+</body>
+</html>

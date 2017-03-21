@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `egl` mod in crate `egli`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, egl">
+
+    <title>egli::egl - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>egli</a></p><script>window.sidebarCurrent = {name: 'egl', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>egli</a>::<wbr><a class="mod" href=''>egl</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/egli/egl/mod.rs.html#19-861' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>C-style lower level EGL wrapper with unsafety removed.</p>
+
+<p>Use these only if higher-level EGLI abstration is not enough, and you need to manage
+resource clanup manually.</p>
+</div><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_ALPHA_FORMAT.html"
+                                  title='constant egli::egl::EGL_ALPHA_FORMAT'>EGL_ALPHA_FORMAT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_ALPHA_FORMAT_NONPRE.html"
+                                  title='constant egli::egl::EGL_ALPHA_FORMAT_NONPRE'>EGL_ALPHA_FORMAT_NONPRE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_ALPHA_FORMAT_PRE.html"
+                                  title='constant egli::egl::EGL_ALPHA_FORMAT_PRE'>EGL_ALPHA_FORMAT_PRE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_ALPHA_MASK_SIZE.html"
+                                  title='constant egli::egl::EGL_ALPHA_MASK_SIZE'>EGL_ALPHA_MASK_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_ALPHA_SIZE.html"
+                                  title='constant egli::egl::EGL_ALPHA_SIZE'>EGL_ALPHA_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BACK_BUFFER.html"
+                                  title='constant egli::egl::EGL_BACK_BUFFER'>EGL_BACK_BUFFER</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BAD_ACCESS.html"
+                                  title='constant egli::egl::EGL_BAD_ACCESS'>EGL_BAD_ACCESS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BAD_ALLOC.html"
+                                  title='constant egli::egl::EGL_BAD_ALLOC'>EGL_BAD_ALLOC</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BAD_ATTRIBUTE.html"
+                                  title='constant egli::egl::EGL_BAD_ATTRIBUTE'>EGL_BAD_ATTRIBUTE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BAD_CONFIG.html"
+                                  title='constant egli::egl::EGL_BAD_CONFIG'>EGL_BAD_CONFIG</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BAD_CONTEXT.html"
+                                  title='constant egli::egl::EGL_BAD_CONTEXT'>EGL_BAD_CONTEXT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BAD_CURRENT_SURFACE.html"
+                                  title='constant egli::egl::EGL_BAD_CURRENT_SURFACE'>EGL_BAD_CURRENT_SURFACE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BAD_DISPLAY.html"
+                                  title='constant egli::egl::EGL_BAD_DISPLAY'>EGL_BAD_DISPLAY</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BAD_MATCH.html"
+                                  title='constant egli::egl::EGL_BAD_MATCH'>EGL_BAD_MATCH</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BAD_NATIVE_PIXMAP.html"
+                                  title='constant egli::egl::EGL_BAD_NATIVE_PIXMAP'>EGL_BAD_NATIVE_PIXMAP</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BAD_NATIVE_WINDOW.html"
+                                  title='constant egli::egl::EGL_BAD_NATIVE_WINDOW'>EGL_BAD_NATIVE_WINDOW</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BAD_PARAMETER.html"
+                                  title='constant egli::egl::EGL_BAD_PARAMETER'>EGL_BAD_PARAMETER</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BAD_SURFACE.html"
+                                  title='constant egli::egl::EGL_BAD_SURFACE'>EGL_BAD_SURFACE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BIND_TO_TEXTURE_RGB.html"
+                                  title='constant egli::egl::EGL_BIND_TO_TEXTURE_RGB'>EGL_BIND_TO_TEXTURE_RGB</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BIND_TO_TEXTURE_RGBA.html"
+                                  title='constant egli::egl::EGL_BIND_TO_TEXTURE_RGBA'>EGL_BIND_TO_TEXTURE_RGBA</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BLUE_SIZE.html"
+                                  title='constant egli::egl::EGL_BLUE_SIZE'>EGL_BLUE_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BUFFER_DESTROYED.html"
+                                  title='constant egli::egl::EGL_BUFFER_DESTROYED'>EGL_BUFFER_DESTROYED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BUFFER_PRESERVED.html"
+                                  title='constant egli::egl::EGL_BUFFER_PRESERVED'>EGL_BUFFER_PRESERVED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_BUFFER_SIZE.html"
+                                  title='constant egli::egl::EGL_BUFFER_SIZE'>EGL_BUFFER_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_CLIENT_APIS.html"
+                                  title='constant egli::egl::EGL_CLIENT_APIS'>EGL_CLIENT_APIS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_COLORSPACE.html"
+                                  title='constant egli::egl::EGL_COLORSPACE'>EGL_COLORSPACE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_COLORSPACE_LINEAR.html"
+                                  title='constant egli::egl::EGL_COLORSPACE_LINEAR'>EGL_COLORSPACE_LINEAR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_COLORSPACE_sRGB.html"
+                                  title='constant egli::egl::EGL_COLORSPACE_sRGB'>EGL_COLORSPACE_sRGB</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_COLOR_BUFFER_TYPE.html"
+                                  title='constant egli::egl::EGL_COLOR_BUFFER_TYPE'>EGL_COLOR_BUFFER_TYPE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_CONFIG_CAVEAT.html"
+                                  title='constant egli::egl::EGL_CONFIG_CAVEAT'>EGL_CONFIG_CAVEAT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_CONFIG_ID.html"
+                                  title='constant egli::egl::EGL_CONFIG_ID'>EGL_CONFIG_ID</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_CONFORMANT.html"
+                                  title='constant egli::egl::EGL_CONFORMANT'>EGL_CONFORMANT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_CONTEXT_CLIENT_TYPE.html"
+                                  title='constant egli::egl::EGL_CONTEXT_CLIENT_TYPE'>EGL_CONTEXT_CLIENT_TYPE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_CONTEXT_CLIENT_VERSION.html"
+                                  title='constant egli::egl::EGL_CONTEXT_CLIENT_VERSION'>EGL_CONTEXT_CLIENT_VERSION</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_CONTEXT_LOST.html"
+                                  title='constant egli::egl::EGL_CONTEXT_LOST'>EGL_CONTEXT_LOST</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_CORE_NATIVE_ENGINE.html"
+                                  title='constant egli::egl::EGL_CORE_NATIVE_ENGINE'>EGL_CORE_NATIVE_ENGINE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_DEFAULT_DISPLAY.html"
+                                  title='constant egli::egl::EGL_DEFAULT_DISPLAY'>EGL_DEFAULT_DISPLAY</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_DEPTH_SIZE.html"
+                                  title='constant egli::egl::EGL_DEPTH_SIZE'>EGL_DEPTH_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_DISPLAY_SCALING.html"
+                                  title='constant egli::egl::EGL_DISPLAY_SCALING'>EGL_DISPLAY_SCALING</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_DONT_CARE.html"
+                                  title='constant egli::egl::EGL_DONT_CARE'>EGL_DONT_CARE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_DRAW.html"
+                                  title='constant egli::egl::EGL_DRAW'>EGL_DRAW</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_EXTENSIONS.html"
+                                  title='constant egli::egl::EGL_EXTENSIONS'>EGL_EXTENSIONS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_FALSE.html"
+                                  title='constant egli::egl::EGL_FALSE'>EGL_FALSE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_GREEN_SIZE.html"
+                                  title='constant egli::egl::EGL_GREEN_SIZE'>EGL_GREEN_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_HEIGHT.html"
+                                  title='constant egli::egl::EGL_HEIGHT'>EGL_HEIGHT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_HORIZONTAL_RESOLUTION.html"
+                                  title='constant egli::egl::EGL_HORIZONTAL_RESOLUTION'>EGL_HORIZONTAL_RESOLUTION</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_LARGEST_PBUFFER.html"
+                                  title='constant egli::egl::EGL_LARGEST_PBUFFER'>EGL_LARGEST_PBUFFER</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_LEVEL.html"
+                                  title='constant egli::egl::EGL_LEVEL'>EGL_LEVEL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_LUMINANCE_BUFFER.html"
+                                  title='constant egli::egl::EGL_LUMINANCE_BUFFER'>EGL_LUMINANCE_BUFFER</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_LUMINANCE_SIZE.html"
+                                  title='constant egli::egl::EGL_LUMINANCE_SIZE'>EGL_LUMINANCE_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_MATCH_NATIVE_PIXMAP.html"
+                                  title='constant egli::egl::EGL_MATCH_NATIVE_PIXMAP'>EGL_MATCH_NATIVE_PIXMAP</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_MAX_PBUFFER_HEIGHT.html"
+                                  title='constant egli::egl::EGL_MAX_PBUFFER_HEIGHT'>EGL_MAX_PBUFFER_HEIGHT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_MAX_PBUFFER_PIXELS.html"
+                                  title='constant egli::egl::EGL_MAX_PBUFFER_PIXELS'>EGL_MAX_PBUFFER_PIXELS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_MAX_PBUFFER_WIDTH.html"
+                                  title='constant egli::egl::EGL_MAX_PBUFFER_WIDTH'>EGL_MAX_PBUFFER_WIDTH</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_MAX_SWAP_INTERVAL.html"
+                                  title='constant egli::egl::EGL_MAX_SWAP_INTERVAL'>EGL_MAX_SWAP_INTERVAL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_MIN_SWAP_INTERVAL.html"
+                                  title='constant egli::egl::EGL_MIN_SWAP_INTERVAL'>EGL_MIN_SWAP_INTERVAL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_MIPMAP_LEVEL.html"
+                                  title='constant egli::egl::EGL_MIPMAP_LEVEL'>EGL_MIPMAP_LEVEL</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_MIPMAP_TEXTURE.html"
+                                  title='constant egli::egl::EGL_MIPMAP_TEXTURE'>EGL_MIPMAP_TEXTURE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_MULTISAMPLE_RESOLVE.html"
+                                  title='constant egli::egl::EGL_MULTISAMPLE_RESOLVE'>EGL_MULTISAMPLE_RESOLVE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_MULTISAMPLE_RESOLVE_BOX.html"
+                                  title='constant egli::egl::EGL_MULTISAMPLE_RESOLVE_BOX'>EGL_MULTISAMPLE_RESOLVE_BOX</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_MULTISAMPLE_RESOLVE_DEFAULT.html"
+                                  title='constant egli::egl::EGL_MULTISAMPLE_RESOLVE_DEFAULT'>EGL_MULTISAMPLE_RESOLVE_DEFAULT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_NATIVE_RENDERABLE.html"
+                                  title='constant egli::egl::EGL_NATIVE_RENDERABLE'>EGL_NATIVE_RENDERABLE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_NATIVE_VISUAL_ID.html"
+                                  title='constant egli::egl::EGL_NATIVE_VISUAL_ID'>EGL_NATIVE_VISUAL_ID</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_NATIVE_VISUAL_TYPE.html"
+                                  title='constant egli::egl::EGL_NATIVE_VISUAL_TYPE'>EGL_NATIVE_VISUAL_TYPE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_NONE.html"
+                                  title='constant egli::egl::EGL_NONE'>EGL_NONE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_NON_CONFORMANT_CONFIG.html"
+                                  title='constant egli::egl::EGL_NON_CONFORMANT_CONFIG'>EGL_NON_CONFORMANT_CONFIG</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_NOT_INITIALIZED.html"
+                                  title='constant egli::egl::EGL_NOT_INITIALIZED'>EGL_NOT_INITIALIZED</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_NO_CONTEXT.html"
+                                  title='constant egli::egl::EGL_NO_CONTEXT'>EGL_NO_CONTEXT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_NO_DISPLAY.html"
+                                  title='constant egli::egl::EGL_NO_DISPLAY'>EGL_NO_DISPLAY</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_NO_SURFACE.html"
+                                  title='constant egli::egl::EGL_NO_SURFACE'>EGL_NO_SURFACE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_NO_TEXTURE.html"
+                                  title='constant egli::egl::EGL_NO_TEXTURE'>EGL_NO_TEXTURE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_OPENGL_API.html"
+                                  title='constant egli::egl::EGL_OPENGL_API'>EGL_OPENGL_API</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_OPENGL_ES_API.html"
+                                  title='constant egli::egl::EGL_OPENGL_ES_API'>EGL_OPENGL_ES_API</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_OPENVG_API.html"
+                                  title='constant egli::egl::EGL_OPENVG_API'>EGL_OPENVG_API</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_OPENVG_IMAGE.html"
+                                  title='constant egli::egl::EGL_OPENVG_IMAGE'>EGL_OPENVG_IMAGE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_PIXEL_ASPECT_RATIO.html"
+                                  title='constant egli::egl::EGL_PIXEL_ASPECT_RATIO'>EGL_PIXEL_ASPECT_RATIO</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_READ.html"
+                                  title='constant egli::egl::EGL_READ'>EGL_READ</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_RED_SIZE.html"
+                                  title='constant egli::egl::EGL_RED_SIZE'>EGL_RED_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_RENDERABLE_TYPE.html"
+                                  title='constant egli::egl::EGL_RENDERABLE_TYPE'>EGL_RENDERABLE_TYPE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_RENDER_BUFFER.html"
+                                  title='constant egli::egl::EGL_RENDER_BUFFER'>EGL_RENDER_BUFFER</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_RGB_BUFFER.html"
+                                  title='constant egli::egl::EGL_RGB_BUFFER'>EGL_RGB_BUFFER</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_SAMPLES.html"
+                                  title='constant egli::egl::EGL_SAMPLES'>EGL_SAMPLES</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_SAMPLE_BUFFERS.html"
+                                  title='constant egli::egl::EGL_SAMPLE_BUFFERS'>EGL_SAMPLE_BUFFERS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_SINGLE_BUFFER.html"
+                                  title='constant egli::egl::EGL_SINGLE_BUFFER'>EGL_SINGLE_BUFFER</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_SLOW_CONFIG.html"
+                                  title='constant egli::egl::EGL_SLOW_CONFIG'>EGL_SLOW_CONFIG</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_STENCIL_SIZE.html"
+                                  title='constant egli::egl::EGL_STENCIL_SIZE'>EGL_STENCIL_SIZE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_SUCCESS.html"
+                                  title='constant egli::egl::EGL_SUCCESS'>EGL_SUCCESS</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_SURFACE_TYPE.html"
+                                  title='constant egli::egl::EGL_SURFACE_TYPE'>EGL_SURFACE_TYPE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_SWAP_BEHAVIOR.html"
+                                  title='constant egli::egl::EGL_SWAP_BEHAVIOR'>EGL_SWAP_BEHAVIOR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_TEXTURE_2D.html"
+                                  title='constant egli::egl::EGL_TEXTURE_2D'>EGL_TEXTURE_2D</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_TEXTURE_FORMAT.html"
+                                  title='constant egli::egl::EGL_TEXTURE_FORMAT'>EGL_TEXTURE_FORMAT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_TEXTURE_RGB.html"
+                                  title='constant egli::egl::EGL_TEXTURE_RGB'>EGL_TEXTURE_RGB</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_TEXTURE_RGBA.html"
+                                  title='constant egli::egl::EGL_TEXTURE_RGBA'>EGL_TEXTURE_RGBA</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_TEXTURE_TARGET.html"
+                                  title='constant egli::egl::EGL_TEXTURE_TARGET'>EGL_TEXTURE_TARGET</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_TRANSPARENT_BLUE_VALUE.html"
+                                  title='constant egli::egl::EGL_TRANSPARENT_BLUE_VALUE'>EGL_TRANSPARENT_BLUE_VALUE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_TRANSPARENT_GREEN_VALUE.html"
+                                  title='constant egli::egl::EGL_TRANSPARENT_GREEN_VALUE'>EGL_TRANSPARENT_GREEN_VALUE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_TRANSPARENT_RED_VALUE.html"
+                                  title='constant egli::egl::EGL_TRANSPARENT_RED_VALUE'>EGL_TRANSPARENT_RED_VALUE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_TRANSPARENT_RGB.html"
+                                  title='constant egli::egl::EGL_TRANSPARENT_RGB'>EGL_TRANSPARENT_RGB</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_TRANSPARENT_TYPE.html"
+                                  title='constant egli::egl::EGL_TRANSPARENT_TYPE'>EGL_TRANSPARENT_TYPE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_TRUE.html"
+                                  title='constant egli::egl::EGL_TRUE'>EGL_TRUE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_UNKNOWN.html"
+                                  title='constant egli::egl::EGL_UNKNOWN'>EGL_UNKNOWN</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_VENDOR.html"
+                                  title='constant egli::egl::EGL_VENDOR'>EGL_VENDOR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_VERSION.html"
+                                  title='constant egli::egl::EGL_VERSION'>EGL_VERSION</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_VERTICAL_RESOLUTION.html"
+                                  title='constant egli::egl::EGL_VERTICAL_RESOLUTION'>EGL_VERTICAL_RESOLUTION</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_VG_ALPHA_FORMAT.html"
+                                  title='constant egli::egl::EGL_VG_ALPHA_FORMAT'>EGL_VG_ALPHA_FORMAT</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_VG_ALPHA_FORMAT_NONPRE.html"
+                                  title='constant egli::egl::EGL_VG_ALPHA_FORMAT_NONPRE'>EGL_VG_ALPHA_FORMAT_NONPRE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_VG_ALPHA_FORMAT_PRE.html"
+                                  title='constant egli::egl::EGL_VG_ALPHA_FORMAT_PRE'>EGL_VG_ALPHA_FORMAT_PRE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_VG_COLORSPACE.html"
+                                  title='constant egli::egl::EGL_VG_COLORSPACE'>EGL_VG_COLORSPACE</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_VG_COLORSPACE_LINEAR.html"
+                                  title='constant egli::egl::EGL_VG_COLORSPACE_LINEAR'>EGL_VG_COLORSPACE_LINEAR</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_VG_COLORSPACE_sRGB.html"
+                                  title='constant egli::egl::EGL_VG_COLORSPACE_sRGB'>EGL_VG_COLORSPACE_sRGB</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.EGL_WIDTH.html"
+                                  title='constant egli::egl::EGL_WIDTH'>EGL_WIDTH</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.bind_api.html"
+                                  title='fn egli::egl::bind_api'>bind_api</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.2]</code> Set the current rendering API.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.bind_tex_image.html"
+                                  title='fn egli::egl::bind_tex_image'>bind_tex_image</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.1]</code> Defines a two-dimensional texture image.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.copy_buffers.html"
+                                  title='fn egli::egl::copy_buffers'>copy_buffers</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Copy EGL surface color buffer to a native pixmap.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.create_context.html"
+                                  title='fn egli::egl::create_context'>create_context</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Create a new EGL rendering context.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.create_context_with_attribs.html"
+                                  title='fn egli::egl::create_context_with_attribs'>create_context_with_attribs</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Create a new EGL rendering context.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.create_pbuffer_from_client_buffer.html"
+                                  title='fn egli::egl::create_pbuffer_from_client_buffer'>create_pbuffer_from_client_buffer</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.2]</code> Create a new EGL pixel buffer surface bound to an OpenVG image.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.create_pbuffer_surface.html"
+                                  title='fn egli::egl::create_pbuffer_surface'>create_pbuffer_surface</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Create a new EGL pixel buffer surface.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.create_pixmap_surface.html"
+                                  title='fn egli::egl::create_pixmap_surface'>create_pixmap_surface</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Create a new EGL pixmap surface.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.create_window_surface.html"
+                                  title='fn egli::egl::create_window_surface'>create_window_surface</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Create a new EGL window surface.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.create_window_surface_with_attribs.html"
+                                  title='fn egli::egl::create_window_surface_with_attribs'>create_window_surface_with_attribs</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Create a new EGL window surface.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.destroy_context.html"
+                                  title='fn egli::egl::destroy_context'>destroy_context</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Destroy an EGL rendering context.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.destroy_surface.html"
+                                  title='fn egli::egl::destroy_surface'>destroy_surface</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Destroy an EGL surface.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_config_attrib.html"
+                                  title='fn egli::egl::get_config_attrib'>get_config_attrib</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Return information about an EGL frame buffer configuration.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_configs.html"
+                                  title='fn egli::egl::get_configs'>get_configs</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Return a list of all EGL frame buffer configurations for a display.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_current_context.html"
+                                  title='fn egli::egl::get_current_context'>get_current_context</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.4]</code> Return the current EGL rendering context.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_current_display.html"
+                                  title='fn egli::egl::get_current_display'>get_current_display</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Return the display for the current EGL rendering context.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_current_surface.html"
+                                  title='fn egli::egl::get_current_surface'>get_current_surface</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Return the read or draw surface for the current EGL rendering context.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_display.html"
+                                  title='fn egli::egl::get_display'>get_display</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Return an EGL display connection.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_error.html"
+                                  title='fn egli::egl::get_error'>get_error</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Return error information.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_filtered_configs.html"
+                                  title='fn egli::egl::get_filtered_configs'>get_filtered_configs</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Return a list of EGL frame buffer configurations that match specified attributes.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_proc_address.html"
+                                  title='fn egli::egl::get_proc_address'>get_proc_address</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Return a GL or an EGL extension function.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.initialize.html"
+                                  title='fn egli::egl::initialize'>initialize</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Initialize an EGL display connection.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.initialize_and_get_version.html"
+                                  title='fn egli::egl::initialize_and_get_version'>initialize_and_get_version</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Initialize an EGL display connection and get EGL version.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.make_current.html"
+                                  title='fn egli::egl::make_current'>make_current</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Attach an EGL rendering context to EGL surfaces.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.num_configs.html"
+                                  title='fn egli::egl::num_configs'>num_configs</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Return the total number of all available display configs.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.num_filtered_configs.html"
+                                  title='fn egli::egl::num_filtered_configs'>num_filtered_configs</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Return the total number of display configs that match specified attributes.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.query_api.html"
+                                  title='fn egli::egl::query_api'>query_api</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.2]</code> Query the current rendering API.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.query_context.html"
+                                  title='fn egli::egl::query_context'>query_context</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Return EGL rendering context information.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.query_string.html"
+                                  title='fn egli::egl::query_string'>query_string</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Return a string describing an EGL display connection.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.query_surface.html"
+                                  title='fn egli::egl::query_surface'>query_surface</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Return EGL surface information.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.release_tex_image.html"
+                                  title='fn egli::egl::release_tex_image'>release_tex_image</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.1]</code> Releases a color buffer that is being used as a texture.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.release_thread.html"
+                                  title='fn egli::egl::release_thread'>release_thread</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.2]</code> Release EGL per-thread state.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.surface_attrib.html"
+                                  title='fn egli::egl::surface_attrib'>surface_attrib</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.1]</code> Set an EGL surface attribute.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.swap_buffers.html"
+                                  title='fn egli::egl::swap_buffers'>swap_buffers</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Post EGL surface color buffer to a native window.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.swap_interval.html"
+                                  title='fn egli::egl::swap_interval'>swap_interval</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.1]</code> Specifies the minimum number of video frame periods per buffer swap for the window
+associated with the current context.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.terminate.html"
+                                  title='fn egli::egl::terminate'>terminate</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Terminate an EGL display connection.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wait_client.html"
+                                  title='fn egli::egl::wait_client'>wait_client</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.2]</code> Complete client API execution prior to subsequent native rendering calls.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wait_gl.html"
+                                  title='fn egli::egl::wait_gl'>wait_gl</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Complete GL execution prior to subsequent native rendering calls.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.wait_native.html"
+                                  title='fn egli::egl::wait_native'>wait_native</a></td>
+                           <td class='docblock-short'>
+                                <p><code>[EGL 1.0]</code> Complete native execution prior to subsequent GL rendering calls.</p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.EGLBoolean.html"
+                                  title='type egli::egl::EGLBoolean'>EGLBoolean</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.EGLClientBuffer.html"
+                                  title='type egli::egl::EGLClientBuffer'>EGLClientBuffer</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.EGLConfig.html"
+                                  title='type egli::egl::EGLConfig'>EGLConfig</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.EGLContext.html"
+                                  title='type egli::egl::EGLContext'>EGLContext</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.EGLDisplay.html"
+                                  title='type egli::egl::EGLDisplay'>EGLDisplay</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.EGLNativeDisplayType.html"
+                                  title='type egli::egl::EGLNativeDisplayType'>EGLNativeDisplayType</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.EGLNativePixmapType.html"
+                                  title='type egli::egl::EGLNativePixmapType'>EGLNativePixmapType</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.EGLNativeWindowType.html"
+                                  title='type egli::egl::EGLNativeWindowType'>EGLNativeWindowType</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.EGLSurface.html"
+                                  title='type egli::egl::EGLSurface'>EGLSurface</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.EGLenum.html"
+                                  title='type egli::egl::EGLenum'>EGLenum</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.EGLint.html"
+                                  title='type egli::egl::EGLint'>EGLint</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "egli";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

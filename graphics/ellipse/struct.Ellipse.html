@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Ellipse` struct in crate `graphics`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Ellipse">
+
+    <title>graphics::ellipse::Ellipse - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>graphics</a>::<wbr><a href='index.html'>ellipse</a></p><script>window.sidebarCurrent = {name: 'Ellipse', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>graphics</a>::<wbr><a href='index.html'>ellipse</a>::<wbr><a class="struct" href=''>Ellipse</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/graphics/ellipse.rs.html#21-28' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Ellipse {
+    pub color: <a class="type" href="../../graphics/types/type.Color.html" title="type graphics::types::Color">Color</a>,
+    pub border: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../graphics/ellipse/struct.Border.html" title="struct graphics::ellipse::Border">Border</a>&gt;,
+    pub resolution: <a class="type" href="../../graphics/types/type.Resolution.html" title="type graphics::types::Resolution">Resolution</a>,
+}</pre><div class='docblock'><p>An ellipse with filled color</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.color' class="structfield">
+                           <span id='color.v' class='invisible'>
+                           <code>color: <a class="type" href="../../graphics/types/type.Color.html" title="type graphics::types::Color">Color</a></code>
+                           </span></span><div class='docblock'><p>The ellipse color</p>
+</div><span id='structfield.border' class="structfield">
+                           <span id='border.v' class='invisible'>
+                           <code>border: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../graphics/ellipse/struct.Border.html" title="struct graphics::ellipse::Border">Border</a>&gt;</code>
+                           </span></span><div class='docblock'><p>The ellipse border</p>
+</div><span id='structfield.resolution' class="structfield">
+                           <span id='resolution.v' class='invisible'>
+                           <code>resolution: <a class="type" href="../../graphics/types/type.Resolution.html" title="type graphics::types::Resolution">Resolution</a></code>
+                           </span></span><div class='docblock'><p>The resolution for the shape, 360 degrees.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../graphics/ellipse/struct.Ellipse.html" title="struct graphics::ellipse::Ellipse">Ellipse</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/graphics/ellipse.rs.html#30-129' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>(color: <a class="type" href="../../graphics/types/type.Color.html" title="type graphics::types::Color">Color</a>) -&gt; <a class="struct" href="../../graphics/ellipse/struct.Ellipse.html" title="struct graphics::ellipse::Ellipse">Ellipse</a></code></span></h4>
+<div class='docblock'><p>Creates a new ellipse</p>
+</div><h4 id='method.new_border' class="method"><span id='new_border.v' class='invisible'><code>fn <a href='#method.new_border' class='fnname'>new_border</a>(color: <a class="type" href="../../graphics/types/type.Color.html" title="type graphics::types::Color">Color</a>, radius: <a class="type" href="../../graphics/types/type.Radius.html" title="type graphics::types::Radius">Radius</a>) -&gt; <a class="struct" href="../../graphics/ellipse/struct.Ellipse.html" title="struct graphics::ellipse::Ellipse">Ellipse</a></code></span></h4>
+<div class='docblock'><p>Creates a new ellipse border</p>
+</div><h4 id='method.color' class="method"><span id='color.v-1' class='invisible'><code>fn <a href='#method.color' class='fnname'>color</a>(self, value: <a class="type" href="../../graphics/types/type.Color.html" title="type graphics::types::Color">Color</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets ellipse color.</p>
+</div><h4 id='method.border' class="method"><span id='border.v-1' class='invisible'><code>fn <a href='#method.border' class='fnname'>border</a>(self, value: <a class="struct" href="../../graphics/ellipse/struct.Border.html" title="struct graphics::ellipse::Border">Border</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets ellipse border.</p>
+</div><h4 id='method.maybe_border' class="method"><span id='maybe_border.v' class='invisible'><code>fn <a href='#method.maybe_border' class='fnname'>maybe_border</a>(self, value: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../graphics/ellipse/struct.Border.html" title="struct graphics::ellipse::Border">Border</a>&gt;) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets optional ellipse border.</p>
+</div><h4 id='method.resolution' class="method"><span id='resolution.v-1' class='invisible'><code>fn <a href='#method.resolution' class='fnname'>resolution</a>(self, value: <a class="type" href="../../graphics/types/type.Resolution.html" title="type graphics::types::Resolution">Resolution</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Sets resolution of the ellipse smoothness.</p>
+</div><h4 id='method.draw' class="method"><span id='draw.v' class='invisible'><code>fn <a href='#method.draw' class='fnname'>draw</a>&lt;R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="type" href="../../graphics/types/type.Rectangle.html" title="type graphics::types::Rectangle">Rectangle</a>&gt;, G&gt;(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rectangle: R,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; draw_state: &amp;<a class="struct" href="../../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transform: <a class="type" href="../../graphics/math/type.Matrix2d.html" title="type graphics::math::Matrix2d">Matrix2d</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g: &amp;mut G) <span class="where fmt-newline">where G: <a class="trait" href="../../graphics/trait.Graphics.html" title="trait graphics::Graphics">Graphics</a></span></code></span></h4>
+<div class='docblock'><p>Draws ellipse using default method.</p>
+</div><h4 id='method.draw_tri' class="method"><span id='draw_tri.v' class='invisible'><code>fn <a href='#method.draw_tri' class='fnname'>draw_tri</a>&lt;R:&nbsp;<a class="trait" href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="type" href="../../graphics/types/type.Rectangle.html" title="type graphics::types::Rectangle">Rectangle</a>&gt;, G&gt;(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rectangle: R,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; draw_state: &amp;<a class="struct" href="../../graphics/draw_state/struct.DrawState.html" title="struct graphics::draw_state::DrawState">DrawState</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transform: <a class="type" href="../../graphics/math/type.Matrix2d.html" title="type graphics::math::Matrix2d">Matrix2d</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g: &amp;mut G) <span class="where fmt-newline">where G: <a class="trait" href="../../graphics/trait.Graphics.html" title="trait graphics::Graphics">Graphics</a></span></code></span></h4>
+<div class='docblock'><p>Draws ellipse using triangulation.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="../../graphics/trait.Colored.html" title="trait graphics::Colored">Colored</a> for <a class="struct" href="../../graphics/ellipse/struct.Ellipse.html" title="struct graphics::ellipse::Ellipse">Ellipse</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/graphics/colored.rs.html#83-101' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.mul_rgba' class="method"><span id='mul_rgba.v' class='invisible'><code>fn <a href='../../graphics/trait.Colored.html#tymethod.mul_rgba' class='fnname'>mul_rgba</a>(self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; r: <a class="type" href="../../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; g: <a class="type" href="../../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b: <a class="type" href="../../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a: <a class="type" href="../../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; Self</code></span></h4>
+<div class='docblock'><p>Multiplies with red, green, blue and alpha values.</p>
+</div><h4 id='method.hue_rad' class="method"><span id='hue_rad.v' class='invisible'><code>fn <a href='../../graphics/trait.Colored.html#tymethod.hue_rad' class='fnname'>hue_rad</a>(self, angle: <a class="type" href="../../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Rotates hue by radians.</p>
+</div><h4 id='method.tint' class="method"><span id='tint.v' class='invisible'><code>fn <a href='../../graphics/trait.Colored.html#method.tint' class='fnname'>tint</a>(self, f: <a class="type" href="../../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Mixes the current color with white. <a href="../../graphics/trait.Colored.html#method.tint">Read more</a></p>
+</div><h4 id='method.shade' class="method"><span id='shade.v' class='invisible'><code>fn <a href='../../graphics/trait.Colored.html#method.shade' class='fnname'>shade</a>(self, f: <a class="type" href="../../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Mixes the current color with black. <a href="../../graphics/trait.Colored.html#method.shade">Read more</a></p>
+</div><h4 id='method.hue_deg' class="method"><span id='hue_deg.v' class='invisible'><code>fn <a href='../../graphics/trait.Colored.html#method.hue_deg' class='fnname'>hue_deg</a>(self, angle: <a class="type" href="../../graphics/types/type.ColorComponent.html" title="type graphics::types::ColorComponent">ColorComponent</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>Rotates hue by degrees.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Copy.html" title="trait core::marker::Copy">Copy</a> for <a class="struct" href="../../graphics/ellipse/struct.Ellipse.html" title="struct graphics::ellipse::Ellipse">Ellipse</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/graphics/ellipse.rs.html#20' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="../../graphics/ellipse/struct.Ellipse.html" title="struct graphics::ellipse::Ellipse">Ellipse</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/graphics/ellipse.rs.html#20' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class="method"><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class="struct" href="../../graphics/ellipse/struct.Ellipse.html" title="struct graphics::ellipse::Ellipse">Ellipse</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class="method"><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "graphics";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

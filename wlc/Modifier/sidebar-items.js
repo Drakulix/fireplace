@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["Alt","Alternative Function Key"],["Caps","Caps Key"],["Ctrl","Control Key"],["Logo","Logo (Forth) Modifier (Windows/Command Key)"],["Mod2","Second Modifier"],["Mod3","Third Modifier"],["Mod5","Fifth Modifier"],["Shift","Shift Key"]],"struct":[["Flags","Bitmap that may represent multiple modifiers"]]});

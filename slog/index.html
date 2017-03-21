@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `slog` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, slog">
+
+    <title>slog - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'slog', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class="mod" href=''>slog</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/slog/lib.rs.html#1-814' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'>
+<h1 id='slog----structured-extensible-composable-logging-for-rust' class='section-header'><a href='#slog----structured-extensible-composable-logging-for-rust'>Slog -  Structured, extensible, composable logging for Rust</a></h1>
+<h2 id='features' class='section-header'><a href='#features'>Features</a></h2>
+<ul>
+<li>easy to use</li>
+<li>great performance; see: <a href="https://github.com/dpc/slog-rs/wiki/Bench-log">slog bench log</a></li>
+<li><code>#![no_std]</code> support (with opt-out <code>std</code> cargo feature flag)</li>
+<li>hierarchical loggers</li>
+<li>lazily evaluated values</li>
+<li>modular, lightweight and very extensible
+
+<ul>
+<li>tiny core crate that does not pull any dependencies</li>
+<li>feature-crates for specific functionality</li>
+</ul></li>
+<li>backward compatibility for standard <code>log</code> crate (<code>slog-stdlog</code> crate)
+
+<ul>
+<li>supports logging-scopes</li>
+<li>using slog in library does not force users of the library to use slog
+(but gives benefits); see <code>crates/example-lib</code></li>
+</ul></li>
+<li>drains &amp; output formatting
+
+<ul>
+<li>filtering
+
+<ul>
+<li>compile-time log level filter using cargo features (same as in <code>log</code> crate)</li>
+<li>by level, msg, and any other meta-data</li>
+<li><a href="https://github.com/slog-rs/envlogger"><code>slog-envlogger</code></a> - port of <code>env_logger</code></li>
+</ul></li>
+<li>multiple outputs</li>
+<li>asynchronous IO writing</li>
+<li>terminal output, with color support (<code>slog-term</code> crate)</li>
+<li>Json (<code>slog-json</code> crate)
+
+<ul>
+<li>Bunyan (<code>slog-bunyan</code> crate)</li>
+</ul></li>
+<li>syslog (<code>slog-syslog</code> crate)</li>
+<li>first class custom drains</li>
+</ul></li>
+</ul>
+
+<h2 id='advantages-over-log-crate' class='section-header'><a href='#advantages-over-log-crate'>Advantages over <code>log</code> crate</a></h2>
+<ul>
+<li><strong>extensible</strong> - <code>slog</code> provides core functionality, and some standard
+feature-set. But using traits, anyone can easily implement as
+powerful fully-custom features, publish separately and grow <code>slog</code> feature-set
+for everyone.</li>
+<li><strong>composable</strong> - Wouldn&#39;t it be nice if you could use
+<a href="https://crates.io/crates/env_logger"><code>env_logger</code></a>, but output authentication messages to syslog,
+while reporting errors over network in json format? With <code>slog</code> drains can
+reuse other drains! You can combine them together, chain, wrap - you name it.</li>
+<li><strong>context aware</strong> - It&#39;s not just one global logger. Hierarchical
+loggers carry information about context of logging. When logging an error
+condition, you want to know which resource was being handled, on which
+instance of your service, using which source code build, talking with what
+peer, etc. In standard <code>log</code> you would have to repeat this information in
+every log statement. In <code>slog</code> it will happen automatically. See
+<a href="https://github.com/dpc/slog-rs/wiki/Functional-overview">slog-rs functional overview page</a> to understand better
+logger and drain hierarchies and log record flow through them.</li>
+<li>both <strong>human and machine readable</strong> - By keeping the key-value data format,
+meaning of logging data is preserved. Dump your logging to a JSON file, and
+send it to your data-mining system for further analysis. Don&#39;t parse it from
+lines of text anymore!</li>
+<li><strong>lazy evaluation</strong> and <strong>asynchronous IO</strong> included. Waiting to
+finish writing logging information to disk, or spending time calculating
+data that will be thrown away at the current logging level, are sources of big
+performance waste. Use <code>AsyncStreamer</code> drain, and closures to make your logging fast.</li>
+<li><strong>run-time configuration</strong> - <a href="https://docs.rs/slog-atomic/0.4.3/slog_atomic/"><code>AtomicSwitch</code></a> drain allows
+changing logging behavior in the running program. You could use eg. signal
+handlers to change logging level or logging destinations. See
+<a href="https://github.com/slog-rs/misc/blob/master/examples/signal.rs"><code>signal</code> example</a>.</li>
+</ul>
+
+<h2 id='notable-details' class='section-header'><a href='#notable-details'>Notable details</a></h2>
+<p><code>slog</code> by default removes at compile time trace and debug level statements
+in release builds, and trace level records in debug builds. This makes
+<code>trace</code> and <code>debug</code> level logging records practically free, which should
+encourage using them freely. If you want to enable trace/debug messages
+or raise the compile time logging level limit, use the following in your
+<code>Cargo.toml</code>:</p>
+
+<pre><code class="language-norust">slog = { version = &quot;1.2&quot;, features = [&quot;max_level_trace&quot;, &quot;release_max_level_warn&quot;] }
+</code></pre>
+
+<p>Due to the <code>macro_rules</code> limitation log macros syntax comes in several
+versions. See <code>log!</code> macro, and pay attention to <code>;</code> and <code>,</code>
+details.</p>
+
+<p>Root drain (passed to <code>Logger::root</code>) must be one that does not ever
+return errors, which forces user to pick error handing strategy. You
+can use <code>.fuse()</code> or <code>.ignore_err()</code> methods from <code>DrainExt</code> to do
+it conveniently.</p>
+
+<h2 id='examples--help' class='section-header'><a href='#examples--help'>Examples &amp; help</a></h2>
+<p>Look at <a href="https://github.com/slog-rs/misc/tree/master/examples">slog-rs examples in <code>slog-misc</code>
+repository</a></p>
+
+<p>Read <a href="https://github.com/slog-rs/slog/wiki">slog-rs wiki pages</a></p>
+
+<p>Check sources of other <a href="https://crates.io/crates/slog/reverse_dependencies">software using
+slog-rs</a></p>
+
+<p>Visit <a href="https://gitter.im/slog-rs/slog">slog-rs gitter channel</a> for immediate help.</p>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use ser::<a class="struct" href="../slog/ser/struct.PushLazy.html" title="struct slog::ser::PushLazy">PushLazy</a>;</code></td></tr><tr><td><code>pub use ser::<a class="struct" href="../slog/ser/struct.ValueSerializer.html" title="struct slog::ser::ValueSerializer">ValueSerializer</a>;</code></td></tr><tr><td><code>pub use ser::<a class="trait" href="../slog/ser/trait.Serializer.html" title="trait slog::ser::Serializer">Serializer</a>;</code></td></tr><tr><td><code>pub use ser::<a class="trait" href="../slog/ser/trait.Serialize.html" title="trait slog::ser::Serialize">Serialize</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="ser/index.html"
+                                  title='mod slog::ser'>ser</a></td>
+                           <td class='docblock-short'>
+                                <p>Serialization</p>
+                           </td>
+                       </tr></table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.crit.html"
+                                  title='macro slog::crit'>crit</a></td>
+                           <td class='docblock-short'>
+                                <p>Log critical level record</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.debug.html"
+                                  title='macro slog::debug'>debug</a></td>
+                           <td class='docblock-short'>
+                                <p>Log debug level record</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.error.html"
+                                  title='macro slog::error'>error</a></td>
+                           <td class='docblock-short'>
+                                <p>Log error level record</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.info.html"
+                                  title='macro slog::info'>info</a></td>
+                           <td class='docblock-short'>
+                                <p>Log info level record</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.log.html"
+                                  title='macro slog::log'>log</a></td>
+                           <td class='docblock-short'>
+                                <p>Log message of a given level</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.o.html"
+                                  title='macro slog::o'>o</a></td>
+                           <td class='docblock-short'>
+                                <p>Convenience macro for building <code>SyncMultiSerialize</code> trait object</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.slog_crit.html"
+                                  title='macro slog::slog_crit'>slog_crit</a></td>
+                           <td class='docblock-short'>
+                                <p>Log critical level record (alias)</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.slog_debug.html"
+                                  title='macro slog::slog_debug'>slog_debug</a></td>
+                           <td class='docblock-short'>
+                                <p>Log debug level record (alias)</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.slog_error.html"
+                                  title='macro slog::slog_error'>slog_error</a></td>
+                           <td class='docblock-short'>
+                                <p>Log error level record</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.slog_info.html"
+                                  title='macro slog::slog_info'>slog_info</a></td>
+                           <td class='docblock-short'>
+                                <p>Log info level record (alias)</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.slog_log.html"
+                                  title='macro slog::slog_log'>slog_log</a></td>
+                           <td class='docblock-short'>
+                                <p>Log message of a given level (alias)</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.slog_o.html"
+                                  title='macro slog::slog_o'>slog_o</a></td>
+                           <td class='docblock-short'>
+                                <p>An alternative, longer-name version of <code>o</code> macro</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.slog_trace.html"
+                                  title='macro slog::slog_trace'>slog_trace</a></td>
+                           <td class='docblock-short'>
+                                <p>Log trace level record (alias)</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.slog_warn.html"
+                                  title='macro slog::slog_warn'>slog_warn</a></td>
+                           <td class='docblock-short'>
+                                <p>Log warning level record (alias)</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.trace.html"
+                                  title='macro slog::trace'>trace</a></td>
+                           <td class='docblock-short'>
+                                <p>Log trace level record</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="macro" href="macro.warn.html"
+                                  title='macro slog::warn'>warn</a></td>
+                           <td class='docblock-short'>
+                                <p>Log warning level record</p>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Discard.html"
+                                  title='struct slog::Discard'>Discard</a></td>
+                           <td class='docblock-short'>
+                                <p><code>Drain</code> discarding everything</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Duplicate.html"
+                                  title='struct slog::Duplicate'>Duplicate</a></td>
+                           <td class='docblock-short'>
+                                <p><code>Drain</code> duplicating records into two other <code>Drain</code>s</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Filter.html"
+                                  title='struct slog::Filter'>Filter</a></td>
+                           <td class='docblock-short'>
+                                <p><code>Drain</code> filtering records</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Fuse.html"
+                                  title='struct slog::Fuse'>Fuse</a></td>
+                           <td class='docblock-short'>
+                                <p><code>Drain</code> panicking on error</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.IgnoreErr.html"
+                                  title='struct slog::IgnoreErr'>IgnoreErr</a></td>
+                           <td class='docblock-short'>
+                                <p><code>Drain</code> ignoring errors</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.LevelFilter.html"
+                                  title='struct slog::LevelFilter'>LevelFilter</a></td>
+                           <td class='docblock-short'>
+                                <p><code>Drain</code> filtering records by <code>Record</code> logging level</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Logger.html"
+                                  title='struct slog::Logger'>Logger</a></td>
+                           <td class='docblock-short'>
+                                <p>Logging handle used to execute logging statements</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.MapError.html"
+                                  title='struct slog::MapError'>MapError</a></td>
+                           <td class='docblock-short'>
+                                <p><code>Drain</code> mapping error returned by another <code>Drain</code></p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.OwnedKeyValueList.html"
+                                  title='struct slog::OwnedKeyValueList'>OwnedKeyValueList</a></td>
+                           <td class='docblock-short'>
+                                <p>Chain of <code>SyncMultiSerialize</code>-s of a <code>Logger</code> and its ancestors</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.OwnedKeyValueListIterator.html"
+                                  title='struct slog::OwnedKeyValueListIterator'>OwnedKeyValueListIterator</a></td>
+                           <td class='docblock-short'>
+                                <p>Iterator over <code>OwnedKeyValue</code>-s</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Record.html"
+                                  title='struct slog::Record'>Record</a></td>
+                           <td class='docblock-short'>
+                                <p>One logging record</p>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.DuplicateError.html"
+                                  title='enum slog::DuplicateError'>DuplicateError</a></td>
+                           <td class='docblock-short'>
+                                <p>Logging error returned by <code>Duplicate</code> drain</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.FilterLevel.html"
+                                  title='enum slog::FilterLevel'>FilterLevel</a></td>
+                           <td class='docblock-short'>
+                                <p>Logging filtering level</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Level.html"
+                                  title='enum slog::Level'>Level</a></td>
+                           <td class='docblock-short'>
+                                <p>Logging level associated with a logging <code>Record</code></p>
+                           </td>
+                       </tr></table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.LOG_LEVEL_NAMES.html"
+                                  title='static slog::LOG_LEVEL_NAMES'>LOG_LEVEL_NAMES</a></td>
+                           <td class='docblock-short'>
+                                <p>Official capitalized logging (and logging filtering) level names</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="static" href="static.LOG_LEVEL_SHORT_NAMES.html"
+                                  title='static slog::LOG_LEVEL_SHORT_NAMES'>LOG_LEVEL_SHORT_NAMES</a></td>
+                           <td class='docblock-short'>
+                                <p>Official capitalized logging (and logging filtering) short level names</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.Drain.html"
+                                  title='trait slog::Drain'>Drain</a></td>
+                           <td class='docblock-short'>
+                                <p>Logging drain</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="trait" href="trait.DrainExt.html"
+                                  title='trait slog::DrainExt'>DrainExt</a></td>
+                           <td class='docblock-short'>
+                                <p>Convenience methods for building drains</p>
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.duplicate.html"
+                                  title='fn slog::duplicate'>duplicate</a></td>
+                           <td class='docblock-short'>
+                                <p>Duplicate records to two drains</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.filter.html"
+                                  title='fn slog::filter'>filter</a></td>
+                           <td class='docblock-short'>
+                                <p>Filter by <code>cond</code> closure</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.level_filter.html"
+                                  title='fn slog::level_filter'>level_filter</a></td>
+                           <td class='docblock-short'>
+                                <p>Filter by log level</p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.BorrowedKeyValue.html"
+                                  title='type slog::BorrowedKeyValue'>BorrowedKeyValue</a></td>
+                           <td class='docblock-short'>
+                                <p>Key value pair that can be part of a logging record</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="type" href="type.OwnedKeyValue.html"
+                                  title='type slog::OwnedKeyValue'>OwnedKeyValue</a></td>
+                           <td class='docblock-short'>
+                                <p>Key value pair that can be owned by <code>Logger</code></p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "slog";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

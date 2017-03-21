@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["draw_many","Draws many images."]],"struct":[["Image","An image"]]});

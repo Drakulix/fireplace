@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["Modal","Modal windows (x11)"],["OverrideRedirect","Override redirect (x11)"],["Popup","xdg-shell, wl-shell popups"],["Splash","Splash screens (x11)"],["Unmanaged","Tooltips, DnD's, menus (x11)"]],"struct":[["Flags","Bitmap that may represent multiple types"]]});
