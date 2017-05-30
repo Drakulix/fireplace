@@ -305,13 +305,13 @@ impl WorkspaceHandler {
                                        new_map.insert(0, (value.name, value.mode)).is_some()
                                    }
                                    _ => {
-                        error!(slog_scope::logger(),
-                               "{} not a valid Workspace. Needs to be a number (> 0)
+                                       error!(slog_scope::logger(),
+                                              "{} not a valid Workspace. Needs to be a number (> 0)
                                            or \"default\" / \"generic\". {}",
-                               key,
-                               x);
-                        true
-                    }
+                                              key,
+                                              x);
+                                       true
+                                   }
                                }
                            }
                        } {
@@ -350,14 +350,16 @@ impl WorkspaceHandler {
                output);
         match self.mode_arguments.get(&index) {
             Some(&(ref name, ref arg)) => {
-                self.workspaces.insert(index,
-                                       Workspace::new(index, name.clone().unwrap_or_default(), arg.clone())
-                                           .into_callback())
+                self.workspaces
+                    .insert(index,
+                            Workspace::new(index, name.clone().unwrap_or_default(), arg.clone())
+                                .into_callback())
             }
             None => {
                 let (name, arg) = self.mode_arguments[&0].clone();
-                self.workspaces.insert(index,
-                                       Workspace::new(index, name.unwrap_or_default(), arg).into_callback())
+                self.workspaces
+                    .insert(index,
+                            Workspace::new(index, name.unwrap_or_default(), arg).into_callback())
             }
         };
         self.workspaces
@@ -402,10 +404,7 @@ impl WorkspaceHandler {
 
     /// Returns an array of currently active `Workspace` indicies
     pub fn active_spaces(&self) -> Vec<u8> {
-        self.workspaces
-            .keys()
-            .cloned()
-            .collect()
+        self.workspaces.keys().cloned().collect()
     }
 
     /// Switch the currently focused `Output` to the workspace of the given
@@ -418,16 +417,14 @@ impl WorkspaceHandler {
             }
 
             // Switch output if necessary
-            let last_output = self.workspaces
-                .get(&index)
-                .unwrap()
-                .output();
+            let last_output = self.workspaces.get(&index).unwrap().output();
             if last_output != Some(output.weak_reference()) {
                 if let Some(new_output) = last_output {
                     new_output.run(|output| {
                         output.focus();
                         if let Some(new_focus_view) =
-                            output.views()
+                            output
+                                .views()
                                 .iter()
                                 .filter(|view| {
                                     let geometry = view.geometry();
@@ -462,8 +459,9 @@ impl WorkspaceHandler {
                     }
 
                     {
-                        let old_output =
-                            self.workspaces.get_mut(&old.num).expect("ActiveWorkspace was invalid");
+                        let old_output = self.workspaces
+                            .get_mut(&old.num)
+                            .expect("ActiveWorkspace was invalid");
                         old_output.output_context_destroyed(output);
                         old_output.output_destroyed(output);
                     }
@@ -764,13 +762,13 @@ impl Callback for WorkspaceHandler {
                     state: KeyState)
                     -> bool {
         let active = Output::with_focused_output(move |output| {
-            let lock = output.get::<ActiveWorkspace>();
-            let result = lock.as_ref()
-                .and_then(|x| x.read().ok())
-                .expect("ActiveWorkspace was invalid")
-                .num;
-            result
-        });
+                                                     let lock = output.get::<ActiveWorkspace>();
+                                                     let result = lock.as_ref()
+                                                         .and_then(|x| x.read().ok())
+                                                         .expect("ActiveWorkspace was invalid")
+                                                         .num;
+                                                     result
+                                                 });
 
         match Some(KeyPattern::new(state, modifiers.mods, key)) {
             x if x == self.keys.next => self.switch_workspace(if active == 32 { 0 } else { active + 1 }),
@@ -974,14 +972,14 @@ impl Callback for WorkspaceHandler {
                 return if let Some(view) = view {
                            let lock = view.get::<ViewWorkspace>();
                            let result = match lock.as_ref().and_then(|x| x.read().ok()) {
-                        Some(space) => {
-                            self.workspaces
-                                .get_mut(&space.num)
-                                .expect("ViewWorkspace was invalid")
-                                .keyboard_key(Some(view), time, modifiers, key, state)
-                        }
-                        None => false,
-                    };
+                               Some(space) => {
+                                   self.workspaces
+                                       .get_mut(&space.num)
+                                       .expect("ViewWorkspace was invalid")
+                                       .keyboard_key(Some(view), time, modifiers, key, state)
+                               }
+                               None => false,
+                           };
                            result
                        } else {
                            Output::with_focused_output(|output| {

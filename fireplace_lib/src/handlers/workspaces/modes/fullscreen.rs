@@ -54,11 +54,7 @@ impl Mode for Wrapper<Fullscreen> {
     }
 
     fn len(&self) -> usize {
-        self.mode.len() +
-        self.active
-            .as_ref()
-            .map(|_| 1)
-            .unwrap_or(0)
+        self.mode.len() + self.active.as_ref().map(|_| 1).unwrap_or(0)
     }
 }
 
@@ -88,7 +84,10 @@ impl Callback for Wrapper<Fullscreen> {
                     }
                     true
                 }
-                _ => self.mode.keyboard_key(Some(view), time, modifiers, key, state),
+                _ => {
+                    self.mode
+                        .keyboard_key(Some(view), time, modifiers, key, state)
+                }
             }
         } else {
             self.mode.keyboard_key(None, time, modifiers, key, state)

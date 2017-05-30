@@ -117,7 +117,9 @@ impl ConrodInstance {
                 UpdateTexture::update(tex,
                                       &mut (),
                                       Format::Rgba8,
-                                      &data.iter().flat_map(|x| Bytes { b: *x, i: 0 }).collect::<Vec<u8>>(),
+                                      &data.iter()
+                                           .flat_map(|x| Bytes { b: *x, i: 0 })
+                                           .collect::<Vec<u8>>(),
                                       [rect.min.x, rect.min.y],
                                       [rect.width(), rect.height()])
                         .unwrap()
@@ -128,21 +130,23 @@ impl ConrodInstance {
             let text_cache = &mut self.text_cache;
             let map = &self.image_map;
 
-            gl.write().unwrap().draw(Viewport {
-                                         rect: [0, 0, res.w as i32, res.h as i32],
-                                         draw_size: [res.w, res.h],
-                                         window_size: [res.w, res.h],
-                                     },
-                                     move |c, g| {
-                backend::piston::draw::primitives(primitives,
-                                                  c,
-                                                  g,
-                                                  text_tex,
-                                                  text_cache,
-                                                  map,
-                                                  cache_queued_glyphs,
-                                                  texture_from_image);
-            });
+            gl.write()
+                .unwrap()
+                .draw(Viewport {
+                          rect: [0, 0, res.w as i32, res.h as i32],
+                          draw_size: [res.w, res.h],
+                          window_size: [res.w, res.h],
+                      },
+                      move |c, g| {
+                    backend::piston::draw::primitives(primitives,
+                                                      c,
+                                                      g,
+                                                      text_tex,
+                                                      text_cache,
+                                                      map,
+                                                      cache_queued_glyphs,
+                                                      texture_from_image);
+                });
         }
     }
 }

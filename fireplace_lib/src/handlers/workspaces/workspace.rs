@@ -34,7 +34,8 @@ impl Callback for Wrapper<Workspace> {
 
             self.output = Some(output.weak_reference());
             self.mode.output_created(output);
-            self.mode.output_resolution(output, output.resolution(), output.resolution());
+            self.mode
+                .output_resolution(output, output.resolution(), output.resolution());
             output.set_visibility(Visibility::Flags::from_bits_truncate(1 << self.number));
             for view in &self.views {
                 view.run(|view| if view.output() != output {
@@ -110,10 +111,7 @@ impl Workspace {
     }
 
     pub fn active(&self) -> bool {
-        self.output
-            .as_ref()
-            .and_then(|x| x.run(|_| {}))
-            .is_some()
+        self.output.as_ref().and_then(|x| x.run(|_| {})).is_some()
     }
 
     pub fn len(&self) -> usize {

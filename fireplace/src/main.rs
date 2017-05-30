@@ -34,11 +34,8 @@ pub use self::config::Config;
 fn try_config_locations(paths: &[PathBuf]) -> Config {
     for path in paths {
         if path.exists() {
-            return serde_yaml::from_reader(OpenOptions::new()
-                    .read(true)
-                    .open(path)
-                    .unwrap())
-                .expect("Malformed config file");
+            return serde_yaml::from_reader(OpenOptions::new().read(true).open(path).unwrap())
+                       .expect("Malformed config file");
         }
     }
     Config::default()
@@ -49,16 +46,30 @@ fn main() {
     // Parse configuration
     let mut locations = Vec::new();
     if let Ok(xdg_dir) = env::var("XDG_CONFIG_DIR") {
-        locations.push(PathBuf::from(&xdg_dir).join("fireplace").join(".fireplace.yaml"));
-        locations.push(PathBuf::from(&xdg_dir).join("fireplace").join("fireplace.yaml"));
+        locations.push(PathBuf::from(&xdg_dir)
+                           .join("fireplace")
+                           .join(".fireplace.yaml"));
+        locations.push(PathBuf::from(&xdg_dir)
+                           .join("fireplace")
+                           .join("fireplace.yaml"));
         locations.push(PathBuf::from(&xdg_dir).join(".fireplace.yaml"));
         locations.push(PathBuf::from(&xdg_dir).join("fireplace.yaml"));
     }
     if let Some(home_dir) = env::home_dir() {
-        locations.push(PathBuf::from(&home_dir).join(".config").join("fireplace").join(".fireplace.yaml"));
-        locations.push(PathBuf::from(&home_dir).join(".config").join("fireplace").join("fireplace.yaml"));
-        locations.push(PathBuf::from(&home_dir).join(".config").join(".fireplace.yaml"));
-        locations.push(PathBuf::from(&home_dir).join(".config").join("fireplace.yaml"));
+        locations.push(PathBuf::from(&home_dir)
+                           .join(".config")
+                           .join("fireplace")
+                           .join(".fireplace.yaml"));
+        locations.push(PathBuf::from(&home_dir)
+                           .join(".config")
+                           .join("fireplace")
+                           .join("fireplace.yaml"));
+        locations.push(PathBuf::from(&home_dir)
+                           .join(".config")
+                           .join(".fireplace.yaml"));
+        locations.push(PathBuf::from(&home_dir)
+                           .join(".config")
+                           .join("fireplace.yaml"));
         locations.push(PathBuf::from(&home_dir).join(".fireplace.yaml"));
     }
     locations.push(PathBuf::from("/etc/fireplace/fireplace.yaml"));
@@ -162,8 +173,8 @@ fn main() {
     {
         handlers.push(Box::new(render::conrod::ConrodHandler::new().into_callback()));
 
-        handlers.push(Box::new(render::conrod::provider::background::BackgroundHandler::new()
-                                   .into_callback()));
+        handlers
+            .push(Box::new(render::conrod::provider::background::BackgroundHandler::new().into_callback()));
         handlers.push(Box::new(render::conrod::provider::statusbar::StatusbarHandler::new().into_callback()));
 
         handlers.push(Box::new(render::ScreenshotHandler::new(config.screenshot)));

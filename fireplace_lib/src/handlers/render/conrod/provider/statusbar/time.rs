@@ -99,7 +99,10 @@ impl Time {
     pub fn new(output: &Output, ui: &mut ConrodInstance, arguments: TimeConfig) -> Self {
         let (bytes, index) = font_get(&arguments.font.property()).expect("No font could be loaded");
 
-        let font = FontCollection::from_bytes(bytes).into_fonts().nth(index as usize).unwrap();
+        let font = FontCollection::from_bytes(bytes)
+            .into_fonts()
+            .nth(index as usize)
+            .unwrap();
 
         let font_id = ui.fonts.insert(font.clone());
 
@@ -115,7 +118,8 @@ impl Time {
         let timer = event_loop::event_loop_add_timer(Rerender { output: output.weak_reference() });
 
         Time {
-            ids: [ui.widget_id_generator().next(), ui.widget_id_generator().next()],
+            ids: [ui.widget_id_generator().next(),
+                  ui.widget_id_generator().next()],
             font_id: font_id,
             font: font,
             format: arguments.format,

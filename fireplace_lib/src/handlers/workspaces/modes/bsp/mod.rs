@@ -228,7 +228,8 @@ impl Mode for Wrapper<BSP> {
             },
             next_orientation: arguments.starting_orientation,
             keys: arguments.keys,
-            gui: IndicatorsHandler::new(arguments.ui
+            gui: IndicatorsHandler::new(arguments
+                                            .ui
                                             .unwrap_or_default()
                                             .indicator
                                             .unwrap_or(IndicatorConfig { width: 0 })),
