@@ -99,10 +99,11 @@ impl Time {
     pub fn new(output: &Output, ui: &mut ConrodInstance, arguments: TimeConfig) -> Self {
         let (bytes, index) = font_get(&arguments.font.property()).expect("No font could be loaded");
 
-        let font = FontCollection::from_bytes(bytes)
-            .into_fonts()
-            .nth(index as usize)
-            .unwrap();
+        let font =
+            FontCollection::from_bytes(bytes)
+                .into_fonts()
+                .nth(index as usize)
+                .expect("Cannot load font from collection. Is your font format supported by rusttype?");
 
         let font_id = ui.fonts.insert(font.clone());
 
