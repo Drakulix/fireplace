@@ -138,5 +138,8 @@ pub fn parse_hex_color(color: &str) -> [f32; 4] {
     let g: u8 = ((value >> 16) & 0xff) as u8;
     let b: u8 = ((value >> 8) & 0xff) as u8;
     let a: u8 = (value & 0xff) as u8;
-    [(r as f32 / 255.0), (g as f32 / 255.0), (b as f32 / 255.0), (a as f32 / 255.0)]
+    [(r as f32 / 255.0),
+     (g as f32 / 255.0),
+     (b as f32 / 255.0),
+     (a as f32 / 255.0)]
 }

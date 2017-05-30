@@ -181,7 +181,8 @@ impl ConrodProvider for Statusbar {
                     Location::Top => builder1.top_left(),
                     Location::Bottom => builder1.bottom_left(),
                 };
-                builder2.h((conf.height * output.scale()) as f64)
+                builder2
+                    .h((conf.height * output.scale()) as f64)
                     .w(ui.window_dim()[0])
                     .color(*conf.color)
                     .border(0.0)

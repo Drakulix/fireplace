@@ -69,7 +69,9 @@ fn default_path() -> PathBuf {
         .stdout(Stdio::piped())
         .spawn()
         .expect("Failed to execute xdg-user-dir. Could not find default path for screenshots");
-    let output = child.wait_with_output().expect("xdg-user-dir did terminate in an unusual way");
+    let output = child
+        .wait_with_output()
+        .expect("xdg-user-dir did terminate in an unusual way");
     PathBuf::from(String::from_utf8_lossy(&*output.stdout).into_owned().trim())
 }
 
@@ -101,8 +103,9 @@ impl Callback for ScreenshotHandler {
                     fs::create_dir_all(path.clone()).expect("Could not create screenshots folder");
 
                     path.push(format!("{}", filename));
-                    image.save(&mut File::create(path).expect("Failed to create screenshot file"),
-                               ImageFormat::PNG)
+                    image
+                        .save(&mut File::create(path).expect("Failed to create screenshot file"),
+                              ImageFormat::PNG)
                         .expect("Failed to encode screenshot");
                 }
             }
@@ -115,13 +118,13 @@ impl Callback for ScreenshotHandler {
         match Some(KeyPattern::new(state, modifiers.mods, key)) {
             x if x == self.config.keys.output => {
                 Output::with_focused_output(|output| {
-                    let delayed = output.get::<QueuedScreenshots>().unwrap();
-                    let mut lock = delayed.write().unwrap();
-                    lock.push(Geometry {
-                                  origin: Point { x: 0, y: 0 },
-                                  size: output.resolution(),
-                              });
-                });
+                                                let delayed = output.get::<QueuedScreenshots>().unwrap();
+                                                let mut lock = delayed.write().unwrap();
+                                                lock.push(Geometry {
+                                                              origin: Point { x: 0, y: 0 },
+                                                              size: output.resolution(),
+                                                          });
+                                            });
                 true
             }
             x if x == self.config.keys.view => {

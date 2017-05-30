@@ -96,15 +96,17 @@ impl Callback for FocusHandler {
     fn pointer_motion(&mut self, view: Option<&View>, _time: u32, origin: Point) -> bool {
         if self.config.follows_mouse {
             Output::with_focused_output(|focused_output| if let Some(new_focus_view) =
-                focused_output.views()
+                focused_output
+                    .views()
                     .iter()
                     .filter(|view| {
-                        let geometry = view.geometry();
-                        view.visibility() == focused_output.visibility() && origin.x > geometry.origin.x &&
-                        origin.y > geometry.origin.y &&
-                        origin.x < geometry.origin.x + geometry.size.w as i32 &&
-                        origin.y < geometry.origin.y + geometry.size.h as i32
-                    })
+                                let geometry = view.geometry();
+                                view.visibility() == focused_output.visibility() &&
+                                origin.x > geometry.origin.x &&
+                                origin.y > geometry.origin.y &&
+                                origin.x < geometry.origin.x + geometry.size.w as i32 &&
+                                origin.y < geometry.origin.y + geometry.size.h as i32
+                            })
                     .last() {
                                             if view.and_then(|view| view.parent()) != Some(new_focus_view) {
                                                 new_focus_view.focus();
@@ -119,15 +121,17 @@ impl Callback for FocusHandler {
                       -> bool {
         if self.config.on_click && button == Button::Left {
             Output::with_focused_output(|focused_output| if let Some(new_focus_view) =
-                focused_output.views()
+                focused_output
+                    .views()
                     .iter()
                     .filter(|view| {
-                        let geometry = view.geometry();
-                        view.visibility() == focused_output.visibility() && origin.x > geometry.origin.x &&
-                        origin.y > geometry.origin.y &&
-                        origin.x < geometry.origin.x + geometry.size.w as i32 &&
-                        origin.y < geometry.origin.y + geometry.size.h as i32
-                    })
+                                let geometry = view.geometry();
+                                view.visibility() == focused_output.visibility() &&
+                                origin.x > geometry.origin.x &&
+                                origin.y > geometry.origin.y &&
+                                origin.x < geometry.origin.x + geometry.size.w as i32 &&
+                                origin.y < geometry.origin.y + geometry.size.h as i32
+                            })
                     .last() {
                                             if !new_focus_view.state().contains(ViewState::Activated) {
                                                 new_focus_view.focus();

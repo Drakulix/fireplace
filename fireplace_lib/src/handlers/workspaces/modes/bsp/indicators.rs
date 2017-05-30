@@ -60,7 +60,8 @@ impl Callback for IndicatorsHandler {
     fn output_context_created(&mut self, output: &Output) {
         if let Some(lock) = output.get::<ConrodRenderer>() {
             let mut ui = lock.write().unwrap();
-            ui.background.register(Indicator::new(self.width, self.views.clone()));
+            ui.background
+                .register(Indicator::new(self.width, self.views.clone()));
         }
     }
 
@@ -73,19 +74,13 @@ impl Callback for IndicatorsHandler {
             scissor.right += (self.width * view.output().scale()) as usize;
         }
 
-        self.views
-            .write()
-            .unwrap()
-            .push(view.weak_reference());
+        self.views.write().unwrap().push(view.weak_reference());
 
         true
     }
 
     fn view_destroyed(&mut self, view: &View) {
-        self.views
-            .write()
-            .unwrap()
-            .retain(|x| x != view);
+        self.views.write().unwrap().retain(|x| x != view);
 
         if let Some(lock) = view.get::<UsableViewGeometry>() {
             let mut scissor = lock.write().unwrap();
@@ -118,10 +113,11 @@ impl ConrodProvider for Indicator {
     fn render(&mut self, output: &Output, ui: &mut UiCell) {
         let views = self.views.read().unwrap();
         while views.len() > self.ids.len() {
-            self.ids.push([ui.widget_id_generator().next(),
-                           ui.widget_id_generator().next(),
-                           ui.widget_id_generator().next(),
-                           ui.widget_id_generator().next()]);
+            self.ids
+                .push([ui.widget_id_generator().next(),
+                       ui.widget_id_generator().next(),
+                       ui.widget_id_generator().next(),
+                       ui.widget_id_generator().next()]);
         }
 
         let dim = ui.window_dim();

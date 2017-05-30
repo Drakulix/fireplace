@@ -54,10 +54,7 @@ impl Mode for Wrapper<Switch> {
     fn new(mut arguments: Self::Arguments) -> Self {
         Switch {
                 active: None,
-                modes: arguments.modes
-                    .drain(..)
-                    .map(AnyModeWrap::new)
-                    .collect(),
+                modes: arguments.modes.drain(..).map(AnyModeWrap::new).collect(),
                 views: Vec::new(),
                 keys: arguments.keys,
                 logger: slog_scope::logger().new(o!("instance" => "Switch")),

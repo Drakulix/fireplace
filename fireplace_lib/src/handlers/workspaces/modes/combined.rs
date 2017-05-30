@@ -144,9 +144,12 @@ impl Callback for Split<Combined> {
                               if self.bottom.view_created(view) {
                                   for top_view in &self.top_views {
                                       top_view.run(|top_view| {
-                        view.send_below(top_view);
-                        info!(self.logger, "sending {:?} below {:?}", view, top_view);
-                    });
+                                                       view.send_below(top_view);
+                                                       info!(self.logger,
+                                                             "sending {:?} below {:?}",
+                                                             view,
+                                                             top_view);
+                                                   });
                                   }
                                   true
                               } else {
@@ -174,8 +177,8 @@ impl Callback for Split<Combined> {
                           || if self.top_views.contains(&view.weak_reference()) {
                               self.top.view_focus(view, focus);
                           } else if self.bottom_views.contains(&view.weak_reference()) {
-            self.bottom.view_focus(view, focus);
-        })
+                              self.bottom.view_focus(view, focus);
+                          })
     }
 
     fn view_request_geometry(&mut self, view: &View, geometry: Geometry) {
@@ -183,8 +186,8 @@ impl Callback for Split<Combined> {
                           || if self.top_views.contains(&view.weak_reference()) {
                               self.top.view_request_geometry(view, geometry);
                           } else if self.bottom_views.contains(&view.weak_reference()) {
-            self.bottom.view_request_geometry(view, geometry);
-        })
+                              self.bottom.view_request_geometry(view, geometry);
+                          })
     }
 
     fn view_request_state(&mut self, view: &View, state: ViewState::Flags, toggle: bool) {
@@ -192,8 +195,8 @@ impl Callback for Split<Combined> {
                           || if self.top_views.contains(&view.weak_reference()) {
                               self.top.view_request_state(view, state, toggle);
                           } else if self.bottom_views.contains(&view.weak_reference()) {
-            self.bottom.view_request_state(view, state, toggle);
-        })
+                              self.bottom.view_request_state(view, state, toggle);
+                          })
     }
 
     fn view_request_move(&mut self, view: &View, origin: Point) {
@@ -201,8 +204,8 @@ impl Callback for Split<Combined> {
                           || if self.top_views.contains(&view.weak_reference()) {
                               self.top.view_request_move(view, origin);
                           } else if self.bottom_views.contains(&view.weak_reference()) {
-            self.bottom.view_request_move(view, origin);
-        })
+                              self.bottom.view_request_move(view, origin);
+                          })
     }
 
     fn view_request_resize(&mut self, view: &View, edges: ResizeEdge::Flags, origin: Point) {
@@ -210,8 +213,8 @@ impl Callback for Split<Combined> {
                           || if self.top_views.contains(&view.weak_reference()) {
                               self.top.view_request_resize(view, edges, origin);
                           } else if self.bottom_views.contains(&view.weak_reference()) {
-            self.bottom.view_request_resize(view, edges, origin);
-        })
+                              self.bottom.view_request_resize(view, edges, origin);
+                          })
     }
 
     #[cfg(feature = "render")]
@@ -220,8 +223,8 @@ impl Callback for Split<Combined> {
                           || if self.top_views.contains(&view.weak_reference()) {
                               self.top.view_render_pre(view);
                           } else if self.bottom_views.contains(&view.weak_reference()) {
-            self.bottom.view_render_pre(view);
-        })
+                              self.bottom.view_render_pre(view);
+                          })
     }
 
     #[cfg(not(feature = "render"))]
@@ -230,8 +233,8 @@ impl Callback for Split<Combined> {
                           || if self.top_views.contains(&view.weak_reference()) {
                               self.top.view_render_pre(view);
                           } else if self.bottom_views.contains(&view.weak_reference()) {
-            self.bottom.view_render_pre(view);
-        })
+                              self.bottom.view_render_pre(view);
+                          })
     }
 
     #[cfg(feature = "render")]
@@ -240,8 +243,8 @@ impl Callback for Split<Combined> {
                           || if self.top_views.contains(&view.weak_reference()) {
                               self.top.view_render_post(view);
                           } else if self.bottom_views.contains(&view.weak_reference()) {
-            self.bottom.view_render_post(view);
-        })
+                              self.bottom.view_render_post(view);
+                          })
     }
 
     #[cfg(not(feature = "render"))]
@@ -250,8 +253,8 @@ impl Callback for Split<Combined> {
                           || if self.top_views.contains(&view.weak_reference()) {
                               self.top.view_render_post(view);
                           } else if self.bottom_views.contains(&view.weak_reference()) {
-            self.bottom.view_render_post(view);
-        })
+                              self.bottom.view_render_post(view);
+                          })
     }
 
     fn view_properties_updated(&mut self, view: &View, mask: ViewPropertyUpdate::Flags) {
@@ -259,8 +262,8 @@ impl Callback for Split<Combined> {
                           || if self.top_views.contains(&view.weak_reference()) {
                               self.top.view_properties_updated(view, mask);
                           } else if self.bottom_views.contains(&view.weak_reference()) {
-            self.bottom.view_properties_updated(view, mask);
-        })
+                              self.bottom.view_properties_updated(view, mask);
+                          })
     }
 
     fn keyboard_key(&mut self, view: Option<&View>, time: u32, modifiers: Modifiers, key: Key,
@@ -330,12 +333,14 @@ impl Callback for Split<Combined> {
                     }
                     _ => {
                         return if self.top_views.contains(&view.weak_reference()) {
-                                   self.top.keyboard_key(Some(view), time, modifiers, key, state)
+                                   self.top
+                                       .keyboard_key(Some(view), time, modifiers, key, state)
                                } else if self.bottom_views.contains(&view.weak_reference()) {
-                            self.bottom.keyboard_key(Some(view), time, modifiers, key, state)
-                        } else {
-                            false
-                        };
+                                   self.bottom
+                                       .keyboard_key(Some(view), time, modifiers, key, state)
+                               } else {
+                                   false
+                               };
                     }
                 }
             }
@@ -356,9 +361,11 @@ impl Callback for Split<Combined> {
                       -> bool {
         slog_scope::scope(self.logger.clone(), || if let Some(view) = view {
             if self.top_views.contains(&view.weak_reference()) {
-                self.top.pointer_button(Some(view), time, modifiers, button, state, origin)
+                self.top
+                    .pointer_button(Some(view), time, modifiers, button, state, origin)
             } else if self.bottom_views.contains(&view.weak_reference()) {
-                self.bottom.pointer_button(Some(view), time, modifiers, button, state, origin)
+                self.bottom
+                    .pointer_button(Some(view), time, modifiers, button, state, origin)
             } else {
                 false
             }
@@ -379,9 +386,11 @@ impl Callback for Split<Combined> {
                       -> bool {
         slog_scope::scope(self.logger.clone(), || if let Some(view) = view {
             if self.top_views.contains(&view.weak_reference()) {
-                self.top.pointer_scroll(Some(view), time, modifiers, axis, amount)
+                self.top
+                    .pointer_scroll(Some(view), time, modifiers, axis, amount)
             } else if self.bottom_views.contains(&view.weak_reference()) {
-                self.bottom.pointer_scroll(Some(view), time, modifiers, axis, amount)
+                self.bottom
+                    .pointer_scroll(Some(view), time, modifiers, axis, amount)
             } else {
                 false
             }
@@ -423,9 +432,11 @@ impl Callback for Split<Combined> {
              -> bool {
         slog_scope::scope(self.logger.clone(), || if let Some(view) = view {
             if self.top_views.contains(&view.weak_reference()) {
-                self.top.touch(Some(view), time, modifiers, touch_type, slot, origin)
+                self.top
+                    .touch(Some(view), time, modifiers, touch_type, slot, origin)
             } else if self.bottom_views.contains(&view.weak_reference()) {
-                self.bottom.touch(Some(view), time, modifiers, touch_type, slot, origin)
+                self.bottom
+                    .touch(Some(view), time, modifiers, touch_type, slot, origin)
             } else {
                 false
             }

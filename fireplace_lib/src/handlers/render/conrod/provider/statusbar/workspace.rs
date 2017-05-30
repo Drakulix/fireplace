@@ -85,12 +85,16 @@ impl WorkspaceIndicator {
     pub fn new(_output: &Output, ui: &mut ConrodInstance, arguments: WorkspaceIndicatorConfig) -> Self {
         let (bytes, index) = font_get(&arguments.font.property()).expect("No font could be loaded");
 
-        let font = FontCollection::from_bytes(bytes).into_fonts().nth(index as usize).unwrap();
+        let font = FontCollection::from_bytes(bytes)
+            .into_fonts()
+            .nth(index as usize)
+            .unwrap();
 
         let font_id = ui.fonts.insert(font.clone());
 
         WorkspaceIndicator {
-            ids: [ui.widget_id_generator().next(), ui.widget_id_generator().next()],
+            ids: [ui.widget_id_generator().next(),
+                  ui.widget_id_generator().next()],
             font_id: font_id,
             font: font,
             alignment: *arguments.alignment,
