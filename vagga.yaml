@@ -13,7 +13,6 @@ containers:
         environ:
             HOME: /work/.vagga/nightly-home
             PATH: /bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/work/.vagga/nightly-home/.cargo/bin:/work/.vagga/nightly-home/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/
-            RUST_MIN_STACK: 32000000
         setup:
             - !Container base
             - !Env HOME: /work/.vagga/nightly-home
