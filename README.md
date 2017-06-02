@@ -7,18 +7,18 @@
 
 ![Screenshot](https://github.com/Drakulix/fireplace/raw/master/assets/screenshot.png "Screenshot")
 
-Fireplace strifes to be as feature-rich as possible without compromising its slim and fast codebase. It is written in [Rust](https://www.rust-lang.org) and is based on the great [wlc](https://github.com/Cloudef/wlc) library and does its rendering directly in OpenGL.
+Fireplace strives to be as feature-rich as possible without compromising its slim and fast codebase. It is written in [Rust](https://www.rust-lang.org) and is based on the great [wlc](https://github.com/Cloudef/wlc) library and does its rendering directly in OpenGL.
 
 
 ### Structure
 
-This repository is devided into three parts
+This repository is divided into three parts
 
 - fireplace_lib - The underlying library which can be used to modify fireplace to your personal needs!
 - fireplace - The reference implementation as presented here
 - fireplace_flavors - Alternative implementations and experiments not belonging to the core library or binary
 
-This README is about the reference implementation for end-users, if you are interested in learning about it's implementation details or contributing, please take a look at one of their README files.
+This README is about the reference implementation for end-users, if you are interested in learning about its implementation details or contributing, please take a look at one of their README files.
 
 
 ## Status
