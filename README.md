@@ -145,4 +145,4 @@ any questions related to documentation and the core library as quickly as possib
 you! A window manager sounds like a pretty complicated project, but most of the hard work is
 already done by the underlying `wlc` library! So believe me when I say: "it's not that hard" :)
 
-Please also make sure to read through [CONTRIBUTING](https://github.com/Drakulix/fireplace/blob/master/CONTRIBUTING) for some very basic constraints to follow
+Please also make sure to read through [CONTRIBUTING.md](CONTRIBUTING.md) for some very basic constraints to follow
