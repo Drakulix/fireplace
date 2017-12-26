@@ -1,4 +1,31 @@
-# <img src="https://cdn.rawgit.com/Drakulix/fireplace/v1.0.0/assets/fireplace.svg" width="128"> Fireplace [![Build Status](https://travis-ci.org/Drakulix/fireplace.svg?branch=master)](https://travis-ci.org/Drakulix/fireplace) [![Crates.io](https://img.shields.io/crates/v/fireplace_lib.svg)](https://crates.io/crates/fireplace_lib) [![Crates.io](https://img.shields.io/crates/l/fireplace_lib.svg)](https://github.com/Drakulix/fireplace_lib/blob/master/LICENSE) [![](https://tokei.rs/b1/github/Drakulix/fireplace)](https://github.com/Aaronepower/tokei)
+# <img src="https://cdn.rawgit.com/Drakulix/fireplace/v1.0.0/assets/fireplace.svg" width="128"> Fireplace  [![Crates.io](https://img.shields.io/crates/l/fireplace_lib.svg)](https://github.com/Drakulix/fireplace_lib/blob/master/LICENSE) [![](https://tokei.rs/b1/github/Drakulix/fireplace)](https://github.com/Aaronepower/tokei)[![Supported by DesertBit](https://img.shields.io/badge/supported%20by-DesertBit-brightgreen.svg)](https://github.com/desertbit)
+
+## Old Codebase below!
+
+______
+
+### I am switching the engine. The old und deprecated
+# [`wlc` Library](https://github.com/Drakulix/wlc.rs)
+
+### gets replaced by the new and shiny all-rust:
+# <img src="https://avatars3.githubusercontent.com/u/29117271?s=200&v=4" width="128">
+# [`Smithay`](https://github.com/Smithay/smithay)
+
+______
+
+## Active development currently over:
+[![Chatroom on Matrix](https://img.shields.io/badge/chatroom-on%20matrix-green.svg)](https://matrix.to/#/#smithay:matrix.org) [![Chatroom on Gitter](https://img.shields.io/badge/chatroom-on%20gitter-red.svg)](https://gitter.im/smithay/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+### and will continue here [soon](https://github.com/Drakulix/fireplace/issues/52)!
+
+______
+
+### Build instructions for the old codebase:
+- `rustup install nightly-2017-03-02`
+- `cd fireplace`
+- `rustup override set nightly-2017-03-02`
+- `cargo build --release`
+
+# Old ReadMe / Codebase [![Build Status](https://travis-ci.org/Drakulix/fireplace.svg?branch=master)](https://travis-ci.org/Drakulix/fireplace) [![Crates.io](https://img.shields.io/crates/v/fireplace_lib.svg)](https://crates.io/crates/fireplace_lib) [![Crates.io](https://img.shields.io/crates/l/fireplace_lib.svg)](https://github.com/Drakulix/fireplace_lib/blob/master/LICENSE) [![](https://tokei.rs/b1/github/Drakulix/fireplace)](https://github.com/Aaronepower/tokei)
 
 > He who wants to warm himself in old age must build a fireplace in his youth.
 
