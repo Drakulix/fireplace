@@ -1,90 +1,42 @@
-# <img src="https://cdn.rawgit.com/Drakulix/fireplace/v1.0.0/assets/fireplace.svg" width="128"> Fireplace  [![Crates.io](https://img.shields.io/crates/l/fireplace_lib.svg)](https://github.com/Drakulix/fireplace_lib/blob/master/LICENSE) [![](https://tokei.rs/b1/github/Drakulix/fireplace)](https://github.com/Aaronepower/tokei)[![Supported by DesertBit](https://img.shields.io/badge/supported%20by-DesertBit-brightgreen.svg)](https://github.com/desertbit)
+# <img src="https://cdn.rawgit.com/Drakulix/fireplace/v1.0.0/assets/fireplace.svg" width="128"> Fireplace  [![Crates.io](https://img.shields.io/crates/l/fireplace_lib.svg)](https://github.com/Drakulix/fireplace_lib/blob/master/LICENSE) 
 
-## Old Codebase below!
-
-______
-
-### I am switching the engine. The old und deprecated
-# [`wlc` Library](https://github.com/Drakulix/wlc.rs)
-
-### gets replaced by the new and shiny all-rust:
-# <img src="https://avatars3.githubusercontent.com/u/29117271?s=200&v=4" width="128">
-# [`Smithay`](https://github.com/Smithay/smithay)
+## Old Codebase: https://github.com/Drakulix/fireplace/tree/old_codebase
 
 ______
 
 ## Active development currently over:
 [![Chatroom on Matrix](https://img.shields.io/badge/chatroom-on%20matrix-green.svg)](https://matrix.to/#/#smithay:matrix.org) [![Chatroom on Gitter](https://img.shields.io/badge/chatroom-on%20gitter-red.svg)](https://gitter.im/smithay/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-### and will continue here [soon](https://github.com/Drakulix/fireplace/issues/52)!
-
-______
-
-### Build instructions for the old codebase:
-- `rustup install nightly-2017-03-02`
-- `cd fireplace`
-- `rustup override set nightly-2017-03-02`
-- `cargo build --release`
-
-# Old ReadMe / Codebase [![Build Status](https://travis-ci.org/Drakulix/fireplace.svg?branch=master)](https://travis-ci.org/Drakulix/fireplace) [![Crates.io](https://img.shields.io/crates/v/fireplace_lib.svg)](https://crates.io/crates/fireplace_lib) [![Crates.io](https://img.shields.io/crates/l/fireplace_lib.svg)](https://github.com/Drakulix/fireplace_lib/blob/master/LICENSE) [![](https://tokei.rs/b1/github/Drakulix/fireplace)](https://github.com/Aaronepower/tokei)
-
-> He who wants to warm himself in old age must build a fireplace in his youth.
 
 
 ### A modular wayland window manager
 
-![Screenshot](https://github.com/Drakulix/fireplace/raw/master/assets/screenshot.png "Screenshot")
+Fireplace strives to be a slim and fast playground for a full-featured tiling-based wayland compositor for now.
+Eventually I plan to implement a gnome-compatible desktop environment on top of fireplace
+with resonable amounts of eye-candy to be appealing to the general user,
+but without sacrificing on performance or keyboard based workflows.
 
-Fireplace strives to be as feature-rich as possible without compromising its slim and fast codebase. It is written in [Rust](https://www.rust-lang.org) and is based on the great [wlc](https://github.com/Cloudef/wlc) library and does its rendering directly in OpenGL.
+The goal is to be gnome-abi compatible to applications (including the vast cast of dbus interfaces, but notably not gtk-specific styling or the horrific extension-api), while remaining composible and extendible through e.g. the wlr-protocols (most notable layer-shell).
 
+What that transition means for fireplace and if the additional components of a full-featured desktop environment can be implemented without assimilating the original window manager is not yet decided. If possible fireplace should still be usable independently as a barebones wayland compositor.
 
-### Structure
-
-This repository is divided into three parts
-
-- fireplace_lib - The underlying library which can be used to modify fireplace to your personal needs!
-- fireplace - The reference implementation as presented here
-- fireplace_flavors - Alternative implementations and experiments not belonging to the core library or binary
-
-This README is about the reference implementation for end-users, if you are interested in learning about its implementation details or contributing, please take a look at one of their README files.
-
+Currently fireplace is getting reimplemented on top of [Smithay](https://github.com/Smithay/smithay),
+which is not "done" in any sense of the word as well. Expect development to be slow and new features to be sparse.
+As such fireplace will likely depend on git-versions of smithay from time to time and might not always compile.
 
 ## Status
 
-Fireplace just hit 1.0, so it is in a usable state, but a bit limited.
+Fireplace
 
-- [x] BSP-style window tiling
 - [x] Floating windows
-- [x] Basic UI rendering with statusbar
-- [x] Screenshots
-- [x] ... and many more!
+- [-] Workspaces
+- [ ] BSP-style window tiling
+- [ ] Basic UI rendering using layer-shell
+- [ ] ...
 
-But it still missed some rather important features for every day use:
+## Installation / Development
 
-- [ ] Fix some remaining application specific bugs
-- [ ] Lock screen
-- [ ] ...and also many more...
-
-
-## Installation
-
-Binaries are provided on the GitHub Release Page for Linux x86_64
-
-Packages are not provided at it's current state, but will be added to this description once available.
-
-
-## Running
-
-Follow the build instructions and run:
-`./target/release/fireplace`
-
-Starting with an X Server running will run fireplace nested.
-
-For easier start up a [session file](https://github.com/Drakulix/fireplace/blob/master/fireplace.desktop) is provided, just copy it to `/usr/share/wayland-sessions/` and fireplace to `/usr/bin/` and fireplace should be visible in your desktop manager.
-
-For running as a user process logind is required to optain the required permissions.
-Alternatively set the `suid` flag on the executable and fireplace will drop privileges
-after opening the required hardware devices.
-
+You are currently expected to know how to compile rust programs and how to start custom compositors.
+Integrations for login managers will be provided at a later stage, when fireplace is deemed usable *enough*.
 
 ## Configuration
 
@@ -98,78 +50,13 @@ into `$HOME/.config` otherwise. The name may either be `fireplace.yaml` or
 
 A global configuration can be provided in `/etc/fireplace/fireplace.yaml`.
 
-## Building
-
-fireplace is written in [Rust](https://www.rust-lang.org) and therefore requires `Cargo` to build, which is shipped with the rust compiler.
-
-fireplace also needs a current (>=1.17) *nightly* version of [Rust](https://www.rust-lang.org), if you have no idea, where to start, this command should help you to bootstrap a working toolchain:
-
-```
-curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly
-```
-
-Additional dependencies for building & running include:
-
-- wlc
-- pixman
-- wayland 1.7+
-- wayland-protocols 1.7+
-- libxkbcommon
-- udev
-- libinput
-- libx11 (X11-xcb, Xfixes)
-- libxcb (xcb-ewmh, xcb-composite, xcb-xkb, xcb-image, xcb-xfixes)
-- libgbm (usually provided by mesa in most distros)
-- libdrm
-- libEGL (GPU drivers and mesa provide this)
-- libGLESv2 (GPU drivers and mesa provide this)
-- libfontconfig1
-- libfreetype6
-
-And optionally:
-
-- dbus (for logind support)
-- systemd (for logind support)
-
-Build Dependencies:
-
-- fontconfig
-- libclang (>=3.8)
-
-By default [wlc](https://github.com/Cloudef/wlc) is automatically build and statically linked into fireplace as well as wayland-protocols.
-
-Building then is as easy as:
-```
-git clone https://github.com/Drakulix/fireplace.git
-cd fireplace/fireplace
-cargo build --release
-```
-Please take note that you cannot build in the root directory.
-The resulting binary will be at `<root>/target/release/fireplace`.
-
-To avoid statically linking and disable the optional Ui code use
-```
-cargo build --release --no-default-features
-```
-
-If you have `libclang` in another path then `/usr/lib` you have to provide it:
-```
-LIBCLANG_PATH=/usr/lib64 cargo build --release
-```
-
-For more ways to disable and enable certain features and other quirks see the [README](https://github.com/Drakulix/fireplace/blob/master/fireplace/README.md) of the fireplace binary.
-
-For additional flavors see the READMEs of a specific flavor.
-
 
 ## Contributing
 
 Pull requests, feature requests, bug reports, every contribution is highly appreciated,
 but please note, that I do this in my free time and your request maybe be given a very low
 priority and postponed for quite some time.
+
 The best way to participate is start hacking on the codebase. I will give my best to answer
 any questions related to documentation and the core library as quickly as possible to assist
-you! A window manager sounds like a pretty complicated project, but most of the hard work is
-already done by the underlying `wlc` library! So believe me when I say: "it's not that hard" :)
-
-Please also make sure to read through [CONTRIBUTING.md](CONTRIBUTING.md) for some very basic constraints to follow
+you!

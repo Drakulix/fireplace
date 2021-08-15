@@ -1,13 +1,26 @@
-[workspace]
-members = [
-    "fireplace",
-    "fireplace_lib",
-    "fireplace_flavors/json",
-    "fireplace_flavors/code",
-]
+[package]
+name = "fireplace"
+version = "0.0.0"
+authors = ["Victor Brekenfeld (Drakulix) <github@drakulix.de>"]
+edition = "2018"
 
-[profile.release]
-lto = true
+[dependencies]
+smithay = { git = "https://github.com/Smithay/smithay", default-features = false, features = ["backend_winit", "slog-stdlog", "wayland_frontend"] }
+calloop = "0.9.1"
 
-[replace]
-"fireplace_lib:3.0.2" = { path = "./fireplace_lib" }
+bitflags = "1"
+linked-hash-map = "0.5.4"
+
+slog = "2.7"
+slog-term = "2.8"
+slog-async = "2.6"
+slog-scope = "4.4"
+slog-stdlog = "4.1"
+
+serde = { version = "1.0", features = ["derive"] }
+serde_yaml = "0.8"
+
+anyhow = "1.0.42"
+
+xdg = "2.2.0"
+xkbcommon = "0.4.0"
