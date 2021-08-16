@@ -83,8 +83,13 @@ fn main() -> Result<()> {
 
     let mut state = Fireplace::new(config, display);
     backend::initial_backend_auto(&mut event_loop, &state)?;
-    // TODO, flusing clients should be an idle thing
-    event_loop.run(std::time::Duration::from_millis(16), &mut state, |state| {
+    let signal = event_loop.get_signal();
+    event_loop.run(None, &mut state, |state| {
+        if state.workspaces.borrow().num_outputs() == 0 || state.should_stop {
+            signal.stop();
+            return;
+        }
+
         let display = state.display.clone();
         display.borrow_mut().flush_clients(state);
     })?;

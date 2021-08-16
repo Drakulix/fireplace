@@ -120,17 +120,23 @@ impl Workspaces {
     where
         F: Fn(&Output) -> bool,
     {
-        for output in self.outputs.iter().filter(|o| f(*o)) {
-            if let Some(workspace) = output.userdata().get::<ActiveWorkspace>() {
-                if self.spaces.get(&workspace.0).unwrap().is_empty() {
-                    slog_scope::debug!("Destroying empty workspace: {}", workspace.0);
-                    self.spaces.remove(&workspace.0);
-                }
+        for output in self.outputs.iter().filter(|o| !f(*o)) {
+            let workspace = output.userdata().get::<ActiveWorkspace>().unwrap().0;
+            if self.spaces.get(&workspace).unwrap().is_empty() {
+                slog_scope::debug!("Destroying empty workspace: {}", workspace);
+                self.spaces.remove(&workspace);
             }
         }
         self.outputs.retain(f);
-
         self.arrange();
+    }
+
+    pub fn remove_output_by_name(&mut self, name: &str) {
+        self.retain_outputs(|o| o.name() != name);
+    }
+
+    pub fn num_outputs(&self) -> usize {
+        self.outputs.len()
     }
 
     pub fn toplevel_by_surface(&mut self, surface: &WlSurface) -> Option<Kind> {
