@@ -29,3 +29,31 @@ view:
 exec:
     keys: # default values:
         '$TERMINAL': { modifiers: ["Logo"], key: "Return" }
+
+# Workspace config
+workspace:
+    # Workspace key configuration
+    #
+    # Currently there are workspaces from 1 up to 32, you dont need to use
+    # all of them, if there is no key to reach them, they are not created.
+    keys:
+        workspace1:  { modifiers: ["Logo"], key: "1" }
+        workspace2:  { modifiers: ["Logo"], key: "2" }
+        workspace3:  { modifiers: ["Logo"], key: "3" }
+        workspace4:  { modifiers: ["Logo"], key: "4" }
+        workspace5:  { modifiers: ["Logo"], key: "5" }
+        workspace6:  { modifiers: ["Logo"], key: "6" }
+        workspace7:  { modifiers: ["Logo"], key: "7" }
+        workspace8:  { modifiers: ["Logo"], key: "8" }
+        workspace9:  { modifiers: ["Logo"], key: "9" }
+        workspace10: { modifiers: ["Logo"], key: "0" }
+        moveto_workspace1:  { modifiers: ["Logo", "Shift"], key: "1" }
+        moveto_workspace2:  { modifiers: ["Logo", "Shift"], key: "2" }
+        moveto_workspace3:  { modifiers: ["Logo", "Shift"], key: "3" }
+        moveto_workspace4:  { modifiers: ["Logo", "Shift"], key: "4" }
+        moveto_workspace5:  { modifiers: ["Logo", "Shift"], key: "5" }
+        moveto_workspace6:  { modifiers: ["Logo", "Shift"], key: "6" }
+        moveto_workspace7:  { modifiers: ["Logo", "Shift"], key: "7" }
+        moveto_workspace8:  { modifiers: ["Logo", "Shift"], key: "8" }
+        moveto_workspace9:  { modifiers: ["Logo", "Shift"], key: "9" }
+        moveto_workspace10: { modifiers: ["Logo", "Shift"], key: "0" }

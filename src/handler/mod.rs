@@ -125,7 +125,7 @@ impl Fireplace {
                         .get_keyboard()
                         .unwrap()
                         .input(keycode, state, serial, time, |modifiers, keysym| {
-                            slog_scope::trace!("keysym";
+                            slog_scope::debug!("keysym";
                                 "state" => format!("{:?}", state),
                                 "mods" => format!("{:?}", modifiers),
                                 "keysym" => ::xkbcommon::xkb::keysym_get_name(keysym)
@@ -145,6 +145,15 @@ impl Fireplace {
                                     self.process_global_command(&command);
                                     self.suppressed_keys.push(keysym);
                                     return false;
+                                }
+                                if let Some(command) = self.config.workspace.keys.iter()
+                                    .find(|(_, p)| p.modifiers == *modifiers && p.key == keysym)
+                                    .map(|(c, _)| c)
+                                    .cloned()
+                                { 
+                                    self.process_workspace_command(&command, seat);
+                                    self.suppressed_keys.push(keysym);
+                                    return false;  
                                 }
                                 if let Some(command) = self.config.view.keys.iter()
                                     .find(|(_, p)| p.modifiers == *modifiers && p.key == keysym)
@@ -217,7 +226,6 @@ impl Fireplace {
                         break;
                     }
                 }
-                 
             },
             InputEvent::PointerMotionAbsolute { event, .. } => {
                 use smithay::backend::input::PointerMotionAbsoluteEvent;
@@ -342,6 +350,38 @@ impl Fireplace {
                 self.should_stop = true;
             },
             _ => { slog_scope::debug!("Unknown global command: {}", command); }
+        }
+    }
+
+    pub fn process_workspace_command(&mut self, command: &str, seat: &Seat) {
+        let mut workspaces = self.workspaces.borrow_mut();
+        match command {
+            x if x.starts_with("workspace") => {
+                if let Ok(idx) = x.strip_prefix("workspace").unwrap().parse::<u8>() {
+                    workspaces.switch_workspace(seat, idx);
+                }
+            },
+            x if x.starts_with("moveto_workspace") => {
+                if let Ok(idx) = x.strip_prefix("moveto_workspace").unwrap().parse::<u8>() {
+                    slog_scope::debug!("Moveto: {}", idx);
+                    let output_name = &seat.user_data().get::<ActiveOutput>().unwrap().0;
+                    let current_space_idx = workspaces.idx_by_output_name(&*output_name.borrow()).unwrap();
+                    if current_space_idx != idx {
+                        let window = {
+                            let current_space = workspaces.space_by_idx(current_space_idx);
+                            if let Some(window) = current_space.focused_window() {
+                                current_space.remove_toplevel(window.clone());
+                                window
+                            } else {
+                                return;
+                            }
+                        };
+                        let new_space = workspaces.space_by_idx(idx);
+                        new_space.new_toplevel(window);
+                    }
+                }
+            },
+            _ => { slog_scope::debug!("Unknown workspace command: {}", command); }
         }
     }
 

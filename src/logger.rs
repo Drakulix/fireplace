@@ -4,7 +4,7 @@ use slog::Drain;
 use serde::Deserialize;
 
 /// Configuration for fireplace's Logger
-#[derive(Deserialize, Default)]
+#[derive(Deserialize, Default, Debug)]
 #[serde(deny_unknown_fields)]
 pub struct Logging {
     #[serde(default)]
@@ -16,7 +16,7 @@ pub struct Logging {
 }
 
 /// Terminal color output options
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub enum Color
 {
     Auto,
@@ -31,7 +31,7 @@ impl Default for Color {
 }
 
 /// Style of the logging output
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 pub enum Mode
 {
     Compact,

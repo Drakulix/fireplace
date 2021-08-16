@@ -1,6 +1,6 @@
 use crate::handler::ActiveOutput;
 use std::{
-    cell::RefCell,
+    cell::{Cell, RefCell},
     rc::Rc,
 };
 
@@ -34,7 +34,13 @@ pub struct Workspaces {
     outputs: Vec<Output>,
 }
 
-struct ActiveWorkspace(u8);
+struct ActiveWorkspace(Cell<u8>);
+
+impl ActiveWorkspace {
+    fn new(val: u8) -> ActiveWorkspace {
+        ActiveWorkspace(Cell::new(val))
+    }
+}
 
 impl Workspaces {
     pub fn new(display: Rc<RefCell<Display>>) -> Workspaces {
@@ -45,17 +51,12 @@ impl Workspaces {
         }
     }
 
-    fn create_workspace(&mut self, i: u8, size: Size<i32, Logical>) {
-        slog_scope::info!("Creating workspace {}", i);
-        self.spaces.insert(i, Box::new(super::layout::Floating::new(size)));
-    }
-
     fn next_available(&mut self, size: Size<i32, Logical>) -> u8 {
-        for i in 0..::std::u8::MAX {
+        for i in 1..::std::u8::MAX {
             if let Some(space) = self.spaces.get_mut(&i) {
                 let mut available = true;
                 for output in &self.outputs {
-                    if output.userdata().get::<ActiveWorkspace>().map(|x| x.0 as i32).unwrap_or(-1) == i as i32 {
+                    if output.userdata().get::<ActiveWorkspace>().map(|x| x.0.get() as i32).unwrap() == i as i32 {
                         available = false;
                     }
                 }
@@ -64,7 +65,7 @@ impl Workspaces {
                     return i;
                 }
             } else {
-                self.create_workspace(i, size);
+                self.spaces.insert(i, Box::new(super::layout::Floating::new(size)));
                 return i;
             }
         }
@@ -105,7 +106,7 @@ impl Workspaces {
         let workspace = self.next_available(logical_size);
         slog_scope::info!("New output: {:?}", output);
         slog_scope::debug!("Attaching workspace {} to output {}", workspace, output.name());
-        output.userdata().insert_if_missing(|| ActiveWorkspace(workspace));
+        output.userdata().insert_if_missing(|| ActiveWorkspace::new(workspace));
         self.outputs.push(output);
 
         // We call arrange here albeit the output is only appended and
@@ -121,7 +122,7 @@ impl Workspaces {
         F: Fn(&Output) -> bool,
     {
         for output in self.outputs.iter().filter(|o| !f(*o)) {
-            let workspace = output.userdata().get::<ActiveWorkspace>().unwrap().0;
+            let workspace = output.userdata().get::<ActiveWorkspace>().unwrap().0.get();
             if self.spaces.get(&workspace).unwrap().is_empty() {
                 slog_scope::debug!("Destroying empty workspace: {}", workspace);
                 self.spaces.remove(&workspace);
@@ -148,11 +149,15 @@ impl Workspaces {
         None
     }
 
+    pub fn idx_by_output_name<N: AsRef<str>>(&self, name: N) -> Option<u8> {
+        self.outputs.iter().find(|o| o.name() == name.as_ref()).and_then(|x| x.userdata().get::<ActiveWorkspace>()).map(|x| x.0.get())
+    }
+
     pub fn space_by_output_name<'a, N>(&'a mut self, name: N) -> Option<&'a mut Box<dyn Layout>>
     where
         N: AsRef<str>
     {
-        let active = self.output_by_name(name).and_then(|x| x.userdata().get::<ActiveWorkspace>()).map(|x| x.0);
+        let active = self.idx_by_output_name(name);
         if let Some(a) = active {
             self.spaces.get_mut(&a)
         } else {
@@ -179,6 +184,10 @@ impl Workspaces {
         None
     }
 
+    pub fn space_by_idx(&mut self, idx: u8) -> &mut Box<dyn Layout> {
+        self.spaces.entry(idx).or_insert(Box::new(super::layout::Floating::new((0, 0))))
+    }
+
     pub fn output<F>(&mut self, f: F) -> Option<&mut Output>
     where
         F: FnMut(&&mut Output) -> bool,
@@ -195,5 +204,25 @@ impl Workspaces {
         N: AsRef<str>,
     {
         self.output(|o| o.name() == name.as_ref())
+    }
+
+    pub fn switch_workspace(&mut self, seat: &Seat, idx: u8) {
+        let output_name = &seat.user_data().get::<ActiveOutput>().unwrap().0;
+        let current_idx = self.idx_by_output_name(&*output_name.borrow()).unwrap();
+        if current_idx != idx {
+            if let Some(output) = self.output(|o| o.userdata().get::<ActiveWorkspace>().unwrap().0.get() == idx) {
+                *output_name.borrow_mut() = String::from(output.name());
+            } else {
+                let output = self.output_by_name(&*output_name.borrow()).unwrap();
+                slog_scope::debug!("Attaching workspace {} to output {}", idx, output.name());
+                output.userdata().get::<ActiveWorkspace>().unwrap().0.set(idx);
+                let size = output.size();
+                let _ = self.spaces.entry(idx).or_insert(Box::new(super::layout::Floating::new(size)));
+            }
+        }
+        if self.space_by_idx(current_idx).is_empty() {
+            slog_scope::debug!("Destroying empty workspace: {}", current_idx);
+            self.spaces.remove(&current_idx);
+        }
     }
 }

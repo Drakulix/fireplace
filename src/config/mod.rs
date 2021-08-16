@@ -14,7 +14,7 @@ mod default;
 ///
 /// Collects all configuration structs from the various handlers.
 /// Can be deserialized by `serde`.
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(deny_unknown_fields)]
 pub struct Config {
     /// Logging configuration
@@ -31,6 +31,9 @@ pub struct Config {
     /// Configuration of program execution by keys.
     #[serde(default)]
     pub exec: Exec,
+    /// Configuration for Workspaces
+    #[serde(default)]
+    pub workspace: WorkspacesConfig,
 }
 
 impl Default for Config {
@@ -40,11 +43,12 @@ impl Default for Config {
             keys: default::keys(),
             view: View::default(),
             exec: Exec::default(),
+            workspace: WorkspacesConfig::default(),
         }
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(deny_unknown_fields)]
 /// View related configuration options
 pub struct View {
@@ -61,7 +65,7 @@ impl Default for View {
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Debug)]
 #[serde(deny_unknown_fields)]
 /// Exec/Launcher related configuration options
 pub struct Exec {
@@ -77,5 +81,20 @@ pub struct Exec {
 impl Default for Exec {
     fn default() -> Exec {
         Exec { keys: default::exec_keys() }
+    }
+}
+
+/// Configuration for the `WorkspaceHandler`
+#[derive(Deserialize, Debug)]
+#[serde(deny_unknown_fields)]
+pub struct WorkspacesConfig {
+    /// Key configuration
+    #[serde(default = "crate::config::default::workspace_keys")]
+    pub keys: HashMap<String, KeyPattern>,
+}
+
+impl Default for WorkspacesConfig {
+    fn default() -> WorkspacesConfig {
+        WorkspacesConfig { keys: default::workspace_keys() }
     }
 }

@@ -339,6 +339,16 @@ impl Layout for Floating {
             None,
             surface,
         );
+        // might happen if an already configured window is moved here
+        if window.bbox().size != (0, 0).into() {
+            let geometry = window.geometry();
+            // center the window for now
+            let location = (
+                self.size.w / 2 - geometry.size.w / 2,
+                self.size.h / 2 - geometry.size.h / 2,
+            ).into();
+            window.set_location(location);
+        }
         self.windows.insert(0, Rc::new(RefCell::new(window)));
     }
 

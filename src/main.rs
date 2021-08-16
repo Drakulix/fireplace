@@ -57,6 +57,7 @@ fn main() -> Result<()> {
     slog_scope::info!("Fireplace starting up with {}.",
         config_path.map(|x| format!("config at {}", x.display()))
         .unwrap_or(String::from("default config")));
+    slog_scope::debug!("Config: {:#?}", config);
     
     let mut event_loop = EventLoop::try_new().with_context(|| "Failed to initialize event loop")?;
     let mut display = Display::new();

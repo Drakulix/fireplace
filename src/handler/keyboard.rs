@@ -55,13 +55,6 @@ impl Into<KeyModifiers> for KeyModifier {
 }
 
 #[derive(Deserialize)]
-#[serde(remote = "KeyState")]
-enum KeyStateDef {
-    Released,
-    Pressed,
-}
-
-#[derive(Deserialize)]
 #[serde(transparent)]
 struct KeyModifiersDef(Vec<KeyModifier>);
 
@@ -122,7 +115,7 @@ pub struct KeyPattern {
 }
 
 impl KeyPattern {
-    pub fn new(state: KeyState, modifiers: impl Into<KeyModifiers>, key: u32) -> KeyPattern {
+    pub fn new(modifiers: impl Into<KeyModifiers>, key: u32) -> KeyPattern {
         KeyPattern {
             modifiers: modifiers.into(),
             key
