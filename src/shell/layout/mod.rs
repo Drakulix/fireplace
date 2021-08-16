@@ -1,13 +1,13 @@
 use smithay::{
-    utils::{Point, Rectangle, Logical, Size},
+    reexports::{
+        wayland_protocols::xdg_shell::server::xdg_toplevel::ResizeEdge,
+        wayland_server::protocol::wl_surface::WlSurface,
+    },
+    utils::{Logical, Point, Rectangle, Size},
     wayland::{
-        seat::{Seat, GrabStartData},
+        seat::{GrabStartData, Seat},
         shell::xdg::ToplevelConfigure,
         Serial,
-    },
-    reexports::{
-        wayland_server::protocol::wl_surface::WlSurface,
-        wayland_protocols::xdg_shell::server::xdg_toplevel::ResizeEdge,
     },
 };
 use std::sync::atomic::AtomicUsize;
@@ -22,8 +22,21 @@ static ID_COUNTER: AtomicUsize = AtomicUsize::new(0);
 pub trait Layout {
     fn id(&self) -> usize;
     fn new_toplevel(&mut self, surface: Kind);
-    fn move_request(&mut self, surface: Kind, seat: &Seat, serial: Serial, start_data: GrabStartData);
-    fn resize_request(&mut self, surface: Kind, seat: &Seat, serial: Serial, start_data: GrabStartData, edges: ResizeEdge);
+    fn move_request(
+        &mut self,
+        surface: Kind,
+        seat: &Seat,
+        serial: Serial,
+        start_data: GrabStartData,
+    );
+    fn resize_request(
+        &mut self,
+        surface: Kind,
+        seat: &Seat,
+        serial: Serial,
+        start_data: GrabStartData,
+        edges: ResizeEdge,
+    );
     fn ack_configure(&mut self, surface: WlSurface, configure: ToplevelConfigure);
     fn commit(&mut self, surface: Kind);
     fn fullscreen_request(&mut self, surface: Kind, state: bool);
@@ -36,16 +49,21 @@ pub trait Layout {
     fn is_empty(&self) -> bool;
     fn rearrange(&mut self, size: &Size<i32, Logical>);
 
-    fn surface_under(&mut self, point: Point<f64, Logical>) -> Option<(WlSurface, Point<i32, Logical>)>;
+    fn surface_under(
+        &mut self,
+        point: Point<f64, Logical>,
+    ) -> Option<(WlSurface, Point<i32, Logical>)>;
     fn focused_window(&self) -> Option<Kind>;
-    fn windows<'a>(&'a self) -> Box<dyn Iterator<Item=Kind> + 'a>;
-    fn windows_from_bottom_to_top<'a>(&'a self) -> Box<dyn Iterator<Item=(Kind, Point<i32, Logical>, Rectangle<i32, Logical>)> + 'a>;
+    fn windows<'a>(&'a self) -> Box<dyn Iterator<Item = Kind> + 'a>;
+    fn windows_from_bottom_to_top<'a>(
+        &'a self,
+    ) -> Box<dyn Iterator<Item = (Kind, Point<i32, Logical>, Rectangle<i32, Logical>)> + 'a>;
 
     /// Sends the frame callback to all the subsurfaces in this
     /// window that requested it
     fn send_frames(&self, time: u32) {
-        use smithay::wayland::compositor::{with_surface_tree_downward, TraversalAction};
         use crate::shell::SurfaceData;
+        use smithay::wayland::compositor::{with_surface_tree_downward, TraversalAction};
 
         for w in self.windows() {
             if let Some(wl_surface) = w.get_surface() {

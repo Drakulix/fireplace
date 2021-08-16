@@ -11,7 +11,7 @@ use smithay::{
             Display, Global, UserDataMap,
         },
     },
-    utils::{Logical, Point, Rectangle, Size, Raw},
+    utils::{Logical, Point, Raw, Rectangle, Size},
     wayland::{
         compositor::{with_surface_tree_downward, SubsurfaceCachedState, TraversalAction},
         output::{self, Mode, PhysicalProperties},
@@ -41,12 +41,12 @@ pub struct Output {
 
 // Some manufacturers hardcode the aspect-ratio of the output in the physical size field.
 fn phys_size_is_aspect_ratio(size: &Size<i32, Raw>) -> bool {
-    (size.w == 1600 && size.h == 900) ||
-    (size.w == 1600 && size.h == 1000) ||
-    (size.w == 160 && size.h == 90) ||
-    (size.w == 160 && size.h == 100) ||
-    (size.w == 16 && size.h == 9) ||
-    (size.w == 16 && size.h == 10)
+    (size.w == 1600 && size.h == 900)
+        || (size.w == 1600 && size.h == 1000)
+        || (size.w == 160 && size.h == 90)
+        || (size.w == 160 && size.h == 100)
+        || (size.w == 16 && size.h == 9)
+        || (size.w == 16 && size.h == 10)
 }
 
 impl Output {
@@ -64,16 +64,19 @@ impl Output {
         let (output, global) = output::Output::new(display, name.as_ref().into(), physical, None);
 
         let (width, height) = mode.size.into();
-        let scale = if height < HIDPI_MIN_HEIGHT { 1.0 }
-            else if phys_size_is_aspect_ratio(&physical_size) { 1.0 }
-            else if physical_size.h == 0 || physical_size.w == 0 { 1.0 }
-            else {
-                let dpi_x = width as f32 / (physical_size.w as f32 / MM_PER_INCH);
-                let dpi_y = height as f32 / (physical_size.h as f32 / MM_PER_INCH);
-                slog_scope::debug!("Output DPI: {}x{}", dpi_x, dpi_y);
-                    (((dpi_x / HIDPI_DPI_STEP) * 4.0).floor() / 4.0)
-                    .min(((dpi_y / HIDPI_DPI_STEP) * 4.0).floor() / 4.0)
-            };
+        let scale = if height < HIDPI_MIN_HEIGHT {
+            1.0
+        } else if phys_size_is_aspect_ratio(&physical_size) {
+            1.0
+        } else if physical_size.h == 0 || physical_size.w == 0 {
+            1.0
+        } else {
+            let dpi_x = width as f32 / (physical_size.w as f32 / MM_PER_INCH);
+            let dpi_y = height as f32 / (physical_size.h as f32 / MM_PER_INCH);
+            slog_scope::debug!("Output DPI: {}x{}", dpi_x, dpi_y);
+            (((dpi_x / HIDPI_DPI_STEP) * 4.0).floor() / 4.0)
+                .min(((dpi_y / HIDPI_DPI_STEP) * 4.0).floor() / 4.0)
+        };
         let output_scale = scale.ceil() as i32;
 
         output.change_current_state(Some(mode), None, Some(output_scale), Some(location));
@@ -135,8 +138,7 @@ impl Output {
 
     pub fn set_mode(&mut self, mode: Mode) {
         self.output.delete_mode(self.current_mode);
-        self
-            .output
+        self.output
             .change_current_state(Some(mode), None, Some(self.output_scale), None);
         self.output.set_preferred(mode);
         self.current_mode = mode;

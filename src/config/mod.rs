@@ -1,12 +1,9 @@
 //! # Fireplace configuration
 //!
-use crate::{
-    logger::Logging,
-    handler::keyboard::KeyPattern,
-};
+use crate::{handler::keyboard::KeyPattern, logger::Logging};
 
-use std::collections::HashMap;
 use serde::Deserialize;
+use std::collections::HashMap;
 
 mod default;
 
@@ -61,7 +58,9 @@ pub struct View {
 
 impl Default for View {
     fn default() -> View {
-        View { keys: default::view_keys() }
+        View {
+            keys: default::view_keys(),
+        }
     }
 }
 
@@ -80,7 +79,9 @@ pub struct Exec {
 
 impl Default for Exec {
     fn default() -> Exec {
-        Exec { keys: default::exec_keys() }
+        Exec {
+            keys: default::exec_keys(),
+        }
     }
 }
 
@@ -95,6 +96,8 @@ pub struct WorkspacesConfig {
 
 impl Default for WorkspacesConfig {
     fn default() -> WorkspacesConfig {
-        WorkspacesConfig { keys: default::workspace_keys() }
+        WorkspacesConfig {
+            keys: default::workspace_keys(),
+        }
     }
 }

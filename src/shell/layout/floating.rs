@@ -1,37 +1,28 @@
 use std::{
     cell::RefCell,
     rc::Rc,
-    sync::{
-        Mutex,
-        atomic::Ordering,
-    },
+    sync::{atomic::Ordering, Mutex},
 };
 
 use smithay::{
-    utils::{Point, Rectangle, Logical, Size},
+    reexports::{
+        wayland_protocols::xdg_shell::server::xdg_toplevel,
+        wayland_server::protocol::{wl_pointer::ButtonState, wl_shell_surface, wl_surface},
+    },
+    utils::{Logical, Point, Rectangle, Size},
     wayland::{
         compositor::with_states,
-        seat::{Seat, GrabStartData, PointerGrab, PointerInnerHandle, AxisFrame},
-        shell::xdg::{ToplevelConfigure, SurfaceCachedState, XdgToplevelSurfaceRoleAttributes},
+        seat::{AxisFrame, GrabStartData, PointerGrab, PointerInnerHandle, Seat},
+        shell::xdg::{SurfaceCachedState, ToplevelConfigure, XdgToplevelSurfaceRoleAttributes},
         Serial,
-    },
-    reexports::{
-        wayland_server::protocol::{
-            wl_surface,
-            wl_shell_surface,
-            wl_pointer::ButtonState,
-        },
-        wayland_protocols::{
-            xdg_shell::server::xdg_toplevel,
-        }
     },
 };
 
+use super::{Layout, ID_COUNTER};
 use crate::shell::{
-    window::{Window, Kind},
+    window::{Kind, Window},
     SurfaceData,
 };
-use super::{Layout, ID_COUNTER};
 
 bitflags::bitflags! {
     struct ResizeEdge: u32 {
@@ -265,9 +256,9 @@ impl PointerGrab for MoveSurfaceGrab {
         let delta = location - self.start_data.location;
         let new_location = self.initial_window_location.to_f64() + delta;
 
-        self.window.borrow_mut().set_location(
-            (new_location.x as i32, new_location.y as i32).into(),
-        );
+        self.window
+            .borrow_mut()
+            .set_location((new_location.x as i32, new_location.y as i32).into());
     }
 
     fn button(
@@ -324,7 +315,10 @@ impl Floating {
     }
 
     pub fn window_for_toplevel(&self, surface: &Kind) -> Option<Rc<RefCell<Window>>> {
-        self.windows.iter().find(|w| &w.borrow().toplevel == surface).cloned()
+        self.windows
+            .iter()
+            .find(|w| &w.borrow().toplevel == surface)
+            .cloned()
     }
 }
 
@@ -334,11 +328,7 @@ impl Layout for Floating {
     }
 
     fn new_toplevel(&mut self, surface: Kind) {
-        let mut window = Window::new(
-            None,
-            None,
-            surface,
-        );
+        let mut window = Window::new(None, None, surface);
         // might happen if an already configured window is moved here
         if window.bbox().size != (0, 0).into() {
             let geometry = window.geometry();
@@ -346,7 +336,8 @@ impl Layout for Floating {
             let location = (
                 self.size.w / 2 - geometry.size.w / 2,
                 self.size.h / 2 - geometry.size.h / 2,
-            ).into();
+            )
+                .into();
             window.set_location(location);
         }
         self.windows.insert(0, Rc::new(RefCell::new(window)));
@@ -356,7 +347,13 @@ impl Layout for Floating {
         self.windows.retain(|x| x.borrow().toplevel != surface);
     }
 
-    fn move_request(&mut self, surface: Kind, seat: &Seat, serial: Serial, start_data: GrabStartData) {
+    fn move_request(
+        &mut self,
+        surface: Kind,
+        seat: &Seat,
+        serial: Serial,
+        start_data: GrabStartData,
+    ) {
         let window = match self.window_for_toplevel(&surface) {
             Some(w) => w,
             None => return,
@@ -371,7 +368,10 @@ impl Layout for Floating {
         #[allow(irrefutable_let_patterns)]
         if let Kind::Xdg(xdg_surface) = surface {
             if let Some(current_state) = xdg_surface.current_state() {
-                if current_state.states.contains(xdg_toplevel::State::Maximized) {
+                if current_state
+                    .states
+                    .contains(xdg_toplevel::State::Maximized)
+                {
                     let fs_changed = xdg_surface.with_pending_state(|state| {
                         state.states.unset(xdg_toplevel::State::Maximized);
                         state.size = None;
@@ -408,7 +408,14 @@ impl Layout for Floating {
         }
     }
 
-    fn resize_request(&mut self, surface: Kind, seat: &Seat, serial: Serial, start_data: GrabStartData, edges: xdg_toplevel::ResizeEdge) {
+    fn resize_request(
+        &mut self,
+        surface: Kind,
+        seat: &Seat,
+        serial: Serial,
+        start_data: GrabStartData,
+        edges: xdg_toplevel::ResizeEdge,
+    ) {
         let window = match self.window_for_toplevel(&surface) {
             Some(w) => w,
             None => return,
@@ -432,8 +439,9 @@ impl Layout for Floating {
                 .get::<RefCell<SurfaceData>>()
                 .unwrap()
                 .borrow_mut();
-            
-            data.userdata().insert_if_missing(|| RefCell::new(ResizeState::NotResizing));
+
+            data.userdata()
+                .insert_if_missing(|| RefCell::new(ResizeState::NotResizing));
             let resize_state_cell = data.userdata().get::<RefCell<ResizeState>>().unwrap();
             *resize_state_cell.borrow_mut() = resize_state;
         })
@@ -446,17 +454,20 @@ impl Layout for Floating {
             initial_window_size,
             last_window_size: initial_window_size,
         };
-        
+
         // TODO: Touch move
         let pointer = seat.get_pointer().unwrap();
-        pointer.set_grab(grab, serial);   
+        pointer.set_grab(grab, serial);
     }
-    
+
     fn ack_configure(&mut self, surface: wl_surface::WlSurface, configure: ToplevelConfigure) {
         let waiting_for_serial = with_states(&surface, |states| {
             if let Some(data) = states.data_map.get::<RefCell<SurfaceData>>() {
-                if let Some(resize_state_cell) = data.borrow().userdata().get::<RefCell<ResizeState>>() {
-                    if let ResizeState::WaitingForFinalAck(_, serial) = *resize_state_cell.borrow() {
+                if let Some(resize_state_cell) =
+                    data.borrow().userdata().get::<RefCell<ResizeState>>()
+                {
+                    if let ResizeState::WaitingForFinalAck(_, serial) = *resize_state_cell.borrow()
+                    {
                         return Some(serial);
                     }
                 }
@@ -500,7 +511,7 @@ impl Layout for Floating {
 
                     let resize_state_cell = data.userdata().get::<RefCell<ResizeState>>().unwrap();
                     let mut resize_state = resize_state_cell.borrow_mut();
-                    
+
                     if let ResizeState::WaitingForFinalAck(resize_data, _) = *resize_state {
                         *resize_state = ResizeState::WaitingForCommit(resize_data);
                     } else {
@@ -511,7 +522,7 @@ impl Layout for Floating {
             }
         }
     }
-    
+
     fn commit(&mut self, surface: Kind) {
         let window = match self.window_for_toplevel(&surface) {
             Some(w) => w,
@@ -527,7 +538,8 @@ impl Layout for Floating {
                 let location = (
                     self.size.w / 2 - geometry.size.w / 2,
                     self.size.h / 2 - geometry.size.h / 2,
-                ).into();
+                )
+                    .into();
                 window.set_location(location);
             }
             window.self_update();
@@ -543,7 +555,8 @@ impl Layout for Floating {
 
             let mut new_location = None;
 
-            data.userdata().insert_if_missing(|| RefCell::new(ResizeState::NotResizing));
+            data.userdata()
+                .insert_if_missing(|| RefCell::new(ResizeState::NotResizing));
             let resize_state_cell = data.userdata().get::<RefCell<ResizeState>>().unwrap();
             let mut resize_state = resize_state_cell.borrow_mut();
             // If the window is being resized by top or left, its location must be adjusted
@@ -563,12 +576,12 @@ impl Layout for Floating {
                         let geometry = window.borrow().geometry();
 
                         if edges.intersects(ResizeEdge::LEFT) {
-                            location.x =
-                                initial_window_location.x + (initial_window_size.w - geometry.size.w);
+                            location.x = initial_window_location.x
+                                + (initial_window_size.w - geometry.size.w);
                         }
                         if edges.intersects(ResizeEdge::TOP) {
-                            location.y =
-                                initial_window_location.y + (initial_window_size.h - geometry.size.h);
+                            location.y = initial_window_location.y
+                                + (initial_window_size.h - geometry.size.h);
                         }
 
                         new_location = Some(location);
@@ -613,7 +626,7 @@ impl Layout for Floating {
             let window = match self.window_for_toplevel(&surface) {
                 Some(w) => w,
                 None => return,
-            }; 
+            };
             window.borrow_mut().set_location((0, 0).into());
             #[allow(irrefutable_let_patterns)]
             if let Kind::Xdg(xdg_surface) = surface {
@@ -648,28 +661,34 @@ impl Layout for Floating {
     fn is_empty(&self) -> bool {
         self.windows.is_empty()
     }
-    
+
     fn rearrange(&mut self, size: &Size<i32, Logical>) {
         // todo update windows out of new size
         self.size = *size;
     }
-    
-    fn windows<'a>(&'a self) -> Box<dyn Iterator<Item=Kind> + 'a> {
+
+    fn windows<'a>(&'a self) -> Box<dyn Iterator<Item = Kind> + 'a> {
         Box::new(self.windows.iter().map(|w| w.borrow().toplevel.clone()))
     }
-    fn windows_from_bottom_to_top<'a>(&'a self) -> Box<dyn Iterator<Item=(Kind, Point<i32, Logical>, Rectangle<i32, Logical>)> + 'a> {
+    fn windows_from_bottom_to_top<'a>(
+        &'a self,
+    ) -> Box<dyn Iterator<Item = (Kind, Point<i32, Logical>, Rectangle<i32, Logical>)> + 'a> {
         Box::new(self.windows.iter().rev().flat_map(|w| {
             let window = w.borrow();
-            window.location().map(|location|
-                (window.toplevel.clone(), location, window.bbox())
-            )
+            window
+                .location()
+                .map(|location| (window.toplevel.clone(), location, window.bbox()))
         }))
     }
-    
+
     fn on_focus(&mut self, surface: &wl_surface::WlSurface) {
-        if let Some(idx) = self.windows.iter().enumerate().find(|(_, w)| {
-            w.borrow().contains_surface(surface)
-        }).map(|(i, _)| i) {
+        if let Some(idx) = self
+            .windows
+            .iter()
+            .enumerate()
+            .find(|(_, w)| w.borrow().contains_surface(surface))
+            .map(|(i, _)| i)
+        {
             let window = self.windows.remove(idx);
 
             for w in self.windows.iter() {
@@ -680,12 +699,18 @@ impl Layout for Floating {
             self.windows.insert(0, window);
         }
     }
-    
+
     fn focused_window(&self) -> Option<Kind> {
-        self.windows.iter().map(|w| w.borrow().toplevel.clone()).next()
+        self.windows
+            .iter()
+            .map(|w| w.borrow().toplevel.clone())
+            .next()
     }
-    
-    fn surface_under(&mut self, point: Point<f64, Logical>) -> Option<(wl_surface::WlSurface, Point<i32, Logical>)> {
+
+    fn surface_under(
+        &mut self,
+        point: Point<f64, Logical>,
+    ) -> Option<(wl_surface::WlSurface, Point<i32, Logical>)> {
         self.windows.iter().find_map(|w| w.borrow().matching(point))
     }
 }

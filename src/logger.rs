@@ -1,7 +1,7 @@
 //! Compositor Logging Configuration
 
-use slog::Drain;
 use serde::Deserialize;
+use slog::Drain;
 
 /// Configuration for fireplace's Logger
 #[derive(Deserialize, Default, Debug)]
@@ -17,8 +17,7 @@ pub struct Logging {
 
 /// Terminal color output options
 #[derive(Deserialize, Debug)]
-pub enum Color
-{
+pub enum Color {
     Auto,
     Always,
     Never,
@@ -32,8 +31,7 @@ impl Default for Color {
 
 /// Style of the logging output
 #[derive(Deserialize, Debug)]
-pub enum Mode
-{
+pub enum Mode {
     Compact,
     Full,
 }
@@ -51,12 +49,27 @@ pub fn init(config: &Logging) -> slog_scope::GlobalLoggerGuard {
         Color::Always => builder.force_color(),
         Color::Never => builder.force_plain(),
         Color::Auto => builder,
-    }.build();
+    }
+    .build();
 
     let params = slog::o!();
     let logger = match config.style {
-        Mode::Compact => slog::Logger::root(slog_async::Async::new(slog_term::CompactFormat::new(decorator).build().ignore_res()).build().fuse(), params),
-        Mode::Full => slog::Logger::root(slog_async::Async::new(slog_term::FullFormat::new(decorator).build().ignore_res()).build().fuse(), params),
+        Mode::Compact => slog::Logger::root(
+            slog_async::Async::new(
+                slog_term::CompactFormat::new(decorator)
+                    .build()
+                    .ignore_res(),
+            )
+            .build()
+            .fuse(),
+            params,
+        ),
+        Mode::Full => slog::Logger::root(
+            slog_async::Async::new(slog_term::FullFormat::new(decorator).build().ignore_res())
+                .build()
+                .fuse(),
+            params,
+        ),
     };
 
     let result = slog_scope::set_global_logger(logger);

@@ -1,24 +1,19 @@
 use crate::config::Config;
-use crate::shell::{
-    workspace::Workspaces,
-    window::PopupKind,
+use crate::shell::{window::PopupKind, workspace::Workspaces};
+use smithay::{
+    reexports::wayland_server::Display,
+    wayland::{
+        data_device::{default_action_chooser, init_data_device},
+        output::xdg::init_xdg_output_manager,
+        seat::{Keysym, Seat},
+        shell::xdg::ShellState as XdgShellState,
+        shm::init_shm_global,
+    },
 };
 use std::{
     cell::RefCell,
     rc::Rc,
     sync::{Arc, Mutex},
-};
-use smithay::{
-    wayland::{
-        data_device::{init_data_device, default_action_chooser},
-        seat::{Seat, Keysym},
-        shell::xdg::ShellState as XdgShellState,
-        shm::init_shm_global,
-        output::xdg::init_xdg_output_manager,
-    },
-    reexports::wayland_server::{
-        Display,
-    },
 };
 
 pub struct Fireplace {
@@ -31,7 +26,7 @@ pub struct Fireplace {
     pub xdg_state: Arc<Mutex<XdgShellState>>,
     pub workspaces: Rc<RefCell<Workspaces>>,
     pub popups: Rc<RefCell<Vec<PopupKind>>>,
-    
+
     // input
     pub seats: Vec<Seat>,
     pub last_active_seat: Seat,
@@ -50,7 +45,7 @@ impl Fireplace {
             &mut display.borrow_mut(),
             |_dnd_event| { /* TODO */ },
             default_action_chooser,
-            None
+            None,
         );
 
         Fireplace {
@@ -67,4 +62,3 @@ impl Fireplace {
         }
     }
 }
-

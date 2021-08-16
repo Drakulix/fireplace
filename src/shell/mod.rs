@@ -6,17 +6,15 @@ use std::{
 
 use smithay::{
     backend::renderer::buffer_dimensions,
-    reexports::{
-        wayland_server::{
-            protocol::{wl_buffer, wl_surface},
-            Display, UserDataMap,
-        },
+    reexports::wayland_server::{
+        protocol::{wl_buffer, wl_surface},
+        Display, UserDataMap,
     },
     utils::{Logical, Physical, Point, Rectangle, Size},
     wayland::{
         compositor::{
-            compositor_init, is_sync_subsurface, with_states, with_surface_tree_upward, BufferAssignment,
-            SurfaceAttributes, TraversalAction,
+            compositor_init, is_sync_subsurface, with_states, with_surface_tree_upward,
+            BufferAssignment, SurfaceAttributes, TraversalAction,
         },
         seat::Seat,
         shell::{
@@ -36,12 +34,12 @@ pub mod output;
 pub mod window;
 pub mod workspace;
 
-use crate::state::Fireplace;
 use self::{
-    window::{Kind as SurfaceKind, PopupKind},
     layout::Layout,
+    window::{Kind as SurfaceKind, PopupKind},
     workspace::Workspaces,
 };
+use crate::state::Fireplace;
 
 #[derive(Clone)]
 pub struct ShellHandles {
@@ -65,7 +63,7 @@ pub fn init_shell(display: Rc<RefCell<Display>>) -> ShellHandles {
 
     let popups = Rc::new(RefCell::new(Vec::new()));
     let workspaces = Rc::new(RefCell::new(Workspaces::new(display.clone())));
-    
+
     // init the xdg_shell
     let (xdg_shell_state, _, _) = xdg_shell_init(
         &mut *display.borrow_mut(),
@@ -147,7 +145,7 @@ pub fn init_shell(display: Rc<RefCell<Display>>) -> ShellHandles {
                     }
 
                     let toplevel = SurfaceKind::Xdg(surface.clone());
-                    
+
                     let space = workspaces.space_by_seat(&seat).unwrap();
                     space.resize_request(toplevel, &seat, serial, start_data, edges)
                 }
@@ -160,31 +158,43 @@ pub fn init_shell(display: Rc<RefCell<Display>>) -> ShellHandles {
                         space.ack_configure(surface, configure);
                     }
                 }
-                XdgRequest::Fullscreen { surface, output, .. } => {
+                XdgRequest::Fullscreen {
+                    surface, output, ..
+                } => {
                     // NOTE: This is only one part of the solution. We can set the
                     // location and configure size here, but the surface should be rendered fullscreen
                     // independently from its buffer size
                     if let Some(wl_surface) = surface.get_surface() {
                         let toplevel = SurfaceKind::Xdg(surface.clone());
-                        if let Some(space) =
-                            if let Some(output) = output {
-                                if let Some(output_requested) = workspaces.output_by_wl(&output).map(|x| String::from(x.name())) {
-                                    let space_requested_id = workspaces.space_by_output_name(&output_requested).map(|x| x.id());
-                                    let current_space_id = workspaces.space_by_surface(&wl_surface).map(|x| x.id());
-                                    if space_requested_id != current_space_id {
-                                        if let Some(current_space) = workspaces.space_by_surface(&wl_surface) {
-                                            current_space.remove_toplevel(toplevel.clone());
-                                        }
-                                        if let Some(space) = workspaces.space_by_output_name(&output_requested) {
-                                            space.new_toplevel(toplevel.clone());
-                                        }
+                        if let Some(space) = if let Some(output) = output {
+                            if let Some(output_requested) = workspaces
+                                .output_by_wl(&output)
+                                .map(|x| String::from(x.name()))
+                            {
+                                let space_requested_id = workspaces
+                                    .space_by_output_name(&output_requested)
+                                    .map(|x| x.id());
+                                let current_space_id =
+                                    workspaces.space_by_surface(&wl_surface).map(|x| x.id());
+                                if space_requested_id != current_space_id {
+                                    if let Some(current_space) =
+                                        workspaces.space_by_surface(&wl_surface)
+                                    {
+                                        current_space.remove_toplevel(toplevel.clone());
                                     }
-                                    workspaces.space_by_output_name(&output_requested)
-                                } else { None }
+                                    if let Some(space) =
+                                        workspaces.space_by_output_name(&output_requested)
+                                    {
+                                        space.new_toplevel(toplevel.clone());
+                                    }
+                                }
+                                workspaces.space_by_output_name(&output_requested)
                             } else {
-                                workspaces.space_by_surface(&wl_surface)
+                                None
                             }
-                        {
+                        } else {
+                            workspaces.space_by_surface(&wl_surface)
+                        } {
                             space.fullscreen_request(toplevel, true);
                         }
                     }
@@ -438,7 +448,7 @@ fn surface_commit(
 impl Fireplace {
     pub fn with_child_popups<Func>(&self, base: &wl_surface::WlSurface, mut f: Func)
     where
-        Func: FnMut(&PopupKind)
+        Func: FnMut(&PopupKind),
     {
         for w in self
             .popups

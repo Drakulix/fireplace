@@ -6,18 +6,21 @@ use smithay::{
         wayland_protocols::xdg_shell::server::xdg_toplevel,
         wayland_server::protocol::wl_surface::{self, WlSurface},
     },
-    utils::{Logical, Point, Size, Rectangle},
+    utils::{Logical, Point, Rectangle, Size},
     wayland::{
-        compositor::{with_states, with_surface_tree_downward, SubsurfaceCachedState, TraversalAction, SurfaceData as WlSurfaceData},
-        shell::{
-            xdg::{PopupSurface, SurfaceCachedState, ToplevelSurface, XdgPopupSurfaceRoleAttributes},
+        compositor::{
+            with_states, with_surface_tree_downward, SubsurfaceCachedState,
+            SurfaceData as WlSurfaceData, TraversalAction,
+        },
+        shell::xdg::{
+            PopupSurface, SurfaceCachedState, ToplevelSurface, XdgPopupSurfaceRoleAttributes,
         },
     },
 };
 
+use super::SurfaceData;
 #[cfg(feature = "xwayland")]
 use crate::xwayland::X11Surface;
-use super::SurfaceData;
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum Kind {
@@ -135,7 +138,7 @@ impl Window {
     pub fn new(
         location: Option<Point<i32, Logical>>,
         size: Option<Size<i32, Logical>>,
-        toplevel: Kind
+        toplevel: Kind,
     ) -> Window {
         if let Some(size) = size {
             match &toplevel {
@@ -161,7 +164,10 @@ impl Window {
 
     /// Finds the topmost surface under this point if any and returns it together with the location of this
     /// surface.
-    pub fn matching(&self, point: Point<f64, Logical>) -> Option<(wl_surface::WlSurface, Point<i32, Logical>)> {
+    pub fn matching(
+        &self,
+        point: Point<f64, Logical>,
+    ) -> Option<(wl_surface::WlSurface, Point<i32, Logical>)> {
         if !self.bbox().to_f64().contains(point) {
             return None;
         }
@@ -182,8 +188,10 @@ impl Window {
 
                     let contains_the_point = data
                         .map(|data| {
-                            data.borrow()
-                                .contains_point(&*states.cached_state.current(), point - location.to_f64())
+                            data.borrow().contains_point(
+                                &*states.cached_state.current(),
+                                point - location.to_f64(),
+                            )
                         })
                         .unwrap_or(false);
                     if contains_the_point {
@@ -217,7 +225,7 @@ impl Window {
                     }
                 },
                 |_, _, _| {},
-                |_, _, _| { !*found.borrow() },
+                |_, _, _| !*found.borrow(),
             );
             found.into_inner()
         } else {
@@ -231,7 +239,7 @@ impl Window {
             with_surface_tree_downward(
                 wl_surface,
                 (0, 0).into(),
-                |_, states: &WlSurfaceData, loc: &Point<i32, Logical> | {
+                |_, states: &WlSurfaceData, loc: &Point<i32, Logical>| {
                     let mut loc = *loc;
                     let data = states.data_map.get::<RefCell<SurfaceData>>();
 
@@ -259,7 +267,8 @@ impl Window {
     }
 
     pub fn bbox(&self) -> Rectangle<i32, Logical> {
-        self.location.as_ref()
+        self.location
+            .as_ref()
             .map(|loc| Rectangle::from_loc_and_size(*loc, self.size))
             .unwrap_or_else(|| Rectangle::from_loc_and_size((0, 0), self.size))
     }
@@ -284,4 +293,3 @@ impl Window {
         self.self_update();
     }
 }
-

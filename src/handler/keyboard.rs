@@ -1,9 +1,9 @@
+use serde::Deserialize;
 use smithay::wayland::seat::Keysym;
 pub use smithay::{
     backend::input::KeyState,
     wayland::seat::{keysyms as KeySyms, ModifiersState as KeyModifiers},
 };
-use serde::Deserialize;
 use xkbcommon::xkb;
 
 #[derive(Debug, Clone, PartialEq, Eq, Deserialize)]
@@ -19,12 +19,12 @@ pub enum KeyModifier {
 impl std::ops::AddAssign<KeyModifier> for KeyModifiers {
     fn add_assign(&mut self, rhs: KeyModifier) {
         match rhs {
-            KeyModifier::Ctrl       => self.ctrl = true,
-            KeyModifier::Alt        => self.alt = true,
-            KeyModifier::Shift      => self.shift = true,
-            KeyModifier::Logo       => self.logo = true,
-            KeyModifier::CapsLock   => self.caps_lock = true,
-            KeyModifier::NumLock    => self.num_lock = true,
+            KeyModifier::Ctrl => self.ctrl = true,
+            KeyModifier::Alt => self.alt = true,
+            KeyModifier::Shift => self.shift = true,
+            KeyModifier::Logo => self.logo = true,
+            KeyModifier::CapsLock => self.caps_lock = true,
+            KeyModifier::NumLock => self.num_lock = true,
         };
     }
 }
@@ -60,27 +60,35 @@ struct KeyModifiersDef(Vec<KeyModifier>);
 
 impl From<KeyModifiersDef> for KeyModifiers {
     fn from(src: KeyModifiersDef) -> Self {
-        src.0.into_iter().fold(KeyModifiers {
-            ctrl: false,
-            alt: false,
-            shift: false,
-            caps_lock: false,
-            logo: false,
-            num_lock: false,
-        }, |mut modis, modi| { modis += modi; modis })
+        src.0.into_iter().fold(
+            KeyModifiers {
+                ctrl: false,
+                alt: false,
+                shift: false,
+                caps_lock: false,
+                logo: false,
+                num_lock: false,
+            },
+            |mut modis, modi| {
+                modis += modi;
+                modis
+            },
+        )
     }
 }
 
 #[allow(non_snake_case)]
 fn deserialize_KeyModifiers<'de, D>(deserializer: D) -> Result<KeyModifiers, D::Error>
-    where D: serde::Deserializer<'de>
+where
+    D: serde::Deserializer<'de>,
 {
     KeyModifiersDef::deserialize(deserializer).map(Into::into)
 }
 
 #[allow(non_snake_case)]
 fn deserialize_Keysym<'de, D>(deserializer: D) -> Result<Keysym, D::Error>
-    where D: serde::Deserializer<'de>
+where
+    D: serde::Deserializer<'de>,
 {
     use serde::de::{Error, Unexpected};
 
@@ -90,10 +98,14 @@ fn deserialize_Keysym<'de, D>(deserializer: D) -> Result<Keysym, D::Error>
         KeySyms::KEY_NoSymbol => match xkb::keysym_from_name(&name, xkb::KEYSYM_CASE_INSENSITIVE) {
             KeySyms::KEY_NoSymbol => Err(<D::Error as Error>::invalid_value(
                 Unexpected::Str(&name),
-                &"One of the keysym names of xkbcommon.h without the 'KEY_' prefix"
+                &"One of the keysym names of xkbcommon.h without the 'KEY_' prefix",
             )),
             x => {
-                slog_scope::warn!("Key-Binding '{}' only matched case insensitive for {:?}", name, xkb::keysym_get_name(x));
+                slog_scope::warn!(
+                    "Key-Binding '{}' only matched case insensitive for {:?}",
+                    name,
+                    xkb::keysym_get_name(x)
+                );
                 Ok(x)
             }
         },
@@ -118,7 +130,7 @@ impl KeyPattern {
     pub fn new(modifiers: impl Into<KeyModifiers>, key: u32) -> KeyPattern {
         KeyPattern {
             modifiers: modifiers.into(),
-            key
+            key,
         }
     }
 }

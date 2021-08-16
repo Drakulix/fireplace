@@ -1,24 +1,18 @@
 use smithay::{
     backend::{
+        renderer::{buffer_type, BufferType, Frame, ImportAll, Renderer, Texture, Transform},
         SwapBuffersError,
-        renderer::{Renderer, Frame, Texture, ImportAll, Transform, BufferType, buffer_type},
     },
     reexports::wayland_server::protocol::{wl_buffer, wl_surface},
-    utils::{Point, Logical},
+    utils::{Logical, Point},
     wayland::compositor::{
-        SurfaceAttributes, TraversalAction, Damage, SubsurfaceCachedState,
-        with_surface_tree_upward,
+        with_surface_tree_upward, Damage, SubsurfaceCachedState, SurfaceAttributes, TraversalAction,
     },
 };
 
-use std::{
-    cell::RefCell,
-};
+use std::cell::RefCell;
 
-use crate::{
-    state::Fireplace,
-    shell::SurfaceData,
-};
+use crate::{shell::SurfaceData, state::Fireplace};
 
 struct BufferTextures<T> {
     buffer: Option<wl_buffer::WlBuffer>,
@@ -41,8 +35,8 @@ impl Fireplace {
         frame: &mut F,
     ) -> Result<(), SwapBuffersError>
     where
-        R: Renderer<Error=E, TextureId=T, Frame=F> + ImportAll,
-        F: Frame<Error=E, TextureId=T>,
+        R: Renderer<Error = E, TextureId = T, Frame = F> + ImportAll,
+        F: Frame<Error = E, TextureId = T>,
         T: Texture + 'static,
         E: std::error::Error + Into<SwapBuffersError>,
     {
@@ -56,19 +50,18 @@ impl Fireplace {
         for (toplevel_surface, location, _bounding_box) in space.windows_from_bottom_to_top() {
             if let Some(wl_surface) = toplevel_surface.get_surface() {
                 // this surface is a root of a subsurface tree that needs to be drawn
-                if let Err(err) = draw_surface_tree(renderer, frame, wl_surface, location, scale)
-                {
+                if let Err(err) = draw_surface_tree(renderer, frame, wl_surface, location, scale) {
                     result = Err(err);
                 }
 
                 // furthermore, draw its popups
                 let toplevel_geometry_offset: Point<i32, Logical> = (0, 0).into(); // TODO
-                /*
-                window_map
-                    .geometry(toplevel_surface)
-                    .map(|g| g.loc)
-                    .unwrap_or_default();
-                */
+                                                                                   /*
+                                                                                   window_map
+                                                                                       .geometry(toplevel_surface)
+                                                                                       .map(|g| g.loc)
+                                                                                       .unwrap_or_default();
+                                                                                   */
 
                 self.with_child_popups(wl_surface, |popup| {
                     let popup_location = popup.location();
@@ -82,7 +75,7 @@ impl Fireplace {
                     }
                 });
             }
-        };
+        }
 
         space.send_frames(self.start_time.elapsed().as_millis() as u32);
 
@@ -128,12 +121,13 @@ where
 
                         match renderer.import_buffer(&buffer, Some(states), &damage) {
                             Some(Ok(m)) => {
-                                let texture_buffer = if let Some(BufferType::Shm) = buffer_type(&buffer) {
-                                    buffer.release();
-                                    None
-                                } else {
-                                    Some(buffer)
-                                };
+                                let texture_buffer =
+                                    if let Some(BufferType::Shm) = buffer_type(&buffer) {
+                                        buffer.release();
+                                        None
+                                    } else {
+                                        Some(buffer)
+                                    };
                                 data.texture = Some(Box::new(BufferTextures {
                                     buffer: texture_buffer,
                                     texture: m,
@@ -150,7 +144,7 @@ where
                         }
                     }
                 }
-                
+
                 // Now, should we be drawn ?
                 if data.texture.is_some() {
                     // if yes, also process the children
@@ -163,7 +157,6 @@ where
                     // we are not displayed, so our children are neither
                     TraversalAction::SkipChildren
                 }
-
             } else {
                 // we are not displayed, so our children are neither
                 TraversalAction::SkipChildren
@@ -187,7 +180,10 @@ where
                     }
                     if let Err(err) = frame.render_texture_at(
                         &texture.texture,
-                        location.to_f64().to_physical(output_scale as f64).to_i32_round(),
+                        location
+                            .to_f64()
+                            .to_physical(output_scale as f64)
+                            .to_i32_round(),
                         buffer_scale,
                         output_scale as f64,
                         Transform::Normal, /* TODO */
