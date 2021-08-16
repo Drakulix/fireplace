@@ -4,8 +4,8 @@
 
 ______
 
-## Active development currently over:
-[![Chatroom on Matrix](https://img.shields.io/badge/chatroom-on%20matrix-green.svg)](https://matrix.to/#/#smithay:matrix.org) [![Chatroom on Gitter](https://img.shields.io/badge/chatroom-on%20gitter-red.svg)](https://gitter.im/smithay/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+## Active development currently at Matrix
+[![Chatroom on Matrix](https://img.shields.io/badge/chatroom-on%20matrix-green.svg)](https://matrix.to/#/#smithay:matrix.org)
 
 
 ### A modular wayland window manager
