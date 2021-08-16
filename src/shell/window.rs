@@ -45,6 +45,7 @@ impl Kind {
 
     /// Activate/Deactivate this window
     pub fn set_activated(&self, active: bool) {
+        #[allow(irrefutable_let_patterns)]
         if let Kind::Xdg(ref t) = self {
             let changed = t.with_pending_state(|state| {
                 if active {

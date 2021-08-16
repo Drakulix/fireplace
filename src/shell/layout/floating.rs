@@ -206,6 +206,7 @@ impl PointerGrab for ResizeSurfaceGrab {
                 return;
             }
 
+            #[allow(irrefutable_let_patterns)]
             if let Kind::Xdg(xdg) = &self.toplevel {
                 let ret = xdg.with_pending_state(|state| {
                     state.states.unset(xdg_toplevel::State::Resizing);
@@ -367,6 +368,7 @@ impl Layout for Floating {
         };
 
         // If surface is maximized then unmaximize it
+        #[allow(irrefutable_let_patterns)]
         if let Kind::Xdg(xdg_surface) = surface {
             if let Some(current_state) = xdg_surface.current_state() {
                 if current_state.states.contains(xdg_toplevel::State::Maximized) {
@@ -577,6 +579,7 @@ impl Layout for Floating {
 
     fn fullscreen_request(&mut self, surface: Kind, state: bool) {
         // do not allow fullscreening
+        #[allow(irrefutable_let_patterns)]
         if let Kind::Xdg(xdg_surface) = surface {
             if !state {
                 let ret = xdg_surface.with_pending_state(|state| {
@@ -598,6 +601,7 @@ impl Layout for Floating {
                 None => return,
             }; 
             window.borrow_mut().set_location((0, 0).into());
+            #[allow(irrefutable_let_patterns)]
             if let Kind::Xdg(xdg_surface) = surface {
                 let ret = xdg_surface.with_pending_state(|state| {
                     state.states.set(xdg_toplevel::State::Maximized);
@@ -608,6 +612,7 @@ impl Layout for Floating {
                 }
             }
         } else {
+            #[allow(irrefutable_let_patterns)]
             if let Kind::Xdg(xdg_surface) = surface {
                 let ret = xdg_surface.with_pending_state(|state| {
                     state.states.unset(xdg_toplevel::State::Maximized);
