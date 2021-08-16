@@ -339,16 +339,6 @@ impl Layout for Floating {
             None,
             surface,
         );
-        
-        let geometry = window.geometry();
-
-        // center the window for now
-        let location = (
-            self.size.w / 2 - geometry.size.w,
-            self.size.h / 2 - geometry.size.h,
-        ).into();
-        window.set_location(location);
-
         self.windows.insert(0, Rc::new(RefCell::new(window)));
     }
 
@@ -517,7 +507,21 @@ impl Layout for Floating {
             Some(w) => w,
             None => return,
         };
-        window.borrow_mut().self_update();
+
+        // set initial position
+        {
+            let mut window = window.borrow_mut();
+            if window.location().is_none() && window.bbox().size != (0, 0).into() {
+                let geometry = window.geometry();
+                // center the window for now
+                let location = (
+                    self.size.w / 2 - geometry.size.w / 2,
+                    self.size.h / 2 - geometry.size.h / 2,
+                ).into();
+                window.set_location(location);
+            }
+            window.self_update();
+        }
 
         let surface = surface.get_surface().unwrap();
         let new_location = with_states(surface, |states| {
@@ -637,6 +641,7 @@ impl Layout for Floating {
     
     fn rearrange(&mut self, size: &Size<i32, Logical>) {
         // todo update windows out of new size
+        self.size = *size;
     }
     
     fn windows<'a>(&'a self) -> Box<dyn Iterator<Item=Kind> + 'a> {
