@@ -638,7 +638,7 @@ impl Layout for Floating {
         Box::new(self.windows.iter().map(|w| w.borrow().toplevel.clone()))
     }
     fn windows_from_bottom_to_top<'a>(&'a self) -> Box<dyn Iterator<Item=(Kind, Point<i32, Logical>, Rectangle<i32, Logical>)> + 'a> {
-        Box::new(self.windows.iter().flat_map(|w| {
+        Box::new(self.windows.iter().rev().flat_map(|w| {
             let window = w.borrow();
             window.location().map(|location|
                 (window.toplevel.clone(), location, window.bbox())
