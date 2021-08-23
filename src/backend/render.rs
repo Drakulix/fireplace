@@ -1,99 +1,90 @@
 use smithay::{
-    backend::{
-        renderer::{buffer_type, BufferType, Frame, ImportAll, Renderer, Texture, Transform},
-        SwapBuffersError,
+    backend::renderer::{buffer_type, BufferType, Frame, ImportAll, Renderer, Texture, Transform},
+    reexports::{
+        nix::sys::stat::dev_t,
+        wayland_server::protocol::{wl_buffer, wl_surface},
     },
-    reexports::wayland_server::protocol::{wl_buffer, wl_surface},
-    utils::{Logical, Point},
+    utils::{Logical, Point, Buffer, Rectangle},
     wayland::compositor::{
         with_surface_tree_upward, Damage, SubsurfaceCachedState, SurfaceAttributes, TraversalAction,
     },
 };
 
-use std::cell::RefCell;
+use std::{
+    cell::RefCell,
+    collections::HashMap,
+};
 
-use crate::{shell::SurfaceData, state::Fireplace};
+use crate::{shell::{child_popups, SurfaceData, layout::Layout, window::PopupKind}};
 
-struct BufferTextures<T> {
-    buffer: Option<wl_buffer::WlBuffer>,
-    texture: T,
+pub struct BufferTextures {
+    buffer: wl_buffer::WlBuffer,
+    damage: Vec<Rectangle<i32, Buffer>>,
+    textures: HashMap<dev_t, Box<dyn std::any::Any>>,
 }
 
-impl<T> Drop for BufferTextures<T> {
+impl Drop for BufferTextures {
     fn drop(&mut self) {
-        if let Some(buffer) = self.buffer.take() {
-            buffer.release();
-        }
+        self.buffer.release();
     }
 }
 
-impl Fireplace {
-    pub fn render_output<R, E, F, T>(
-        &mut self,
-        output_name: &str,
-        renderer: &mut R,
-        frame: &mut F,
-    ) -> Result<(), SwapBuffersError>
-    where
-        R: Renderer<Error = E, TextureId = T, Frame = F> + ImportAll,
-        F: Frame<Error = E, TextureId = T>,
-        T: Texture + 'static,
-        E: std::error::Error + Into<SwapBuffersError>,
-    {
-        frame.clear([0.8, 0.8, 0.8, 1.0]).map_err(Into::into)?;
-        let mut workspaces = self.workspaces.borrow_mut();
-        let scale = workspaces.output_by_name(output_name).unwrap().scale();
-        let space = workspaces.space_by_output_name(output_name).unwrap();
-        let mut result = Ok(());
+pub fn render_space<'a, R, E, F, T>(
+    space: &dyn Layout,
+    scale: f32,
+    popups: &[PopupKind],
+    device: dev_t,
+    renderer: &mut R,
+    frame: &mut F,
+) -> Result<(), E>
+where
+    R: Renderer<Error = E, TextureId = T, Frame = F> + ImportAll,
+    F: Frame<Error = E, TextureId = T>,
+    T: Texture + 'static,
+    E: std::error::Error,
+{
+    frame.clear([0.8, 0.8, 0.8, 1.0])?;
 
-        // redraw the frame, in a simple but inneficient way
-        for (toplevel_surface, location, _bounding_box) in space.windows_from_bottom_to_top() {
-            if let Some(wl_surface) = toplevel_surface.get_surface() {
-                // this surface is a root of a subsurface tree that needs to be drawn
-                if let Err(err) = draw_surface_tree(renderer, frame, wl_surface, location, scale) {
-                    result = Err(err);
+    // redraw the frame, in a simple but inneficient way
+    for (toplevel_surface, location, _bounding_box) in space.windows_from_bottom_to_top() {
+        if let Some(wl_surface) = toplevel_surface.get_surface() {
+            // this surface is a root of a subsurface tree that needs to be drawn
+            draw_surface_tree(device, renderer, frame, wl_surface, location, scale)?;
+
+            // furthermore, draw its popups
+            let toplevel_geometry_offset: Point<i32, Logical> = (0, 0).into(); // TODO
+                                                                                /*
+                                                                                window_map
+                                                                                    .geometry(toplevel_surface)
+                                                                                    .map(|g| g.loc)
+                                                                                    .unwrap_or_default();
+                                                                                */
+
+            for popup in child_popups(popups.iter(), &wl_surface) {
+                let popup_location = popup.location();
+                let draw_location = location + popup_location + toplevel_geometry_offset;
+                if let Some(wl_surface) = popup.get_surface() {
+                    draw_surface_tree(device, renderer, frame, wl_surface, draw_location, scale)?;
                 }
-
-                // furthermore, draw its popups
-                let toplevel_geometry_offset: Point<i32, Logical> = (0, 0).into(); // TODO
-                                                                                   /*
-                                                                                   window_map
-                                                                                       .geometry(toplevel_surface)
-                                                                                       .map(|g| g.loc)
-                                                                                       .unwrap_or_default();
-                                                                                   */
-
-                self.with_child_popups(wl_surface, |popup| {
-                    let popup_location = popup.location();
-                    let draw_location = location + popup_location + toplevel_geometry_offset;
-                    if let Some(wl_surface) = popup.get_surface() {
-                        if let Err(err) =
-                            draw_surface_tree(renderer, frame, wl_surface, draw_location, scale)
-                        {
-                            result = Err(err);
-                        }
-                    }
-                });
             }
         }
-
-        space.send_frames(self.start_time.elapsed().as_millis() as u32);
-
-        result
     }
+
+    Ok(())
 }
 
 fn draw_surface_tree<R, E, F, T>(
+    device: dev_t,
     renderer: &mut R,
     frame: &mut F,
     root: &wl_surface::WlSurface,
     location: Point<i32, Logical>,
     output_scale: f32,
-) -> Result<(), SwapBuffersError>
+) -> Result<(), E>
 where
     R: Renderer<Error = E, TextureId = T, Frame = F> + ImportAll,
     F: Frame<Error = E, TextureId = T>,
-    E: std::error::Error + Into<SwapBuffersError>,
+    E: std::error::Error,
     T: Texture + 'static,
 {
     let mut result = Ok(());
@@ -118,35 +109,33 @@ where
                                 Damage::Surface(rect) => rect.to_buffer(attributes.buffer_scale),
                             })
                             .collect::<Vec<_>>();
+                        
+                        data.texture = Some(BufferTextures {
+                            buffer,
+                            damage,
+                            textures: HashMap::new(),
+                        });
+                    }
+                }
 
-                        match renderer.import_buffer(&buffer, Some(states), &damage) {
+                if let Some(texture) = data.texture.as_mut() {
+                    if !texture.textures.contains_key(&device) {
+                        match renderer.import_buffer(&texture.buffer, Some(states), &texture.damage) {
                             Some(Ok(m)) => {
-                                let texture_buffer =
-                                    if let Some(BufferType::Shm) = buffer_type(&buffer) {
-                                        buffer.release();
-                                        None
-                                    } else {
-                                        Some(buffer)
-                                    };
-                                data.texture = Some(Box::new(BufferTextures {
-                                    buffer: texture_buffer,
-                                    texture: m,
-                                }))
+                                texture.textures.insert(device, Box::new(m) as Box<dyn std::any::Any + 'static>);
                             }
                             Some(Err(err)) => {
-                                slog_scope::warn!("Error loading buffer: {:?}", err);
-                                buffer.release();
+                                slog_scope::warn!("Error loading buffer on device ({:?}): {:?}", device, err);
                             }
                             None => {
-                                slog_scope::error!("Unknown buffer format for: {:?}", buffer);
-                                buffer.release();
+                                slog_scope::error!("Unknown buffer format for: {:?}", &texture.buffer);
                             }
                         }
                     }
                 }
 
                 // Now, should we be drawn ?
-                if data.texture.is_some() {
+                if data.texture.as_ref().map(|x| x.textures.contains_key(&device)).unwrap_or(false) {
                     // if yes, also process the children
                     if states.role == Some("subsurface") {
                         let current = states.cached_state.current::<SubsurfaceCachedState>();
@@ -170,7 +159,8 @@ where
                 if let Some(texture) = data
                     .texture
                     .as_mut()
-                    .and_then(|x| x.downcast_mut::<BufferTextures<T>>())
+                    .and_then(|x| x.textures.get_mut(&device))
+                    .and_then(|x| <dyn std::any::Any>::downcast_mut::<T>(&mut **x))
                 {
                     // we need to re-extract the subsurface offset, as the previous closure
                     // only passes it to our children
@@ -179,7 +169,7 @@ where
                         location += current.location;
                     }
                     if let Err(err) = frame.render_texture_at(
-                        &texture.texture,
+                        texture,
                         location
                             .to_f64()
                             .to_physical(output_scale as f64)
@@ -189,7 +179,7 @@ where
                         Transform::Normal, /* TODO */
                         1.0,
                     ) {
-                        result = Err(err.into());
+                        result = Err(err);
                     }
                 }
             }

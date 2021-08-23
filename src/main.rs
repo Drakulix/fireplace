@@ -60,7 +60,8 @@ fn main() -> Result<()> {
 
     let mut event_loop = EventLoop::try_new().with_context(|| "Failed to initialize event loop")?;
     let mut display = Display::new();
-    display.add_socket_auto()?;
+    let socket_name = display.add_socket_auto()?;
+    
     event_loop
         .handle()
         .insert_source(
@@ -80,11 +81,17 @@ fn main() -> Result<()> {
         )
         .expect("Failed to init the wayland event source.");
 
-    let mut state = Fireplace::new(config, display);
-    backend::initial_backend_auto(&mut event_loop, &state)?;
+    slog_scope::info!("Listening on {:?}", socket_name);
+    let mut state = Fireplace::new(config, display, socket_name);
+    backend::initial_backend_auto(&mut event_loop, &mut state)?;
+
     let signal = event_loop.get_signal();
+    let handle = event_loop.handle();
     event_loop.run(None, &mut state, |state| {
         if state.workspaces.borrow().num_outputs() == 0 || state.should_stop {
+            for token in state.tokens.drain(..) {
+                handle.remove(token);
+            }
             signal.stop();
             return;
         }

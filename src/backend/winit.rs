@@ -1,12 +1,17 @@
-use crate::state::Fireplace;
+use crate::{
+    backend::render::render_space,
+    state::Fireplace,
+};
 use anyhow::Result;
-use calloop::{timer::Timer, EventLoop};
 use smithay::{
     backend::{
         input::{InputBackend, InputEvent},
         winit,
     },
-    reexports::wayland_server::protocol::wl_output::Subpixel,
+    reexports::{
+        calloop::{timer::Timer, EventLoop},
+        wayland_server::protocol::wl_output::Subpixel,
+    },
     wayland::output::{Mode, PhysicalProperties},
 };
 use std::{
@@ -16,7 +21,7 @@ use std::{
 
 static WINIT_COUNTER: AtomicUsize = AtomicUsize::new(0);
 
-pub fn init_winit(event_loop: &mut EventLoop<Fireplace>, state: &Fireplace) -> Result<()> {
+pub fn init_winit(event_loop: &mut EventLoop<Fireplace>, state: &mut Fireplace) -> Result<()> {
     let (renderer, input) = match winit::init(None) {
         Ok(ret) => ret,
         Err(err) => {
@@ -46,7 +51,7 @@ pub fn init_winit(event_loop: &mut EventLoop<Fireplace>, state: &Fireplace) -> R
 
     let timer = Timer::new()?;
     let timer_handle = timer.handle();
-    event_loop
+    let token = event_loop
         .handle()
         .insert_source(
             timer,
@@ -58,12 +63,17 @@ pub fn init_winit(event_loop: &mut EventLoop<Fireplace>, state: &Fireplace) -> R
                   state| {
                 match input.dispatch_new_events(|event| state.process_winit_event(&name, event)) {
                     Ok(()) => {
+                        let mut workspaces = state.workspaces.borrow_mut();
+                        let scale = workspaces.output_by_name(&name).unwrap().scale();
+                        let space = workspaces.space_by_output_name(&name).unwrap();
+                        let popups = state.popups.borrow();
                         if let Err(err) = renderer
-                            .render(|renderer, frame| state.render_output(&name, renderer, frame))
-                            .and_then(|x| x)
+                            .render(|renderer, frame| render_space(&**space, scale, &**popups, id as u64, renderer, frame))
+                            .and_then(|x| x.map_err(Into::into))
                         {
                             slog_scope::error!("Failed to render frame: {}", err);
                         };
+                        space.send_frames(state.start_time.elapsed().as_millis() as u32);
                         handle.add_timeout(Duration::from_millis(16), (input, renderer));
                     }
                     Err(winit::WinitInputError::WindowClosed) => {
@@ -75,6 +85,8 @@ pub fn init_winit(event_loop: &mut EventLoop<Fireplace>, state: &Fireplace) -> R
         )
         .map_err(|_| anyhow::anyhow!("Failed to init eventloop timer for winit"))?;
     timer_handle.add_timeout(Duration::ZERO, (input, renderer));
+    state.tokens.push(token);
+
     Ok(())
 }
 

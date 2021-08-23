@@ -39,7 +39,10 @@ use self::{
     window::{Kind as SurfaceKind, PopupKind},
     workspace::Workspaces,
 };
-use crate::state::Fireplace;
+use crate::{
+    backend::render::BufferTextures,
+    state::Fireplace,
+};
 
 #[derive(Clone)]
 pub struct ShellHandles {
@@ -271,7 +274,7 @@ pub fn init_shell(display: Rc<RefCell<Display>>) -> ShellHandles {
 #[derive(Default)]
 pub struct SurfaceData {
     pub buffer: Option<wl_buffer::WlBuffer>,
-    pub texture: Option<Box<dyn std::any::Any + 'static>>,
+    pub texture: Option<BufferTextures>,
     pub geometry: Option<Rectangle<i32, Logical>>,
     pub buffer_dimensions: Option<Size<i32, Physical>>,
     pub buffer_scale: i32,
@@ -445,19 +448,8 @@ fn surface_commit(
     */
 }
 
-impl Fireplace {
-    pub fn with_child_popups<Func>(&self, base: &wl_surface::WlSurface, mut f: Func)
-    where
-        Func: FnMut(&PopupKind),
-    {
-        for w in self
-            .popups
-            .borrow()
-            .iter()
-            .rev()
-            .filter(move |w| w.parent().as_ref() == Some(base))
-        {
-            f(&w)
-        }
-    }
+pub fn child_popups<'a>(popups: impl DoubleEndedIterator<Item=&'a PopupKind>, base: &'a wl_surface::WlSurface) -> impl Iterator<Item=&'a PopupKind> {
+    popups
+        .rev()
+        .filter(move |w| w.parent().as_ref() == Some(base))
 }

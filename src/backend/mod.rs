@@ -1,13 +1,14 @@
 use anyhow::Result;
-use calloop::EventLoop;
+use smithay::reexports::calloop::EventLoop;
 
 use crate::state::Fireplace;
-mod render;
-mod winit;
+pub mod render;
+pub mod udev;
+pub mod winit;
 
 pub fn initial_backend_auto(
-    event_loop: &mut EventLoop<Fireplace>,
-    state: &Fireplace,
+    event_loop: &mut EventLoop<'static, Fireplace>,
+    state: &mut Fireplace,
 ) -> Result<()> {
     if std::env::var_os("WAYLAND_DISPLAY").is_some()
         || std::env::var_os("WAYLAND_SOCKET").is_some()
@@ -15,6 +16,6 @@ pub fn initial_backend_auto(
     {
         winit::init_winit(event_loop, state)
     } else {
-        unimplemented!("Current this only run nested");
+        udev::init_udev(event_loop, state)
     }
 }
