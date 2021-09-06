@@ -80,7 +80,7 @@ pub fn init_shell(display: Rc<RefCell<Display>>) -> ShellHandles {
                     let space = workspaces.space_by_seat(&seat).unwrap();
                     space.new_toplevel(SurfaceKind::Xdg(surface));
                 }
-                XdgRequest::NewPopup { surface } => {
+                XdgRequest::NewPopup { surface, .. /*TODO*/ } => {
                     popups.push(PopupKind::Xdg(surface));
                 }
                 XdgRequest::Move {

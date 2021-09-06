@@ -5,13 +5,15 @@ authors = ["Victor Brekenfeld (Drakulix) <github@drakulix.de>"]
 edition = "2018"
 
 [dependencies]
-smithay = { git = "https://github.com/Smithay/smithay", default-features = false, features = ["backend_drm", "backend_gbm", "backend_winit", "backend_libinput", "backend_session_logind", "backend_udev", "slog-stdlog", "wayland_frontend"] }
+smithay = { git = "https://github.com/Smithay/smithay", default-features = false, features = ["backend_drm", "backend_gbm", "backend_egl", "backend_winit", "backend_libinput", "backend_session_logind", "backend_udev", "slog-stdlog", "use_system_lib", "wayland_frontend"] }
 edid-rs = "0.1.0"
+xcursor = "0.3.3"
+image = { version = "0.23.14", default_features = false }
 
 bitflags = "1"
 linked-hash-map = "0.5.4"
 
-slog = { version = "2.7" } #, features = ["max_level_trace"] }
+slog = { version = "2.7", features = ["max_level_trace", "release_max_level_debug"] }
 slog-term = "2.8"
 slog-async = "2.6"
 slog-scope = "4.4"
@@ -21,9 +23,14 @@ serde = { version = "1.0", features = ["derive"] }
 serde_yaml = "0.8"
 
 anyhow = "1.0.42"
+thiserror = "1.0.26"
 
 xdg = "2.2.0"
 xkbcommon = "0.4.0"
 
 [build-dependencies]
 gl_generator = "0.14"
+wayland-scanner = "0.28"
+
+[profile.release]
+debug = true

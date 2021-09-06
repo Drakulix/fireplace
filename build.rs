@@ -1,6 +1,8 @@
 extern crate gl_generator;
+extern crate wayland_scanner;
 
 use gl_generator::{Api, Fallbacks, Profile, Registry};
+use wayland_scanner::{Side, generate_code};
 use std::{
     env,
     fs::File,
@@ -50,4 +52,26 @@ fn main() {
     )
     .write_bindings(gl_generator::GlobalGenerator, &mut file)
     .unwrap();
+
+    // Location of the xml file, relative to the `Cargo.toml`
+    let drm_protocol_file = "resources/wayland-drm.xml";
+    let eglstream_protocol_file = "resources/wayland-eglstream.xml";
+    let eglstream_controller_protocol_file = "resources/wayland-eglstream-controller.xml";
+
+    // Target directory for the generate files
+    generate_code(
+        drm_protocol_file,
+        &dest.join("wl_drm.rs"),
+        Side::Server,
+    );
+    generate_code(
+        eglstream_protocol_file,
+        &dest.join("wl_eglstream.rs"),
+        Side::Server,
+    );
+    generate_code(
+        eglstream_controller_protocol_file,
+        &dest.join("wl_eglstream_controller.rs"),
+        Side::Server,
+    );
 }

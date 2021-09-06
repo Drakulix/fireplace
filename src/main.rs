@@ -12,6 +12,7 @@ mod handler;
 mod logger;
 mod shell;
 mod state;
+mod wayland;
 pub use self::config::Config;
 pub use self::state::Fireplace;
 
@@ -103,7 +104,7 @@ fn main() -> Result<()> {
             for win in space.windows().collect::<Vec<_>>().into_iter() {
                 if !win.alive() {
                     space.remove_toplevel(win);
-            }
+                }
             }
         }
 
