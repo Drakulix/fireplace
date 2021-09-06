@@ -459,6 +459,8 @@ impl Fireplace {
         std::process::Command::new("/bin/sh")
             .arg("-c")
             .arg(command)
+            .env_remove("DISPLAY")
+            .env("WAYLAND_DISPLAY", &self.socket_name)
             .spawn()
             .map(|_| ())
     }
