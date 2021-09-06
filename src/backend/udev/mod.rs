@@ -1,6 +1,10 @@
-use crate::{state::{Fireplace, BackendData, SurfaceData}};
+use crate::{
+    handler::ActiveOutput,
+    state::{Fireplace, BackendData, SurfaceData}
+};
 use anyhow::{Context, Result};
 use edid_rs::{parse as edid_parse, MonitorDescriptor};
+use image::ImageBuffer;
 use smithay::{
     backend::{
         drm::{DrmDevice, DrmEvent},
@@ -8,7 +12,7 @@ use smithay::{
         libinput::{LibinputInputBackend, LibinputSessionInterface},
         session::{Session, Signal, auto::AutoSession, AsErrno},
         udev::{UdevBackend, UdevEvent, driver},
-        renderer::{Renderer, Transform, gles2::Gles2Renderer},
+        renderer::{Frame, Renderer, Transform, gles2::Gles2Renderer},
     },
     reexports::{
         calloop::{Dispatcher, EventLoop, LoopHandle},
@@ -17,15 +21,25 @@ use smithay::{
         nix::{fcntl::OFlag, sys::stat::dev_t},
         wayland_server::protocol::wl_output,
     },
-    utils::signaling::{Signaler, Linkable},
-    wayland::output::{Mode as OutputMode, PhysicalProperties},
+    utils::{
+        Point, Logical,
+        signaling::{Signaler, Linkable}
+    },
+    wayland::{
+        seat::CursorImageStatus,
+        output::{Mode as OutputMode, PhysicalProperties}
+    },
 };
 
 use std::{
+    cell::RefCell,
     collections::HashMap,
     path::PathBuf,
     os::unix::io::{AsRawFd, RawFd},
 };
+
+mod cursor;
+pub use self::cursor::Cursor;
 
 mod drm;
 use self::drm::*;
@@ -34,7 +48,7 @@ mod surface;
 use self::surface::*;
 pub use self::surface::RenderSurface;
 
-use super::render::render_space;
+use super::render::{render_space, draw_cursor, gl_import_bitmap};
 
 #[derive(Clone)]
 pub struct SessionFd(RawFd);
@@ -62,7 +76,7 @@ pub fn init_udev(event_loop: &mut EventLoop<'static, Fireplace>, state: &mut Fir
     let session_event_source = event_loop
         .handle()
         .insert_source(notifier, |(), &mut (), _anvil_state| {}).unwrap();
-    
+
     let handle = event_loop.handle();
     for (dev, path) in udev_backend.device_list() {
         state.device_added(handle.clone(), &mut session, signaler.clone(), dev, path.into())?;
@@ -221,6 +235,7 @@ impl Fireplace {
         
         // create our renderer
         let renderer = unsafe { Gles2Renderer::new(egl_context, None)? };
+        let pointer = cursor::Cursor::load(&slog_scope::logger());
 
         let restart_handle = handle.clone();
         let restart_token = signaler.register(move |signal| match signal {
@@ -265,6 +280,8 @@ impl Fireplace {
             _restart_token: restart_token,
             surfaces,
             renderer,
+            pointer,
+            pointer_images: Vec::new(),
         };
         self.udev.insert(device_id, data);
 
@@ -311,8 +328,66 @@ impl Fireplace {
             let popups = self.popups.borrow();
                         
             surface.surface.bind(&mut device_backend.renderer)?;
+
+            let seats = &self.seats;
+            let output_name = &surface.output;
+            let frame = device_backend
+                .pointer
+                .get_image(scale.ceil() as u32, self.start_time.elapsed().as_millis() as u32);
+            let hotspot: Point<i32, Logical> = (frame.xhot as i32, frame.yhot as i32).into();
+            let pointer_images = &mut device_backend.pointer_images;
+            let renderer = &mut device_backend.renderer;
+            let pointer_image = pointer_images
+                .iter()
+                .find_map(|(image, texture)| if image == &frame { Some(texture) } else { None })
+                .cloned()
+                .unwrap_or_else(|| {
+                    let image =
+                        ImageBuffer::from_raw(frame.width, frame.height, &*frame.pixels_rgba).unwrap();
+                    let texture = gl_import_bitmap(renderer, &image).expect("Failed to import cursor bitmap");
+                    pointer_images.push((frame, texture.clone()));
+                    texture
+                });
+
             device_backend.renderer.render(surface.size, Transform::Flipped180, |renderer, frame| {
-                render_space(&**space, scale, &**popups, dev_id, renderer, frame)
+                render_space(&**space, scale, &**popups, dev_id, renderer, frame)?;
+
+                // render the cursors for all seats
+                // TODO tint the cursors by seats
+                for seat in seats.iter().filter(|seat| {
+                    seat.user_data().get::<ActiveOutput>().map(|name| &*name.0.borrow() == output_name).unwrap_or(false)
+                }) {
+                    if let Some(position) = seat.get_pointer()
+                        .map(|ptr| ptr.current_location())
+                    {
+                        let userdata = seat.user_data();
+                        let status_ref = userdata.get::<RefCell<CursorImageStatus>>().unwrap();
+                        let mut status = status_ref.borrow_mut();
+                        let mut reset = false;
+                        if let CursorImageStatus::Image(ref surface) = *status {
+                            reset = !surface.as_ref().is_alive();
+                        }
+                        if reset {
+                            *status = CursorImageStatus::Default;
+                        }
+                        match &*status {
+                            &CursorImageStatus::Default => {
+                                frame.render_texture_at(
+                                    &pointer_image,
+                                    (position - hotspot.to_f64()).to_physical(scale as f64).to_i32_round(),
+                                    1, scale as f64,
+                                    Transform::Normal,
+                                    1.0
+                                )?;
+                            },
+                            &CursorImageStatus::Image(ref surface) => {
+                                draw_cursor(dev_id, renderer, frame, surface, position.to_i32_round(), scale)?;
+                            }
+                            CursorImageStatus::Hidden => {},
+                        }
+                    }
+                }
+                Ok(())
             }).and_then(|x| x)?;
             surface.surface.queue_buffer(&mut device_backend.renderer)
                 .map_err(|_| anyhow::anyhow!("Fail to queue buffer"))?;

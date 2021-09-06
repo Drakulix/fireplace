@@ -3,7 +3,8 @@ use smithay::{
     backend::input::{Device, DeviceCapability, InputBackend, InputEvent, KeyState},
     reexports::wayland_server::Display,
     wayland::{
-        seat::{Seat, XkbConfig},
+        data_device::set_data_device_focus,
+        seat::{CursorImageStatus, Seat, XkbConfig},
         SERIAL_COUNTER as SCOUNTER,
     },
 };
@@ -56,6 +57,7 @@ pub fn add_seat(display: &mut Display, name: String) -> Seat {
     let (seat, _) = Seat::new(display, name, None);
     let userdata = seat.user_data();
     userdata.insert_if_missing(|| Devices::new());
+    userdata.insert_if_missing(|| RefCell::new(CursorImageStatus::Hidden));
     seat
 }
 
@@ -72,7 +74,9 @@ impl Fireplace {
                     match cap {
                         DeviceCapability::Keyboard => {
                             let _ =
-                                seat.add_keyboard(XkbConfig::default(), 200, 25, |seat, focus| {});
+                                seat.add_keyboard(XkbConfig::default(), 200, 25, |seat, focus| {
+                                    set_data_device_focus(seat, focus.and_then(|s| s.as_ref().client()))
+                                });
                         }
                         DeviceCapability::Pointer => {
                             let output = String::from(
@@ -84,7 +88,10 @@ impl Fireplace {
                             );
                             seat.user_data()
                                 .insert_if_missing(|| ActiveOutput(RefCell::new(output)));
-                            seat.add_pointer(|status| {});
+                            let owned_seat = seat.clone();
+                            seat.add_pointer(move |status| {
+                                *owned_seat.user_data().get::<RefCell<CursorImageStatus>>().unwrap().borrow_mut() = status;
+                            });
                         }
                         _ => {}
                     }

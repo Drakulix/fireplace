@@ -4,7 +4,7 @@ use crate::{
     shell::{window::PopupKind, workspace::Workspaces},
 };
 use smithay::{
-    backend::renderer::gles2::{Gles2Renderer},
+    backend::renderer::gles2::{Gles2Renderer, Gles2Texture},
     reexports::{
         drm::control::crtc,
         calloop::RegistrationToken,
@@ -57,7 +57,8 @@ pub struct BackendData {
     pub _restart_token: SignalToken,
     pub registration_token: RegistrationToken,
     pub surfaces: HashMap<crtc::Handle, SurfaceData>,
-    //pointer_images: Vec<(xcursor::parser::Image, Gles2Texture)>,
+    pub pointer: crate::backend::udev::Cursor,
+    pub pointer_images: Vec<(xcursor::parser::Image, Gles2Texture)>,
     //fps_texture: Gles2Texture,
     pub renderer: Gles2Renderer,
 }

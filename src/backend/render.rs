@@ -1,18 +1,26 @@
+use image::{ImageBuffer, Rgba};
 use smithay::{
-    backend::renderer::{buffer_type, BufferType, Frame, ImportAll, Renderer, Texture, Transform},
+    backend::renderer::{
+        buffer_type, BufferType, Frame, ImportAll, Renderer, Texture, Transform,
+        gles2::{Gles2Renderer, Gles2Texture, Gles2Error}
+    },
     reexports::{
         nix::sys::stat::dev_t,
         wayland_server::protocol::{wl_buffer, wl_surface},
     },
     utils::{Logical, Point, Buffer, Rectangle},
-    wayland::compositor::{
-        with_surface_tree_upward, Damage, SubsurfaceCachedState, SurfaceAttributes, TraversalAction,
+    wayland::{
+        compositor::{
+            with_surface_tree_upward, with_states, Damage, SubsurfaceCachedState, SurfaceAttributes, TraversalAction,
+        },
+        seat::CursorImageAttributes,
     },
 };
 
 use std::{
     cell::RefCell,
     collections::HashMap,
+    sync::Mutex,
 };
 
 use crate::{shell::{child_popups, SurfaceData, layout::Layout, window::PopupKind}};
@@ -71,6 +79,44 @@ where
     }
 
     Ok(())
+}
+
+pub fn draw_cursor<R, E, F, T>(
+    device: dev_t,
+    renderer: &mut R,
+    frame: &mut F,
+    surface: &wl_surface::WlSurface,
+    location: Point<i32, Logical>,
+    output_scale: f32,
+) -> Result<(), E>
+where
+    R: Renderer<Error = E, TextureId = T, Frame = F> + ImportAll,
+    F: Frame<Error = E, TextureId = T>,
+    E: std::error::Error,
+    T: Texture + 'static,
+{
+    let ret = with_states(surface, |states| {
+        Some(
+            states
+                .data_map
+                .get::<Mutex<CursorImageAttributes>>()
+                .unwrap()
+                .lock()
+                .unwrap()
+                .hotspot,
+        )
+    })
+    .unwrap_or(None);
+    let delta = match ret {
+        Some(h) => h,
+        None => {
+            slog_scope::warn!(
+                "Trying to display as a cursor a surface that does not have the CursorImage role."
+            );
+            (0, 0).into()
+        }
+    };
+    draw_surface_tree(device, renderer, frame, surface, location - delta, output_scale)
 }
 
 fn draw_surface_tree<R, E, F, T>(
@@ -188,4 +234,37 @@ where
     );
 
     result
+}
+
+pub fn gl_import_bitmap<C: std::ops::Deref<Target = [u8]>>(
+    renderer: &mut Gles2Renderer,
+    image: &ImageBuffer<Rgba<u8>, C>,
+) -> Result<Gles2Texture, Gles2Error> {
+    use smithay::backend::renderer::gles2::ffi;
+
+    renderer.with_context(|renderer, gl| unsafe {
+        let mut tex = 0;
+        gl.GenTextures(1, &mut tex);
+        gl.BindTexture(ffi::TEXTURE_2D, tex);
+        gl.TexParameteri(ffi::TEXTURE_2D, ffi::TEXTURE_WRAP_S, ffi::CLAMP_TO_EDGE as i32);
+        gl.TexParameteri(ffi::TEXTURE_2D, ffi::TEXTURE_WRAP_T, ffi::CLAMP_TO_EDGE as i32);
+        gl.TexImage2D(
+            ffi::TEXTURE_2D,
+            0,
+            ffi::RGBA as i32,
+            image.width() as i32,
+            image.height() as i32,
+            0,
+            ffi::RGBA,
+            ffi::UNSIGNED_BYTE as u32,
+            image.as_ptr() as *const _,
+        );
+        gl.BindTexture(ffi::TEXTURE_2D, 0);
+
+        Gles2Texture::from_raw(
+            renderer,
+            tex,
+            (image.width() as i32, image.height() as i32).into(),
+        )
+    })
 }
