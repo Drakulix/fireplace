@@ -240,21 +240,21 @@ impl PointerGrab for ResizeSurfaceGrab {
 struct MoveSurfaceGrab {
     start_data: GrabStartData,
     window: Rc<RefCell<Window>>,
-    toplevel: Kind,
     initial_window_location: Point<i32, Logical>,
 }
 
 impl PointerGrab for MoveSurfaceGrab {
     fn motion(
         &mut self,
-        _handle: &mut PointerInnerHandle<'_>,
+        handle: &mut PointerInnerHandle<'_>,
         location: Point<f64, Logical>,
-        _focus: Option<(wl_surface::WlSurface, Point<i32, Logical>)>,
-        _serial: Serial,
-        _time: u32,
+        focus: Option<(wl_surface::WlSurface, Point<i32, Logical>)>,
+        serial: Serial,
+        time: u32,
     ) {
         let delta = location - self.start_data.location;
         let new_location = self.initial_window_location.to_f64() + delta;
+        handle.motion(location, focus, serial, time);
 
         self.window
             .borrow_mut()
@@ -399,7 +399,6 @@ impl Layout for Floating {
 
             let grab = MoveSurfaceGrab {
                 start_data,
-                toplevel: Kind::Xdg(xdg_surface),
                 window,
                 initial_window_location,
             };
@@ -542,12 +541,11 @@ impl Layout for Floating {
                     .into();
                 window.set_location(location);
             }
-            window.self_update();
         }
 
         let surface = surface.get_surface().unwrap();
         let new_location = with_states(surface, |states| {
-            let mut data = states
+            let data = states
                 .data_map
                 .get::<RefCell<SurfaceData>>()
                 .unwrap()
@@ -609,15 +607,13 @@ impl Layout for Floating {
         #[allow(irrefutable_let_patterns)]
         if let Kind::Xdg(xdg_surface) = surface {
             if !state {
-                let ret = xdg_surface.with_pending_state(|state| {
+                let _ = xdg_surface.with_pending_state(|state| {
                     state.states.unset(xdg_toplevel::State::Fullscreen);
                     state.size = None;
                     state.fullscreen_output = None;
                 });
-                if ret.is_ok() {
-                    xdg_surface.send_configure();
-                }
             }
+            xdg_surface.send_configure();
         }
     }
 
@@ -627,33 +623,35 @@ impl Layout for Floating {
                 Some(w) => w,
                 None => return,
             };
-            window.borrow_mut().set_location((0, 0).into());
+            let pos = Into::<Point<i32, Logical>>::into((0, 0)) - window.borrow().geometry().loc;
+            window.borrow_mut().set_location(pos);
+
             #[allow(irrefutable_let_patterns)]
             if let Kind::Xdg(xdg_surface) = surface {
-                let ret = xdg_surface.with_pending_state(|state| {
+                let _ = xdg_surface.with_pending_state(|state| {
                     state.states.set(xdg_toplevel::State::Maximized);
-                    state.size = Some(window.borrow().geometry().size);
+                    state.size = Some(self.size);
                 });
-                if ret.is_ok() {
-                    xdg_surface.send_configure();
-                }
+                xdg_surface.send_configure();
             }
         } else {
             #[allow(irrefutable_let_patterns)]
             if let Kind::Xdg(xdg_surface) = surface {
-                let ret = xdg_surface.with_pending_state(|state| {
+                let _ = xdg_surface.with_pending_state(|state| {
                     state.states.unset(xdg_toplevel::State::Maximized);
                     state.size = None;
                 });
-                if ret.is_ok() {
-                    xdg_surface.send_configure();
-                }
+                xdg_surface.send_configure();
             }
         }
     }
 
     fn minimize_request(&mut self, surface: Kind) {
         // done
+        #[allow(irrefutable_let_patterns)]
+        if let Kind::Xdg(xdg_surface) = surface {
+            xdg_surface.send_configure();
+        }
     }
 
     //TODO: fn window_options(&mut self, surface: Kind) -> Vec<String>;

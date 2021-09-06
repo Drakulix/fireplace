@@ -4,7 +4,7 @@ use std::sync::Mutex;
 use smithay::{
     reexports::{
         wayland_protocols::xdg_shell::server::xdg_toplevel,
-        wayland_server::protocol::wl_surface::{self, WlSurface},
+        wayland_server::protocol::wl_surface,
     },
     utils::{Logical, Point, Rectangle, Size},
     wayland::{
@@ -76,7 +76,7 @@ pub enum PopupKind {
 }
 
 impl PopupKind {
-    fn alive(&self) -> bool {
+    pub fn alive(&self) -> bool {
         match *self {
             PopupKind::Xdg(ref t) => t.alive(),
         }
@@ -158,7 +158,6 @@ impl Window {
             size: size.unwrap_or((0, 0).into()),
             toplevel,
         };
-        window.self_update();
         window
     }
 
@@ -212,11 +211,11 @@ impl Window {
 
     pub fn contains_surface(&self, surface: &wl_surface::WlSurface) -> bool {
         if let Some(wl_surface) = self.toplevel.get_surface() {
-            let mut found = RefCell::new(false);
+            let found = RefCell::new(false);
             with_surface_tree_downward(
                 wl_surface,
                 (),
-                |wl_surface, states, _| {
+                |wl_surface, _, _| {
                     if wl_surface == surface {
                         *found.borrow_mut() = true;
                         TraversalAction::Break
@@ -233,12 +232,13 @@ impl Window {
         }
     }
 
-    pub fn self_update(&mut self) {
-        let mut bounding_box = Rectangle::from_loc_and_size((0, 0), (0, 0));
+    pub fn bbox(&self) -> Rectangle<i32, Logical> {
+        let location = self.location.unwrap_or((0, 0).into());
+        let mut bounding_box = Rectangle::from_loc_and_size(location, (0, 0));
         if let Some(wl_surface) = self.toplevel.get_surface() {
             with_surface_tree_downward(
                 wl_surface,
-                (0, 0).into(),
+                location,
                 |_, states: &WlSurfaceData, loc: &Point<i32, Logical>| {
                     let mut loc = *loc;
                     let data = states.data_map.get::<RefCell<SurfaceData>>();
@@ -263,14 +263,7 @@ impl Window {
                 |_, _, _| true,
             );
         }
-        self.size = bounding_box.size;
-    }
-
-    pub fn bbox(&self) -> Rectangle<i32, Logical> {
-        self.location
-            .as_ref()
-            .map(|loc| Rectangle::from_loc_and_size(*loc, self.size))
-            .unwrap_or_else(|| Rectangle::from_loc_and_size((0, 0), self.size))
+        bounding_box
     }
 
     /// Returns the geometry of this window.
@@ -290,6 +283,5 @@ impl Window {
     /// Sets the location
     pub fn set_location(&mut self, location: Point<i32, Logical>) {
         self.location = Some(location);
-        self.self_update();
     }
 }

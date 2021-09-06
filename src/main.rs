@@ -88,6 +88,7 @@ fn main() -> Result<()> {
     let signal = event_loop.get_signal();
     let handle = event_loop.handle();
     event_loop.run(None, &mut state, |state| {
+        // shall we shut down?
         if state.workspaces.borrow().num_outputs() == 0 || state.should_stop {
             for token in state.tokens.drain(..) {
                 handle.remove(token);
@@ -96,6 +97,17 @@ fn main() -> Result<()> {
             return;
         }
 
+        // cleanup
+        state.popups.borrow_mut().retain(|popup| popup.alive());
+        for space in state.workspaces.borrow_mut().spaces() {
+            for win in space.windows().collect::<Vec<_>>().into_iter() {
+                if !win.alive() {
+                    space.remove_toplevel(win);
+            }
+            }
+        }
+
+        // send out events
         let display = state.display.clone();
         display.borrow_mut().flush_clients(state);
     })?;

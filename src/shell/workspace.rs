@@ -164,6 +164,11 @@ impl Workspaces {
             .map(|x| x.0.get())
     }
 
+    pub fn spaces<'a>(&'a mut self) -> impl Iterator<Item=&'a mut Box<dyn Layout>>
+    {
+        self.spaces.iter_mut().map(|(_, layout)| layout)
+    }
+
     pub fn space_by_output_name<'a, N>(&'a mut self, name: N) -> Option<&'a mut Box<dyn Layout>>
     where
         N: AsRef<str>,
