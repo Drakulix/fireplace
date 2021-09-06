@@ -269,10 +269,11 @@ impl PointerGrab for MoveSurfaceGrab {
         serial: Serial,
         time: u32,
     ) {
-        handle.button(button, state, serial, time);
         if handle.current_pressed().is_empty() {
             // No more buttons are pressed, release the grab.
             handle.unset_grab(serial, time);
+        } else {
+            handle.button(button, state, serial, time);
         }
     }
 
