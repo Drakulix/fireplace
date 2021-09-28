@@ -5,7 +5,6 @@ authors = ["Victor Brekenfeld (Drakulix) <github@drakulix.de>"]
 edition = "2018"
 
 [dependencies]
-smithay = { git = "https://github.com/Smithay/smithay", default-features = false, features = ["backend_drm", "backend_gbm", "backend_egl", "backend_winit", "backend_libinput", "backend_session_logind", "backend_udev", "slog-stdlog", "use_system_lib", "wayland_frontend"] }
 edid-rs = "0.1.0"
 xcursor = "0.3.3"
 image = { version = "0.23.14", default_features = false }
@@ -27,6 +26,12 @@ thiserror = "1.0.26"
 
 xdg = "2.2.0"
 xkbcommon = "0.4.0"
+
+[dependencies.smithay]
+git = "https://github.com/Smithay/smithay"
+rev = "3842b78979f7aa0f3da2447bbc7620e211a329c0"
+default-features = false
+features = ["backend_drm", "backend_gbm", "backend_egl", "backend_winit", "backend_libinput", "backend_session_logind", "backend_udev", "slog-stdlog", "use_system_lib", "wayland_frontend"]
 
 [build-dependencies]
 gl_generator = "0.14"

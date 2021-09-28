@@ -4,7 +4,7 @@ use smithay::{
     reexports::wayland_server::Display,
     wayland::{
         data_device::set_data_device_focus,
-        seat::{CursorImageStatus, Seat, XkbConfig},
+        seat::{CursorImageStatus, FilterResult, Seat, XkbConfig},
         SERIAL_COUNTER as SCOUNTER,
     },
 };
@@ -135,80 +135,91 @@ impl Fireplace {
                             state,
                             serial,
                             time,
-                            |modifiers, keysym| {
-                                slog_scope::debug!("keysym";
-                                    "state" => format!("{:?}", state),
-                                    "mods" => format!("{:?}", modifiers),
-                                    "keysym" => ::xkbcommon::xkb::keysym_get_name(keysym)
-                                );
+                            |modifiers, handle| {
+                                let mut result = FilterResult::Forward;
+                                for keysym in handle.raw_syms().iter().copied() {
+                                    slog_scope::debug!("keysym";
+                                        "state" => format!("{:?}", state),
+                                        "mods" => format!("{:?}", modifiers),
+                                        "keysym" => ::xkbcommon::xkb::keysym_get_name(keysym)
+                                    );
 
-                                // If the key is pressed and triggered a action
-                                // we will not forward the key to the client.
-                                // Additionally add the key to the suppressed keys
-                                // so that we can decide on a release if the key
-                                // should be forwarded to the client or not.
-                                if let KeyState::Pressed = state {
-                                    if let Some(command) = self
-                                        .config
-                                        .keys
-                                        .iter()
-                                        .find(|(_, p)| p.modifiers == *modifiers && p.key == keysym)
-                                        .map(|(c, _)| c)
-                                        .cloned()
-                                    {
-                                        self.process_global_command(&command);
-                                        self.suppressed_keys.push(keysym);
-                                        return false;
-                                    }
-                                    if let Some(command) = self
-                                        .config
-                                        .workspace
-                                        .keys
-                                        .iter()
-                                        .find(|(_, p)| p.modifiers == *modifiers && p.key == keysym)
-                                        .map(|(c, _)| c)
-                                        .cloned()
-                                    {
-                                        self.process_workspace_command(&command, seat);
-                                        self.suppressed_keys.push(keysym);
-                                        return false;
-                                    }
-                                    if let Some(command) = self
-                                        .config
-                                        .view
-                                        .keys
-                                        .iter()
-                                        .find(|(_, p)| p.modifiers == *modifiers && p.key == keysym)
-                                        .map(|(c, _)| c)
-                                        .cloned()
-                                    {
-                                        self.process_view_command(&command, seat);
-                                        self.suppressed_keys.push(keysym);
-                                        return false;
-                                    }
-                                    if let Some(command) = self
-                                        .config
-                                        .exec
-                                        .keys
-                                        .iter()
-                                        .find(|(_, p)| p.modifiers == *modifiers && p.key == keysym)
-                                        .map(|(c, _)| c)
-                                        .cloned()
-                                    {
-                                        if let Err(err) = self.process_exec_command(&command) {
-                                            slog_scope::warn!("Failed to spawn process: {}", err);
+                                    // If the key is pressed and triggered a action
+                                    // we will not forward the key to the client.
+                                    // Additionally add the key to the suppressed keys
+                                    // so that we can decide on a release if the key
+                                    // should be forwarded to the client or not.
+                                    if let KeyState::Pressed = state {
+                                        if let Some(command) = self
+                                            .config
+                                            .keys
+                                            .iter()
+                                            .find(|(_, p)| p.modifiers == *modifiers && p.key == keysym)
+                                            .map(|(c, _)| c)
+                                            .cloned()
+                                        {
+                                            slog_scope::debug!("Found global cmd");
+                                            self.process_global_command(&command);
+                                            self.suppressed_keys.push(keysym);
+                                            result = FilterResult::Intercept(());
+                                            break;
                                         }
-                                        self.suppressed_keys.push(keysym);
-                                        return false;
+                                        if let Some(command) = self
+                                            .config
+                                            .workspace
+                                            .keys
+                                            .iter()
+                                            .find(|(_, p)| p.modifiers == *modifiers && p.key == keysym)
+                                            .map(|(c, _)| c)
+                                            .cloned()
+                                        {
+                                            slog_scope::debug!("Found workspace cmd");
+                                            self.process_workspace_command(&command, seat);
+                                            self.suppressed_keys.push(keysym);
+                                            result = FilterResult::Intercept(());
+                                            break;
+                                        }
+                                        if let Some(command) = self
+                                            .config
+                                            .view
+                                            .keys
+                                            .iter()
+                                            .find(|(_, p)| p.modifiers == *modifiers && p.key == keysym)
+                                            .map(|(c, _)| c)
+                                            .cloned()
+                                        {
+                                            slog_scope::debug!("Found view cmd");
+                                            self.process_view_command(&command, seat);
+                                            self.suppressed_keys.push(keysym);
+                                            result = FilterResult::Intercept(());
+                                            break;
+                                        }
+                                        if let Some(command) = self
+                                            .config
+                                            .exec
+                                            .keys
+                                            .iter()
+                                            .find(|(_, p)| p.modifiers == *modifiers && p.key == keysym)
+                                            .map(|(c, _)| c)
+                                            .cloned()
+                                        {
+                                            slog_scope::debug!("Found command: {}", command);
+                                            if let Err(err) = self.process_exec_command(&command) {
+                                                slog_scope::warn!("Failed to spawn process: {}", err);
+                                            }
+                                            self.suppressed_keys.push(keysym);
+                                            result = FilterResult::Intercept(());
+                                            break;
+                                        }
+                                    } else {
+                                        let suppressed = self.suppressed_keys.contains(&keysym);
+                                        if suppressed {
+                                            self.suppressed_keys.retain(|k| *k != keysym);
+                                            result = FilterResult::Intercept(());
+                                        }
                                     }
-                                    true
-                                } else {
-                                    let suppressed = self.suppressed_keys.contains(&keysym);
-                                    if suppressed {
-                                        self.suppressed_keys.retain(|k| *k != keysym);
-                                    }
-                                    !suppressed
                                 }
+                                result
                             },
                         );
 
