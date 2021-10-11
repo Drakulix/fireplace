@@ -29,7 +29,7 @@ xkbcommon = "0.4.0"
 
 [dependencies.smithay]
 git = "https://github.com/Smithay/smithay"
-rev = "3842b78979f7aa0f3da2447bbc7620e211a329c0"
+rev = "dd6919dd5fb1ac6571a3e7dff01b12a2102131fe"
 default-features = false
 features = ["backend_drm", "backend_gbm", "backend_egl", "backend_winit", "backend_libinput", "backend_session_logind", "backend_udev", "slog-stdlog", "use_system_lib", "wayland_frontend"]
 

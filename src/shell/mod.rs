@@ -40,8 +40,12 @@ use self::{
     workspace::Workspaces,
 };
 use crate::{
-    backend::render::BufferTextures,
+    backend::{
+        udev::DevId,
+        render::BufferTextures,
+    },
     state::Fireplace,
+    wayland::EGLStream,
 };
 
 #[derive(Clone)]
@@ -287,11 +291,16 @@ impl SurfaceData {
             Some(BufferAssignment::NewBuffer { buffer, .. }) => {
                 // new contents
                 self.buffer_dimensions = buffer_dimensions(&buffer);
+                if self.buffer_dimensions.is_none() {
+                    if let Some(stream) = buffer.as_ref().user_data().get::<EGLStream>() {
+                        self.buffer_dimensions = Some((stream.size.w, stream.size.h).into());
+                    }
+                }
                 self.buffer_scale = attrs.buffer_scale;
                                 
                 if let Some(old_buffer) = std::mem::replace(&mut self.buffer, Some(buffer)) {
                     if &old_buffer != self.buffer.as_ref().unwrap() {
-                    old_buffer.release();
+                        old_buffer.release();
                     }
                 }
                 self.texture = None;

@@ -43,6 +43,10 @@ impl EGLDeviceEXT {
         ffi::load_with(|sym| unsafe { smithay::backend::egl::get_proc_address(sym) });
         ffi::StreamConsumerAcquireAttribNV::load_with(|sym| unsafe { smithay::backend::egl::get_proc_address(sym) });
         ffi::StreamConsumerReleaseAttribNV::load_with(|sym| unsafe { smithay::backend::egl::get_proc_address(sym) });
+        ffi::StreamImageConsumerConnectNV::load_with(|sym| unsafe { smithay::backend::egl::get_proc_address(sym) });
+        ffi::QueryStreamConsumerEventNV::load_with(|sym| unsafe { smithay::backend::egl::get_proc_address(sym) });
+        ffi::StreamAcquireImageNV::load_with(|sym| unsafe { smithay::backend::egl::get_proc_address(sym) });
+        ffi::StreamReleaseImageNV::load_with(|sym| unsafe { smithay::backend::egl::get_proc_address(sym) });
 
         let device = unsafe {
             // the first step is to query the list of extensions without any display, if supported
@@ -405,11 +409,11 @@ unsafe impl<A: AsRawFd + 'static> EGLNativeSurface for EglStreamSurface<A> {
 
         if self.flipped.swap(false, Ordering::SeqCst) {
             wrap_egl_call(|| unsafe { ffi::SwapBuffers(***display, surface as *const _) })
-            .map_err(SwapBuffersError::EGLSwapBuffers)?;
+                .map_err(SwapBuffersError::EGLSwapBuffers)?;
         
-        let mut val = 0;
-        unsafe { ffi::QueryStreamKHR(***display, stream, ffi::STREAM_STATE_KHR, &mut val as *mut _) };
-        slog::debug!(self.logger, "Stream State (AFTER SWAP): 0x{:x}", val);
+            let mut val = 0;
+            unsafe { ffi::QueryStreamKHR(***display, stream, ffi::STREAM_STATE_KHR, &mut val as *mut _) };
+            slog::debug!(self.logger, "Stream State (AFTER SWAP): 0x{:x}", val);
         }
         wrap_egl_call(|| unsafe {
             ffi::StreamConsumerAcquireAttribNV(

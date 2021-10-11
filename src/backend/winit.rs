@@ -21,11 +21,9 @@ use smithay::{
 use std::{
     cell::RefCell,
     rc::Rc,
-    sync::atomic::{AtomicUsize, Ordering},
     time::Duration,
 };
 
-static WINIT_COUNTER: AtomicUsize = AtomicUsize::new(0);
 
 pub fn init_winit(event_loop: &mut EventLoop<Fireplace>, state: &mut Fireplace) -> Result<()> {
     let (renderer, input) = match winit::init(None) {
@@ -59,15 +57,13 @@ pub fn init_winit(event_loop: &mut EventLoop<Fireplace>, state: &mut Fireplace) 
         );
     };
 
-    let id = WINIT_COUNTER.fetch_add(1, Ordering::SeqCst);
-    let name = format!("WINIT-{}", id);
-
+    let name = "WINIT";
     let size = renderer.borrow().window_size();
     let props = PhysicalProperties {
         size: (0, 0).into(),
         subpixel: Subpixel::Unknown,
-        make: String::from("WINIT"),
-        model: format!("{}", id),
+        make: String::from(name),
+        model: String::from("Unknown"),
     };
     let mode = Mode {
         size: size.physical_size,
@@ -98,7 +94,7 @@ pub fn init_winit(event_loop: &mut EventLoop<Fireplace>, state: &mut Fireplace) 
                         let popups = state.popups.borrow();
                         if let Err(err) = renderer
                             .borrow_mut()
-                            .render(|renderer, frame| render_space(&**space, scale, &**popups, id as u64, renderer, frame))
+                            .render(|renderer, frame| render_space(&**space, scale, &**popups, None, renderer, frame, &mut []))
                             .and_then(|x| x.map_err(Into::into))
                         {
                             slog_scope::error!("Failed to render frame: {}", err);

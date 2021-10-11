@@ -7,7 +7,7 @@ use smithay::{
     backend::renderer::gles2::{Gles2Renderer, Gles2Texture},
     reexports::{
         drm::control::crtc,
-        calloop::RegistrationToken,
+        calloop::{RegistrationToken, timer::TimerHandle},
         nix::sys::stat::dev_t,
         wayland_server::Display,
     },
@@ -55,12 +55,14 @@ pub struct Fireplace {
 
 pub struct BackendData {
     pub _restart_token: SignalToken,
-    pub registration_token: RegistrationToken,
+    pub drm_token: RegistrationToken,
+    pub socket_token: RegistrationToken,
     pub surfaces: HashMap<crtc::Handle, SurfaceData>,
     pub pointer: crate::backend::udev::Cursor,
     pub pointer_images: Vec<(xcursor::parser::Image, Gles2Texture)>,
     //fps_texture: Gles2Texture,
     pub renderer: Gles2Renderer,
+    pub driver: Option<String>,
 }
 
 pub struct SurfaceData {
