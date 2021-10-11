@@ -288,14 +288,19 @@ impl SurfaceData {
                 // new contents
                 self.buffer_dimensions = buffer_dimensions(&buffer);
                 self.buffer_scale = attrs.buffer_scale;
+                                
                 if let Some(old_buffer) = std::mem::replace(&mut self.buffer, Some(buffer)) {
+                    if &old_buffer != self.buffer.as_ref().unwrap() {
                     old_buffer.release();
+                    }
                 }
                 self.texture = None;
             }
             Some(BufferAssignment::Removed) => {
                 // remove the contents
-                self.buffer = None;
+                if let Some(buffer) = self.buffer.take() {
+                    buffer.release();
+                };
                 self.buffer_dimensions = None;
                 self.texture = None;
             }
