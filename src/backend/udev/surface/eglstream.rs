@@ -16,8 +16,6 @@ use smithay::reexports::{
     nix::{libc::{major, minor, c_void}, sys::stat::fstat},
 };
 
-use super::super::SessionFd as Fd;
-
 use std::{
     cell::Cell,
     ffi::CStr,
@@ -28,128 +26,8 @@ use std::{
     sync::{Arc, atomic::{AtomicPtr, Ordering}},
 };
 
-#[allow(clippy::all, non_camel_case_types, dead_code, unused_mut, non_upper_case_globals)]
-pub mod ffi {
-    use smithay::reexports::nix::libc::{c_long, c_void};
-
-    pub type khronos_utime_nanoseconds_t = khronos_uint64_t;
-    pub type khronos_uint64_t = u64;
-    pub type khronos_ssize_t = c_long;
-    pub type EGLint = i32;
-    pub type EGLNativeDisplayType = NativeDisplayType;
-    pub type EGLNativePixmapType = NativePixmapType;
-    pub type EGLNativeWindowType = NativeWindowType;
-    pub type NativeDisplayType = *const c_void;
-    pub type NativePixmapType = *const c_void;
-    pub type NativeWindowType = *const c_void;
-
-    include!(concat!(env!("OUT_DIR"), "/egl_bindings.rs"));
-
-    /// nVidia support needs some implemented but only proposed egl extensions...
-    /// Therefor gl_generator cannot generate them and we need some constants...
-    /// And a function...
-    pub const CONSUMER_AUTO_ACQUIRE_EXT: i32 = 0x332B;
-    pub const DRM_FLIP_EVENT_DATA_NV: i32 = 0x333E;
-    pub const CONSUMER_ACQUIRE_TIMEOUT_USEC_KHR: i32 = 0x321E;
-    pub const RESOURCE_BUSY_EXT: u32 = 0x3353;
-
-    #[allow(non_snake_case, unused_variables, dead_code)]
-    #[inline]
-    pub unsafe fn StreamConsumerAcquireAttribNV(
-        dpy: types::EGLDisplay,
-        stream: types::EGLStreamKHR,
-        attrib_list: *const types::EGLAttrib,
-    ) -> types::EGLBoolean {
-        __gl_imports::mem::transmute::<
-            _,
-            extern "system" fn(
-                types::EGLDisplay,
-                types::EGLStreamKHR,
-                *const types::EGLAttrib,
-            ) -> types::EGLBoolean,
-        >(nvidia_storage::StreamConsumerAcquireAttribNV.f)(dpy, stream, attrib_list)
-    }
-    
-    #[allow(non_snake_case, unused_variables, dead_code)]
-    #[inline]
-    pub unsafe fn StreamConsumerReleaseAttribNV(
-        dpy: types::EGLDisplay,
-        stream: types::EGLStreamKHR,
-        attrib_list: *const types::EGLAttrib,
-    ) -> types::EGLBoolean {
-        __gl_imports::mem::transmute::<
-            _,
-            extern "system" fn(
-                types::EGLDisplay,
-                types::EGLStreamKHR,
-                *const types::EGLAttrib,
-            ) -> types::EGLBoolean,
-        >(nvidia_storage::StreamConsumerReleaseAttribNV.f)(dpy, stream, attrib_list)
-    }
-
-    mod nvidia_storage {
-        use super::{FnPtr, __gl_imports::raw};
-        pub static mut StreamConsumerAcquireAttribNV: FnPtr = FnPtr {
-            f: super::missing_fn_panic as *const raw::c_void,
-            is_loaded: false,
-        };
-        pub static mut StreamConsumerReleaseAttribNV: FnPtr = FnPtr {
-            f: super::missing_fn_panic as *const raw::c_void,
-            is_loaded: false,
-        };
-    }
-
-    #[allow(non_snake_case)]
-    pub mod StreamConsumerAcquireAttribNV {
-        use super::{FnPtr, __gl_imports::raw, metaloadfn, nvidia_storage};
-
-        #[inline]
-        #[allow(dead_code)]
-        pub fn is_loaded() -> bool {
-            unsafe { nvidia_storage::StreamConsumerAcquireAttribNV.is_loaded }
-        }
-
-        #[allow(dead_code)]
-        pub fn load_with<F>(mut loadfn: F)
-        where
-            F: FnMut(&str) -> *const raw::c_void,
-        {
-            unsafe {
-                nvidia_storage::StreamConsumerAcquireAttribNV =
-                    FnPtr::new(metaloadfn(&mut loadfn, "eglStreamConsumerAcquireAttribNV", &[]))
-            }
-        }
-    }
-    
-    #[allow(non_snake_case)]
-    pub mod StreamConsumerReleaseAttribNV {
-        use super::{FnPtr, __gl_imports::raw, metaloadfn, nvidia_storage};
-
-        #[inline]
-        #[allow(dead_code)]
-        pub fn is_loaded() -> bool {
-            unsafe { nvidia_storage::StreamConsumerReleaseAttribNV.is_loaded }
-        }
-
-        #[allow(dead_code)]
-        pub fn load_with<F>(mut loadfn: F)
-        where
-            F: FnMut(&str) -> *const raw::c_void,
-        {
-            unsafe {
-                nvidia_storage::StreamConsumerReleaseAttribNV =
-                    FnPtr::new(metaloadfn(&mut loadfn, "eglStreamConsumerReleaseAttribNV", &[]))
-            }
-        }
-    }
-}
-fn wrap_egl_call<R, F: FnOnce() -> R>(call: F) -> Result<R, EGLError> {
-    let res = call();
-    match unsafe { ffi::GetError() as u32 } {
-        ffi::SUCCESS => Ok(res),
-        x => Err(EGLError::from(x)),
-    }
-}
+use super::super::SessionFd as Fd;
+use crate::backend::egl::{self as ffi, wrap_egl_call};
 
 pub struct EGLDeviceEXT {
     device: ffi::types::EGLDeviceEXT,
@@ -292,7 +170,7 @@ pub struct EglStreamSurface<A: AsRawFd + 'static> {
     logger: slog::Logger,
 }
 
-impl<A: AsRawFd + 'static> EglStreamSurface<A> {
+impl<A: AsRawFd + 'static> Drop for EglStreamSurface<A> {
     fn drop(&mut self) { 
         if let Some((old_db, old_fb)) = self.test_fb.replace(None) {
             let _ = self.drm.destroy_framebuffer(old_fb);

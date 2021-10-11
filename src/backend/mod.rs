@@ -5,6 +5,7 @@ use crate::state::Fireplace;
 pub mod render;
 pub mod udev;
 pub mod winit;
+pub mod egl;
 
 pub fn initial_backend_auto(
     event_loop: &mut EventLoop<'static, Fireplace>,
