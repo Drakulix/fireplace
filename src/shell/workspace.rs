@@ -235,6 +235,11 @@ impl Workspaces {
                 self.output(|o| o.userdata().get::<ActiveWorkspace>().unwrap().0.get() == idx)
             {
                 *output_name.borrow_mut() = String::from(output.name());
+                if let Some(ptr) = seat.get_pointer() {
+                    let (w, h) = output.size().into();
+                    ptr.unset_grab();
+                    ptr.motion((w as f64 / 2.0, h as f64 / 2.0).into(), None, 0.into(), 0);
+                }
             } else {
                 let output = self.output_by_name(&*output_name.borrow()).unwrap();
                 slog_scope::debug!("Attaching workspace {} to output {}", idx, output.name());
@@ -251,7 +256,7 @@ impl Workspaces {
                     .or_insert(Box::new(super::layout::Floating::new(size)));
             }
         }
-        if self.space_by_idx(current_idx).is_empty() {
+        if self.space_by_idx(current_idx).is_empty() && self.output(|o| o.userdata().get::<ActiveWorkspace>().unwrap().0.get() == current_idx).is_none() { 
             slog_scope::debug!("Destroying empty workspace: {}", current_idx);
             self.spaces.remove(&current_idx);
         }
