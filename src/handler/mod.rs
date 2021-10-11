@@ -472,6 +472,7 @@ impl Fireplace {
             .arg(command)
             .env_remove("DISPLAY")
             .env("WAYLAND_DISPLAY", &self.socket_name)
+            .env("WAYLAND_DEBUG", if cfg!(debug_assertions) { "1" } else { "0" })
             .spawn()
             .map(|_| ())
     }

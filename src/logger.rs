@@ -55,18 +55,23 @@ pub fn init(config: &Logging) -> slog_scope::GlobalLoggerGuard {
     let params = slog::o!();
     let logger = match config.style {
         Mode::Compact => slog::Logger::root(
-            slog_async::Async::new(
+            //slog_async::Async::new(
+            std::sync::Mutex::new(
                 slog_term::CompactFormat::new(decorator)
                     .build()
                     .ignore_res(),
             )
-            .build()
+            //)
+            //.build()
             .fuse(),
             params,
         ),
         Mode::Full => slog::Logger::root(
-            slog_async::Async::new(slog_term::FullFormat::new(decorator).build().ignore_res())
-                .build()
+            //slog_async::Async::new(
+            std::sync::Mutex::new(
+                slog_term::FullFormat::new(decorator).build().ignore_res()
+            )
+            //    .build()
                 .fuse(),
             params,
         ),
