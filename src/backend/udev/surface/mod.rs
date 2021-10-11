@@ -3,10 +3,13 @@ use smithay::{
         allocator::dmabuf::Dmabuf,
         drm::{DrmError, DrmSurface, GbmBufferedSurface, GbmBufferedSurfaceError::DrmError as GbmDrmError},
         egl::{EGLDisplay, EGLContext, surface::EGLSurface},
-        renderer::{Bind, Renderer},
+        renderer::{Bind, Renderer, Transform},
         SwapBuffersError
     },
-    reexports::gbm::{Device as GbmDevice},
+    reexports::{
+        drm::control::crtc,
+        gbm::{Device as GbmDevice},
+    },
 };
 
 use std::{
@@ -19,7 +22,7 @@ use super::SessionFd;
 
 pub enum RenderSurface {
     Gbm(GbmBufferedSurface<SessionFd>),
-    Egl(Rc<EGLSurface>),
+    Egl(Rc<EGLSurface>, crtc::Handle),
 }
 use RenderSurface::*;
 
@@ -32,6 +35,7 @@ impl RenderSurface {
 
     pub fn new_eglstream(surf: DrmSurface<SessionFd>, disp: &EGLDisplay, ctx: &EGLContext) -> anyhow::Result<RenderSurface> {
         let stream_surface = EglStreamSurface::new(surf, slog_scope::logger());
+        let crtc = stream_surface.crtc();
         let egl_surface = Rc::new(EGLSurface::new(
                 &disp,
                 ctx.pixel_format().unwrap(),
@@ -39,7 +43,7 @@ impl RenderSurface {
                 stream_surface,
                 None,
             )?);
-        Ok(RenderSurface::Egl(egl_surface))
+        Ok(RenderSurface::Egl(egl_surface, crtc))
     }
 
     pub fn bind<B: Bind<Dmabuf> + Bind<Rc<EGLSurface>>>(&mut self, renderer: &mut B) -> Result<(), B::Error> {
@@ -48,7 +52,7 @@ impl RenderSurface {
                 let dmabuf = surf.next_buffer().unwrap();
                 renderer.bind(dmabuf)
             },
-            Egl(surf) => {
+            Egl(surf, _) => {
                 renderer.bind(surf.clone())
             },
         }
@@ -61,8 +65,9 @@ impl RenderSurface {
     {
         match self {
             Gbm(surf) => { surf.queue_buffer().map_err(Into::into) },
-            Egl(surf) => {
+            Egl(surf, _) => {
                 renderer.bind(surf.clone()).map_err(Into::into)?;
+                renderer.render((0, 0).into(), smithay::backend::renderer::Transform::Normal, |_,_| {}).map_err(Into::into)?;
                 surf.swap_buffers().map_err(Into::into)
             }
         }
@@ -73,6 +78,29 @@ impl RenderSurface {
             // yeah, its a hack, i'll fix it later
             Gbm(surf) => surf.frame_submitted().map_err(|e| match e { GbmDrmError(e) => e, _ => unreachable!() }),
             _ => Ok(()), // we do not need to release frames for Eglstreams
+        }
+    }
+    
+    pub fn crtc(&self) -> crtc::Handle {
+        match self {
+            Gbm(surf) => surf.crtc(),
+            Egl(_, crtc) => *crtc,
+        }
+    }
+
+    pub fn transform(&self, transform: Transform) -> Transform {
+        match self {
+            Gbm(_) => match transform {
+                Transform::Normal => Transform::Flipped180,
+                Transform::_90 => Transform::Flipped270,
+                Transform::_180 => Transform::Flipped,
+                Transform::_270 => Transform::Flipped90,
+                Transform::Flipped => Transform::_180,
+                Transform::Flipped90 => Transform::_270,
+                Transform::Flipped180 => Transform::Normal,
+                Transform::Flipped270 => Transform::_90,
+            },
+            Egl(_, _) => transform,
         }
     }
 }

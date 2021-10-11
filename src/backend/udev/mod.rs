@@ -15,7 +15,7 @@ use smithay::{
         renderer::{Frame, Renderer, Transform, gles2::Gles2Renderer},
     },
     reexports::{
-        calloop::{Dispatcher, EventLoop, LoopHandle},
+        calloop::{EventLoop, LoopHandle, generic::Generic, Interest, Mode, PostAction, timer::Timer},
         drm::control::{crtc, connector, property, Device as ControlDevice},
         input::Libinput,
         nix::{fcntl::OFlag, sys::stat::dev_t},
@@ -220,12 +220,23 @@ impl Fireplace {
                 mode,
             );
 
+            let timer = Timer::new()?;
+
             let data = SurfaceData {
                 output: output_name,
                 size: mode.size,
                 surface: target,
+                render_timer: timer.handle(),
             };
 
+            // re-render timer
+            handle
+                .insert_source(timer, |(dev_id, crtc), _, state| {
+                    if let Err(err) = state.render(dev_id, Some(crtc)) {
+                        slog_scope::error!("Error rendering: {}", err);
+                    }
+                })
+                .unwrap();
             surfaces.insert(*crtc, data);
         }
 
@@ -326,8 +337,6 @@ impl Fireplace {
             let scale = workspaces.output_by_name(&surface.output).unwrap().scale();
             let space = workspaces.space_by_output_name(&surface.output).unwrap();
             let popups = self.popups.borrow();
-                        
-            surface.surface.bind(&mut device_backend.renderer)?;
 
             let seats = &self.seats;
             let output_name = &surface.output;
@@ -349,8 +358,8 @@ impl Fireplace {
                     texture
                 });
 
-            device_backend.renderer.render(surface.size, Transform::Flipped180, |renderer, frame| {
-                render_space(&**space, scale, &**popups, dev_id, renderer, frame)?;
+            surface.surface.bind(&mut device_backend.renderer)?;
+            device_backend.renderer.render(surface.size, surface.surface.transform(Transform::Normal), |renderer, frame| {
 
                 // render the cursors for all seats
                 // TODO tint the cursors by seats
@@ -389,9 +398,46 @@ impl Fireplace {
                 }
                 Ok(())
             }).and_then(|x| x)?;
-            surface.surface.queue_buffer(&mut device_backend.renderer)
-                .map_err(|_| anyhow::anyhow!("Fail to queue buffer"))?;
+            match surface.surface.queue_buffer(&mut device_backend.renderer)
+            {
+                Ok(_) => {
             space.send_frames(self.start_time.elapsed().as_millis() as u32);
+                },
+                Err(err) => {
+                    use smithay::{
+                        backend::{
+                            SwapBuffersError,
+                            drm::DrmError,
+                            egl::{SwapBuffersError as EGLSwapBuffersError, EGLError},
+                        },
+                        reexports::drm,
+                    };
+
+                    let reschedule = match err {
+                        SwapBuffersError::AlreadySwapped => false,
+                        SwapBuffersError::TemporaryFailure(err) => !matches!(
+                            err.downcast_ref::<DrmError>(),
+                            Some(&DrmError::DeviceInactive)
+                                | Some(&DrmError::Access {
+                                    source: drm::SystemError::PermissionDenied,
+                                    ..
+                                })
+                        ),
+                        SwapBuffersError::ContextLost(err) => matches!(
+                            err.downcast_ref::<EGLSwapBuffersError>(),
+                            Some(&EGLSwapBuffersError::EGLSwapBuffers(EGLError::Unknown(0x3353)))
+                        ),
+                    };
+
+                    if reschedule {
+                        slog_scope::debug!("Rescheduling frame");
+                        surface.render_timer.add_timeout(
+                            std::time::Duration::from_millis(1000),// /*a second*/ / 60 /*refresh rate*/),
+                            (dev_id, surface.surface.crtc()),
+                        );
+                    }
+                }
+            }
         }
 
         Ok(())

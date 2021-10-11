@@ -10,6 +10,7 @@ use smithay::backend::{
 use smithay::reexports::{
     drm::control::{
         Device as ControlDevice,
+        crtc,
         dumbbuffer::DumbBuffer,
         framebuffer,
     },
@@ -23,7 +24,7 @@ use std::{
     os::unix::{
         io::AsRawFd,
     },
-    sync::{Arc, atomic::{AtomicPtr, Ordering}},
+    sync::{Arc, atomic::{AtomicPtr, AtomicBool, Ordering}},
 };
 
 use super::super::SessionFd as Fd;
@@ -167,6 +168,7 @@ pub struct EglStreamSurface<A: AsRawFd + 'static> {
     test_fb: Cell<Option<(DumbBuffer, framebuffer::Handle)>>,
     surface: AtomicPtr<c_void>,
     mode: Cell<(i32, i32)>,
+    flipped: AtomicBool,
     logger: slog::Logger,
 }
 
@@ -188,14 +190,15 @@ impl<A: AsRawFd + 'static> EglStreamSurface<A> {
             test_fb: Cell::new(None),
             surface: AtomicPtr::new(std::ptr::null_mut()),
             mode: Cell::new((mode.0 as i32, mode.1 as i32)),
+            flipped: AtomicBool::new(true),
             logger,
         }
     }
 
     fn create_stream(&self, handle: &Arc<EGLDisplayHandle>) -> Result<(), EGLError> {
         let output_attribs = [
-            ffi::DRM_PLANE_EXT as isize,
-            Into::<u32>::into(self.drm.plane()) as isize,
+            //ffi::DRM_PLANE_EXT as isize,
+            //Into::<u32>::into(self.drm.plane()) as isize,
             ffi::DRM_CRTC_EXT as isize,
             Into::<u32>::into(self.drm.crtc()) as isize,
             ffi::NONE as isize,
@@ -275,11 +278,11 @@ impl<A: AsRawFd + 'static> EglStreamSurface<A> {
 
         let stream_attributes = [
             ffi::STREAM_FIFO_LENGTH_KHR as i32,
-            0,
+            1,
             ffi::CONSUMER_AUTO_ACQUIRE_EXT as i32,
             ffi::FALSE as i32,
             ffi::CONSUMER_ACQUIRE_TIMEOUT_USEC_KHR as i32,
-            0,
+            6,
             ffi::NONE as i32,
         ];
 
@@ -305,6 +308,10 @@ impl<A: AsRawFd + 'static> EglStreamSurface<A> {
         self.stream.set(Some(stream));
 
         Ok(())
+    }
+
+    pub fn crtc(&self) -> crtc::Handle {
+        self.drm.crtc()
     }
 }
 
@@ -396,13 +403,14 @@ unsafe impl<A: AsRawFd + 'static> EGLNativeSurface for EglStreamSurface<A> {
         unsafe { ffi::QueryStreamKHR(***display, stream, ffi::STREAM_STATE_KHR, &mut val as *mut _) };
         slog::debug!(self.logger, "Stream State (PRE SWAP): 0x{:x}", val);
 
-        let res = wrap_egl_call(|| unsafe { ffi::SwapBuffers(***display, surface as *const _) })
+        if self.flipped.swap(false, Ordering::SeqCst) {
+            wrap_egl_call(|| unsafe { ffi::SwapBuffers(***display, surface as *const _) })
             .map_err(SwapBuffersError::EGLSwapBuffers)?;
-        slog::debug!(self.logger, "res: {}", res);
         
         let mut val = 0;
         unsafe { ffi::QueryStreamKHR(***display, stream, ffi::STREAM_STATE_KHR, &mut val as *mut _) };
         slog::debug!(self.logger, "Stream State (AFTER SWAP): 0x{:x}", val);
+        }
         wrap_egl_call(|| unsafe {
             ffi::StreamConsumerAcquireAttribNV(
                 ***display,
@@ -412,6 +420,7 @@ unsafe impl<A: AsRawFd + 'static> EGLNativeSurface for EglStreamSurface<A> {
         })
         .map_err(SwapBuffersError::EGLSwapBuffers)?;
 
+        self.flipped.store(true, Ordering::SeqCst);
         let mut val = 0;
         unsafe { ffi::QueryStreamKHR(***display, stream, ffi::STREAM_STATE_KHR, &mut val as *mut _) };
         slog::debug!(self.logger, "Stream State (AFTER ACQUIRE): 0x{:x}", val);

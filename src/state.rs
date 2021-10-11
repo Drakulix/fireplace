@@ -68,6 +68,7 @@ pub struct SurfaceData {
     pub size: Size<i32, Physical>,
     pub surface: RenderSurface,
     //fps: fps_ticker::Fps,
+    pub render_timer: TimerHandle<(dev_t, crtc::Handle)>,
 }
 
 impl Fireplace {
