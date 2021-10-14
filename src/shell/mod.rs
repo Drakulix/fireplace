@@ -40,10 +40,7 @@ use self::{
     workspace::Workspaces,
 };
 use crate::{
-    backend::{
-        udev::DevId,
-        render::BufferTextures,
-    },
+    backend::render::BufferTextures,
     state::Fireplace,
     wayland::EGLStream,
 };

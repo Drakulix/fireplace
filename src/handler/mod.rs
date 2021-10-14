@@ -245,19 +245,26 @@ impl Fireplace {
                         let mut location = seat.get_pointer().unwrap().current_location();
                         let output_name = {
                             location += event.delta();
-                            location.x =
-                                f64::min(f64::max(0.0, location.x), workspaces.width() as f64);
-                            let output = workspaces
-                                .output(|o| {
-                                    let geo = o.geometry();
-                                    geo.loc.x as f64 <= location.x
-                                        && (geo.loc.x + geo.size.w) as f64 > location.x
-                                })
-                                .unwrap();
-                            location.y =
-                                f64::min(f64::max(0.0, location.y), output.size().h as f64);
-                            String::from(output.name())
+                            let current_output_geo = workspaces.output_by_name(&*current_output_name).unwrap().geometry();
+                            if (current_output_geo.size.w as f64) < location.x
+                                || location.x < 0.0
+                            {
+                                let mut x = location.x + current_output_geo.loc.x as f64;
+                                x = f64::min(f64::max(0.0, x), workspaces.width() as f64);
+                                let new_output = workspaces
+                                    .output(|o| {
+                                        let geo = o.geometry();
+                                        (geo.loc.x as f64) <= x
+                                            && (geo.loc.x + geo.size.w) as f64 >= x
+                                    }).unwrap();
+                                location.x = x - new_output.location().x as f64;
+                                String::from(new_output.name())
+                            } else {
+                                current_output_name.clone()
+                            }
                         };
+                        location.y =
+                            f64::min(f64::max(0.0, location.y), workspaces.output_by_name(&output_name).unwrap().size().h as f64);
 
                         let space = workspaces.space_by_output_name(&output_name).unwrap();
                         let under = space.surface_under(location);
