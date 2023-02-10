@@ -1,6 +1,10 @@
 # <img src="https://cdn.rawgit.com/Drakulix/fireplace/v1.0.0/assets/fireplace.svg" width="128"> Fireplace  [![Crates.io](https://img.shields.io/crates/l/fireplace_lib.svg)](https://github.com/Drakulix/fireplace_lib/blob/master/LICENSE) 
 
-## Old Codebase: https://github.com/Drakulix/fireplace/tree/old_codebase
+## I am now working on https://github.com/pop-os/cosmic-comp
+
+`cosmic-comp` shares a lot of my vision for fireplace, is also written in Rust /using `smithay`, etc.
+But unlike fireplace, it will be a part of a full featured desktop product developed by System76.
+Developing this project along was fun, but at least currently I have no intention of spending more time on fireplace.
 
 ______
 
@@ -32,6 +36,8 @@ Fireplace
 - [ ] BSP-style window tiling
 - [ ] Basic UI rendering using layer-shell
 - [ ] ...
+
+## Older (more feature-complete) wlc-based Codebase: https://github.com/Drakulix/fireplace/tree/old_codebase
 
 ## Installation / Development
 
